@@ -1,21 +1,18 @@
 import React, { useEffect, useState } from "react"
-import Editor from "@monaco-editor/react"
-import { useColorMode } from "@docusaurus/theme-common"
 import Layout from "@theme/Layout"
 import Translate from "@docusaurus/Translate"
 
 import type { JSONSchema7 } from "json-schema"
-import type { Monaco } from "@monaco-editor/react"
 
-type EditorProperties = {
+import JSONSchemaViewer from "./JSONSchemaInnerViewer"
+
+type ViewerProperties = {
   loadSchema: () => Promise<JSONSchema7>
-  defaultValue?: any
 }
 
-function JSONSchemaEditor(props: EditorProperties): JSX.Element {
-  const [schema, setSchema] = useState(undefined as unknown)
+function JSONSchemaEditor(props: ViewerProperties): JSX.Element {
+  const [schema, setSchema] = useState(undefined as undefined | JSONSchema7)
   const [fetchError, setFetchError] = useState(undefined as undefined | Error)
-  const { colorMode } = useColorMode()
 
   useEffect(() => {
     props
@@ -23,22 +20,6 @@ function JSONSchemaEditor(props: EditorProperties): JSX.Element {
       .then((userSchema) => setSchema(userSchema))
       .catch((err) => setFetchError(err))
   }, [])
-
-  function handleEditorWillMount(monaco: Monaco) {
-    // here is the monaco instance
-    // do something before editor is mounted
-    monaco.languages.json.jsonDefaults.setDiagnosticsOptions({
-      validate: true,
-      schemas: [
-        {
-          uri:
-            (schema as JSONSchema7)["$id"] ||
-            "https://docusaurus.io/json-viewer/schema.json",
-          schema: schema,
-        },
-      ],
-    })
-  }
 
   return (
     <Layout>
@@ -65,15 +46,7 @@ function JSONSchemaEditor(props: EditorProperties): JSX.Element {
           </p>
         </div>
       )}
-      {schema !== undefined && (
-        <Editor
-          height="90vh"
-          defaultLanguage="json"
-          defaultValue={props.defaultValue}
-          beforeMount={handleEditorWillMount}
-          theme={colorMode === "dark" ? "vs-dark" : "light"}
-        />
-      )}
+      {schema !== undefined && <JSONSchemaViewer schema={schema} />}
     </Layout>
   )
 }

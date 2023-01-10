@@ -1,9 +1,6 @@
 import { Plugin, LoadContext } from "@docusaurus/types"
 
-
-export interface PluginOptions {
-  
-}
+export interface PluginOptions {}
 
 /**
  * The type of data your plugin loads.
@@ -21,13 +18,12 @@ export default function myPlugin(
 
     getThemePath() {
       // Where compiled JavaScript output lives
-      return '../lib/theme';
+      return "../lib/theme"
     },
 
     getTypeScriptThemePath() {
       // Where TypeScript source code lives
-      return '../src/theme';
-    }
-
+      return "../src/theme"
+    },
   }
 }
