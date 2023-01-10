@@ -58,7 +58,9 @@ function JSONSchemaEditor(props: ViewerProperties): JSX.Element {
       {schema === undefined && (
         <div>
           <p>
-            <Translate values={{ id: "docusaurus-json-schema-viewer-plugin.loading" }}>
+            <Translate
+              values={{ id: "docusaurus-json-schema-viewer-plugin.loading" }}
+            >
               {"Loading schema ..."}
             </Translate>
           </p>
