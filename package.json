@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "A Docusaurus v2 plugin that provides a JSON Schema viewer React component !",
   "main": "src/index.js",
-  "repository": "https://github.com/rdilweb/template-docusaurus-plugin.git",
+  "repository": "https://github.com/jy95/docusaurus-json-viewer-plugin.git",
   "author": "jy95",
-  "license": "Unlicense",
+  "license": "AGPL-3.0-or-later",
   "scripts": {
     "build": "tsc",
     "prettier": "prettier --write **/*.{js,jsx,ts,tsx,md,yml,json}"
@@ -15,9 +15,10 @@
   },
   "devDependencies": {
     "@docusaurus/types": "^2.2.0",
+    "@types/json-schema": "^7.0.11",
+    "@types/json-schema-merge-allof": "^0.6.1",
     "@types/react": "^17.0.52",
     "@types/react-dom": "^17.0.0",
-    "@types/json-schema": "^7.0.11",
     "prettier": "^2.2.1",
     "typescript": "^4.1.3"
   },
@@ -26,6 +27,8 @@
     "@docusaurus/theme-classic": "^2.2.0"
   },
   "dependencies": {
-    "@monaco-editor/react": "^4.4.6"
+    "@monaco-editor/react": "^4.4.6",
+    "@stoplight/json-ref-resolver": "^3.1.5",
+    "json-schema-merge-allof": "^0.8.1"
   }
 }

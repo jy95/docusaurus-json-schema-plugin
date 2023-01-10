@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react"
 import Layout from "@theme/Layout"
 import Translate from "@docusaurus/Translate"
+import AllOfMerger from "json-schema-merge-allof"
+import { Resolver } from "@stoplight/json-ref-resolver"
 
 import type { JSONSchema7 } from "json-schema"
 
@@ -10,14 +12,30 @@ type ViewerProperties = {
   loadSchema: () => Promise<JSONSchema7>
 }
 
+// merged representation of allOf array of schemas
+async function mergeAllOf(
+  schema: JSONSchema7
+): Promise<Omit<JSONSchema7, "allOf">> {
+  const mergedSchema = AllOfMerger(schema, {
+    // Technically valid, but only interested on fields with name, at least for now ...
+    ignoreAdditionalProperties: true,
+  })
+
+  return Promise.resolve(mergedSchema as Omit<JSONSchema7, "allOf">)
+}
+
 function JSONSchemaEditor(props: ViewerProperties): JSX.Element {
-  const [schema, setSchema] = useState(undefined as undefined | JSONSchema7)
+  const [schema, setSchema] = useState(
+    undefined as undefined | Omit<JSONSchema7, "allOf">
+  )
   const [fetchError, setFetchError] = useState(undefined as undefined | Error)
 
   useEffect(() => {
     props
       .loadSchema()
-      .then((userSchema) => setSchema(userSchema))
+      .then((userSchema) => new Resolver().resolve(userSchema))
+      .then((resolvedSchema) => mergeAllOf(resolvedSchema.result))
+      .then((schemaWithoutAllOf) => setSchema(schemaWithoutAllOf))
       .catch((err) => setFetchError(err))
   }, [])
 
