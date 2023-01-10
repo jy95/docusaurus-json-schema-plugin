@@ -1,9 +1,9 @@
 {
-  "name": "docusaurus-json-viewer-plugin",
+  "name": "docusaurus-json-schema-viewer-plugin",
   "version": "1.0.0",
   "description": "A Docusaurus v2 plugin that provides a JSON Schema viewer React component !",
   "main": "src/index.js",
-  "repository": "https://github.com/jy95/docusaurus-json-viewer-plugin.git",
+  "repository": "https://github.com/jy95/docusaurus-json-schema-viewer-plugin.git",
   "author": "jy95",
   "license": "AGPL-3.0-or-later",
   "scripts": {

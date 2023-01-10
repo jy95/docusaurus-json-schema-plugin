@@ -14,7 +14,7 @@ export default function myPlugin(
 ): Plugin<MyPluginLoadableContent | PluginOptions> {
   return {
     // change this to something unique, or caches may conflict!
-    name: "docusaurus-json-viewer-plugin",
+    name: "docusaurus-json-schema-viewer-plugin",
 
     getThemePath() {
       // Where compiled JavaScript output lives
