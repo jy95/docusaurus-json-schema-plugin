@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import Editor from "@monaco-editor/react"
 import { useColorMode } from "@docusaurus/theme-common"
-import Layout from "@theme/Layout"
+import Layout from "@theme-original/Layout"
 import Translate from "@docusaurus/Translate"
 
 import type { JSONSchema7 } from "json-schema"

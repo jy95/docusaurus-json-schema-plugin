@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import Layout from "@theme/Layout"
+import Layout from "@theme-original/Layout"
 import Translate from "@docusaurus/Translate"
 import AllOfMerger from "json-schema-merge-allof"
 import { Resolver } from "@stoplight/json-ref-resolver"
