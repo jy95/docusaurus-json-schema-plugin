@@ -19,7 +19,7 @@ function getQualifierMessages(
         <strong>
           <Translate
             values={{
-              id: "docusaurus-json-schema-viewer-plugin.schema.enumLabel",
+              id: "json-schema.labels.enum",
             }}
           >
             {"Possible values :"}
@@ -41,7 +41,7 @@ function getQualifierMessages(
         <strong>
           <Translate
             values={{
-              id: "docusaurus-json-schema-viewer-plugin.schema.lengthLabel",
+              id: "json-schema.labels.length",
             }}
           >
             {"Length :"}
@@ -51,7 +51,7 @@ function getQualifierMessages(
           <code>
             <Translate
               values={{
-                id: "docusaurus-json-schema-viewer-plugin.schema.minLength",
+                id: "json-schema.keywords.minLength",
                 count: schema.minLength,
               }}
             >
@@ -64,7 +64,7 @@ function getQualifierMessages(
             {" "}
             <Translate
               values={{
-                id: "docusaurus-json-schema-viewer-plugin.schema.andLabel",
+                id: "json-schema.labels.and",
               }}
             >
               {"AND"}
@@ -75,7 +75,7 @@ function getQualifierMessages(
           <code>
             <Translate
               values={{
-                id: "docusaurus-json-schema-viewer-plugin.schema.maxLength",
+                id: "json-schema.keywords.maxLength",
                 count: schema.maxLength,
               }}
             >
@@ -106,12 +106,35 @@ function getQualifierMessages(
         <strong>
           <Translate
             values={{
-              id: "docusaurus-json-schema-viewer-plugin.schema.numberMinimumMaximumLabel",
+              id: "json-schema.labels.numberMinimumMaximum",
             }}
           >
             {"Possible values :"}
           </Translate>
         </strong>
+        {minimum !== undefined && (
+          <code>
+            {isExclusiveMinimum === true ? (
+              <Translate
+                values={{
+                  id: "json-schema.keywords.minimumExlusive",
+                  count: minimum,
+                }}
+              >
+                {"> {count}"}
+              </Translate>
+            ) : (
+              <Translate
+                values={{
+                  id: "json-schema.keywords.minimum",
+                  count: minimum,
+                }}
+              >
+                {">= {count}"}
+              </Translate>
+            )}
+          </code>
+        )}
       </p>
     )
   }
@@ -123,7 +146,7 @@ function getQualifierMessages(
         <strong>
           <Translate
             values={{
-              id: "docusaurus-json-schema-viewer-plugin.schema.defaultLabel",
+              id: "json-schema.labels.default",
             }}
           >
             {"Default value :"}
@@ -141,7 +164,7 @@ function getQualifierMessages(
         <strong>
           <Translate
             values={{
-              id: "docusaurus-json-schema-viewer-plugin.schema.constLabel",
+              id: "json-schema.labels.const",
             }}
           >
             {"Constant value :"}

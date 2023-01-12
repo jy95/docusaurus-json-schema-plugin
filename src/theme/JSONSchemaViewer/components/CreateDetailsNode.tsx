@@ -36,7 +36,7 @@ function createDetailsNode(
             >
               <Translate
                 values={{
-                  id: "docusaurus-json-schema-viewer-plugin.schema.required",
+                  id: "json-schema.keywords.required",
                 }}
               >
                 {"required"}

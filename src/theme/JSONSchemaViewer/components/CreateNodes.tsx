@@ -2,7 +2,11 @@ import React, { ReactNode } from "react"
 import { RenderAnyOneOf, CreateProperties } from "./index"
 import { getQualifierMessages } from "../utils/index"
 
-import type { JSONSchema7, JSONSchema7Definition } from "json-schema"
+import type {
+  JSONSchema7,
+  JSONSchema7Definition,
+  JSONSchema7TypeName,
+} from "json-schema"
 import type { WithRequired } from "./index"
 
 // Creates a hierarchical level of a schema tree. Nodes produce edges that can branch into sub-nodes with edges, recursively.
@@ -40,11 +44,14 @@ function createNodes(schema: JSONSchema7Definition): ReactNode {
   // primitive type
   if (typedSchema?.type !== undefined) {
     let qualifierMessages = getQualifierMessages(typedSchema)
+    let type = Array.isArray(typedSchema?.type)
+      ? [...new Set(typedSchema.type as JSONSchema7TypeName[])].join(" OR ")
+      : (typedSchema.type as JSONSchema7TypeName)
 
     return (
       <li>
         <div>
-          <strong>{typedSchema.type}</strong>
+          <strong>{type}</strong>
           {typedSchema?.format !== undefined && (
             <span style={{ opacity: "0.6" }}>{` ${typedSchema.format}`}</span>
           )}
@@ -70,3 +77,5 @@ function createNodes(schema: JSONSchema7Definition): ReactNode {
   // Unknown node/schema type should return undefined
   return undefined
 }
+
+export default createNodes

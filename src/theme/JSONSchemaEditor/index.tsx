@@ -48,7 +48,7 @@ function JSONSchemaEditor(props: EditorProperties): JSX.Element {
             <Translate
               values={{
                 errorMessage: fetchError.message,
-                id: "docusaurus-json-schema-viewer-plugin.error",
+                id: "error",
               }}
             >
               {"This component crashed because of error: {errorMessage}."}
@@ -59,9 +59,7 @@ function JSONSchemaEditor(props: EditorProperties): JSX.Element {
       {schema === undefined && (
         <div>
           <p>
-            <Translate
-              values={{ id: "docusaurus-json-schema-viewer-plugin.loading" }}
-            >
+            <Translate values={{ id: "loading" }}>
               {"Loading schema ..."}
             </Translate>
           </p>

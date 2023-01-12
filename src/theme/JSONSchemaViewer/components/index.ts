@@ -15,5 +15,11 @@ export { default as CreateProperties } from "./CreateProperties"
 // RenderAnyOneOf component
 export { default as RenderAnyOneOf } from "./RenderAnyOneOf"
 
+// CreateNodes component
+export { default as CreateNodes } from "./CreateNodes"
+
+// CreateItems component
+export { default as CreateItems } from "./CreateItems"
+
 // https://stackoverflow.com/a/69328045/6149867
 export type WithRequired<T, K extends keyof T> = T & { [P in K]-?: T[P] }
