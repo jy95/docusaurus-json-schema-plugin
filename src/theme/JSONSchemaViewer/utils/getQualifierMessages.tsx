@@ -292,6 +292,32 @@ function getQualifierMessages(
     )
   }
 
+  // uniqueItems
+  if (schema?.uniqueItems !== undefined && schema.uniqueItems === true) {
+    result.push(
+      <p key={"uniqueItems"}>
+        <strong>
+          <Translate
+            values={{
+              id: "json-schema.labels.uniqueItems",
+            }}
+          >
+            {"Unique items :"}
+          </Translate>
+        </strong>
+        <code>
+          <Translate
+              values={{
+                id: "json-schema.labels.uniqueItemsOnly",
+              }}
+            >
+              {"yes"}
+            </Translate>
+        </code>
+      </p>
+    )
+  }
+
   // Default value
   if (schema?.default !== undefined) {
     result.push(
