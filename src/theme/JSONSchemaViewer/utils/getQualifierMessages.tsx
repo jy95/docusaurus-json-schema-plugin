@@ -100,7 +100,6 @@ function getQualifierMessages(
     let maximum = schema?.exclusiveMaximum || schema?.maximum
     let isExclusiveMaximum = schema?.exclusiveMaximum !== undefined
 
-    // TODO
     result.push(
       <p>
         <strong>
@@ -131,6 +130,41 @@ function getQualifierMessages(
                 }}
               >
                 {">= {count}"}
+              </Translate>
+            )}
+          </code>
+        )}
+        {minimum !== undefined && maximum !== undefined && (
+          <>
+            {" "}
+            <Translate
+              values={{
+                id: "json-schema.labels.and",
+              }}
+            >
+              {"AND"}
+            </Translate>{" "}
+          </>
+        )}
+        {maximum !== undefined && (
+          <code>
+            {isExclusiveMaximum === true ? (
+              <Translate
+                values={{
+                  id: "json-schema.keywords.maximumExlusive",
+                  count: maximum,
+                }}
+              >
+                {"< {count}"}
+              </Translate>
+            ) : (
+              <Translate
+                values={{
+                  id: "json-schema.keywords.maximum",
+                  count: maximum,
+                }}
+              >
+                {"<= {count}"}
               </Translate>
             )}
           </code>
