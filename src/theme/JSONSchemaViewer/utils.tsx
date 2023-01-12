@@ -125,7 +125,7 @@ export function getQualifierMessages(
               id: "docusaurus-json-schema-viewer-plugin.schema.enumLabel",
             }}
           >
-            {"Possible values:"}
+            {"Possible values :"}
           </Translate>
         </strong>
         {" ["}
@@ -133,6 +133,78 @@ export function getQualifierMessages(
           <code>{value}</code>
         ))}
         {"]"}
+      </p>
+    )
+  }
+
+  // minLength / maxLength
+  if (schema?.minLength || schema?.maxLength) {
+    result.push(
+      <p>
+        <strong>
+          <Translate
+            values={{
+              id: "docusaurus-json-schema-viewer-plugin.schema.lengthLabel",
+            }}
+          >
+            {"Length :"}
+          </Translate>
+        </strong>
+        {
+          (schema?.minLength !== undefined) && <code>
+            <Translate
+              values={{
+                id: "docusaurus-json-schema-viewer-plugin.schema.minLength",
+                count: schema.minLength
+              }}
+            >
+              {">= {count} character(s)"}
+            </Translate>            
+          </code>
+        }
+        {
+          ( (schema?.minLength !== undefined) && (schema?.maxLength) ) && <>
+            {' '}
+            <Translate
+              values={{
+                id: "docusaurus-json-schema-viewer-plugin.schema.andLabel"
+              }}
+            >
+              {"AND"}
+            </Translate> 
+            {' '}
+          </>
+        }
+        {
+          (schema?.maxLength !== undefined) && <code>
+            <Translate
+              values={{
+                id: "docusaurus-json-schema-viewer-plugin.schema.maxLength",
+                count: schema.maxLength
+              }}
+            >
+              {"<= {count} character(s)"}
+            </Translate>            
+          </code>
+        }        
+      </p>
+    )
+  }
+
+  // Default value
+  if (schema?.default !== undefined) {
+    result.push(
+      <p>
+        <strong>
+          <Translate
+            values={{
+              id: "docusaurus-json-schema-viewer-plugin.schema.enumLabel",
+            }}
+          >
+            {"Possible values :"}
+          </Translate>
+        </strong>
+        <code>{schema.default}</code>
       </p>
     )
   }
