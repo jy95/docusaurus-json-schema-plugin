@@ -15,7 +15,7 @@ function getQualifierMessages(
   // enum values
   if (schema?.enum !== undefined) {
     result.push(
-      <p>
+      <p key={"enum"}>
         <strong>
           <Translate
             values={{
@@ -26,9 +26,7 @@ function getQualifierMessages(
           </Translate>
         </strong>
         {" ["}
-        {schema.enum.map((value) => (
-          <code>{value}</code>
-        ))}
+        {schema.enum.map((value) => <code>{value}</code>).join(", ")}
         {"]"}
       </p>
     )
@@ -36,8 +34,19 @@ function getQualifierMessages(
 
   // minLength / maxLength
   if (schema?.minLength !== undefined || schema?.maxLength !== undefined) {
+    let minAndMaxLength =
+      schema?.minLength !== undefined && schema?.maxLength !== undefined
+
     result.push(
-      <p>
+      <p
+        key={
+          minAndMaxLength
+            ? "minLengthAndmaxLength"
+            : schema?.minLength !== undefined
+            ? "minLength"
+            : "maxLength"
+        }
+      >
         <strong>
           <Translate
             values={{
@@ -59,7 +68,7 @@ function getQualifierMessages(
             </Translate>
           </code>
         )}
-        {schema?.minLength !== undefined && schema?.maxLength !== undefined && (
+        {minAndMaxLength && (
           <>
             {" "}
             <Translate
@@ -87,6 +96,70 @@ function getQualifierMessages(
     )
   }
 
+  // minItems / maxItems
+  if (schema?.minItems !== undefined || schema?.maxItems !== undefined) {
+    let minAndMax =
+      schema?.minItems !== undefined && schema?.maxItems !== undefined
+
+    result.push(
+      <p
+        key={
+          minAndMax
+            ? "minItemsAndmaxItems"
+            : schema?.minItems !== undefined
+            ? "minItems"
+            : "maxItems"
+        }
+      >
+        <strong>
+          <Translate
+            values={{
+              id: "json-schema.labels.lengthItems",
+            }}
+          >
+            {"Length :"}
+          </Translate>
+        </strong>
+        {schema?.minItems !== undefined && (
+          <code>
+            <Translate
+              values={{
+                id: "json-schema.keywords.minItems",
+                count: schema.minItems,
+              }}
+            >
+              {">= {count}"}
+            </Translate>
+          </code>
+        )}
+        {minAndMax && (
+          <>
+            {" "}
+            <Translate
+              values={{
+                id: "json-schema.labels.and",
+              }}
+            >
+              {"AND"}
+            </Translate>{" "}
+          </>
+        )}
+        {schema?.maxLength !== undefined && (
+          <code>
+            <Translate
+              values={{
+                id: "json-schema.keywords.maxItems",
+                count: schema.maxItems,
+              }}
+            >
+              {"<= {count}"}
+            </Translate>
+          </code>
+        )}
+      </p>
+    )
+  }
+
   // minimum / exclusiveMinimum / maximum / exclusiveMaximum
   if (
     schema?.minimum !== undefined ||
@@ -99,9 +172,10 @@ function getQualifierMessages(
     let isExclusiveMinimum = schema?.exclusiveMinimum !== undefined
     let maximum = schema?.exclusiveMaximum || schema?.maximum
     let isExclusiveMaximum = schema?.exclusiveMaximum !== undefined
+    const minAndMax = minimum !== undefined && maximum !== undefined
 
     result.push(
-      <p>
+      <p key={"number-range"}>
         <strong>
           <Translate
             values={{
@@ -134,7 +208,7 @@ function getQualifierMessages(
             )}
           </code>
         )}
-        {minimum !== undefined && maximum !== undefined && (
+        {minAndMax && (
           <>
             {" "}
             <Translate
@@ -173,10 +247,28 @@ function getQualifierMessages(
     )
   }
 
+  // pattern
+  if (schema?.pattern !== undefined) {
+    result.push(
+      <p key={"pattern"}>
+        <strong>
+          <Translate
+            values={{
+              id: "json-schema.labels.pattern",
+            }}
+          >
+            {"Pattern :"}
+          </Translate>
+        </strong>
+        <code>{schema.pattern}</code>
+      </p>
+    )
+  }
+
   // multipleOf
   if (schema?.multipleOf !== undefined) {
     result.push(
-      <p>
+      <p key={"multipleOf"}>
         <strong>
           <Translate
             values={{
@@ -194,16 +286,16 @@ function getQualifierMessages(
             }}
           >
             {"multiple of {count}"}
-          </Translate>  
+          </Translate>
         </code>
-      </p> 
+      </p>
     )
   }
 
   // Default value
   if (schema?.default !== undefined) {
     result.push(
-      <p>
+      <p key={"default"}>
         <strong>
           <Translate
             values={{
@@ -221,7 +313,7 @@ function getQualifierMessages(
   // Const value
   if (schema?.const !== undefined) {
     result.push(
-      <p>
+      <p key={"const"}>
         <strong>
           <Translate
             values={{
