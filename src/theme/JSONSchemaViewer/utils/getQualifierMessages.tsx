@@ -173,6 +173,33 @@ function getQualifierMessages(
     )
   }
 
+  // multipleOf
+  if (schema?.multipleOf !== undefined) {
+    result.push(
+      <p>
+        <strong>
+          <Translate
+            values={{
+              id: "json-schema.labels.multipleOf",
+            }}
+          >
+            {"Possible values :"}
+          </Translate>
+        </strong>
+        <code>
+          <Translate
+            values={{
+              id: "json-schema.keywords.multipleOf",
+              count: schema.multipleOf,
+            }}
+          >
+            {"multiple of {count}"}
+          </Translate>  
+        </code>
+      </p> 
+    )
+  }
+
   // Default value
   if (schema?.default !== undefined) {
     result.push(
