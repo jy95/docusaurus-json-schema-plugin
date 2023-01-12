@@ -96,6 +96,73 @@ function getQualifierMessages(
     )
   }
 
+  // minProperties / maxProperties
+  if (
+    schema?.minProperties !== undefined ||
+    schema?.maxProperties !== undefined
+  ) {
+    let minAndMax =
+      schema?.minProperties !== undefined && schema?.maxProperties !== undefined
+
+    result.push(
+      <p
+        key={
+          minAndMax
+            ? "minPropertiesAndMaxProperties"
+            : schema?.minProperties !== undefined
+            ? "minProperties"
+            : "maxProperties"
+        }
+      >
+        <strong>
+          <Translate
+            values={{
+              id: "json-schema.labels.lengthProperties",
+            }}
+          >
+            {"Length :"}
+          </Translate>
+        </strong>
+        {schema?.minProperties !== undefined && (
+          <code>
+            <Translate
+              values={{
+                id: "json-schema.keywords.minProperties",
+                count: schema.minProperties,
+              }}
+            >
+              {">= {count} propertie(s)"}
+            </Translate>
+          </code>
+        )}
+        {minAndMax && (
+          <>
+            {" "}
+            <Translate
+              values={{
+                id: "json-schema.labels.and",
+              }}
+            >
+              {"AND"}
+            </Translate>{" "}
+          </>
+        )}
+        {schema?.maxProperties !== undefined && (
+          <code>
+            <Translate
+              values={{
+                id: "json-schema.keywords.maxProperties",
+                count: schema.maxProperties,
+              }}
+            >
+              {"<= {count} propertie(s)"}
+            </Translate>
+          </code>
+        )}
+      </p>
+    )
+  }
+
   // minItems / maxItems
   if (schema?.minItems !== undefined || schema?.maxItems !== undefined) {
     let minAndMax =
@@ -307,12 +374,12 @@ function getQualifierMessages(
         </strong>
         <code>
           <Translate
-              values={{
-                id: "json-schema.labels.uniqueItemsOnly",
-              }}
-            >
-              {"yes"}
-            </Translate>
+            values={{
+              id: "json-schema.labels.uniqueItemsOnly",
+            }}
+          >
+            {"yes"}
+          </Translate>
         </code>
       </p>
     )
