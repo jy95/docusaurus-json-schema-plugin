@@ -1,7 +1,7 @@
 import React from "react"
 import Translate from "@docusaurus/Translate"
 
-import { Collapsible } from "./index"
+import { Collapsible, CreateNodes, SchemaItem } from "./index"
 import { getQualifierMessages } from "../utils"
 
 import type { JSONSchema7 } from "json-schema"
@@ -12,9 +12,6 @@ function createDetailsNode(
   schema: JSONSchema7,
   required: boolean | string[]
 ): JSX.Element {
-  // TODO : return create("SchemaItem", { at the top
-  // TODO : createNodes(schema) at bottom
-
   const isRequired = Array.isArray(required)
     ? required.includes(name)
     : required
@@ -22,44 +19,47 @@ function createDetailsNode(
   let qualifierMessages = getQualifierMessages(schema)
 
   return (
-    <Collapsible
-      summary={
-        <div>
-          <strong>{name}</strong>
-          <span style={{ opacity: "0.6" }}>{schemaName}</span>
-          {isRequired && (
-            <strong
-              style={{
-                fontSize: "var(--ifm-code-font-size)",
-                color: "var(--ifm-color-danger)",
-              }}
-            >
-              <Translate
-                values={{
-                  id: "json-schema.keywords.required",
+    <SchemaItem collapsible={true} schema={schema} name={name}>
+      <Collapsible
+        summary={
+          <div>
+            <strong>{name}</strong>
+            <span style={{ opacity: "0.6" }}>{schemaName}</span>
+            {isRequired && (
+              <strong
+                style={{
+                  fontSize: "var(--ifm-code-font-size)",
+                  color: "var(--ifm-color-danger)",
                 }}
               >
-                {"required"}
-              </Translate>
-            </strong>
-          )}
-        </div>
-      }
-      children={
-        <div style={{ marginLeft: "1rem" }}>
-          {qualifierMessages !== undefined && (
-            <div style={{ marginTop: ".5rem", marginBottom: ".5rem" }}>
-              {qualifierMessages}
-            </div>
-          )}
-          {schema?.description !== undefined && (
-            <div style={{ marginTop: ".5rem", marginBottom: ".5rem" }}>
-              {schema?.description}
-            </div>
-          )}
-        </div>
-      }
-    />
+                <Translate
+                  values={{
+                    id: "json-schema.keywords.required",
+                  }}
+                >
+                  {"required"}
+                </Translate>
+              </strong>
+            )}
+          </div>
+        }
+        children={
+          <div style={{ marginLeft: "1rem" }}>
+            {qualifierMessages !== undefined && (
+              <div style={{ marginTop: ".5rem", marginBottom: ".5rem" }}>
+                {qualifierMessages}
+              </div>
+            )}
+            {schema?.description !== undefined && (
+              <div style={{ marginTop: ".5rem", marginBottom: ".5rem" }}>
+                {schema?.description}
+              </div>
+            )}
+            {CreateNodes(schema)}
+          </div>
+        }
+      />
+    </SchemaItem>
   )
 }
 

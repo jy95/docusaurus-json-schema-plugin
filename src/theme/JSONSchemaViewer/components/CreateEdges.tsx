@@ -1,7 +1,7 @@
 import React from "react"
 
 import { generateFriendlyName } from "../utils/index"
-import { CreateDetailsNode } from "./index"
+import { CreateDetailsNode, SchemaItem } from "./index"
 
 import type { JSONSchema7, JSONSchema7Definition } from "json-schema"
 
@@ -53,24 +53,14 @@ function createEdges({ name, schema, required }: EdgeProps): JSX.Element {
   }
 
   //primitives and array of non-objects
-
-  /*
-  
-    // TODO migrate this code
-  
-    // primitives and array of non-objects
-    return create("SchemaItem", {
-      collapsible: false,
-      name,
-      required: Array.isArray(required) ? required.includes(name) : required,
-      deprecated: schema.deprecated,
-      schemaDescription: schema.description,
-      schemaName: schemaName,
-      qualifierMessage: getQualifierMessage(schema),
-      defaultValue: schema.default,
-    });
-  
-    */
+  return (
+    <SchemaItem
+      collapsible={false}
+      name={name}
+      schema={schema}
+      schemaName={schemaName}
+    />
+  )
 }
 
 export default createEdges

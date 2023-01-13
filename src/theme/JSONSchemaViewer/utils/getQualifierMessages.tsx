@@ -1,6 +1,20 @@
 import React, { ReactNode } from "react"
+
 import Translate from "@docusaurus/Translate"
-import type { JSONSchema7Definition } from "json-schema"
+import CodeBlock from "@theme-original/CodeBlock"
+
+import type { JSONSchema7Definition, JSONSchema7Type } from "json-schema"
+
+// To print all JSONSchema7Type
+function printSchemaType(obj: JSONSchema7Type): JSX.Element {
+  // deal with simple types first
+  if (["string", "number", "bigint", "boolean"].includes(typeof obj)) {
+    return <code>{obj}</code>
+  }
+
+  // if it is a object / array, it is likely to be complex so time for my bullet
+  return <CodeBlock language="json">{`${JSON.stringify(obj)}`}</CodeBlock>
+}
 
 // The heart of the plugin : Display human friendly messages
 function getQualifierMessages(
@@ -25,9 +39,7 @@ function getQualifierMessages(
             {"Possible values :"}
           </Translate>
         </strong>
-        {" ["}
-        {schema.enum.map((value) => <code>{value}</code>).join(", ")}
-        {"]"}
+        {printSchemaType(schema.enum)}
       </p>
     )
   }
@@ -398,7 +410,7 @@ function getQualifierMessages(
             {"Default value :"}
           </Translate>
         </strong>
-        <code>{schema.default}</code>
+        {printSchemaType(schema.default)}
       </p>
     )
   }
@@ -416,7 +428,7 @@ function getQualifierMessages(
             {"Constant value :"}
           </Translate>
         </strong>
-        <code>{schema.const}</code>
+        {printSchemaType(schema.const)}
       </p>
     )
   }

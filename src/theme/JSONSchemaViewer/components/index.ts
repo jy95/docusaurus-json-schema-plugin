@@ -21,5 +21,8 @@ export { default as CreateNodes } from "./CreateNodes"
 // CreateItems component
 export { default as CreateItems } from "./CreateItems"
 
+// SchemaItem
+export { default as SchemaItem } from "./SchemaItem/SchemaItem"
+
 // https://stackoverflow.com/a/69328045/6149867
 export type WithRequired<T, K extends keyof T> = T & { [P in K]-?: T[P] }
