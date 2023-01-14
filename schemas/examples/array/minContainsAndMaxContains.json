@@ -1,0 +1,8 @@
+{
+  "type": "array",
+  "contains": {
+    "type": "number"
+  },
+  "minContains": 2,
+  "maxContains": 3
+}

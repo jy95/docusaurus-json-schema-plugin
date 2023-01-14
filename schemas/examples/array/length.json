@@ -1,0 +1,5 @@
+{
+  "type": "array",
+  "minItems": 2,
+  "maxItems": 3
+}

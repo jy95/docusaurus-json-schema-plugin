@@ -1,0 +1,5 @@
+{
+  "type": "object",
+  "minProperties": 2,
+  "maxProperties": 3
+}
