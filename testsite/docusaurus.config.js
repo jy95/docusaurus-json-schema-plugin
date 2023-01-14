@@ -1,8 +1,8 @@
 module.exports = {
   title: "My Site",
   tagline: "The tagline of my site",
-  url: 'https://jy95.github.io',
-  baseUrl: '/docusaurus-json-schema-viewer-plugin/',
+  url: "https://jy95.github.io",
+  baseUrl: "/docusaurus-json-schema-viewer-plugin/",
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
   favicon: "img/favicon.ico",
