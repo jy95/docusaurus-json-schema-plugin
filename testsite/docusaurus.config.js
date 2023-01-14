@@ -4,13 +4,13 @@ module.exports = {
   title: "Docusaurus JSON Schema Plugin",
   tagline: "JSON Schema plugin viewer / editor in Docusaurus v2.",
   url: "https://jy95.github.io",
-  baseUrl: "/docusaurus-json-schema-viewer-plugin/",
+  baseUrl: "/docusaurus-json-schema-plugin/",
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
   favicon: "img/favicon.ico",
   trailingSlash: false, // Needed for Gh pages - https://github.com/facebook/docusaurus/issues/5026
   organizationName: "jy95", // Usually your GitHub org/user name.
-  projectName: "docusaurus-json-schema-viewer-plugin", // Usually your repo name.
+  projectName: "docusaurus-json-schema-plugin", // Usually your repo name.
   themeConfig: {
     navbar: {
       title: "JSON Schema viewer / editor",
@@ -28,7 +28,7 @@ module.exports = {
         {
           label: "Github",
           position: "right",
-          to: "https://github.com/jy95/docusaurus-json-schema-viewer-plugin"
+          to: "https://github.com/jy95/docusaurus-json-schema-plugin"
         }
       ],
     },
@@ -46,7 +46,7 @@ module.exports = {
           sidebarPath: require.resolve("./sidebars.js"),
           // Please change this to your repo.
           editUrl:
-            "https://github.com/jy95/docusaurus-json-schema-viewer-plugin/tree/main/testsite/",
+            "https://github.com/jy95/docusaurus-json-schema-plugin/tree/main/testsite/",
         },
         // Optional: disable the blog plugin
         blog: false,
