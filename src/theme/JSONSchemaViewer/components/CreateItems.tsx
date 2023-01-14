@@ -6,7 +6,7 @@ import {
   CreateAdditionalProperties,
 } from "./index"
 
-import type { ReactNode } from "react";
+import type { ReactNode } from "react"
 import type { JSONSchema7 } from "json-schema"
 import type { WithRequired } from "./index"
 
