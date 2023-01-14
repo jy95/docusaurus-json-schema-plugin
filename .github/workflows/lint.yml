@@ -1,5 +1,8 @@
 name: Lint
 on: [push]
+permissions:
+  pull-requests: write
+  actions: write
 jobs:
   lint:
     name: Ensure our linting standards
