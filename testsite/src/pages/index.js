@@ -35,7 +35,11 @@ const features = [
     imageUrl: "img/opensource-icon.svg",
     description: (
       <>
-        Want to improve this plugin ? We welcome your <a href="https://github.com/jy95/docusaurus-json-schema-plugin">contributions</a> !
+        Want to improve this plugin ? We welcome your{" "}
+        <a href="https://github.com/jy95/docusaurus-json-schema-plugin">
+          contributions
+        </a>{" "}
+        !
       </>
     ),
   },
