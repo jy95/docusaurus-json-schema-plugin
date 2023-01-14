@@ -12,7 +12,7 @@ const features = [
     imageUrl: "img/undraw_code_review.svg",
     description: (
       <>
-        Explore your Draft 7 JSON Schema directly from your Docusaurus website. 
+        Explore your Draft 7 JSON Schema directly from your Docusaurus website.
       </>
     ),
   },
@@ -21,7 +21,12 @@ const features = [
     imageUrl: "img/gear-tools.svg",
     description: (
       <>
-        <a href="https://docusaurus.io/docs/i18n/introduction">Internationalization</a>, Theme-able (as follow <a href="https://infima.dev/">Infima styling framework</a> that powers the Docusaurus UI), ...
+        <a href="https://docusaurus.io/docs/i18n/introduction">
+          Internationalization
+        </a>
+        , Theme-able (as follow{" "}
+        <a href="https://infima.dev/">Infima styling framework</a> that powers
+        the Docusaurus UI), ...
       </>
     ),
   },
@@ -30,7 +35,11 @@ const features = [
     imageUrl: "img/opensource-icon.svg",
     description: (
       <>
-        Want to improve this plugin ? We welcome your <a href="https://github.com/jy95/docusaurus-json-schema-viewer-plugin">contributions</a> !
+        Want to improve this plugin ? We welcome your{" "}
+        <a href="https://github.com/jy95/docusaurus-json-schema-viewer-plugin">
+          contributions
+        </a>{" "}
+        !
       </>
     ),
   },
