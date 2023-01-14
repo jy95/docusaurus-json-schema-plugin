@@ -1,5 +1,10 @@
 import React, { ReactNode } from "react"
-import { RenderAnyOneOf, CreateProperties, CreateItems } from "./index"
+import {
+  RenderAnyOneOf,
+  CreateProperties,
+  CreateItems,
+  CreateAdditionalProperties,
+} from "./index"
 import { getQualifierMessages } from "../utils/index"
 
 import type {
@@ -36,10 +41,20 @@ function createNodes(schema: JSONSchema7Definition): ReactNode {
     )
   }
 
+  // additionalProperties
+  if (typedSchema?.additionalProperties !== undefined) {
+    return CreateAdditionalProperties(
+      typedSchema as WithRequired<JSONSchema7, "additionalProperties">
+    )
+  }
+
   // Items
   if (typedSchema?.items !== undefined) {
     return CreateItems(typedSchema.items as WithRequired<JSONSchema7, "items">)
   }
+
+  // TODO unsupported stuff (later)
+  // 2. additionalItems
 
   // primitive type
   if (typedSchema?.type !== undefined) {
@@ -69,10 +84,6 @@ function createNodes(schema: JSONSchema7Definition): ReactNode {
       </li>
     )
   }
-
-  // TODO unsupported stuff (later)
-  // 1. additionalProperties
-  // 2. additionalItems
 
   // Unknown node/schema type should return undefined
   return undefined

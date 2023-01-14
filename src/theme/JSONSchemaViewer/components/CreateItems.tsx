@@ -5,12 +5,12 @@ import {
   CreateNodes,
   CreateProperties,
   CreateEdges,
+  CreateAdditionalProperties,
 } from "./index"
 
-import type { JSONSchema7, JSONSchema7Definition } from "json-schema"
+import type { JSONSchema7 } from "json-schema"
 import type { WithRequired } from "./index"
 
-// TODO uncomplete
 function createItems(schema: WithRequired<JSONSchema7, "items">): ReactNode {
   if (Array.isArray(schema.items)) {
     return Object.entries(
@@ -37,7 +37,11 @@ function createItems(schema: WithRequired<JSONSchema7, "items">): ReactNode {
       )
     }
 
-    // TODO createAdditionalProperties
+    if (typedItems.additionalProperties !== undefined) {
+      return CreateAdditionalProperties(
+        typedItems as WithRequired<JSONSchema7, "additionalProperties">
+      )
+    }
 
     if (typedItems.oneOf !== undefined || typedItems.anyOf !== undefined) {
       return RenderAnyOneOf(

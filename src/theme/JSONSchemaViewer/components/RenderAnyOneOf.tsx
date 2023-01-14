@@ -4,7 +4,7 @@ import React from "react"
 import TabItem from "@theme-original/TabItem"
 import Tabs from "@theme-original/Tabs"
 
-import { CreateProperties } from "./index"
+import { CreateNodes } from "./index"
 
 import type { JSONSchema7, JSONSchema7Definition } from "json-schema"
 import type { WithRequired } from "./index"
@@ -22,28 +22,23 @@ function renderAnyOneOf(
     <div>
       <span className="badge badge--info">{typeOf}</span>
       <Tabs>
-        {(schema[typeOf] as JSONSchema7Definition[])
-          // JSONSchema7Definition is either boolean or JSONSchema7 so better be safe that sorry
-          .filter((subSchema) => typeof subSchema !== "boolean")
-          .map((anyOneSchema, index) => {
-            let subSchema = anyOneSchema as JSONSchema7
-            const label = subSchema?.title || `${index + 1}`
+        {(schema[typeOf] as JSONSchema7Definition[]).map(
+          (anyOneSchema, index) => {
+            const label =
+              (typeof anyOneSchema !== "boolean" && anyOneSchema?.title) ||
+              `${index + 1}`
 
-            // TODO
             return (
               <TabItem
                 key={`anyOneSchema_${index}`}
                 value={`anyOneSchema_${index}`}
                 label={label}
               >
-                {/* Print the properties contained, if any */}
-                {subSchema.properties !== undefined &&
-                  CreateProperties(
-                    subSchema as WithRequired<JSONSchema7, "properties">
-                  )}
+                {CreateNodes(anyOneSchema)}
               </TabItem>
             )
-          })}
+          }
+        )}
       </Tabs>
     </div>
   )
