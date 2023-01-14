@@ -28,8 +28,8 @@ module.exports = {
         {
           label: "Github",
           position: "right",
-          to: "https://github.com/jy95/docusaurus-json-schema-plugin"
-        }
+          to: "https://github.com/jy95/docusaurus-json-schema-plugin",
+        },
       ],
     },
     footer: {
