@@ -1,5 +1,3 @@
-import React, { ReactNode } from "react"
-
 import {
   RenderAnyOneOf,
   CreateNodes,
@@ -8,6 +6,7 @@ import {
   CreateAdditionalProperties,
 } from "./index"
 
+import type { ReactNode } from "react";
 import type { JSONSchema7 } from "json-schema"
 import type { WithRequired } from "./index"
 
