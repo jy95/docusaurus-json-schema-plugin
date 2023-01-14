@@ -1,13 +1,14 @@
 module.exports = {
   title: "My Site",
   tagline: "The tagline of my site",
-  url: "https://your-docusaurus-test-site.com",
-  baseUrl: "/",
+  url: 'https://jy95.github.io',
+  baseUrl: '/docusaurus-json-schema-viewer-plugin/',
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
   favicon: "img/favicon.ico",
-  organizationName: "facebook", // Usually your GitHub org/user name.
-  projectName: "docusaurus", // Usually your repo name.
+  trailingSlash: false, // Needed for Gh pages - https://github.com/facebook/docusaurus/issues/5026
+  organizationName: "jy95", // Usually your GitHub org/user name.
+  projectName: "docusaurus-json-schema-viewer-plugin", // Usually your repo name.
   themeConfig: {
     navbar: {
       title: "My Site",
@@ -106,7 +107,7 @@ module.exports = {
   // YOU CAN TEST IT OUT WITH DIFFERENT OPTIONS BY PASSING THEM IN THE OBJECT LITERAL
   plugins: [
     [
-      require.resolve("../build/index.js"),
+      require.resolve("../lib/index.js"),
       {
         // options here, or if you have none, just leave this empty.
       },
