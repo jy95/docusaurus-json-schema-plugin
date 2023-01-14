@@ -41,12 +41,12 @@ jobs:
           npm run build
 
       - name: Install website 💻
-        run:
-          cd testsite 
+        run: |
+          cd testsite   
           yarn install --frozen-lockfile
       - name: Build website 🤖
-        run:
-          cd testsite 
+        run: |
+          cd testsite   
           yarn build
 
       - name: Deploy
