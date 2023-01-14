@@ -1,6 +1,9 @@
+
+// With JSDoc @type annotations, IDEs can provide config autocompletion
+/** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
-  title: "My Site",
-  tagline: "The tagline of my site",
+  title: "Docusaurus JSON Schema Plugin",
+  tagline: "JSON Schema plugin viewer / editor in Docusaurus v2.",
   url: "https://jy95.github.io",
   baseUrl: "/docusaurus-json-schema-viewer-plugin/",
   onBrokenLinks: "throw",
@@ -103,14 +106,10 @@ module.exports = {
       },
     ],
   ],
-  // THIS IS YOUR PLUGIN'S ENTRYPOINT.
-  // YOU CAN TEST IT OUT WITH DIFFERENT OPTIONS BY PASSING THEM IN THE OBJECT LITERAL
-  plugins: [
+  themes: [
     [
-      require.resolve("../lib/index.js"),
-      {
-        // options here, or if you have none, just leave this empty.
-      },
-    ],
-  ],
+      "../lib/index.js",
+      {}
+    ]
+  ]
 }

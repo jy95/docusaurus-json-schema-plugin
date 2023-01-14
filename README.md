@@ -1,4 +1,4 @@
-<h1 align="center">Docusaurus JSON Schema Viewer</h1>
+<h1 align="center">Docusaurus JSON Schema Plugin</h1>
 
 <div align="center">
 <img width="200" src="https://user-images.githubusercontent.com/9343811/165975569-1bc29814-884c-4931-83df-860043b625b7.svg" />
@@ -6,7 +6,7 @@
 
 <div align="center">
 
-JSON Schema plugin in Docusaurus v2.
+JSON Schema viewer / editor in Docusaurus v2.
 
 <img src="https://img.shields.io/badge/dynamic/json?style=for-the-badge&logo=meta&color=blueviolet&label=Docusaurus&query=peerDependencies%5B%22%40docusaurus%2Fcore%22%5D&url=https%3A%2F%2Fraw.githubusercontent.com%2Fjy95%2Fdocusaurus-json-schema-viewer-plugin%2Fmain%2Fpackage.json" />
 <br/><br/>
