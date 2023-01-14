@@ -1,5 +1,5 @@
 {
-    "type": "number",
-    "minimum": 0,
-    "exclusiveMaximum": 100
-  }
+  "type": "number",
+  "minimum": 0,
+  "exclusiveMaximum": 100
+}

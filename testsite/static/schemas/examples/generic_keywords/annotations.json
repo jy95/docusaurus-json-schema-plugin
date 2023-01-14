@@ -1,12 +1,9 @@
 {
-    "title": "Match anything",
-    "description": "This is a schema that matches anything.",
-    "default": "Default value",
-    "examples": [
-      "Anything",
-      4035
-    ],
-    "deprecated": true,
-    "readOnly": true,
-    "writeOnly": false
-  }
+  "title": "Match anything",
+  "description": "This is a schema that matches anything.",
+  "default": "Default value",
+  "examples": ["Anything", 4035],
+  "deprecated": true,
+  "readOnly": true,
+  "writeOnly": false
+}

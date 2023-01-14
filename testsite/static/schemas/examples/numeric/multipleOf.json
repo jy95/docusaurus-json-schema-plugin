@@ -1,4 +1,4 @@
 {
-    "type": "number",
-    "multipleOf" : 10
+  "type": "number",
+  "multipleOf": 10
 }

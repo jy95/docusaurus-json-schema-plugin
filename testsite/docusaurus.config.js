@@ -1,4 +1,3 @@
-
 // With JSDoc @type annotations, IDEs can provide config autocompletion
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
@@ -106,10 +105,5 @@ module.exports = {
       },
     ],
   ],
-  themes: [
-    [
-      "../lib/index.js",
-      {}
-    ]
-  ]
+  themes: [["../lib/index.js", {}]],
 }

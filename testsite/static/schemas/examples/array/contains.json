@@ -1,6 +1,6 @@
 {
-    "type": "array",
-    "contains": {
-      "type": "number"
-    }
- }
+  "type": "array",
+  "contains": {
+    "type": "number"
+  }
+}

@@ -1,8 +1,8 @@
 {
-    "type": "array",
-    "contains": {
-      "type": "number"
-    },
-    "minContains": 2,
-    "maxContains": 3
-  }
+  "type": "array",
+  "contains": {
+    "type": "number"
+  },
+  "minContains": 2,
+  "maxContains": 3
+}
