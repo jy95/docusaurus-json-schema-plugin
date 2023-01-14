@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react"
-import { RenderAnyOneOf, CreateProperties } from "./index"
+import { RenderAnyOneOf, CreateProperties, CreateItems } from "./index"
 import { getQualifierMessages } from "../utils/index"
 
 import type {
@@ -36,9 +36,9 @@ function createNodes(schema: JSONSchema7Definition): ReactNode {
     )
   }
 
-  // TODO items
+  // Items
   if (typedSchema?.items !== undefined) {
-    return
+    return CreateItems(typedSchema.items as WithRequired<JSONSchema7, "items">)
   }
 
   // primitive type
@@ -70,7 +70,7 @@ function createNodes(schema: JSONSchema7Definition): ReactNode {
     )
   }
 
-  // TODO unsupported stuff
+  // TODO unsupported stuff (later)
   // 1. additionalProperties
   // 2. additionalItems
 

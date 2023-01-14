@@ -12,6 +12,9 @@ export { default as CreateEdges } from "./CreateEdges"
 // CreateProperties component
 export { default as CreateProperties } from "./CreateProperties"
 
+// CreateAdditionalProperties
+export { default as CreateAdditionalProperties } from "./CreateAdditionalProperties"
+
 // RenderAnyOneOf component
 export { default as RenderAnyOneOf } from "./RenderAnyOneOf"
 

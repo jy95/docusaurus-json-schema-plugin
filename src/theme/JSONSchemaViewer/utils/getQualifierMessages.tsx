@@ -12,7 +12,7 @@ function printSchemaType(obj: JSONSchema7Type): JSX.Element {
     return <code>{obj}</code>
   }
 
-  // if it is a object / array, it is likely to be complex so time for my bullet
+  // if it is a object / array, it is likely to be complex so time for my ace card
   return <CodeBlock language="json">{`${JSON.stringify(obj)}`}</CodeBlock>
 }
 

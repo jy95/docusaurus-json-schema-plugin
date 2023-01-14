@@ -71,4 +71,4 @@ function SchemaItem({
   )
 }
 
-export default SchemaItem;
+export default SchemaItem
