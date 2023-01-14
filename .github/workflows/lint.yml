@@ -3,6 +3,7 @@ on: [push]
 permissions:
   pull-requests: write
   actions: write
+  repository-projects: write
 jobs:
   lint:
     name: Ensure our linting standards
