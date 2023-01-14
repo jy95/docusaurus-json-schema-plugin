@@ -8,32 +8,29 @@ import styles from "./styles.module.css"
 
 const features = [
   {
-    title: "Easy to Use",
-    imageUrl: "img/undraw_docusaurus_mountain.svg",
+    title: "JSON Schema Viewer / Editor",
+    imageUrl: "img/undraw_code_review.svg",
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        Explore your Draft 7 JSON Schema directly from your Docusaurus website. 
       </>
     ),
   },
   {
-    title: "Focus on What Matters",
-    imageUrl: "img/undraw_docusaurus_tree.svg",
+    title: "Configurable",
+    imageUrl: "img/gear-tools.svg",
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        <a href="https://docusaurus.io/docs/i18n/introduction">Internationalization</a>, Theme-able (as follow <a href="https://infima.dev/">Infima styling framework</a> that powers the Docusaurus UI), ...
       </>
     ),
   },
   {
-    title: "Powered by React",
-    imageUrl: "img/undraw_docusaurus_react.svg",
+    title: "Open source",
+    imageUrl: "img/opensource-icon.svg",
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        Want to improve this plugin ? We welcome your <a href="https://github.com/jy95/docusaurus-json-schema-viewer-plugin">contributions</a> !
       </>
     ),
   },
