@@ -1,9 +1,8 @@
-import React from "react"
-
 import { generateFriendlyName } from "../utils/index"
-import { CreateDetailsNode, SchemaItem } from "./index"
+import { CreateDetailsNode } from "./index"
 
-import type { JSONSchema7, JSONSchema7Definition } from "json-schema"
+import type { ReactNode } from "react"
+import type { JSONSchema7Definition } from "json-schema"
 
 // Creates the edges or "leaves" of a schema tree. Edges can branch into sub-nodes with createDetails().
 type EdgeProps = {
@@ -12,46 +11,19 @@ type EdgeProps = {
   required: string[] | boolean
 }
 
-function createEdges({ name, schema, required }: EdgeProps): JSX.Element {
+// TODO
+function createEdges({ name, schema, required }: EdgeProps): ReactNode {
   const schemaName = generateFriendlyName(schema)
 
+  // TODO review that later
   if (typeof schema === "boolean") {
-    // TODO
-    return <></>
+    return undefined
   }
 
-  if (schema?.oneOf || schema?.anyOf) {
-    return CreateDetailsNode(name, schemaName, schema, required)
-  }
+  // Most of the time, createDetailsNode do the job recursively
+  return CreateDetailsNode(name, schemaName, schema, required)
 
-  if (schema?.properties) {
-    return CreateDetailsNode(name, schemaName, schema, required)
-  }
-
-  if (schema?.additionalProperties) {
-    return CreateDetailsNode(name, schemaName, schema, required)
-  }
-
-  // Items can be primitive or something else more useful to display
-  let items = (
-    schema?.items !== undefined
-      ? Array.isArray(schema.items)
-        ? schema.items
-        : [schema.items]
-      : []
-  ).filter((item) => typeof item !== "boolean") as JSONSchema7[]
-
-  if (
-    items.some(
-      (item) =>
-        item.properties !== undefined ||
-        item.anyOf !== undefined ||
-        item.oneOf !== undefined
-    )
-  ) {
-    return CreateDetailsNode(name, schemaName, schema, required)
-  }
-
+  /* TODO check that part later
   //primitives and array of non-objects
   return (
     <SchemaItem
@@ -60,7 +32,7 @@ function createEdges({ name, schema, required }: EdgeProps): JSX.Element {
       schema={schema}
       schemaName={schemaName}
     />
-  )
+  )*/
 }
 
 export default createEdges
