@@ -12,7 +12,7 @@ export type Props = {
   defaultValue?: any
 }
 
-function JSONSchemaEditor(props: Props): JSX.Element {
+function JSONSchemaEditorInner(props: Props): JSX.Element {
   const [schema, setSchema] = useState(undefined as unknown)
   const [fetchError, setFetchError] = useState(undefined as undefined | Error)
   const { colorMode } = useColorMode()
@@ -40,7 +40,7 @@ function JSONSchemaEditor(props: Props): JSX.Element {
   }
 
   return (
-    <Layout>
+    <>
       {fetchError !== undefined && (
         <div>
           <p>
@@ -73,8 +73,19 @@ function JSONSchemaEditor(props: Props): JSX.Element {
           theme={colorMode === "dark" ? "vs-dark" : "vs"}
         />
       )}
+    </>
+  )
+}
+
+// The public component
+// Notice from https://docusaurus.io/docs/api/themes/configuration#use-color-mode
+// The component calling useColorMode must be a child of the Layout component.
+function JSONSchemaEditor(props: Props): JSX.Element {
+  return (
+    <Layout>
+      <JSONSchemaEditorInner {...props} />
     </Layout>
   )
 }
 
-export default JSONSchemaEditor
+export default JSONSchemaEditor;
