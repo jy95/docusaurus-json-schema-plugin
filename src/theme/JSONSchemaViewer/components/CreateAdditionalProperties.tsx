@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react"
+import React from "react"
 import Translate from "@docusaurus/Translate"
 
 import { getQualifierMessages } from "../utils/index"
@@ -12,14 +12,18 @@ import type {
 
 import type { WithRequired } from "./index"
 
-function createAdditionalProperties(
+type Props = {
   schema: WithRequired<JSONSchema7, "additionalProperties">
-): ReactNode {
+  [x: string]: any
+}
+
+function createAdditionalProperties(props: Props): JSX.Element {
+  const { schema } = props
   let typedSchema = schema.additionalProperties as JSONSchema7Definition
 
   // don't want to display something in boolean cases, at least from now ...
   if (typeof typedSchema === "boolean") {
-    return undefined
+    return <></>
   }
 
   let types = (
@@ -59,7 +63,7 @@ function createAdditionalProperties(
     )
   } else {
     // Well well, at this point we could have anything so let createNodes do the job
-    return CreateNodes(typedSchema)
+    return <CreateNodes schema={schema} />
   }
 }
 

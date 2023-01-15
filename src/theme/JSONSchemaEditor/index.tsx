@@ -1,32 +1,39 @@
-import React, { useEffect, useState } from "react"
-import Editor from "@monaco-editor/react"
+import React from "react"
+import MonacoEditor from "react-monaco-editor"
 import { useColorMode } from "@docusaurus/theme-common"
-import Layout from "@theme-original/Layout"
-import Translate from "@docusaurus/Translate"
+import BrowserOnly from "@docusaurus/BrowserOnly"
+import ErrorBoundary from "@docusaurus/ErrorBoundary"
 
 import type { JSONSchema7 } from "json-schema"
-import type { Monaco } from "@monaco-editor/react"
+import type { EditorWillMount, MonacoEditorProps } from "react-monaco-editor"
+import type { Props as ErrorProps } from "@theme/Error"
 
 export type Props = {
-  loadSchema: () => Promise<JSONSchema7>
+  schema: JSONSchema7
   defaultValue?: any
+} & MonacoEditorProps
+
+// When loading
+function EditorLoading(props: any): JSX.Element {
+  return <div>Loading...</div>
 }
 
-function JSONSchemaEditor(props: Props): JSX.Element {
-  const [schema, setSchema] = useState(undefined as unknown)
-  const [fetchError, setFetchError] = useState(undefined as undefined | Error)
+// When something bad happens
+function EditorError({ error, tryAgain }: ErrorProps): JSX.Element {
+  return (
+    <div>
+      <p>This component crashed because of error: {error.message}.</p>
+      <button onClick={tryAgain}>Try Again!</button>
+    </div>
+  )
+}
+
+// Main component
+function JSONSchemaEditorInner(props: Props): JSX.Element {
+  const { schema, ...editorProps } = props
   const { colorMode } = useColorMode()
 
-  useEffect(() => {
-    props
-      .loadSchema()
-      .then((userSchema) => setSchema(userSchema))
-      .catch((err) => setFetchError(err))
-  }, [])
-
-  function handleEditorWillMount(monaco: Monaco) {
-    // here is the monaco instance
-    // do something before editor is mounted
+  const editorWillMount: EditorWillMount = (monaco) => {
     monaco.languages.json.jsonDefaults.setDiagnosticsOptions({
       validate: true,
       schemas: [
@@ -41,40 +48,31 @@ function JSONSchemaEditor(props: Props): JSX.Element {
   }
 
   return (
-    <Layout>
-      {fetchError !== undefined && (
-        <div>
-          <p>
-            <Translate
-              values={{
-                errorMessage: fetchError.message,
-                id: "error",
-              }}
-            >
-              {"This component crashed because of error: {errorMessage}."}
-            </Translate>
-          </p>
-        </div>
+    <MonacoEditor
+      height="90vh"
+      language="json"
+      defaultValue={props.defaultValue}
+      editorWillMount={editorWillMount}
+      theme={colorMode === "dark" ? "vs-dark" : "vs"}
+      {...editorProps}
+    />
+  )
+}
+
+// The public component
+// Notice from https://docusaurus.io/docs/api/themes/configuration#use-color-mode
+// The component calling useColorMode must be a child of the Layout component.
+function JSONSchemaEditor(props: Props): JSX.Element {
+  return (
+    <BrowserOnly fallback={<EditorLoading />}>
+      {() => (
+        <>
+          <ErrorBoundary fallback={(props) => <EditorError {...props} />}>
+            <JSONSchemaEditorInner {...props} />
+          </ErrorBoundary>
+        </>
       )}
-      {schema === undefined && (
-        <div>
-          <p>
-            <Translate values={{ id: "loading" }}>
-              {"Loading schema ..."}
-            </Translate>
-          </p>
-        </div>
-      )}
-      {schema !== undefined && (
-        <Editor
-          height="90vh"
-          defaultLanguage="json"
-          defaultValue={props.defaultValue}
-          beforeMount={handleEditorWillMount}
-          theme={colorMode === "dark" ? "vs-dark" : "light"}
-        />
-      )}
-    </Layout>
+    </BrowserOnly>
   )
 }
 

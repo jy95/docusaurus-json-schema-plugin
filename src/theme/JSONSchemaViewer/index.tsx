@@ -1,18 +1,21 @@
-import React, { useEffect, useState } from "react"
-import Layout from "@theme-original/Layout"
-import Translate from "@docusaurus/Translate"
+import React from "react"
 import AllOfMerger from "json-schema-merge-allof"
 import { Resolver } from "@stoplight/json-ref-resolver"
 
-import type { JSONSchema7 } from "json-schema"
+import { CreateNodes } from "./components/index"
 
-import JSONSchemaViewer from "./JSONSchemaInnerViewer"
+import type { JSONSchema7 } from "json-schema"
+import type { IResolverOpts } from "@stoplight/json-ref-resolver/types"
 
 export type Props = {
-  loadSchema: () => Promise<JSONSchema7>
+  schema: JSONSchema7
+  // To customize the ref resolving
+  resolverOptions?: IResolverOpts
+  [x: string]: any
 }
 
 // merged representation of allOf array of schemas
+// @ts-ignore
 async function mergeAllOf(
   schema: JSONSchema7
 ): Promise<Omit<JSONSchema7, "allOf">> {
@@ -21,52 +24,45 @@ async function mergeAllOf(
     ignoreAdditionalProperties: true,
   })
 
-  return Promise.resolve(mergedSchema as Omit<JSONSchema7, "allOf">)
+  return mergedSchema as Omit<JSONSchema7, "allOf">
 }
 
-function JSONSchemaEditor(props: Props): JSX.Element {
-  const [schema, setSchema] = useState(
-    undefined as undefined | Omit<JSONSchema7, "allOf">
-  )
-  const [fetchError, setFetchError] = useState(undefined as undefined | Error)
+type InnerViewerProperties = {
+  // Thanks to json-schema-merge-allof , we don't have allOf in the whole user schema
+  // Thanks to @stoplight/json-ref-resolver, $ref are either :
+  // 1. resolved
+  // 2. unresolved (as circular stuff are not on the roadmap)
+  schema: Omit<JSONSchema7, "allOf">
+}
 
-  useEffect(() => {
-    props
-      .loadSchema()
-      .then((userSchema) => new Resolver().resolve(userSchema))
-      .then((resolvedSchema) => mergeAllOf(resolvedSchema.result))
-      .then((schemaWithoutAllOf) => setSchema(schemaWithoutAllOf))
-      .catch((err) => setFetchError(err))
-  }, [])
+// Internal
+function JSONSchemaInnerViewer(props: InnerViewerProperties): JSX.Element {
+  return (
+    <ul style={{ marginLeft: "1rem" }}>
+      <CreateNodes schema={props.schema} />
+    </ul>
+  )
+}
+
+// Entry point
+function JSONSchemaViewer(props: Props): JSX.Element {
+  const { schema: originalSchema, resolverOptions } = props
+
+  // Set up resolver
+  // @ts-ignore
+  const resolver = new Resolver(resolverOptions)
+
+  // TODO How do I wait for async to be complete before I run that ?
+  // resolver.resolve(originalSchema);
+
+  // Simplify schema
+  //const simplifiedSchema = (originalSchema?.allOf !== undefined) ? mergeAllOf(originalSchema) : originalSchema;
 
   return (
-    <Layout>
-      {fetchError !== undefined && (
-        <div>
-          <p>
-            <Translate
-              values={{
-                errorMessage: fetchError.message,
-                id: "error",
-              }}
-            >
-              {"This component crashed because of error: {errorMessage}."}
-            </Translate>
-          </p>
-        </div>
-      )}
-      {schema === undefined && (
-        <div>
-          <p>
-            <Translate values={{ id: "loading" }}>
-              {"Loading schema ..."}
-            </Translate>
-          </p>
-        </div>
-      )}
-      {schema !== undefined && <JSONSchemaViewer schema={schema} />}
-    </Layout>
+    <JSONSchemaInnerViewer
+      schema={originalSchema as Omit<JSONSchema7, "allOf">}
+    />
   )
 }
 
-export default JSONSchemaEditor
+export default JSONSchemaViewer

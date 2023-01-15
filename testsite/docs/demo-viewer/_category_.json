@@ -1,11 +1,11 @@
 {
   "position": 2.5,
-  "label": "Demo",
+  "label": "JSON Schema Viewer Demo",
   "collapsible": true,
   "collapsed": false,
   "className": "red",
   "link": {
     "type": "generated-index",
-    "title": "Demo overview"
+    "title": "JSON Schema Viewer Demo overview"
   }
 }

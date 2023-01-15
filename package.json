@@ -30,8 +30,10 @@
     "@docusaurus/theme-classic": "^2.2.0"
   },
   "dependencies": {
-    "@monaco-editor/react": "^4.4.6",
     "@stoplight/json-ref-resolver": "^3.1.5",
-    "json-schema-merge-allof": "^0.8.1"
+    "json-schema-merge-allof": "^0.8.1",
+    "monaco-editor": "^0.34.1",
+    "monaco-editor-webpack-plugin": "^7.0.1",
+    "react-monaco-editor": "^0.51.0"
   }
 }

@@ -1,0 +1,17 @@
+---
+description: Create a doc page with rich content.
+---
+
+import CodeBlock from '@theme/CodeBlock';
+import Schema from "@site/static/schemas/examples/schema_composition/allOf.json";
+import JSONSchemaViewer from "@theme/JSONSchemaViewer";
+
+# allOf
+
+JSON Schema :
+
+<CodeBlock language="json">{JSON.stringify(Schema, null, 2)}</CodeBlock>
+
+Viewer :
+
+<JSONSchemaViewer schema={ Schema  } />

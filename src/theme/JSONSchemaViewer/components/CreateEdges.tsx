@@ -1,7 +1,7 @@
+import React from "react"
 import { generateFriendlyName } from "../utils/index"
 import { CreateDetailsNode } from "./index"
 
-import type { ReactNode } from "react"
 import type { JSONSchema7Definition } from "json-schema"
 
 // Creates the edges or "leaves" of a schema tree. Edges can branch into sub-nodes with createDetails().
@@ -12,16 +12,23 @@ type EdgeProps = {
 }
 
 // TODO
-function createEdges({ name, schema, required }: EdgeProps): ReactNode {
+function createEdges({ name, schema, required }: EdgeProps): JSX.Element {
   const schemaName = generateFriendlyName(schema)
 
   // TODO review that later
   if (typeof schema === "boolean") {
-    return undefined
+    return <></>
   }
 
   // Most of the time, createDetailsNode do the job recursively
-  return CreateDetailsNode(name, schemaName, schema, required)
+  return (
+    <CreateDetailsNode
+      name={name}
+      schemaName={schemaName}
+      required={required}
+      schema={schema}
+    />
+  )
 
   /* TODO check that part later
   //primitives and array of non-objects

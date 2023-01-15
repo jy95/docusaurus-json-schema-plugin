@@ -9,13 +9,17 @@ import { CreateNodes } from "./index"
 import type { JSONSchema7, JSONSchema7Definition } from "json-schema"
 import type { WithRequired } from "./index"
 
-// To handle Schema Composition (anyOf, oneOf)
-// Remind that thanks prefiltering, we don't have to handle allOf case
-function renderAnyOneOf(
+type Props = {
   schema:
     | WithRequired<JSONSchema7, "oneOf">
     | WithRequired<JSONSchema7, "anyOf">
-): JSX.Element {
+  [x: string]: any
+}
+
+// To handle Schema Composition (anyOf, oneOf)
+// Remind that thanks prefiltering, we don't have to handle allOf case
+function renderAnyOneOf(props: Props): JSX.Element {
+  const { schema } = props
   let typeOf: "oneOf" | "anyOf" = schema.oneOf ? "oneOf" : "anyOf"
 
   return (
@@ -34,7 +38,7 @@ function renderAnyOneOf(
                 value={`anyOneSchema_${index}`}
                 label={label}
               >
-                {CreateNodes(anyOneSchema)}
+                <CreateNodes schema={anyOneSchema} />
               </TabItem>
             )
           }

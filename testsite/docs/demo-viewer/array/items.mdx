@@ -10,8 +10,8 @@ import JSONSchemaViewer from "@theme/JSONSchemaViewer";
 
 JSON Schema :
 
-<CodeBlock language="json">{JSON.stringify(Schema)}</CodeBlock>
+<CodeBlock language="json">{JSON.stringify(Schema, null, 2)}</CodeBlock>
 
 Viewer :
 
-<JSONSchemaViewer loadSchema={ () => Schema  } />
+<JSONSchemaViewer schema={ Schema  } />

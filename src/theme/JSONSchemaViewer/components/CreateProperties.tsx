@@ -5,10 +5,15 @@ import { CreateEdges } from "./index"
 import type { JSONSchema7 } from "json-schema"
 import type { WithRequired } from "./index"
 
-// Generate properties
-function createProperties(
+type Props = {
   schema: WithRequired<JSONSchema7, "properties">
-): JSX.Element {
+  [x: string]: any
+}
+
+// Generate properties
+function createProperties(props: Props): JSX.Element {
+  const { schema } = props
+
   return (
     <>
       {Object.entries(schema.properties).map(([key, value]) => {
