@@ -4,9 +4,9 @@ import Translate from "@docusaurus/Translate"
 import AllOfMerger from "json-schema-merge-allof"
 import { Resolver } from "@stoplight/json-ref-resolver"
 
-import type { JSONSchema7 } from "json-schema"
+import { CreateNodes } from "./components/index"
 
-import JSONSchemaViewer from "./JSONSchemaInnerViewer"
+import type { JSONSchema7 } from "json-schema"
 
 export type Props = {
   loadSchema: () => Promise<JSONSchema7>
@@ -24,7 +24,22 @@ async function mergeAllOf(
   return Promise.resolve(mergedSchema as Omit<JSONSchema7, "allOf">)
 }
 
-function JSONSchemaEditor(props: Props): JSX.Element {
+type InnerViewerProperties = {
+  // Thanks to json-schema-merge-allof , we don't have allOf in the whole user schema
+  // Thanks to @stoplight/json-ref-resolver, $ref are either :
+  // 1. resolved
+  // 2. unresolved (as circular stuff are not on the roadmap)
+  schema: Omit<JSONSchema7, "allOf">
+}
+
+// Internal
+function JSONSchemaInnerViewer(props: InnerViewerProperties): JSX.Element {
+  return <ul style={{ marginLeft: "1rem" }}>{CreateNodes(props.schema)}</ul>
+}
+
+
+// Entry point
+function JSONSchemaViewer(props: Props): JSX.Element {
   const [schema, setSchema] = useState(
     undefined as undefined | Omit<JSONSchema7, "allOf">
   )
@@ -64,9 +79,9 @@ function JSONSchemaEditor(props: Props): JSX.Element {
           </p>
         </div>
       )}
-      {schema !== undefined && <JSONSchemaViewer schema={schema} />}
+      {schema !== undefined && <JSONSchemaInnerViewer schema={schema} />}
     </Layout>
   )
 }
 
-export default JSONSchemaEditor
+export default JSONSchemaViewer;
