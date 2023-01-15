@@ -221,7 +221,7 @@ function getQualifierMessages(schema?: JSONSchema7Definition): JSX.Element {
             </Translate>{" "}
           </>
         )}
-        {schema?.maxLength !== undefined && (
+        {schema?.maxItems !== undefined && (
           <code>
             <Translate
               values={{
@@ -431,11 +431,7 @@ function getQualifierMessages(schema?: JSONSchema7Definition): JSX.Element {
     )
   }
 
-  if (result.length === 0) {
-    return <></>
-  } else {
-    return <>{result.map((Child) => ({ Child }))}</>
-  }
+  return <>{result}</>
 }
 
 export default getQualifierMessages

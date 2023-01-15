@@ -57,7 +57,6 @@ function JSONSchemaViewer(props: Props): JSX.Element {
 
   // Simplify schema
   //const simplifiedSchema = (originalSchema?.allOf !== undefined) ? mergeAllOf(originalSchema) : originalSchema;
-  console.log(originalSchema)
 
   return (
     <JSONSchemaInnerViewer
