@@ -5,16 +5,17 @@ import { Resolver } from "@stoplight/json-ref-resolver"
 import { CreateNodes } from "./components/index"
 
 import type { JSONSchema7 } from "json-schema"
-import type { IResolverOpts  } from "@stoplight/json-ref-resolver/types";
+import type { IResolverOpts } from "@stoplight/json-ref-resolver/types"
 
 export type Props = {
-  schema: JSONSchema7;
+  schema: JSONSchema7
   // To customize the ref resolving
-  resolverOptions?: IResolverOpts;
-  [x: string]: any;
+  resolverOptions?: IResolverOpts
+  [x: string]: any
 }
 
 // merged representation of allOf array of schemas
+// @ts-ignore
 async function mergeAllOf(
   schema: JSONSchema7
 ): Promise<Omit<JSONSchema7, "allOf">> {
@@ -23,7 +24,7 @@ async function mergeAllOf(
     ignoreAdditionalProperties: true,
   })
 
-  return Promise.resolve(mergedSchema as Omit<JSONSchema7, "allOf">)
+  return mergedSchema as Omit<JSONSchema7, "allOf">
 }
 
 type InnerViewerProperties = {
@@ -45,20 +46,23 @@ function JSONSchemaInnerViewer(props: InnerViewerProperties): JSX.Element {
 
 // Entry point
 function JSONSchemaViewer(props: Props): JSX.Element {
-  const {schema : originalSchema, resolverOptions} = props;
+  const { schema: originalSchema, resolverOptions } = props
 
   // Set up resolver
   // @ts-ignore
-  const resolver = new Resolver(resolverOptions);
+  const resolver = new Resolver(resolverOptions)
 
   // TODO How do I wait for async to be complete before I run that ?
   // resolver.resolve(originalSchema);
 
   // Simplify schema
-  const simplifiedSchema = (originalSchema?.allOf !== undefined) ? mergeAllOf(originalSchema) : originalSchema;
+  //const simplifiedSchema = (originalSchema?.allOf !== undefined) ? mergeAllOf(originalSchema) : originalSchema;
+  console.log(originalSchema)
 
   return (
-    <JSONSchemaInnerViewer schema={simplifiedSchema as Omit<JSONSchema7, "allOf">} />
+    <JSONSchemaInnerViewer
+      schema={originalSchema as Omit<JSONSchema7, "allOf">}
+    />
   )
 }
 

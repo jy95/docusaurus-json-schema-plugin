@@ -6,12 +6,12 @@ import type { JSONSchema7 } from "json-schema"
 import type { EditorWillMount, MonacoEditorProps } from "react-monaco-editor"
 
 export type Props = {
-  schema: JSONSchema7;
+  schema: JSONSchema7
   defaultValue?: any
-} & MonacoEditorProps;
+} & MonacoEditorProps
 
 function JSONSchemaEditorInner(props: Props): JSX.Element {
-  const { schema, ...editorProps } = props;
+  const { schema, ...editorProps } = props
   const { colorMode } = useColorMode()
 
   const editorWillMount: EditorWillMount = (monaco) => {
@@ -44,9 +44,7 @@ function JSONSchemaEditorInner(props: Props): JSX.Element {
 // Notice from https://docusaurus.io/docs/api/themes/configuration#use-color-mode
 // The component calling useColorMode must be a child of the Layout component.
 function JSONSchemaEditor(props: Props): JSX.Element {
-  return (
-    <JSONSchemaEditorInner {...props} />
-  )
+  return <JSONSchemaEditorInner {...props} />
 }
 
 export default JSONSchemaEditor

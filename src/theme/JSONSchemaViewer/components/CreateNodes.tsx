@@ -20,65 +20,63 @@ function createNodes(props: Props): JSX.Element {
   const { schema } = props
 
   // fast fail over
-  if (typeof schema === "boolean") {
+  if (typeof schema === "boolean" || schema === undefined) {
     return <></>
   }
 
   // For typescript type
   let typedSchema = schema as JSONSchema7
 
-  // AnyOf / oneOf schema
-  if (typedSchema?.oneOf !== undefined || typedSchema?.anyOf !== undefined) {
-    return (
-      <RenderAnyOneOf
-        schema={
-          typedSchema as
-            | WithRequired<JSONSchema7, "oneOf">
-            | WithRequired<JSONSchema7, "anyOf">
-        }
-      />
-    )
-  }
-
-  // Properties
-  if (typedSchema?.properties !== undefined) {
-    return (
-      <CreateProperties
-        schema={typedSchema as WithRequired<JSONSchema7, "properties">}
-      />
-    )
-  }
-
-  // additionalProperties
-  if (typedSchema?.additionalProperties !== undefined) {
-    return (
-      <CreateAdditionalProperties
-        schema={
-          typedSchema as WithRequired<JSONSchema7, "additionalProperties">
-        }
-      />
-    )
-  }
-
-  // Items
-  if (typedSchema?.items !== undefined) {
-    return CreateItems(typedSchema.items as WithRequired<JSONSchema7, "items">)
-  }
-
   // TODO unsupported stuff (later)
   // 2. additionalItems
 
-  // primitive type
-  if (typedSchema?.type !== undefined) {
-    return (
-      <CreatePrimitive
-        schema={typedSchema as WithRequired<JSONSchema7, "type">}
-      />
-    )
-  }
-
-  // Unknown node/schema type should return nothing
-  return <></>
+  // Unknown node/schema type will return nothing (<></>)
+  return (
+    <>
+      {/* Type */}
+      {typedSchema?.type !== undefined && (
+        <CreatePrimitive
+          key={"type"}
+          schema={typedSchema as WithRequired<JSONSchema7, "type">}
+        />
+      )}
+      {/* Handle oneOf / anyOf */}
+      {(typedSchema?.oneOf !== undefined ||
+        typedSchema?.anyOf !== undefined) && (
+        <RenderAnyOneOf
+          key={"oneOf_anyOf"}
+          schema={
+            typedSchema as
+              | WithRequired<JSONSchema7, "oneOf">
+              | WithRequired<JSONSchema7, "anyOf">
+          }
+        />
+      )}
+      {/* Properties */}
+      {typedSchema?.properties !== undefined && (
+        <CreateProperties
+          key={"properties"}
+          schema={typedSchema as WithRequired<JSONSchema7, "properties">}
+        />
+      )}
+      {/* additionalProperties */}
+      {typedSchema?.additionalProperties !== undefined && (
+        <CreateAdditionalProperties
+          key={"additionalProperties"}
+          schema={
+            typedSchema as WithRequired<JSONSchema7, "additionalProperties">
+          }
+        />
+      )}
+      {/* Items */}
+      {typedSchema?.items !== undefined && (
+        <CreateItems
+          key={"items"}
+          schema={typedSchema.items as WithRequired<JSONSchema7, "items">}
+        />
+      )}
+    </>
+  )
 }
 
 export default createNodes

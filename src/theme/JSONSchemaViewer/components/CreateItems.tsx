@@ -10,7 +10,13 @@ import {
 import type { JSONSchema7 } from "json-schema"
 import type { WithRequired } from "./index"
 
-function createItems(schema: WithRequired<JSONSchema7, "items">): JSX.Element {
+type Props = {
+  [x: string]: any
+  schema: WithRequired<JSONSchema7, "items">
+}
+
+function createItems(props: Props): JSX.Element {
+  const { schema } = props
   if (Array.isArray(schema.items)) {
     let entries = Object.entries(
       schema.items.filter((sub) => typeof sub !== "boolean") as JSONSchema7[]
@@ -31,7 +37,7 @@ function createItems(schema: WithRequired<JSONSchema7, "items">): JSX.Element {
       </>
     )
   } else {
-    if (typeof schema.items === "boolean") {
+    if (typeof schema.items === "boolean" || schema.items === undefined) {
       return <></>
     }
 
