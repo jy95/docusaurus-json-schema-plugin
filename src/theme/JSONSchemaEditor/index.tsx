@@ -7,12 +7,12 @@ import Translate from "@docusaurus/Translate"
 import type { JSONSchema7 } from "json-schema"
 import type { Monaco } from "@monaco-editor/react"
 
-type EditorProperties = {
+export type Props = {
   loadSchema: () => Promise<JSONSchema7>
   defaultValue?: any
 }
 
-function JSONSchemaEditor(props: EditorProperties): JSX.Element {
+function JSONSchemaEditor(props: Props): JSX.Element {
   const [schema, setSchema] = useState(undefined as unknown)
   const [fetchError, setFetchError] = useState(undefined as undefined | Error)
   const { colorMode } = useColorMode()

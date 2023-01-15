@@ -8,7 +8,7 @@ import type { JSONSchema7 } from "json-schema"
 
 import JSONSchemaViewer from "./JSONSchemaInnerViewer"
 
-type ViewerProperties = {
+export type Props = {
   loadSchema: () => Promise<JSONSchema7>
 }
 
@@ -24,7 +24,7 @@ async function mergeAllOf(
   return Promise.resolve(mergedSchema as Omit<JSONSchema7, "allOf">)
 }
 
-function JSONSchemaEditor(props: ViewerProperties): JSX.Element {
+function JSONSchemaEditor(props: Props): JSX.Element {
   const [schema, setSchema] = useState(
     undefined as undefined | Omit<JSONSchema7, "allOf">
   )

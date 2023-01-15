@@ -1,13 +1,13 @@
 {
   "name": "docusaurus-json-schema-plugin",
   "version": "0.0.0-development",
-  "description": "A Docusaurus v2 plugin that provides a JSON Schema viewer React component !",
+  "description": "A Docusaurus v2 plugin that provides a JSON Schema viewer / editor React component !",
   "main": "src/index.js",
   "repository": "https://github.com/jy95/docusaurus-json-schema-plugin.git",
   "author": "jy95",
   "license": "AGPL-3.0-or-later",
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && node copyUntypedFiles.mjs",
     "prettier": "prettier --write **/*.{js,jsx,ts,tsx,json}",
     "semantic-release": "semantic-release"
   },
@@ -20,6 +20,7 @@
     "@types/json-schema-merge-allof": "^0.6.1",
     "@types/react": "^17.0.52",
     "@types/react-dom": "^17.0.0",
+    "fs-extra": "^11.1.0",
     "prettier": "^2.2.1",
     "semantic-release": "^20.0.2",
     "typescript": "^4.1.3"
