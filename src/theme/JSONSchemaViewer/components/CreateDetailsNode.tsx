@@ -6,12 +6,17 @@ import { getQualifierMessages } from "../utils"
 
 import type { JSONSchema7 } from "json-schema"
 
-function createDetailsNode(
-  name: string,
-  schemaName: string,
-  schema: JSONSchema7,
+type Props = {
+  name: string
+  schemaName: string
+  schema: JSONSchema7
   required: boolean | string[]
-): JSX.Element {
+  [x: string]: any
+}
+
+function createDetailsNode(props: Props): JSX.Element {
+  const { name, required, schema, schemaName } = props
+
   const isRequired = Array.isArray(required)
     ? required.includes(name)
     : required
@@ -55,7 +60,7 @@ function createDetailsNode(
                 {schema?.description}
               </div>
             )}
-            {CreateNodes(schema)}
+            <CreateNodes schema={schema} />
           </div>
         }
       />

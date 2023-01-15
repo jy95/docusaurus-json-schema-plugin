@@ -24,6 +24,9 @@ export { default as CreateNodes } from "./CreateNodes"
 // CreateItems component
 export { default as CreateItems } from "./CreateItems"
 
+// CreatePrimitive component
+export { default as CreatePrimitive } from "./CreatePrimitive"
+
 // SchemaItem
 export { default as SchemaItem } from "./SchemaItem/SchemaItem"
 

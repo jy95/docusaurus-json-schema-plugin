@@ -1,25 +1,27 @@
-import React, { ReactNode } from "react"
+import React from "react"
 import {
   RenderAnyOneOf,
   CreateProperties,
   CreateItems,
   CreateAdditionalProperties,
+  CreatePrimitive,
 } from "./index"
-import { getQualifierMessages } from "../utils/index"
 
-import type {
-  JSONSchema7,
-  JSONSchema7Definition,
-  JSONSchema7TypeName,
-} from "json-schema"
+import type { JSONSchema7, JSONSchema7Definition } from "json-schema"
 import type { WithRequired } from "./index"
 
-// Creates a hierarchical level of a schema tree. Nodes produce edges that can branch into sub-nodes with edges, recursively.
+type Props = {
+  [x: string]: any
+  schema: JSONSchema7Definition
+}
 
-function createNodes(schema: JSONSchema7Definition): ReactNode {
+// Creates a hierarchical level of a schema tree. Nodes produce edges that can branch into sub-nodes with edges, recursively
+function createNodes(props: Props): JSX.Element {
+  const { schema } = props
+
   // fast fail over
   if (typeof schema === "boolean") {
-    return undefined
+    return <></>
   }
 
   // For typescript type
@@ -27,24 +29,34 @@ function createNodes(schema: JSONSchema7Definition): ReactNode {
 
   // AnyOf / oneOf schema
   if (typedSchema?.oneOf !== undefined || typedSchema?.anyOf !== undefined) {
-    return RenderAnyOneOf(
-      typedSchema as
-        | WithRequired<JSONSchema7, "oneOf">
-        | WithRequired<JSONSchema7, "anyOf">
+    return (
+      <RenderAnyOneOf
+        schema={
+          typedSchema as
+            | WithRequired<JSONSchema7, "oneOf">
+            | WithRequired<JSONSchema7, "anyOf">
+        }
+      />
     )
   }
 
   // Properties
   if (typedSchema?.properties !== undefined) {
-    return CreateProperties(
-      typedSchema as WithRequired<JSONSchema7, "properties">
+    return (
+      <CreateProperties
+        schema={typedSchema as WithRequired<JSONSchema7, "properties">}
+      />
     )
   }
 
   // additionalProperties
   if (typedSchema?.additionalProperties !== undefined) {
-    return CreateAdditionalProperties(
-      typedSchema as WithRequired<JSONSchema7, "additionalProperties">
+    return (
+      <CreateAdditionalProperties
+        schema={
+          typedSchema as WithRequired<JSONSchema7, "additionalProperties">
+        }
+      />
     )
   }
 
@@ -58,35 +70,15 @@ function createNodes(schema: JSONSchema7Definition): ReactNode {
 
   // primitive type
   if (typedSchema?.type !== undefined) {
-    let qualifierMessages = getQualifierMessages(typedSchema)
-    let type = Array.isArray(typedSchema?.type)
-      ? [...new Set(typedSchema.type as JSONSchema7TypeName[])].join(" OR ")
-      : (typedSchema.type as JSONSchema7TypeName)
-
     return (
-      <li>
-        <div>
-          <strong>{type}</strong>
-          {typedSchema?.format !== undefined && (
-            <span style={{ opacity: "0.6" }}>{` ${typedSchema.format}`}</span>
-          )}
-          {qualifierMessages !== undefined && (
-            <div style={{ marginTop: "var(--ifm-table-cell-padding)" }}>
-              {qualifierMessages}
-            </div>
-          )}
-          {typedSchema?.description !== undefined && (
-            <div style={{ marginTop: "var(--ifm-table-cell-padding)" }}>
-              {typedSchema.description}
-            </div>
-          )}
-        </div>
-      </li>
+      <CreatePrimitive
+        schema={typedSchema as WithRequired<JSONSchema7, "type">}
+      />
     )
   }
 
-  // Unknown node/schema type should return undefined
-  return undefined
+  // Unknown node/schema type should return nothing
+  return <></>
 }
 
 export default createNodes

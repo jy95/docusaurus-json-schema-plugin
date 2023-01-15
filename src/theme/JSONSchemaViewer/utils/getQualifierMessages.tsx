@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react"
+import React from "react"
 
 import Translate from "@docusaurus/Translate"
 import CodeBlock from "@theme-original/CodeBlock"
@@ -17,14 +17,12 @@ function printSchemaType(obj: JSONSchema7Type): JSX.Element {
 }
 
 // The heart of the plugin : Display human friendly messages
-function getQualifierMessages(
-  schema?: JSONSchema7Definition
-): ReactNode | undefined {
+function getQualifierMessages(schema?: JSONSchema7Definition): JSX.Element {
   if (schema === undefined || typeof schema === "boolean") {
-    return undefined
+    return <></>
   }
 
-  let result: ReactNode[] = []
+  let result: JSX.Element[] = []
 
   // enum values
   if (schema?.enum !== undefined) {
@@ -434,9 +432,9 @@ function getQualifierMessages(
   }
 
   if (result.length === 0) {
-    return undefined
+    return <></>
   } else {
-    return result
+    return <>{result.map((Child) => ({ Child }))}</>
   }
 }
 

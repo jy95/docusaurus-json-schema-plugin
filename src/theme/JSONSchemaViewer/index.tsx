@@ -34,9 +34,12 @@ type InnerViewerProperties = {
 
 // Internal
 function JSONSchemaInnerViewer(props: InnerViewerProperties): JSX.Element {
-  return <ul style={{ marginLeft: "1rem" }}>{CreateNodes(props.schema)}</ul>
+  return (
+    <ul style={{ marginLeft: "1rem" }}>
+      <CreateNodes schema={props.schema} />
+    </ul>
+  )
 }
-
 
 // Entry point
 function JSONSchemaViewer(props: Props): JSX.Element {
@@ -84,4 +87,4 @@ function JSONSchemaViewer(props: Props): JSX.Element {
   )
 }
 
-export default JSONSchemaViewer;
+export default JSONSchemaViewer
