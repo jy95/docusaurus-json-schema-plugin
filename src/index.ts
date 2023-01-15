@@ -1,7 +1,7 @@
 import { Plugin, LoadContext } from "@docusaurus/types"
 
 // @ts-ignore Webpack plugin are mostly "required"
-const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
+const MonacoWebpackPlugin = require("monaco-editor-webpack-plugin")
 
 export interface PluginOptions {}
 
@@ -22,7 +22,7 @@ export default function myPlugin(
     // From https://github.com/microsoft/monaco-editor/blob/main/docs/integrate-esm.md
     configureWebpack() {
       return {
-        plugins: [new MonacoWebpackPlugin()]
+        plugins: [new MonacoWebpackPlugin()],
       }
     },
 
