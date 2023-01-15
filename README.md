@@ -40,6 +40,8 @@ npm install docusaurus-json-schema-plugin
 
 ```
 
+TODO : warn about https://docusaurus.io/docs/api/themes/configuration#use-color-mode 
+
 ## Credits
 
 Special thanks to @PaloAltoNetworks (Palo Alto Networks), the author of [docusaurus-openapi-docs](https://github.com/PaloAltoNetworks/docusaurus-openapi-docs), which this project took some inspirations as a starting base.
