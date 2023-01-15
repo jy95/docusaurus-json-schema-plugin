@@ -1,12 +1,12 @@
 import React from "react"
 import MonacoEditor from "react-monaco-editor"
 import { useColorMode } from "@docusaurus/theme-common"
-import BrowserOnly from '@docusaurus/BrowserOnly';
-import ErrorBoundary from '@docusaurus/ErrorBoundary';
+import BrowserOnly from "@docusaurus/BrowserOnly"
+import ErrorBoundary from "@docusaurus/ErrorBoundary"
 
 import type { JSONSchema7 } from "json-schema"
 import type { EditorWillMount, MonacoEditorProps } from "react-monaco-editor"
-import type {Props as ErrorProps} from '@theme/Error';
+import type { Props as ErrorProps } from "@theme/Error"
 
 export type Props = {
   schema: JSONSchema7
@@ -14,12 +14,12 @@ export type Props = {
 } & MonacoEditorProps
 
 // When loading
-function EditorLoading(props: any) : JSX.Element {
-  return <div>Loading...</div>;
+function EditorLoading(props: any): JSX.Element {
+  return <div>Loading...</div>
 }
 
 // When something bad happens
-function EditorError({error, tryAgain}: ErrorProps) : JSX.Element {
+function EditorError({ error, tryAgain }: ErrorProps): JSX.Element {
   return (
     <div>
       <p>This component crashed because of error: {error.message}.</p>
@@ -67,7 +67,7 @@ function JSONSchemaEditor(props: Props): JSX.Element {
     <BrowserOnly fallback={<EditorLoading />}>
       {() => (
         <>
-          <ErrorBoundary fallback={ (props) => <EditorError {...props} /> } >
+          <ErrorBoundary fallback={(props) => <EditorError {...props} />}>
             <JSONSchemaEditorInner {...props} />
           </ErrorBoundary>
         </>
