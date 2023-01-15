@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react"
-import Editor from "@monaco-editor/react"
+import MonacoEditor from 'react-monaco-editor';
 import { useColorMode } from "@docusaurus/theme-common"
 import Layout from "@theme-original/Layout"
 import Translate from "@docusaurus/Translate"
 
 import type { JSONSchema7 } from "json-schema"
-import type { Monaco } from "@monaco-editor/react"
+import type { EditorWillMount } from "react-monaco-editor";
 
 export type Props = {
   loadSchema: () => Promise<JSONSchema7>
@@ -24,9 +24,8 @@ function JSONSchemaEditor(props: Props): JSX.Element {
       .catch((err) => setFetchError(err))
   }, [])
 
-  function handleEditorWillMount(monaco: Monaco) {
-    // here is the monaco instance
-    // do something before editor is mounted
+  const editorWillMount : EditorWillMount = (monaco) => {
+
     monaco.languages.json.jsonDefaults.setDiagnosticsOptions({
       validate: true,
       schemas: [
@@ -66,12 +65,12 @@ function JSONSchemaEditor(props: Props): JSX.Element {
         </div>
       )}
       {schema !== undefined && (
-        <Editor
+        <MonacoEditor
           height="90vh"
-          defaultLanguage="json"
+          language="json"
           defaultValue={props.defaultValue}
-          beforeMount={handleEditorWillMount}
-          theme={colorMode === "dark" ? "vs-dark" : "light"}
+          editorWillMount={editorWillMount}
+          theme={colorMode === "dark" ? "vs-dark" : "vs"}
         />
       )}
     </Layout>
