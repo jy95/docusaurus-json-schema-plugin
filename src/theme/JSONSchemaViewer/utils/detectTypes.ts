@@ -35,3 +35,9 @@ export const isNumeric = (schema: JSONSchema7) =>
   schema?.exclusiveMinimum !== undefined ||
   schema?.maximum !== undefined ||
   schema?.exclusiveMaximum !== undefined
+
+export const isSchemaComposition = (schema: JSONSchema7) =>
+  schema?.allOf !== undefined ||
+  schema?.anyOf !== undefined ||
+  schema?.oneOf !== undefined ||
+  schema?.not !== undefined
