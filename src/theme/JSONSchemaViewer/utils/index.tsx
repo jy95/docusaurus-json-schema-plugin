@@ -5,3 +5,6 @@ export { default as generateFriendlyName } from "./generateFriendlyName"
 
 // Re export getQualifierMessages function
 export { default as getQualifierMessages } from "./getQualifierMessages"
+
+// Re export detectTypes functions
+export * from "./detectTypes"

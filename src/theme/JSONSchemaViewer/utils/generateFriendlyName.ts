@@ -1,29 +1,7 @@
-import type {
-  JSONSchema7Definition,
-  JSONSchema7TypeName,
-  JSONSchema7,
-} from "json-schema"
-
 // Utility functions to know which case we have
-const isObjectType = (schema: JSONSchema7) =>
-  schema?.type === "object" ||
-  schema?.properties !== undefined ||
-  schema?.additionalProperties !== undefined ||
-  schema?.patternProperties !== undefined ||
-  schema?.minProperties !== undefined ||
-  schema?.maxProperties
+import { isArrayType, isNumeric, isObjectType, isStringType } from "./index"
 
-const isArrayType = (schema: JSONSchema7) =>
-  schema?.type === "array" ||
-  schema?.items !== undefined ||
-  schema?.minItems !== undefined ||
-  schema?.maxItems !== undefined ||
-  schema?.additionalItems !== undefined ||
-  schema?.contains !== undefined ||
-  /* @ts-ignore Draft 2019-09 */
-  schema?.minContains !== undefined ||
-  /* @ts-ignore Draft 2019-09 */
-  schema?.maxContains !== undefined
+import type { JSONSchema7Definition, JSONSchema7TypeName } from "json-schema"
 
 // generate a friendly name for the schema
 // It has to cover nasty cases like omit the "type" that usually helps to know what we have here
@@ -41,6 +19,20 @@ function generateFriendlyName(schema: JSONSchema7Definition): string {
   // handle both predefined formats (e.g. "time", "date-time" ,...) & additional attributes
   if (schema?.format) {
     return schema.format
+  }
+
+  // String property
+  if (isStringType(schema)) {
+    return "string"
+  }
+
+  if (isNumeric(schema)) {
+    // if "type" is indicated, use it like that
+    if (schema?.type !== undefined && !Array.isArray(schema?.type)) {
+      return schema?.type
+    }
+    // Otherwise, assume it is "number"
+    return "number"
   }
 
   // One of the common types around the world
