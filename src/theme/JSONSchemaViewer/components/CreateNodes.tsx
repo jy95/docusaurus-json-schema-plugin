@@ -1,6 +1,6 @@
 import React from "react"
 import {
-  RenderAnyOneOf,
+  SchemaComposition,
   CreateProperties,
   CreateItems,
   CreateAdditionalProperties,
@@ -40,15 +40,19 @@ function createNodes(props: Props): JSX.Element {
           schema={typedSchema as WithRequired<JSONSchema7, "type">}
         />
       )}
-      {/* Handle oneOf / anyOf */}
+      {/* Handle oneOf / anyOf / allOf / not */}
       {(typedSchema?.oneOf !== undefined ||
-        typedSchema?.anyOf !== undefined) && (
-        <RenderAnyOneOf
-          key={"oneOf_anyOf"}
+        typedSchema?.anyOf !== undefined ||
+        typedSchema?.allOf !== undefined ||
+        typedSchema?.not !== undefined) && (
+        <SchemaComposition
+          key={"schemaComposition"}
           schema={
             typedSchema as
               | WithRequired<JSONSchema7, "oneOf">
               | WithRequired<JSONSchema7, "anyOf">
+              | WithRequired<JSONSchema7, "allOf">
+              | WithRequired<JSONSchema7, "not">
           }
         />
       )}

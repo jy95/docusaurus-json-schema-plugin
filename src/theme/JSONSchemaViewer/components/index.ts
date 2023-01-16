@@ -15,8 +15,8 @@ export { default as CreateProperties } from "./CreateProperties"
 // CreateAdditionalProperties
 export { default as CreateAdditionalProperties } from "./CreateAdditionalProperties"
 
-// RenderAnyOneOf component
-export { default as RenderAnyOneOf } from "./RenderAnyOneOf"
+// SchemaComposition component
+export { default as SchemaComposition } from "./SchemaComposition"
 
 // CreateNodes component
 export { default as CreateNodes } from "./CreateNodes"

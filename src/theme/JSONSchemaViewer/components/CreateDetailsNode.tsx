@@ -27,7 +27,7 @@ function createDetailsNode(props: Props): JSX.Element {
     <SchemaItem collapsible={true} schema={schema} name={name}>
       <Collapsible
         summary={
-          <div>
+          <>
             <strong>{name}</strong>
             <span style={{ opacity: "0.6" }}>{schemaName}</span>
             {isRequired && (
@@ -46,7 +46,7 @@ function createDetailsNode(props: Props): JSX.Element {
                 </Translate>
               </strong>
             )}
-          </div>
+          </>
         }
         children={
           <div style={{ marginLeft: "1rem" }}>

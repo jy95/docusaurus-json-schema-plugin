@@ -1,5 +1,4 @@
 import React from "react"
-import AllOfMerger from "json-schema-merge-allof"
 import { Resolver } from "@stoplight/json-ref-resolver"
 
 import { CreateNodes } from "./components/index"
@@ -14,25 +13,11 @@ export type Props = {
   [x: string]: any
 }
 
-// merged representation of allOf array of schemas
-// @ts-ignore
-async function mergeAllOf(
-  schema: JSONSchema7
-): Promise<Omit<JSONSchema7, "allOf">> {
-  const mergedSchema = AllOfMerger(schema, {
-    // Technically valid, but only interested on fields with name, at least for now ...
-    ignoreAdditionalProperties: true,
-  })
-
-  return mergedSchema as Omit<JSONSchema7, "allOf">
-}
-
 type InnerViewerProperties = {
-  // Thanks to json-schema-merge-allof , we don't have allOf in the whole user schema
   // Thanks to @stoplight/json-ref-resolver, $ref are either :
   // 1. resolved
   // 2. unresolved (as circular stuff are not on the roadmap)
-  schema: Omit<JSONSchema7, "allOf">
+  schema: JSONSchema7
 }
 
 // Internal
@@ -58,11 +43,7 @@ function JSONSchemaViewer(props: Props): JSX.Element {
   // Simplify schema
   //const simplifiedSchema = (originalSchema?.allOf !== undefined) ? mergeAllOf(originalSchema) : originalSchema;
 
-  return (
-    <JSONSchemaInnerViewer
-      schema={originalSchema as Omit<JSONSchema7, "allOf">}
-    />
-  )
+  return <JSONSchemaInnerViewer schema={originalSchema} />
 }
 
 export default JSONSchemaViewer
