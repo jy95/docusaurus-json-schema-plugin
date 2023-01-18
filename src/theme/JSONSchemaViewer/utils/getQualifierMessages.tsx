@@ -45,7 +45,7 @@ function QualifierMessages(props: Props): JSX.Element {
           >
             {"Possible values :"}
           </Translate>
-        </strong>
+        </strong>&nbsp;
         {printSchemaType(schema.enum)}
       </p>
     )
@@ -74,7 +74,7 @@ function QualifierMessages(props: Props): JSX.Element {
           >
             {"Length :"}
           </Translate>
-        </strong>
+        </strong>&nbsp;
         {schema?.minLength !== undefined && (
           <code>
             <Translate
@@ -141,7 +141,7 @@ function QualifierMessages(props: Props): JSX.Element {
           >
             {"Length :"}
           </Translate>
-        </strong>
+        </strong>&nbsp;
         {schema?.minProperties !== undefined && (
           <code>
             <Translate
@@ -205,7 +205,7 @@ function QualifierMessages(props: Props): JSX.Element {
           >
             {"Length :"}
           </Translate>
-        </strong>
+        </strong>&nbsp;
         {schema?.minItems !== undefined && (
           <code>
             <Translate
@@ -270,7 +270,7 @@ function QualifierMessages(props: Props): JSX.Element {
           >
             {"Possible values :"}
           </Translate>
-        </strong>
+        </strong>&nbsp;
         {minimum !== undefined && (
           <code>
             {isExclusiveMinimum === true ? (
@@ -345,7 +345,7 @@ function QualifierMessages(props: Props): JSX.Element {
           >
             {"Pattern :"}
           </Translate>
-        </strong>
+        </strong>&nbsp;
         <code>{schema.pattern}</code>
       </p>
     )
@@ -363,7 +363,7 @@ function QualifierMessages(props: Props): JSX.Element {
           >
             {"Possible values :"}
           </Translate>
-        </strong>
+        </strong>&nbsp;
         <code>
           <Translate
             values={{
@@ -390,7 +390,7 @@ function QualifierMessages(props: Props): JSX.Element {
           >
             {"Unique items :"}
           </Translate>
-        </strong>
+        </strong>&nbsp;
         <code>
           <Translate
             values={{
@@ -416,7 +416,7 @@ function QualifierMessages(props: Props): JSX.Element {
           >
             {"Default value :"}
           </Translate>
-        </strong>
+        </strong>&nbsp;
         {printSchemaType(schema.default)}
       </p>
     )
@@ -434,7 +434,7 @@ function QualifierMessages(props: Props): JSX.Element {
           >
             {"Constant value :"}
           </Translate>
-        </strong>
+        </strong>&nbsp;
         {printSchemaType(schema.const)}
       </p>
     )

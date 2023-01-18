@@ -45,7 +45,7 @@ function createPrimitive(props: Props) {
 
   return (
     <div>
-      <strong>{type}</strong>
+      <strong>{type}</strong>&nbsp;
       {schema?.format !== undefined && (
         <span style={{ opacity: "0.6" }}>{` ${schema.format}`}</span>
       )}
