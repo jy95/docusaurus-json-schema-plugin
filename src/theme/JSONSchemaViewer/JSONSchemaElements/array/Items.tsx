@@ -1,6 +1,6 @@
 import React from "react"
 
-import { CreateNodes } from "../../components/index"
+import { CreateNodes, CreateEdges } from "../../components/index"
 
 import type { JSONSchema7 } from "json-schema"
 
@@ -17,18 +17,7 @@ function createItems(props: Props): JSX.Element {
     return (
       <>
         {Object.entries(items).map(([key, val]) => {
-          return (
-            <CreateEdges
-              name={key}
-              schema={val}
-              required={
-                typeof val !== "boolean" && Array.isArray(val?.required)
-                  ? val.required.includes(key)
-                  : false
-              }
-              key={key}
-            />
-          )
+          return <CreateEdges name={key} schema={val} key={key} />
         })}
       </>
     )

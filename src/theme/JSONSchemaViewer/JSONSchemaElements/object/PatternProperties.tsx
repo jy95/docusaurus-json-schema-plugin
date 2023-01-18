@@ -1,5 +1,7 @@
 import React from "react"
 
+import { CreateEdges } from "../../components/index"
+
 import type { JSONSchema7 } from "json-schema"
 
 type Props = {
@@ -17,9 +19,6 @@ function createPatternProperties(props: Props): JSX.Element {
         return CreateEdges({
           name: key,
           schema: value,
-          required: Array.isArray(schema?.required)
-            ? schema.required.includes(key)
-            : false,
         })
       })}
     </>
