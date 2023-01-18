@@ -34,8 +34,8 @@ function SchemaItem({
   // If not collapsible, we must generate a item by ourself
   const alternativeChildren = !collapsible && (
     <div>
-      <strong>{name}</strong>
-      <span className={styles.schemaName}>{schemaName}</span>
+      <strong>{name}</strong>  
+      <span className={styles.schemaName}>{schemaName}</span>  
       {!isDeprecated && required && (
         <strong className={styles.required}>
           <Translate
