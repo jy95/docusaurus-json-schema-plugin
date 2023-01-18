@@ -1,8 +1,6 @@
 import React, { ReactNode } from "react"
 import Translate from "@docusaurus/Translate"
 
-import { getQualifierMessages } from "../../utils/index"
-
 import styles from "./styles.module.css"
 
 import type { JSONSchema7 } from "json-schema"
@@ -60,7 +58,6 @@ function SchemaItem({
           </Translate>
         </strong>
       )}
-      {getQualifierMessages(schema)}
     </div>
   )
 

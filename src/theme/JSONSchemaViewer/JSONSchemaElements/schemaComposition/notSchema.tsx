@@ -1,5 +1,7 @@
 import React from "react"
 
+import { CreateNodes } from "../../components/index"
+
 import type { JSONSchema7Definition } from "json-schema"
 
 type Props = {

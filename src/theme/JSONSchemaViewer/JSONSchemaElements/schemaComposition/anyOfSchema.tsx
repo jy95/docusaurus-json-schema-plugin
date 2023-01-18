@@ -4,6 +4,8 @@ import React from "react"
 import TabItem from "@theme-original/TabItem"
 import Tabs from "@theme-original/Tabs"
 
+import { CreateNodes } from "../../components/index"
+
 import type { JSONSchema7Definition } from "json-schema"
 
 type Props = {
