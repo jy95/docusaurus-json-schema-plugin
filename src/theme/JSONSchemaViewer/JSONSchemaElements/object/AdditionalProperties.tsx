@@ -1,41 +1,38 @@
 import React from "react"
 import Translate from "@docusaurus/Translate"
 
-import { getQualifierMessages } from "../utils/index"
-import { CreateNodes } from "../components/index"
+import {
+  QualifierMessages,
+  QUALIFIER_MESSAGES_EMPTY_KEY,
+} from "../../utils/index"
 
-import type {
-  JSONSchema7,
-  JSONSchema7Definition,
-  JSONSchema7TypeName,
-} from "json-schema"
-
-import type { WithRequired } from "./index"
+import type { JSONSchema7 } from "json-schema"
 
 type Props = {
-  schema: WithRequired<JSONSchema7, "additionalProperties">
+  schema: JSONSchema7
   [x: string]: any
 }
 
 function createAdditionalProperties(props: Props): JSX.Element {
   const { schema } = props
-  let typedSchema = schema.additionalProperties as JSONSchema7Definition
+  let typedSchema = schema.additionalProperties!
 
   // don't want to display something in boolean cases, at least from now ...
   if (typeof typedSchema === "boolean") {
     return <></>
   }
 
-  let types = (
-    Array.isArray(typedSchema?.type) ? typedSchema?.type : [typedSchema?.type]
-  ).filter((s) => s !== undefined) as JSONSchema7TypeName[]
-
+  let types = Array.isArray(typedSchema?.type)
+    ? typedSchema?.type
+    : typedSchema?.type !== undefined
+    ? [typedSchema?.type]
+    : []
   // Usually, we have only "type" in the payload : https://json-schema.org/understanding-json-schema/reference/object.html#additional-properties
 
   if (types.length > 0) {
     // Most of the time, only one entry but prefer to be safe that sorry ...
     let typesAsString = types.join(" OR ")
-    let qualifierMessages = getQualifierMessages(typedSchema)
+    let qualifierMessages = <QualifierMessages schema={typedSchema} />
 
     return (
       <li>
@@ -53,7 +50,7 @@ function createAdditionalProperties(props: Props): JSX.Element {
           {typedSchema?.format !== undefined && (
             <span style={{ opacity: "0.6" }}>{` ${typedSchema.format}`}</span>
           )}
-          {qualifierMessages !== undefined && (
+          {qualifierMessages.key !== QUALIFIER_MESSAGES_EMPTY_KEY && (
             <div style={{ marginTop: "var(--ifm-table-cell-padding)" }}>
               {qualifierMessages}
             </div>
@@ -63,7 +60,7 @@ function createAdditionalProperties(props: Props): JSX.Element {
     )
   } else {
     // Well well, at this point we could have anything so let createNodes do the job
-    return <CreateNodes schema={schema} />
+    return <></>
   }
 }
 

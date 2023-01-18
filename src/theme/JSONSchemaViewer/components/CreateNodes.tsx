@@ -1,14 +1,11 @@
 import React from "react"
-import {
-  SchemaComposition,
-  CreateProperties,
-  CreateItems,
-  CreateAdditionalProperties,
-  CreatePrimitive,
-} from "./index"
+import { CreateItems } from "./index"
+
+import { isArrayType, isObjectType, isSchemaComposition } from "../utils/index"
+
+import { CreateObject, SchemaComposition } from "../JSONSchemaElements/index"
 
 import type { JSONSchema7, JSONSchema7Definition } from "json-schema"
-import type { WithRequired } from "./index"
 
 type Props = {
   [x: string]: any
@@ -24,8 +21,16 @@ function createNodes(props: Props): JSX.Element {
     return <></>
   }
 
-  // For typescript type
-  let typedSchema = schema as JSONSchema7
+  // allOf / anyOf / oneOf / not
+  if (isSchemaComposition(schema)) {
+    return <SchemaComposition schema={schema} />
+  }
+
+  // For array
+  if (isArrayType(schema)) {
+    // TODO
+    return <></>
+  }
 
   // TODO unsupported stuff (later)
   // 2. additionalItems

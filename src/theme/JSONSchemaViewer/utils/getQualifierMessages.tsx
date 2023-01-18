@@ -1,4 +1,4 @@
-import React from "react"
+import React, { Fragment } from "react"
 
 import Translate from "@docusaurus/Translate"
 import CodeBlock from "@theme-original/CodeBlock"
@@ -16,10 +16,19 @@ function printSchemaType(obj: JSONSchema7Type): JSX.Element {
   return <CodeBlock language="json">{`${JSON.stringify(obj)}`}</CodeBlock>
 }
 
+type Props = {
+  schema?: JSONSchema7Definition
+}
+
+// In order to detect if it is empty, I use a "empty" key
+export const EMPTY_KEY = "empty"
+
 // The heart of the plugin : Display human friendly messages
-function getQualifierMessages(schema?: JSONSchema7Definition): JSX.Element {
+function QualifierMessages(props: Props): JSX.Element {
+  const { schema } = props
+
   if (schema === undefined || typeof schema === "boolean") {
-    return <></>
+    return <Fragment key={EMPTY_KEY} />
   }
 
   let result: JSX.Element[] = []
@@ -431,7 +440,11 @@ function getQualifierMessages(schema?: JSONSchema7Definition): JSX.Element {
     )
   }
 
-  return <>{result}</>
+  return (
+    <Fragment key={result.length > 0 ? "not-empty" : EMPTY_KEY}>
+      {result}
+    </Fragment>
+  )
 }
 
-export default getQualifierMessages
+export default QualifierMessages

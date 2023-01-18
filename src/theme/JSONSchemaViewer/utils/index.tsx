@@ -3,8 +3,11 @@
 // Re export generateFriendlyName function
 export { default as generateFriendlyName } from "./generateFriendlyName"
 
-// Re export getQualifierMessages function
-export { default as getQualifierMessages } from "./getQualifierMessages"
+// Re export QualifierMessages function
+export { default as QualifierMessages } from "./getQualifierMessages"
+
+// Re export the infamous key to detect emptiness
+export { EMPTY_KEY as QUALIFIER_MESSAGES_EMPTY_KEY } from "./getQualifierMessages"
 
 // Re export detectTypes functions
 export * from "./detectTypes"

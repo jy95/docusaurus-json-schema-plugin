@@ -1,12 +1,9 @@
 import React from "react"
 
-import { CreateEdges } from "./index"
-
 import type { JSONSchema7 } from "json-schema"
-import type { WithRequired } from "./index"
 
 type Props = {
-  schema: WithRequired<JSONSchema7, "properties">
+  schema: JSONSchema7
   [x: string]: any
 }
 
@@ -16,7 +13,7 @@ function createProperties(props: Props): JSX.Element {
 
   return (
     <>
-      {Object.entries(schema.properties).map(([key, value]) => {
+      {Object.entries(schema.properties!).map(([key, value]) => {
         return CreateEdges({
           name: key,
           schema: value,

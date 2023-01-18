@@ -9,23 +9,11 @@ export { default as CreateDetailsNode } from "./CreateDetailsNode"
 // CreateEdges component
 export { default as CreateEdges } from "./CreateEdges"
 
-// CreateProperties component
-export { default as CreateProperties } from "./CreateProperties"
-
-// CreateAdditionalProperties
-export { default as CreateAdditionalProperties } from "./CreateAdditionalProperties"
-
-// SchemaComposition component
-export { default as SchemaComposition } from "./SchemaComposition"
-
 // CreateNodes component
 export { default as CreateNodes } from "./CreateNodes"
 
 // CreateItems component
 export { default as CreateItems } from "./CreateItems"
-
-// CreatePrimitive component
-export { default as CreatePrimitive } from "./CreatePrimitive"
 
 // SchemaItem
 export { default as SchemaItem } from "./SchemaItem/SchemaItem"
