@@ -16,13 +16,17 @@ function createPatternProperties(props: Props): JSX.Element {
   return (
     <>
       {Object.entries(schema.patternProperties!).map(([key, value]) => {
-        return CreateEdges({
-          name: key,
-          schema: value,
-          required: Array.isArray(schema.required)
-            ? schema.required.includes(key)
-            : false,
-        })
+        return (
+          <CreateEdges
+            name={<code>{key}</code>}
+            schema={value}
+            required={
+              Array.isArray(schema.required)
+                ? schema.required.includes(key)
+                : false
+            }
+          />
+        )
       })}
     </>
   )

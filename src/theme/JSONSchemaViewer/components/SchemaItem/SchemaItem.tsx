@@ -9,8 +9,8 @@ type SchemaItemProps = {
   children?: ReactNode
   // Is children collapsible ?
   collapsible: boolean
-  // name of the item
-  name: string
+  // name of the item (with styles when needed)
+  name: ReactNode
   // From generateFriendlyName function
   schemaName?: string
   // Our schema
@@ -34,7 +34,7 @@ function SchemaItem({
   // If not collapsible, we must generate a item by ourself
   const alternativeChildren = !collapsible && (
     <div>
-      <strong>{name}</strong>&nbsp;
+      {name}&nbsp;
       <span className={styles.schemaName}>{schemaName}</span>&nbsp;
       {!isDeprecated && required && (
         <strong className={styles.required}>

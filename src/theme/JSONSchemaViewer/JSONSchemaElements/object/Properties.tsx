@@ -16,13 +16,17 @@ function createProperties(props: Props): JSX.Element {
   return (
     <>
       {Object.entries(schema.properties!).map(([key, value]) => {
-        return CreateEdges({
-          name: key,
-          schema: value,
-          required: Array.isArray(schema.required)
-            ? schema.required.includes(key)
-            : false,
-        })
+        return (
+          <CreateEdges
+            name={<strong>{key}</strong>}
+            schema={value}
+            required={
+              Array.isArray(schema.required)
+                ? schema.required.includes(key)
+                : false
+            }
+          />
+        )
       })}
     </>
   )
