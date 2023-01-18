@@ -15,7 +15,8 @@ function createObject(props: Props): JSX.Element {
   const { schema } = props
 
   let additionalProperties =
-    schema?.additionalProperties !== undefined ? (
+    schema?.additionalProperties !== undefined &&
+    typeof schema.additionalProperties !== "boolean" ? (
       <AdditionalProperties schema={schema} />
     ) : undefined
   let properties =

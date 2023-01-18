@@ -19,6 +19,9 @@ function createPatternProperties(props: Props): JSX.Element {
         return CreateEdges({
           name: key,
           schema: value,
+          required: Array.isArray(schema.required)
+            ? schema.required.includes(key)
+            : false,
         })
       })}
     </>

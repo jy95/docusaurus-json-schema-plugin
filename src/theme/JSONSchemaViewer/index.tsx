@@ -1,7 +1,7 @@
 import React from "react"
 import { Resolver } from "@stoplight/json-ref-resolver"
 
-import { CreateNodes } from "./components/index"
+import { CreateNodes, Collapsible } from "./components/index"
 
 import type { JSONSchema7 } from "json-schema"
 import type { IResolverOpts } from "@stoplight/json-ref-resolver/types"
@@ -22,10 +22,18 @@ type InnerViewerProperties = {
 
 // Internal
 function JSONSchemaInnerViewer(props: InnerViewerProperties): JSX.Element {
+  const { schema } = props
+  // Title of the schema, for user friendliness
+  const title = schema?.title || "Schema"
   return (
-    <ul style={{ marginLeft: "1rem" }}>
-      <CreateNodes schema={props.schema} />
-    </ul>
+    <Collapsible
+      summary={<strong>{title}</strong>}
+      detailsProps={{
+        open: true,
+      }}
+    >
+      <CreateNodes schema={schema} />
+    </Collapsible>
   )
 }
 

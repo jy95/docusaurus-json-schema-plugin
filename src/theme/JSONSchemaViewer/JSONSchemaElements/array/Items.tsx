@@ -17,7 +17,18 @@ function createItems(props: Props): JSX.Element {
     return (
       <>
         {Object.entries(items).map(([key, val]) => {
-          return <CreateEdges name={key} schema={val} key={key} />
+          return (
+            <CreateEdges
+              name={key}
+              schema={val}
+              key={key}
+              required={
+                Array.isArray(schema.required)
+                  ? schema.required.includes(key)
+                  : false
+              }
+            />
+          )
         })}
       </>
     )

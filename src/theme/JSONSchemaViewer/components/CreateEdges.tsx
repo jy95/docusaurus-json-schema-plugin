@@ -9,9 +9,10 @@ import type { JSONSchema7Definition } from "json-schema"
 type EdgeProps = {
   name: string
   schema: JSONSchema7Definition
+  required: boolean
 }
 
-function createEdges({ name, schema }: EdgeProps): JSX.Element {
+function createEdges({ name, schema, required }: EdgeProps): JSX.Element {
   const schemaName = generateFriendlyName(schema)
 
   if (typeof schema === "boolean") {
@@ -24,6 +25,7 @@ function createEdges({ name, schema }: EdgeProps): JSX.Element {
       schemaName={schemaName}
       name={name}
       schema={schema}
+      required={required}
     />
   )
 }
