@@ -7,11 +7,7 @@ import {
   CreatePrimitive,
 } from "../JSONSchemaElements/index"
 
-import {
-  isArrayType,
-  isObjectType,
-  isSchemaComposition
-} from "../utils/index"
+import { isArrayType, isObjectType, isSchemaComposition } from "../utils/index"
 
 import type { JSONSchema7Definition } from "json-schema"
 
