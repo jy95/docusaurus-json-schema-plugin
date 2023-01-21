@@ -447,7 +447,7 @@ function QualifierMessages(props: Props): null | JSX.Element {
     )
   }
 
-  if (result.length > 0) {
+  if (result.length === 0) {
     return null
   } else {
     return <>{result}</>
