@@ -4,6 +4,6 @@ export { default as Collapsible } from "./Collapsible"
 
 export { default as CreateNodes } from "./CreateNodes"
 
-export { default as CreateEdges } from "./CreateEdges"
+export { default as CreateEdge } from "./CreateEdge"
 
 export { default as SchemaItem } from "./SchemaItem/SchemaItem"

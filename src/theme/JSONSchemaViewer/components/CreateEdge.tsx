@@ -1,11 +1,11 @@
 import React, { ReactNode } from "react"
 
-import { SchemaItem } from "../components/index"
+import { SchemaItem } from "./index"
 import { generateFriendlyName } from "../utils/index"
 
 import type { JSONSchema7Definition } from "json-schema"
 
-// Creates the edges or "leaves" of a schema tree. Edges can branch into sub-nodes with createDetails().
+// Creates the edge or "leave" of a schema tree. Edge can branch into sub-nodes.
 type EdgeProps = {
   // Name of the attribute
   name: ReactNode
@@ -15,7 +15,7 @@ type EdgeProps = {
   required: boolean
 }
 
-function createEdges({ name, schema, required }: EdgeProps): JSX.Element {
+function createEdge({ name, schema, required }: EdgeProps): JSX.Element {
   const schemaName = generateFriendlyName(schema)
 
   if (typeof schema === "boolean") {
@@ -24,7 +24,6 @@ function createEdges({ name, schema, required }: EdgeProps): JSX.Element {
 
   return (
     <SchemaItem
-      collapsible={false}
       schemaName={schemaName}
       name={name}
       schema={schema}
@@ -33,4 +32,4 @@ function createEdges({ name, schema, required }: EdgeProps): JSX.Element {
   )
 }
 
-export default createEdges
+export default createEdge

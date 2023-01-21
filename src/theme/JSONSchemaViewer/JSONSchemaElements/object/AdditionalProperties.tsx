@@ -1,7 +1,7 @@
 import React from "react"
 import Translate from "@docusaurus/Translate"
 
-import { CreateEdges } from "../../components/index"
+import { CreateEdge } from "../../components/index"
 
 import type { JSONSchema7 } from "json-schema"
 
@@ -30,7 +30,8 @@ function createAdditionalProperties(props: Props): JSX.Element {
     // Most of the time, only one entry but prefer to be safe that sorry ...
 
     return (
-      <CreateEdges
+      <CreateEdge
+        key={"object_additionalProperties"}
         name={
           <code>
             <Translate

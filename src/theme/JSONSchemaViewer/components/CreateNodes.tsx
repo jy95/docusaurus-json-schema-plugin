@@ -7,7 +7,7 @@ import {
   CreatePrimitive,
 } from "../JSONSchemaElements/index"
 
-import { isArrayType, isObjectType, isSchemaComposition } from "../utils/index"
+import { isArrayType, isObjectType, isSchemaComposition, isNumeric, isStringType } from "../utils/index"
 
 import type { JSONSchema7Definition } from "json-schema"
 
@@ -41,8 +41,12 @@ function createNodes(props: Props): JSX.Element {
 
   // Well from now; two situations
   // 1. Either it is a primitive type left (string / integer / numeric /boolean / null)
-  // 2. Schema is invalid and so component will crash
-  return <CreatePrimitive schema={schema} />
+  if (schema?.type !== undefined || isNumeric(schema) || isStringType(schema)) {
+    return <CreatePrimitive schema={schema} />
+  }
+
+  // 2. Schema is probably invalid at this point and component won't do magic tricks
+  return <></>;
 }
 
 export default createNodes

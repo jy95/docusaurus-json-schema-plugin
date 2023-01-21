@@ -1,6 +1,6 @@
 import React from "react"
 
-import { CreateEdges } from "../../components/index"
+import { CreateEdge } from "../../components/index"
 
 import type { JSONSchema7 } from "json-schema"
 
@@ -17,7 +17,8 @@ function createPatternProperties(props: Props): JSX.Element {
     <>
       {Object.entries(schema.patternProperties!).map(([key, value]) => {
         return (
-          <CreateEdges
+          <CreateEdge
+            key={`object_patternProperties_${key}`}
             name={<code>{key}</code>}
             schema={value}
             required={
