@@ -1,5 +1,7 @@
 import React from "react"
 
+import Translate from "@docusaurus/Translate"
+
 import AdditionalProperties from "./AdditionalProperties"
 import Properties from "./Properties"
 import PatternProperties from "./PatternProperties"
@@ -30,6 +32,26 @@ function createObject(props: Props): JSX.Element {
   // TODO
   return (
     <>
+      <strong>
+        <Translate
+          values={{
+            id: "json-schema.keywords.type",
+            count: 1,
+          }}
+        >
+          {"type"}
+        </Translate>
+      </strong>
+      &nbsp;&#58;&nbsp;
+      <span style={{ opacity: "0.6" }}>
+        <Translate
+          values={{
+            id: "json-schema.keywords.object",
+          }}
+        >
+          {"object"}
+        </Translate>
+      </span>
       {properties !== undefined && <ul>{properties}</ul>}
       {patternProperties !== undefined && <ul>{patternProperties}</ul>}
       {additionalProperties !== undefined && <ul>{additionalProperties}</ul>}

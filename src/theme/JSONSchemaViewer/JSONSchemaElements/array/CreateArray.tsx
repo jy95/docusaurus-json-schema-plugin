@@ -1,5 +1,7 @@
 import React from "react"
 
+import Translate from "@docusaurus/Translate"
+
 import Items from "./Items"
 import Contains from "./Contains"
 
@@ -23,6 +25,26 @@ function createArray(props: Props): JSX.Element {
   // TODO
   return (
     <>
+      <strong>
+        <Translate
+          values={{
+            id: "json-schema.keywords.type",
+            count: 1,
+          }}
+        >
+          {"type"}
+        </Translate>
+      </strong>
+      &nbsp;&#58;&nbsp;
+      <span style={{ opacity: "0.6" }}>
+        <Translate
+          values={{
+            id: "json-schema.keywords.array",
+          }}
+        >
+          {"array"}
+        </Translate>
+      </span>
       {items !== undefined && <ul>{items}</ul>}
       {contains !== undefined && { contains }}
     </>

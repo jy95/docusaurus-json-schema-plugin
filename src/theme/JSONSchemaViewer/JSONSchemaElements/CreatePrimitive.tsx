@@ -1,11 +1,8 @@
 import React from "react"
 
-import {
-  QualifierMessages,
-  isNumeric,
-  isStringType,
-  QUALIFIER_MESSAGES_EMPTY_KEY,
-} from "../utils/index"
+import Translate from "@docusaurus/Translate"
+
+import { QualifierMessages, isNumeric, isStringType } from "../utils/index"
 
 import type { JSONSchema7 } from "json-schema"
 
@@ -42,14 +39,23 @@ function createPrimitive(props: Props) {
   const { schema } = props
   let qualifierMessages = <QualifierMessages schema={schema} />
   let type = detectType(schema)
+  let friendly_type = schema?.format ? `${type} (${schema.format})` : type
 
   return (
-    <div>
-      <strong>{type}</strong>&nbsp;
-      {schema?.format !== undefined && (
-        <span style={{ opacity: "0.6" }}>{` ${schema.format}`}</span>
-      )}
-      {qualifierMessages.key !== QUALIFIER_MESSAGES_EMPTY_KEY && (
+    <>
+      <strong>
+        <Translate
+          values={{
+            id: "json-schema.keywords.type",
+            count: 1,
+          }}
+        >
+          {"type"}
+        </Translate>
+      </strong>
+      &nbsp;&#58;&nbsp;
+      <span style={{ opacity: "0.6" }}>{friendly_type}</span>
+      {qualifierMessages !== null && (
         <div style={{ marginTop: "var(--ifm-table-cell-padding)" }}>
           {qualifierMessages}
         </div>
@@ -59,7 +65,7 @@ function createPrimitive(props: Props) {
           {schema.description}
         </div>
       )}
-    </div>
+    </>
   )
 }
 

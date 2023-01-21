@@ -1,8 +1,8 @@
 import React, { ReactNode } from "react"
 import Translate from "@docusaurus/Translate"
 
-import { Collapsible, CreateNodes } from "../index";
-import { QUALIFIER_MESSAGES_EMPTY_KEY, QualifierMessages } from "../../utils/index";
+import { Collapsible, CreateNodes } from "../index"
+import { QualifierMessages } from "../../utils/index"
 import styles from "./styles.module.css"
 
 import type { JSONSchema7 } from "json-schema"
@@ -22,7 +22,7 @@ function SchemaItem({
   schema,
   name,
   schemaName,
-  required
+  required,
 }: SchemaItemProps): JSX.Element {
   // @ts-ignore "deprecated" started at Draft 8 (2019-09) but many tools converting from OAS to JSON schema put that as fallback
   // https://json-schema.org/draft/2019-09/json-schema-validation.html#rfc.section.9.3
@@ -59,20 +59,18 @@ function SchemaItem({
   )
 
   // qualifier
-  let qualifierMessages = <QualifierMessages />
+  let qualifierMessages = <QualifierMessages schema={schema} />
 
   return (
     <li className={styles.schemaItem}>
-      <Collapsible 
+      <Collapsible
         summary={summary}
         detailsProps={{
-          open: false
+          open: false,
         }}
       >
         <>
-          {
-            (qualifierMessages.key !== QUALIFIER_MESSAGES_EMPTY_KEY) && <div>{qualifierMessages}</div>
-          }
+          {qualifierMessages !== null && <div>{qualifierMessages}</div>}
           <CreateNodes schema={schema} />
         </>
       </Collapsible>

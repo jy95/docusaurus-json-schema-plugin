@@ -21,6 +21,7 @@ function oneOfSchema(props: Props): JSX.Element {
   return (
     <div>
       <span className="badge badge--info">{typeOf}</span>
+      <br />
       <CreateNodes schema={schema} />
     </div>
   )

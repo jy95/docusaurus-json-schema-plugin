@@ -22,10 +22,12 @@ export default function myPlugin(
     // From https://github.com/microsoft/monaco-editor/blob/main/docs/integrate-esm.md
     configureWebpack() {
       return {
-        plugins: [new MonacoWebpackPlugin({
-          // available options are documented at https://github.com/microsoft/monaco-editor/blob/main/webpack-plugin/README.md#option
-          languages: ['json']
-        })],
+        plugins: [
+          new MonacoWebpackPlugin({
+            // available options are documented at https://github.com/microsoft/monaco-editor/blob/main/webpack-plugin/README.md#option
+            languages: ["json"],
+          }),
+        ],
       }
     },
 

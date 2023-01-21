@@ -7,7 +7,13 @@ import {
   CreatePrimitive,
 } from "../JSONSchemaElements/index"
 
-import { isArrayType, isObjectType, isSchemaComposition, isNumeric, isStringType } from "../utils/index"
+import {
+  isArrayType,
+  isObjectType,
+  isSchemaComposition,
+  isNumeric,
+  isStringType,
+} from "../utils/index"
 
 import type { JSONSchema7Definition } from "json-schema"
 
@@ -46,7 +52,7 @@ function createNodes(props: Props): JSX.Element {
   }
 
   // 2. Schema is probably invalid at this point and component won't do magic tricks
-  return <></>;
+  return <></>
 }
 
 export default createNodes
