@@ -6,6 +6,8 @@ import AdditionalProperties from "./AdditionalProperties"
 import Properties from "./Properties"
 import PatternProperties from "./PatternProperties"
 
+import { QualifierMessages } from "../../utils/index"
+
 import type { JSONSchema7 } from "json-schema"
 
 type Props = {
@@ -55,6 +57,14 @@ function createObject(props: Props): JSX.Element {
       {properties !== undefined && <ul>{properties}</ul>}
       {patternProperties !== undefined && <ul>{patternProperties}</ul>}
       {additionalProperties !== undefined && <ul>{additionalProperties}</ul>}
+      <div style={{ marginTop: "var(--ifm-table-cell-padding)" }}>
+        <QualifierMessages schema={schema} />
+      </div>
+      {schema?.description !== undefined && (
+        <div style={{ marginTop: "var(--ifm-table-cell-padding)" }}>
+          {schema.description}
+        </div>
+      )}
     </>
   )
 }

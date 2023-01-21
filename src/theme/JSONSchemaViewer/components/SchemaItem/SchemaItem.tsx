@@ -58,9 +58,6 @@ function SchemaItem({
     </>
   )
 
-  // qualifier
-  let qualifierMessages = <QualifierMessages schema={schema} />
-
   return (
     <li className={styles.schemaItem}>
       <Collapsible
@@ -70,7 +67,9 @@ function SchemaItem({
         }}
       >
         <>
-          {qualifierMessages !== null && <div>{qualifierMessages}</div>}
+          <div style={{ marginTop: "var(--ifm-table-cell-padding)" }}>
+            <QualifierMessages schema={schema} />
+          </div>
           <CreateNodes schema={schema} />
         </>
       </Collapsible>

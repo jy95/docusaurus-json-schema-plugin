@@ -37,7 +37,6 @@ function detectType(schema: JSONSchema7): string {
 // In short : integer / number / boolean / null
 function createPrimitive(props: Props) {
   const { schema } = props
-  let qualifierMessages = <QualifierMessages schema={schema} />
   let type = detectType(schema)
   let friendly_type = schema?.format ? `${type} (${schema.format})` : type
 
@@ -55,11 +54,9 @@ function createPrimitive(props: Props) {
       </strong>
       &nbsp;&#58;&nbsp;
       <span style={{ opacity: "0.6" }}>{friendly_type}</span>
-      {qualifierMessages !== null && (
-        <div style={{ marginTop: "var(--ifm-table-cell-padding)" }}>
-          {qualifierMessages}
-        </div>
-      )}
+      <div style={{ marginTop: "var(--ifm-table-cell-padding)" }}>
+        <QualifierMessages schema={schema} />
+      </div>
       {schema?.description !== undefined && (
         <div style={{ marginTop: "var(--ifm-table-cell-padding)" }}>
           {schema.description}

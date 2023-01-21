@@ -5,6 +5,8 @@ import Translate from "@docusaurus/Translate"
 import Items from "./Items"
 import Contains from "./Contains"
 
+import { QualifierMessages } from "../../utils/index"
+
 import type { JSONSchema7 } from "json-schema"
 
 type Props = {
@@ -47,6 +49,14 @@ function createArray(props: Props): JSX.Element {
       </span>
       {items !== undefined && <ul>{items}</ul>}
       {contains !== undefined && { contains }}
+      <div style={{ marginTop: "var(--ifm-table-cell-padding)" }}>
+        <QualifierMessages schema={schema} />
+      </div>
+      {schema?.description !== undefined && (
+        <div style={{ marginTop: "var(--ifm-table-cell-padding)" }}>
+          {schema.description}
+        </div>
+      )}
     </>
   )
 }
