@@ -2,7 +2,6 @@ import React, { ReactNode } from "react"
 import Translate from "@docusaurus/Translate"
 
 import { Collapsible, CreateNodes } from "../index"
-import { QualifierMessages } from "../../utils/index"
 import styles from "./styles.module.css"
 
 import type { JSONSchema7 } from "json-schema"
@@ -67,9 +66,6 @@ function SchemaItem({
         }}
       >
         <>
-          <div style={{ marginTop: "var(--ifm-table-cell-padding)" }}>
-            <QualifierMessages schema={schema} />
-          </div>
           <CreateNodes schema={schema} />
         </>
       </Collapsible>
