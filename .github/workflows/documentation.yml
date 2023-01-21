@@ -9,6 +9,7 @@ on:
       - 'testsite/**'
   repository_dispatch:
     types: [generate-documentation]
+  workflow_dispatch:
 jobs:
   deploy:
     runs-on: ubuntu-latest
