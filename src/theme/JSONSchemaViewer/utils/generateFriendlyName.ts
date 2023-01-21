@@ -1,6 +1,10 @@
+// Utility functions to know which case we have
+import { isArrayType, isNumeric, isObjectType, isStringType } from "./index"
+
 import type { JSONSchema7Definition, JSONSchema7TypeName } from "json-schema"
 
 // generate a friendly name for the schema
+// It has to cover nasty cases like omit the "type" that usually helps to know what we have here
 function generateFriendlyName(schema: JSONSchema7Definition): string {
   // unlikely at this point but technically possible
   if (typeof schema === "boolean") {
@@ -17,15 +21,29 @@ function generateFriendlyName(schema: JSONSchema7Definition): string {
     return schema.format
   }
 
+  // String property
+  if (isStringType(schema)) {
+    return "string"
+  }
+
+  if (isNumeric(schema)) {
+    // if "type" is indicated, use it like that
+    if (schema?.type !== undefined && !Array.isArray(schema?.type)) {
+      return schema?.type
+    }
+    // Otherwise, assume it is "number"
+    return "number"
+  }
+
   // One of the common types around the world
-  if (schema?.type === "object") {
+  if (isObjectType(schema)) {
     return "object"
   }
 
   // One of the common types around the world
-  if (schema?.type === "array") {
+  if (isArrayType(schema)) {
     // Items property give the type of the array, when present
-    if (schema?.items) {
+    if (schema?.items !== undefined) {
       const linkWord = "OR"
       const elements = (
         Array.isArray(schema.items) ? schema.items : [schema.items]
@@ -33,6 +51,10 @@ function generateFriendlyName(schema: JSONSchema7Definition): string {
       const uniqueItems = [...new Set(elements)]
 
       return `(${uniqueItems.join(` ${linkWord} `)})[]`
+    }
+    // Contains property give the type of the array, when present
+    if (schema?.contains !== undefined) {
+      return `(${generateFriendlyName(schema?.contains)})[]`
     }
     // Otherwise keep the plain old array type
     return "array"

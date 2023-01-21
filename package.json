@@ -17,7 +17,6 @@
   "devDependencies": {
     "@docusaurus/types": "^2.2.0",
     "@types/json-schema": "^7.0.11",
-    "@types/json-schema-merge-allof": "^0.6.1",
     "@types/react": "^17.0.52",
     "@types/react-dom": "^17.0.0",
     "fs-extra": "^11.1.0",
@@ -31,7 +30,6 @@
   },
   "dependencies": {
     "@stoplight/json-ref-resolver": "^3.1.5",
-    "json-schema-merge-allof": "^0.8.1",
     "monaco-editor": "^0.34.1",
     "monaco-editor-webpack-plugin": "^7.0.1",
     "react-monaco-editor": "^0.51.0"

@@ -16,10 +16,16 @@ function printSchemaType(obj: JSONSchema7Type): JSX.Element {
   return <CodeBlock language="json">{`${JSON.stringify(obj)}`}</CodeBlock>
 }
 
+type Props = {
+  schema?: JSONSchema7Definition
+}
+
 // The heart of the plugin : Display human friendly messages
-function getQualifierMessages(schema?: JSONSchema7Definition): JSX.Element {
+function QualifierMessages(props: Props): null | JSX.Element {
+  const { schema } = props
+
   if (schema === undefined || typeof schema === "boolean") {
-    return <></>
+    return null
   }
 
   let result: JSX.Element[] = []
@@ -37,6 +43,7 @@ function getQualifierMessages(schema?: JSONSchema7Definition): JSX.Element {
             {"Possible values :"}
           </Translate>
         </strong>
+        &nbsp;
         {printSchemaType(schema.enum)}
       </p>
     )
@@ -66,6 +73,7 @@ function getQualifierMessages(schema?: JSONSchema7Definition): JSX.Element {
             {"Length :"}
           </Translate>
         </strong>
+        &nbsp;
         {schema?.minLength !== undefined && (
           <code>
             <Translate
@@ -133,6 +141,7 @@ function getQualifierMessages(schema?: JSONSchema7Definition): JSX.Element {
             {"Length :"}
           </Translate>
         </strong>
+        &nbsp;
         {schema?.minProperties !== undefined && (
           <code>
             <Translate
@@ -197,6 +206,7 @@ function getQualifierMessages(schema?: JSONSchema7Definition): JSX.Element {
             {"Length :"}
           </Translate>
         </strong>
+        &nbsp;
         {schema?.minItems !== undefined && (
           <code>
             <Translate
@@ -262,6 +272,7 @@ function getQualifierMessages(schema?: JSONSchema7Definition): JSX.Element {
             {"Possible values :"}
           </Translate>
         </strong>
+        &nbsp;
         {minimum !== undefined && (
           <code>
             {isExclusiveMinimum === true ? (
@@ -337,6 +348,7 @@ function getQualifierMessages(schema?: JSONSchema7Definition): JSX.Element {
             {"Pattern :"}
           </Translate>
         </strong>
+        &nbsp;
         <code>{schema.pattern}</code>
       </p>
     )
@@ -355,6 +367,7 @@ function getQualifierMessages(schema?: JSONSchema7Definition): JSX.Element {
             {"Possible values :"}
           </Translate>
         </strong>
+        &nbsp;
         <code>
           <Translate
             values={{
@@ -382,6 +395,7 @@ function getQualifierMessages(schema?: JSONSchema7Definition): JSX.Element {
             {"Unique items :"}
           </Translate>
         </strong>
+        &nbsp;
         <code>
           <Translate
             values={{
@@ -408,6 +422,7 @@ function getQualifierMessages(schema?: JSONSchema7Definition): JSX.Element {
             {"Default value :"}
           </Translate>
         </strong>
+        &nbsp;
         {printSchemaType(schema.default)}
       </p>
     )
@@ -426,12 +441,17 @@ function getQualifierMessages(schema?: JSONSchema7Definition): JSX.Element {
             {"Constant value :"}
           </Translate>
         </strong>
+        &nbsp;
         {printSchemaType(schema.const)}
       </p>
     )
   }
 
-  return <>{result}</>
+  if (result.length === 0) {
+    return null
+  } else {
+    return <>{result}</>
+  }
 }
 
-export default getQualifierMessages
+export default QualifierMessages

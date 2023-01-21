@@ -1,82 +1,58 @@
 import React from "react"
-import {
-  RenderAnyOneOf,
-  CreateProperties,
-  CreateItems,
-  CreateAdditionalProperties,
-  CreatePrimitive,
-} from "./index"
 
-import type { JSONSchema7, JSONSchema7Definition } from "json-schema"
-import type { WithRequired } from "./index"
+import {
+  CreateObject,
+  SchemaComposition,
+  CreateArray,
+  CreatePrimitive,
+} from "../JSONSchemaElements/index"
+
+import {
+  isArrayType,
+  isObjectType,
+  isSchemaComposition,
+  isNumeric,
+  isStringType,
+} from "../utils/index"
+
+import type { JSONSchema7Definition } from "json-schema"
 
 type Props = {
   [x: string]: any
   schema: JSONSchema7Definition
 }
 
-// Creates a hierarchical level of a schema tree. Nodes produce edges that can branch into sub-nodes with edges, recursively
 function createNodes(props: Props): JSX.Element {
   const { schema } = props
 
-  // fast fail over
-  if (typeof schema === "boolean" || schema === undefined) {
+  // In boolean case, we can do anything
+  if (typeof schema === "boolean") {
     return <></>
   }
 
-  // For typescript type
-  let typedSchema = schema as JSONSchema7
+  // handle anyOf / allOf / oneOf / not
+  if (isSchemaComposition(schema)) {
+    return <SchemaComposition schema={schema} />
+  }
 
-  // TODO unsupported stuff (later)
-  // 2. additionalItems
+  // handle array case
+  if (isArrayType(schema)) {
+    return <CreateArray schema={schema} />
+  }
 
-  // Unknown node/schema type will return nothing (<></>)
-  return (
-    <>
-      {/* Type */}
-      {typedSchema?.type !== undefined && (
-        <CreatePrimitive
-          key={"type"}
-          schema={typedSchema as WithRequired<JSONSchema7, "type">}
-        />
-      )}
-      {/* Handle oneOf / anyOf */}
-      {(typedSchema?.oneOf !== undefined ||
-        typedSchema?.anyOf !== undefined) && (
-        <RenderAnyOneOf
-          key={"oneOf_anyOf"}
-          schema={
-            typedSchema as
-              | WithRequired<JSONSchema7, "oneOf">
-              | WithRequired<JSONSchema7, "anyOf">
-          }
-        />
-      )}
-      {/* Properties */}
-      {typedSchema?.properties !== undefined && (
-        <CreateProperties
-          key={"properties"}
-          schema={typedSchema as WithRequired<JSONSchema7, "properties">}
-        />
-      )}
-      {/* additionalProperties */}
-      {typedSchema?.additionalProperties !== undefined && (
-        <CreateAdditionalProperties
-          key={"additionalProperties"}
-          schema={
-            typedSchema as WithRequired<JSONSchema7, "additionalProperties">
-          }
-        />
-      )}
-      {/* Items */}
-      {typedSchema?.items !== undefined && (
-        <CreateItems
-          key={"items"}
-          schema={typedSchema.items as WithRequired<JSONSchema7, "items">}
-        />
-      )}
-    </>
-  )
+  // handle object case
+  if (isObjectType(schema)) {
+    return <CreateObject schema={schema} />
+  }
+
+  // Well from now; two situations
+  // 1. Either it is a primitive type left (string / integer / numeric /boolean / null)
+  if (schema?.type !== undefined || isNumeric(schema) || isStringType(schema)) {
+    return <CreatePrimitive schema={schema} />
+  }
+
+  // 2. Schema is probably invalid at this point and component won't do magic tricks
+  return <></>
 }
 
 export default createNodes
