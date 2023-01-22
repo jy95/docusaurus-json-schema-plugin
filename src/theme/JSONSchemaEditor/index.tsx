@@ -9,8 +9,7 @@ import type { EditorWillMount, MonacoEditorProps } from "react-monaco-editor"
 import type { Props as ErrorProps } from "@theme/Error"
 
 export type Props = {
-  schema: JSONSchema7
-  defaultValue?: any
+  schema: unknown
 } & MonacoEditorProps
 
 // When loading
@@ -39,6 +38,7 @@ function JSONSchemaEditorInner(props: Props): JSX.Element {
       schemas: [
         {
           uri:
+            // Assume it is a JSONSchema 7 by default
             (schema as JSONSchema7)["$id"] ||
             "https://docusaurus.io/json-viewer/schema.json",
           schema: schema,
@@ -51,7 +51,6 @@ function JSONSchemaEditorInner(props: Props): JSX.Element {
     <MonacoEditor
       height="90vh"
       language="json"
-      defaultValue={props.defaultValue}
       editorWillMount={editorWillMount}
       theme={colorMode === "dark" ? "vs-dark" : "vs"}
       {...editorProps}
