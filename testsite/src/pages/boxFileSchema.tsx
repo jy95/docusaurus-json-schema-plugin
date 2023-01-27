@@ -1,6 +1,7 @@
 import React from "react"
 import Layout from "@theme/Layout"
 import { useColorMode } from "@docusaurus/theme-common"
+import BrowserOnly from "@docusaurus/BrowserOnly"
 // @ts-ignore
 import JSONSchemaViewer from "@theme/JSONSchemaViewer"
 // @ts-ignore
@@ -31,7 +32,11 @@ function BoxFileSchema(): JSX.Element {
       title={`Box File JSON Schema`}
       description="Description will go into a meta tag in <head />"
     >
-      <BoxFileSchemaInner />
+      <BrowserOnly fallback={<div>Loading...</div>}>
+        {() => {
+          return <BoxFileSchemaInner />
+        }}
+      </BrowserOnly>
     </Layout>
   )
 }
