@@ -1,4 +1,4 @@
-import React /*, { useState, useEffect }*/ from "react"
+import React, { useState, useEffect } from "react"
 // @ts-ignore Not now ...
 import { Resolver } from "@stoplight/json-ref-resolver"
 
@@ -40,8 +40,8 @@ function JSONSchemaInnerViewer(props: InnerViewerProperties): JSX.Element {
 
 // Entry point
 export default function JSONSchemaViewer(props: Props): JSX.Element {
-  const { schema: originalSchema /*, resolverOptions*/ } = props
-  /*
+  const { schema: originalSchema, resolverOptions } = props
+
   const [error, setError] = useState(undefined as undefined | Error)
   const [resolvedSchema, setResolvedSchema] = useState(
     undefined as undefined | JSONSchema7
@@ -68,6 +68,6 @@ export default function JSONSchemaViewer(props: Props): JSX.Element {
     return <div>Loading ....</div>
   } else {
     return <JSONSchemaInnerViewer schema={resolvedSchema} />
-  }*/
-  return <JSONSchemaInnerViewer schema={originalSchema} />
+  }
+  //return <JSONSchemaInnerViewer schema={originalSchema} />
 }

@@ -1,3 +1,5 @@
+const path = require("path")
+
 // With JSDoc @type annotations, IDEs can provide config autocompletion
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
@@ -57,4 +59,20 @@ module.exports = {
     ],
   ],
   themes: [["docusaurus-json-schema-plugin", {}]],
+  // Ugly trick to deal with "Invalid hook"
+  plugins: [
+    () => ({
+      name: "resolve-react",
+      configureWebpack() {
+        return {
+          resolve: {
+            alias: {
+              // assuming root node_modules is up
+              react: path.resolve("../node_modules/react"),
+            },
+          },
+        }
+      },
+    }),
+  ],
 }
