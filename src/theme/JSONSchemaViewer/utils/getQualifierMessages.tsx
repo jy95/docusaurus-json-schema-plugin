@@ -33,7 +33,7 @@ function QualifierMessages(props: Props): null | JSX.Element {
   // enum values
   if (schema?.enum !== undefined) {
     result.push(
-      <p key={"enum"}>
+      <div key={"enum"}>
         <strong>
           <Translate
             values={{
@@ -45,7 +45,7 @@ function QualifierMessages(props: Props): null | JSX.Element {
         </strong>
         &nbsp;
         {printSchemaType(schema.enum)}
-      </p>
+      </div>
     )
   }
 
@@ -55,7 +55,7 @@ function QualifierMessages(props: Props): null | JSX.Element {
       schema?.minLength !== undefined && schema?.maxLength !== undefined
 
     result.push(
-      <p
+      <div
         key={
           minAndMaxLength
             ? "minLengthAndmaxLength"
@@ -110,7 +110,7 @@ function QualifierMessages(props: Props): null | JSX.Element {
             </Translate>
           </code>
         )}
-      </p>
+      </div>
     )
   }
 
@@ -123,7 +123,7 @@ function QualifierMessages(props: Props): null | JSX.Element {
       schema?.minProperties !== undefined && schema?.maxProperties !== undefined
 
     result.push(
-      <p
+      <div
         key={
           minAndMax
             ? "minPropertiesAndMaxProperties"
@@ -178,7 +178,7 @@ function QualifierMessages(props: Props): null | JSX.Element {
             </Translate>
           </code>
         )}
-      </p>
+      </div>
     )
   }
 
@@ -188,7 +188,7 @@ function QualifierMessages(props: Props): null | JSX.Element {
       schema?.minItems !== undefined && schema?.maxItems !== undefined
 
     result.push(
-      <p
+      <div
         key={
           minAndMax
             ? "minItemsAndmaxItems"
@@ -243,7 +243,7 @@ function QualifierMessages(props: Props): null | JSX.Element {
             </Translate>
           </code>
         )}
-      </p>
+      </div>
     )
   }
 
@@ -262,7 +262,7 @@ function QualifierMessages(props: Props): null | JSX.Element {
     const minAndMax = minimum !== undefined && maximum !== undefined
 
     result.push(
-      <p key={"number-range"}>
+      <div key={"number-range"}>
         <strong>
           <Translate
             values={{
@@ -331,14 +331,14 @@ function QualifierMessages(props: Props): null | JSX.Element {
             )}
           </code>
         )}
-      </p>
+      </div>
     )
   }
 
   // pattern
   if (schema?.pattern !== undefined) {
     result.push(
-      <p key={"pattern"}>
+      <div key={"pattern"}>
         <strong>
           <Translate
             values={{
@@ -350,14 +350,14 @@ function QualifierMessages(props: Props): null | JSX.Element {
         </strong>
         &nbsp;
         <code>{schema.pattern}</code>
-      </p>
+      </div>
     )
   }
 
   // multipleOf
   if (schema?.multipleOf !== undefined) {
     result.push(
-      <p key={"multipleOf"}>
+      <div key={"multipleOf"}>
         <strong>
           <Translate
             values={{
@@ -378,14 +378,14 @@ function QualifierMessages(props: Props): null | JSX.Element {
             {"multiple of {count}"}
           </Translate>
         </code>
-      </p>
+      </div>
     )
   }
 
   // uniqueItems
   if (schema?.uniqueItems !== undefined && schema.uniqueItems === true) {
     result.push(
-      <p key={"uniqueItems"}>
+      <div key={"uniqueItems"}>
         <strong>
           <Translate
             values={{
@@ -405,14 +405,14 @@ function QualifierMessages(props: Props): null | JSX.Element {
             {"yes"}
           </Translate>
         </code>
-      </p>
+      </div>
     )
   }
 
   // Default value
   if (schema?.default !== undefined) {
     result.push(
-      <p key={"default"}>
+      <div key={"default"}>
         <strong>
           <Translate
             values={{
@@ -424,14 +424,14 @@ function QualifierMessages(props: Props): null | JSX.Element {
         </strong>
         &nbsp;
         {printSchemaType(schema.default)}
-      </p>
+      </div>
     )
   }
 
   // Const value
   if (schema?.const !== undefined) {
     result.push(
-      <p key={"const"}>
+      <div key={"const"}>
         <strong>
           <Translate
             values={{
@@ -443,7 +443,7 @@ function QualifierMessages(props: Props): null | JSX.Element {
         </strong>
         &nbsp;
         {printSchemaType(schema.const)}
-      </p>
+      </div>
     )
   }
 
