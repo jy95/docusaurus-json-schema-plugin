@@ -21,18 +21,20 @@ function JSONSchemaEditorWrapper(): JSX.Element {
 
 function BoxFileInnerSchema(): JSX.Element {
   return (
-    <div style={{ display: "flex", flexWrap: "wrap" }}>
-      <div style={{ boxSizing: "border-box", width: "50%" }}>
-        <JSONSchemaViewer schema={Schema} />
-      </div>
-      <div style={{ boxSizing: "border-box", width: "50%" }}>
-        <BrowserOnly fallback={<div>Loading...</div>}>
-          {() => {
-            return <JSONSchemaEditorWrapper />
-          }}
-        </BrowserOnly>
-      </div>
-    </div>
+    <BrowserOnly fallback={<div>Loading...</div>}>
+      {() => {
+        return (
+          <div style={{ display: "flex", flexWrap: "wrap" }}>
+            <div style={{ boxSizing: "border-box", width: "50%" }}>
+              <JSONSchemaViewer schema={Schema} />
+            </div>
+            <div style={{ boxSizing: "border-box", width: "50%" }}>
+              <JSONSchemaEditorWrapper />
+            </div>
+          </div>
+        )
+      }}
+    </BrowserOnly>
   )
 }
 
