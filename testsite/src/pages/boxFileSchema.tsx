@@ -17,10 +17,7 @@ function BoxFileSchemaInner(): JSX.Element {
         <JSONSchemaViewer schema={Schema} />
       </div>
       <div style={{ boxSizing: "border-box", width: "50%" }}>
-        <JSONSchemaEditor
-          schema={Schema}
-          theme={"vs-dark"}
-        />
+        <JSONSchemaEditor schema={Schema} theme={"vs-dark"} />
       </div>
     </div>
   )
