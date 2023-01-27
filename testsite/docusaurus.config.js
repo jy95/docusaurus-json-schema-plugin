@@ -56,5 +56,5 @@ module.exports = {
       },
     ],
   ],
-  themes: [["docusaurus-json-schema-plugin", {}]],
+  themes: [["docusaurus-json-schema-plugin/lib/index.js", {}]],
 }
