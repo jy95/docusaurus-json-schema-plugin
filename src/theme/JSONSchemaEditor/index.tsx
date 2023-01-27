@@ -1,6 +1,5 @@
 import React from "react"
 import MonacoEditor from "react-monaco-editor"
-import { useColorMode } from "@docusaurus/theme-common"
 import BrowserOnly from "@docusaurus/BrowserOnly"
 import ErrorBoundary from "@docusaurus/ErrorBoundary"
 
@@ -30,7 +29,6 @@ function EditorError({ error, tryAgain }: ErrorProps): JSX.Element {
 // Main component
 function JSONSchemaEditorInner(props: Props): JSX.Element {
   const { schema, ...editorProps } = props
-  const { colorMode } = useColorMode()
 
   const editorWillMount: EditorWillMount = (monaco) => {
     monaco.languages.json.jsonDefaults.setDiagnosticsOptions({
@@ -52,7 +50,6 @@ function JSONSchemaEditorInner(props: Props): JSX.Element {
       height="90vh"
       language="json"
       editorWillMount={editorWillMount}
-      theme={colorMode === "dark" ? "vs-dark" : "vs"}
       {...editorProps}
     />
   )

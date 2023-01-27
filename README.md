@@ -99,8 +99,6 @@ function ExamplePage(): JSX.Element {
 
 > Component to learn within a editor with autocomplete, validation, ...
 
-⚠️As this component uses `useColorMode`, don't forget to take into account https://docusaurus.io/docs/api/themes/configuration#use-color-mode 
-
 #### API
 
 | Property        | Type              | Required  | Note                                               |
@@ -113,6 +111,7 @@ function ExamplePage(): JSX.Element {
 import React from "react"
 import Layout from "@theme/Layout"
 import JSONSchemaEditor from "@theme/JSONSchemaEditor"
+// import { useColorMode } from "@docusaurus/theme-common"
 
 function ExamplePage(): JSX.Element {
 
@@ -137,12 +136,14 @@ function ExamplePage(): JSX.Element {
     }
   }
 
+  // https://docusaurus.io/docs/api/themes/configuration#use-color-mode
   return (
     <Layout
       title={`My super JSON Schema`}
       description="Description will go into a meta tag in <head />"
     >
-      <JSONSchemaEditor schema={mySchema} />
+      {/* You can "useColorMode" if you want to take into account current Docusaurus color */}
+      <JSONSchemaEditor schema={mySchema} theme={"vs-dark"} />
     </Layout>
   )
 }
