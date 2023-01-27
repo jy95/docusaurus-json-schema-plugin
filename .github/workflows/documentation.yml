@@ -51,7 +51,7 @@ jobs:
       - name: Install website 💻
         run: |
           cd testsite   
-          npm link docusaurus-json-schema-plugin   
+          npm link docusaurus-json-schema-plugin --save     
           npm install --prefer-dedupe  
       - name: Build website 🤖
         run: |
