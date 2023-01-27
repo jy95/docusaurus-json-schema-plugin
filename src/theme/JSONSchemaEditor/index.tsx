@@ -61,7 +61,7 @@ function JSONSchemaEditorInner(props: Props): JSX.Element {
 // The public component
 // Notice from https://docusaurus.io/docs/api/themes/configuration#use-color-mode
 // The component calling useColorMode must be a child of the Layout component.
-function JSONSchemaEditor(props: Props): JSX.Element {
+export default function JSONSchemaEditor(props: Props): JSX.Element {
   return (
     <BrowserOnly fallback={<EditorLoading />}>
       {() => (
@@ -74,5 +74,3 @@ function JSONSchemaEditor(props: Props): JSX.Element {
     </BrowserOnly>
   )
 }
-
-export default JSONSchemaEditor

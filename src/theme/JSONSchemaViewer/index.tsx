@@ -38,7 +38,7 @@ function JSONSchemaInnerViewer(props: InnerViewerProperties): JSX.Element {
 }
 
 // Entry point
-function JSONSchemaViewer(props: Props): JSX.Element {
+export default function JSONSchemaViewer(props: Props): JSX.Element {
   const { schema: originalSchema, resolverOptions } = props
 
   // Set up resolver
@@ -53,5 +53,3 @@ function JSONSchemaViewer(props: Props): JSX.Element {
 
   return <JSONSchemaInnerViewer schema={originalSchema} />
 }
-
-export default JSONSchemaViewer

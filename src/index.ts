@@ -1,7 +1,6 @@
 import { Plugin, LoadContext } from "@docusaurus/types"
 
-// @ts-ignore Webpack plugin are mostly "required"
-const MonacoWebpackPlugin = require("monaco-editor-webpack-plugin")
+import MonacoWebpackPlugin from "monaco-editor-webpack-plugin"
 
 export interface PluginOptions {}
 

@@ -45,11 +45,14 @@ jobs:
       - name: Build lib 🤖
         run: |
           npm run build
-
+      - name: Link lib 🔗
+        run: |
+          npm link
       - name: Install website 💻
         run: |
           cd testsite   
-          yarn install --frozen-lockfile
+          npm link docusaurus-json-schema-plugin   
+          npm install --prefer-dedupe  
       - name: Build website 🤖
         run: |
           cd testsite   

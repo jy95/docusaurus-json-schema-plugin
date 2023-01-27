@@ -26,8 +26,10 @@ JSON Schema viewer / editor in Docusaurus v2.
 ## Installation
 
 ```bash
-npm install docusaurus-json-schema-plugin
+npm install docusaurus-json-schema-plugin --prefer-dedupe
 ```
+
+> ⚠️ Why `--prefer-dedupe` ? Because of [Invalid Hook Call Warning](https://reactjs.org/warnings/invalid-hook-call-warning.html) common issue in projets
 
 ## Configuring `docusaurus.config.js`
 
