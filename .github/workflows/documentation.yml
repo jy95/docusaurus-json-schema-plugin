@@ -7,6 +7,7 @@ on:
     paths:
       - '.github/workflows/documentation.yml'
       - 'testsite/**'
+      - 'src/**'
   repository_dispatch:
     types: [generate-documentation]
   workflow_dispatch:

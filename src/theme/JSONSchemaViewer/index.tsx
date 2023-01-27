@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import { Resolver } from "@stoplight/json-ref-resolver"
 
 import { CreateNodes, Collapsible } from "./components/index"
@@ -40,16 +40,31 @@ function JSONSchemaInnerViewer(props: InnerViewerProperties): JSX.Element {
 // Entry point
 export default function JSONSchemaViewer(props: Props): JSX.Element {
   const { schema: originalSchema, resolverOptions } = props
+  const [error, setError] = useState(undefined as undefined | Error)
+  const [resolvedSchema, setResolvedSchema] = useState(
+    undefined as undefined | JSONSchema7
+  )
 
-  // Set up resolver
-  // @ts-ignore
-  const resolver = new Resolver(resolverOptions)
+  useEffect(() => {
+    // Set up resolver
+    const resolver = new Resolver(resolverOptions)
 
-  // TODO How do I wait for async to be complete before I run that ?
-  // resolver.resolve(originalSchema);
+    // Time to do the job
+    resolver
+      .resolve(originalSchema)
+      .then((result) => {
+        setResolvedSchema(result.result)
+      })
+      .catch((err) => {
+        setError(err)
+      })
+  }, [])
 
-  // Simplify schema
-  //const simplifiedSchema = (originalSchema?.allOf !== undefined) ? mergeAllOf(originalSchema) : originalSchema;
-
-  return <JSONSchemaInnerViewer schema={originalSchema} />
+  if (error !== undefined) {
+    return <div>Something bad happens : {error.message}</div>
+  } else if (resolvedSchema === undefined) {
+    return <div>Loading ....</div>
+  } else {
+    return <JSONSchemaInnerViewer schema={resolvedSchema} />
+  }
 }
