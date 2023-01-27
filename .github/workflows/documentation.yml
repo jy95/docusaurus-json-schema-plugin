@@ -54,6 +54,7 @@ jobs:
           cd testsite   
           npm link docusaurus-json-schema-plugin --save     
           npm install --prefer-dedupe  
+          npm dedupe  
       - name: Build website 🤖
         run: |
           cd testsite   

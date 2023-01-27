@@ -18,7 +18,7 @@ function BoxFileSchema(): JSX.Element {
           {/* <JSONSchemaViewer schema={Schema} />} */}
         </div>
         <div style={{ boxSizing: "border-box", width: "50%" }}>
-          <JSONSchemaEditor schema={Schema} />
+          {/* <JSONSchemaEditor schema={Schema} /> */}
         </div>
       </div>
     </Layout>
