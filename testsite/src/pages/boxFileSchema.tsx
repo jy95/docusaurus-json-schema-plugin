@@ -15,10 +15,10 @@ function BoxFileSchema(): JSX.Element {
     >
       <div style={{ display: "flex", flexWrap: "wrap" }}>
         <div style={{ boxSizing: "border-box", width: "50%" }}>
-          <JSONSchemaViewer schema={Schema} />
+          {/* <JSONSchemaViewer schema={Schema} />} */}
         </div>
         <div style={{ boxSizing: "border-box", width: "50%" }}>
-          {/*<JSONSchemaEditor schema={ Schema } />*/}
+          <JSONSchemaEditor schema={ Schema } />
         </div>
       </div>
     </Layout>
