@@ -3,7 +3,7 @@ import React from "react"
 import Translate from "@docusaurus/Translate"
 import CodeBlock from "@theme-original/CodeBlock"
 
-import type { JSONSchema7Definition, JSONSchema7Type } from "json-schema"
+import type { JSONSchema7Type, JSONSchema7 } from "json-schema"
 
 // To print all JSONSchema7Type
 function printSchemaType(obj: JSONSchema7Type): JSX.Element {
@@ -17,7 +17,13 @@ function printSchemaType(obj: JSONSchema7Type): JSX.Element {
 }
 
 type Props = {
-  schema?: JSONSchema7Definition
+  schema?:
+    | boolean
+    | (JSONSchema7 & {
+        // Draft 2019-09 attributes
+        minContains?: number
+        maxContains?: number
+      })
 }
 
 // The heart of the plugin : Display human friendly messages
@@ -240,6 +246,71 @@ function QualifierMessages(props: Props): null | JSX.Element {
               }}
             >
               {"<= {count}"}
+            </Translate>
+          </code>
+        )}
+      </div>
+    )
+  }
+
+  // minContains / maxContains
+  if (schema?.minContains !== undefined || schema?.maxContains !== undefined) {
+    let minAndMax =
+      schema?.minContains !== undefined && schema?.maxContains !== undefined
+
+    result.push(
+      <div
+        key={
+          minAndMax
+            ? "minContainsAndmaxContains"
+            : schema?.minContains !== undefined
+            ? "minContains"
+            : "maxContains"
+        }
+      >
+        <strong>
+          <Translate
+            values={{
+              id: "json-schema.labels.contains",
+            }}
+          >
+            {"Must contain : "}
+          </Translate>
+        </strong>
+        &nbsp;
+        {schema?.minContains !== undefined && (
+          <code>
+            <Translate
+              values={{
+                id: "json-schema.keywords.minContains",
+                count: schema.minContains,
+              }}
+            >
+              {"at least {count} valid item(s)"}
+            </Translate>
+          </code>
+        )}
+        {minAndMax && (
+          <>
+            {" "}
+            <Translate
+              values={{
+                id: "json-schema.labels.and",
+              }}
+            >
+              {"AND"}
+            </Translate>{" "}
+          </>
+        )}
+        {schema?.maxContains !== undefined && (
+          <code>
+            <Translate
+              values={{
+                id: "json-schema.keywords.maxContains",
+                count: schema.maxContains,
+              }}
+            >
+              {"at most {count} valid item(s)"}
             </Translate>
           </code>
         )}

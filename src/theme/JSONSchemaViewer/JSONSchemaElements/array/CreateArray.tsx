@@ -48,7 +48,7 @@ function createArray(props: Props): JSX.Element {
         </Translate>
       </span>
       {items !== undefined && <ul>{items}</ul>}
-      {contains !== undefined && { contains }}
+      {contains !== undefined && <ul>{contains}</ul>}
       <div style={{ marginTop: "var(--ifm-table-cell-padding)" }}>
         <QualifierMessages schema={schema} />
       </div>

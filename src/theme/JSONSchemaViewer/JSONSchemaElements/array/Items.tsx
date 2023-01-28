@@ -1,6 +1,7 @@
 import React from "react"
+import Translate from "@docusaurus/Translate"
 
-import { CreateNodes, CreateEdge } from "../../components/index"
+import { CreateEdge } from "../../components/index"
 
 import type { JSONSchema7 } from "json-schema"
 
@@ -14,18 +15,28 @@ function createItems(props: Props): JSX.Element {
   let items = schema.items!
 
   if (Array.isArray(items)) {
+    let minimal = items.length
     return (
       <>
         {Object.entries(items).map(([key, val]) => {
           return (
             <CreateEdge
               key={`array_items_${key}`}
-              name={key}
+              name={
+                <code>
+                  <Translate
+                    values={{
+                      id: "json-schema.keywords.itemsEntry",
+                      count: key,
+                    }}
+                  >
+                    {"items_{count}"}
+                  </Translate>
+                </code>
+              }
               schema={val}
               required={
-                Array.isArray(schema.required)
-                  ? schema.required.includes(key)
-                  : false
+                schema?.minItems !== undefined && schema?.minItems >= minimal
               }
             />
           )
@@ -34,8 +45,24 @@ function createItems(props: Props): JSX.Element {
     )
   } else {
     // singe items (most common case)
-    // TODO or CreateEdges
-    return <CreateNodes schema={items} />
+    return (
+      <CreateEdge
+        key={"array_items"}
+        name={
+          <code>
+            <Translate
+              values={{
+                id: "json-schema.keywords.items",
+              }}
+            >
+              {"items"}
+            </Translate>
+          </code>
+        }
+        schema={items}
+        required={schema?.minItems !== undefined && schema?.minItems > 0}
+      />
+    )
   }
 }
 
