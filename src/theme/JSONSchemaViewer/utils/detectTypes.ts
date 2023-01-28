@@ -7,7 +7,7 @@ export const isObjectType = (schema: JSONSchema7) =>
   schema?.additionalProperties !== undefined ||
   schema?.patternProperties !== undefined ||
   schema?.minProperties !== undefined ||
-  schema?.maxProperties
+  schema?.maxProperties !== undefined
 
 export const isArrayType = (schema: JSONSchema7) =>
   schema?.type === "array" ||
@@ -19,7 +19,9 @@ export const isArrayType = (schema: JSONSchema7) =>
   /* @ts-ignore Draft 2019-09 */
   schema?.minContains !== undefined ||
   /* @ts-ignore Draft 2019-09 */
-  schema?.maxContains !== undefined
+  schema?.maxContains !== undefined ||
+  /* @ts-ignore Draft 2020-12 */
+  schema?.prefixItems !== undefined
 
 export const isStringType = (schema: JSONSchema7) =>
   schema?.type === "string" ||

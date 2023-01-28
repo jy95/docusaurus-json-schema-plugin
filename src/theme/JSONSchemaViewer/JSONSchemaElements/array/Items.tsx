@@ -30,7 +30,7 @@ function createItems(props: Props): JSX.Element {
                       count: key,
                     }}
                   >
-                    {"items_{count}"}
+                    {"items[{count}]"}
                   </Translate>
                 </code>
               }

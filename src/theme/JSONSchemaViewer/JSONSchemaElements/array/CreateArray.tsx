@@ -4,6 +4,7 @@ import Translate from "@docusaurus/Translate"
 
 import Items from "./Items"
 import Contains from "./Contains"
+import PrefixItems from "./PrefixItems"
 
 import { QualifierMessages } from "../../utils/index"
 
@@ -23,6 +24,11 @@ function createArray(props: Props): JSX.Element {
     schema?.items !== undefined ? <Items schema={schema} /> : undefined
   let contains =
     schema?.contains !== undefined ? <Contains schema={schema} /> : undefined
+  let prefixItems =
+    /* @ts-ignore Draft 2020-12 */
+    schema?.prefixItems !== undefined ? (
+      <PrefixItems schema={schema} />
+    ) : undefined
 
   // TODO
   return (
@@ -48,6 +54,7 @@ function createArray(props: Props): JSX.Element {
         </Translate>
       </span>
       {items !== undefined && <ul>{items}</ul>}
+      {prefixItems !== undefined && <ul>{prefixItems}</ul>}
       {contains !== undefined && <ul>{contains}</ul>}
       <div style={{ marginTop: "var(--ifm-table-cell-padding)" }}>
         <QualifierMessages schema={schema} />
