@@ -3,7 +3,7 @@ import React from "react"
 import Translate from "@docusaurus/Translate"
 import CodeBlock from "@theme-original/CodeBlock"
 
-import type { JSONSchema } from "../types"
+import type { JSONSchema, JSONSchemaNS } from "../types"
 
 // To print all JSONSchema7Type
 function printSchemaType(obj: unknown): JSX.Element {
@@ -264,19 +264,21 @@ function QualifierMessages(props: Props): null | JSX.Element {
   }
 
   // minContains / maxContains
-  // @ts-ignore Check that later
-  if (schema?.minContains !== undefined || schema?.maxContains !== undefined) {
+  let typedArraySchema = schema as JSONSchemaNS.Array
+  if (
+    typedArraySchema?.minContains !== undefined ||
+    typedArraySchema?.maxContains !== undefined
+  ) {
     let minAndMax =
-      // @ts-ignore Check that later
-      schema?.minContains !== undefined && schema?.maxContains !== undefined
+      typedArraySchema?.minContains !== undefined &&
+      typedArraySchema?.maxContains !== undefined
 
     result.push(
       <div
         key={
           minAndMax
             ? "minContainsAndmaxContains"
-            : // @ts-ignore Check that later
-            schema?.minContains !== undefined
+            : typedArraySchema?.minContains !== undefined
             ? "minContains"
             : "maxContains"
         }
@@ -291,14 +293,12 @@ function QualifierMessages(props: Props): null | JSX.Element {
           </Translate>
         </strong>
         &nbsp;
-        {/* @ts-ignore Check that later */}
-        {schema?.minContains !== undefined && (
+        {typedArraySchema?.minContains !== undefined && (
           <code>
             <Translate
               values={{
                 id: "json-schema.keywords.minContains",
-                // @ts-ignore Check that later
-                count: schema.minContains,
+                count: typedArraySchema.minContains,
               }}
             >
               {"at least {count} valid item(s)"}
@@ -317,14 +317,12 @@ function QualifierMessages(props: Props): null | JSX.Element {
             </Translate>{" "}
           </>
         )}
-        {/* @ts-ignore Check that later */}
-        {schema?.maxContains !== undefined && (
+        {typedArraySchema?.maxContains !== undefined && (
           <code>
             <Translate
               values={{
                 id: "json-schema.keywords.maxContains",
-                // @ts-ignore Check that later
-                count: schema.maxContains,
+                count: typedArraySchema.maxContains,
               }}
             >
               {"at most {count} valid item(s)"}

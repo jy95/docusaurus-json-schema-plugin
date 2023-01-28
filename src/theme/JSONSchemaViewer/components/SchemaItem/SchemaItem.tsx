@@ -4,7 +4,7 @@ import Translate from "@docusaurus/Translate"
 import { Collapsible, CreateNodes } from "../index"
 import styles from "./styles.module.css"
 
-import type { JSONSchema } from "../../types"
+import type { JSONSchema, JSONSchema_Draft_2019_09 } from "../../types"
 
 type SchemaItemProps = {
   // name of the item (with styles when needed)
@@ -23,9 +23,10 @@ function SchemaItem({
   schemaName,
   required,
 }: SchemaItemProps): JSX.Element {
-  // @ts-ignore "deprecated" started at Draft 8 (2019-09) but many tools converting from OAS to JSON schema put that as fallback
-  // https://json-schema.org/draft/2019-09/json-schema-validation.html#rfc.section.9.3
-  let isDeprecated = schema?.deprecated === true
+  // Notice : "deprecated" started at Draft 8 (2019-09)
+  let typedSchema = schema as JSONSchema_Draft_2019_09
+  let isDeprecated =
+    typeof typedSchema !== "boolean" && typedSchema?.deprecated === true
 
   // Header
   const summary = (

@@ -3,7 +3,7 @@ import Translate from "@docusaurus/Translate"
 
 import { CreateEdge } from "../../components/index"
 
-import type { JSONSchema } from "../../types"
+import type { JSONSchema, JSONSchemaNS } from "../../types"
 
 type Props = {
   [x: string]: any
@@ -13,11 +13,16 @@ type Props = {
 function createItems(props: Props): JSX.Element {
   const { schema } = props
 
-  if (typeof schema === "boolean" || typeof schema?.items === "boolean") {
+  let typedSchema = schema as JSONSchemaNS.Array
+
+  if (
+    typeof typedSchema === "boolean" ||
+    typeof typedSchema?.items === "boolean"
+  ) {
     return <></>
   }
 
-  let items = schema.items!
+  let items = typedSchema.items!
 
   // Unlikely but fail first
   if (typeof items === "boolean") {
@@ -46,7 +51,8 @@ function createItems(props: Props): JSX.Element {
               }
               schema={val}
               required={
-                schema?.minItems !== undefined && schema?.minItems >= minimal
+                typedSchema?.minItems !== undefined &&
+                typedSchema?.minItems >= minimal
               }
             />
           )
@@ -72,7 +78,9 @@ function createItems(props: Props): JSX.Element {
           </code>
         }
         schema={typedItem}
-        required={schema?.minItems !== undefined && schema?.minItems > 0}
+        required={
+          typedSchema?.minItems !== undefined && typedSchema?.minItems > 0
+        }
       />
     )
   }

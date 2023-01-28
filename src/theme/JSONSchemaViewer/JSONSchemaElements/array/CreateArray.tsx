@@ -8,7 +8,7 @@ import PrefixItems from "./PrefixItems"
 
 import { QualifierMessages } from "../../utils/index"
 
-import type { JSONSchema } from "../../types"
+import type { JSONSchema, JSONSchemaNS } from "../../types"
 
 type Props = {
   schema: JSONSchema
@@ -20,17 +20,20 @@ type Props = {
 function createArray(props: Props): JSX.Element {
   const { schema } = props
 
-  if (typeof schema === "boolean") {
+  let typedSchema = schema as JSONSchemaNS.Array
+
+  if (typeof typedSchema === "boolean") {
     return <></>
   }
 
   let items =
-    schema?.items !== undefined ? <Items schema={schema} /> : undefined
+    typedSchema?.items !== undefined ? <Items schema={schema} /> : undefined
   let contains =
-    schema?.contains !== undefined ? <Contains schema={schema} /> : undefined
+    typedSchema?.contains !== undefined ? (
+      <Contains schema={schema} />
+    ) : undefined
   let prefixItems =
-    /* @ts-ignore Draft 2020-12 */
-    schema?.prefixItems !== undefined ? (
+    typedSchema?.prefixItems !== undefined ? (
       <PrefixItems schema={schema} />
     ) : undefined
 
@@ -62,9 +65,9 @@ function createArray(props: Props): JSX.Element {
       <div style={{ marginTop: "var(--ifm-table-cell-padding)" }}>
         <QualifierMessages schema={schema} />
       </div>
-      {schema?.description !== undefined && (
+      {typedSchema?.description !== undefined && (
         <div style={{ marginTop: "var(--ifm-table-cell-padding)" }}>
-          {schema.description}
+          {typedSchema.description}
         </div>
       )}
     </>

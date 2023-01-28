@@ -1,4 +1,4 @@
-import { JSONSchema } from "../types"
+import type { JSONSchema, JSONSchemaNS } from "../types"
 
 // Utility functions to know which case we have
 export const isObjectType = (schema: JSONSchema) =>
@@ -18,12 +18,9 @@ export const isArrayType = (schema: JSONSchema) =>
     schema?.maxItems !== undefined ||
     schema?.additionalItems !== undefined ||
     schema?.contains !== undefined ||
-    // @ts-ignore To check later
-    schema?.minContains !== undefined ||
-    // @ts-ignore To check later
-    schema?.maxContains !== undefined ||
-    // @ts-ignore To check later
-    schema?.prefixItems !== undefined)
+    (schema as JSONSchemaNS.Array).minContains !== undefined ||
+    (schema as JSONSchemaNS.Array).maxContains !== undefined ||
+    (schema as JSONSchemaNS.Array).prefixItems !== undefined)
 
 export const isStringType = (schema: JSONSchema) =>
   typeof schema !== "boolean" &&

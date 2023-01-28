@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react"
-// @ts-ignore Not now ...
 import { Resolver } from "@stoplight/json-ref-resolver"
 
 import { CreateNodes, Collapsible } from "./components/index"

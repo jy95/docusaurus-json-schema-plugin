@@ -9,4 +9,9 @@ export type JSONSchema_Draft_07 = Draft_07
 export type JSONSchema_Draft_2019_09 = Draft_2019_09
 export type JSONSchema_Draft_2020_12 = Draft_2020_12
 
+// Namespace, In case I need to cast to a specific type (array / object)
+import type { JSONSchema as JSONSchemaNS } from "json-schema-typed"
+export { JSONSchemaNS }
+
 export type { TypeName as TypeName } from "json-schema-typed"
+export type { keywords } from "json-schema-typed"
