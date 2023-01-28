@@ -5,6 +5,7 @@ import Translate from "@docusaurus/Translate"
 import AdditionalProperties from "./AdditionalProperties"
 import Properties from "./Properties"
 import PatternProperties from "./PatternProperties"
+import PropertyNames from "./PropertyNames"
 
 import { QualifierMessages } from "../../utils/index"
 
@@ -29,6 +30,9 @@ function createObject(props: Props): JSX.Element {
     ) : undefined
   let patternProperties = schema?.patternProperties ? (
     <PatternProperties schema={schema} />
+  ) : undefined
+  let propertyNames = schema?.propertyNames ? (
+    <PropertyNames schema={schema} />
   ) : undefined
 
   // TODO
@@ -56,6 +60,7 @@ function createObject(props: Props): JSX.Element {
       </span>
       {properties !== undefined && <ul>{properties}</ul>}
       {patternProperties !== undefined && <ul>{patternProperties}</ul>}
+      {propertyNames !== undefined && <ul>{propertyNames}</ul>}
       {additionalProperties !== undefined && <ul>{additionalProperties}</ul>}
       <div style={{ marginTop: "var(--ifm-table-cell-padding)" }}>
         <QualifierMessages schema={schema} />
