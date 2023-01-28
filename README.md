@@ -50,9 +50,9 @@ npm install docusaurus-json-schema-plugin --prefer-dedupe
 
 #### API
 
-| Property        | Type          | Required  | Note                     |
-|-----------------|---------------|-----------|--------------------------|
-| schema          | JSONSchema7   | Mandatory | JSON Schema Draft-07     |
+| Property        | Type          | Required  | Note                                                    |
+|-----------------|---------------|-----------|---------------------------------------------------------|
+| schema          | JSONSchema    | Mandatory | JSON Schema Draft-07 / Draft 2019-09 / Draft 2020-12    |
 | resolverOptions | IResolverOpts | Optional  | To resolve your $ref (by default, only inline references will be dereferenced). More info on [@stoplight/json-ref-resolver](https://github.com/stoplightio/json-ref-resolver)  |
 
 #### Example 

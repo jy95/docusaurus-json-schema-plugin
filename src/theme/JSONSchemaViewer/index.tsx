@@ -8,7 +8,8 @@ import type { JSONSchema7 } from "json-schema"
 import type { IResolverOpts } from "@stoplight/json-ref-resolver/types"
 
 export type Props = {
-  schema: JSONSchema7
+  // The schema to use
+  schema: unknown
   // To customize the ref resolving
   resolverOptions?: IResolverOpts
   [x: string]: any
