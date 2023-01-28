@@ -1,45 +1,45 @@
 .schemaItem {
-    list-style: none;
-    position: relative;
-    margin: 0 !important;
-    padding: 5px 0 5px 1rem;
-    border-left: thin solid var(--ifm-color-gray-500) !important;
+  list-style: none;
+  position: relative;
+  margin: 0 !important;
+  padding: 5px 0 5px 1rem;
+  border-left: thin solid var(--ifm-color-gray-500) !important;
 }
 
 .schemaItem:hover {
-    background-color: var(--ifm-menu-color-background-active);
+  background-color: var(--ifm-menu-color-background-active);
 }
 
 .schemaItem:focus {
-    background-color: var(--ifm-menu-color-background-active);
+  background-color: var(--ifm-menu-color-background-active);
 }
 
-[class^=schemaItem]:before {
-    border-bottom: thin solid var(--ifm-color-gray-500);
-    content: "";
-    display: inline-block;
-    height: .5rem;
-    left: 0;
-    position: absolute;
-    top: 10px;
-    vertical-align: top;
-    width: .7rem
+[class^="schemaItem"]:before {
+  border-bottom: thin solid var(--ifm-color-gray-500);
+  content: "";
+  display: inline-block;
+  height: 0.5rem;
+  left: 0;
+  position: absolute;
+  top: 10px;
+  vertical-align: top;
+  width: 0.7rem;
 }
 
 .schemaName {
-    opacity: 0.6;
+  opacity: 0.6;
 }
 
 .required {
-    font-size: var(--ifm-code-font-size);
-    color: var(--ifm-color-danger);
+  font-size: var(--ifm-code-font-size);
+  color: var(--ifm-color-danger);
 }
 
 .deprecated {
-    font-size: var(--ifm-code-font-size);
-    color: var(--ifm-color-warning);
+  font-size: var(--ifm-code-font-size);
+  color: var(--ifm-color-warning);
 }
 
 .strikethrough {
-    text-decoration: line-through;
+  text-decoration: line-through;
 }
