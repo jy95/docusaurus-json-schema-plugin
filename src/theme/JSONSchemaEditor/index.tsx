@@ -39,6 +39,7 @@ function JSONSchemaEditorInner(props: Props): JSX.Element {
             // Assume it is a JSONSchema 7 by default
             (schema as JSONSchema7)["$id"] ||
             "https://docusaurus.io/json-viewer/schema.json",
+          fileMatch: ["*"], // associate with our model
           schema: schema,
         },
       ],
