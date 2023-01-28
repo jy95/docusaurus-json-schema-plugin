@@ -8,10 +8,10 @@ import PrefixItems from "./PrefixItems"
 
 import { QualifierMessages } from "../../utils/index"
 
-import type { JSONSchema7 } from "json-schema"
+import type { JSONSchema, JSONSchemaNS } from "../../types"
 
 type Props = {
-  schema: JSONSchema7
+  schema: JSONSchema
   [x: string]: any
 }
 
@@ -20,17 +20,23 @@ type Props = {
 function createArray(props: Props): JSX.Element {
   const { schema } = props
 
+  let typedSchema = schema as JSONSchemaNS.Array
+
+  if (typeof typedSchema === "boolean") {
+    return <></>
+  }
+
   let items =
-    schema?.items !== undefined ? <Items schema={schema} /> : undefined
+    typedSchema?.items !== undefined ? <Items schema={schema} /> : undefined
   let contains =
-    schema?.contains !== undefined ? <Contains schema={schema} /> : undefined
+    typedSchema?.contains !== undefined ? (
+      <Contains schema={schema} />
+    ) : undefined
   let prefixItems =
-    /* @ts-ignore Draft 2020-12 */
-    schema?.prefixItems !== undefined ? (
+    typedSchema?.prefixItems !== undefined ? (
       <PrefixItems schema={schema} />
     ) : undefined
 
-  // TODO
   return (
     <>
       <strong>
@@ -59,9 +65,9 @@ function createArray(props: Props): JSX.Element {
       <div style={{ marginTop: "var(--ifm-table-cell-padding)" }}>
         <QualifierMessages schema={schema} />
       </div>
-      {schema?.description !== undefined && (
+      {typedSchema?.description !== undefined && (
         <div style={{ marginTop: "var(--ifm-table-cell-padding)" }}>
-          {schema.description}
+          {typedSchema.description}
         </div>
       )}
     </>

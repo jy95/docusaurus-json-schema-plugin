@@ -9,15 +9,19 @@ import PropertyNames from "./PropertyNames"
 
 import { QualifierMessages } from "../../utils/index"
 
-import type { JSONSchema7 } from "json-schema"
+import type { JSONSchema } from "../../types"
 
 type Props = {
-  schema: JSONSchema7
+  schema: JSONSchema
   [x: string]: any
 }
 
 function createObject(props: Props): JSX.Element {
   const { schema } = props
+
+  if (typeof schema === "boolean") {
+    return <></>
+  }
 
   let additionalProperties =
     schema?.additionalProperties !== undefined &&
@@ -35,7 +39,6 @@ function createObject(props: Props): JSX.Element {
     <PropertyNames schema={schema} />
   ) : undefined
 
-  // TODO
   return (
     <>
       <strong>

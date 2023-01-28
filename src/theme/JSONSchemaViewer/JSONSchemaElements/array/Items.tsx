@@ -3,16 +3,31 @@ import Translate from "@docusaurus/Translate"
 
 import { CreateEdge } from "../../components/index"
 
-import type { JSONSchema7 } from "json-schema"
+import type { JSONSchema, JSONSchemaNS } from "../../types"
 
 type Props = {
   [x: string]: any
-  schema: JSONSchema7
+  schema: JSONSchema
 }
 
 function createItems(props: Props): JSX.Element {
   const { schema } = props
-  let items = schema.items!
+
+  let typedSchema = schema as JSONSchemaNS.Array
+
+  if (
+    typeof typedSchema === "boolean" ||
+    typeof typedSchema?.items === "boolean"
+  ) {
+    return <></>
+  }
+
+  let items = typedSchema.items!
+
+  // Unlikely but fail first
+  if (typeof items === "boolean") {
+    return <></>
+  }
 
   if (Array.isArray(items)) {
     let minimal = items.length
@@ -36,7 +51,8 @@ function createItems(props: Props): JSX.Element {
               }
               schema={val}
               required={
-                schema?.minItems !== undefined && schema?.minItems >= minimal
+                typedSchema?.minItems !== undefined &&
+                typedSchema?.minItems >= minimal
               }
             />
           )
@@ -45,6 +61,8 @@ function createItems(props: Props): JSX.Element {
     )
   } else {
     // singe items (most common case)
+    let typedItem = items as JSONSchema
+
     return (
       <CreateEdge
         key={"array_items"}
@@ -59,8 +77,10 @@ function createItems(props: Props): JSX.Element {
             </Translate>
           </code>
         }
-        schema={items}
-        required={schema?.minItems !== undefined && schema?.minItems > 0}
+        schema={typedItem}
+        required={
+          typedSchema?.minItems !== undefined && typedSchema?.minItems > 0
+        }
       />
     )
   }

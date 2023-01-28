@@ -2,16 +2,20 @@ import React from "react"
 
 import { CreateEdge } from "../../components/index"
 
-import type { JSONSchema7 } from "json-schema"
+import type { JSONSchema } from "../../types"
 
 type Props = {
-  schema: JSONSchema7
+  schema: JSONSchema
   [x: string]: any
 }
 
 // Generate properties
 function createProperties(props: Props): JSX.Element {
   const { schema } = props
+
+  if (typeof schema === "boolean") {
+    return <></>
+  }
 
   return (
     <>

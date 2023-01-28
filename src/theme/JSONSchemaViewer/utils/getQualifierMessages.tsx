@@ -3,10 +3,10 @@ import React from "react"
 import Translate from "@docusaurus/Translate"
 import CodeBlock from "@theme-original/CodeBlock"
 
-import type { JSONSchema7Type, JSONSchema7 } from "json-schema"
+import type { JSONSchema, JSONSchemaNS } from "../types"
 
 // To print all JSONSchema7Type
-function printSchemaType(obj: JSONSchema7Type): JSX.Element {
+function printSchemaType(obj: unknown): JSX.Element {
   // deal with simple types first
   if (["string", "number", "bigint", "boolean"].includes(typeof obj)) {
     return <code>{obj}</code>
@@ -17,13 +17,7 @@ function printSchemaType(obj: JSONSchema7Type): JSX.Element {
 }
 
 type Props = {
-  schema?:
-    | boolean
-    | (JSONSchema7 & {
-        // Draft 2019-09 attributes
-        minContains?: number
-        maxContains?: number
-      })
+  schema?: JSONSchema
 }
 
 // The heart of the plugin : Display human friendly messages
@@ -270,16 +264,21 @@ function QualifierMessages(props: Props): null | JSX.Element {
   }
 
   // minContains / maxContains
-  if (schema?.minContains !== undefined || schema?.maxContains !== undefined) {
+  let typedArraySchema = schema as JSONSchemaNS.Array
+  if (
+    typedArraySchema?.minContains !== undefined ||
+    typedArraySchema?.maxContains !== undefined
+  ) {
     let minAndMax =
-      schema?.minContains !== undefined && schema?.maxContains !== undefined
+      typedArraySchema?.minContains !== undefined &&
+      typedArraySchema?.maxContains !== undefined
 
     result.push(
       <div
         key={
           minAndMax
             ? "minContainsAndmaxContains"
-            : schema?.minContains !== undefined
+            : typedArraySchema?.minContains !== undefined
             ? "minContains"
             : "maxContains"
         }
@@ -294,12 +293,12 @@ function QualifierMessages(props: Props): null | JSX.Element {
           </Translate>
         </strong>
         &nbsp;
-        {schema?.minContains !== undefined && (
+        {typedArraySchema?.minContains !== undefined && (
           <code>
             <Translate
               values={{
                 id: "json-schema.keywords.minContains",
-                count: schema.minContains,
+                count: typedArraySchema.minContains,
               }}
             >
               {"at least {count} valid item(s)"}
@@ -318,12 +317,12 @@ function QualifierMessages(props: Props): null | JSX.Element {
             </Translate>{" "}
           </>
         )}
-        {schema?.maxContains !== undefined && (
+        {typedArraySchema?.maxContains !== undefined && (
           <code>
             <Translate
               values={{
                 id: "json-schema.keywords.maxContains",
-                count: schema.maxContains,
+                count: typedArraySchema.maxContains,
               }}
             >
               {"at most {count} valid item(s)"}
