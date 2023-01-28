@@ -11,9 +11,7 @@ const features = [
     title: "JSON Schema Viewer / Editor",
     imageUrl: "img/undraw_code_review.svg",
     description: (
-      <>
-        Explore your Draft 7 JSON Schema directly from your Docusaurus website.
-      </>
+      <>Explore your JSON Schema directly from your Docusaurus website.</>
     ),
   },
   {
@@ -78,7 +76,7 @@ function Home() {
                 "button button--outline button--secondary button--lg",
                 styles.getStarted
               )}
-              to={useBaseUrl("docs/")}
+              to={useBaseUrl("docs/demo/")}
             >
               Get Started
             </Link>

@@ -28,7 +28,9 @@ function JSONSchemaInnerViewer(props: InnerViewerProperties): JSX.Element {
   const { schema } = props
   // Title of the schema, for user friendliness
   const title =
-    (typeof schema !== "boolean" && schema?.title !== undefined) || "Schema"
+    typeof schema !== "boolean" && schema?.title !== undefined
+      ? schema.title
+      : "Schema"
   return (
     <Collapsible
       summary={<strong>{title}</strong>}
@@ -72,5 +74,4 @@ export default function JSONSchemaViewer(props: Props): JSX.Element {
   } else {
     return <JSONSchemaInnerViewer schema={resolvedSchema} />
   }
-  //return <JSONSchemaInnerViewer schema={originalSchema} />
 }
