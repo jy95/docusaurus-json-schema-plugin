@@ -3,15 +3,20 @@ import Translate from "@docusaurus/Translate"
 
 import { CreateEdge } from "../../components/index"
 
-import type { JSONSchema7 } from "json-schema"
+import type { JSONSchema } from "../../types"
 
 type Props = {
-  schema: JSONSchema7
+  schema: JSONSchema
   [x: string]: any
 }
 
 function createAdditionalProperties(props: Props): JSX.Element {
   const { schema } = props
+
+  if (typeof schema === "boolean") {
+    return <></>
+  }
+
   let typedSchema = schema.additionalProperties!
 
   // don't want to display something in boolean cases, at least from now ...

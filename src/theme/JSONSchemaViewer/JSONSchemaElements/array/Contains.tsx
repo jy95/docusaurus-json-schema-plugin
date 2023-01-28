@@ -3,19 +3,20 @@ import Translate from "@docusaurus/Translate"
 
 import { CreateEdge } from "../../components/index"
 
-import type { JSONSchema7 } from "json-schema"
+import type { JSONSchema } from "../../types"
 
 type Props = {
   [x: string]: any
-  schema: JSONSchema7 & {
-    // Draft 2019-09 attributes
-    minContains?: number
-    maxContains?: number
-  }
+  schema: JSONSchema
 }
 
 function createContains(props: Props): JSX.Element {
   const { schema } = props
+
+  if (typeof schema === "boolean") {
+    return <></>
+  }
+
   let item = schema.contains!
 
   return (
@@ -33,6 +34,7 @@ function createContains(props: Props): JSX.Element {
         </code>
       }
       schema={item}
+      // @ts-ignore Check that later
       required={schema?.minContains !== undefined && schema.minContains > 0}
     />
   )

@@ -4,21 +4,26 @@ import Translate from "@docusaurus/Translate"
 
 import { QualifierMessages, isNumeric, isStringType } from "../utils/index"
 
-import type { JSONSchema7 } from "json-schema"
+import type { JSONSchema } from "../types"
 
 type Props = {
   [x: string]: any
-  schema: JSONSchema7
+  schema: JSONSchema
 }
 
 // Accurately identify the type
-function detectType(schema: JSONSchema7): string {
+function detectType(schema: JSONSchema): string {
+  // Fall fail over
+  if (typeof schema === "boolean") {
+    return "unknown"
+  }
+
   let providedType = Array.isArray(schema?.type)
     ? [...new Set(schema.type)].join(" OR ")
-    : schema?.type
+    : schema?.type!
 
   if (providedType !== undefined) {
-    return providedType
+    return providedType as string
   }
 
   if (isStringType(schema)) {
@@ -37,6 +42,12 @@ function detectType(schema: JSONSchema7): string {
 // In short : integer / number / boolean / null
 function createPrimitive(props: Props) {
   const { schema } = props
+
+  // Fast fail over
+  if (typeof schema === "boolean") {
+    return <></>
+  }
+
   let type = detectType(schema)
   let friendly_type = schema?.format ? `${type} (${schema.format})` : type
 

@@ -8,10 +8,10 @@ import PrefixItems from "./PrefixItems"
 
 import { QualifierMessages } from "../../utils/index"
 
-import type { JSONSchema7 } from "json-schema"
+import type { JSONSchema } from "../../types"
 
 type Props = {
-  schema: JSONSchema7
+  schema: JSONSchema
   [x: string]: any
 }
 
@@ -19,6 +19,10 @@ type Props = {
 
 function createArray(props: Props): JSX.Element {
   const { schema } = props
+
+  if (typeof schema === "boolean") {
+    return <></>
+  }
 
   let items =
     schema?.items !== undefined ? <Items schema={schema} /> : undefined
@@ -30,7 +34,6 @@ function createArray(props: Props): JSX.Element {
       <PrefixItems schema={schema} />
     ) : undefined
 
-  // TODO
   return (
     <>
       <strong>

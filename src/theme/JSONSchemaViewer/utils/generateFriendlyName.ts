@@ -1,11 +1,11 @@
 // Utility functions to know which case we have
 import { isArrayType, isNumeric, isObjectType, isStringType } from "./index"
 
-import type { JSONSchema7Definition, JSONSchema7TypeName } from "json-schema"
+import type { JSONSchema, TypeName } from "../types"
 
 // generate a friendly name for the schema
 // It has to cover nasty cases like omit the "type" that usually helps to know what we have here
-function generateFriendlyName(schema: JSONSchema7Definition): string {
+function generateFriendlyName(schema: JSONSchema): string {
   // unlikely at this point but technically possible
   if (typeof schema === "boolean") {
     return "boolean"
@@ -29,7 +29,7 @@ function generateFriendlyName(schema: JSONSchema7Definition): string {
   if (isNumeric(schema)) {
     // if "type" is indicated, use it like that
     if (schema?.type !== undefined && !Array.isArray(schema?.type)) {
-      return schema?.type
+      return schema?.type as string
     }
     // Otherwise, assume it is "number"
     return "number"
@@ -43,11 +43,13 @@ function generateFriendlyName(schema: JSONSchema7Definition): string {
   // One of the common types around the world
   if (isArrayType(schema)) {
     // Items property give the type of the array, when present
-    if (schema?.items !== undefined) {
+    if (schema?.items !== undefined && typeof schema?.items !== "boolean") {
       const linkWord = "OR"
-      const elements = (
-        Array.isArray(schema.items) ? schema.items : [schema.items]
-      ).map((subSchema) => generateFriendlyName(subSchema))
+
+      let list = Array.isArray(schema.items)
+        ? schema.items
+        : ([schema.items] as JSONSchema[])
+      const elements = list.map((subSchema) => generateFriendlyName(subSchema))
       const uniqueItems = [...new Set(elements)]
 
       return `(${uniqueItems.join(` ${linkWord} `)})[]`
@@ -72,7 +74,7 @@ function generateFriendlyName(schema: JSONSchema7Definition): string {
     const elements = (
       schema?.anyOf ||
       schema?.oneOf ||
-      (schema?.allOf as JSONSchema7Definition[])
+      (schema?.allOf as JSONSchema[])
     ).map((subSchema) => generateFriendlyName(subSchema))
     const uniqueItems = [...new Set(elements)]
 
@@ -82,10 +84,10 @@ function generateFriendlyName(schema: JSONSchema7Definition): string {
   // When multiple types are provided, resolution becomes hard to understand
   // I will just concat the result without duplicate
   if (Array.isArray(schema?.type)) {
-    return [...new Set(schema.type as JSONSchema7TypeName[])].join(" OR ")
+    return [...new Set(schema.type as TypeName[])].join(" OR ")
   } else {
     // Default return the type or "unknown" as fallback
-    return schema?.type || "unknown"
+    return (schema?.type as TypeName | undefined) || "unknown"
   }
 }
 

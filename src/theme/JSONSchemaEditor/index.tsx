@@ -3,7 +3,7 @@ import MonacoEditor from "react-monaco-editor"
 import BrowserOnly from "@docusaurus/BrowserOnly"
 import ErrorBoundary from "@docusaurus/ErrorBoundary"
 
-import type { JSONSchema7 } from "json-schema"
+import type { JSONSchema as Draft_07 } from "json-schema-typed/draft-07"
 import type { EditorWillMount, MonacoEditorProps } from "react-monaco-editor"
 import type { Props as ErrorProps } from "@theme/Error"
 
@@ -31,14 +31,18 @@ function JSONSchemaEditorInner(props: Props): JSX.Element {
   const { schema, ...editorProps } = props
 
   const editorWillMount: EditorWillMount = (monaco) => {
+    // Assume it is a JSONSchema 7 by default
+    let typedSchema = schema as Draft_07
+    let schemaId =
+      typeof typedSchema !== "boolean" && typedSchema.$id !== undefined
+        ? typedSchema.$id
+        : "https://docusaurus.io/json-viewer/schema.json"
+
     monaco.languages.json.jsonDefaults.setDiagnosticsOptions({
       validate: true,
       schemas: [
         {
-          uri:
-            // Assume it is a JSONSchema 7 by default
-            (schema as JSONSchema7)["$id"] ||
-            "https://docusaurus.io/json-viewer/schema.json",
+          uri: schemaId,
           fileMatch: ["*"], // associate with our model
           schema: schema,
         },

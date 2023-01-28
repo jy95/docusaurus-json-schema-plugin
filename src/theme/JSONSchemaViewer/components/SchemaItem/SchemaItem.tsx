@@ -4,7 +4,7 @@ import Translate from "@docusaurus/Translate"
 import { Collapsible, CreateNodes } from "../index"
 import styles from "./styles.module.css"
 
-import type { JSONSchema7 } from "json-schema"
+import type { JSONSchema } from "../../types"
 
 type SchemaItemProps = {
   // name of the item (with styles when needed)
@@ -12,7 +12,7 @@ type SchemaItemProps = {
   // From generateFriendlyName function
   schemaName: string
   // Our schema
-  schema: JSONSchema7
+  schema: JSONSchema
   // Is it required
   required: boolean
 }

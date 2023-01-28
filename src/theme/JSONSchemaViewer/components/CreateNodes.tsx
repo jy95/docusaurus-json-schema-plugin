@@ -9,11 +9,11 @@ import {
 
 import { isArrayType, isObjectType, isSchemaComposition } from "../utils/index"
 
-import type { JSONSchema7Definition } from "json-schema"
+import type { JSONSchema } from "../types"
 
 type Props = {
   [x: string]: any
-  schema: JSONSchema7Definition
+  schema: JSONSchema
 }
 
 function createNodes(props: Props): JSX.Element {

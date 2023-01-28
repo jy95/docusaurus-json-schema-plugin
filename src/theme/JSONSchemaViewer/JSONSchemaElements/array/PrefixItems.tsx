@@ -3,19 +3,22 @@ import Translate from "@docusaurus/Translate"
 
 import { CreateEdge } from "../../components/index"
 
-import type { JSONSchema7, JSONSchema7Definition } from "json-schema"
+import type { JSONSchema } from "../../types"
 
 type Props = {
   [x: string]: any
-  schema: JSONSchema7 & {
-    // Draft 2020-12
-    prefixItems?: JSONSchema7Definition[]
-  }
+  schema: JSONSchema
 }
 
 function createPrefixItems(props: Props): JSX.Element {
   const { schema } = props
-  let items = schema.prefixItems!
+
+  if (typeof schema === "boolean") {
+    return <></>
+  }
+
+  // @ts-ignore Check that later
+  let items = schema.prefixItems! as JSONSchema[]
   let minimal = items.length
 
   // prefixItems is an array in any case

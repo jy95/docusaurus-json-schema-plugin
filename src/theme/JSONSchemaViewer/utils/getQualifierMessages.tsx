@@ -3,10 +3,10 @@ import React from "react"
 import Translate from "@docusaurus/Translate"
 import CodeBlock from "@theme-original/CodeBlock"
 
-import type { JSONSchema7Type, JSONSchema7 } from "json-schema"
+import type { JSONSchema } from "../types"
 
 // To print all JSONSchema7Type
-function printSchemaType(obj: JSONSchema7Type): JSX.Element {
+function printSchemaType(obj: unknown): JSX.Element {
   // deal with simple types first
   if (["string", "number", "bigint", "boolean"].includes(typeof obj)) {
     return <code>{obj}</code>
@@ -17,13 +17,7 @@ function printSchemaType(obj: JSONSchema7Type): JSX.Element {
 }
 
 type Props = {
-  schema?:
-    | boolean
-    | (JSONSchema7 & {
-        // Draft 2019-09 attributes
-        minContains?: number
-        maxContains?: number
-      })
+  schema?: JSONSchema
 }
 
 // The heart of the plugin : Display human friendly messages
@@ -270,8 +264,10 @@ function QualifierMessages(props: Props): null | JSX.Element {
   }
 
   // minContains / maxContains
+  // @ts-ignore Check that later
   if (schema?.minContains !== undefined || schema?.maxContains !== undefined) {
     let minAndMax =
+      // @ts-ignore Check that later
       schema?.minContains !== undefined && schema?.maxContains !== undefined
 
     result.push(
@@ -279,7 +275,8 @@ function QualifierMessages(props: Props): null | JSX.Element {
         key={
           minAndMax
             ? "minContainsAndmaxContains"
-            : schema?.minContains !== undefined
+            : // @ts-ignore Check that later
+            schema?.minContains !== undefined
             ? "minContains"
             : "maxContains"
         }
@@ -294,11 +291,13 @@ function QualifierMessages(props: Props): null | JSX.Element {
           </Translate>
         </strong>
         &nbsp;
+        {/* @ts-ignore Check that later */}
         {schema?.minContains !== undefined && (
           <code>
             <Translate
               values={{
                 id: "json-schema.keywords.minContains",
+                // @ts-ignore Check that later
                 count: schema.minContains,
               }}
             >
@@ -318,11 +317,13 @@ function QualifierMessages(props: Props): null | JSX.Element {
             </Translate>{" "}
           </>
         )}
+        {/* @ts-ignore Check that later */}
         {schema?.maxContains !== undefined && (
           <code>
             <Translate
               values={{
                 id: "json-schema.keywords.maxContains",
+                // @ts-ignore Check that later
                 count: schema.maxContains,
               }}
             >

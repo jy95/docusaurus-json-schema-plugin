@@ -6,10 +6,10 @@ import Tabs from "@theme-original/Tabs"
 
 import { CreateNodes } from "../../components/index"
 
-import type { JSONSchema7Definition } from "json-schema"
+import type { JSONSchema } from "../../types"
 
 type Props = {
-  schema: JSONSchema7Definition[]
+  schema: JSONSchema[] | readonly JSONSchema[]
   [x: string]: any
 }
 
