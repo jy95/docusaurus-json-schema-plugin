@@ -188,6 +188,22 @@ function QualifierMessages(props: Props): null | JSX.Element {
     )
   }
 
+  // No extra properties in object
+  if (schema?.additionalProperties === false) {
+    result.push(
+      <div key={"no-extra-properties"}>
+        🚨&nbsp;
+        <Translate
+          values={{
+            id: "json-schema.labels.noExtraProperties",
+          }}
+        >
+          {"No extra propertie(s) are authorized in this object"}
+        </Translate>
+      </div>
+    )
+  }
+
   // minItems / maxItems
   if (schema?.minItems !== undefined || schema?.maxItems !== undefined) {
     let minAndMax =
@@ -314,6 +330,22 @@ function QualifierMessages(props: Props): null | JSX.Element {
             </Translate>
           </code>
         )}
+      </div>
+    )
+  }
+
+  // No extra items in array
+  if (schema?.items === false || schema?.additionalItems === false) {
+    result.push(
+      <div key={"no-extra-items"}>
+        🚨&nbsp;
+        <Translate
+          values={{
+            id: "json-schema.labels.noExtraItems",
+          }}
+        >
+          {"No extra item(s) are authorized in this array"}
+        </Translate>
       </div>
     )
   }

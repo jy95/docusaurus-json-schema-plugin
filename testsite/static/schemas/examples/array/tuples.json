@@ -1,6 +1,7 @@
 {
   "type": "array",
   "description": "Represent a street address such as ['1600','Pennsylvania','Avenue','NW']",
+  "items": false,
   "prefixItems": [
     { "type": "number", "description": "The address number" },
     { "type": "string", "description": "The name of the street" },
