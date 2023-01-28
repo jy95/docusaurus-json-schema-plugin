@@ -17,7 +17,7 @@ function oneOfSchema(props: Props): JSX.Element {
   const { schema } = props
 
   if (schema === undefined) {
-    ;<></>
+    return <></>
   }
 
   let typeOf = "oneOf"

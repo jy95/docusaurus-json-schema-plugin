@@ -17,7 +17,7 @@ function anyOfSchema(props: Props): JSX.Element {
   const { schema } = props
 
   if (schema === undefined) {
-    ;<></>
+    return <></>
   }
 
   let typeOf = "anyOf"
