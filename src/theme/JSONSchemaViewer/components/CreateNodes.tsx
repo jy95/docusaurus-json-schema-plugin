@@ -24,25 +24,24 @@ function createNodes(props: Props): JSX.Element {
     return <></>
   }
 
-  // handle anyOf / allOf / oneOf / not
-  if (isSchemaComposition(schema)) {
-    return <SchemaComposition schema={schema} />
-  }
+  // Type Checks
+  const isArray = isArrayType(schema)
+  const isObject = isObjectType(schema)
+  const isComposition = isSchemaComposition(schema)
+  const isFallback = !isArray && !isObject && !isComposition
 
-  // handle array case
-  if (isArrayType(schema)) {
-    return <CreateArray schema={schema} />
-  }
-
-  // handle object case
-  if (isObjectType(schema)) {
-    return <CreateObject schema={schema} />
-  }
-
-  // Well from now; two situations
-  // 1. Either it is a primitive type left (string / integer / numeric /boolean / null)
-  // 2. Schema is probably invalid at this point and component won't do magic tricks
-  return <CreatePrimitive schema={schema} />
+  return (
+    <>
+      {/* handle array case */}
+      {isArray && <CreateArray schema={schema} />}
+      {/* handle object case */}
+      {isObject && <CreateObject schema={schema} />}
+      {/* handle anyOf / allOf / oneOf / not  */}
+      {isComposition && <SchemaComposition schema={schema} />}
+      {/* fallback, in case none of the previous lines match */}
+      {isFallback && <CreatePrimitive schema={schema} />}
+    </>
+  )
 }
 
 export default createNodes

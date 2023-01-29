@@ -7,6 +7,7 @@ export const isObjectType = (schema: JSONSchema) =>
     schema?.properties !== undefined ||
     schema?.additionalProperties !== undefined ||
     schema?.patternProperties !== undefined ||
+    schema?.propertyNames !== undefined ||
     schema?.minProperties !== undefined ||
     schema?.maxProperties !== undefined)
 
