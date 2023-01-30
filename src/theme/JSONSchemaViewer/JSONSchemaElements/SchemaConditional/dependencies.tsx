@@ -19,16 +19,46 @@ function Dependencies(props: Props): JSX.Element {
 
   let dependencies = schema?.dependencies!
 
-  // If the dependency value was an array, it would behave like dependentRequired
-  if (Array.isArray(dependencies)) {
-    // Beter be safe and use a restricted schema
-    let tweakedSchema = { dependentRequired: dependencies } as JSONSchema
-    return <DependentRequired schema={tweakedSchema} />
-  }
+  // Distinguish dependentRequired inside dependencies
+  const dependentRequired = Object.entries(dependencies)
+    // If the dependency value was an array, it would behave like dependentRequired
+    .filter(([_, subSchema]) => Array.isArray(subSchema))
+    .reduce((acc, [property, subSchema]) => {
+      acc[property] = subSchema as readonly string[]
+      return acc
+    }, {} as Record<string, string[] | readonly string[]>)
 
-  // if the dependency value was a schema, it would behave like dependentSchemas
-  let tweakedSchema = { dependentSchemas: dependencies } as JSONSchema
-  return <DependentSchemas schema={tweakedSchema} />
+  // Distinguish dependentSchemas inside dependencies
+  const dependentSchemas = Object.entries(dependencies)
+    // if the dependency value was a schema, it would behave like dependentSchemas
+    .filter(([_, subSchema]) => !Array.isArray(subSchema))
+    .reduce((acc, [property, subSchema]) => {
+      acc[property] = subSchema as JSONSchema
+      return acc
+    }, {} as Record<string, JSONSchema>)
+
+  return (
+    <>
+      {Object.keys(dependentRequired).length > 0 && (
+        <DependentRequired
+          schema={
+            {
+              dependentRequired: dependentRequired,
+            } as JSONSchema
+          }
+        />
+      )}
+      {Object.keys(dependentSchemas).length > 0 && (
+        <DependentSchemas
+          schema={
+            {
+              dependentSchemas: dependentSchemas,
+            } as JSONSchema
+          }
+        />
+      )}
+    </>
+  )
 }
 
 export default Dependencies
