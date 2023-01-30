@@ -3,7 +3,12 @@ import React from "react"
 import Translate from "@docusaurus/Translate"
 //import Details from "@theme-original/Details";
 
-import { IfElseThen, DependentRequired, DependentSchemas } from "./index"
+import {
+  IfElseThen,
+  DependentRequired,
+  DependentSchemas,
+  Dependencies,
+} from "./index"
 import { Collapsible } from "../../components/index"
 
 import type { JSONSchema, JSONSchemaNS } from "../../types"
@@ -28,7 +33,7 @@ function SchemaConditional(props: Props): JSX.Element {
     (schema as JSONSchemaNS.Object)?.dependentRequired !== undefined
   const isDependentSchemas =
     (schema as JSONSchemaNS.Object)?.dependentSchemas !== undefined
-  //const isDependenncies = schema?.dependencies !== undefined
+  const isDependencies = schema?.dependencies !== undefined
 
   return (
     <Collapsible
@@ -50,6 +55,8 @@ function SchemaConditional(props: Props): JSX.Element {
       {isDependentRequired && <DependentRequired schema={schema} />}
       {/* Handles dependentSchemas case */}
       {isDependentSchemas && <DependentSchemas schema={schema} />}
+      {/* Handles dependencies (deprecated) */}
+      {isDependencies && <Dependencies schema={schema} />}
     </Collapsible>
   )
 }
