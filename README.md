@@ -162,12 +162,8 @@ A few selected keywords are unsupported for the time being :
 
 | Specification   | keyword                   | Reason    |
 |-----------------|---------------------------|-----------|
-| [Draft 4](https://json-schema.org/specification-links.html#draft-4) | [dependencies](https://datatracker.ietf.org/doc/html/draft-fge-json-schema-validation-00#section-5.4.5) | Deprecated in [2019-09](https://json-schema.org/draft/2019-09/release-notes.html) in favour of dependentRequired / dependentSchemas - is it worthy to spend time on deprecated feature ? |
-| [Draft-07](https://json-schema.org/draft-07/json-schema-release-notes.html) | [if-then-else](https://json-schema.org/draft-07/json-schema-validation.html#rfc.section.6.6) | While quite interesting to have, it requires a proper thinking on how to make them human friendly |
 | [2019-09](https://json-schema.org/draft/2019-09/release-notes.html)          | [unevaluatedItems](https://json-schema.org/draft/2019-09/json-schema-core.html#rfc.section.9.3.1.3)      | Hard to understand for most people |
 | [2019-09](https://json-schema.org/draft/2019-09/release-notes.html)  | [unevaluatedProperties](https://json-schema.org/draft/2019-09/json-schema-core.html#rfc.section.9.3.2.4) | Hard to understand for most people  |
-| [2019-09](https://json-schema.org/draft/2019-09/release-notes.html)  | [dependentRequired](https://json-schema.org/draft/2019-09/json-schema-validation.html#rfc.section.6.5.4) | Not yet planned  |
-| [2019-09](https://json-schema.org/draft/2019-09/release-notes.html)  | [dependentSchemas](https://json-schema.org/draft/2019-09/json-schema-core.html#rfc.section.9.2.2.4) | Not yet planned  |
 
 If you wish to see them covered, consider to contribute to the project ;)
 
