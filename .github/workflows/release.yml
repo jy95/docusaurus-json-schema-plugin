@@ -9,6 +9,10 @@ on:
 jobs:
   release:
     name: Release
+    permissions:
+      pull-requests: write
+      actions: write
+      contents: write
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
