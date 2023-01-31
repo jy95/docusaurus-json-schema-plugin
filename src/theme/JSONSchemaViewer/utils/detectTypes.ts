@@ -46,3 +46,10 @@ export const isSchemaComposition = (schema: JSONSchema) =>
     schema?.anyOf !== undefined ||
     schema?.oneOf !== undefined ||
     schema?.not !== undefined)
+
+export const isSchemaConditional = (schema: JSONSchema) =>
+  typeof schema !== "boolean" &&
+  (schema?.if !== undefined ||
+    schema?.dependencies !== undefined ||
+    (schema as JSONSchemaNS.Object).dependentRequired !== undefined ||
+    (schema as JSONSchemaNS.Object).dependentSchemas !== undefined)

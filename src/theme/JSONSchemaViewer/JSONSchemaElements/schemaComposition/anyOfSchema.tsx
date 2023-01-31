@@ -9,16 +9,18 @@ import { CreateNodes } from "../../components/index"
 import type { JSONSchema } from "../../types"
 
 type Props = {
-  schema: JSONSchema[] | readonly JSONSchema[]
+  schema: JSONSchema
   [x: string]: any
 }
 
 function anyOfSchema(props: Props): JSX.Element {
   const { schema } = props
 
-  if (schema === undefined) {
+  if (typeof schema === "boolean") {
     return <></>
   }
+
+  let typedSchema = schema?.anyOf!
 
   let typeOf = "anyOf"
 
@@ -26,7 +28,7 @@ function anyOfSchema(props: Props): JSX.Element {
     <div>
       <span className="badge badge--info">{typeOf}</span>
       <Tabs>
-        {schema.map((compositeSchema, index) => {
+        {typedSchema.map((compositeSchema, index) => {
           const label =
             (typeof compositeSchema !== "boolean" && compositeSchema?.title) ||
             `${index + 1}`

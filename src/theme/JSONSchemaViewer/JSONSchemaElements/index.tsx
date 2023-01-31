@@ -1,6 +1,9 @@
 // Component to deal with oneOf / anyOf / allOf / not
 export { SchemaComposition } from "./schemaComposition/index"
 
+// Component to deal with if-then-else , dependentRequired , dependentSchemas , dependencies
+export { SchemaConditional } from "./SchemaConditional/index"
+
 // Component to deal with Object
 export { CreateObject } from "./object/index"
 

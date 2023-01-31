@@ -9,22 +9,23 @@ type Props = {
   [x: string]: any
 }
 
-function oneOfSchema(props: Props): JSX.Element {
+function NotSchema(props: Props): JSX.Element {
   const { schema } = props
 
-  if (schema === undefined) {
+  if (typeof schema === "boolean") {
     return <></>
   }
 
+  let typedSchema = schema?.not!
   let typeOf = "not"
 
   return (
     <div>
       <span className="badge badge--info">{typeOf}</span>
       <br />
-      <CreateNodes schema={schema} />
+      <CreateNodes schema={typedSchema} />
     </div>
   )
 }
 
-export default oneOfSchema
+export default NotSchema
