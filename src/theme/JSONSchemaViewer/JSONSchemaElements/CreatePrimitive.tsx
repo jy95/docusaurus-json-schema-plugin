@@ -2,7 +2,13 @@ import React from "react"
 
 import Translate from "@docusaurus/Translate"
 
-import { QualifierMessages, isNumeric, isStringType, isArrayType, isObjectType } from "../utils/index"
+import {
+  QualifierMessages,
+  isNumeric,
+  isStringType,
+  isArrayType,
+  isObjectType,
+} from "../utils/index"
 
 import type { JSONSchema } from "../types"
 
@@ -19,7 +25,9 @@ function detectType(schema: JSONSchema): string {
   }
 
   if (schema?.type !== undefined) {
-    return Array.isArray(schema?.type) ? [...new Set(schema.type)].join(" OR ") : schema.type as string;
+    return Array.isArray(schema?.type)
+      ? [...new Set(schema.type)].join(" OR ")
+      : (schema.type as string)
   }
 
   if (isArrayType(schema)) {

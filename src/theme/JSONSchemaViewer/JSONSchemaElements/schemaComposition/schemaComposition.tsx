@@ -17,24 +17,14 @@ function SchemaComposition(props: Props): JSX.Element {
     return <></>
   }
 
-  if (schema?.oneOf !== undefined) {
-    return <OneOfSchema schema={schema.oneOf} />
-  }
-
-  if (schema?.anyOf !== undefined) {
-    return <AnyOfSchema schema={schema.anyOf} />
-  }
-
-  if (schema?.allOf !== undefined) {
-    return <AllOfSchema schema={schema.allOf} />
-  }
-
-  if (schema?.not !== undefined) {
-    return NotSchema({ schema: schema.not })
-  }
-
-  // Default situation
-  return <></>
+  return (
+    <>
+      {schema?.oneOf !== undefined && <OneOfSchema schema={schema} />}
+      {schema?.anyOf !== undefined && <AnyOfSchema schema={schema} />}
+      {schema?.allOf !== undefined && <AllOfSchema schema={schema} />}
+      {schema?.not !== undefined && <NotSchema schema={schema} />}
+    </>
+  )
 }
 
 export default SchemaComposition
