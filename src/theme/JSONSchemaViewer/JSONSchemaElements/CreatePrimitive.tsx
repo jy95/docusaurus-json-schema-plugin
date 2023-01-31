@@ -2,7 +2,7 @@ import React from "react"
 
 import Translate from "@docusaurus/Translate"
 
-import { QualifierMessages, isNumeric, isStringType } from "../utils/index"
+import { QualifierMessages, isNumeric, isStringType, isArrayType, isObjectType } from "../utils/index"
 
 import type { JSONSchema } from "../types"
 
@@ -18,12 +18,16 @@ function detectType(schema: JSONSchema): string {
     return "unknown"
   }
 
-  let providedType = Array.isArray(schema?.type)
-    ? [...new Set(schema.type)].join(" OR ")
-    : schema?.type!
+  if (schema?.type !== undefined) {
+    return Array.isArray(schema?.type) ? [...new Set(schema.type)].join(" OR ") : schema.type as string;
+  }
 
-  if (providedType !== undefined) {
-    return providedType as string
+  if (isArrayType(schema)) {
+    return "array"
+  }
+
+  if (isObjectType(schema)) {
+    return "object"
   }
 
   if (isStringType(schema)) {
