@@ -26,63 +26,82 @@ function IfElseThen(props: Props): JSX.Element {
   const hasThen = schema.then !== undefined
   const hasElse = schema.else !== undefined
 
+  // values for Tabs
+  let values = [
+    {
+      value: "schema_if",
+      label: (
+        <strong>
+          <Translate
+            values={{
+              id: "json-schema.keywords.if",
+            }}
+          >
+            {"If"}
+          </Translate>
+        </strong>
+      ),
+    },
+    hasThen && {
+      value: "schema_then",
+      label: (
+        <strong>
+          <Translate
+            values={{
+              id: "json-schema.keywords.then",
+            }}
+          >
+            {"Then"}
+          </Translate>
+        </strong>
+      ),
+    },
+    hasElse && {
+      value: "schema_else",
+      label: (
+        <strong>
+          <Translate
+            values={{
+              id: "json-schema.keywords.else",
+            }}
+          >
+            {"Else"}
+          </Translate>
+        </strong>
+      ),
+    },
+  ].filter((v) => typeof v !== "boolean") as {
+    value: "schema_if" | "schema_then" | "schema_else"
+    label: JSX.Element
+  }[]
+
+  // Render appropriate case
+  function renderSwitch(
+    value: "schema_if" | "schema_then" | "schema_else",
+    schema: JSONSchema
+  ) {
+    // fast fallback
+    if (typeof schema === "boolean") {
+      return <></>
+    }
+
+    switch (value) {
+      case "schema_if":
+        return <CreateNodes schema={schema?.if!} />
+      case "schema_then":
+        return <CreateNodes schema={schema?.then!} />
+      case "schema_else":
+        return <CreateNodes schema={schema?.else!} />
+      default:
+        return <></>
+    }
+  }
+
   return (
-    <Tabs>
-      <TabItem
-        key={"schema_if"}
-        value={"schema_if"}
-        label={
-          <strong>
-            <Translate
-              values={{
-                id: "json-schema.keywords.if",
-              }}
-            >
-              {"If"}
-            </Translate>
-          </strong>
-        }
-      >
-        <CreateNodes schema={schema.if!} />
-      </TabItem>
-      {hasThen && (
-        <TabItem
-          key={"schema_then"}
-          value={"schema_then"}
-          label={
-            <strong>
-              <Translate
-                values={{
-                  id: "json-schema.keywords.then",
-                }}
-              >
-                {"Then"}
-              </Translate>
-            </strong>
-          }
-        >
-          <CreateNodes schema={schema.then!} />
-        </TabItem>
-      )}
-      {hasElse && (
-        <TabItem
-          key={"schema_else"}
-          value={"schema_else"}
-          label={
-            <strong>
-              <Translate
-                values={{
-                  id: "json-schema.keywords.else",
-                }}
-              >
-                {"Else"}
-              </Translate>
-            </strong>
-          }
-        >
-          <CreateNodes schema={schema.else!} />
-        </TabItem>
-      )}
+    <Tabs defaultValue="schema_if" values={values}>
+      {values.map((val) => (
+        <TabItem value={val.value} key={val.value}>{renderSwitch(val.value, schema)}</TabItem>
+      ))}
     </Tabs>
   )
 }
