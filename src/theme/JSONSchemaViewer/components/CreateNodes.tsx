@@ -35,7 +35,7 @@ function createNodes(props: Props): JSX.Element {
   const isObject = isObjectType(schema)
   const isComposition = isSchemaComposition(schema)
   const isConditional = isSchemaConditional(schema)
-  const isFallback = !isArray && !isObject && !isComposition
+  const isFallback = !isArray && !isObject && !isComposition && !isConditional
 
   return (
     <>
@@ -45,10 +45,10 @@ function createNodes(props: Props): JSX.Element {
       {isObject && <CreateObject schema={schema} />}
       {/* handle anyOf / allOf / oneOf / not  */}
       {isComposition && <SchemaComposition schema={schema} />}
-      {/* fallback, in case none of the previous lines match */}
-      {isFallback && <CreatePrimitive schema={schema} />}
       {/* Conditional part of the schema */}
       {isConditional && <SchemaConditional schema={schema} />}
+      {/* fallback, in case none of the previous lines match */}
+      {isFallback && <CreatePrimitive schema={schema} />}
     </>
   )
 }

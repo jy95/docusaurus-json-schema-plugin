@@ -100,7 +100,9 @@ function IfElseThen(props: Props): JSX.Element {
   return (
     <Tabs defaultValue="schema_if" values={values}>
       {values.map((val) => (
-        <TabItem value={val.value} key={val.value}>{renderSwitch(val.value, schema)}</TabItem>
+        <TabItem value={val.value} key={val.value}>
+          {renderSwitch(val.value, schema)}
+        </TabItem>
       ))}
     </Tabs>
   )

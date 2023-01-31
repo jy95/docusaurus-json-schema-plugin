@@ -48,6 +48,9 @@ function SchemaConditional(props: Props): JSX.Element {
           </Translate>
         </strong>
       }
+      detailsProps={{
+        open: true,
+      }}
     >
       {/* Handles if-then-else case */}
       {isIfThenElse && <IfElseThen schema={schema} />}
