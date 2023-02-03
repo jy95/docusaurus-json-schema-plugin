@@ -166,10 +166,14 @@ npm run swizzle docusaurus-json-schema-plugin [component name]
 As you might have guessed, supporting several versions is a challenging topic.  
 A few selected keywords are unsupported for the time being :
 
-| Specification   | keyword                   | Reason    |
-|-----------------|---------------------------|-----------|
+| Specification   | keyword                   | Main Reason    |
+|-----------------|---------------------------|----------------|
 | [2019-09](https://json-schema.org/draft/2019-09/release-notes.html)          | [unevaluatedItems](https://json-schema.org/draft/2019-09/json-schema-core.html#rfc.section.9.3.1.3)      | Hard to understand for most people |
 | [2019-09](https://json-schema.org/draft/2019-09/release-notes.html)  | [unevaluatedProperties](https://json-schema.org/draft/2019-09/json-schema-core.html#rfc.section.9.3.2.4) | Hard to understand for most people  |
+| [2019-09](https://json-schema.org/draft/2019-09/release-notes.html)  | [$recursiveRef](https://json-schema.org/draft/2019-09/json-schema-core.html#recursive-ref) | Recursive schema are not on the roadmap yet  |
+| [2019-09](https://json-schema.org/draft/2019-09/release-notes.html)  | [$recursiveAnchor](https://json-schema.org/draft/2019-09/json-schema-core.html#recursive-ref) | Recursive schema are not on the roadmap yet  |
+| [2020-12](https://json-schema.org/draft/2020-12/release-notes.html)  | [$dynamicRef](https://json-schema.org/draft/2020-12/release-notes.html#dynamicref-and-dynamicanchor) | Recursive schema are not on the roadmap yet  |
+| [2020-12](https://json-schema.org/draft/2020-12/release-notes.html)  | [$dynamicAnchor](https://json-schema.org/draft/2020-12/release-notes.html#dynamicref-and-dynamicanchor) | Recursive schema are not on the roadmap yet  |
 
 If you wish to see them covered, consider to contribute to the project ;)
 

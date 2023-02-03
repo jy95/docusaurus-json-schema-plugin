@@ -28,6 +28,11 @@ module.exports = {
           position: "left",
         },
         {
+          to: "playground",
+          label: "Playground",
+          position: "left",
+        },
+        {
           label: "Github",
           position: "right",
           to: "https://github.com/jy95/docusaurus-json-schema-plugin",

@@ -34,7 +34,7 @@ function JSONSchemaEditorInner(props: Props): JSX.Element {
     // Assume it is a JSONSchema 7 by default
     let typedSchema = schema as Draft_07
     let schemaId =
-      typeof typedSchema !== "boolean" && typedSchema.$id !== undefined
+      typeof typedSchema !== "boolean" && typedSchema?.$id !== undefined
         ? typedSchema.$id
         : "https://docusaurus.io/json-viewer/schema.json"
 
