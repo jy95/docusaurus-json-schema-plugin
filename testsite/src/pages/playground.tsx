@@ -3,19 +3,16 @@ import Layout from "@theme/Layout"
 import { useColorMode } from "@docusaurus/theme-common"
 import BrowserOnly from "@docusaurus/BrowserOnly"
 
-// You might say : Why the draft-07 in the playground ? Well several reasons :
-// 1. Monaco editor can understand that better & suggest autocomplete
-// 2. Monaco editor didn't at this time fully integrate 2020-12
-// 3. AJV uses by default Draft-07
-import ValidJSONSchema from "@site/static/specs/draft-07-schema.json"
-
-// Default example to illustrate stuff
+// Default example to illustrate stuff (it is Draft-07 for info)
 import DefaultSchema from "@site/static/schemas/examples/object/additionalProperties.json"
 
 function PlaygroundInner(): JSX.Element {
-  let [userSchema, setUserSchema] = React.useState(
-    DefaultSchema as { [x: string]: any }
-  )
+  let [userSchema, setUserSchema] = React.useState({
+    // To help monaco editor for JSON Schema definition
+    $schema: "http://json-schema.org/draft-07/schema",
+    // The demo schema
+    ...DefaultSchema,
+  } as { [x: string]: any })
   const { colorMode } = useColorMode()
 
   const JSONSchemaViewer = require("@theme/JSONSchemaViewer").default
@@ -28,7 +25,8 @@ function PlaygroundInner(): JSX.Element {
           <h1>Schema</h1>
           <JSONSchemaEditor
             value={JSON.stringify(userSchema, null, "\t")}
-            schema={ValidJSONSchema}
+            // For some reason, monaco editor can ignore empty schema when $schema is provided
+            schema={{}}
             onChange={(newValue: string) => {
               try {
                 let newSchema = JSON.parse(newValue)
