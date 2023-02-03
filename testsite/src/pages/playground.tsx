@@ -9,10 +9,13 @@ import BrowserOnly from "@docusaurus/BrowserOnly"
 // 3. AJV uses by default Draft-07
 import ValidJSONSchema from "@site/static/specs/draft-07-schema.json"
 
+// Default example to illustrate stuff
+import DefaultSchema from "@site/static/schemas/examples/object/additionalProperties.json"
+
 function PlaygroundInner(): JSX.Element {
-  let [userSchema, setUserSchema] = React.useState({ type: "object" } as {
-    [x: string]: any
-  })
+  let [userSchema, setUserSchema] = React.useState(
+    DefaultSchema as { [x: string]: any }
+  )
   const { colorMode } = useColorMode()
 
   const JSONSchemaViewer = require("@theme/JSONSchemaViewer").default
@@ -39,14 +42,14 @@ function PlaygroundInner(): JSX.Element {
         <div style={{ boxSizing: "border-box", width: "50%" }}>
           <h1>JSON Schema Editor</h1>
           <JSONSchemaEditor
-            schema={JSON.stringify(userSchema, null, "\t")}
+            schema={userSchema}
             theme={colorMode === "dark" ? "vs-dark" : "vs"}
           />
         </div>
       </div>
       <div>
         <h1>JSON Schema Viewer</h1>
-        {/*<JSONSchemaViewer schema={Schema} />*/}
+        <JSONSchemaViewer schema={userSchema} />
       </div>
     </>
   )
