@@ -2,27 +2,12 @@ import React from "react"
 
 import Translate from "@docusaurus/Translate"
 
+import { AndLabel } from "./index"
+
 import type { JSONSchema } from "../../types"
 
 type Props = {
   schema?: JSONSchema
-}
-
-// And label
-function AndLabel(): JSX.Element {
-  return (
-    <>
-      &nbsp;
-      <Translate
-        values={{
-          id: "json-schema.labels.and",
-        }}
-      >
-        {"AND"}
-      </Translate>
-      &nbsp;
-    </>
-  )
 }
 
 // minItems

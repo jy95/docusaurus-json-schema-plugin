@@ -2,6 +2,8 @@ import React from "react"
 
 import Translate from "@docusaurus/Translate"
 
+import { AndLabel } from "./index"
+
 import type { JSONSchema, JSONSchemaNS } from "../../types"
 
 type Props = {
@@ -34,20 +36,6 @@ export default function ArrayContainsNumber(props: Props): null | JSX.Element {
         {"Must contain : "}
       </Translate>
     </strong>
-  )
-
-  const andLabel = (
-    <>
-      &nbsp;
-      <Translate
-        values={{
-          id: "json-schema.labels.and",
-        }}
-      >
-        {"AND"}
-      </Translate>
-      &nbsp;
-    </>
   )
 
   const minLabel = (
@@ -89,7 +77,7 @@ export default function ArrayContainsNumber(props: Props): null | JSX.Element {
       {containsLabel}
       &nbsp;
       {typedArraySchema?.minContains !== undefined && minLabel}
-      {minAndMax && andLabel}
+      {minAndMax && <AndLabel />}
       {typedArraySchema?.maxContains !== undefined && maxLabel}
     </div>
   )
