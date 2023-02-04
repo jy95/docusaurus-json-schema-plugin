@@ -61,7 +61,9 @@ npm install docusaurus-json-schema-plugin --prefer-dedupe
 | schema          | JSONSchema    | Mandatory | JSON Schema Draft-07 / Draft 2019-09 / Draft 2020-12    |
 | resolverOptions | IResolverOpts | Optional  | To resolve your $ref (by default, only inline references will be dereferenced). More info on [@stoplight/json-ref-resolver](https://github.com/stoplightio/json-ref-resolver)  |
 
-#### Example 
+<details open>
+<summary><h4>Example</h4></summary>
+
 ```tsx
 import React from "react"
 import Layout from "@theme/Layout"
@@ -100,6 +102,7 @@ function ExamplePage(): JSX.Element {
   )
 }
 ```
+</details>
 
 ### JSONSchemaEditor
 
@@ -112,7 +115,9 @@ function ExamplePage(): JSX.Element {
 | schema          | JSONSchema        | Mandatory | JSON Schema supported by [monaco-editor](https://github.com/microsoft/monaco-editor), which powers [VS Code](https://code.visualstudio.com/Docs/languages/json#_json-schemas-and-settings) - Currently, it supports all draft versions from Draft 4 to JSON Schema Draft 2020-12  |
 | ....            | MonacoEditorProps | Optional  | [Properties](https://github.com/react-monaco-editor/react-monaco-editor#properties) of [react-monaco-editor](https://github.com/react-monaco-editor/react-monaco-editor) | 
 
-#### Example
+<details open>
+<summary><h4>Example</h4></summary>
+
 ```tsx
 import React from "react"
 import Layout from "@theme/Layout"
@@ -154,6 +159,7 @@ function ExamplePage(): JSX.Element {
   )
 }
 ```
+</details>
 
 ## Swizzling components
 
@@ -170,10 +176,10 @@ A few selected keywords are unsupported for the time being :
 |-----------------|---------------------------|----------------|
 | [2019-09](https://json-schema.org/draft/2019-09/release-notes.html)          | [unevaluatedItems](https://json-schema.org/draft/2019-09/json-schema-core.html#rfc.section.9.3.1.3)      | Hard to understand for most people |
 | [2019-09](https://json-schema.org/draft/2019-09/release-notes.html)  | [unevaluatedProperties](https://json-schema.org/draft/2019-09/json-schema-core.html#rfc.section.9.3.2.4) | Hard to understand for most people  |
-| [2019-09](https://json-schema.org/draft/2019-09/release-notes.html)  | [$recursiveRef](https://json-schema.org/draft/2019-09/json-schema-core.html#recursive-ref) | Recursive schema are not on the roadmap yet  |
-| [2019-09](https://json-schema.org/draft/2019-09/release-notes.html)  | [$recursiveAnchor](https://json-schema.org/draft/2019-09/json-schema-core.html#recursive-ref) | Recursive schema are not on the roadmap yet  |
-| [2020-12](https://json-schema.org/draft/2020-12/release-notes.html)  | [$dynamicRef](https://json-schema.org/draft/2020-12/release-notes.html#dynamicref-and-dynamicanchor) | Recursive schema are not on the roadmap yet  |
-| [2020-12](https://json-schema.org/draft/2020-12/release-notes.html)  | [$dynamicAnchor](https://json-schema.org/draft/2020-12/release-notes.html#dynamicref-and-dynamicanchor) | Recursive schema are not on the roadmap yet  |
+| [2019-09](https://json-schema.org/draft/2019-09/release-notes.html)  | [$recursiveRef](https://json-schema.org/draft/2019-09/json-schema-core.html#recursive-ref) | Recursive schemas are not on the roadmap yet  |
+| [2019-09](https://json-schema.org/draft/2019-09/release-notes.html)  | [$recursiveAnchor](https://json-schema.org/draft/2019-09/json-schema-core.html#recursive-ref) | Recursive schemas are not on the roadmap yet  |
+| [2020-12](https://json-schema.org/draft/2020-12/release-notes.html)  | [$dynamicRef](https://json-schema.org/draft/2020-12/release-notes.html#dynamicref-and-dynamicanchor) | Recursive schemas are not on the roadmap yet  |
+| [2020-12](https://json-schema.org/draft/2020-12/release-notes.html)  | [$dynamicAnchor](https://json-schema.org/draft/2020-12/release-notes.html#dynamicref-and-dynamicanchor) | Recursive schemas are not on the roadmap yet  |
 
 If you wish to see them covered, consider to contribute to the project ;)
 
