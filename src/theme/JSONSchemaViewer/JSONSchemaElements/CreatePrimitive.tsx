@@ -63,18 +63,22 @@ function createPrimitive(props: Props) {
   let type = detectType(schema)
   let friendly_type = schema?.format ? `${type} (${schema.format})` : type
 
+  const typeLabel = (
+    <strong>
+      <Translate
+        values={{
+          id: "json-schema.keywords.type",
+          count: 1,
+        }}
+      >
+        {"type"}
+      </Translate>
+    </strong>
+  )
+
   return (
     <>
-      <strong>
-        <Translate
-          values={{
-            id: "json-schema.keywords.type",
-            count: 1,
-          }}
-        >
-          {"type"}
-        </Translate>
-      </strong>
+      {typeLabel}
       &nbsp;&#58;&nbsp;
       <span style={{ opacity: "0.6" }}>{friendly_type}</span>
       <div style={{ marginTop: "var(--ifm-table-cell-padding)" }}>

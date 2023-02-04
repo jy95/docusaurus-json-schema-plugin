@@ -63,20 +63,22 @@ function createItems(props: Props): JSX.Element {
     // singe items (most common case)
     let typedItem = items as JSONSchema
 
+    const itemsLabel = (
+      <code>
+        <Translate
+          values={{
+            id: "json-schema.keywords.items",
+          }}
+        >
+          {"items"}
+        </Translate>
+      </code>
+    )
+
     return (
       <CreateEdge
         key={"array_items"}
-        name={
-          <code>
-            <Translate
-              values={{
-                id: "json-schema.keywords.items",
-              }}
-            >
-              {"items"}
-            </Translate>
-          </code>
-        }
+        name={itemsLabel}
         schema={typedItem}
         required={
           typedSchema?.minItems !== undefined && typedSchema?.minItems > 0

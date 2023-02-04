@@ -88,14 +88,15 @@ function QualifierMessages(props: Props): null | JSX.Element {
         )}
         {minAndMaxLength && (
           <>
-            {" "}
+            &nbsp;
             <Translate
               values={{
                 id: "json-schema.labels.and",
               }}
             >
               {"AND"}
-            </Translate>{" "}
+            </Translate>
+            &nbsp;
           </>
         )}
         {schema?.maxLength !== undefined && (
@@ -156,14 +157,15 @@ function QualifierMessages(props: Props): null | JSX.Element {
         )}
         {minAndMax && (
           <>
-            {" "}
+            &nbsp;
             <Translate
               values={{
                 id: "json-schema.labels.and",
               }}
             >
               {"AND"}
-            </Translate>{" "}
+            </Translate>
+            &nbsp;
           </>
         )}
         {schema?.maxProperties !== undefined && (
@@ -237,14 +239,15 @@ function QualifierMessages(props: Props): null | JSX.Element {
         )}
         {minAndMax && (
           <>
-            {" "}
+            &nbsp;
             <Translate
               values={{
                 id: "json-schema.labels.and",
               }}
             >
               {"AND"}
-            </Translate>{" "}
+            </Translate>
+            &nbsp;
           </>
         )}
         {schema?.maxItems !== undefined && (
@@ -307,14 +310,15 @@ function QualifierMessages(props: Props): null | JSX.Element {
         )}
         {minAndMax && (
           <>
-            {" "}
+            &nbsp;
             <Translate
               values={{
                 id: "json-schema.labels.and",
               }}
             >
               {"AND"}
-            </Translate>{" "}
+            </Translate>
+            &nbsp;
           </>
         )}
         {typedArraySchema?.maxContains !== undefined && (
@@ -400,14 +404,15 @@ function QualifierMessages(props: Props): null | JSX.Element {
         )}
         {minAndMax && (
           <>
-            {" "}
+            &nbsp;
             <Translate
               values={{
                 id: "json-schema.labels.and",
               }}
             >
               {"AND"}
-            </Translate>{" "}
+            </Translate>
+            &nbsp;
           </>
         )}
         {maximum !== undefined && (

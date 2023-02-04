@@ -21,20 +21,22 @@ function createContains(props: Props): JSX.Element {
 
   let item = typedSchema.contains!
 
+  const containsLabel = (
+    <code>
+      <Translate
+        values={{
+          id: "json-schema.keywords.contains",
+        }}
+      >
+        {"contains"}
+      </Translate>
+    </code>
+  )
+
   return (
     <CreateEdge
       key={"contains"}
-      name={
-        <code>
-          <Translate
-            values={{
-              id: "json-schema.keywords.contains",
-            }}
-          >
-            {"contains"}
-          </Translate>
-        </code>
-      }
+      name={containsLabel}
       schema={item}
       required={
         typedSchema?.minContains !== undefined && typedSchema.minContains > 0

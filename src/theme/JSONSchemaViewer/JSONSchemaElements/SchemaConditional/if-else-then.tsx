@@ -26,49 +26,56 @@ function IfElseThen(props: Props): JSX.Element {
   const hasThen = schema.then !== undefined
   const hasElse = schema.else !== undefined
 
+  // Translated labels
+  const ifLabel = (
+    <strong>
+      <Translate
+        values={{
+          id: "json-schema.keywords.if",
+        }}
+      >
+        {"If"}
+      </Translate>
+    </strong>
+  )
+
+  const thenLabel = (
+    <strong>
+      <Translate
+        values={{
+          id: "json-schema.keywords.then",
+        }}
+      >
+        {"Then"}
+      </Translate>
+    </strong>
+  )
+
+  const elseLabel = (
+    <strong>
+      <Translate
+        values={{
+          id: "json-schema.keywords.else",
+        }}
+      >
+        {"Else"}
+      </Translate>
+    </strong>
+  )
+
   // values for Tabs
   let values = [
     {
       value: "schema_if",
-      label: (
-        <strong>
-          <Translate
-            values={{
-              id: "json-schema.keywords.if",
-            }}
-          >
-            {"If"}
-          </Translate>
-        </strong>
-      ),
+      label: ifLabel,
     },
     hasThen && {
       value: "schema_then",
-      label: (
-        <strong>
-          <Translate
-            values={{
-              id: "json-schema.keywords.then",
-            }}
-          >
-            {"Then"}
-          </Translate>
-        </strong>
-      ),
+      label: thenLabel,
     },
     hasElse && {
       value: "schema_else",
-      label: (
-        <strong>
-          <Translate
-            values={{
-              id: "json-schema.keywords.else",
-            }}
-          >
-            {"Else"}
-          </Translate>
-        </strong>
-      ),
+      label: elseLabel,
     },
   ].filter((v) => typeof v !== "boolean") as {
     value: "schema_if" | "schema_then" | "schema_else"

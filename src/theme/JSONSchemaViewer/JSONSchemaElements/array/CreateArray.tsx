@@ -37,28 +37,36 @@ function createArray(props: Props): JSX.Element {
       <PrefixItems schema={schema} />
     ) : undefined
 
+  const typeLabel = (
+    <strong>
+      <Translate
+        values={{
+          id: "json-schema.keywords.type",
+          count: 1,
+        }}
+      >
+        {"type"}
+      </Translate>
+    </strong>
+  )
+
+  const typeArrayLabel = (
+    <span style={{ opacity: "0.6" }}>
+      <Translate
+        values={{
+          id: "json-schema.keywords.array",
+        }}
+      >
+        {"array"}
+      </Translate>
+    </span>
+  )
+
   return (
     <>
-      <strong>
-        <Translate
-          values={{
-            id: "json-schema.keywords.type",
-            count: 1,
-          }}
-        >
-          {"type"}
-        </Translate>
-      </strong>
+      {typeLabel}
       &nbsp;&#58;&nbsp;
-      <span style={{ opacity: "0.6" }}>
-        <Translate
-          values={{
-            id: "json-schema.keywords.array",
-          }}
-        >
-          {"array"}
-        </Translate>
-      </span>
+      {typeArrayLabel}
       {items !== undefined && <ul>{items}</ul>}
       {prefixItems !== undefined && <ul>{prefixItems}</ul>}
       {contains !== undefined && <ul>{contains}</ul>}
