@@ -18,17 +18,22 @@ export default function Constant(props: Props): null | JSX.Element {
     return null
   }
 
+  // Translated Labels
+  const constantLabel = (
+    <strong>
+      <Translate
+        values={{
+          id: "json-schema.labels.const",
+        }}
+      >
+        {"Constant value :"}
+      </Translate>
+    </strong>
+  )
+
   return (
     <div key={"const"}>
-      <strong>
-        <Translate
-          values={{
-            id: "json-schema.labels.const",
-          }}
-        >
-          {"Constant value :"}
-        </Translate>
-      </strong>
+      {constantLabel}
       &nbsp;
       {printSchemaType(schema?.const)}
     </div>

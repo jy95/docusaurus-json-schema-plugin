@@ -20,6 +20,59 @@ export default function ArrayNumberOfItems(props: Props): null | JSX.Element {
   let minAndMax =
     schema?.minItems !== undefined && schema?.maxItems !== undefined
 
+  // Translated label
+  const lengthLabel = (
+    <strong>
+      <Translate
+        values={{
+          id: "json-schema.labels.lengthItems",
+        }}
+      >
+        {"Length :"}
+      </Translate>
+    </strong>
+  )
+
+  const minItemsLabel = (
+    <code>
+      <Translate
+        values={{
+          id: "json-schema.keywords.minItems",
+          count: schema?.minItems || 0,
+        }}
+      >
+        {">= {count}"}
+      </Translate>
+    </code>
+  )
+
+  const andLabel = (
+    <>
+      &nbsp;
+      <Translate
+        values={{
+          id: "json-schema.labels.and",
+        }}
+      >
+        {"AND"}
+      </Translate>
+      &nbsp;
+    </>
+  )
+
+  const maxItemsLabel = (
+    <code>
+      <Translate
+        values={{
+          id: "json-schema.keywords.maxItems",
+          count: schema?.maxItems || "∞",
+        }}
+      >
+        {"<= {count}"}
+      </Translate>
+    </code>
+  )
+
   return (
     <div
       key={
@@ -30,53 +83,11 @@ export default function ArrayNumberOfItems(props: Props): null | JSX.Element {
           : "maxItems"
       }
     >
-      <strong>
-        <Translate
-          values={{
-            id: "json-schema.labels.lengthItems",
-          }}
-        >
-          {"Length :"}
-        </Translate>
-      </strong>
+      {lengthLabel}
       &nbsp;
-      {schema?.minItems !== undefined && (
-        <code>
-          <Translate
-            values={{
-              id: "json-schema.keywords.minItems",
-              count: schema.minItems,
-            }}
-          >
-            {">= {count}"}
-          </Translate>
-        </code>
-      )}
-      {minAndMax && (
-        <>
-          &nbsp;
-          <Translate
-            values={{
-              id: "json-schema.labels.and",
-            }}
-          >
-            {"AND"}
-          </Translate>
-          &nbsp;
-        </>
-      )}
-      {schema?.maxItems !== undefined && (
-        <code>
-          <Translate
-            values={{
-              id: "json-schema.keywords.maxItems",
-              count: schema.maxItems,
-            }}
-          >
-            {"<= {count}"}
-          </Translate>
-        </code>
-      )}
+      {schema?.minItems !== undefined && minItemsLabel}
+      {minAndMax && andLabel}
+      {schema?.maxItems !== undefined && maxItemsLabel}
     </div>
   )
 }

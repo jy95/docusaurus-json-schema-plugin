@@ -19,17 +19,22 @@ export default function DefaultValue(props: Props): null | JSX.Element {
     return null
   }
 
+  // Translated Labels
+  const defaultLabel = (
+    <strong>
+      <Translate
+        values={{
+          id: "json-schema.labels.default",
+        }}
+      >
+        {"Default value :"}
+      </Translate>
+    </strong>
+  )
+
   return (
     <div key={"default"}>
-      <strong>
-        <Translate
-          values={{
-            id: "json-schema.labels.default",
-          }}
-        >
-          {"Default value :"}
-        </Translate>
-      </strong>
+      {defaultLabel}
       &nbsp;
       {printSchemaType(schema?.default)}
     </div>

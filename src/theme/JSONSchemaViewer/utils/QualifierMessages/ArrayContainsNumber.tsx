@@ -68,7 +68,7 @@ export default function ArrayContainsNumber(props: Props): null | JSX.Element {
       <Translate
         values={{
           id: "json-schema.keywords.maxContains",
-          count: typedArraySchema.maxContains || "unlimited",
+          count: typedArraySchema.maxContains || "∞",
         }}
       >
         {"at most {count} valid item(s)"}
