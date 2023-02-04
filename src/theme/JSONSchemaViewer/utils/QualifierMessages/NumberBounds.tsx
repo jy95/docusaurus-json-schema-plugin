@@ -8,6 +8,89 @@ type Props = {
   schema?: JSONSchema
 }
 
+// format minimum
+function FormatMinimum({
+  value,
+  exclusive,
+}: {
+  value: number
+  exclusive: boolean
+}): JSX.Element {
+  if (exclusive) {
+    return (
+      <Translate
+        values={{
+          id: "json-schema.keywords.minimumExlusive",
+          count: value,
+        }}
+      >
+        {"> {count}"}
+      </Translate>
+    )
+  } else {
+    return (
+      <Translate
+        values={{
+          id: "json-schema.keywords.minimum",
+          count: value,
+        }}
+      >
+        {">= {count}"}
+      </Translate>
+    )
+  }
+}
+
+// format maximum
+function FormatMaximum({
+  value,
+  exclusive,
+}: {
+  value: number
+  exclusive: boolean
+}): JSX.Element {
+  if (exclusive) {
+    return (
+      <Translate
+        values={{
+          id: "json-schema.keywords.maximumExlusive",
+          count: value,
+        }}
+      >
+        {"< {count}"}
+      </Translate>
+    )
+  } else {
+    return (
+      <Translate
+        values={{
+          id: "json-schema.keywords.maximum",
+          count: value,
+        }}
+      >
+        {"<= {count}"}
+      </Translate>
+    )
+  }
+}
+
+// And label
+function AndLabel(): JSX.Element {
+  return (
+    <>
+      &nbsp;
+      <Translate
+        values={{
+          id: "json-schema.labels.and",
+        }}
+      >
+        {"AND"}
+      </Translate>
+      &nbsp;
+    </>
+  )
+}
+
 // minimum / exclusiveMinimum / maximum / exclusiveMaximum
 export default function NumberBounds(props: Props): null | JSX.Element {
   const { schema } = props
@@ -24,75 +107,31 @@ export default function NumberBounds(props: Props): null | JSX.Element {
   let isExclusiveMaximum = schema?.exclusiveMaximum !== undefined
   const minAndMax = minimum !== undefined && maximum !== undefined
 
+  const boundsLabel = (
+    <strong>
+      <Translate
+        values={{
+          id: "json-schema.labels.numberMinimumMaximum",
+        }}
+      >
+        {"Possible values :"}
+      </Translate>
+    </strong>
+  )
+
   return (
     <div key={"number-range"}>
-      <strong>
-        <Translate
-          values={{
-            id: "json-schema.labels.numberMinimumMaximum",
-          }}
-        >
-          {"Possible values :"}
-        </Translate>
-      </strong>
+      {boundsLabel}
       &nbsp;
       {minimum !== undefined && (
         <code>
-          {isExclusiveMinimum === true ? (
-            <Translate
-              values={{
-                id: "json-schema.keywords.minimumExlusive",
-                count: minimum,
-              }}
-            >
-              {"> {count}"}
-            </Translate>
-          ) : (
-            <Translate
-              values={{
-                id: "json-schema.keywords.minimum",
-                count: minimum,
-              }}
-            >
-              {">= {count}"}
-            </Translate>
-          )}
+          <FormatMinimum exclusive={isExclusiveMinimum} value={minimum} />
         </code>
       )}
-      {minAndMax && (
-        <>
-          &nbsp;
-          <Translate
-            values={{
-              id: "json-schema.labels.and",
-            }}
-          >
-            {"AND"}
-          </Translate>
-          &nbsp;
-        </>
-      )}
+      {minAndMax && <AndLabel />}
       {maximum !== undefined && (
         <code>
-          {isExclusiveMaximum === true ? (
-            <Translate
-              values={{
-                id: "json-schema.keywords.maximumExlusive",
-                count: maximum,
-              }}
-            >
-              {"< {count}"}
-            </Translate>
-          ) : (
-            <Translate
-              values={{
-                id: "json-schema.keywords.maximum",
-                count: maximum,
-              }}
-            >
-              {"<= {count}"}
-            </Translate>
-          )}
+          <FormatMaximum exclusive={isExclusiveMaximum} value={maximum} />
         </code>
       )}
     </div>
