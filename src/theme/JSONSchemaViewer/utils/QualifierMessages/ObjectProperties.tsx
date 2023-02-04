@@ -8,6 +8,55 @@ type Props = {
   schema?: JSONSchema
 }
 
+// And label
+function AndLabel(): JSX.Element {
+  return (
+    <>
+      &nbsp;
+      <Translate
+        values={{
+          id: "json-schema.labels.and",
+        }}
+      >
+        {"AND"}
+      </Translate>
+      &nbsp;
+    </>
+  )
+}
+
+// minProperties
+function MinProperties({ value }: { value: number }): JSX.Element {
+  return (
+    <code>
+      <Translate
+        values={{
+          id: "json-schema.keywords.minProperties",
+          count: value,
+        }}
+      >
+        {">= {count} propertie(s)"}
+      </Translate>
+    </code>
+  )
+}
+
+// maxProperties
+function MaxProperties({ value }: { value: number }): JSX.Element {
+  return (
+    <code>
+      <Translate
+        values={{
+          id: "json-schema.keywords.maxProperties",
+          count: value,
+        }}
+      >
+        {"<= {count} propertie(s)"}
+      </Translate>
+    </code>
+  )
+}
+
 // minProperties / maxProperties
 export default function ObjectProperties(props: Props): null | JSX.Element {
   const { schema } = props
@@ -20,6 +69,18 @@ export default function ObjectProperties(props: Props): null | JSX.Element {
   let minAndMax =
     schema?.minProperties !== undefined && schema?.maxProperties !== undefined
 
+  const propertiesLabel = (
+    <strong>
+      <Translate
+        values={{
+          id: "json-schema.labels.lengthProperties",
+        }}
+      >
+        {"Length :"}
+      </Translate>
+    </strong>
+  )
+
   return (
     <div
       key={
@@ -30,52 +91,14 @@ export default function ObjectProperties(props: Props): null | JSX.Element {
           : "maxProperties"
       }
     >
-      <strong>
-        <Translate
-          values={{
-            id: "json-schema.labels.lengthProperties",
-          }}
-        >
-          {"Length :"}
-        </Translate>
-      </strong>
+      {propertiesLabel}
       &nbsp;
       {schema?.minProperties !== undefined && (
-        <code>
-          <Translate
-            values={{
-              id: "json-schema.keywords.minProperties",
-              count: schema.minProperties,
-            }}
-          >
-            {">= {count} propertie(s)"}
-          </Translate>
-        </code>
+        <MinProperties value={schema?.minProperties} />
       )}
-      {minAndMax && (
-        <>
-          &nbsp;
-          <Translate
-            values={{
-              id: "json-schema.labels.and",
-            }}
-          >
-            {"AND"}
-          </Translate>
-          &nbsp;
-        </>
-      )}
+      {minAndMax && <AndLabel />}
       {schema?.maxProperties !== undefined && (
-        <code>
-          <Translate
-            values={{
-              id: "json-schema.keywords.maxProperties",
-              count: schema.maxProperties,
-            }}
-          >
-            {"<= {count} propertie(s)"}
-          </Translate>
-        </code>
+        <MaxProperties value={schema?.maxProperties} />
       )}
     </div>
   )
