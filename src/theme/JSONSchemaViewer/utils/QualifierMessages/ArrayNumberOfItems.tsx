@@ -8,6 +8,55 @@ type Props = {
   schema?: JSONSchema
 }
 
+// And label
+function AndLabel(): JSX.Element {
+  return (
+    <>
+      &nbsp;
+      <Translate
+        values={{
+          id: "json-schema.labels.and",
+        }}
+      >
+        {"AND"}
+      </Translate>
+      &nbsp;
+    </>
+  )
+}
+
+// minItems
+function MinItems({ value }: { value: number }): JSX.Element {
+  return (
+    <code>
+      <Translate
+        values={{
+          id: "json-schema.keywords.minItems",
+          count: value,
+        }}
+      >
+        {">= {count}"}
+      </Translate>
+    </code>
+  )
+}
+
+// maxItems
+function MaxItems({ value }: { value: number }): JSX.Element {
+  return (
+    <code>
+      <Translate
+        values={{
+          id: "json-schema.keywords.maxItems",
+          count: value,
+        }}
+      >
+        {"<= {count}"}
+      </Translate>
+    </code>
+  )
+}
+
 // minItems / maxItems
 export default function ArrayNumberOfItems(props: Props): null | JSX.Element {
   const { schema } = props
@@ -33,46 +82,6 @@ export default function ArrayNumberOfItems(props: Props): null | JSX.Element {
     </strong>
   )
 
-  const minItemsLabel = (
-    <code>
-      <Translate
-        values={{
-          id: "json-schema.keywords.minItems",
-          count: schema?.minItems || 0,
-        }}
-      >
-        {">= {count}"}
-      </Translate>
-    </code>
-  )
-
-  const andLabel = (
-    <>
-      &nbsp;
-      <Translate
-        values={{
-          id: "json-schema.labels.and",
-        }}
-      >
-        {"AND"}
-      </Translate>
-      &nbsp;
-    </>
-  )
-
-  const maxItemsLabel = (
-    <code>
-      <Translate
-        values={{
-          id: "json-schema.keywords.maxItems",
-          count: schema?.maxItems || "∞",
-        }}
-      >
-        {"<= {count}"}
-      </Translate>
-    </code>
-  )
-
   return (
     <div
       key={
@@ -85,9 +94,9 @@ export default function ArrayNumberOfItems(props: Props): null | JSX.Element {
     >
       {lengthLabel}
       &nbsp;
-      {schema?.minItems !== undefined && minItemsLabel}
-      {minAndMax && andLabel}
-      {schema?.maxItems !== undefined && maxItemsLabel}
+      {schema?.minItems !== undefined && <MinItems value={schema?.minItems} />}
+      {minAndMax && <AndLabel />}
+      {schema?.maxItems !== undefined && <MaxItems value={schema?.maxItems} />}
     </div>
   )
 }
