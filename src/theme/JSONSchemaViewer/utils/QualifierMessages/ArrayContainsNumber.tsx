@@ -23,6 +23,59 @@ export default function ArrayContainsNumber(props: Props): null | JSX.Element {
     typedArraySchema?.minContains !== undefined &&
     typedArraySchema?.maxContains !== undefined
 
+  // Translated labels
+  const containsLabel = (
+    <strong>
+      <Translate
+        values={{
+          id: "json-schema.labels.contains",
+        }}
+      >
+        {"Must contain : "}
+      </Translate>
+    </strong>
+  )
+
+  const andLabel = (
+    <>
+      &nbsp;
+      <Translate
+        values={{
+          id: "json-schema.labels.and",
+        }}
+      >
+        {"AND"}
+      </Translate>
+      &nbsp;
+    </>
+  )
+
+  const minLabel = (
+    <code>
+      <Translate
+        values={{
+          id: "json-schema.keywords.minContains",
+          count: typedArraySchema?.minContains || 0,
+        }}
+      >
+        {"at least {count} valid item(s)"}
+      </Translate>
+    </code>
+  )
+
+  const maxLabel = (
+    <code>
+      <Translate
+        values={{
+          id: "json-schema.keywords.maxContains",
+          count: typedArraySchema.maxContains || "unlimited",
+        }}
+      >
+        {"at most {count} valid item(s)"}
+      </Translate>
+    </code>
+  )
+
   return (
     <div
       key={
@@ -33,53 +86,11 @@ export default function ArrayContainsNumber(props: Props): null | JSX.Element {
           : "maxContains"
       }
     >
-      <strong>
-        <Translate
-          values={{
-            id: "json-schema.labels.contains",
-          }}
-        >
-          {"Must contain : "}
-        </Translate>
-      </strong>
+      {containsLabel}
       &nbsp;
-      {typedArraySchema?.minContains !== undefined && (
-        <code>
-          <Translate
-            values={{
-              id: "json-schema.keywords.minContains",
-              count: typedArraySchema.minContains,
-            }}
-          >
-            {"at least {count} valid item(s)"}
-          </Translate>
-        </code>
-      )}
-      {minAndMax && (
-        <>
-          &nbsp;
-          <Translate
-            values={{
-              id: "json-schema.labels.and",
-            }}
-          >
-            {"AND"}
-          </Translate>
-          &nbsp;
-        </>
-      )}
-      {typedArraySchema?.maxContains !== undefined && (
-        <code>
-          <Translate
-            values={{
-              id: "json-schema.keywords.maxContains",
-              count: typedArraySchema.maxContains,
-            }}
-          >
-            {"at most {count} valid item(s)"}
-          </Translate>
-        </code>
-      )}
+      {typedArraySchema?.minContains !== undefined && minLabel}
+      {minAndMax && andLabel}
+      {typedArraySchema?.maxContains !== undefined && maxLabel}
     </div>
   )
 }
