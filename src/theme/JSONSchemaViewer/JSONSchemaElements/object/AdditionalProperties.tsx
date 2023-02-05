@@ -34,20 +34,22 @@ function createAdditionalProperties(props: Props): JSX.Element {
   if (types.length > 0) {
     // Most of the time, only one entry but prefer to be safe that sorry ...
 
+    const additionalPropertiesLabel = (
+      <code>
+        <Translate
+          values={{
+            id: "json-schema.labels.additionalProperties",
+          }}
+        >
+          {"property name*"}
+        </Translate>
+      </code>
+    )
+
     return (
       <CreateEdge
         key={"object_additionalProperties"}
-        name={
-          <code>
-            <Translate
-              values={{
-                id: "json-schema.labels.additionalProperties",
-              }}
-            >
-              {"property name*"}
-            </Translate>
-          </code>
-        }
+        name={additionalPropertiesLabel}
         schema={typedSchema}
         required={false}
       />

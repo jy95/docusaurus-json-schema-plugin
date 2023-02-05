@@ -35,19 +35,21 @@ function SchemaConditional(props: Props): JSX.Element {
     (schema as JSONSchemaNS.Object)?.dependentSchemas !== undefined
   const isDependencies = schema?.dependencies !== undefined
 
+  const schemaConditionalLabel = (
+    <strong>
+      <Translate
+        values={{
+          id: "json-schema.labels.schemaConditional",
+        }}
+      >
+        {"Conditional subschemas"}
+      </Translate>
+    </strong>
+  )
+
   return (
     <Collapsible
-      summary={
-        <strong>
-          <Translate
-            values={{
-              id: "json-schema.labels.schemaConditional",
-            }}
-          >
-            {"Conditional subschemas"}
-          </Translate>
-        </strong>
-      }
+      summary={schemaConditionalLabel}
       detailsProps={{
         open: true,
       }}

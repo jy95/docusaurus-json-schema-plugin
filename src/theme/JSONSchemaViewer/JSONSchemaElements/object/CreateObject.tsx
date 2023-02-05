@@ -39,28 +39,37 @@ function createObject(props: Props): JSX.Element {
     <PropertyNames schema={schema} />
   ) : undefined
 
+  // Translated labels
+  const typeLabel = (
+    <strong>
+      <Translate
+        values={{
+          id: "json-schema.keywords.type",
+          count: 1,
+        }}
+      >
+        {"type"}
+      </Translate>
+    </strong>
+  )
+
+  const typeObjectLabel = (
+    <span style={{ opacity: "0.6" }}>
+      <Translate
+        values={{
+          id: "json-schema.keywords.object",
+        }}
+      >
+        {"object"}
+      </Translate>
+    </span>
+  )
+
   return (
     <>
-      <strong>
-        <Translate
-          values={{
-            id: "json-schema.keywords.type",
-            count: 1,
-          }}
-        >
-          {"type"}
-        </Translate>
-      </strong>
+      {typeLabel}
       &nbsp;&#58;&nbsp;
-      <span style={{ opacity: "0.6" }}>
-        <Translate
-          values={{
-            id: "json-schema.keywords.object",
-          }}
-        >
-          {"object"}
-        </Translate>
-      </span>
+      {typeObjectLabel}
       {properties !== undefined && <ul>{properties}</ul>}
       {patternProperties !== undefined && <ul>{patternProperties}</ul>}
       {propertyNames !== undefined && <ul>{propertyNames}</ul>}

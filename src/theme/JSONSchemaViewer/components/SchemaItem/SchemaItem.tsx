@@ -28,33 +28,38 @@ function SchemaItem({
   let isDeprecated =
     typeof typedSchema !== "boolean" && typedSchema?.deprecated === true
 
+  // Translated labels
+  const requiredLabel = (
+    <strong className={styles.required}>
+      <Translate
+        values={{
+          id: "json-schema.keywords.required",
+        }}
+      >
+        {"required"}
+      </Translate>
+    </strong>
+  )
+
+  const deprecatedLabel = (
+    <strong className={styles.deprecated}>
+      <Translate
+        values={{
+          id: "json-schema.keywords.deprecated",
+        }}
+      >
+        {"deprecated"}
+      </Translate>
+    </strong>
+  )
+
   // Header
   const summary = (
     <>
       {name}&nbsp;
       <span className={styles.schemaName}>{schemaName}</span>&nbsp;
-      {!isDeprecated && required && (
-        <strong className={styles.required}>
-          <Translate
-            values={{
-              id: "json-schema.keywords.required",
-            }}
-          >
-            {"required"}
-          </Translate>
-        </strong>
-      )}
-      {isDeprecated && (
-        <strong className={styles.deprecated}>
-          <Translate
-            values={{
-              id: "json-schema.keywords.deprecated",
-            }}
-          >
-            {"deprecated"}
-          </Translate>
-        </strong>
-      )}
+      {!isDeprecated && required && requiredLabel}
+      {isDeprecated && deprecatedLabel}
     </>
   )
 

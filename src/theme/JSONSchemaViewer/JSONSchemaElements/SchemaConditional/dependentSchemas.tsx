@@ -39,42 +39,39 @@ function DependentSchemas(props: Props): JSX.Element {
     ),
   }))
 
+  // Translated labels
+  const ifLabel = (
+    <strong>
+      <Translate
+        values={{
+          id: "json-schema.keywords.if",
+        }}
+      >
+        {"If"}
+      </Translate>
+    </strong>
+  )
+
+  const elseLabel = (
+    <strong>
+      <Translate
+        values={{
+          id: "json-schema.keywords.then",
+        }}
+      >
+        {"Then"}
+      </Translate>
+    </strong>
+  )
+
   return (
     <ul>
       {items.map((item) => (
         <Tabs key={item.id}>
-          <TabItem
-            key={"schema_if"}
-            value={"schema_if"}
-            label={
-              <strong>
-                <Translate
-                  values={{
-                    id: "json-schema.keywords.if",
-                  }}
-                >
-                  {"If"}
-                </Translate>
-              </strong>
-            }
-          >
+          <TabItem key={"schema_if"} value={"schema_if"} label={ifLabel}>
             {item.label}
           </TabItem>
-          <TabItem
-            key={"schema_then"}
-            value={"schema_then"}
-            label={
-              <strong>
-                <Translate
-                  values={{
-                    id: "json-schema.keywords.then",
-                  }}
-                >
-                  {"Then"}
-                </Translate>
-              </strong>
-            }
-          >
+          <TabItem key={"schema_then"} value={"schema_then"} label={elseLabel}>
             <CreateNodes schema={item.subSchema} />
           </TabItem>
         </Tabs>
