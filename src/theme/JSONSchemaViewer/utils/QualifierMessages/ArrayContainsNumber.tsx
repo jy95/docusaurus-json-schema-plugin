@@ -10,6 +10,38 @@ type Props = {
   schema?: JSONSchema
 }
 
+// minContains
+function MinContains({ value }: { value: number }): JSX.Element {
+  return (
+    <code>
+      <Translate
+        values={{
+          id: "json-schema.keywords.minContains",
+          count: value,
+        }}
+      >
+        {"at least {count} valid item(s)"}
+      </Translate>
+    </code>
+  )
+}
+
+// maxContains
+function MaxContains({ value }: { value: number }): JSX.Element {
+  return (
+    <code>
+      <Translate
+        values={{
+          id: "json-schema.keywords.maxContains",
+          count: value,
+        }}
+      >
+        {"at most {count} valid item(s)"}
+      </Translate>
+    </code>
+  )
+}
+
 // minContains / maxContains
 export default function ArrayContainsNumber(props: Props): null | JSX.Element {
   const { schema } = props
@@ -38,32 +70,6 @@ export default function ArrayContainsNumber(props: Props): null | JSX.Element {
     </strong>
   )
 
-  const minLabel = (
-    <code>
-      <Translate
-        values={{
-          id: "json-schema.keywords.minContains",
-          count: typedArraySchema?.minContains || 0,
-        }}
-      >
-        {"at least {count} valid item(s)"}
-      </Translate>
-    </code>
-  )
-
-  const maxLabel = (
-    <code>
-      <Translate
-        values={{
-          id: "json-schema.keywords.maxContains",
-          count: typedArraySchema.maxContains || "∞",
-        }}
-      >
-        {"at most {count} valid item(s)"}
-      </Translate>
-    </code>
-  )
-
   return (
     <div
       key={
@@ -76,9 +82,13 @@ export default function ArrayContainsNumber(props: Props): null | JSX.Element {
     >
       {containsLabel}
       &nbsp;
-      {typedArraySchema?.minContains !== undefined && minLabel}
+      {typedArraySchema?.minContains !== undefined && (
+        <MinContains value={typedArraySchema?.minContains} />
+      )}
       {minAndMax && <AndLabel />}
-      {typedArraySchema?.maxContains !== undefined && maxLabel}
+      {typedArraySchema?.maxContains !== undefined && (
+        <MaxContains value={typedArraySchema?.maxContains} />
+      )}
     </div>
   )
 }

@@ -2,10 +2,44 @@ import React from "react"
 
 import Translate from "@docusaurus/Translate"
 
+import { AndLabel } from "./index"
+
 import type { JSONSchema } from "../../types"
 
 type Props = {
   schema?: JSONSchema
+}
+
+// minLength
+function MinLength({ value }: { value: number }): JSX.Element {
+  return (
+    <code>
+      <Translate
+        values={{
+          id: "json-schema.keywords.minLength",
+          count: value,
+        }}
+      >
+        {">= {count} character(s)"}
+      </Translate>
+    </code>
+  )
+}
+
+// maxLength
+function MaxLength({ value }: { value: number }): JSX.Element {
+  return (
+    <code>
+      <Translate
+        values={{
+          id: "json-schema.keywords.maxLength",
+          count: value,
+        }}
+      >
+        {"<= {count} character(s)"}
+      </Translate>
+    </code>
+  )
 }
 
 // for minLength / maxLength
@@ -22,6 +56,19 @@ export default function StringLengthQualifierMessage(
   let minAndMaxLength =
     schema?.minLength !== undefined && schema?.maxLength !== undefined
 
+  // Translated label
+  const lengthLabel = (
+    <strong>
+      <Translate
+        values={{
+          id: "json-schema.labels.length",
+        }}
+      >
+        {"Length :"}
+      </Translate>
+    </strong>
+  )
+
   return (
     <div
       key={
@@ -32,52 +79,14 @@ export default function StringLengthQualifierMessage(
           : "maxLength"
       }
     >
-      <strong>
-        <Translate
-          values={{
-            id: "json-schema.labels.length",
-          }}
-        >
-          {"Length :"}
-        </Translate>
-      </strong>
+      {lengthLabel}
       &nbsp;
       {schema?.minLength !== undefined && (
-        <code>
-          <Translate
-            values={{
-              id: "json-schema.keywords.minLength",
-              count: schema.minLength,
-            }}
-          >
-            {">= {count} character(s)"}
-          </Translate>
-        </code>
+        <MinLength value={schema?.minLength} />
       )}
-      {minAndMaxLength && (
-        <>
-          &nbsp;
-          <Translate
-            values={{
-              id: "json-schema.labels.and",
-            }}
-          >
-            {"AND"}
-          </Translate>
-          &nbsp;
-        </>
-      )}
+      {minAndMaxLength && <AndLabel />}
       {schema?.maxLength !== undefined && (
-        <code>
-          <Translate
-            values={{
-              id: "json-schema.keywords.maxLength",
-              count: schema.maxLength,
-            }}
-          >
-            {"<= {count} character(s)"}
-          </Translate>
-        </code>
+        <MaxLength value={schema?.maxLength} />
       )}
     </div>
   )

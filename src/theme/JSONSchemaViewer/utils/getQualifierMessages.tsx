@@ -113,7 +113,7 @@ export default function QualifierMessages(props: Props): null | JSX.Element {
   const { schema } = props
 
   // Find out which messages will be triggered
-  let result = Array.from(conditionallyRenderQMs(schema))
+  let result = [...conditionallyRenderQMs(schema)]
 
   if (result.length === 0) {
     return null
