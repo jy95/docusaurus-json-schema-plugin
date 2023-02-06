@@ -1,5 +1,37 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`JSONSchemaViewer - basics tests Can render Schema title 1`] = `
+<details
+  open={true}
+>
+  <summary>
+    <strong>
+      My Super Schema
+    </strong>
+  </summary>
+  <strong>
+    type
+  </strong>
+   : 
+  <span
+    style={
+      {
+        "opacity": "0.6",
+      }
+    }
+  >
+    boolean
+  </span>
+  <div
+    style={
+      {
+        "marginTop": "var(--ifm-table-cell-padding)",
+      }
+    }
+  />
+</details>
+`;
+
 exports[`JSONSchemaViewer - basics tests Can render a simple schema 1`] = `
 <details
   open={true}

@@ -58,7 +58,7 @@ export default function Tabs({
     : [children]
 
   return (
-    <div className="tabs-container">
+    <div className="tabs-container" key={"dummy-key"}>
       <ul role="tablist" aria-orientation="horizontal" className="tabs">
         {items.map((item, idx) => {
           let isSelected = selectedTab === item.value
@@ -67,6 +67,7 @@ export default function Tabs({
               onClick={() => setSelectedTab(item.value)}
               tabIndex={isSelected ? 0 : -1}
               aria-selected={isSelected}
+              key={item.value}
             >
               {item.label || idx}
             </li>
@@ -76,7 +77,11 @@ export default function Tabs({
       <div>
         {childrenAsArray.map((c) => {
           return (
-            <div role="tabpanel" hidden={c.props.value !== selectedTab}>
+            <div
+              role="tabpanel"
+              hidden={c.props.value !== selectedTab}
+              key={c.props.value}
+            >
               {c}
             </div>
           )
