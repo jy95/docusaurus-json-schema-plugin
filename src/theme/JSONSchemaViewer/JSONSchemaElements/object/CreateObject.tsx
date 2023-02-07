@@ -29,9 +29,7 @@ function createObject(props: Props): JSX.Element {
       <AdditionalProperties schema={schema} />
     ) : undefined
   let properties =
-    schema.properties !== undefined ? (
-      <Properties schema={schema} />
-    ) : undefined
+    schema.properties !== undefined ? <Properties schema={schema} /> : undefined
   let patternProperties = schema.patternProperties ? (
     <PatternProperties schema={schema} />
   ) : undefined

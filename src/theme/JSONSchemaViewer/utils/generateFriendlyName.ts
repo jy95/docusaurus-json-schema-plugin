@@ -12,12 +12,12 @@ function generateFriendlyName(schema: JSONSchema): string {
   }
 
   // Some people maintaining schemas provide a friendly name by themself
-  if (schema?.title) {
+  if (schema.title) {
     return schema.title
   }
 
   // handle both predefined formats (e.g. "time", "date-time" ,...) & additional attributes
-  if (schema?.format) {
+  if (schema.format) {
     return schema.format
   }
 
@@ -28,8 +28,8 @@ function generateFriendlyName(schema: JSONSchema): string {
 
   if (isNumeric(schema)) {
     // if "type" is indicated, use it like that
-    if (schema?.type !== undefined && !Array.isArray(schema?.type)) {
-      return schema?.type as string
+    if (schema.type !== undefined && !Array.isArray(schema.type)) {
+      return schema.type as string
     }
     // Otherwise, assume it is "number"
     return "number"
@@ -63,14 +63,14 @@ function generateFriendlyName(schema: JSONSchema): string {
   }
 
   // In "not" case, usual it is simple but I prefer to run recursively to be sure
-  if (schema?.not) {
+  if (schema.not) {
     return `NOT (${generateFriendlyName(schema.not)})`
   }
 
   // With anyOf / allOf / oneOf, we could have some circular reference(s)
   // As using @stoplight $ref resolver, we don't have to care for that (at least for now ...)
-  if (schema?.anyOf || schema?.oneOf || schema?.allOf) {
-    const linkWord = schema?.anyOf ? "OR" : schema?.oneOf ? "XOR" : "AND"
+  if (schema.anyOf || schema.oneOf || schema.allOf) {
+    const linkWord = schema.anyOf ? "OR" : schema.oneOf ? "XOR" : "AND"
     const elements = (
       schema?.anyOf ||
       schema?.oneOf ||
@@ -83,11 +83,11 @@ function generateFriendlyName(schema: JSONSchema): string {
 
   // When multiple types are provided, resolution becomes hard to understand
   // I will just concat the result without duplicate
-  if (Array.isArray(schema?.type)) {
+  if (Array.isArray(schema.type)) {
     return [...new Set(schema.type as TypeName[])].join(" OR ")
   } else {
     // Default return the type or "unknown" as fallback
-    return (schema?.type as TypeName | undefined) || "unknown"
+    return (schema.type as TypeName | undefined) || "unknown"
   }
 }
 
