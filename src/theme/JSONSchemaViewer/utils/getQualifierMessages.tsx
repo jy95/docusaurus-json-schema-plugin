@@ -33,12 +33,12 @@ function* conditionallyRenderQMs(
 
   // Enum
   if (schema?.enum !== undefined) {
-    yield <EnumQM schema={schema} />
+    yield <EnumQM key={"enum"} schema={schema} />
   }
 
   // minLength / maxLength
   if (schema?.minLength !== undefined || schema?.maxLength !== undefined) {
-    yield <StringLengthQM schema={schema} />
+    yield <StringLengthQM key={"stringLength"} schema={schema} />
   }
 
   // minProperties / maxProperties
@@ -46,17 +46,17 @@ function* conditionallyRenderQMs(
     schema?.minProperties !== undefined ||
     schema?.maxProperties !== undefined
   ) {
-    yield <ObjectPropertiesQM schema={schema} />
+    yield <ObjectPropertiesQM key={"objectProperties"} schema={schema} />
   }
 
   // No extra properties in object
   if (schema?.additionalProperties === false) {
-    yield <NoExtraPropertiesQM />
+    yield <NoExtraPropertiesQM key={"no-extra-properties"} />
   }
 
   // minItems / maxItems
   if (schema?.minItems !== undefined || schema?.maxItems !== undefined) {
-    yield <ArrayNumberOfItemsQM schema={schema} />
+    yield <ArrayNumberOfItemsQM key={"arrayItems"} schema={schema} />
   }
 
   // minContains / maxContains
@@ -64,12 +64,12 @@ function* conditionallyRenderQMs(
     (schema as JSONSchemaNS.Array).minContains !== undefined ||
     (schema as JSONSchemaNS.Array).maxContains !== undefined
   ) {
-    yield <ArrayContainsNumberQM schema={schema} />
+    yield <ArrayContainsNumberQM key={"arrayContains"} schema={schema} />
   }
 
   // No extra items in array
   if (schema?.items === false || schema?.additionalItems === false) {
-    yield <NoExtraItemsQM />
+    yield <NoExtraItemsQM key={"no-extra-items"} />
   }
 
   // minimum / exclusiveMinimum / maximum / exclusiveMaximum
@@ -79,32 +79,32 @@ function* conditionallyRenderQMs(
     schema?.maximum !== undefined ||
     schema?.exclusiveMaximum !== undefined
   ) {
-    yield <NumberBoundsQM schema={schema} />
+    yield <NumberBoundsQM key={"number-range"} schema={schema} />
   }
 
   // pattern
   if (schema?.pattern !== undefined) {
-    yield <PatternQM schema={schema} />
+    yield <PatternQM key={"pattern"} schema={schema} />
   }
 
   // multipleOf
   if (schema?.multipleOf !== undefined) {
-    yield <MultipleOfQM schema={schema} />
+    yield <MultipleOfQM key={"multipleOf"} schema={schema} />
   }
 
   // uniqueItems
   if (schema?.uniqueItems !== undefined && schema.uniqueItems === true) {
-    yield <ArrayUniqueItemsQM />
+    yield <ArrayUniqueItemsQM key={"uniqueItems"} />
   }
 
   // Default value
   if (schema?.default !== undefined) {
-    yield <DefaultValueQM schema={schema} />
+    yield <DefaultValueQM key={"default"} schema={schema} />
   }
 
   // Const value
   if (schema?.const !== undefined) {
-    yield <ConstantQM schema={schema} />
+    yield <ConstantQM key={"const"} schema={schema} />
   }
 }
 

@@ -1,0 +1,1892 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`JSONSchemaViewer - schema conditionally test If Then Else (multiple) 1`] = `
+<details
+  open={true}
+>
+  <summary>
+    <strong>
+      Schema
+    </strong>
+  </summary>
+  <strong>
+    type
+  </strong>
+   : 
+  <span
+    style={
+      {
+        "opacity": "0.6",
+      }
+    }
+  >
+    object
+  </span>
+  <ul>
+    <li>
+      <details
+        open={false}
+      >
+        <summary>
+          <strong>
+            street_address
+          </strong>
+           
+          <span>
+            string
+          </span>
+           
+        </summary>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style={
+            {
+              "opacity": "0.6",
+            }
+          }
+        >
+          string
+        </span>
+        <div
+          style={
+            {
+              "marginTop": "var(--ifm-table-cell-padding)",
+            }
+          }
+        />
+      </details>
+    </li>
+    <li>
+      <details
+        open={false}
+      >
+        <summary>
+          <strong>
+            country
+          </strong>
+           
+          <span>
+            unknown
+          </span>
+           
+        </summary>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style={
+            {
+              "opacity": "0.6",
+            }
+          }
+        >
+          unknown
+        </span>
+        <div
+          style={
+            {
+              "marginTop": "var(--ifm-table-cell-padding)",
+            }
+          }
+        >
+          <div>
+            <strong>
+              Possible values :
+            </strong>
+             
+            <code>
+              ["United States of America","Canada","Netherlands"]
+            </code>
+          </div>
+          <div>
+            <strong>
+              Default value :
+            </strong>
+             
+            <code>
+              United States of America
+            </code>
+          </div>
+        </div>
+      </details>
+    </li>
+  </ul>
+  <div
+    style={
+      {
+        "marginTop": "var(--ifm-table-cell-padding)",
+      }
+    }
+  />
+  <div>
+    <span
+      className="badge badge--info"
+    >
+      allOf
+    </span>
+    <div
+      className="tabs-container"
+    >
+      <ul
+        aria-orientation="horizontal"
+        className="tabs"
+        role="tablist"
+      >
+        <li
+          aria-selected={true}
+          onClick={[Function]}
+          tabIndex={0}
+        >
+          1
+        </li>
+        <li
+          aria-selected={false}
+          onClick={[Function]}
+          tabIndex={-1}
+        >
+          2
+        </li>
+        <li
+          aria-selected={false}
+          onClick={[Function]}
+          tabIndex={-1}
+        >
+          3
+        </li>
+      </ul>
+      <div>
+        <div
+          hidden={false}
+          role="tabpanel"
+        >
+          <div
+            role="tabpanel"
+          >
+            <details
+              open={true}
+            >
+              <summary>
+                <strong>
+                  Conditional subschemas
+                </strong>
+              </summary>
+              <div
+                className="tabs-container"
+              >
+                <ul
+                  aria-orientation="horizontal"
+                  className="tabs"
+                  role="tablist"
+                >
+                  <li
+                    aria-selected={true}
+                    onClick={[Function]}
+                    tabIndex={0}
+                  >
+                    <strong>
+                      If
+                    </strong>
+                  </li>
+                  <li
+                    aria-selected={false}
+                    onClick={[Function]}
+                    tabIndex={-1}
+                  >
+                    <strong>
+                      Then
+                    </strong>
+                  </li>
+                </ul>
+                <div>
+                  <div
+                    hidden={false}
+                    role="tabpanel"
+                  >
+                    <div
+                      role="tabpanel"
+                    >
+                      <strong>
+                        type
+                      </strong>
+                       : 
+                      <span
+                        style={
+                          {
+                            "opacity": "0.6",
+                          }
+                        }
+                      >
+                        object
+                      </span>
+                      <ul>
+                        <li>
+                          <details
+                            open={false}
+                          >
+                            <summary>
+                              <strong>
+                                country
+                              </strong>
+                               
+                              <span>
+                                unknown
+                              </span>
+                               
+                            </summary>
+                            <strong>
+                              type
+                            </strong>
+                             : 
+                            <span
+                              style={
+                                {
+                                  "opacity": "0.6",
+                                }
+                              }
+                            >
+                              unknown
+                            </span>
+                            <div
+                              style={
+                                {
+                                  "marginTop": "var(--ifm-table-cell-padding)",
+                                }
+                              }
+                            >
+                              <div>
+                                <strong>
+                                  Constant value :
+                                </strong>
+                                 
+                                <code>
+                                  United States of America
+                                </code>
+                              </div>
+                            </div>
+                          </details>
+                        </li>
+                      </ul>
+                      <div
+                        style={
+                          {
+                            "marginTop": "var(--ifm-table-cell-padding)",
+                          }
+                        }
+                      />
+                    </div>
+                  </div>
+                  <div
+                    hidden={true}
+                    role="tabpanel"
+                  >
+                    <div
+                      role="tabpanel"
+                    >
+                      <strong>
+                        type
+                      </strong>
+                       : 
+                      <span
+                        style={
+                          {
+                            "opacity": "0.6",
+                          }
+                        }
+                      >
+                        object
+                      </span>
+                      <ul>
+                        <li>
+                          <details
+                            open={false}
+                          >
+                            <summary>
+                              <strong>
+                                postal_code
+                              </strong>
+                               
+                              <span>
+                                string
+                              </span>
+                               
+                            </summary>
+                            <strong>
+                              type
+                            </strong>
+                             : 
+                            <span
+                              style={
+                                {
+                                  "opacity": "0.6",
+                                }
+                              }
+                            >
+                              string
+                            </span>
+                            <div
+                              style={
+                                {
+                                  "marginTop": "var(--ifm-table-cell-padding)",
+                                }
+                              }
+                            >
+                              <div>
+                                <strong>
+                                  Pattern :
+                                </strong>
+                                 
+                                <code>
+                                  [0-9]{5}(-[0-9]{4})?
+                                </code>
+                              </div>
+                            </div>
+                          </details>
+                        </li>
+                      </ul>
+                      <div
+                        style={
+                          {
+                            "marginTop": "var(--ifm-table-cell-padding)",
+                          }
+                        }
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </details>
+          </div>
+        </div>
+        <div
+          hidden={true}
+          role="tabpanel"
+        >
+          <div
+            role="tabpanel"
+          >
+            <details
+              open={true}
+            >
+              <summary>
+                <strong>
+                  Conditional subschemas
+                </strong>
+              </summary>
+              <div
+                className="tabs-container"
+              >
+                <ul
+                  aria-orientation="horizontal"
+                  className="tabs"
+                  role="tablist"
+                >
+                  <li
+                    aria-selected={true}
+                    onClick={[Function]}
+                    tabIndex={0}
+                  >
+                    <strong>
+                      If
+                    </strong>
+                  </li>
+                  <li
+                    aria-selected={false}
+                    onClick={[Function]}
+                    tabIndex={-1}
+                  >
+                    <strong>
+                      Then
+                    </strong>
+                  </li>
+                </ul>
+                <div>
+                  <div
+                    hidden={false}
+                    role="tabpanel"
+                  >
+                    <div
+                      role="tabpanel"
+                    >
+                      <strong>
+                        type
+                      </strong>
+                       : 
+                      <span
+                        style={
+                          {
+                            "opacity": "0.6",
+                          }
+                        }
+                      >
+                        object
+                      </span>
+                      <ul>
+                        <li>
+                          <details
+                            open={false}
+                          >
+                            <summary>
+                              <strong>
+                                country
+                              </strong>
+                               
+                              <span>
+                                unknown
+                              </span>
+                               
+                              <strong>
+                                required
+                              </strong>
+                            </summary>
+                            <strong>
+                              type
+                            </strong>
+                             : 
+                            <span
+                              style={
+                                {
+                                  "opacity": "0.6",
+                                }
+                              }
+                            >
+                              unknown
+                            </span>
+                            <div
+                              style={
+                                {
+                                  "marginTop": "var(--ifm-table-cell-padding)",
+                                }
+                              }
+                            >
+                              <div>
+                                <strong>
+                                  Constant value :
+                                </strong>
+                                 
+                                <code>
+                                  Canada
+                                </code>
+                              </div>
+                            </div>
+                          </details>
+                        </li>
+                      </ul>
+                      <div
+                        style={
+                          {
+                            "marginTop": "var(--ifm-table-cell-padding)",
+                          }
+                        }
+                      />
+                    </div>
+                  </div>
+                  <div
+                    hidden={true}
+                    role="tabpanel"
+                  >
+                    <div
+                      role="tabpanel"
+                    >
+                      <strong>
+                        type
+                      </strong>
+                       : 
+                      <span
+                        style={
+                          {
+                            "opacity": "0.6",
+                          }
+                        }
+                      >
+                        object
+                      </span>
+                      <ul>
+                        <li>
+                          <details
+                            open={false}
+                          >
+                            <summary>
+                              <strong>
+                                postal_code
+                              </strong>
+                               
+                              <span>
+                                string
+                              </span>
+                               
+                            </summary>
+                            <strong>
+                              type
+                            </strong>
+                             : 
+                            <span
+                              style={
+                                {
+                                  "opacity": "0.6",
+                                }
+                              }
+                            >
+                              string
+                            </span>
+                            <div
+                              style={
+                                {
+                                  "marginTop": "var(--ifm-table-cell-padding)",
+                                }
+                              }
+                            >
+                              <div>
+                                <strong>
+                                  Pattern :
+                                </strong>
+                                 
+                                <code>
+                                  [A-Z][0-9][A-Z] [0-9][A-Z][0-9]
+                                </code>
+                              </div>
+                            </div>
+                          </details>
+                        </li>
+                      </ul>
+                      <div
+                        style={
+                          {
+                            "marginTop": "var(--ifm-table-cell-padding)",
+                          }
+                        }
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </details>
+          </div>
+        </div>
+        <div
+          hidden={true}
+          role="tabpanel"
+        >
+          <div
+            role="tabpanel"
+          >
+            <details
+              open={true}
+            >
+              <summary>
+                <strong>
+                  Conditional subschemas
+                </strong>
+              </summary>
+              <div
+                className="tabs-container"
+              >
+                <ul
+                  aria-orientation="horizontal"
+                  className="tabs"
+                  role="tablist"
+                >
+                  <li
+                    aria-selected={true}
+                    onClick={[Function]}
+                    tabIndex={0}
+                  >
+                    <strong>
+                      If
+                    </strong>
+                  </li>
+                  <li
+                    aria-selected={false}
+                    onClick={[Function]}
+                    tabIndex={-1}
+                  >
+                    <strong>
+                      Then
+                    </strong>
+                  </li>
+                </ul>
+                <div>
+                  <div
+                    hidden={false}
+                    role="tabpanel"
+                  >
+                    <div
+                      role="tabpanel"
+                    >
+                      <strong>
+                        type
+                      </strong>
+                       : 
+                      <span
+                        style={
+                          {
+                            "opacity": "0.6",
+                          }
+                        }
+                      >
+                        object
+                      </span>
+                      <ul>
+                        <li>
+                          <details
+                            open={false}
+                          >
+                            <summary>
+                              <strong>
+                                country
+                              </strong>
+                               
+                              <span>
+                                unknown
+                              </span>
+                               
+                              <strong>
+                                required
+                              </strong>
+                            </summary>
+                            <strong>
+                              type
+                            </strong>
+                             : 
+                            <span
+                              style={
+                                {
+                                  "opacity": "0.6",
+                                }
+                              }
+                            >
+                              unknown
+                            </span>
+                            <div
+                              style={
+                                {
+                                  "marginTop": "var(--ifm-table-cell-padding)",
+                                }
+                              }
+                            >
+                              <div>
+                                <strong>
+                                  Constant value :
+                                </strong>
+                                 
+                                <code>
+                                  Netherlands
+                                </code>
+                              </div>
+                            </div>
+                          </details>
+                        </li>
+                      </ul>
+                      <div
+                        style={
+                          {
+                            "marginTop": "var(--ifm-table-cell-padding)",
+                          }
+                        }
+                      />
+                    </div>
+                  </div>
+                  <div
+                    hidden={true}
+                    role="tabpanel"
+                  >
+                    <div
+                      role="tabpanel"
+                    >
+                      <strong>
+                        type
+                      </strong>
+                       : 
+                      <span
+                        style={
+                          {
+                            "opacity": "0.6",
+                          }
+                        }
+                      >
+                        object
+                      </span>
+                      <ul>
+                        <li>
+                          <details
+                            open={false}
+                          >
+                            <summary>
+                              <strong>
+                                postal_code
+                              </strong>
+                               
+                              <span>
+                                string
+                              </span>
+                               
+                            </summary>
+                            <strong>
+                              type
+                            </strong>
+                             : 
+                            <span
+                              style={
+                                {
+                                  "opacity": "0.6",
+                                }
+                              }
+                            >
+                              string
+                            </span>
+                            <div
+                              style={
+                                {
+                                  "marginTop": "var(--ifm-table-cell-padding)",
+                                }
+                              }
+                            >
+                              <div>
+                                <strong>
+                                  Pattern :
+                                </strong>
+                                 
+                                <code>
+                                  [0-9]{4} [A-Z]{2}
+                                </code>
+                              </div>
+                            </div>
+                          </details>
+                        </li>
+                      </ul>
+                      <div
+                        style={
+                          {
+                            "marginTop": "var(--ifm-table-cell-padding)",
+                          }
+                        }
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </details>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</details>
+`;
+
+exports[`JSONSchemaViewer - schema conditionally test If Then Else 1`] = `
+<details
+  open={true}
+>
+  <summary>
+    <strong>
+      Schema
+    </strong>
+  </summary>
+  <strong>
+    type
+  </strong>
+   : 
+  <span
+    style={
+      {
+        "opacity": "0.6",
+      }
+    }
+  >
+    object
+  </span>
+  <ul>
+    <li>
+      <details
+        open={false}
+      >
+        <summary>
+          <strong>
+            street_address
+          </strong>
+           
+          <span>
+            string
+          </span>
+           
+        </summary>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style={
+            {
+              "opacity": "0.6",
+            }
+          }
+        >
+          string
+        </span>
+        <div
+          style={
+            {
+              "marginTop": "var(--ifm-table-cell-padding)",
+            }
+          }
+        />
+      </details>
+    </li>
+    <li>
+      <details
+        open={false}
+      >
+        <summary>
+          <strong>
+            country
+          </strong>
+           
+          <span>
+            unknown
+          </span>
+           
+        </summary>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style={
+            {
+              "opacity": "0.6",
+            }
+          }
+        >
+          unknown
+        </span>
+        <div
+          style={
+            {
+              "marginTop": "var(--ifm-table-cell-padding)",
+            }
+          }
+        >
+          <div>
+            <strong>
+              Possible values :
+            </strong>
+             
+            <code>
+              ["United States of America","Canada"]
+            </code>
+          </div>
+          <div>
+            <strong>
+              Default value :
+            </strong>
+             
+            <code>
+              United States of America
+            </code>
+          </div>
+        </div>
+      </details>
+    </li>
+  </ul>
+  <div
+    style={
+      {
+        "marginTop": "var(--ifm-table-cell-padding)",
+      }
+    }
+  />
+  <details
+    open={true}
+  >
+    <summary>
+      <strong>
+        Conditional subschemas
+      </strong>
+    </summary>
+    <div
+      className="tabs-container"
+    >
+      <ul
+        aria-orientation="horizontal"
+        className="tabs"
+        role="tablist"
+      >
+        <li
+          aria-selected={true}
+          onClick={[Function]}
+          tabIndex={0}
+        >
+          <strong>
+            If
+          </strong>
+        </li>
+        <li
+          aria-selected={false}
+          onClick={[Function]}
+          tabIndex={-1}
+        >
+          <strong>
+            Then
+          </strong>
+        </li>
+        <li
+          aria-selected={false}
+          onClick={[Function]}
+          tabIndex={-1}
+        >
+          <strong>
+            Else
+          </strong>
+        </li>
+      </ul>
+      <div>
+        <div
+          hidden={false}
+          role="tabpanel"
+        >
+          <div
+            role="tabpanel"
+          >
+            <strong>
+              type
+            </strong>
+             : 
+            <span
+              style={
+                {
+                  "opacity": "0.6",
+                }
+              }
+            >
+              object
+            </span>
+            <ul>
+              <li>
+                <details
+                  open={false}
+                >
+                  <summary>
+                    <strong>
+                      country
+                    </strong>
+                     
+                    <span>
+                      unknown
+                    </span>
+                     
+                  </summary>
+                  <strong>
+                    type
+                  </strong>
+                   : 
+                  <span
+                    style={
+                      {
+                        "opacity": "0.6",
+                      }
+                    }
+                  >
+                    unknown
+                  </span>
+                  <div
+                    style={
+                      {
+                        "marginTop": "var(--ifm-table-cell-padding)",
+                      }
+                    }
+                  >
+                    <div>
+                      <strong>
+                        Constant value :
+                      </strong>
+                       
+                      <code>
+                        United States of America
+                      </code>
+                    </div>
+                  </div>
+                </details>
+              </li>
+            </ul>
+            <div
+              style={
+                {
+                  "marginTop": "var(--ifm-table-cell-padding)",
+                }
+              }
+            />
+          </div>
+        </div>
+        <div
+          hidden={true}
+          role="tabpanel"
+        >
+          <div
+            role="tabpanel"
+          >
+            <strong>
+              type
+            </strong>
+             : 
+            <span
+              style={
+                {
+                  "opacity": "0.6",
+                }
+              }
+            >
+              object
+            </span>
+            <ul>
+              <li>
+                <details
+                  open={false}
+                >
+                  <summary>
+                    <strong>
+                      postal_code
+                    </strong>
+                     
+                    <span>
+                      string
+                    </span>
+                     
+                  </summary>
+                  <strong>
+                    type
+                  </strong>
+                   : 
+                  <span
+                    style={
+                      {
+                        "opacity": "0.6",
+                      }
+                    }
+                  >
+                    string
+                  </span>
+                  <div
+                    style={
+                      {
+                        "marginTop": "var(--ifm-table-cell-padding)",
+                      }
+                    }
+                  >
+                    <div>
+                      <strong>
+                        Pattern :
+                      </strong>
+                       
+                      <code>
+                        [0-9]{5}(-[0-9]{4})?
+                      </code>
+                    </div>
+                  </div>
+                </details>
+              </li>
+            </ul>
+            <div
+              style={
+                {
+                  "marginTop": "var(--ifm-table-cell-padding)",
+                }
+              }
+            />
+          </div>
+        </div>
+        <div
+          hidden={true}
+          role="tabpanel"
+        >
+          <div
+            role="tabpanel"
+          >
+            <strong>
+              type
+            </strong>
+             : 
+            <span
+              style={
+                {
+                  "opacity": "0.6",
+                }
+              }
+            >
+              object
+            </span>
+            <ul>
+              <li>
+                <details
+                  open={false}
+                >
+                  <summary>
+                    <strong>
+                      postal_code
+                    </strong>
+                     
+                    <span>
+                      string
+                    </span>
+                     
+                  </summary>
+                  <strong>
+                    type
+                  </strong>
+                   : 
+                  <span
+                    style={
+                      {
+                        "opacity": "0.6",
+                      }
+                    }
+                  >
+                    string
+                  </span>
+                  <div
+                    style={
+                      {
+                        "marginTop": "var(--ifm-table-cell-padding)",
+                      }
+                    }
+                  >
+                    <div>
+                      <strong>
+                        Pattern :
+                      </strong>
+                       
+                      <code>
+                        [A-Z][0-9][A-Z] [0-9][A-Z][0-9]
+                      </code>
+                    </div>
+                  </div>
+                </details>
+              </li>
+            </ul>
+            <div
+              style={
+                {
+                  "marginTop": "var(--ifm-table-cell-padding)",
+                }
+              }
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </details>
+</details>
+`;
+
+exports[`JSONSchemaViewer - schema conditionally test dependencies (dependentRequired format) 1`] = `
+<details
+  open={true}
+>
+  <summary>
+    <strong>
+      Schema
+    </strong>
+  </summary>
+  <strong>
+    type
+  </strong>
+   : 
+  <span
+    style={
+      {
+        "opacity": "0.6",
+      }
+    }
+  >
+    object
+  </span>
+  <ul>
+    <li>
+      <details
+        open={false}
+      >
+        <summary>
+          <strong>
+            name
+          </strong>
+           
+          <span>
+            string
+          </span>
+           
+          <strong>
+            required
+          </strong>
+        </summary>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style={
+            {
+              "opacity": "0.6",
+            }
+          }
+        >
+          string
+        </span>
+        <div
+          style={
+            {
+              "marginTop": "var(--ifm-table-cell-padding)",
+            }
+          }
+        />
+      </details>
+    </li>
+    <li>
+      <details
+        open={false}
+      >
+        <summary>
+          <strong>
+            credit_card
+          </strong>
+           
+          <span>
+            number
+          </span>
+           
+        </summary>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style={
+            {
+              "opacity": "0.6",
+            }
+          }
+        >
+          number
+        </span>
+        <div
+          style={
+            {
+              "marginTop": "var(--ifm-table-cell-padding)",
+            }
+          }
+        />
+      </details>
+    </li>
+    <li>
+      <details
+        open={false}
+      >
+        <summary>
+          <strong>
+            billing_address
+          </strong>
+           
+          <span>
+            string
+          </span>
+           
+        </summary>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style={
+            {
+              "opacity": "0.6",
+            }
+          }
+        >
+          string
+        </span>
+        <div
+          style={
+            {
+              "marginTop": "var(--ifm-table-cell-padding)",
+            }
+          }
+        />
+      </details>
+    </li>
+  </ul>
+  <div
+    style={
+      {
+        "marginTop": "var(--ifm-table-cell-padding)",
+      }
+    }
+  />
+  <details
+    open={true}
+  >
+    <summary>
+      <strong>
+        Conditional subschemas
+      </strong>
+    </summary>
+    <ul>
+      <li>
+        If credit_card property is provided, then 1 propertie(s) must also be present: billing_address
+      </li>
+    </ul>
+  </details>
+</details>
+`;
+
+exports[`JSONSchemaViewer - schema conditionally test dependencies (dependentSchemas format) 1`] = `
+<details
+  open={true}
+>
+  <summary>
+    <strong>
+      Schema
+    </strong>
+  </summary>
+  <strong>
+    type
+  </strong>
+   : 
+  <span
+    style={
+      {
+        "opacity": "0.6",
+      }
+    }
+  >
+    object
+  </span>
+  <ul>
+    <li>
+      <details
+        open={false}
+      >
+        <summary>
+          <strong>
+            name
+          </strong>
+           
+          <span>
+            string
+          </span>
+           
+          <strong>
+            required
+          </strong>
+        </summary>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style={
+            {
+              "opacity": "0.6",
+            }
+          }
+        >
+          string
+        </span>
+        <div
+          style={
+            {
+              "marginTop": "var(--ifm-table-cell-padding)",
+            }
+          }
+        />
+      </details>
+    </li>
+    <li>
+      <details
+        open={false}
+      >
+        <summary>
+          <strong>
+            credit_card
+          </strong>
+           
+          <span>
+            number
+          </span>
+           
+        </summary>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style={
+            {
+              "opacity": "0.6",
+            }
+          }
+        >
+          number
+        </span>
+        <div
+          style={
+            {
+              "marginTop": "var(--ifm-table-cell-padding)",
+            }
+          }
+        />
+      </details>
+    </li>
+  </ul>
+  <div
+    style={
+      {
+        "marginTop": "var(--ifm-table-cell-padding)",
+      }
+    }
+  />
+  <details
+    open={true}
+  >
+    <summary>
+      <strong>
+        Conditional subschemas
+      </strong>
+    </summary>
+    <ul>
+      <div
+        className="tabs-container"
+      >
+        <ul
+          aria-orientation="horizontal"
+          className="tabs"
+          role="tablist"
+        >
+          <li
+            aria-selected={true}
+            onClick={[Function]}
+            tabIndex={0}
+          >
+            <strong>
+              If
+            </strong>
+          </li>
+          <li
+            aria-selected={false}
+            onClick={[Function]}
+            tabIndex={-1}
+          >
+            <strong>
+              Then
+            </strong>
+          </li>
+        </ul>
+        <div>
+          <div
+            hidden={false}
+            role="tabpanel"
+          >
+            <div
+              role="tabpanel"
+            >
+              When credit_card property is provided
+            </div>
+          </div>
+          <div
+            hidden={true}
+            role="tabpanel"
+          >
+            <div
+              role="tabpanel"
+            >
+              <strong>
+                type
+              </strong>
+               : 
+              <span
+                style={
+                  {
+                    "opacity": "0.6",
+                  }
+                }
+              >
+                object
+              </span>
+              <ul>
+                <li>
+                  <details
+                    open={false}
+                  >
+                    <summary>
+                      <strong>
+                        billing_address
+                      </strong>
+                       
+                      <span>
+                        string
+                      </span>
+                       
+                      <strong>
+                        required
+                      </strong>
+                    </summary>
+                    <strong>
+                      type
+                    </strong>
+                     : 
+                    <span
+                      style={
+                        {
+                          "opacity": "0.6",
+                        }
+                      }
+                    >
+                      string
+                    </span>
+                    <div
+                      style={
+                        {
+                          "marginTop": "var(--ifm-table-cell-padding)",
+                        }
+                      }
+                    />
+                  </details>
+                </li>
+              </ul>
+              <div
+                style={
+                  {
+                    "marginTop": "var(--ifm-table-cell-padding)",
+                  }
+                }
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </ul>
+  </details>
+</details>
+`;
+
+exports[`JSONSchemaViewer - schema conditionally test dependentRequired (bidirectional) 1`] = `
+<details
+  open={true}
+>
+  <summary>
+    <strong>
+      Schema
+    </strong>
+  </summary>
+  <strong>
+    type
+  </strong>
+   : 
+  <span
+    style={
+      {
+        "opacity": "0.6",
+      }
+    }
+  >
+    object
+  </span>
+  <ul>
+    <li>
+      <details
+        open={false}
+      >
+        <summary>
+          <strong>
+            name
+          </strong>
+           
+          <span>
+            string
+          </span>
+           
+          <strong>
+            required
+          </strong>
+        </summary>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style={
+            {
+              "opacity": "0.6",
+            }
+          }
+        >
+          string
+        </span>
+        <div
+          style={
+            {
+              "marginTop": "var(--ifm-table-cell-padding)",
+            }
+          }
+        />
+      </details>
+    </li>
+    <li>
+      <details
+        open={false}
+      >
+        <summary>
+          <strong>
+            credit_card
+          </strong>
+           
+          <span>
+            number
+          </span>
+           
+        </summary>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style={
+            {
+              "opacity": "0.6",
+            }
+          }
+        >
+          number
+        </span>
+        <div
+          style={
+            {
+              "marginTop": "var(--ifm-table-cell-padding)",
+            }
+          }
+        />
+      </details>
+    </li>
+    <li>
+      <details
+        open={false}
+      >
+        <summary>
+          <strong>
+            billing_address
+          </strong>
+           
+          <span>
+            string
+          </span>
+           
+        </summary>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style={
+            {
+              "opacity": "0.6",
+            }
+          }
+        >
+          string
+        </span>
+        <div
+          style={
+            {
+              "marginTop": "var(--ifm-table-cell-padding)",
+            }
+          }
+        />
+      </details>
+    </li>
+  </ul>
+  <div
+    style={
+      {
+        "marginTop": "var(--ifm-table-cell-padding)",
+      }
+    }
+  />
+  <details
+    open={true}
+  >
+    <summary>
+      <strong>
+        Conditional subschemas
+      </strong>
+    </summary>
+    <ul>
+      <li>
+        If credit_card property is provided, then 1 propertie(s) must also be present: billing_address
+      </li>
+      <li>
+        If billing_address property is provided, then 1 propertie(s) must also be present: credit_card
+      </li>
+    </ul>
+  </details>
+</details>
+`;
+
+exports[`JSONSchemaViewer - schema conditionally test dependentRequired 1`] = `
+<details
+  open={true}
+>
+  <summary>
+    <strong>
+      Schema
+    </strong>
+  </summary>
+  <strong>
+    type
+  </strong>
+   : 
+  <span
+    style={
+      {
+        "opacity": "0.6",
+      }
+    }
+  >
+    object
+  </span>
+  <ul>
+    <li>
+      <details
+        open={false}
+      >
+        <summary>
+          <strong>
+            name
+          </strong>
+           
+          <span>
+            string
+          </span>
+           
+          <strong>
+            required
+          </strong>
+        </summary>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style={
+            {
+              "opacity": "0.6",
+            }
+          }
+        >
+          string
+        </span>
+        <div
+          style={
+            {
+              "marginTop": "var(--ifm-table-cell-padding)",
+            }
+          }
+        />
+      </details>
+    </li>
+    <li>
+      <details
+        open={false}
+      >
+        <summary>
+          <strong>
+            credit_card
+          </strong>
+           
+          <span>
+            number
+          </span>
+           
+        </summary>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style={
+            {
+              "opacity": "0.6",
+            }
+          }
+        >
+          number
+        </span>
+        <div
+          style={
+            {
+              "marginTop": "var(--ifm-table-cell-padding)",
+            }
+          }
+        />
+      </details>
+    </li>
+    <li>
+      <details
+        open={false}
+      >
+        <summary>
+          <strong>
+            billing_address
+          </strong>
+           
+          <span>
+            string
+          </span>
+           
+        </summary>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style={
+            {
+              "opacity": "0.6",
+            }
+          }
+        >
+          string
+        </span>
+        <div
+          style={
+            {
+              "marginTop": "var(--ifm-table-cell-padding)",
+            }
+          }
+        />
+      </details>
+    </li>
+  </ul>
+  <div
+    style={
+      {
+        "marginTop": "var(--ifm-table-cell-padding)",
+      }
+    }
+  />
+  <details
+    open={true}
+  >
+    <summary>
+      <strong>
+        Conditional subschemas
+      </strong>
+    </summary>
+    <ul>
+      <li>
+        If credit_card property is provided, then 1 propertie(s) must also be present: billing_address
+      </li>
+    </ul>
+  </details>
+</details>
+`;
