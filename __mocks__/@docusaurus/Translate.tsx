@@ -1,4 +1,4 @@
-import React, {ReactNode} from "react"
+import React, { ReactNode } from "react"
 
 type Props = {
   [x: string]: any
@@ -10,15 +10,16 @@ type Props = {
 
 export default function Translate(props: Props): JSX.Element {
   // Return fallback message with basic replacements (what matter is that)
-  
-  let replacedString = props.children;
+
+  let replacedString = props.children
   if (props.values) {
-    Object
-      .entries(props.values)
-      .forEach( ([key, value]) => {
-        // Well enough for the tests context 
-        replacedString = replacedString.replace(new RegExp(`{${key}}`), value as string)
-      })
+    Object.entries(props.values).forEach(([key, value]) => {
+      // Well enough for the tests context
+      replacedString = replacedString.replace(
+        new RegExp(`{${key}}`),
+        value as string
+      )
+    })
   }
   return <>{replacedString}</>
 }
