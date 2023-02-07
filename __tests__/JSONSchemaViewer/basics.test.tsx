@@ -10,6 +10,9 @@ import JSONSchemaViewer from "../../src/theme/JSONSchemaViewer/index"
 // Type to prevent creating invalid mocks
 import type { JSONSchema } from "../../src/theme/JSONSchemaViewer/types"
 
+// Type for react-test-renderer
+import type { ReactTestRenderer } from "react-test-renderer"
+
 describe("JSONSchemaViewer - basics tests", () => {
   test("Can render a simple schema", async () => {
     const fakeSchema: JSONSchema = {
@@ -33,7 +36,7 @@ describe("JSONSchemaViewer - basics tests", () => {
     }
 
     // render the component
-    let root: any
+    let root: ReactTestRenderer | undefined
     await act(async () => {
       root = create(<JSONSchemaViewer schema={fakeSchema2} />)
     })
