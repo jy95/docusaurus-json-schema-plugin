@@ -14,68 +14,68 @@ const testcases: [string, JSONSchema][] = [
   [
     "simple",
     {
-      type: "object"
-    }
+      type: "object",
+    },
   ],
   [
     "minProperties",
     {
       type: "object",
-      minProperties: 2
-    }
+      minProperties: 2,
+    },
   ],
   [
     "maxProperties",
     {
       type: "object",
-      maxProperties: 3
-    }
+      maxProperties: 3,
+    },
   ],
   [
     "minProperties & maxProperties",
     {
       type: "object",
       minProperties: 2,
-      maxProperties: 3
-    }
+      maxProperties: 3,
+    },
   ],
   [
     "additionalProperties (false)",
     {
       type: "object",
       properties: {
-        number: { "type": "number" },
+        number: { type: "number" },
         street_name: { type: "string" },
-        street_type: { enum: ["Street", "Avenue", "Boulevard"] }
+        street_type: { enum: ["Street", "Avenue", "Boulevard"] },
       },
-      additionalProperties: false
-    }
+      additionalProperties: false,
+    },
   ],
   [
     "additionalProperties (JSON Schema)",
     {
       type: "object",
       properties: {
-        number: { "type": "number" },
+        number: { type: "number" },
         street_name: { type: "string" },
-        street_type: { enum: ["Street", "Avenue", "Boulevard"] }
+        street_type: { enum: ["Street", "Avenue", "Boulevard"] },
       },
-      additionalProperties: { type: "string" }
-    }
+      additionalProperties: { type: "string" },
+    },
   ],
   [
     "additionalProperties with patternProperties",
     {
       type: "object",
       properties: {
-        builtin: { type: "number" }
+        builtin: { type: "number" },
       },
       patternProperties: {
         "^S_": { type: "string" },
-        "^I_": { type: "integer" }
+        "^I_": { type: "integer" },
       },
-      additionalProperties: { type: "string" }
-    }
+      additionalProperties: { type: "string" },
+    },
   ],
   [
     "patternProperties",
@@ -83,43 +83,43 @@ const testcases: [string, JSONSchema][] = [
       type: "object",
       patternProperties: {
         "^S_": { type: "string" },
-        "^I_": { type: "integer" }
-      }
-    }
+        "^I_": { type: "integer" },
+      },
+    },
   ],
   [
     "properties",
     {
       type: "object",
       properties: {
-        number: { "type": "number" },
+        number: { type: "number" },
         street_name: { type: "string" },
-        street_type: { enum: ["Street", "Avenue", "Boulevard"] }
-      }
-    }
+        street_type: { enum: ["Street", "Avenue", "Boulevard"] },
+      },
+    },
   ],
   [
     "propertyNames",
     {
       type: "object",
       propertyNames: {
-        pattern: "^[A-Za-z_][A-Za-z0-9_]*$"
-      }
-    }
+        pattern: "^[A-Za-z_][A-Za-z0-9_]*$",
+      },
+    },
   ],
   [
     "required",
     {
       type: "object",
       properties: {
-        "name": { type: "string" },
-        "email": { type: "string" },
-        "address": { type: "string" },
-        "telephone": { type: "string" }
+        name: { type: "string" },
+        email: { type: "string" },
+        address: { type: "string" },
+        telephone: { type: "string" },
       },
-      required: ["name", "email"]
-    }
-  ]
+      required: ["name", "email"],
+    },
+  ],
 ]
 
 describe("JSONSchemaViewer - object", () => {
