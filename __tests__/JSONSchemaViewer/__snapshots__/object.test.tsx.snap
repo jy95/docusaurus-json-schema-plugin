@@ -1,0 +1,1206 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`JSONSchemaViewer - object test additionalProperties (JSON Schema) 1`] = `
+<details
+  open={true}
+>
+  <summary>
+    <strong>
+      Schema
+    </strong>
+  </summary>
+  <strong>
+    type
+  </strong>
+   : 
+  <span
+    style={
+      {
+        "opacity": "0.6",
+      }
+    }
+  >
+    object
+  </span>
+  <ul>
+    <li>
+      <details
+        open={false}
+      >
+        <summary>
+          <strong>
+            number
+          </strong>
+           
+          <span>
+            number
+          </span>
+           
+        </summary>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style={
+            {
+              "opacity": "0.6",
+            }
+          }
+        >
+          number
+        </span>
+        <div
+          style={
+            {
+              "marginTop": "var(--ifm-table-cell-padding)",
+            }
+          }
+        />
+      </details>
+    </li>
+    <li>
+      <details
+        open={false}
+      >
+        <summary>
+          <strong>
+            street_name
+          </strong>
+           
+          <span>
+            string
+          </span>
+           
+        </summary>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style={
+            {
+              "opacity": "0.6",
+            }
+          }
+        >
+          string
+        </span>
+        <div
+          style={
+            {
+              "marginTop": "var(--ifm-table-cell-padding)",
+            }
+          }
+        />
+      </details>
+    </li>
+    <li>
+      <details
+        open={false}
+      >
+        <summary>
+          <strong>
+            street_type
+          </strong>
+           
+          <span>
+            unknown
+          </span>
+           
+        </summary>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style={
+            {
+              "opacity": "0.6",
+            }
+          }
+        >
+          unknown
+        </span>
+        <div
+          style={
+            {
+              "marginTop": "var(--ifm-table-cell-padding)",
+            }
+          }
+        >
+          <div>
+            <strong>
+              Possible values :
+            </strong>
+             
+            <code>
+              ["Street","Avenue","Boulevard"]
+            </code>
+          </div>
+        </div>
+      </details>
+    </li>
+  </ul>
+  <ul>
+    <li>
+      <details
+        open={false}
+      >
+        <summary>
+          <code>
+            property name*
+          </code>
+           
+          <span>
+            string
+          </span>
+           
+        </summary>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style={
+            {
+              "opacity": "0.6",
+            }
+          }
+        >
+          string
+        </span>
+        <div
+          style={
+            {
+              "marginTop": "var(--ifm-table-cell-padding)",
+            }
+          }
+        />
+      </details>
+    </li>
+  </ul>
+  <div
+    style={
+      {
+        "marginTop": "var(--ifm-table-cell-padding)",
+      }
+    }
+  />
+</details>
+`;
+
+exports[`JSONSchemaViewer - object test additionalProperties (false) 1`] = `
+<details
+  open={true}
+>
+  <summary>
+    <strong>
+      Schema
+    </strong>
+  </summary>
+  <strong>
+    type
+  </strong>
+   : 
+  <span
+    style={
+      {
+        "opacity": "0.6",
+      }
+    }
+  >
+    object
+  </span>
+  <ul>
+    <li>
+      <details
+        open={false}
+      >
+        <summary>
+          <strong>
+            number
+          </strong>
+           
+          <span>
+            number
+          </span>
+           
+        </summary>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style={
+            {
+              "opacity": "0.6",
+            }
+          }
+        >
+          number
+        </span>
+        <div
+          style={
+            {
+              "marginTop": "var(--ifm-table-cell-padding)",
+            }
+          }
+        />
+      </details>
+    </li>
+    <li>
+      <details
+        open={false}
+      >
+        <summary>
+          <strong>
+            street_name
+          </strong>
+           
+          <span>
+            string
+          </span>
+           
+        </summary>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style={
+            {
+              "opacity": "0.6",
+            }
+          }
+        >
+          string
+        </span>
+        <div
+          style={
+            {
+              "marginTop": "var(--ifm-table-cell-padding)",
+            }
+          }
+        />
+      </details>
+    </li>
+    <li>
+      <details
+        open={false}
+      >
+        <summary>
+          <strong>
+            street_type
+          </strong>
+           
+          <span>
+            unknown
+          </span>
+           
+        </summary>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style={
+            {
+              "opacity": "0.6",
+            }
+          }
+        >
+          unknown
+        </span>
+        <div
+          style={
+            {
+              "marginTop": "var(--ifm-table-cell-padding)",
+            }
+          }
+        >
+          <div>
+            <strong>
+              Possible values :
+            </strong>
+             
+            <code>
+              ["Street","Avenue","Boulevard"]
+            </code>
+          </div>
+        </div>
+      </details>
+    </li>
+  </ul>
+  <div
+    style={
+      {
+        "marginTop": "var(--ifm-table-cell-padding)",
+      }
+    }
+  >
+    <div>
+      🚨 
+      No extra propertie(s) are authorized in this object
+    </div>
+  </div>
+</details>
+`;
+
+exports[`JSONSchemaViewer - object test additionalProperties with patternProperties 1`] = `
+<details
+  open={true}
+>
+  <summary>
+    <strong>
+      Schema
+    </strong>
+  </summary>
+  <strong>
+    type
+  </strong>
+   : 
+  <span
+    style={
+      {
+        "opacity": "0.6",
+      }
+    }
+  >
+    object
+  </span>
+  <ul>
+    <li>
+      <details
+        open={false}
+      >
+        <summary>
+          <strong>
+            builtin
+          </strong>
+           
+          <span>
+            number
+          </span>
+           
+        </summary>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style={
+            {
+              "opacity": "0.6",
+            }
+          }
+        >
+          number
+        </span>
+        <div
+          style={
+            {
+              "marginTop": "var(--ifm-table-cell-padding)",
+            }
+          }
+        />
+      </details>
+    </li>
+  </ul>
+  <ul>
+    <li>
+      <details
+        open={false}
+      >
+        <summary>
+          <code>
+            ^S_
+          </code>
+           
+          <span>
+            string
+          </span>
+           
+        </summary>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style={
+            {
+              "opacity": "0.6",
+            }
+          }
+        >
+          string
+        </span>
+        <div
+          style={
+            {
+              "marginTop": "var(--ifm-table-cell-padding)",
+            }
+          }
+        />
+      </details>
+    </li>
+    <li>
+      <details
+        open={false}
+      >
+        <summary>
+          <code>
+            ^I_
+          </code>
+           
+          <span>
+            integer
+          </span>
+           
+        </summary>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style={
+            {
+              "opacity": "0.6",
+            }
+          }
+        >
+          integer
+        </span>
+        <div
+          style={
+            {
+              "marginTop": "var(--ifm-table-cell-padding)",
+            }
+          }
+        />
+      </details>
+    </li>
+  </ul>
+  <ul>
+    <li>
+      <details
+        open={false}
+      >
+        <summary>
+          <code>
+            property name*
+          </code>
+           
+          <span>
+            string
+          </span>
+           
+        </summary>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style={
+            {
+              "opacity": "0.6",
+            }
+          }
+        >
+          string
+        </span>
+        <div
+          style={
+            {
+              "marginTop": "var(--ifm-table-cell-padding)",
+            }
+          }
+        />
+      </details>
+    </li>
+  </ul>
+  <div
+    style={
+      {
+        "marginTop": "var(--ifm-table-cell-padding)",
+      }
+    }
+  />
+</details>
+`;
+
+exports[`JSONSchemaViewer - object test maxProperties 1`] = `
+<details
+  open={true}
+>
+  <summary>
+    <strong>
+      Schema
+    </strong>
+  </summary>
+  <strong>
+    type
+  </strong>
+   : 
+  <span
+    style={
+      {
+        "opacity": "0.6",
+      }
+    }
+  >
+    object
+  </span>
+  <div
+    style={
+      {
+        "marginTop": "var(--ifm-table-cell-padding)",
+      }
+    }
+  >
+    <div>
+      <strong>
+        Length :
+      </strong>
+       
+      <code>
+        &lt;= 3 propertie(s)
+      </code>
+    </div>
+  </div>
+</details>
+`;
+
+exports[`JSONSchemaViewer - object test minProperties & maxProperties 1`] = `
+<details
+  open={true}
+>
+  <summary>
+    <strong>
+      Schema
+    </strong>
+  </summary>
+  <strong>
+    type
+  </strong>
+   : 
+  <span
+    style={
+      {
+        "opacity": "0.6",
+      }
+    }
+  >
+    object
+  </span>
+  <div
+    style={
+      {
+        "marginTop": "var(--ifm-table-cell-padding)",
+      }
+    }
+  >
+    <div>
+      <strong>
+        Length :
+      </strong>
+       
+      <code>
+        &gt;= 2 propertie(s)
+      </code>
+       
+      AND
+       
+      <code>
+        &lt;= 3 propertie(s)
+      </code>
+    </div>
+  </div>
+</details>
+`;
+
+exports[`JSONSchemaViewer - object test minProperties 1`] = `
+<details
+  open={true}
+>
+  <summary>
+    <strong>
+      Schema
+    </strong>
+  </summary>
+  <strong>
+    type
+  </strong>
+   : 
+  <span
+    style={
+      {
+        "opacity": "0.6",
+      }
+    }
+  >
+    object
+  </span>
+  <div
+    style={
+      {
+        "marginTop": "var(--ifm-table-cell-padding)",
+      }
+    }
+  >
+    <div>
+      <strong>
+        Length :
+      </strong>
+       
+      <code>
+        &gt;= 2 propertie(s)
+      </code>
+    </div>
+  </div>
+</details>
+`;
+
+exports[`JSONSchemaViewer - object test patternProperties 1`] = `
+<details
+  open={true}
+>
+  <summary>
+    <strong>
+      Schema
+    </strong>
+  </summary>
+  <strong>
+    type
+  </strong>
+   : 
+  <span
+    style={
+      {
+        "opacity": "0.6",
+      }
+    }
+  >
+    object
+  </span>
+  <ul>
+    <li>
+      <details
+        open={false}
+      >
+        <summary>
+          <code>
+            ^S_
+          </code>
+           
+          <span>
+            string
+          </span>
+           
+        </summary>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style={
+            {
+              "opacity": "0.6",
+            }
+          }
+        >
+          string
+        </span>
+        <div
+          style={
+            {
+              "marginTop": "var(--ifm-table-cell-padding)",
+            }
+          }
+        />
+      </details>
+    </li>
+    <li>
+      <details
+        open={false}
+      >
+        <summary>
+          <code>
+            ^I_
+          </code>
+           
+          <span>
+            integer
+          </span>
+           
+        </summary>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style={
+            {
+              "opacity": "0.6",
+            }
+          }
+        >
+          integer
+        </span>
+        <div
+          style={
+            {
+              "marginTop": "var(--ifm-table-cell-padding)",
+            }
+          }
+        />
+      </details>
+    </li>
+  </ul>
+  <div
+    style={
+      {
+        "marginTop": "var(--ifm-table-cell-padding)",
+      }
+    }
+  />
+</details>
+`;
+
+exports[`JSONSchemaViewer - object test properties 1`] = `
+<details
+  open={true}
+>
+  <summary>
+    <strong>
+      Schema
+    </strong>
+  </summary>
+  <strong>
+    type
+  </strong>
+   : 
+  <span
+    style={
+      {
+        "opacity": "0.6",
+      }
+    }
+  >
+    object
+  </span>
+  <ul>
+    <li>
+      <details
+        open={false}
+      >
+        <summary>
+          <strong>
+            number
+          </strong>
+           
+          <span>
+            number
+          </span>
+           
+        </summary>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style={
+            {
+              "opacity": "0.6",
+            }
+          }
+        >
+          number
+        </span>
+        <div
+          style={
+            {
+              "marginTop": "var(--ifm-table-cell-padding)",
+            }
+          }
+        />
+      </details>
+    </li>
+    <li>
+      <details
+        open={false}
+      >
+        <summary>
+          <strong>
+            street_name
+          </strong>
+           
+          <span>
+            string
+          </span>
+           
+        </summary>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style={
+            {
+              "opacity": "0.6",
+            }
+          }
+        >
+          string
+        </span>
+        <div
+          style={
+            {
+              "marginTop": "var(--ifm-table-cell-padding)",
+            }
+          }
+        />
+      </details>
+    </li>
+    <li>
+      <details
+        open={false}
+      >
+        <summary>
+          <strong>
+            street_type
+          </strong>
+           
+          <span>
+            unknown
+          </span>
+           
+        </summary>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style={
+            {
+              "opacity": "0.6",
+            }
+          }
+        >
+          unknown
+        </span>
+        <div
+          style={
+            {
+              "marginTop": "var(--ifm-table-cell-padding)",
+            }
+          }
+        >
+          <div>
+            <strong>
+              Possible values :
+            </strong>
+             
+            <code>
+              ["Street","Avenue","Boulevard"]
+            </code>
+          </div>
+        </div>
+      </details>
+    </li>
+  </ul>
+  <div
+    style={
+      {
+        "marginTop": "var(--ifm-table-cell-padding)",
+      }
+    }
+  />
+</details>
+`;
+
+exports[`JSONSchemaViewer - object test propertyNames 1`] = `
+<details
+  open={true}
+>
+  <summary>
+    <strong>
+      Schema
+    </strong>
+  </summary>
+  <strong>
+    type
+  </strong>
+   : 
+  <span
+    style={
+      {
+        "opacity": "0.6",
+      }
+    }
+  >
+    object
+  </span>
+  <ul>
+    <li>
+      <details
+        open={false}
+      >
+        <summary>
+          <code>
+            ^[A-Za-z_][A-Za-z0-9_]*$
+          </code>
+           
+          <span>
+            unknown
+          </span>
+           
+        </summary>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style={
+            {
+              "opacity": "0.6",
+            }
+          }
+        >
+          unknown
+        </span>
+        <div
+          style={
+            {
+              "marginTop": "var(--ifm-table-cell-padding)",
+            }
+          }
+        />
+      </details>
+    </li>
+  </ul>
+  <div
+    style={
+      {
+        "marginTop": "var(--ifm-table-cell-padding)",
+      }
+    }
+  />
+</details>
+`;
+
+exports[`JSONSchemaViewer - object test required 1`] = `
+<details
+  open={true}
+>
+  <summary>
+    <strong>
+      Schema
+    </strong>
+  </summary>
+  <strong>
+    type
+  </strong>
+   : 
+  <span
+    style={
+      {
+        "opacity": "0.6",
+      }
+    }
+  >
+    object
+  </span>
+  <ul>
+    <li>
+      <details
+        open={false}
+      >
+        <summary>
+          <strong>
+            name
+          </strong>
+           
+          <span>
+            string
+          </span>
+           
+          <strong>
+            required
+          </strong>
+        </summary>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style={
+            {
+              "opacity": "0.6",
+            }
+          }
+        >
+          string
+        </span>
+        <div
+          style={
+            {
+              "marginTop": "var(--ifm-table-cell-padding)",
+            }
+          }
+        />
+      </details>
+    </li>
+    <li>
+      <details
+        open={false}
+      >
+        <summary>
+          <strong>
+            email
+          </strong>
+           
+          <span>
+            string
+          </span>
+           
+          <strong>
+            required
+          </strong>
+        </summary>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style={
+            {
+              "opacity": "0.6",
+            }
+          }
+        >
+          string
+        </span>
+        <div
+          style={
+            {
+              "marginTop": "var(--ifm-table-cell-padding)",
+            }
+          }
+        />
+      </details>
+    </li>
+    <li>
+      <details
+        open={false}
+      >
+        <summary>
+          <strong>
+            address
+          </strong>
+           
+          <span>
+            string
+          </span>
+           
+        </summary>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style={
+            {
+              "opacity": "0.6",
+            }
+          }
+        >
+          string
+        </span>
+        <div
+          style={
+            {
+              "marginTop": "var(--ifm-table-cell-padding)",
+            }
+          }
+        />
+      </details>
+    </li>
+    <li>
+      <details
+        open={false}
+      >
+        <summary>
+          <strong>
+            telephone
+          </strong>
+           
+          <span>
+            string
+          </span>
+           
+        </summary>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style={
+            {
+              "opacity": "0.6",
+            }
+          }
+        >
+          string
+        </span>
+        <div
+          style={
+            {
+              "marginTop": "var(--ifm-table-cell-padding)",
+            }
+          }
+        />
+      </details>
+    </li>
+  </ul>
+  <div
+    style={
+      {
+        "marginTop": "var(--ifm-table-cell-padding)",
+      }
+    }
+  />
+</details>
+`;
+
+exports[`JSONSchemaViewer - object test simple 1`] = `
+<details
+  open={true}
+>
+  <summary>
+    <strong>
+      Schema
+    </strong>
+  </summary>
+  <strong>
+    type
+  </strong>
+   : 
+  <span
+    style={
+      {
+        "opacity": "0.6",
+      }
+    }
+  >
+    object
+  </span>
+  <div
+    style={
+      {
+        "marginTop": "var(--ifm-table-cell-padding)",
+      }
+    }
+  />
+</details>
+`;
