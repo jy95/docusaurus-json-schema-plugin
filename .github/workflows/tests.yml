@@ -19,7 +19,7 @@ jobs:
           npm run build
       - name: Test 🧪
         run: |
-          npm run test
+          npm run test:coverage
       - name: Run codacy-coverage-reporter
         uses: codacy/codacy-coverage-reporter-action@v1.3.0
         with:
