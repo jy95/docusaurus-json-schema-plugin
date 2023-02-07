@@ -1,0 +1,27 @@
+name: Tests
+on:
+  push:
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v3.3.0
+      - name: Set up Node.js ✨
+        uses: actions/setup-node@v3.6.0
+        with:
+          node-version: '18.x'
+      - name: Install 💻
+        run: |
+          npm install
+      - name: Build 🤖
+        run: |
+          npm run build
+      - name: Test 🧪
+        run: |
+          npm run test
+      - name: Run codacy-coverage-reporter
+        uses: codacy/codacy-coverage-reporter-action@v1.3.0
+        with:
+          project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
+          coverage-reports: 'coverage'

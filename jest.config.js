@@ -7,4 +7,5 @@ module.exports = {
     "\\.(css|less)$": "<rootDir>/__mocks__/styleMock.js",
     // "@theme-original/(.*)": "<rootDir>/node_modules/@docusaurus/theme-classic/lib/theme/$1/index.js"
   },
+  collectCoverageFrom: ["src/theme/JSONSchemaViewer/**/*.{js,ts,jsx,tsx}"],
 }
