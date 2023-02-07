@@ -17,7 +17,7 @@ function createItems(props: Props): JSX.Element {
 
   if (
     typeof typedSchema === "boolean" ||
-    typeof typedSchema?.items === "boolean"
+    typeof typedSchema.items === "boolean"
   ) {
     return <></>
   }
@@ -81,7 +81,7 @@ function createItems(props: Props): JSX.Element {
         name={itemsLabel}
         schema={typedItem}
         required={
-          typedSchema?.minItems !== undefined && typedSchema?.minItems > 0
+          typedSchema.minItems !== undefined && typedSchema.minItems > 0
         }
       />
     )

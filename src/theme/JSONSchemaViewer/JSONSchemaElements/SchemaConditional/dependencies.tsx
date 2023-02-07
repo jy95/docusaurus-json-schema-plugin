@@ -17,7 +17,7 @@ function Dependencies(props: Props): JSX.Element {
     return <></>
   }
 
-  let dependencies = schema?.dependencies!
+  let dependencies = schema.dependencies!
 
   // Distinguish dependentRequired inside dependencies
   const dependentRequired = Object.entries(dependencies)

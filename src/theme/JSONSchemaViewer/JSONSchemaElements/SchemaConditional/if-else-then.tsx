@@ -94,11 +94,11 @@ function IfElseThen(props: Props): JSX.Element {
 
     switch (value) {
       case "schema_if":
-        return <CreateNodes schema={schema?.if!} />
+        return <CreateNodes schema={schema.if!} />
       case "schema_then":
-        return <CreateNodes schema={schema?.then!} />
+        return <CreateNodes schema={schema.then!} />
       case "schema_else":
-        return <CreateNodes schema={schema?.else!} />
+        return <CreateNodes schema={schema.else!} />
       default:
         return <></>
     }

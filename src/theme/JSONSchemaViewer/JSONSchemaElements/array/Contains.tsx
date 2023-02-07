@@ -39,7 +39,7 @@ function createContains(props: Props): JSX.Element {
       name={containsLabel}
       schema={item}
       required={
-        typedSchema?.minContains !== undefined && typedSchema.minContains > 0
+        typedSchema.minContains !== undefined && typedSchema.minContains > 0
       }
     />
   )

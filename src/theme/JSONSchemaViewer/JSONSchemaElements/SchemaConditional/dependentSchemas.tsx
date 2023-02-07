@@ -22,7 +22,7 @@ function DependentSchemas(props: Props): JSX.Element {
     return <></>
   }
 
-  let dependentSchemas = (schema as JSONSchemaNS.Object)?.dependentSchemas!
+  let dependentSchemas = (schema as JSONSchemaNS.Object).dependentSchemas!
 
   let items = Object.entries(dependentSchemas).map(([property, subSchema]) => ({
     id: property,

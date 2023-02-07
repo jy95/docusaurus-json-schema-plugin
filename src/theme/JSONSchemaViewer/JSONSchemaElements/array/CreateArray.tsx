@@ -27,13 +27,13 @@ function createArray(props: Props): JSX.Element {
   }
 
   let items =
-    typedSchema?.items !== undefined ? <Items schema={schema} /> : undefined
+    typedSchema.items !== undefined ? <Items schema={schema} /> : undefined
   let contains =
-    typedSchema?.contains !== undefined ? (
+    typedSchema.contains !== undefined ? (
       <Contains schema={schema} />
     ) : undefined
   let prefixItems =
-    typedSchema?.prefixItems !== undefined ? (
+    typedSchema.prefixItems !== undefined ? (
       <PrefixItems schema={schema} />
     ) : undefined
 
@@ -73,7 +73,7 @@ function createArray(props: Props): JSX.Element {
       <div style={{ marginTop: "var(--ifm-table-cell-padding)" }}>
         <QualifierMessages schema={schema} />
       </div>
-      {typedSchema?.description !== undefined && (
+      {typedSchema.description !== undefined && (
         <div style={{ marginTop: "var(--ifm-table-cell-padding)" }}>
           {typedSchema.description}
         </div>

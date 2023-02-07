@@ -17,7 +17,7 @@ function DependentRequired(props: Props): JSX.Element {
     return <></>
   }
 
-  let dependentRequired = (schema as JSONSchemaNS.Object)?.dependentRequired!
+  let dependentRequired = (schema as JSONSchemaNS.Object).dependentRequired!
 
   let items = Object.entries(dependentRequired).map(
     ([property1, property2]) => ({
