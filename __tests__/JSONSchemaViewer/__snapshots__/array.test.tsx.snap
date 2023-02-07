@@ -557,3 +557,45 @@ exports[`JSONSchemaViewer - Array type test 5 1`] = `
   </div>
 </details>
 `;
+
+exports[`JSONSchemaViewer - Array type test 6 1`] = `
+<details
+  open={true}
+>
+  <summary>
+    <strong>
+      Schema
+    </strong>
+  </summary>
+  <strong>
+    type
+  </strong>
+   : 
+  <span
+    style={
+      {
+        "opacity": "0.6",
+      }
+    }
+  >
+    array
+  </span>
+  <div
+    style={
+      {
+        "marginTop": "var(--ifm-table-cell-padding)",
+      }
+    }
+  >
+    <div>
+      <strong>
+        Unique items :
+      </strong>
+       
+      <code>
+        yes
+      </code>
+    </div>
+  </div>
+</details>
+`;

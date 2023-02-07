@@ -63,6 +63,10 @@ const testcases: JSONSchema[] = [
       },
     ],
   },
+  {
+    type: "array",
+    uniqueItems: true,
+  },
 ]
 
 describe("JSONSchemaViewer - Array type", () => {
