@@ -20,7 +20,7 @@ function allOfSchema(props: Props): JSX.Element {
     return <></>
   }
 
-  let typedSchema = schema?.allOf!
+  let typedSchema = schema.allOf!
 
   let typeOf = "allOf"
 

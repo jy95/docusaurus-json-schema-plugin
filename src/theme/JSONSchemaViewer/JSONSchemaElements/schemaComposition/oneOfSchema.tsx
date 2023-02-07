@@ -20,7 +20,7 @@ function oneOfSchema(props: Props): JSX.Element {
     return <></>
   }
 
-  let typedSchema = schema?.oneOf!
+  let typedSchema = schema.oneOf!
   let typeOf = "oneOf"
 
   return (

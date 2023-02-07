@@ -20,7 +20,7 @@ function anyOfSchema(props: Props): JSX.Element {
     return <></>
   }
 
-  let typedSchema = schema?.anyOf!
+  let typedSchema = schema.anyOf!
 
   let typeOf = "anyOf"
 

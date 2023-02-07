@@ -16,7 +16,7 @@ function NotSchema(props: Props): JSX.Element {
     return <></>
   }
 
-  let typedSchema = schema?.not!
+  let typedSchema = schema.not!
   let typeOf = "not"
 
   return (

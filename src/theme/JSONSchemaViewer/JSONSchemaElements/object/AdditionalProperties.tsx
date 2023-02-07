@@ -24,10 +24,10 @@ function createAdditionalProperties(props: Props): JSX.Element {
     return <></>
   }
 
-  let types = Array.isArray(typedSchema?.type)
-    ? typedSchema?.type
-    : typedSchema?.type !== undefined
-    ? [typedSchema?.type]
+  let types = Array.isArray(typedSchema.type)
+    ? typedSchema.type
+    : typedSchema.type !== undefined
+    ? [typedSchema.type]
     : []
   // Usually, we have only "type" in the payload : https://json-schema.org/understanding-json-schema/reference/object.html#additional-properties
 

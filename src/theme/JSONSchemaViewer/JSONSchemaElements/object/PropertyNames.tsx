@@ -22,7 +22,7 @@ function propertyNames(props: Props): JSX.Element {
   // Fast Fail over
   if (
     typeof propertyNames === "boolean" ||
-    propertyNames?.pattern === undefined
+    propertyNames.pattern === undefined
   ) {
     return <></>
   }
