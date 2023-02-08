@@ -24,8 +24,8 @@ function detectType(schema: JSONSchema): string {
     return "unknown"
   }
 
-  if (schema?.type !== undefined) {
-    return Array.isArray(schema?.type)
+  if (schema.type !== undefined) {
+    return Array.isArray(schema.type)
       ? [...new Set(schema.type)].join(" OR ")
       : (schema.type as string)
   }
@@ -61,7 +61,7 @@ function createPrimitive(props: Props) {
   }
 
   let type = detectType(schema)
-  let friendly_type = schema?.format ? `${type} (${schema.format})` : type
+  let friendly_type = schema.format ? `${type} (${schema.format})` : type
 
   const typeLabel = (
     <strong>
@@ -84,7 +84,7 @@ function createPrimitive(props: Props) {
       <div style={{ marginTop: "var(--ifm-table-cell-padding)" }}>
         <QualifierMessages schema={schema} />
       </div>
-      {schema?.description !== undefined && (
+      {schema.description !== undefined && (
         <div style={{ marginTop: "var(--ifm-table-cell-padding)" }}>
           {schema.description}
         </div>

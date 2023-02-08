@@ -49,6 +49,7 @@ export default function StringLengthQualifierMessage(
   const { schema } = props
 
   // fast fail
+  /* istanbul ignore if  */
   if (typeof schema === "boolean") {
     return null
   }

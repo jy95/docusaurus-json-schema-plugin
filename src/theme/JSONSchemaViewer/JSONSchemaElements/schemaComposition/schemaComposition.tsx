@@ -19,10 +19,10 @@ function SchemaComposition(props: Props): JSX.Element {
 
   return (
     <>
-      {schema?.oneOf !== undefined && <OneOfSchema schema={schema} />}
-      {schema?.anyOf !== undefined && <AnyOfSchema schema={schema} />}
-      {schema?.allOf !== undefined && <AllOfSchema schema={schema} />}
-      {schema?.not !== undefined && <NotSchema schema={schema} />}
+      {schema.oneOf !== undefined && <OneOfSchema schema={schema} />}
+      {schema.anyOf !== undefined && <AnyOfSchema schema={schema} />}
+      {schema.allOf !== undefined && <AllOfSchema schema={schema} />}
+      {schema.not !== undefined && <NotSchema schema={schema} />}
     </>
   )
 }

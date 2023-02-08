@@ -15,6 +15,7 @@ function createPrefixItems(props: Props): JSX.Element {
 
   let typedSchema = schema as JSONSchemaNS.Array
 
+  /* istanbul ignore if  */
   if (typeof typedSchema === "boolean") {
     return <></>
   }
@@ -43,8 +44,8 @@ function createPrefixItems(props: Props): JSX.Element {
             }
             schema={val}
             required={
-              typedSchema?.minItems !== undefined &&
-              typedSchema?.minItems >= minimal
+              typedSchema.minItems !== undefined &&
+              typedSchema.minItems >= minimal
             }
           />
         )

@@ -15,6 +15,7 @@ function createContains(props: Props): JSX.Element {
 
   let typedSchema = schema as JSONSchemaNS.Array
 
+  /* istanbul ignore if  */
   if (typeof typedSchema === "boolean") {
     return <></>
   }
@@ -39,7 +40,7 @@ function createContains(props: Props): JSX.Element {
       name={containsLabel}
       schema={item}
       required={
-        typedSchema?.minContains !== undefined && typedSchema.minContains > 0
+        typedSchema.minContains !== undefined && typedSchema.minContains > 0
       }
     />
   )

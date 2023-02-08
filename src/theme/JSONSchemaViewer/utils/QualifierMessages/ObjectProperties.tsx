@@ -47,6 +47,7 @@ export default function ObjectProperties(props: Props): null | JSX.Element {
   const { schema } = props
 
   // fast fail
+  /* istanbul ignore if  */
   if (typeof schema === "boolean") {
     return null
   }

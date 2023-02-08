@@ -13,6 +13,7 @@ type Props = {
 function createAdditionalProperties(props: Props): JSX.Element {
   const { schema } = props
 
+  /* istanbul ignore if  */
   if (typeof schema === "boolean") {
     return <></>
   }
@@ -24,13 +25,14 @@ function createAdditionalProperties(props: Props): JSX.Element {
     return <></>
   }
 
-  let types = Array.isArray(typedSchema?.type)
-    ? typedSchema?.type
-    : typedSchema?.type !== undefined
-    ? [typedSchema?.type]
+  let types = Array.isArray(typedSchema.type)
+    ? typedSchema.type
+    : typedSchema.type !== undefined
+    ? [typedSchema.type]
     : []
   // Usually, we have only "type" in the payload : https://json-schema.org/understanding-json-schema/reference/object.html#additional-properties
 
+  /* istanbul ignore else  */
   if (types.length > 0) {
     // Most of the time, only one entry but prefer to be safe that sorry ...
 

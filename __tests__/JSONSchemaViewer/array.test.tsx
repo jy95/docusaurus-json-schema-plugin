@@ -10,6 +10,9 @@ import JSONSchemaViewer from "../../src/theme/JSONSchemaViewer/index"
 // Type to prevent creating invalid mocks
 import type { JSONSchema } from "../../src/theme/JSONSchemaViewer/types"
 
+// Type for react-test-renderer
+import type { ReactTestRenderer } from "react-test-renderer"
+
 const testcases: JSONSchema[] = [
   {
     type: "array",
@@ -72,7 +75,7 @@ const testcases: JSONSchema[] = [
 describe("JSONSchemaViewer - Array type", () => {
   test.each(testcases)("test %#", async (fakeSchema) => {
     // render the component
-    let root: any
+    let root: ReactTestRenderer | undefined
 
     await act(async () => {
       root = create(<JSONSchemaViewer schema={fakeSchema} />)

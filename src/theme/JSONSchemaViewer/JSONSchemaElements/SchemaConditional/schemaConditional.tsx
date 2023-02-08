@@ -27,13 +27,13 @@ function SchemaConditional(props: Props): JSX.Element {
   }
 
   // Checks
-  const isIfThenElse = schema?.if !== undefined
+  const isIfThenElse = schema.if !== undefined
 
   const isDependentRequired =
-    (schema as JSONSchemaNS.Object)?.dependentRequired !== undefined
+    (schema as JSONSchemaNS.Object).dependentRequired !== undefined
   const isDependentSchemas =
-    (schema as JSONSchemaNS.Object)?.dependentSchemas !== undefined
-  const isDependencies = schema?.dependencies !== undefined
+    (schema as JSONSchemaNS.Object).dependentSchemas !== undefined
+  const isDependencies = schema.dependencies !== undefined
 
   const schemaConditionalLabel = (
     <strong>

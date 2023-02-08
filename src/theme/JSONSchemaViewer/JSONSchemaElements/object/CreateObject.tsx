@@ -24,18 +24,16 @@ function createObject(props: Props): JSX.Element {
   }
 
   let additionalProperties =
-    schema?.additionalProperties !== undefined &&
+    schema.additionalProperties !== undefined &&
     typeof schema.additionalProperties !== "boolean" ? (
       <AdditionalProperties schema={schema} />
     ) : undefined
   let properties =
-    schema?.properties !== undefined ? (
-      <Properties schema={schema} />
-    ) : undefined
-  let patternProperties = schema?.patternProperties ? (
+    schema.properties !== undefined ? <Properties schema={schema} /> : undefined
+  let patternProperties = schema.patternProperties ? (
     <PatternProperties schema={schema} />
   ) : undefined
-  let propertyNames = schema?.propertyNames ? (
+  let propertyNames = schema.propertyNames ? (
     <PropertyNames schema={schema} />
   ) : undefined
 
@@ -77,7 +75,7 @@ function createObject(props: Props): JSX.Element {
       <div style={{ marginTop: "var(--ifm-table-cell-padding)" }}>
         <QualifierMessages schema={schema} />
       </div>
-      {schema?.description !== undefined && (
+      {schema.description !== undefined && (
         <div style={{ marginTop: "var(--ifm-table-cell-padding)" }}>
           {schema.description}
         </div>

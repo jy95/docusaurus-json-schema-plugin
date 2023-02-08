@@ -13,11 +13,12 @@ function Dependencies(props: Props): JSX.Element {
   const { schema } = props
 
   // Fast fail
+  /* istanbul ignore if  */
   if (typeof schema === "boolean") {
     return <></>
   }
 
-  let dependencies = schema?.dependencies!
+  let dependencies = schema.dependencies!
 
   // Distinguish dependentRequired inside dependencies
   const dependentRequired = Object.entries(dependencies)

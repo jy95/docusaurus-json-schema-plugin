@@ -16,11 +16,12 @@ type Props = {
 function anyOfSchema(props: Props): JSX.Element {
   const { schema } = props
 
+  /* istanbul ignore if  */
   if (typeof schema === "boolean") {
     return <></>
   }
 
-  let typedSchema = schema?.anyOf!
+  let typedSchema = schema.anyOf!
 
   let typeOf = "anyOf"
 
