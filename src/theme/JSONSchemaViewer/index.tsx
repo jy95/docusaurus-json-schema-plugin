@@ -3,7 +3,7 @@ import { Resolver } from "@stoplight/json-ref-resolver"
 
 import { CreateNodes, Collapsible } from "./components/index"
 
-import type { JSONSchema } from "./types";
+import type { JSONSchema } from "./types"
 import type { IResolverOpts } from "@stoplight/json-ref-resolver/types"
 
 export type Props = {

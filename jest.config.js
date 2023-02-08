@@ -8,7 +8,5 @@ module.exports = {
     // "@theme-original/(.*)": "<rootDir>/node_modules/@docusaurus/theme-classic/lib/theme/$1/index.js"
   },
   collectCoverageFrom: ["src/theme/JSONSchemaViewer/**/*.{js,ts,jsx,tsx}"],
-  coveragePathIgnorePatterns: [
-    '!*.d.ts'
-  ]
+  coveragePathIgnorePatterns: ["!*.d.ts"],
 }

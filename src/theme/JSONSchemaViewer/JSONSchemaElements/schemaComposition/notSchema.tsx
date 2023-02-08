@@ -12,6 +12,7 @@ type Props = {
 function NotSchema(props: Props): JSX.Element {
   const { schema } = props
 
+  /* istanbul ignore if  */
   if (typeof schema === "boolean") {
     return <></>
   }

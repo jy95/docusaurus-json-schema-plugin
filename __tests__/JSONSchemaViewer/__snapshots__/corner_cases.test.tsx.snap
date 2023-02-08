@@ -1,0 +1,74 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`JSONSchemaViewer - corner cases CreateArray - boolean schema 1`] = `null`;
+
+exports[`JSONSchemaViewer - corner cases CreateArray - sub properties as boolean schema 1`] = `
+[
+  <strong>
+    type
+  </strong>,
+  " : ",
+  <span
+    style={
+      {
+        "opacity": "0.6",
+      }
+    }
+  >
+    array
+  </span>,
+  <ul />,
+  <ul />,
+  <ul />,
+  <div
+    style={
+      {
+        "marginTop": "var(--ifm-table-cell-padding)",
+      }
+    }
+  >
+    <div>
+      🚨 
+      No extra item(s) are authorized in this array
+    </div>
+  </div>,
+]
+`;
+
+exports[`JSONSchemaViewer - corner cases CreateObject - boolean schema 1`] = `null`;
+
+exports[`JSONSchemaViewer - corner cases CreateObject - sub properties as boolean schema 1`] = `
+[
+  <strong>
+    type
+  </strong>,
+  " : ",
+  <span
+    style={
+      {
+        "opacity": "0.6",
+      }
+    }
+  >
+    object
+  </span>,
+  <div
+    style={
+      {
+        "marginTop": "var(--ifm-table-cell-padding)",
+      }
+    }
+  >
+    <div>
+      🚨 
+      No extra propertie(s) are authorized in this object
+    </div>
+  </div>,
+]
+`;
+
+exports[`JSONSchemaViewer - corner cases CreatePrimitive - boolean schema 1`] = `null`;
+
+exports[`JSONSchemaViewer - corner cases SchemaComposition - boolean schema 1`] = `null`;
+
+exports[`JSONSchemaViewer - corner cases SchemaConditional - boolean schema 1`] = `null`;
