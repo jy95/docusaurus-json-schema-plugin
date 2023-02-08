@@ -15,6 +15,7 @@ function createPrefixItems(props: Props): JSX.Element {
 
   let typedSchema = schema as JSONSchemaNS.Array
 
+  /* istanbul ignore if  */
   if (typeof typedSchema === "boolean") {
     return <></>
   }

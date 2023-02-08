@@ -13,6 +13,7 @@ function Dependencies(props: Props): JSX.Element {
   const { schema } = props
 
   // Fast fail
+  /* istanbul ignore if  */
   if (typeof schema === "boolean") {
     return <></>
   }
