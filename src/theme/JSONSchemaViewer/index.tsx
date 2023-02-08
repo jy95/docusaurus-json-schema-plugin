@@ -3,9 +3,7 @@ import { Resolver } from "@stoplight/json-ref-resolver"
 
 import { CreateNodes, Collapsible } from "./components/index"
 
-import type { JSONSchema as Draft_07 } from "json-schema-typed/draft-07"
-import type { JSONSchema as Draft_2019_09 } from "json-schema-typed/draft-2019-09"
-import type { JSONSchema as Draft_2020_12 } from "json-schema-typed/draft-2020-12"
+import type { JSONSchema } from "./types";
 import type { IResolverOpts } from "@stoplight/json-ref-resolver/types"
 
 export type Props = {
@@ -20,7 +18,7 @@ type InnerViewerProperties = {
   // Thanks to @stoplight/json-ref-resolver, $ref are either :
   // 1. resolved
   // 2. unresolved (as circular stuff are not on the roadmap)
-  schema: Draft_07 | Draft_2019_09 | Draft_2020_12
+  schema: JSONSchema
 }
 
 // Internal
@@ -49,7 +47,7 @@ export default function JSONSchemaViewer(props: Props): JSX.Element {
 
   const [error, setError] = useState(undefined as undefined | Error)
   const [resolvedSchema, setResolvedSchema] = useState(
-    undefined as undefined | Draft_07 | Draft_2019_09 | Draft_2020_12
+    undefined as undefined | JSONSchema
   )
 
   useEffect(() => {
