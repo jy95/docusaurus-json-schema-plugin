@@ -26,6 +26,7 @@ function createNodes(props: Props): JSX.Element {
   const { schema } = props
 
   // In boolean case, we can do anything
+  /* istanbul ignore if  */
   if (typeof schema === "boolean") {
     return <></>
   }

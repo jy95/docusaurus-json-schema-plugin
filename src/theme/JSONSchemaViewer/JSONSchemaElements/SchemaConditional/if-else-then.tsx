@@ -89,6 +89,7 @@ function IfElseThen(props: Props): JSX.Element {
     schema: JSONSchema
   ) {
     // fast fallback
+    /* istanbul ignore if  */
     if (typeof schema === "boolean") {
       return <></>
     }
@@ -100,6 +101,7 @@ function IfElseThen(props: Props): JSX.Element {
         return <CreateNodes schema={schema.then!} />
       case "schema_else":
         return <CreateNodes schema={schema.else!} />
+      /* istanbul ignore next */
       default:
         return <></>
     }

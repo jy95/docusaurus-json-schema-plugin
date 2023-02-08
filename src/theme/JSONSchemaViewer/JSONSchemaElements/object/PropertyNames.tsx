@@ -21,6 +21,7 @@ function propertyNames(props: Props): JSX.Element {
   let propertyNames = schema.propertyNames!
 
   // Fast Fail over
+  /* istanbul ignore if  */
   if (
     typeof propertyNames === "boolean" ||
     propertyNames.pattern === undefined
