@@ -1,0 +1,22 @@
+---
+description: References $ref showcase
+---
+
+import CodeBlock from '@theme/CodeBlock';
+import Schema from "@site/static/schemas/examples/refs/refOnRoot.json";
+import JSONSchemaViewer from "@theme/JSONSchemaViewer";
+const resolverOptions = {"jsonPointer": "#/definitions/user"}
+
+# $ref
+
+JSON Schema :
+
+<CodeBlock language="json">{JSON.stringify(Schema, null, 2)}</CodeBlock>
+
+resolverOptions : 
+
+<CodeBlock language="json">{JSON.stringify(resolverOptions, null, 2)}</CodeBlock>
+
+Viewer :
+
+<JSONSchemaViewer schema={ Schema } resolverOptions={resolverOptions} />

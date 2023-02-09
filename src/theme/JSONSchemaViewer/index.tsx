@@ -4,13 +4,13 @@ import { Resolver } from "@stoplight/json-ref-resolver"
 import { CreateNodes, Collapsible } from "./components/index"
 
 import type { JSONSchema } from "./types"
-import type { IResolverOpts } from "@stoplight/json-ref-resolver/types"
+import type { IResolveOpts } from "@stoplight/json-ref-resolver/types"
 
 export type Props = {
   // The schema to use
   schema: unknown
   // To customize the ref resolving
-  resolverOptions?: IResolverOpts
+  resolverOptions?: IResolveOpts
   [x: string]: any
 }
 
@@ -51,12 +51,9 @@ export default function JSONSchemaViewer(props: Props): JSX.Element {
   )
 
   useEffect(() => {
-    // Set up resolver
-    const resolver = new Resolver(resolverOptions)
-
     // Time to do the job
-    resolver
-      .resolve(originalSchema)
+    new Resolver()
+      .resolve(originalSchema, resolverOptions)
       .then((result) => {
         setResolvedSchema(result.result)
       })
