@@ -26,28 +26,25 @@ const testcases: [string, JSONSchema][] = [
       type: ["number", "string"],
     },
   ],
-  [
-    "Unspecified type (boolean)",
-    true
-  ],
+  ["Unspecified type (boolean)", true],
   [
     "Unspecified type (array)",
     {
-      minItems: 1
-    }
+      minItems: 1,
+    },
   ],
   [
     "Unspecified type (object)",
     {
-      minProperties: 1
-    }
+      minProperties: 1,
+    },
   ],
   [
     "Unspecified type (numeric)",
     {
-      multipleOf: 10
-    }
-  ]
+      multipleOf: 10,
+    },
+  ],
 ]
 
 describe("JSONSchemaViewer - type", () => {
