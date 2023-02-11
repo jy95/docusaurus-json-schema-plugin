@@ -88,7 +88,7 @@ function SchemaItem({
     typeof typedSchema !== "boolean" && typedSchema?.readOnly === true
   let isWriteOnly =
     typeof typedSchema !== "boolean" && typedSchema?.writeOnly === true
-  let isRequired = !isDeprecated && required;
+  let isRequired = !isDeprecated && required
 
   // Header
   const summary = (
