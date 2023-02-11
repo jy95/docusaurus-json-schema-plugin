@@ -17,7 +17,7 @@ type Props = {
   [x: string]: any
 }
 
-function createObject(props: Props): JSX.Element {
+export default function CreateObject(props: Props): JSX.Element {
   const { schema } = props
   const options = useJSVOptionsContext()
 
@@ -85,5 +85,3 @@ function createObject(props: Props): JSX.Element {
     </>
   )
 }
-
-export default createObject

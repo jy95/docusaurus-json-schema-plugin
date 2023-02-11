@@ -19,7 +19,7 @@ type Props = {
 
 // TODO later handle prefixItems VS items properties
 
-function createArray(props: Props): JSX.Element {
+export default function CreateArray(props: Props): JSX.Element {
   const { schema } = props
   const options = useJSVOptionsContext()
 
@@ -85,5 +85,3 @@ function createArray(props: Props): JSX.Element {
     </>
   )
 }
-
-export default createArray
