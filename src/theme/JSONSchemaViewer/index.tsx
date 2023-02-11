@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { Resolver } from "@stoplight/json-ref-resolver"
+import Translate from "@docusaurus/Translate"
 
 import { CreateNodes, Collapsible } from "./components/index"
 import { JSVOptionsContextProvider } from "./contexts/index"
@@ -28,12 +29,43 @@ type InnerViewerProperties = {
   viewerOptions?: Omit<JSVOptions, "fullSchema">
 }
 
+// Translated labels
+function Loading(): JSX.Element {
+  return (
+    <div>
+      <Translate
+        values={{
+          id: "json-schema.labels.loading",
+        }}
+      >
+        {"Loading ...."}
+      </Translate>
+    </div>
+  )
+}
+
+function ErrorOccurred(props: { error: Error }): JSX.Element {
+  const { error } = props
+  return (
+    <div>
+      <Translate
+        values={{
+          id: "json-schema.labels.errorOccurred",
+          message: error.message,
+        }}
+      >
+        {"Something bad happens : {message}"}
+      </Translate>
+    </div>
+  )
+}
+
 // Internal
 function JSONSchemaInnerViewer(props: InnerViewerProperties): JSX.Element {
   const { schema, viewerOptions } = props
   // Title of the schema, for user friendliness
   const title =
-    typeof schema !== "boolean" && schema?.title !== undefined
+    typeof schema !== "boolean" && schema.title !== undefined
       ? schema.title
       : "Schema"
 
@@ -80,9 +112,9 @@ export default function JSONSchemaViewer(props: Props): JSX.Element {
   }, [])
 
   if (error !== undefined) {
-    return <div>Something bad happens : {error.message}</div>
+    return <ErrorOccurred error={error} />
   } else if (resolvedSchema === undefined) {
-    return <div>Loading ....</div>
+    return <Loading />
   } else {
     return (
       <JSONSchemaInnerViewer
