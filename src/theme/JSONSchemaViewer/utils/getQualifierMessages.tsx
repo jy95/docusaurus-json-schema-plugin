@@ -15,6 +15,9 @@ import {
   DefaultValueQM,
   ConstantQM,
   ExamplesQM,
+  DeprecatedQM,
+  ReadOnlyQM,
+  WriteOnlyQM,
 } from "./QualifierMessages/index"
 
 import type { JSONSchema, JSONSchemaNS } from "../types"
@@ -33,6 +36,21 @@ function* conditionallyRenderQMs(
   // Fast fail over
   if (schema === undefined || typeof schema === "boolean") {
     return undefined
+  }
+
+  // Deprecated
+  if ((schema as JSONSchemaNS.Object).deprecated === true) {
+    yield <DeprecatedQM key={"deprecated"} />
+  }
+
+  // Read only
+  if ((schema as JSONSchemaNS.Object).readOnly === true) {
+    yield <ReadOnlyQM key={"readOnly"} />
+  }
+
+  // Write only
+  if ((schema as JSONSchemaNS.Object).writeOnly === true) {
+    yield <WriteOnlyQM key={"writeOnly"} />
   }
 
   // Enum

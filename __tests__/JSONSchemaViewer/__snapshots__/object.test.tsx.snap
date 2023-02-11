@@ -1018,6 +1018,50 @@ exports[`JSONSchemaViewer - object test required 1`] = `
       >
         <summary>
           <strong>
+            id
+          </strong>
+           
+          <span>
+            number
+          </span>
+           
+          <strong>
+            readOnly
+          </strong>
+        </summary>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style={
+            {
+              "opacity": "0.6",
+            }
+          }
+        >
+          number
+        </span>
+        <div
+          style={
+            {
+              "marginTop": "var(--ifm-table-cell-padding)",
+            }
+          }
+        >
+          <div>
+            🚨 
+            read only
+          </div>
+        </div>
+      </details>
+    </li>
+    <li>
+      <details
+        open={false}
+      >
+        <summary>
+          <strong>
             name
           </strong>
            
@@ -1139,6 +1183,9 @@ exports[`JSONSchemaViewer - object test required 1`] = `
             string
           </span>
            
+          <strong>
+            deprecated
+          </strong>
         </summary>
         <strong>
           type
@@ -1159,7 +1206,56 @@ exports[`JSONSchemaViewer - object test required 1`] = `
               "marginTop": "var(--ifm-table-cell-padding)",
             }
           }
-        />
+        >
+          <div>
+            🚨 
+            Deprecated
+          </div>
+        </div>
+      </details>
+    </li>
+    <li>
+      <details
+        open={false}
+      >
+        <summary>
+          <strong>
+            pin_code
+          </strong>
+           
+          <span>
+            string
+          </span>
+           
+          <strong>
+            writeOnly
+          </strong>
+        </summary>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style={
+            {
+              "opacity": "0.6",
+            }
+          }
+        >
+          string
+        </span>
+        <div
+          style={
+            {
+              "marginTop": "var(--ifm-table-cell-padding)",
+            }
+          }
+        >
+          <div>
+            🚨 
+            write only
+          </div>
+        </div>
       </details>
     </li>
   </ul>

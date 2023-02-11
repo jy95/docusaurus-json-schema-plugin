@@ -40,6 +40,16 @@
   color: var(--ifm-color-warning);
 }
 
+.readOnly {
+  font-size: var(--ifm-code-font-size);
+  color: var(--ifm-color-info-darker)
+}
+
+.writeOnly {
+  font-size: var(--ifm-code-font-size);
+  color: var(--ifm-color-primary-darker)
+}
+
 .strikethrough {
   text-decoration: line-through;
 }
