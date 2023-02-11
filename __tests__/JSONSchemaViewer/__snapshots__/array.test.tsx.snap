@@ -719,3 +719,159 @@ exports[`JSONSchemaViewer - Array type test 9 1`] = `
   </div>
 </details>
 `;
+
+exports[`JSONSchemaViewer - Array type test 10 1`] = `
+<details
+  open={true}
+>
+  <summary>
+    <strong>
+      Schema
+    </strong>
+  </summary>
+  <strong>
+    type
+  </strong>
+   : 
+  <span
+    style={
+      {
+        "opacity": "0.6",
+      }
+    }
+  >
+    array
+  </span>
+  <div
+    style={
+      {
+        "marginTop": "var(--ifm-table-cell-padding)",
+      }
+    }
+  >
+    <div>
+      <strong>
+        Must contain : 
+      </strong>
+       
+      <code>
+        at least 2 valid item(s)
+      </code>
+    </div>
+  </div>
+</details>
+`;
+
+exports[`JSONSchemaViewer - Array type test 11 1`] = `
+<details
+  open={true}
+>
+  <summary>
+    <strong>
+      Schema
+    </strong>
+  </summary>
+  <strong>
+    type
+  </strong>
+   : 
+  <span
+    style={
+      {
+        "opacity": "0.6",
+      }
+    }
+  >
+    array
+  </span>
+  <ul>
+    <li>
+      <details
+        open={false}
+      >
+        <summary>
+          <code>
+            items[0]
+          </code>
+           
+          <span>
+            integer
+          </span>
+        </summary>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style={
+            {
+              "opacity": "0.6",
+            }
+          }
+        >
+          integer
+        </span>
+        <div
+          style={
+            {
+              "marginTop": "var(--ifm-table-cell-padding)",
+            }
+          }
+        />
+      </details>
+    </li>
+    <li>
+      <details
+        open={false}
+      >
+        <summary>
+          <code>
+            items[1]
+          </code>
+           
+          <span>
+            string
+          </span>
+        </summary>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style={
+            {
+              "opacity": "0.6",
+            }
+          }
+        >
+          string
+        </span>
+        <div
+          style={
+            {
+              "marginTop": "var(--ifm-table-cell-padding)",
+            }
+          }
+        />
+      </details>
+    </li>
+  </ul>
+  <div
+    style={
+      {
+        "marginTop": "var(--ifm-table-cell-padding)",
+      }
+    }
+  >
+    <div>
+      <strong>
+        Length :
+      </strong>
+       
+      <code>
+        &gt;= 1
+      </code>
+    </div>
+  </div>
+</details>
+`;

@@ -51,8 +51,8 @@ function createItems(props: Props): JSX.Element {
               }
               schema={val}
               required={
-                typedSchema?.minItems !== undefined &&
-                typedSchema?.minItems >= minimal
+                typedSchema.minItems !== undefined &&
+                typedSchema.minItems >= minimal
               }
             />
           )
