@@ -34,6 +34,7 @@ function* conditionallyRenderQMs(
   options: JSVOptions
 ): Generator<JSX.Element, void> {
   // Fast fail over
+  /* istanbul ignore if  */
   if (schema === undefined || typeof schema === "boolean") {
     return undefined
   }
@@ -72,7 +73,7 @@ function* conditionallyRenderQMs(
   }
 
   // No extra properties in object
-  if (schema?.additionalProperties === false) {
+  if (schema.additionalProperties === false) {
     yield <NoExtraPropertiesQM key={"no-extra-properties"} />
   }
 
@@ -90,7 +91,7 @@ function* conditionallyRenderQMs(
   }
 
   // No extra items in array
-  if (schema?.items === false || schema?.additionalItems === false) {
+  if (schema.items === false || schema.additionalItems === false) {
     yield <NoExtraItemsQM key={"no-extra-items"} />
   }
 

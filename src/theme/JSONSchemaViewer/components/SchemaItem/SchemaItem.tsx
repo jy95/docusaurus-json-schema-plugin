@@ -83,11 +83,11 @@ function SchemaItem({
   // Notice : "deprecated" started at 2019-09
   let typedSchema = schema as JSONSchema_Draft_2019_09
   let isDeprecated =
-    typeof typedSchema !== "boolean" && typedSchema?.deprecated === true
+    typeof typedSchema !== "boolean" && typedSchema.deprecated === true
   let isReadOnly =
-    typeof typedSchema !== "boolean" && typedSchema?.readOnly === true
+    typeof typedSchema !== "boolean" && typedSchema.readOnly === true
   let isWriteOnly =
-    typeof typedSchema !== "boolean" && typedSchema?.writeOnly === true
+    typeof typedSchema !== "boolean" && typedSchema.writeOnly === true
   let isRequired = !isDeprecated && required
 
   // Header
