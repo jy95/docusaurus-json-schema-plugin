@@ -8,6 +8,7 @@ import PatternProperties from "./PatternProperties"
 import PropertyNames from "./PropertyNames"
 
 import { QualifierMessages } from "../../utils/index"
+import { useJSVOptionsContext } from "../../contexts/index"
 
 import type { JSONSchema } from "../../types"
 
@@ -16,8 +17,9 @@ type Props = {
   [x: string]: any
 }
 
-function createObject(props: Props): JSX.Element {
+export default function CreateObject(props: Props): JSX.Element {
   const { schema } = props
+  const options = useJSVOptionsContext()
 
   if (typeof schema === "boolean") {
     return <></>
@@ -73,7 +75,7 @@ function createObject(props: Props): JSX.Element {
       {propertyNames !== undefined && <ul>{propertyNames}</ul>}
       {additionalProperties !== undefined && <ul>{additionalProperties}</ul>}
       <div style={{ marginTop: "var(--ifm-table-cell-padding)" }}>
-        <QualifierMessages schema={schema} />
+        <QualifierMessages schema={schema} options={options} />
       </div>
       {schema.description !== undefined && (
         <div style={{ marginTop: "var(--ifm-table-cell-padding)" }}>
@@ -83,5 +85,3 @@ function createObject(props: Props): JSX.Element {
     </>
   )
 }
-
-export default createObject

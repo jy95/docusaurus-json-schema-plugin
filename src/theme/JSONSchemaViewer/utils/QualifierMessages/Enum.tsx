@@ -6,7 +6,7 @@ import type { JSONSchema } from "../../types"
 import { printSchemaType } from "./index"
 
 type Props = {
-  schema?: JSONSchema
+  schema: JSONSchema
 }
 
 // For "enum" property
@@ -34,7 +34,7 @@ export default function EnumQualifierMessage(props: Props): null | JSX.Element {
   return (
     <div key={"enum"}>
       {enumLabel}&nbsp;
-      {printSchemaType(schema?.enum!)}
+      {printSchemaType(schema.enum!)}
     </div>
   )
 }

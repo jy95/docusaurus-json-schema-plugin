@@ -115,12 +115,20 @@ const testcases: [string, JSONSchema][] = [
     {
       type: "object",
       properties: {
+        id: { type: "number", readOnly: true },
         name: { type: "string" },
         email: { type: "string" },
         address: { type: "string" },
-        telephone: { type: "string" },
+        telephone: { type: "string", deprecated: true },
+        pin_code: { type: "string", writeOnly: true },
       },
       required: ["name", "email"],
+    },
+  ],
+  [
+    "Unspecified type (object)",
+    {
+      minProperties: 1,
     },
   ],
 ]

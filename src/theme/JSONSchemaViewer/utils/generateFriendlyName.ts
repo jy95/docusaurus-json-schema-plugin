@@ -1,14 +1,14 @@
 // Utility functions to know which case we have
 import { isArrayType, isNumeric, isObjectType, isStringType } from "./index"
 
-import type { JSONSchema, TypeName } from "../types"
+import type { JSONSchema, JSONSchemaNS, TypeName } from "../types"
 
 // generate a friendly name for the schema
 // It has to cover nasty cases like omit the "type" that usually helps to know what we have here
 function generateFriendlyName(schema: JSONSchema): string {
   // unlikely at this point but technically possible
   if (typeof schema === "boolean") {
-    return "boolean"
+    return "unknown"
   }
 
   // Some people maintaining schemas provide a friendly name by themself
@@ -42,24 +42,61 @@ function generateFriendlyName(schema: JSONSchema): string {
 
   // One of the common types around the world
   if (isArrayType(schema)) {
-    // Items property give the type of the array, when present
-    if (schema?.items !== undefined && typeof schema?.items !== "boolean") {
-      const linkWord = "OR"
+    let typedSchema = schema as JSONSchemaNS.Array
 
-      let list = Array.isArray(schema.items)
-        ? schema.items
-        : ([schema.items] as JSONSchema[])
-      const elements = list.map((subSchema) => generateFriendlyName(subSchema))
-      const uniqueItems = [...new Set(elements)]
+    // No clear specifications about the contents of the array ?
+    // KISS return the generic type
+    if (
+      [undefined, false].includes(typedSchema.items as any) &&
+      [undefined, false].includes(typedSchema.prefixItems as any) &&
+      typedSchema.contains === undefined
+    ) {
+      return "array"
+    }
 
-      return `(${uniqueItems.join(` ${linkWord} `)})[]`
+    // Now, we know that at least something exists to guess array type
+    // The hardest part is that we could have some combinations
+    let elements: string[] = []
+
+    // 1) "prefixItems"
+    if (Array.isArray(typedSchema.prefixItems)) {
+      // Prefix items are the first entries in the array
+      elements.push(
+        ...typedSchema.prefixItems.map((subSchema) =>
+          generateFriendlyName(subSchema)
+        )
+      )
     }
-    // Contains property give the type of the array, when present
-    if (schema?.contains !== undefined) {
-      return `(${generateFriendlyName(schema?.contains)})[]`
+
+    // 2) "items"
+    if (
+      typedSchema.items !== undefined &&
+      typeof typedSchema.items !== "boolean"
+    ) {
+      // Generify the process for both cases
+      let items: JSONSchema[] = Array.isArray(typedSchema.items)
+        ? typedSchema.items
+        : [typedSchema.items]
+
+      // add items to entries
+      elements.push(
+        ...items.map((subSchema) => generateFriendlyName(subSchema))
+      )
     }
-    // Otherwise keep the plain old array type
-    return "array"
+
+    // 3) "contains"
+    if (typedSchema.contains !== undefined) {
+      // add contains to entries
+      elements.push(...["...", generateFriendlyName(typedSchema.contains)])
+    }
+
+    // 4) Is it a open tuple ?
+    if (!(typedSchema.items === false || schema.additionalItems === false)) {
+      // notify the user
+      elements.push("...")
+    }
+
+    return `(${elements.join(",")})[]`
   }
 
   // In "not" case, usual it is simple but I prefer to run recursively to be sure
@@ -72,9 +109,9 @@ function generateFriendlyName(schema: JSONSchema): string {
   if (schema.anyOf || schema.oneOf || schema.allOf) {
     const linkWord = schema.anyOf ? "OR" : schema.oneOf ? "XOR" : "AND"
     const elements = (
-      schema?.anyOf ||
-      schema?.oneOf ||
-      (schema?.allOf as JSONSchema[])
+      schema.anyOf ||
+      schema.oneOf ||
+      (schema.allOf as JSONSchema[])
     ).map((subSchema) => generateFriendlyName(subSchema))
     const uniqueItems = [...new Set(elements)]
 

@@ -2,13 +2,9 @@ import React from "react"
 
 import Translate from "@docusaurus/Translate"
 
-import {
-  QualifierMessages,
-  isNumeric,
-  isStringType,
-  isArrayType,
-  isObjectType,
-} from "../utils/index"
+import { QualifierMessages, isNumeric, isStringType } from "../utils/index"
+
+import { useJSVOptionsContext } from "../contexts/index"
 
 import type { JSONSchema } from "../types"
 
@@ -18,6 +14,7 @@ type Props = {
 }
 
 // Accurately identify the type
+// In short, either integer / number / boolean / null or unknown
 function detectType(schema: JSONSchema): string {
   // Fall fail over
   if (typeof schema === "boolean") {
@@ -28,14 +25,6 @@ function detectType(schema: JSONSchema): string {
     return Array.isArray(schema.type)
       ? [...new Set(schema.type)].join(" OR ")
       : (schema.type as string)
-  }
-
-  if (isArrayType(schema)) {
-    return "array"
-  }
-
-  if (isObjectType(schema)) {
-    return "object"
   }
 
   if (isStringType(schema)) {
@@ -52,8 +41,9 @@ function detectType(schema: JSONSchema): string {
 
 // To deal with anything that isn't an array or object
 // In short : integer / number / boolean / null
-function createPrimitive(props: Props) {
+export default function CreatePrimitive(props: Props): JSX.Element {
   const { schema } = props
+  const options = useJSVOptionsContext()
 
   // Fast fail over
   if (typeof schema === "boolean") {
@@ -82,7 +72,7 @@ function createPrimitive(props: Props) {
       &nbsp;&#58;&nbsp;
       <span style={{ opacity: "0.6" }}>{friendly_type}</span>
       <div style={{ marginTop: "var(--ifm-table-cell-padding)" }}>
-        <QualifierMessages schema={schema} />
+        <QualifierMessages schema={schema} options={options} />
       </div>
       {schema.description !== undefined && (
         <div style={{ marginTop: "var(--ifm-table-cell-padding)" }}>
@@ -92,5 +82,3 @@ function createPrimitive(props: Props) {
     </>
   )
 }
-
-export default createPrimitive

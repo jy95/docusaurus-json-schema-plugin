@@ -37,7 +37,7 @@ npm install docusaurus-json-schema-plugin --prefer-dedupe
 
 > ⚠️ Why `--prefer-dedupe` ? Because of [Invalid Hook Call Warning](https://reactjs.org/warnings/invalid-hook-call-warning.html) common issue in projets
 
-## Configuring `docusaurus.config.js`
+### Configuring `docusaurus.config.js`
 
 ```js
 // docusaurus.config.js
@@ -48,6 +48,20 @@ npm install docusaurus-json-schema-plugin --prefer-dedupe
 
 ```
 
+### Configuring website `tsconfig.json`
+
+```jsonc
+{
+  "extends": "@tsconfig/docusaurus/tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "resolveJsonModule": true,
+    // Extending "@tsconfig/docusaurus/tsconfig.json".types with "docusaurus-json-schema-plugin"
+    "types": ["node", "@docusaurus/module-type-aliases", "@docusaurus/theme-classic", "docusaurus-json-schema-plugin"]
+  }
+}
+```
+
 ## Usage
 
 ### JSONSchemaViewer
@@ -56,10 +70,11 @@ npm install docusaurus-json-schema-plugin --prefer-dedupe
 
 #### API
 
-| Property        | Type          | Required  | Note                                                    |
-|-----------------|---------------|-----------|---------------------------------------------------------|
-| schema          | JSONSchema    | Mandatory | JSON Schema Draft-07 / Draft 2019-09 / Draft 2020-12    |
-| resolverOptions | IResolveOpts  | Optional  | To resolve your $ref (by default, only inline references will be dereferenced). More info on [@stoplight/json-ref-resolver](https://github.com/stoplightio/json-ref-resolver)  |
+| Property        | Type          | Required ?  | Note                                                    |
+|-----------------|---------------|-------------|---------------------------------------------------------|
+| schema          | JSONSchema    | Mandatory   | JSON Schema Draft-07 / Draft 2019-09 / Draft 2020-12    |
+| resolverOptions | IResolveOpts  | Optional    | To resolve your $ref (by default, only inline references will be dereferenced). More info on [@stoplight/json-ref-resolver](https://github.com/stoplightio/json-ref-resolver)  |
+| viewerOptions   | JSVOptions    | Optional    | Options for the viewer itself. More info on [Typescript type](/src/theme/JSONSchemaViewer/contexts/jsvOptions.tsx) |
 
 <details open>
 <summary><h4>Example</h4></summary>
@@ -110,10 +125,10 @@ function ExamplePage(): JSX.Element {
 
 #### API
 
-| Property        | Type              | Required  | Note                                               |
-|-----------------|-------------------|-----------|----------------------------------------------------|
-| schema          | JSONSchema        | Mandatory | JSON Schema supported by [monaco-editor](https://github.com/microsoft/monaco-editor), which powers [VS Code](https://code.visualstudio.com/Docs/languages/json#_json-schemas-and-settings) - Currently, it supports all draft versions from Draft 4 to JSON Schema Draft 2020-12  |
-| ....            | MonacoEditorProps | Optional  | [Properties](https://github.com/react-monaco-editor/react-monaco-editor#properties) of [react-monaco-editor](https://github.com/react-monaco-editor/react-monaco-editor) | 
+| Property        | Type              | Required ?  | Note                                               |
+|-----------------|-------------------|-------------|----------------------------------------------------|
+| schema          | JSONSchema        | Mandatory   | JSON Schema supported by [monaco-editor](https://github.com/microsoft/monaco-editor), which powers [VS Code](https://code.visualstudio.com/Docs/languages/json#_json-schemas-and-settings) - Currently, it supports all draft versions from Draft 4 to JSON Schema Draft 2020-12  |
+| ....            | MonacoEditorProps | Optional    | [Properties](https://github.com/react-monaco-editor/react-monaco-editor#properties) of [react-monaco-editor](https://github.com/react-monaco-editor/react-monaco-editor) | 
 
 <details open>
 <summary><h4>Example</h4></summary>

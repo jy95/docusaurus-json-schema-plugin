@@ -7,7 +7,7 @@ import { AndLabel } from "./index"
 import type { JSONSchema } from "../../types"
 
 type Props = {
-  schema?: JSONSchema
+  schema: JSONSchema
 }
 
 // minItems
@@ -52,8 +52,7 @@ export default function ArrayNumberOfItems(props: Props): null | JSX.Element {
     return null
   }
 
-  let minAndMax =
-    schema?.minItems !== undefined && schema?.maxItems !== undefined
+  let minAndMax = schema.minItems !== undefined && schema.maxItems !== undefined
 
   // Translated label
   const lengthLabel = (
@@ -73,16 +72,16 @@ export default function ArrayNumberOfItems(props: Props): null | JSX.Element {
       key={
         minAndMax
           ? "minItemsAndmaxItems"
-          : schema?.minItems !== undefined
+          : schema.minItems !== undefined
           ? "minItems"
           : "maxItems"
       }
     >
       {lengthLabel}
       &nbsp;
-      {schema?.minItems !== undefined && <MinItems value={schema?.minItems} />}
+      {schema.minItems !== undefined && <MinItems value={schema.minItems} />}
       {minAndMax && <AndLabel />}
-      {schema?.maxItems !== undefined && <MaxItems value={schema?.maxItems} />}
+      {schema.maxItems !== undefined && <MaxItems value={schema.maxItems} />}
     </div>
   )
 }

@@ -12,6 +12,10 @@ JSON Schema :
 
 <CodeBlock language="json">{JSON.stringify(Schema, null, 2)}</CodeBlock>
 
+viewerOptions :
+
+<CodeBlock language="json">{JSON.stringify({showExamples: true}, null, 2)}</CodeBlock>
+
 Viewer :
 
-<JSONSchemaViewer schema={ Schema  } />
+<JSONSchemaViewer schema={ Schema } viewerOptions={{ showExamples: true }} />

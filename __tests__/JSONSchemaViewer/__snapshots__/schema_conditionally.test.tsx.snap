@@ -35,7 +35,6 @@ exports[`JSONSchemaViewer - schema conditionally test If Then Else (multiple) 1`
           <span>
             string
           </span>
-           
         </summary>
         <strong>
           type
@@ -71,7 +70,6 @@ exports[`JSONSchemaViewer - schema conditionally test If Then Else (multiple) 1`
           <span>
             unknown
           </span>
-           
         </summary>
         <strong>
           type
@@ -235,7 +233,6 @@ exports[`JSONSchemaViewer - schema conditionally test If Then Else (multiple) 1`
                               <span>
                                 unknown
                               </span>
-                               
                             </summary>
                             <strong>
                               type
@@ -312,7 +309,6 @@ exports[`JSONSchemaViewer - schema conditionally test If Then Else (multiple) 1`
                               <span>
                                 string
                               </span>
-                               
                             </summary>
                             <strong>
                               type
@@ -517,7 +513,6 @@ exports[`JSONSchemaViewer - schema conditionally test If Then Else (multiple) 1`
                               <span>
                                 string
                               </span>
-                               
                             </summary>
                             <strong>
                               type
@@ -722,7 +717,6 @@ exports[`JSONSchemaViewer - schema conditionally test If Then Else (multiple) 1`
                               <span>
                                 string
                               </span>
-                               
                             </summary>
                             <strong>
                               type
@@ -812,7 +806,6 @@ exports[`JSONSchemaViewer - schema conditionally test If Then Else 1`] = `
           <span>
             string
           </span>
-           
         </summary>
         <strong>
           type
@@ -848,7 +841,6 @@ exports[`JSONSchemaViewer - schema conditionally test If Then Else 1`] = `
           <span>
             unknown
           </span>
-           
         </summary>
         <strong>
           type
@@ -977,7 +969,6 @@ exports[`JSONSchemaViewer - schema conditionally test If Then Else 1`] = `
                     <span>
                       unknown
                     </span>
-                     
                   </summary>
                   <strong>
                     type
@@ -1054,7 +1045,6 @@ exports[`JSONSchemaViewer - schema conditionally test If Then Else 1`] = `
                     <span>
                       string
                     </span>
-                     
                   </summary>
                   <strong>
                     type
@@ -1131,7 +1121,6 @@ exports[`JSONSchemaViewer - schema conditionally test If Then Else 1`] = `
                     <span>
                       string
                     </span>
-                     
                   </summary>
                   <strong>
                     type
@@ -1255,7 +1244,6 @@ exports[`JSONSchemaViewer - schema conditionally test dependencies (dependentReq
           <span>
             number
           </span>
-           
         </summary>
         <strong>
           type
@@ -1291,7 +1279,6 @@ exports[`JSONSchemaViewer - schema conditionally test dependencies (dependentReq
           <span>
             string
           </span>
-           
         </summary>
         <strong>
           type
@@ -1414,7 +1401,6 @@ exports[`JSONSchemaViewer - schema conditionally test dependencies (dependentSch
           <span>
             number
           </span>
-           
         </summary>
         <strong>
           type
@@ -1644,7 +1630,6 @@ exports[`JSONSchemaViewer - schema conditionally test dependentRequired (bidirec
           <span>
             number
           </span>
-           
         </summary>
         <strong>
           type
@@ -1680,7 +1665,6 @@ exports[`JSONSchemaViewer - schema conditionally test dependentRequired (bidirec
           <span>
             string
           </span>
-           
         </summary>
         <strong>
           type
@@ -1806,7 +1790,6 @@ exports[`JSONSchemaViewer - schema conditionally test dependentRequired 1`] = `
           <span>
             number
           </span>
-           
         </summary>
         <strong>
           type
@@ -1842,7 +1825,6 @@ exports[`JSONSchemaViewer - schema conditionally test dependentRequired 1`] = `
           <span>
             string
           </span>
-           
         </summary>
         <strong>
           type
@@ -1886,6 +1868,155 @@ exports[`JSONSchemaViewer - schema conditionally test dependentRequired 1`] = `
       <li>
         If credit_card property is provided, then 1 propertie(s) must also be present: billing_address
       </li>
+    </ul>
+  </details>
+</details>
+`;
+
+exports[`JSONSchemaViewer - schema conditionally test dependentSchemas 1`] = `
+<details
+  open={true}
+>
+  <summary>
+    <strong>
+      Schema
+    </strong>
+  </summary>
+  <strong>
+    type
+  </strong>
+   : 
+  <span
+    style={
+      {
+        "opacity": "0.6",
+      }
+    }
+  >
+    object
+  </span>
+  <div
+    style={
+      {
+        "marginTop": "var(--ifm-table-cell-padding)",
+      }
+    }
+  />
+  <details
+    open={true}
+  >
+    <summary>
+      <strong>
+        Conditional subschemas
+      </strong>
+    </summary>
+    <ul>
+      <div
+        className="tabs-container"
+      >
+        <ul
+          aria-orientation="horizontal"
+          className="tabs"
+          role="tablist"
+        >
+          <li
+            aria-selected={true}
+            onClick={[Function]}
+            tabIndex={0}
+          >
+            <strong>
+              If
+            </strong>
+          </li>
+          <li
+            aria-selected={false}
+            onClick={[Function]}
+            tabIndex={-1}
+          >
+            <strong>
+              Then
+            </strong>
+          </li>
+        </ul>
+        <div>
+          <div
+            hidden={false}
+            role="tabpanel"
+          >
+            <div
+              role="tabpanel"
+            >
+              When c property is provided
+            </div>
+          </div>
+          <div
+            hidden={true}
+            role="tabpanel"
+          >
+            <div
+              role="tabpanel"
+            >
+              <strong>
+                type
+              </strong>
+               : 
+              <span
+                style={
+                  {
+                    "opacity": "0.6",
+                  }
+                }
+              >
+                object
+              </span>
+              <ul>
+                <li>
+                  <details
+                    open={false}
+                  >
+                    <summary>
+                      <strong>
+                        b
+                      </strong>
+                       
+                      <span>
+                        integer
+                      </span>
+                    </summary>
+                    <strong>
+                      type
+                    </strong>
+                     : 
+                    <span
+                      style={
+                        {
+                          "opacity": "0.6",
+                        }
+                      }
+                    >
+                      integer
+                    </span>
+                    <div
+                      style={
+                        {
+                          "marginTop": "var(--ifm-table-cell-padding)",
+                        }
+                      }
+                    />
+                  </details>
+                </li>
+              </ul>
+              <div
+                style={
+                  {
+                    "marginTop": "var(--ifm-table-cell-padding)",
+                  }
+                }
+              />
+            </div>
+          </div>
+        </div>
+      </div>
     </ul>
   </details>
 </details>

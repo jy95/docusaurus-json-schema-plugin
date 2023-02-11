@@ -162,6 +162,22 @@ const testcases: [string, JSONSchema][] = [
       ],
     },
   ],
+  [
+    "dependentSchemas",
+    {
+      type: "object",
+      dependentSchemas: {
+        c: {
+          type: "object",
+          properties: {
+            b: {
+              type: "integer",
+            },
+          },
+        },
+      },
+    },
+  ],
 ]
 
 describe("JSONSchemaViewer - schema conditionally", () => {

@@ -1,5 +1,47 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`JSONSchemaViewer - object test Unspecified type (object) 1`] = `
+<details
+  open={true}
+>
+  <summary>
+    <strong>
+      Schema
+    </strong>
+  </summary>
+  <strong>
+    type
+  </strong>
+   : 
+  <span
+    style={
+      {
+        "opacity": "0.6",
+      }
+    }
+  >
+    object
+  </span>
+  <div
+    style={
+      {
+        "marginTop": "var(--ifm-table-cell-padding)",
+      }
+    }
+  >
+    <div>
+      <strong>
+        Length :
+      </strong>
+       
+      <code>
+        &gt;= 1 propertie(s)
+      </code>
+    </div>
+  </div>
+</details>
+`;
+
 exports[`JSONSchemaViewer - object test additionalProperties (JSON Schema) 1`] = `
 <details
   open={true}
@@ -35,7 +77,6 @@ exports[`JSONSchemaViewer - object test additionalProperties (JSON Schema) 1`] =
           <span>
             number
           </span>
-           
         </summary>
         <strong>
           type
@@ -71,7 +112,6 @@ exports[`JSONSchemaViewer - object test additionalProperties (JSON Schema) 1`] =
           <span>
             string
           </span>
-           
         </summary>
         <strong>
           type
@@ -107,7 +147,6 @@ exports[`JSONSchemaViewer - object test additionalProperties (JSON Schema) 1`] =
           <span>
             unknown
           </span>
-           
         </summary>
         <strong>
           type
@@ -155,7 +194,6 @@ exports[`JSONSchemaViewer - object test additionalProperties (JSON Schema) 1`] =
           <span>
             string
           </span>
-           
         </summary>
         <strong>
           type
@@ -225,7 +263,6 @@ exports[`JSONSchemaViewer - object test additionalProperties (false) 1`] = `
           <span>
             number
           </span>
-           
         </summary>
         <strong>
           type
@@ -261,7 +298,6 @@ exports[`JSONSchemaViewer - object test additionalProperties (false) 1`] = `
           <span>
             string
           </span>
-           
         </summary>
         <strong>
           type
@@ -297,7 +333,6 @@ exports[`JSONSchemaViewer - object test additionalProperties (false) 1`] = `
           <span>
             unknown
           </span>
-           
         </summary>
         <strong>
           type
@@ -382,7 +417,6 @@ exports[`JSONSchemaViewer - object test additionalProperties with patternPropert
           <span>
             number
           </span>
-           
         </summary>
         <strong>
           type
@@ -420,7 +454,6 @@ exports[`JSONSchemaViewer - object test additionalProperties with patternPropert
           <span>
             string
           </span>
-           
         </summary>
         <strong>
           type
@@ -456,7 +489,6 @@ exports[`JSONSchemaViewer - object test additionalProperties with patternPropert
           <span>
             integer
           </span>
-           
         </summary>
         <strong>
           type
@@ -494,7 +526,6 @@ exports[`JSONSchemaViewer - object test additionalProperties with patternPropert
           <span>
             string
           </span>
-           
         </summary>
         <strong>
           type
@@ -696,7 +727,6 @@ exports[`JSONSchemaViewer - object test patternProperties 1`] = `
           <span>
             string
           </span>
-           
         </summary>
         <strong>
           type
@@ -732,7 +762,6 @@ exports[`JSONSchemaViewer - object test patternProperties 1`] = `
           <span>
             integer
           </span>
-           
         </summary>
         <strong>
           type
@@ -802,7 +831,6 @@ exports[`JSONSchemaViewer - object test properties 1`] = `
           <span>
             number
           </span>
-           
         </summary>
         <strong>
           type
@@ -838,7 +866,6 @@ exports[`JSONSchemaViewer - object test properties 1`] = `
           <span>
             string
           </span>
-           
         </summary>
         <strong>
           type
@@ -874,7 +901,6 @@ exports[`JSONSchemaViewer - object test properties 1`] = `
           <span>
             unknown
           </span>
-           
         </summary>
         <strong>
           type
@@ -954,7 +980,6 @@ exports[`JSONSchemaViewer - object test propertyNames 1`] = `
           <span>
             unknown
           </span>
-           
         </summary>
         <strong>
           type
@@ -1012,6 +1037,50 @@ exports[`JSONSchemaViewer - object test required 1`] = `
     object
   </span>
   <ul>
+    <li>
+      <details
+        open={false}
+      >
+        <summary>
+          <strong>
+            id
+          </strong>
+           
+          <span>
+            number
+          </span>
+           
+          <strong>
+            readOnly
+          </strong>
+        </summary>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style={
+            {
+              "opacity": "0.6",
+            }
+          }
+        >
+          number
+        </span>
+        <div
+          style={
+            {
+              "marginTop": "var(--ifm-table-cell-padding)",
+            }
+          }
+        >
+          <div>
+            🚨 
+            read only
+          </div>
+        </div>
+      </details>
+    </li>
     <li>
       <details
         open={false}
@@ -1102,7 +1171,6 @@ exports[`JSONSchemaViewer - object test required 1`] = `
           <span>
             string
           </span>
-           
         </summary>
         <strong>
           type
@@ -1139,6 +1207,9 @@ exports[`JSONSchemaViewer - object test required 1`] = `
             string
           </span>
            
+          <strong>
+            deprecated
+          </strong>
         </summary>
         <strong>
           type
@@ -1159,7 +1230,56 @@ exports[`JSONSchemaViewer - object test required 1`] = `
               "marginTop": "var(--ifm-table-cell-padding)",
             }
           }
-        />
+        >
+          <div>
+            🚨 
+            Deprecated
+          </div>
+        </div>
+      </details>
+    </li>
+    <li>
+      <details
+        open={false}
+      >
+        <summary>
+          <strong>
+            pin_code
+          </strong>
+           
+          <span>
+            string
+          </span>
+           
+          <strong>
+            writeOnly
+          </strong>
+        </summary>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style={
+            {
+              "opacity": "0.6",
+            }
+          }
+        >
+          string
+        </span>
+        <div
+          style={
+            {
+              "marginTop": "var(--ifm-table-cell-padding)",
+            }
+          }
+        >
+          <div>
+            🚨 
+            write only
+          </div>
+        </div>
       </details>
     </li>
   </ul>

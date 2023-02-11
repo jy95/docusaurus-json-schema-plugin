@@ -5,7 +5,7 @@ import Translate from "@docusaurus/Translate"
 import type { JSONSchema } from "../../types"
 
 type Props = {
-  schema?: JSONSchema
+  schema: JSONSchema
 }
 
 // pattern
@@ -30,7 +30,7 @@ export default function Pattern(props: Props): null | JSX.Element {
         </Translate>
       </strong>
       &nbsp;
-      <code>{schema?.pattern}</code>
+      <code>{schema.pattern!}</code>
     </div>
   )
 }

@@ -1,10 +1,12 @@
 {
   "type": "object",
   "properties": {
+    "id": { "type": "number", "readOnly": true },
     "name": { "type": "string" },
     "email": { "type": "string" },
     "address": { "type": "string" },
-    "telephone": { "type": "string" }
+    "telephone": { "type": "string", "deprecated": true },
+    "password": { "type": "string", "writeOnly": true }
   },
   "required": ["name", "email"]
 }

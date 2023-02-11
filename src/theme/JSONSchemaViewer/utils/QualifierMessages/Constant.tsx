@@ -7,7 +7,7 @@ import { printSchemaType } from "./index"
 import type { JSONSchema } from "../../types"
 
 type Props = {
-  schema?: JSONSchema
+  schema: JSONSchema
 }
 
 export default function Constant(props: Props): null | JSX.Element {
@@ -36,7 +36,7 @@ export default function Constant(props: Props): null | JSX.Element {
     <div key={"const"}>
       {constantLabel}
       &nbsp;
-      {printSchemaType(schema?.const)}
+      {printSchemaType(schema.const!)}
     </div>
   )
 }

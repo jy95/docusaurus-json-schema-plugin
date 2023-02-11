@@ -30,6 +30,14 @@ exports[`JSONSchemaViewer - Generic keywords test annotations 1`] = `
     }
   >
     <div>
+      🚨 
+      Deprecated
+    </div>
+    <div>
+      🚨 
+      read only
+    </div>
+    <div>
       <strong>
         Default value :
       </strong>
@@ -37,6 +45,62 @@ exports[`JSONSchemaViewer - Generic keywords test annotations 1`] = `
       <code>
         Default value
       </code>
+    </div>
+    <div>
+      <strong>
+        Possible values :
+      </strong>
+       
+      <div
+        className="tabs-container"
+      >
+        <ul
+          aria-orientation="horizontal"
+          className="tabs"
+          role="tablist"
+        >
+          <li
+            aria-selected={true}
+            onClick={[Function]}
+            tabIndex={0}
+          >
+            Example 0
+          </li>
+          <li
+            aria-selected={false}
+            onClick={[Function]}
+            tabIndex={-1}
+          >
+            Example 1
+          </li>
+        </ul>
+        <div>
+          <div
+            hidden={false}
+            role="tabpanel"
+          >
+            <div
+              role="tabpanel"
+            >
+              <code>
+                Anything
+              </code>
+            </div>
+          </div>
+          <div
+            hidden={true}
+            role="tabpanel"
+          >
+            <div
+              role="tabpanel"
+            >
+              <code>
+                4035
+              </code>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
   <div
@@ -86,7 +150,6 @@ exports[`JSONSchemaViewer - Generic keywords test const 1`] = `
           <span>
             unknown
           </span>
-           
         </summary>
         <strong>
           type

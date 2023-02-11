@@ -7,7 +7,7 @@ import { AndLabel } from "./index"
 import type { JSONSchema } from "../../types"
 
 type Props = {
-  schema?: JSONSchema
+  schema: JSONSchema
 }
 
 // minLength
@@ -55,7 +55,7 @@ export default function StringLengthQualifierMessage(
   }
 
   let minAndMaxLength =
-    schema?.minLength !== undefined && schema?.maxLength !== undefined
+    schema.minLength !== undefined && schema.maxLength !== undefined
 
   // Translated label
   const lengthLabel = (
@@ -75,20 +75,16 @@ export default function StringLengthQualifierMessage(
       key={
         minAndMaxLength
           ? "minLengthAndmaxLength"
-          : schema?.minLength !== undefined
+          : schema.minLength !== undefined
           ? "minLength"
           : "maxLength"
       }
     >
       {lengthLabel}
       &nbsp;
-      {schema?.minLength !== undefined && (
-        <MinLength value={schema?.minLength} />
-      )}
+      {schema.minLength !== undefined && <MinLength value={schema.minLength} />}
       {minAndMaxLength && <AndLabel />}
-      {schema?.maxLength !== undefined && (
-        <MaxLength value={schema?.maxLength} />
-      )}
+      {schema.maxLength !== undefined && <MaxLength value={schema.maxLength} />}
     </div>
   )
 }

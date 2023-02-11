@@ -5,7 +5,7 @@ import Translate from "@docusaurus/Translate"
 import type { JSONSchema } from "../../types"
 
 type Props = {
-  schema?: JSONSchema
+  schema: JSONSchema
 }
 
 // multipleOf
@@ -34,7 +34,7 @@ export default function MultipleOf(props: Props): null | JSX.Element {
         <Translate
           values={{
             id: "json-schema.keywords.multipleOf",
-            count: schema?.multipleOf,
+            count: schema.multipleOf!,
           }}
         >
           {"multiple of {count}"}

@@ -14,21 +14,44 @@ import {
   ArrayUniqueItemsQM,
   DefaultValueQM,
   ConstantQM,
+  ExamplesQM,
+  DeprecatedQM,
+  ReadOnlyQM,
+  WriteOnlyQM,
 } from "./QualifierMessages/index"
 
 import type { JSONSchema, JSONSchemaNS } from "../types"
+import type { JSVOptions } from "../contexts/index"
 
 type Props = {
   schema: JSONSchema
+  options: JSVOptions
 }
 
 // Zero, One or multiple conditions can match
 function* conditionallyRenderQMs(
-  schema: JSONSchema
+  schema: JSONSchema,
+  options: JSVOptions
 ): Generator<JSX.Element, void> {
   // Fast fail over
+  /* istanbul ignore if  */
   if (schema === undefined || typeof schema === "boolean") {
     return undefined
+  }
+
+  // Deprecated
+  if ((schema as JSONSchemaNS.Object).deprecated === true) {
+    yield <DeprecatedQM key={"deprecated"} />
+  }
+
+  // Read only
+  if ((schema as JSONSchemaNS.Object).readOnly === true) {
+    yield <ReadOnlyQM key={"readOnly"} />
+  }
+
+  // Write only
+  if ((schema as JSONSchemaNS.Object).writeOnly === true) {
+    yield <WriteOnlyQM key={"writeOnly"} />
   }
 
   // Enum
@@ -50,7 +73,7 @@ function* conditionallyRenderQMs(
   }
 
   // No extra properties in object
-  if (schema?.additionalProperties === false) {
+  if (schema.additionalProperties === false) {
     yield <NoExtraPropertiesQM key={"no-extra-properties"} />
   }
 
@@ -68,7 +91,7 @@ function* conditionallyRenderQMs(
   }
 
   // No extra items in array
-  if (schema?.items === false || schema?.additionalItems === false) {
+  if (schema.items === false || schema.additionalItems === false) {
     yield <NoExtraItemsQM key={"no-extra-items"} />
   }
 
@@ -106,14 +129,19 @@ function* conditionallyRenderQMs(
   if (schema.const !== undefined) {
     yield <ConstantQM key={"const"} schema={schema} />
   }
+
+  // Examples values
+  if (options.showExamples && schema.examples !== undefined) {
+    yield <ExamplesQM key={"examples"} schema={schema} />
+  }
 }
 
 // The heart of the plugin : Display human friendly messages
 export default function QualifierMessages(props: Props): null | JSX.Element {
-  const { schema } = props
+  const { schema, options } = props
 
   // Find out which messages will be triggered
-  let result = [...conditionallyRenderQMs(schema)]
+  let result = [...conditionallyRenderQMs(schema, options)]
 
   if (result.length === 0) {
     return null

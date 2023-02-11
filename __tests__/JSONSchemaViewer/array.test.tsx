@@ -70,6 +70,35 @@ const testcases: JSONSchema[] = [
     type: "array",
     uniqueItems: true,
   },
+  {
+    minItems: 1,
+  },
+  {
+    maxItems: 5,
+  },
+  {
+    maxContains: 3,
+  },
+  {
+    minContains: 2,
+  },
+  {
+    type: "array",
+    items: [{ type: "integer" }, { type: "string" }],
+    minItems: 1,
+  },
+  {
+    type: "array",
+    prefixItems: [{ type: "number" }, { type: "string" }],
+    minItems: 3,
+  },
+  {
+    type: "array",
+    items: {
+      type: "string",
+    },
+    minItems: 1,
+  },
 ]
 
 describe("JSONSchemaViewer - Array type", () => {

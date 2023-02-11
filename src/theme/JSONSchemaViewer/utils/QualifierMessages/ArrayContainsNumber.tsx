@@ -7,7 +7,7 @@ import { AndLabel } from "./index"
 import type { JSONSchema, JSONSchemaNS } from "../../types"
 
 type Props = {
-  schema?: JSONSchema
+  schema: JSONSchema
 }
 
 // minContains
@@ -55,8 +55,8 @@ export default function ArrayContainsNumber(props: Props): null | JSX.Element {
   let typedArraySchema = schema as JSONSchemaNS.Array
 
   let minAndMax =
-    typedArraySchema?.minContains !== undefined &&
-    typedArraySchema?.maxContains !== undefined
+    typedArraySchema.minContains !== undefined &&
+    typedArraySchema.maxContains !== undefined
 
   // Translated labels
   const containsLabel = (
@@ -76,19 +76,19 @@ export default function ArrayContainsNumber(props: Props): null | JSX.Element {
       key={
         minAndMax
           ? "minContainsAndmaxContains"
-          : typedArraySchema?.minContains !== undefined
+          : typedArraySchema.minContains !== undefined
           ? "minContains"
           : "maxContains"
       }
     >
       {containsLabel}
       &nbsp;
-      {typedArraySchema?.minContains !== undefined && (
-        <MinContains value={typedArraySchema?.minContains} />
+      {typedArraySchema.minContains !== undefined && (
+        <MinContains value={typedArraySchema.minContains} />
       )}
       {minAndMax && <AndLabel />}
-      {typedArraySchema?.maxContains !== undefined && (
-        <MaxContains value={typedArraySchema?.maxContains} />
+      {typedArraySchema.maxContains !== undefined && (
+        <MaxContains value={typedArraySchema.maxContains} />
       )}
     </div>
   )

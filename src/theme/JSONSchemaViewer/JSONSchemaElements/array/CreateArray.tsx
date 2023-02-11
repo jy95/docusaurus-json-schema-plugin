@@ -8,6 +8,8 @@ import PrefixItems from "./PrefixItems"
 
 import { QualifierMessages } from "../../utils/index"
 
+import { useJSVOptionsContext } from "../../contexts/index"
+
 import type { JSONSchema, JSONSchemaNS } from "../../types"
 
 type Props = {
@@ -17,8 +19,9 @@ type Props = {
 
 // TODO later handle prefixItems VS items properties
 
-function createArray(props: Props): JSX.Element {
+export default function CreateArray(props: Props): JSX.Element {
   const { schema } = props
+  const options = useJSVOptionsContext()
 
   let typedSchema = schema as JSONSchemaNS.Array
 
@@ -72,7 +75,7 @@ function createArray(props: Props): JSX.Element {
       {prefixItems !== undefined && <ul>{prefixItems}</ul>}
       {contains !== undefined && <ul>{contains}</ul>}
       <div style={{ marginTop: "var(--ifm-table-cell-padding)" }}>
-        <QualifierMessages schema={schema} />
+        <QualifierMessages schema={schema} options={options} />
       </div>
       {typedSchema.description !== undefined && (
         <div style={{ marginTop: "var(--ifm-table-cell-padding)" }}>
@@ -82,5 +85,3 @@ function createArray(props: Props): JSX.Element {
     </>
   )
 }
-
-export default createArray
