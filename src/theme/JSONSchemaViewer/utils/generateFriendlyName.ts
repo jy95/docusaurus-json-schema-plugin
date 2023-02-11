@@ -72,9 +72,9 @@ function generateFriendlyName(schema: JSONSchema): string {
   if (schema.anyOf || schema.oneOf || schema.allOf) {
     const linkWord = schema.anyOf ? "OR" : schema.oneOf ? "XOR" : "AND"
     const elements = (
-      schema?.anyOf ||
-      schema?.oneOf ||
-      (schema?.allOf as JSONSchema[])
+      schema.anyOf ||
+      schema.oneOf ||
+      (schema.allOf as JSONSchema[])
     ).map((subSchema) => generateFriendlyName(subSchema))
     const uniqueItems = [...new Set(elements)]
 

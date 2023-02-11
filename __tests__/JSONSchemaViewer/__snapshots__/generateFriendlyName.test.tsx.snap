@@ -1,0 +1,823 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`JSONSchemaViewer - generateFriendlyName cases test Multiple types 1`] = `
+<details
+  open={true}
+>
+  <summary>
+    <strong>
+      Schema
+    </strong>
+  </summary>
+  <strong>
+    type
+  </strong>
+   : 
+  <span
+    style={
+      {
+        "opacity": "0.6",
+      }
+    }
+  >
+    array
+  </span>
+  <ul>
+    <li>
+      <details
+        open={false}
+      >
+        <summary>
+          <code>
+            items[0]
+          </code>
+           
+          <span>
+            null OR number
+          </span>
+        </summary>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style={
+            {
+              "opacity": "0.6",
+            }
+          }
+        >
+          null OR number
+        </span>
+        <div
+          style={
+            {
+              "marginTop": "var(--ifm-table-cell-padding)",
+            }
+          }
+        />
+      </details>
+    </li>
+  </ul>
+  <div
+    style={
+      {
+        "marginTop": "var(--ifm-table-cell-padding)",
+      }
+    }
+  />
+</details>
+`;
+
+exports[`JSONSchemaViewer - generateFriendlyName cases test Not (integer) 1`] = `
+<details
+  open={true}
+>
+  <summary>
+    <strong>
+      Schema
+    </strong>
+  </summary>
+  <strong>
+    type
+  </strong>
+   : 
+  <span
+    style={
+      {
+        "opacity": "0.6",
+      }
+    }
+  >
+    array
+  </span>
+  <ul>
+    <li>
+      <details
+        open={false}
+      >
+        <summary>
+          <code>
+            items[0]
+          </code>
+           
+          <span>
+            NOT (integer)
+          </span>
+        </summary>
+        <div>
+          <span
+            className="badge badge--info"
+          >
+            not
+          </span>
+          <br />
+          <strong>
+            type
+          </strong>
+           : 
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
+            integer
+          </span>
+          <div
+            style={
+              {
+                "marginTop": "var(--ifm-table-cell-padding)",
+              }
+            }
+          />
+        </div>
+      </details>
+    </li>
+  </ul>
+  <div
+    style={
+      {
+        "marginTop": "var(--ifm-table-cell-padding)",
+      }
+    }
+  />
+</details>
+`;
+
+exports[`JSONSchemaViewer - generateFriendlyName cases test Number without explicit type 1`] = `
+<details
+  open={true}
+>
+  <summary>
+    <strong>
+      Schema
+    </strong>
+  </summary>
+  <strong>
+    type
+  </strong>
+   : 
+  <span
+    style={
+      {
+        "opacity": "0.6",
+      }
+    }
+  >
+    array
+  </span>
+  <ul>
+    <li>
+      <details
+        open={false}
+      >
+        <summary>
+          <code>
+            items[0]
+          </code>
+           
+          <span>
+            number
+          </span>
+        </summary>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style={
+            {
+              "opacity": "0.6",
+            }
+          }
+        >
+          numeric
+        </span>
+        <div
+          style={
+            {
+              "marginTop": "var(--ifm-table-cell-padding)",
+            }
+          }
+        >
+          <div>
+            <strong>
+              Possible values :
+            </strong>
+             
+            <code>
+              multiple of 10
+            </code>
+          </div>
+        </div>
+      </details>
+    </li>
+  </ul>
+  <div
+    style={
+      {
+        "marginTop": "var(--ifm-table-cell-padding)",
+      }
+    }
+  />
+</details>
+`;
+
+exports[`JSONSchemaViewer - generateFriendlyName cases test OR / XOR / AND 1`] = `
+<details
+  open={true}
+>
+  <summary>
+    <strong>
+      Schema
+    </strong>
+  </summary>
+  <strong>
+    type
+  </strong>
+   : 
+  <span
+    style={
+      {
+        "opacity": "0.6",
+      }
+    }
+  >
+    array
+  </span>
+  <ul>
+    <li>
+      <details
+        open={false}
+      >
+        <summary>
+          <code>
+            items[0]
+          </code>
+           
+          <span>
+            string OR number
+          </span>
+        </summary>
+        <div>
+          <span
+            className="badge badge--info"
+          >
+            anyOf
+          </span>
+          <div
+            className="tabs-container"
+          >
+            <ul
+              aria-orientation="horizontal"
+              className="tabs"
+              role="tablist"
+            >
+              <li
+                aria-selected={true}
+                onClick={[Function]}
+                tabIndex={0}
+              >
+                1
+              </li>
+              <li
+                aria-selected={false}
+                onClick={[Function]}
+                tabIndex={-1}
+              >
+                2
+              </li>
+            </ul>
+            <div>
+              <div
+                hidden={false}
+                role="tabpanel"
+              >
+                <div
+                  role="tabpanel"
+                >
+                  <strong>
+                    type
+                  </strong>
+                   : 
+                  <span
+                    style={
+                      {
+                        "opacity": "0.6",
+                      }
+                    }
+                  >
+                    string
+                  </span>
+                  <div
+                    style={
+                      {
+                        "marginTop": "var(--ifm-table-cell-padding)",
+                      }
+                    }
+                  >
+                    <div>
+                      <strong>
+                        Length :
+                      </strong>
+                       
+                      <code>
+                        &lt;= 5 character(s)
+                      </code>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                hidden={true}
+                role="tabpanel"
+              >
+                <div
+                  role="tabpanel"
+                >
+                  <strong>
+                    type
+                  </strong>
+                   : 
+                  <span
+                    style={
+                      {
+                        "opacity": "0.6",
+                      }
+                    }
+                  >
+                    number
+                  </span>
+                  <div
+                    style={
+                      {
+                        "marginTop": "var(--ifm-table-cell-padding)",
+                      }
+                    }
+                  >
+                    <div>
+                      <strong>
+                        Possible values :
+                      </strong>
+                       
+                      <code>
+                        &gt;= 0
+                      </code>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </details>
+    </li>
+    <li>
+      <details
+        open={false}
+      >
+        <summary>
+          <code>
+            items[1]
+          </code>
+           
+          <span>
+            number
+          </span>
+        </summary>
+        <div>
+          <span
+            className="badge badge--info"
+          >
+            oneOf
+          </span>
+          <div
+            className="tabs-container"
+          >
+            <ul
+              aria-orientation="horizontal"
+              className="tabs"
+              role="tablist"
+            >
+              <li
+                aria-selected={true}
+                onClick={[Function]}
+                tabIndex={0}
+              >
+                1
+              </li>
+              <li
+                aria-selected={false}
+                onClick={[Function]}
+                tabIndex={-1}
+              >
+                2
+              </li>
+            </ul>
+            <div>
+              <div
+                hidden={false}
+                role="tabpanel"
+              >
+                <div
+                  role="tabpanel"
+                >
+                  <strong>
+                    type
+                  </strong>
+                   : 
+                  <span
+                    style={
+                      {
+                        "opacity": "0.6",
+                      }
+                    }
+                  >
+                    number
+                  </span>
+                  <div
+                    style={
+                      {
+                        "marginTop": "var(--ifm-table-cell-padding)",
+                      }
+                    }
+                  >
+                    <div>
+                      <strong>
+                        Possible values :
+                      </strong>
+                       
+                      <code>
+                        multiple of 5
+                      </code>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                hidden={true}
+                role="tabpanel"
+              >
+                <div
+                  role="tabpanel"
+                >
+                  <strong>
+                    type
+                  </strong>
+                   : 
+                  <span
+                    style={
+                      {
+                        "opacity": "0.6",
+                      }
+                    }
+                  >
+                    number
+                  </span>
+                  <div
+                    style={
+                      {
+                        "marginTop": "var(--ifm-table-cell-padding)",
+                      }
+                    }
+                  >
+                    <div>
+                      <strong>
+                        Possible values :
+                      </strong>
+                       
+                      <code>
+                        multiple of 3
+                      </code>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </details>
+    </li>
+    <li>
+      <details
+        open={false}
+      >
+        <summary>
+          <code>
+            items[2]
+          </code>
+           
+          <span>
+            string
+          </span>
+        </summary>
+        <div>
+          <span
+            className="badge badge--info"
+          >
+            allOf
+          </span>
+          <div
+            className="tabs-container"
+          >
+            <ul
+              aria-orientation="horizontal"
+              className="tabs"
+              role="tablist"
+            >
+              <li
+                aria-selected={true}
+                onClick={[Function]}
+                tabIndex={0}
+              >
+                1
+              </li>
+              <li
+                aria-selected={false}
+                onClick={[Function]}
+                tabIndex={-1}
+              >
+                2
+              </li>
+            </ul>
+            <div>
+              <div
+                hidden={false}
+                role="tabpanel"
+              >
+                <div
+                  role="tabpanel"
+                >
+                  <strong>
+                    type
+                  </strong>
+                   : 
+                  <span
+                    style={
+                      {
+                        "opacity": "0.6",
+                      }
+                    }
+                  >
+                    string
+                  </span>
+                  <div
+                    style={
+                      {
+                        "marginTop": "var(--ifm-table-cell-padding)",
+                      }
+                    }
+                  />
+                </div>
+              </div>
+              <div
+                hidden={true}
+                role="tabpanel"
+              >
+                <div
+                  role="tabpanel"
+                >
+                  <strong>
+                    type
+                  </strong>
+                   : 
+                  <span
+                    style={
+                      {
+                        "opacity": "0.6",
+                      }
+                    }
+                  >
+                    string
+                  </span>
+                  <div
+                    style={
+                      {
+                        "marginTop": "var(--ifm-table-cell-padding)",
+                      }
+                    }
+                  >
+                    <div>
+                      <strong>
+                        Length :
+                      </strong>
+                       
+                      <code>
+                        &lt;= 5 character(s)
+                      </code>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </details>
+    </li>
+  </ul>
+  <div
+    style={
+      {
+        "marginTop": "var(--ifm-table-cell-padding)",
+      }
+    }
+  />
+</details>
+`;
+
+exports[`JSONSchemaViewer - generateFriendlyName cases test Object without explicit type 1`] = `
+<details
+  open={true}
+>
+  <summary>
+    <strong>
+      Schema
+    </strong>
+  </summary>
+  <strong>
+    type
+  </strong>
+   : 
+  <span
+    style={
+      {
+        "opacity": "0.6",
+      }
+    }
+  >
+    array
+  </span>
+  <ul>
+    <li>
+      <details
+        open={false}
+      >
+        <summary>
+          <code>
+            items[0]
+          </code>
+           
+          <span>
+            object
+          </span>
+        </summary>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style={
+            {
+              "opacity": "0.6",
+            }
+          }
+        >
+          object
+        </span>
+        <div
+          style={
+            {
+              "marginTop": "var(--ifm-table-cell-padding)",
+            }
+          }
+        >
+          <div>
+            <strong>
+              Length :
+            </strong>
+             
+            <code>
+              &gt;= 3 propertie(s)
+            </code>
+          </div>
+        </div>
+      </details>
+    </li>
+  </ul>
+  <div
+    style={
+      {
+        "marginTop": "var(--ifm-table-cell-padding)",
+      }
+    }
+  />
+</details>
+`;
+
+exports[`JSONSchemaViewer - generateFriendlyName cases test Prefer title 1`] = `
+<details
+  open={true}
+>
+  <summary>
+    <strong>
+      Schema
+    </strong>
+  </summary>
+  <strong>
+    type
+  </strong>
+   : 
+  <span
+    style={
+      {
+        "opacity": "0.6",
+      }
+    }
+  >
+    array
+  </span>
+  <ul>
+    <li>
+      <details
+        open={false}
+      >
+        <summary>
+          <code>
+            items[0]
+          </code>
+           
+          <span>
+            My custom title
+          </span>
+        </summary>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style={
+            {
+              "opacity": "0.6",
+            }
+          }
+        >
+          object
+        </span>
+        <ul>
+          <li>
+            <details
+              open={false}
+            >
+              <summary>
+                <strong>
+                  text
+                </strong>
+                 
+                <span>
+                  unknown
+                </span>
+              </summary>
+              <strong>
+                type
+              </strong>
+               : 
+              <span
+                style={
+                  {
+                    "opacity": "0.6",
+                  }
+                }
+              >
+                unknown
+              </span>
+              <div
+                style={
+                  {
+                    "marginTop": "var(--ifm-table-cell-padding)",
+                  }
+                }
+              >
+                <div>
+                  <strong>
+                    Constant value :
+                  </strong>
+                   
+                  <code>
+                    Hello World
+                  </code>
+                </div>
+              </div>
+            </details>
+          </li>
+        </ul>
+        <div
+          style={
+            {
+              "marginTop": "var(--ifm-table-cell-padding)",
+            }
+          }
+        />
+      </details>
+    </li>
+  </ul>
+  <div
+    style={
+      {
+        "marginTop": "var(--ifm-table-cell-padding)",
+      }
+    }
+  />
+</details>
+`;
