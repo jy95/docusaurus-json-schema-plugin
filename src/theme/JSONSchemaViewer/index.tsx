@@ -84,6 +84,11 @@ export default function JSONSchemaViewer(props: Props): JSX.Element {
   } else if (resolvedSchema === undefined) {
     return <div>Loading ....</div>
   } else {
-    return <JSONSchemaInnerViewer schema={resolvedSchema} viewerOptions={viewerOptions} />
+    return (
+      <JSONSchemaInnerViewer
+        schema={resolvedSchema}
+        viewerOptions={viewerOptions}
+      />
+    )
   }
 }
