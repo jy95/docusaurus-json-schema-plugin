@@ -10,6 +10,8 @@ import {
   isObjectType,
 } from "../utils/index"
 
+import { useJSVOptionsContext } from "../contexts/index"
+
 import type { JSONSchema } from "../types"
 
 type Props = {
@@ -54,6 +56,7 @@ function detectType(schema: JSONSchema): string {
 // In short : integer / number / boolean / null
 function createPrimitive(props: Props) {
   const { schema } = props
+  const options = useJSVOptionsContext()
 
   // Fast fail over
   if (typeof schema === "boolean") {
@@ -82,7 +85,7 @@ function createPrimitive(props: Props) {
       &nbsp;&#58;&nbsp;
       <span style={{ opacity: "0.6" }}>{friendly_type}</span>
       <div style={{ marginTop: "var(--ifm-table-cell-padding)" }}>
-        <QualifierMessages schema={schema} />
+        <QualifierMessages schema={schema} options={options} />
       </div>
       {schema.description !== undefined && (
         <div style={{ marginTop: "var(--ifm-table-cell-padding)" }}>

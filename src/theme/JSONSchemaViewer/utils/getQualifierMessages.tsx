@@ -14,17 +14,21 @@ import {
   ArrayUniqueItemsQM,
   DefaultValueQM,
   ConstantQM,
+  ExamplesQM,
 } from "./QualifierMessages/index"
 
 import type { JSONSchema, JSONSchemaNS } from "../types"
+import type { JSVOptions } from "../contexts/index"
 
 type Props = {
   schema: JSONSchema
+  options: JSVOptions
 }
 
 // Zero, One or multiple conditions can match
 function* conditionallyRenderQMs(
-  schema: JSONSchema
+  schema: JSONSchema,
+  options: JSVOptions
 ): Generator<JSX.Element, void> {
   // Fast fail over
   if (schema === undefined || typeof schema === "boolean") {
@@ -106,14 +110,19 @@ function* conditionallyRenderQMs(
   if (schema.const !== undefined) {
     yield <ConstantQM key={"const"} schema={schema} />
   }
+
+  // Examples values
+  if (options.showExamples && schema.examples !== undefined) {
+    yield <ExamplesQM key={"examples"} schema={schema} />
+  }
 }
 
 // The heart of the plugin : Display human friendly messages
 export default function QualifierMessages(props: Props): null | JSX.Element {
-  const { schema } = props
+  const { schema, options } = props
 
   // Find out which messages will be triggered
-  let result = [...conditionallyRenderQMs(schema)]
+  let result = [...conditionallyRenderQMs(schema, options)]
 
   if (result.length === 0) {
     return null
