@@ -54,7 +54,7 @@ function detectType(schema: JSONSchema): string {
 
 // To deal with anything that isn't an array or object
 // In short : integer / number / boolean / null
-function createPrimitive(props: Props) {
+function createPrimitive(props: Props) : JSX.Element {
   const { schema } = props
   const options = useJSVOptionsContext()
 
