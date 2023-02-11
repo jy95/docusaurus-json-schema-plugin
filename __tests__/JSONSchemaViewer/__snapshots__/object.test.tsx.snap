@@ -1,5 +1,47 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`JSONSchemaViewer - object test Unspecified type (object) 1`] = `
+<details
+  open={true}
+>
+  <summary>
+    <strong>
+      Schema
+    </strong>
+  </summary>
+  <strong>
+    type
+  </strong>
+   : 
+  <span
+    style={
+      {
+        "opacity": "0.6",
+      }
+    }
+  >
+    object
+  </span>
+  <div
+    style={
+      {
+        "marginTop": "var(--ifm-table-cell-padding)",
+      }
+    }
+  >
+    <div>
+      <strong>
+        Length :
+      </strong>
+       
+      <code>
+        &gt;= 1 propertie(s)
+      </code>
+    </div>
+  </div>
+</details>
+`;
+
 exports[`JSONSchemaViewer - object test additionalProperties (JSON Schema) 1`] = `
 <details
   open={true}

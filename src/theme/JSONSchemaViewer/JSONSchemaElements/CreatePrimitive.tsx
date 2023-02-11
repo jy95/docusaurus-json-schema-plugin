@@ -2,13 +2,7 @@ import React from "react"
 
 import Translate from "@docusaurus/Translate"
 
-import {
-  QualifierMessages,
-  isNumeric,
-  isStringType,
-  isArrayType,
-  isObjectType,
-} from "../utils/index"
+import { QualifierMessages, isNumeric, isStringType } from "../utils/index"
 
 import { useJSVOptionsContext } from "../contexts/index"
 
@@ -20,6 +14,7 @@ type Props = {
 }
 
 // Accurately identify the type
+// In short, either integer / number / boolean / null or unknown
 function detectType(schema: JSONSchema): string {
   // Fall fail over
   if (typeof schema === "boolean") {
@@ -30,14 +25,6 @@ function detectType(schema: JSONSchema): string {
     return Array.isArray(schema.type)
       ? [...new Set(schema.type)].join(" OR ")
       : (schema.type as string)
-  }
-
-  if (isArrayType(schema)) {
-    return "array"
-  }
-
-  if (isObjectType(schema)) {
-    return "object"
   }
 
   if (isStringType(schema)) {

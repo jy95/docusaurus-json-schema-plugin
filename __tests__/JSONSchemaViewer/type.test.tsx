@@ -28,18 +28,6 @@ const testcases: [string, JSONSchema][] = [
   ],
   ["Unspecified type (boolean)", true],
   [
-    "Unspecified type (array)",
-    {
-      minItems: 1,
-    },
-  ],
-  [
-    "Unspecified type (object)",
-    {
-      minProperties: 1,
-    },
-  ],
-  [
     "Unspecified type (numeric)",
     {
       multipleOf: 10,
