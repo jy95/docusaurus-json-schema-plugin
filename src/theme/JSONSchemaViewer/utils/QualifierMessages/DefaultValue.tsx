@@ -7,7 +7,7 @@ import { printSchemaType } from "./index"
 import type { JSONSchema } from "../../types"
 
 type Props = {
-  schema?: JSONSchema
+  schema: JSONSchema
 }
 
 // Default value
@@ -37,7 +37,7 @@ export default function DefaultValue(props: Props): null | JSX.Element {
     <div key={"default"}>
       {defaultLabel}
       &nbsp;
-      {printSchemaType(schema?.default)}
+      {printSchemaType(schema.default!)}
     </div>
   )
 }

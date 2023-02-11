@@ -9,7 +9,7 @@ import type { JSONSchema } from "../../types"
 import { printSchemaType } from "./index"
 
 type Props = {
-  schema?: JSONSchema
+  schema: JSONSchema
 }
 
 // For "examples" property
@@ -36,7 +36,7 @@ export default function ExamplesQualifierMessage(
     </strong>
   )
 
-  let items = schema?.examples!.map((val, idx) => ({
+  let items = schema.examples!.map((val, idx) => ({
     id: idx,
     value: val,
     label: (
