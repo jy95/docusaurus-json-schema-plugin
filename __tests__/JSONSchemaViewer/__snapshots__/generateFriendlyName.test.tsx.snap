@@ -1,5 +1,406 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`JSONSchemaViewer - generateFriendlyName cases test Array specified only with items 1`] = `
+<details
+  open={true}
+>
+  <summary>
+    <strong>
+      Schema
+    </strong>
+  </summary>
+  <strong>
+    type
+  </strong>
+   : 
+  <span
+    style={
+      {
+        "opacity": "0.6",
+      }
+    }
+  >
+    array
+  </span>
+  <ul>
+    <li>
+      <details
+        open={false}
+      >
+        <summary>
+          <code>
+            items[0]
+          </code>
+           
+          <span>
+            (integer OR boolean)[]
+          </span>
+        </summary>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style={
+            {
+              "opacity": "0.6",
+            }
+          }
+        >
+          array
+        </span>
+        <ul>
+          <li>
+            <details
+              open={false}
+            >
+              <summary>
+                <code>
+                  items
+                </code>
+                 
+                <span>
+                  integer OR boolean
+                </span>
+              </summary>
+              <strong>
+                type
+              </strong>
+               : 
+              <span
+                style={
+                  {
+                    "opacity": "0.6",
+                  }
+                }
+              >
+                integer OR boolean
+              </span>
+              <div
+                style={
+                  {
+                    "marginTop": "var(--ifm-table-cell-padding)",
+                  }
+                }
+              />
+            </details>
+          </li>
+        </ul>
+        <div
+          style={
+            {
+              "marginTop": "var(--ifm-table-cell-padding)",
+            }
+          }
+        >
+          <div>
+            🚨 
+            No extra item(s) are authorized in this array
+          </div>
+        </div>
+      </details>
+    </li>
+  </ul>
+  <div
+    style={
+      {
+        "marginTop": "var(--ifm-table-cell-padding)",
+      }
+    }
+  />
+</details>
+`;
+
+exports[`JSONSchemaViewer - generateFriendlyName cases test Array specified only with prefixItems 1`] = `
+<details
+  open={true}
+>
+  <summary>
+    <strong>
+      Schema
+    </strong>
+  </summary>
+  <strong>
+    type
+  </strong>
+   : 
+  <span
+    style={
+      {
+        "opacity": "0.6",
+      }
+    }
+  >
+    array
+  </span>
+  <ul>
+    <li>
+      <details
+        open={false}
+      >
+        <summary>
+          <code>
+            items[0]
+          </code>
+           
+          <span>
+            (boolean,integer)[]
+          </span>
+        </summary>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style={
+            {
+              "opacity": "0.6",
+            }
+          }
+        >
+          array
+        </span>
+        <ul />
+        <ul>
+          <li>
+            <details
+              open={false}
+            >
+              <summary>
+                <code>
+                  items[0]
+                </code>
+                 
+                <span>
+                  boolean
+                </span>
+              </summary>
+              <strong>
+                type
+              </strong>
+               : 
+              <span
+                style={
+                  {
+                    "opacity": "0.6",
+                  }
+                }
+              >
+                boolean
+              </span>
+              <div
+                style={
+                  {
+                    "marginTop": "var(--ifm-table-cell-padding)",
+                  }
+                }
+              />
+            </details>
+          </li>
+          <li>
+            <details
+              open={false}
+            >
+              <summary>
+                <code>
+                  items[1]
+                </code>
+                 
+                <span>
+                  integer
+                </span>
+              </summary>
+              <strong>
+                type
+              </strong>
+               : 
+              <span
+                style={
+                  {
+                    "opacity": "0.6",
+                  }
+                }
+              >
+                integer
+              </span>
+              <div
+                style={
+                  {
+                    "marginTop": "var(--ifm-table-cell-padding)",
+                  }
+                }
+              />
+            </details>
+          </li>
+        </ul>
+        <div
+          style={
+            {
+              "marginTop": "var(--ifm-table-cell-padding)",
+            }
+          }
+        >
+          <div>
+            🚨 
+            No extra item(s) are authorized in this array
+          </div>
+        </div>
+      </details>
+    </li>
+  </ul>
+  <div
+    style={
+      {
+        "marginTop": "var(--ifm-table-cell-padding)",
+      }
+    }
+  />
+</details>
+`;
+
+exports[`JSONSchemaViewer - generateFriendlyName cases test Array specified with items and contains 1`] = `
+<details
+  open={true}
+>
+  <summary>
+    <strong>
+      Schema
+    </strong>
+  </summary>
+  <strong>
+    type
+  </strong>
+   : 
+  <span
+    style={
+      {
+        "opacity": "0.6",
+      }
+    }
+  >
+    array
+  </span>
+  <ul>
+    <li>
+      <details
+        open={false}
+      >
+        <summary>
+          <code>
+            items[0]
+          </code>
+           
+          <span>
+            (number,...,string,...)[]
+          </span>
+        </summary>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style={
+            {
+              "opacity": "0.6",
+            }
+          }
+        >
+          array
+        </span>
+        <ul>
+          <li>
+            <details
+              open={false}
+            >
+              <summary>
+                <code>
+                  items[0]
+                </code>
+                 
+                <span>
+                  number
+                </span>
+              </summary>
+              <strong>
+                type
+              </strong>
+               : 
+              <span
+                style={
+                  {
+                    "opacity": "0.6",
+                  }
+                }
+              >
+                number
+              </span>
+              <div
+                style={
+                  {
+                    "marginTop": "var(--ifm-table-cell-padding)",
+                  }
+                }
+              />
+            </details>
+          </li>
+        </ul>
+        <ul>
+          <li>
+            <details
+              open={false}
+            >
+              <summary>
+                <code>
+                  contains
+                </code>
+                 
+                <span>
+                  string
+                </span>
+              </summary>
+              <strong>
+                type
+              </strong>
+               : 
+              <span
+                style={
+                  {
+                    "opacity": "0.6",
+                  }
+                }
+              >
+                string
+              </span>
+              <div
+                style={
+                  {
+                    "marginTop": "var(--ifm-table-cell-padding)",
+                  }
+                }
+              />
+            </details>
+          </li>
+        </ul>
+        <div
+          style={
+            {
+              "marginTop": "var(--ifm-table-cell-padding)",
+            }
+          }
+        />
+      </details>
+    </li>
+  </ul>
+  <div
+    style={
+      {
+        "marginTop": "var(--ifm-table-cell-padding)",
+      }
+    }
+  />
+</details>
+`;
+
 exports[`JSONSchemaViewer - generateFriendlyName cases test Multiple types 1`] = `
 <details
   open={true}
@@ -802,6 +1203,75 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Prefer title 1`] = `
             </details>
           </li>
         </ul>
+        <div
+          style={
+            {
+              "marginTop": "var(--ifm-table-cell-padding)",
+            }
+          }
+        />
+      </details>
+    </li>
+  </ul>
+  <div
+    style={
+      {
+        "marginTop": "var(--ifm-table-cell-padding)",
+      }
+    }
+  />
+</details>
+`;
+
+exports[`JSONSchemaViewer - generateFriendlyName cases test Simple array 1`] = `
+<details
+  open={true}
+>
+  <summary>
+    <strong>
+      Schema
+    </strong>
+  </summary>
+  <strong>
+    type
+  </strong>
+   : 
+  <span
+    style={
+      {
+        "opacity": "0.6",
+      }
+    }
+  >
+    array
+  </span>
+  <ul>
+    <li>
+      <details
+        open={false}
+      >
+        <summary>
+          <code>
+            items[0]
+          </code>
+           
+          <span>
+            array
+          </span>
+        </summary>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style={
+            {
+              "opacity": "0.6",
+            }
+          }
+        >
+          array
+        </span>
         <div
           style={
             {

@@ -103,6 +103,68 @@ const testcases: [string, JSONSchema][] = [
       ],
     } as JSONSchemaNS.Array,
   ],
+  [
+    "Simple array",
+    {
+      type: "array",
+      prefixItems: [
+        {
+          type: "array",
+        },
+      ],
+    } as JSONSchemaNS.Array,
+  ],
+  [
+    "Array specified only with prefixItems",
+    {
+      type: "array",
+      prefixItems: [
+        {
+          prefixItems: [
+            {
+              type: "boolean",
+            },
+            {
+              type: "integer",
+            },
+          ],
+          items: false,
+        },
+      ],
+    } as JSONSchemaNS.Array,
+  ],
+  [
+    "Array specified only with items",
+    {
+      type: "array",
+      prefixItems: [
+        {
+          items: {
+            type: ["integer", "boolean"],
+          },
+          additionalItems: false,
+        },
+      ],
+    } as JSONSchemaNS.Array,
+  ],
+  [
+    "Array specified with items and contains",
+    {
+      type: "array",
+      prefixItems: [
+        {
+          items: [
+            {
+              type: "number",
+            },
+          ],
+          contains: {
+            type: "string",
+          },
+        },
+      ],
+    } as JSONSchemaNS.Array,
+  ],
 ]
 
 describe("JSONSchemaViewer - generateFriendlyName cases", () => {
