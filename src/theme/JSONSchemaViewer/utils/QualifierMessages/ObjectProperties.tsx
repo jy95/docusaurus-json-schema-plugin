@@ -7,7 +7,7 @@ import { AndLabel } from "./index"
 import type { JSONSchema } from "../../types"
 
 type Props = {
-  schema?: JSONSchema
+  schema: JSONSchema
 }
 
 // minProperties
@@ -53,7 +53,7 @@ export default function ObjectProperties(props: Props): null | JSX.Element {
   }
 
   let minAndMax =
-    schema?.minProperties !== undefined && schema?.maxProperties !== undefined
+    schema.minProperties !== undefined && schema.maxProperties !== undefined
 
   const propertiesLabel = (
     <strong>
@@ -72,19 +72,19 @@ export default function ObjectProperties(props: Props): null | JSX.Element {
       key={
         minAndMax
           ? "minPropertiesAndMaxProperties"
-          : schema?.minProperties !== undefined
+          : schema.minProperties !== undefined
           ? "minProperties"
           : "maxProperties"
       }
     >
       {propertiesLabel}
       &nbsp;
-      {schema?.minProperties !== undefined && (
-        <MinProperties value={schema?.minProperties} />
+      {schema.minProperties !== undefined && (
+        <MinProperties value={schema.minProperties} />
       )}
       {minAndMax && <AndLabel />}
-      {schema?.maxProperties !== undefined && (
-        <MaxProperties value={schema?.maxProperties} />
+      {schema.maxProperties !== undefined && (
+        <MaxProperties value={schema.maxProperties} />
       )}
     </div>
   )

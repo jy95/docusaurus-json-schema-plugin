@@ -7,7 +7,7 @@ import { AndLabel } from "./index"
 import type { JSONSchema } from "../../types"
 
 type Props = {
-  schema?: JSONSchema
+  schema: JSONSchema
 }
 
 // format minimum
@@ -87,10 +87,10 @@ export default function NumberBounds(props: Props): null | JSX.Element {
   }
 
   // Not a fan of ugly IF cascades
-  let minimum = schema?.exclusiveMinimum || schema?.minimum
-  let isExclusiveMinimum = schema?.exclusiveMinimum !== undefined
-  let maximum = schema?.exclusiveMaximum || schema?.maximum
-  let isExclusiveMaximum = schema?.exclusiveMaximum !== undefined
+  let minimum = schema.exclusiveMinimum || schema.minimum
+  let isExclusiveMinimum = schema.exclusiveMinimum !== undefined
+  let maximum = schema.exclusiveMaximum || schema.maximum
+  let isExclusiveMaximum = schema.exclusiveMaximum !== undefined
   const minAndMax = minimum !== undefined && maximum !== undefined
 
   const boundsLabel = (
