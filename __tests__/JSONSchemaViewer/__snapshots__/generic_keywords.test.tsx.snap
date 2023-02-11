@@ -150,7 +150,6 @@ exports[`JSONSchemaViewer - Generic keywords test const 1`] = `
           <span>
             unknown
           </span>
-           
         </summary>
         <strong>
           type

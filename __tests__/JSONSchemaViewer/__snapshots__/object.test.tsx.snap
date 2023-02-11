@@ -35,7 +35,6 @@ exports[`JSONSchemaViewer - object test additionalProperties (JSON Schema) 1`] =
           <span>
             number
           </span>
-           
         </summary>
         <strong>
           type
@@ -71,7 +70,6 @@ exports[`JSONSchemaViewer - object test additionalProperties (JSON Schema) 1`] =
           <span>
             string
           </span>
-           
         </summary>
         <strong>
           type
@@ -107,7 +105,6 @@ exports[`JSONSchemaViewer - object test additionalProperties (JSON Schema) 1`] =
           <span>
             unknown
           </span>
-           
         </summary>
         <strong>
           type
@@ -155,7 +152,6 @@ exports[`JSONSchemaViewer - object test additionalProperties (JSON Schema) 1`] =
           <span>
             string
           </span>
-           
         </summary>
         <strong>
           type
@@ -225,7 +221,6 @@ exports[`JSONSchemaViewer - object test additionalProperties (false) 1`] = `
           <span>
             number
           </span>
-           
         </summary>
         <strong>
           type
@@ -261,7 +256,6 @@ exports[`JSONSchemaViewer - object test additionalProperties (false) 1`] = `
           <span>
             string
           </span>
-           
         </summary>
         <strong>
           type
@@ -297,7 +291,6 @@ exports[`JSONSchemaViewer - object test additionalProperties (false) 1`] = `
           <span>
             unknown
           </span>
-           
         </summary>
         <strong>
           type
@@ -382,7 +375,6 @@ exports[`JSONSchemaViewer - object test additionalProperties with patternPropert
           <span>
             number
           </span>
-           
         </summary>
         <strong>
           type
@@ -420,7 +412,6 @@ exports[`JSONSchemaViewer - object test additionalProperties with patternPropert
           <span>
             string
           </span>
-           
         </summary>
         <strong>
           type
@@ -456,7 +447,6 @@ exports[`JSONSchemaViewer - object test additionalProperties with patternPropert
           <span>
             integer
           </span>
-           
         </summary>
         <strong>
           type
@@ -494,7 +484,6 @@ exports[`JSONSchemaViewer - object test additionalProperties with patternPropert
           <span>
             string
           </span>
-           
         </summary>
         <strong>
           type
@@ -696,7 +685,6 @@ exports[`JSONSchemaViewer - object test patternProperties 1`] = `
           <span>
             string
           </span>
-           
         </summary>
         <strong>
           type
@@ -732,7 +720,6 @@ exports[`JSONSchemaViewer - object test patternProperties 1`] = `
           <span>
             integer
           </span>
-           
         </summary>
         <strong>
           type
@@ -802,7 +789,6 @@ exports[`JSONSchemaViewer - object test properties 1`] = `
           <span>
             number
           </span>
-           
         </summary>
         <strong>
           type
@@ -838,7 +824,6 @@ exports[`JSONSchemaViewer - object test properties 1`] = `
           <span>
             string
           </span>
-           
         </summary>
         <strong>
           type
@@ -874,7 +859,6 @@ exports[`JSONSchemaViewer - object test properties 1`] = `
           <span>
             unknown
           </span>
-           
         </summary>
         <strong>
           type
@@ -954,7 +938,6 @@ exports[`JSONSchemaViewer - object test propertyNames 1`] = `
           <span>
             unknown
           </span>
-           
         </summary>
         <strong>
           type
@@ -1146,7 +1129,6 @@ exports[`JSONSchemaViewer - object test required 1`] = `
           <span>
             string
           </span>
-           
         </summary>
         <strong>
           type

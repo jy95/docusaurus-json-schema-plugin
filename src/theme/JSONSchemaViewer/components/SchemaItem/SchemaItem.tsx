@@ -88,15 +88,20 @@ function SchemaItem({
     typeof typedSchema !== "boolean" && typedSchema?.readOnly === true
   let isWriteOnly =
     typeof typedSchema !== "boolean" && typedSchema?.writeOnly === true
+  let isRequired = !isDeprecated && required;
 
   // Header
   const summary = (
     <>
       {name}&nbsp;
-      <span className={styles.schemaName}>{schemaName}</span>&nbsp;
-      {!isDeprecated && required && <RequiredLabel />}
+      <span className={styles.schemaName}>{schemaName}</span>
+      {isRequired && <>&nbsp;</>}
+      {isRequired && <RequiredLabel />}
+      {isDeprecated && <>&nbsp;</>}
       {isDeprecated && <DeprecatedLabel />}
+      {isReadOnly && <>&nbsp;</>}
       {isReadOnly && <ReadOnlyLabel />}
+      {isWriteOnly && <>&nbsp;</>}
       {isWriteOnly && <WriteOnlyLabel />}
     </>
   )

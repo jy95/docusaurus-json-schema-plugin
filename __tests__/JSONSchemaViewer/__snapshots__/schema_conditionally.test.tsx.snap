@@ -35,7 +35,6 @@ exports[`JSONSchemaViewer - schema conditionally test If Then Else (multiple) 1`
           <span>
             string
           </span>
-           
         </summary>
         <strong>
           type
@@ -71,7 +70,6 @@ exports[`JSONSchemaViewer - schema conditionally test If Then Else (multiple) 1`
           <span>
             unknown
           </span>
-           
         </summary>
         <strong>
           type
@@ -235,7 +233,6 @@ exports[`JSONSchemaViewer - schema conditionally test If Then Else (multiple) 1`
                               <span>
                                 unknown
                               </span>
-                               
                             </summary>
                             <strong>
                               type
@@ -312,7 +309,6 @@ exports[`JSONSchemaViewer - schema conditionally test If Then Else (multiple) 1`
                               <span>
                                 string
                               </span>
-                               
                             </summary>
                             <strong>
                               type
@@ -517,7 +513,6 @@ exports[`JSONSchemaViewer - schema conditionally test If Then Else (multiple) 1`
                               <span>
                                 string
                               </span>
-                               
                             </summary>
                             <strong>
                               type
@@ -722,7 +717,6 @@ exports[`JSONSchemaViewer - schema conditionally test If Then Else (multiple) 1`
                               <span>
                                 string
                               </span>
-                               
                             </summary>
                             <strong>
                               type
@@ -812,7 +806,6 @@ exports[`JSONSchemaViewer - schema conditionally test If Then Else 1`] = `
           <span>
             string
           </span>
-           
         </summary>
         <strong>
           type
@@ -848,7 +841,6 @@ exports[`JSONSchemaViewer - schema conditionally test If Then Else 1`] = `
           <span>
             unknown
           </span>
-           
         </summary>
         <strong>
           type
@@ -977,7 +969,6 @@ exports[`JSONSchemaViewer - schema conditionally test If Then Else 1`] = `
                     <span>
                       unknown
                     </span>
-                     
                   </summary>
                   <strong>
                     type
@@ -1054,7 +1045,6 @@ exports[`JSONSchemaViewer - schema conditionally test If Then Else 1`] = `
                     <span>
                       string
                     </span>
-                     
                   </summary>
                   <strong>
                     type
@@ -1131,7 +1121,6 @@ exports[`JSONSchemaViewer - schema conditionally test If Then Else 1`] = `
                     <span>
                       string
                     </span>
-                     
                   </summary>
                   <strong>
                     type
@@ -1255,7 +1244,6 @@ exports[`JSONSchemaViewer - schema conditionally test dependencies (dependentReq
           <span>
             number
           </span>
-           
         </summary>
         <strong>
           type
@@ -1291,7 +1279,6 @@ exports[`JSONSchemaViewer - schema conditionally test dependencies (dependentReq
           <span>
             string
           </span>
-           
         </summary>
         <strong>
           type
@@ -1414,7 +1401,6 @@ exports[`JSONSchemaViewer - schema conditionally test dependencies (dependentSch
           <span>
             number
           </span>
-           
         </summary>
         <strong>
           type
@@ -1644,7 +1630,6 @@ exports[`JSONSchemaViewer - schema conditionally test dependentRequired (bidirec
           <span>
             number
           </span>
-           
         </summary>
         <strong>
           type
@@ -1680,7 +1665,6 @@ exports[`JSONSchemaViewer - schema conditionally test dependentRequired (bidirec
           <span>
             string
           </span>
-           
         </summary>
         <strong>
           type
@@ -1806,7 +1790,6 @@ exports[`JSONSchemaViewer - schema conditionally test dependentRequired 1`] = `
           <span>
             number
           </span>
-           
         </summary>
         <strong>
           type
@@ -1842,7 +1825,6 @@ exports[`JSONSchemaViewer - schema conditionally test dependentRequired 1`] = `
           <span>
             string
           </span>
-           
         </summary>
         <strong>
           type

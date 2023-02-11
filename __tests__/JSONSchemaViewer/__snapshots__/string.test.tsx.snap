@@ -67,7 +67,6 @@ exports[`JSONSchemaViewer - string test format 1`] = `
           <span>
             date-time
           </span>
-           
         </summary>
         <strong>
           type
@@ -103,7 +102,6 @@ exports[`JSONSchemaViewer - string test format 1`] = `
           <span>
             time
           </span>
-           
         </summary>
         <strong>
           type
@@ -139,7 +137,6 @@ exports[`JSONSchemaViewer - string test format 1`] = `
           <span>
             date
           </span>
-           
         </summary>
         <strong>
           type
@@ -175,7 +172,6 @@ exports[`JSONSchemaViewer - string test format 1`] = `
           <span>
             duration
           </span>
-           
         </summary>
         <strong>
           type
@@ -211,7 +207,6 @@ exports[`JSONSchemaViewer - string test format 1`] = `
           <span>
             email
           </span>
-           
         </summary>
         <strong>
           type
@@ -247,7 +242,6 @@ exports[`JSONSchemaViewer - string test format 1`] = `
           <span>
             idn-email
           </span>
-           
         </summary>
         <strong>
           type
@@ -283,7 +277,6 @@ exports[`JSONSchemaViewer - string test format 1`] = `
           <span>
             hostname
           </span>
-           
         </summary>
         <strong>
           type
@@ -319,7 +312,6 @@ exports[`JSONSchemaViewer - string test format 1`] = `
           <span>
             idn-hostname
           </span>
-           
         </summary>
         <strong>
           type
@@ -355,7 +347,6 @@ exports[`JSONSchemaViewer - string test format 1`] = `
           <span>
             ipv4
           </span>
-           
         </summary>
         <strong>
           type
@@ -391,7 +382,6 @@ exports[`JSONSchemaViewer - string test format 1`] = `
           <span>
             ipv6
           </span>
-           
         </summary>
         <strong>
           type
@@ -427,7 +417,6 @@ exports[`JSONSchemaViewer - string test format 1`] = `
           <span>
             uuid
           </span>
-           
         </summary>
         <strong>
           type
@@ -463,7 +452,6 @@ exports[`JSONSchemaViewer - string test format 1`] = `
           <span>
             uri
           </span>
-           
         </summary>
         <strong>
           type
@@ -499,7 +487,6 @@ exports[`JSONSchemaViewer - string test format 1`] = `
           <span>
             uri-reference
           </span>
-           
         </summary>
         <strong>
           type
@@ -535,7 +522,6 @@ exports[`JSONSchemaViewer - string test format 1`] = `
           <span>
             iri
           </span>
-           
         </summary>
         <strong>
           type
@@ -571,7 +557,6 @@ exports[`JSONSchemaViewer - string test format 1`] = `
           <span>
             iri-reference
           </span>
-           
         </summary>
         <strong>
           type
@@ -607,7 +592,6 @@ exports[`JSONSchemaViewer - string test format 1`] = `
           <span>
             uri-template
           </span>
-           
         </summary>
         <strong>
           type
@@ -643,7 +627,6 @@ exports[`JSONSchemaViewer - string test format 1`] = `
           <span>
             json-pointer
           </span>
-           
         </summary>
         <strong>
           type
@@ -679,7 +662,6 @@ exports[`JSONSchemaViewer - string test format 1`] = `
           <span>
             relative-json-pointer
           </span>
-           
         </summary>
         <strong>
           type
@@ -715,7 +697,6 @@ exports[`JSONSchemaViewer - string test format 1`] = `
           <span>
             regex
           </span>
-           
         </summary>
         <strong>
           type

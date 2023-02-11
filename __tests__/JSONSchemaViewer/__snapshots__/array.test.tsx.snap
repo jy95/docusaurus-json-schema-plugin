@@ -67,7 +67,6 @@ exports[`JSONSchemaViewer - Array type test 1 1`] = `
           <span>
             number
           </span>
-           
         </summary>
         <strong>
           type
@@ -137,7 +136,6 @@ exports[`JSONSchemaViewer - Array type test 2 1`] = `
           <span>
             number
           </span>
-           
         </summary>
         <strong>
           type
@@ -345,7 +343,6 @@ exports[`JSONSchemaViewer - Array type test 5 1`] = `
           <span>
             number
           </span>
-           
         </summary>
         <strong>
           type
@@ -390,7 +387,6 @@ exports[`JSONSchemaViewer - Array type test 5 1`] = `
           <span>
             string
           </span>
-           
         </summary>
         <strong>
           type
@@ -435,7 +431,6 @@ exports[`JSONSchemaViewer - Array type test 5 1`] = `
           <span>
             unknown
           </span>
-           
         </summary>
         <strong>
           type
@@ -490,7 +485,6 @@ exports[`JSONSchemaViewer - Array type test 5 1`] = `
           <span>
             unknown
           </span>
-           
         </summary>
         <strong>
           type
