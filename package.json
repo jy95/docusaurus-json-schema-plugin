@@ -2,6 +2,15 @@
   "name": "docusaurus-json-schema-plugin",
   "version": "0.0.0-development",
   "description": "A Docusaurus v2 plugin that provides a JSON Schema viewer / editor React component !",
+  "keywords": [
+    "docusaurus",
+    "docusaurus theme",
+    "docusaurus plugin",
+    "json schema",
+    "json schema viewer",
+    "json schema documentation",
+    "json schema editor"
+  ],
   "main": "lib/index.js",
   "types": "src/theme-json-schema.d.ts",
   "repository": "https://github.com/jy95/docusaurus-json-schema-plugin.git",
