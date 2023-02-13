@@ -53,3 +53,8 @@ export const isSchemaConditional = (schema: JSONSchema) =>
     schema?.dependencies !== undefined ||
     (schema as JSONSchemaNS.Object).dependentRequired !== undefined ||
     (schema as JSONSchemaNS.Object).dependentSchemas !== undefined)
+
+export const isBoolean = (schema: JSONSchema) =>
+  typeof schema !== "boolean" &&
+  (schema?.type === "boolean" ||
+    schema?.enum?.every((val) => typeof val === "boolean"))
