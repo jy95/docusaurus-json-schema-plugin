@@ -31,7 +31,7 @@ export default function ExamplesQualifierMessage(
           id: "json-schema.labels.examples",
         }}
       >
-        {"Possible values :"}
+        {"Example values :"}
       </Translate>
     </strong>
   )
