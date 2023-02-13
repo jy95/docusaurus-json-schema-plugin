@@ -145,7 +145,7 @@ exports[`JSONSchemaViewer - object test additionalProperties (JSON Schema) 1`] =
           </strong>
            
           <span>
-            unknown
+            string
           </span>
         </summary>
         <strong>
@@ -159,7 +159,7 @@ exports[`JSONSchemaViewer - object test additionalProperties (JSON Schema) 1`] =
             }
           }
         >
-          unknown
+          string
         </span>
         <div
           style={
@@ -331,7 +331,7 @@ exports[`JSONSchemaViewer - object test additionalProperties (false) 1`] = `
           </strong>
            
           <span>
-            unknown
+            string
           </span>
         </summary>
         <strong>
@@ -345,7 +345,7 @@ exports[`JSONSchemaViewer - object test additionalProperties (false) 1`] = `
             }
           }
         >
-          unknown
+          string
         </span>
         <div
           style={
@@ -899,7 +899,7 @@ exports[`JSONSchemaViewer - object test properties 1`] = `
           </strong>
            
           <span>
-            unknown
+            string
           </span>
         </summary>
         <strong>
@@ -913,7 +913,7 @@ exports[`JSONSchemaViewer - object test properties 1`] = `
             }
           }
         >
-          unknown
+          string
         </span>
         <div
           style={

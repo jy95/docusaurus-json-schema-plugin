@@ -7,7 +7,7 @@ import CodeBlock from "@theme-original/CodeBlock"
 export function printSchemaType(obj: unknown): JSX.Element {
   // deal with simple types first
   if (["string", "number", "bigint", "boolean"].includes(typeof obj)) {
-    return <code>{obj}</code>
+    return <code>{(obj as string | number | bigint | boolean).toString()}</code>
   }
 
   // if it is a object / array, it is likely to be complex so time for my ace card

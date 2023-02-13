@@ -1167,7 +1167,7 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Prefer title 1`] = `
                 </strong>
                  
                 <span>
-                  unknown
+                  string
                 </span>
               </summary>
               <strong>
@@ -1181,7 +1181,7 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Prefer title 1`] = `
                   }
                 }
               >
-                unknown
+                string
               </span>
               <div
                 style={

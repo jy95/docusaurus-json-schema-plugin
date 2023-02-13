@@ -48,7 +48,7 @@ exports[`JSONSchemaViewer - Generic keywords test annotations 1`] = `
     </div>
     <div>
       <strong>
-        Possible values :
+        Example values :
       </strong>
        
       <div
@@ -148,7 +148,7 @@ exports[`JSONSchemaViewer - Generic keywords test const 1`] = `
           </strong>
            
           <span>
-            unknown
+            string
           </span>
         </summary>
         <strong>
@@ -162,7 +162,7 @@ exports[`JSONSchemaViewer - Generic keywords test const 1`] = `
             }
           }
         >
-          unknown
+          string
         </span>
         <div
           style={
@@ -214,7 +214,7 @@ exports[`JSONSchemaViewer - Generic keywords test enum 1`] = `
       }
     }
   >
-    unknown
+    string
   </span>
   <div
     style={

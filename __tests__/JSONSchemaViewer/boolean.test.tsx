@@ -17,6 +17,11 @@ const testcases: JSONSchema[] = [
   {
     type: "boolean",
   },
+  {
+    enum: [true, false],
+    default: false,
+    description: "Boolean without the explict type",
+  },
 ]
 
 describe("JSONSchemaViewer - Boolean type", () => {

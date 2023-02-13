@@ -68,7 +68,7 @@ exports[`JSONSchemaViewer - schema conditionally test If Then Else (multiple) 1`
           </strong>
            
           <span>
-            unknown
+            string
           </span>
         </summary>
         <strong>
@@ -82,7 +82,7 @@ exports[`JSONSchemaViewer - schema conditionally test If Then Else (multiple) 1`
             }
           }
         >
-          unknown
+          string
         </span>
         <div
           style={
@@ -231,7 +231,7 @@ exports[`JSONSchemaViewer - schema conditionally test If Then Else (multiple) 1`
                               </strong>
                                
                               <span>
-                                unknown
+                                string
                               </span>
                             </summary>
                             <strong>
@@ -245,7 +245,7 @@ exports[`JSONSchemaViewer - schema conditionally test If Then Else (multiple) 1`
                                 }
                               }
                             >
-                              unknown
+                              string
                             </span>
                             <div
                               style={
@@ -431,7 +431,7 @@ exports[`JSONSchemaViewer - schema conditionally test If Then Else (multiple) 1`
                               </strong>
                                
                               <span>
-                                unknown
+                                string
                               </span>
                                
                               <strong>
@@ -449,7 +449,7 @@ exports[`JSONSchemaViewer - schema conditionally test If Then Else (multiple) 1`
                                 }
                               }
                             >
-                              unknown
+                              string
                             </span>
                             <div
                               style={
@@ -635,7 +635,7 @@ exports[`JSONSchemaViewer - schema conditionally test If Then Else (multiple) 1`
                               </strong>
                                
                               <span>
-                                unknown
+                                string
                               </span>
                                
                               <strong>
@@ -653,7 +653,7 @@ exports[`JSONSchemaViewer - schema conditionally test If Then Else (multiple) 1`
                                 }
                               }
                             >
-                              unknown
+                              string
                             </span>
                             <div
                               style={
@@ -839,7 +839,7 @@ exports[`JSONSchemaViewer - schema conditionally test If Then Else 1`] = `
           </strong>
            
           <span>
-            unknown
+            string
           </span>
         </summary>
         <strong>
@@ -853,7 +853,7 @@ exports[`JSONSchemaViewer - schema conditionally test If Then Else 1`] = `
             }
           }
         >
-          unknown
+          string
         </span>
         <div
           style={
@@ -967,7 +967,7 @@ exports[`JSONSchemaViewer - schema conditionally test If Then Else 1`] = `
                     </strong>
                      
                     <span>
-                      unknown
+                      string
                     </span>
                   </summary>
                   <strong>
@@ -981,7 +981,7 @@ exports[`JSONSchemaViewer - schema conditionally test If Then Else 1`] = `
                       }
                     }
                   >
-                    unknown
+                    string
                   </span>
                   <div
                     style={

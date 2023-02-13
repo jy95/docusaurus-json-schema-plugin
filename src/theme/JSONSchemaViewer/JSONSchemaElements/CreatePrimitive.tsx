@@ -2,7 +2,12 @@ import React from "react"
 
 import Translate from "@docusaurus/Translate"
 
-import { QualifierMessages, isNumeric, isStringType } from "../utils/index"
+import {
+  QualifierMessages,
+  isNumeric,
+  isStringType,
+  isBoolean,
+} from "../utils/index"
 
 import { useJSVOptionsContext } from "../contexts/index"
 
@@ -35,7 +40,11 @@ function detectType(schema: JSONSchema): string {
     return "numeric"
   }
 
-  // if nothing match, could be null or boolean
+  if (isBoolean(schema)) {
+    return "boolean"
+  }
+
+  // if nothing match, could be null or match anything
   return "unknown"
 }
 

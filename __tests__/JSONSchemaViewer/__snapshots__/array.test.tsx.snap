@@ -429,7 +429,7 @@ exports[`JSONSchemaViewer - Array type test 5 1`] = `
           </code>
            
           <span>
-            unknown
+            string
           </span>
         </summary>
         <strong>
@@ -443,7 +443,7 @@ exports[`JSONSchemaViewer - Array type test 5 1`] = `
             }
           }
         >
-          unknown
+          string
         </span>
         <div
           style={
@@ -483,7 +483,7 @@ exports[`JSONSchemaViewer - Array type test 5 1`] = `
           </code>
            
           <span>
-            unknown
+            string
           </span>
         </summary>
         <strong>
@@ -497,7 +497,7 @@ exports[`JSONSchemaViewer - Array type test 5 1`] = `
             }
           }
         >
-          unknown
+          string
         </span>
         <div
           style={
