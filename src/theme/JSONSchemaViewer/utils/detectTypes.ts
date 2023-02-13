@@ -28,7 +28,9 @@ export const isStringType = (schema: JSONSchema) =>
   (schema?.type === "string" ||
     schema?.minLength !== undefined ||
     schema?.maxLength !== undefined ||
-    schema?.pattern !== undefined)
+    schema?.pattern !== undefined ||
+    schema?.enum?.every((val) => typeof val === "string") ||
+    typeof schema?.const === "string")
 
 export const isNumeric = (schema: JSONSchema) =>
   typeof schema !== "boolean" &&
@@ -38,7 +40,9 @@ export const isNumeric = (schema: JSONSchema) =>
     schema?.minimum !== undefined ||
     schema?.exclusiveMinimum !== undefined ||
     schema?.maximum !== undefined ||
-    schema?.exclusiveMaximum !== undefined)
+    schema?.exclusiveMaximum !== undefined ||
+    schema?.enum?.every((val) => typeof val === "number") ||
+    typeof schema?.const === "number")
 
 export const isSchemaComposition = (schema: JSONSchema) =>
   typeof schema !== "boolean" &&
@@ -57,4 +61,5 @@ export const isSchemaConditional = (schema: JSONSchema) =>
 export const isBoolean = (schema: JSONSchema) =>
   typeof schema !== "boolean" &&
   (schema?.type === "boolean" ||
-    schema?.enum?.every((val) => typeof val === "boolean"))
+    schema?.enum?.every((val) => typeof val === "boolean") ||
+    typeof schema?.const === "boolean")
