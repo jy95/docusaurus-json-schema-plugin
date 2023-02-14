@@ -52,11 +52,10 @@
     "baseUrl": "./",
     /* A series of entries which re-map imports to lookup locations relative to the 'baseUrl'. */
     "paths": {
-      "@theme/*": [
-        "./src/theme/*",
-        "node_modules/docusaurus-json-schema-plugin/src/theme/*"
-      ],
-      "@src/*": ["./src/*", "node_modules/docusaurus-json-schema-plugin/src/*"]
+      "docusaurus-json-schema-plugin/*": [
+        "./*",
+        "node_modules/docusaurus-json-schema-plugin/*"
+      ]
     },
     // "rootDirs": [],                        /* List of root folders whose combined content represents the structure of the project at runtime. */
     // "typeRoots": [],                       /* List of folders to include type definitions from. */
