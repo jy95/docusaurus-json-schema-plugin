@@ -10,14 +10,19 @@ import type { JSVOptions } from "./contexts/index"
 import type { IResolveOpts } from "@stoplight/json-ref-resolver/types"
 
 export type Props = {
-  // The schema to use
+  /**
+   * The JSON schema to use
+   */
   schema: unknown
-  // To customize the ref resolving
+  /**
+   * To customize the ref resolving
+   * By default, only inline references will be dereferenced by @stoplight/json-ref-resolver
+   */
   resolverOptions?: IResolveOpts
-  // To customize the viewer
+  /**
+   * To customize the viewer itself
+   */
   viewerOptions?: Omit<JSVOptions, "fullSchema">
-  // Other properties (who knows ?)
-  [x: string]: any
 }
 
 type InnerViewerProperties = {

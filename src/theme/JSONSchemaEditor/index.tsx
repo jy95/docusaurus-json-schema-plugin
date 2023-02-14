@@ -8,6 +8,9 @@ import type { EditorWillMount, MonacoEditorProps } from "react-monaco-editor"
 import type { Props as ErrorProps } from "@theme/Error"
 
 export type Props = {
+  /**
+   * The JSON schema to use
+   */
   schema: unknown
 } & MonacoEditorProps
 
