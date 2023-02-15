@@ -9,7 +9,8 @@ export const isObjectType = (schema: JSONSchema) =>
     schema?.patternProperties !== undefined ||
     schema?.propertyNames !== undefined ||
     schema?.minProperties !== undefined ||
-    schema?.maxProperties !== undefined)
+    schema?.maxProperties !== undefined ||
+    schema?.required !== undefined)
 
 export const isArrayType = (schema: JSONSchema) =>
   typeof schema !== "boolean" &&
