@@ -1,4 +1,4 @@
 .required {
-    font-size: var(--ifm-code-font-size);
-    color: var(--ifm-color-danger);
+  font-size: var(--ifm-code-font-size);
+  color: var(--ifm-color-danger);
 }

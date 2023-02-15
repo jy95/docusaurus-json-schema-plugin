@@ -1,4 +1,4 @@
 .readOnly {
-    font-size: var(--ifm-code-font-size);
-    color: var(--ifm-color-info-darker);
-  }
+  font-size: var(--ifm-code-font-size);
+  color: var(--ifm-color-info-darker);
+}
