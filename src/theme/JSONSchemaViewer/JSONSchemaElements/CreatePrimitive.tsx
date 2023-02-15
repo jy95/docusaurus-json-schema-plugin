@@ -1,7 +1,5 @@
 import React from "react"
 
-import Translate from "@docusaurus/Translate"
-
 import {
   QualifierMessages,
   isNumeric,
@@ -10,6 +8,8 @@ import {
 } from "../utils/index"
 
 import { useJSVOptionsContext } from "../contexts/index"
+
+import { TypeLabel } from "../labels/index"
 
 import type { JSONSchema } from "../types"
 
@@ -62,22 +62,9 @@ export default function CreatePrimitive(props: Props): JSX.Element {
   let type = detectType(schema)
   let friendly_type = schema.format ? `${type} (${schema.format})` : type
 
-  const typeLabel = (
-    <strong>
-      <Translate
-        values={{
-          id: "json-schema.keywords.type",
-          count: 1,
-        }}
-      >
-        {"type"}
-      </Translate>
-    </strong>
-  )
-
   return (
     <>
-      {typeLabel}
+      <TypeLabel />
       &nbsp;&#58;&nbsp;
       <span style={{ opacity: "0.6" }}>{friendly_type}</span>
       <div style={{ marginTop: "var(--ifm-table-cell-padding)" }}>

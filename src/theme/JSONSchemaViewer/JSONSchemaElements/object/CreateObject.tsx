@@ -1,7 +1,5 @@
 import React from "react"
 
-import Translate from "@docusaurus/Translate"
-
 import AdditionalProperties from "./AdditionalProperties"
 import Properties from "./Properties"
 import PatternProperties from "./PatternProperties"
@@ -9,6 +7,8 @@ import PropertyNames from "./PropertyNames"
 
 import { QualifierMessages } from "../../utils/index"
 import { useJSVOptionsContext } from "../../contexts/index"
+
+import { ObjectLabel, TypeLabel } from "../../labels/index"
 
 import type { JSONSchema } from "../../types"
 
@@ -39,37 +39,11 @@ export default function CreateObject(props: Props): JSX.Element {
     <PropertyNames schema={schema} />
   ) : undefined
 
-  // Translated labels
-  const typeLabel = (
-    <strong>
-      <Translate
-        values={{
-          id: "json-schema.keywords.type",
-          count: 1,
-        }}
-      >
-        {"type"}
-      </Translate>
-    </strong>
-  )
-
-  const typeObjectLabel = (
-    <span style={{ opacity: "0.6" }}>
-      <Translate
-        values={{
-          id: "json-schema.keywords.object",
-        }}
-      >
-        {"object"}
-      </Translate>
-    </span>
-  )
-
   return (
     <>
-      {typeLabel}
+      <TypeLabel />
       &nbsp;&#58;&nbsp;
-      {typeObjectLabel}
+      <ObjectLabel />
       {properties !== undefined && <ul>{properties}</ul>}
       {patternProperties !== undefined && <ul>{patternProperties}</ul>}
       {propertyNames !== undefined && <ul>{propertyNames}</ul>}

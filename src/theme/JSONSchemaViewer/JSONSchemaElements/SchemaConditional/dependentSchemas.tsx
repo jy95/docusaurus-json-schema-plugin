@@ -7,6 +7,8 @@ import Tabs from "@theme-original/Tabs"
 
 import { CreateNodes } from "../../components/index"
 
+import { IfLabel, ThenLabel } from "../../labels/index"
+
 import type { JSONSchema, JSONSchemaNS } from "../../types"
 
 type Props = {
@@ -40,39 +42,18 @@ function DependentSchemas(props: Props): JSX.Element {
     ),
   }))
 
-  // Translated labels
-  const ifLabel = (
-    <strong>
-      <Translate
-        values={{
-          id: "json-schema.keywords.if",
-        }}
-      >
-        {"If"}
-      </Translate>
-    </strong>
-  )
-
-  const elseLabel = (
-    <strong>
-      <Translate
-        values={{
-          id: "json-schema.keywords.then",
-        }}
-      >
-        {"Then"}
-      </Translate>
-    </strong>
-  )
-
   return (
     <ul>
       {items.map((item) => (
         <Tabs key={item.id}>
-          <TabItem key={"schema_if"} value={"schema_if"} label={ifLabel}>
+          <TabItem key={"schema_if"} value={"schema_if"} label={<IfLabel />}>
             {item.label}
           </TabItem>
-          <TabItem key={"schema_then"} value={"schema_then"} label={elseLabel}>
+          <TabItem
+            key={"schema_then"}
+            value={"schema_then"}
+            label={<ThenLabel />}
+          >
             <CreateNodes schema={item.subSchema} />
           </TabItem>
         </Tabs>

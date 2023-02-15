@@ -1,7 +1,5 @@
 import React from "react"
 
-import Translate from "@docusaurus/Translate"
-
 import Items from "./Items"
 import Contains from "./Contains"
 import PrefixItems from "./PrefixItems"
@@ -9,6 +7,8 @@ import PrefixItems from "./PrefixItems"
 import { QualifierMessages } from "../../utils/index"
 
 import { useJSVOptionsContext } from "../../contexts/index"
+
+import { ArrayLabel, TypeLabel } from "../../labels/index"
 
 import type { JSONSchema, JSONSchemaNS } from "../../types"
 
@@ -41,36 +41,11 @@ export default function CreateArray(props: Props): JSX.Element {
       <PrefixItems schema={schema} />
     ) : undefined
 
-  const typeLabel = (
-    <strong>
-      <Translate
-        values={{
-          id: "json-schema.keywords.type",
-          count: 1,
-        }}
-      >
-        {"type"}
-      </Translate>
-    </strong>
-  )
-
-  const typeArrayLabel = (
-    <span style={{ opacity: "0.6" }}>
-      <Translate
-        values={{
-          id: "json-schema.keywords.array",
-        }}
-      >
-        {"array"}
-      </Translate>
-    </span>
-  )
-
   return (
     <>
-      {typeLabel}
+      <TypeLabel />
       &nbsp;&#58;&nbsp;
-      {typeArrayLabel}
+      <ArrayLabel />
       {items !== undefined && <ul>{items}</ul>}
       {prefixItems !== undefined && <ul>{prefixItems}</ul>}
       {contains !== undefined && <ul>{contains}</ul>}
