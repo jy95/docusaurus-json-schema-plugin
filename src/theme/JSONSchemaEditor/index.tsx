@@ -3,6 +3,11 @@ import MonacoEditor from "react-monaco-editor"
 import BrowserOnly from "@docusaurus/BrowserOnly"
 import ErrorBoundary from "@docusaurus/ErrorBoundary"
 
+import {
+  LoadingLabel,
+  ErrorOccurredLabel,
+} from "../JSONSchemaViewer/labels/index"
+
 import type { JSONSchema as Draft_07 } from "json-schema-typed/draft-07"
 import type { EditorWillMount, MonacoEditorProps } from "react-monaco-editor"
 import type { Props as ErrorProps } from "@theme/Error"
@@ -14,16 +19,13 @@ export type Props = {
   schema: unknown
 } & MonacoEditorProps
 
-// When loading
-function EditorLoading(props: any): JSX.Element {
-  return <div>Loading...</div>
-}
-
 // When something bad happens
 function EditorError({ error, tryAgain }: ErrorProps): JSX.Element {
   return (
     <div>
-      <p>This component crashed because of error: {error.message}.</p>
+      <p>
+        <ErrorOccurredLabel error={error} />
+      </p>
       <button onClick={tryAgain}>Try Again!</button>
     </div>
   )
@@ -68,7 +70,7 @@ function JSONSchemaEditorInner(props: Props): JSX.Element {
 // The component calling useColorMode must be a child of the Layout component.
 export default function JSONSchemaEditor(props: Props): JSX.Element {
   return (
-    <BrowserOnly fallback={<EditorLoading />}>
+    <BrowserOnly fallback={<LoadingLabel />}>
       {() => (
         <>
           <ErrorBoundary fallback={(props) => <EditorError {...props} />}>

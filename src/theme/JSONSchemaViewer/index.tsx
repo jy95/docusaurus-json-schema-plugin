@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react"
 import { Resolver } from "@stoplight/json-ref-resolver"
-import Translate from "@docusaurus/Translate"
 
 import { CreateNodes, Collapsible } from "./components/index"
 import { JSVOptionsContextProvider } from "./contexts/index"
 
 import type { JSONSchema } from "./types"
 import type { JSVOptions } from "./contexts/index"
+import { LoadingLabel, ErrorOccurredLabel } from "./labels/index"
 import type { IResolveOpts } from "@stoplight/json-ref-resolver/types"
 
 export type Props = {
@@ -35,32 +35,12 @@ type InnerViewerProperties = {
 }
 
 // Translated labels
-function Loading(): JSX.Element {
-  return (
-    <div>
-      <Translate
-        values={{
-          id: "json-schema.labels.loading",
-        }}
-      >
-        {"Loading ...."}
-      </Translate>
-    </div>
-  )
-}
 
 function ErrorOccurred(props: { error: Error }): JSX.Element {
   const { error } = props
   return (
     <div>
-      <Translate
-        values={{
-          id: "json-schema.labels.errorOccurred",
-          message: error.message,
-        }}
-      >
-        {"Something bad happens : {message}"}
-      </Translate>
+      <ErrorOccurredLabel error={error} />
     </div>
   )
 }
@@ -119,7 +99,7 @@ export default function JSONSchemaViewer(props: Props): JSX.Element {
   if (error !== undefined) {
     return <ErrorOccurred error={error} />
   } else if (resolvedSchema === undefined) {
-    return <Loading />
+    return <LoadingLabel />
   } else {
     return (
       <JSONSchemaInnerViewer
