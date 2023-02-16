@@ -5,6 +5,15 @@ import Tabs from "@theme-original/Tabs"
 
 import { TypeLabelSwitch, RenderProvidedType } from "./index"
 
+import {
+  isArrayType,
+  isBoolean,
+  isNull,
+  isNumeric,
+  isObjectType,
+  isStringType,
+} from "../utils/index"
+
 import type { JSONSchema, TypeValues } from "../types"
 
 // Render a single type
@@ -72,7 +81,7 @@ export default function CreateTypes(props: Props): JSX.Element {
   // 3. User didn't use any type and so we must "guess" what (s)he have in mind
 
   // Let's cover simple cases first
-  // Either a single type that is nullable by 2019-09 specs of by Draft 07
+  // Either a single type that could be null
   const hasNull = declaredTypes.includes("null")
   if (declaredTypes.length === 1 || (hasNull && declaredTypes.length === 2)) {
     return (

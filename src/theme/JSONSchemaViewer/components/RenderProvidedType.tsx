@@ -6,6 +6,7 @@ import {
   CreateObject,
   CreateArray,
   CreateString,
+  CreateBoolean,
 } from "../JSONSchemaElements/index"
 
 import type { JSONSchema, TypeValues } from "../types"
@@ -29,7 +30,7 @@ export default function RenderProvidedType({
     case "string":
       return <CreateString schema={schema} />
     case "boolean":
-      return <>TODO</>
+      return <CreateBoolean schema={schema} />
     case "number":
     case "integer":
       return <>TODO</>

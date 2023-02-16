@@ -13,6 +13,9 @@ export { CreateArray } from "./array/index"
 // Component to deal with String
 export { default as CreateString } from "./CreateString"
 
+// Component to deal with Boolean
+export { default as CreateBoolean } from "./CreateBoolean"
+
 // Component to deal with schema defined as "true"
 export { default as CreateAlwaysValid } from "./CreateAlwaysValid"
 
