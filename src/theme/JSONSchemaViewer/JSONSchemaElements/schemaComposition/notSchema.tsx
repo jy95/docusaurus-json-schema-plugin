@@ -22,7 +22,7 @@ function NotSchema(props: Props): JSX.Element {
 
   return (
     <div>
-      <span className="badge badge--info">{typeOf}</span>
+      <span className="badge badge--danger">{typeOf}</span>
       <br />
       <CreateNodes schema={typedSchema} />
     </div>
