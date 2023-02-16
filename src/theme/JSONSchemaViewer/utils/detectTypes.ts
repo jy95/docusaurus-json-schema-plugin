@@ -40,10 +40,8 @@ export const isStringType = (schema: JSONSchema) =>
 
 export const isNumeric = (schema: JSONSchema) =>
   typeof schema !== "boolean" &&
-  (schema.type === "integer" ||
-    schema.type === "number" ||
-    (Array.isArray(schema.type) &&
-      schema.type.some((s) => s === "integer" || s === "number")) ||
+  (schema.type === "number" ||
+    (Array.isArray(schema.type) && schema.type.some((s) => s === "number")) ||
     schema.multipleOf !== undefined ||
     schema.minimum !== undefined ||
     schema.exclusiveMinimum !== undefined ||
@@ -51,6 +49,15 @@ export const isNumeric = (schema: JSONSchema) =>
     schema.exclusiveMaximum !== undefined ||
     schema.enum?.some((val) => typeof val === "number") ||
     typeof schema.const === "number")
+
+// To detect integer, which is a subtype of "number"
+export const isInteger = (schema: JSONSchema) =>
+  typeof schema !== "boolean" &&
+  (schema.type === "integer" ||
+    (Array.isArray(schema.type) && schema.type.some((s) => s === "integer")) ||
+    schema.multipleOf === 1 ||
+    schema.enum?.some((val) => typeof val === "bigint") ||
+    typeof schema.const === "bigint")
 
 export const isSchemaComposition = (schema: JSONSchema) =>
   typeof schema !== "boolean" &&

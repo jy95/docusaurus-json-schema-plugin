@@ -10,6 +10,7 @@ import type { JSONSchema } from "../types"
 
 type Props = {
   [x: string]: any
+  nullable?: boolean
   schema: JSONSchema
 }
 

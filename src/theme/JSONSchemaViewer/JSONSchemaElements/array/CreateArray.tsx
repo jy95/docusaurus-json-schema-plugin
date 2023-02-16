@@ -14,13 +14,14 @@ import type { JSONSchema, JSONSchemaNS } from "../../types"
 
 type Props = {
   schema: JSONSchema
+  nullable?: boolean
   [x: string]: any
 }
 
 // TODO later handle prefixItems VS items properties
 
 export default function CreateArray(props: Props): JSX.Element {
-  const { schema } = props
+  const { schema, nullable } = props
   const options = useJSVOptionsContext()
 
   let typedSchema = schema as JSONSchemaNS.Array
@@ -50,7 +51,11 @@ export default function CreateArray(props: Props): JSX.Element {
       {prefixItems !== undefined && <ul>{prefixItems}</ul>}
       {contains !== undefined && <ul>{contains}</ul>}
       <div style={{ marginTop: "var(--ifm-table-cell-padding)" }}>
-        <QualifierMessages schema={schema} options={options} />
+        <QualifierMessages
+          schema={schema}
+          options={options}
+          nullable={nullable}
+        />
       </div>
       {typedSchema.description !== undefined && (
         <div style={{ marginTop: "var(--ifm-table-cell-padding)" }}>

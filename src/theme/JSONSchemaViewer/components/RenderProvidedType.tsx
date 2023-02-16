@@ -24,20 +24,21 @@ type RenderProvidedTypeProps = {
 export default function RenderProvidedType({
   schema,
   type,
+  nullable,
 }: RenderProvidedTypeProps): JSX.Element {
   switch (type) {
     case "array":
-      return <CreateArray schema={schema} />
+      return <CreateArray schema={schema} nullable={nullable} />
     case "object":
-      return <CreateObject schema={schema} />
+      return <CreateObject schema={schema} nullable={nullable} />
     case "string":
-      return <CreateString schema={schema} />
+      return <CreateString schema={schema} nullable={nullable} />
     case "boolean":
-      return <CreateBoolean schema={schema} />
+      return <CreateBoolean schema={schema} nullable={nullable} />
     case "number":
-      return <CreateNumber schema={schema} />
+      return <CreateNumber schema={schema} nullable={nullable} />
     case "integer":
-      return <CreateInteger schema={schema} />
+      return <CreateInteger schema={schema} nullable={nullable} />
     case "null":
       return <CreateNull schema={schema} />
     default:

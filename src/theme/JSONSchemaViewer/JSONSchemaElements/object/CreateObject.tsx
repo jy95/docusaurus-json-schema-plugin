@@ -14,11 +14,12 @@ import type { JSONSchema } from "../../types"
 
 type Props = {
   schema: JSONSchema
+  nullable?: boolean
   [x: string]: any
 }
 
 export default function CreateObject(props: Props): JSX.Element {
-  const { schema } = props
+  const { schema, nullable } = props
   const options = useJSVOptionsContext()
 
   if (typeof schema === "boolean") {
@@ -49,7 +50,11 @@ export default function CreateObject(props: Props): JSX.Element {
       {propertyNames !== undefined && <ul>{propertyNames}</ul>}
       {additionalProperties !== undefined && <ul>{additionalProperties}</ul>}
       <div style={{ marginTop: "var(--ifm-table-cell-padding)" }}>
-        <QualifierMessages schema={schema} options={options} />
+        <QualifierMessages
+          schema={schema}
+          options={options}
+          nullable={nullable}
+        />
       </div>
       {schema.description !== undefined && (
         <div style={{ marginTop: "var(--ifm-table-cell-padding)" }}>

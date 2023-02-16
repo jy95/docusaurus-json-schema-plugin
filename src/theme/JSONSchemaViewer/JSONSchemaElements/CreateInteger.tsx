@@ -10,11 +10,12 @@ import type { JSONSchema } from "../types"
 
 type Props = {
   [x: string]: any
+  nullable?: boolean
   schema: JSONSchema
 }
 
 export default function CreateInteger(props: Props): JSX.Element {
-  const { schema } = props
+  const { schema, nullable } = props
   const options = useJSVOptionsContext()
   const description =
     typeof schema !== "boolean" ? schema.description : undefined
@@ -25,7 +26,11 @@ export default function CreateInteger(props: Props): JSX.Element {
       &nbsp;&#58;&nbsp;
       <IntegerLabel />
       <div style={{ marginTop: "var(--ifm-table-cell-padding)" }}>
-        <QualifierMessages schema={schema} options={options} />
+        <QualifierMessages
+          schema={schema}
+          options={options}
+          nullable={nullable}
+        />
       </div>
       {description !== undefined && (
         <div style={{ marginTop: "var(--ifm-table-cell-padding)" }}>
