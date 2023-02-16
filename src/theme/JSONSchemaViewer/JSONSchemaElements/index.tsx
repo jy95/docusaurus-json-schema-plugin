@@ -22,6 +22,9 @@ export { default as CreateNumber } from "./CreateNumber"
 // Component to deal with Integer
 export { default as CreateInteger } from "./CreateInteger"
 
+// Component to deal with null
+export { default as CreateNull } from "./CreateNull"
+
 // Component to deal with schema defined as "true"
 export { default as CreateAlwaysValid } from "./CreateAlwaysValid"
 

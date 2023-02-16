@@ -9,6 +9,7 @@ import {
   CreateBoolean,
   CreateNumber,
   CreateInteger,
+  CreateNull,
 } from "../JSONSchemaElements/index"
 
 import type { JSONSchema, TypeValues } from "../types"
@@ -37,6 +38,8 @@ export default function RenderProvidedType({
       return <CreateNumber schema={schema} />
     case "integer":
       return <CreateInteger schema={schema} />
+    case "null":
+      return <CreateNull schema={schema} />
     default:
       return <CreateValidOrInvalid schema={schema} />
   }
