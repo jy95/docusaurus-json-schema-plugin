@@ -10,7 +10,22 @@ type Props = {
   [x: string]: any
 }
 
-function createAdditionalProperties(props: Props): JSX.Element {
+// Translated label
+function AdditionalPropertiesLabel(): JSX.Element {
+  return (
+    <code>
+      <Translate
+        values={{
+          id: "json-schema.labels.additionalProperties",
+        }}
+      >
+        {"property name*"}
+      </Translate>
+    </code>
+  )
+}
+
+export default function CreateAdditionalProperties(props: Props): JSX.Element {
   const { schema } = props
 
   // Because of the previous check : "typeof schema.additionalProperties !== "boolean""
@@ -27,41 +42,12 @@ function createAdditionalProperties(props: Props): JSX.Element {
     return <></>
   }
 
-  let types = Array.isArray(typedSchema.type)
-    ? typedSchema.type
-    : typedSchema.type !== undefined
-    ? [typedSchema.type]
-    : []
-  // Usually, we have only "type" in the payload : https://json-schema.org/understanding-json-schema/reference/object.html#additional-properties
-
-  /* istanbul ignore else  */
-  if (types.length > 0) {
-    // Most of the time, only one entry but prefer to be safe that sorry ...
-
-    const additionalPropertiesLabel = (
-      <code>
-        <Translate
-          values={{
-            id: "json-schema.labels.additionalProperties",
-          }}
-        >
-          {"property name*"}
-        </Translate>
-      </code>
-    )
-
-    return (
-      <CreateEdge
-        key={"object_additionalProperties"}
-        name={additionalPropertiesLabel}
-        schema={typedSchema}
-        required={false}
-      />
-    )
-  } else {
-    // Well well, at this point we could have anything so let createNodes do the job
-    return <></>
-  }
+  return (
+    <CreateEdge
+      key={"object_additionalProperties"}
+      name={<AdditionalPropertiesLabel />}
+      schema={typedSchema}
+      required={false}
+    />
+  )
 }
-
-export default createAdditionalProperties
