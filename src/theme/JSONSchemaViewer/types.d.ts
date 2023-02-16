@@ -15,5 +15,5 @@ export { JSONSchemaNS }
 
 import type { TypeName } from "json-schema-typed"
 // I'm only interested with the values behind that enum
-export type TypeValues = `${TypeName}`;
+export type TypeValues = `${TypeName}`
 export type { keywords } from "json-schema-typed"

@@ -11,7 +11,7 @@ export { CreateObject } from "./object/index"
 export { CreateArray } from "./array/index"
 
 // Component to deal with String
-export { default as CreateString } from "./CreateString";
+export { default as CreateString } from "./CreateString"
 
 // Component to deal with schema defined as "true"
 export { default as CreateAlwaysValid } from "./CreateAlwaysValid"
