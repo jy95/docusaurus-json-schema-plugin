@@ -16,6 +16,12 @@ export { default as CreateString } from "./CreateString"
 // Component to deal with Boolean
 export { default as CreateBoolean } from "./CreateBoolean"
 
+// Component to deal with Number
+export { default as CreateNumber } from "./CreateNumber"
+
+// Component to deal with Integer
+export { default as CreateInteger } from "./CreateInteger"
+
 // Component to deal with schema defined as "true"
 export { default as CreateAlwaysValid } from "./CreateAlwaysValid"
 
