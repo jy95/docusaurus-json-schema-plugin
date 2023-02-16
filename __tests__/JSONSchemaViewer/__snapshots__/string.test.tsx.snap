@@ -79,7 +79,9 @@ exports[`JSONSchemaViewer - string test format 1`] = `
             }
           }
         >
-          string (date-time)
+          string
+           
+          (date-time)
         </span>
         <div
           style={
@@ -114,7 +116,9 @@ exports[`JSONSchemaViewer - string test format 1`] = `
             }
           }
         >
-          string (time)
+          string
+           
+          (time)
         </span>
         <div
           style={
@@ -149,7 +153,9 @@ exports[`JSONSchemaViewer - string test format 1`] = `
             }
           }
         >
-          string (date)
+          string
+           
+          (date)
         </span>
         <div
           style={
@@ -184,7 +190,9 @@ exports[`JSONSchemaViewer - string test format 1`] = `
             }
           }
         >
-          string (duration)
+          string
+           
+          (duration)
         </span>
         <div
           style={
@@ -219,7 +227,9 @@ exports[`JSONSchemaViewer - string test format 1`] = `
             }
           }
         >
-          string (email)
+          string
+           
+          (email)
         </span>
         <div
           style={
@@ -254,7 +264,9 @@ exports[`JSONSchemaViewer - string test format 1`] = `
             }
           }
         >
-          string (idn-email)
+          string
+           
+          (idn-email)
         </span>
         <div
           style={
@@ -289,7 +301,9 @@ exports[`JSONSchemaViewer - string test format 1`] = `
             }
           }
         >
-          string (hostname)
+          string
+           
+          (hostname)
         </span>
         <div
           style={
@@ -324,7 +338,9 @@ exports[`JSONSchemaViewer - string test format 1`] = `
             }
           }
         >
-          string (idn-hostname)
+          string
+           
+          (idn-hostname)
         </span>
         <div
           style={
@@ -359,7 +375,9 @@ exports[`JSONSchemaViewer - string test format 1`] = `
             }
           }
         >
-          string (ipv4)
+          string
+           
+          (ipv4)
         </span>
         <div
           style={
@@ -394,7 +412,9 @@ exports[`JSONSchemaViewer - string test format 1`] = `
             }
           }
         >
-          string (ipv6)
+          string
+           
+          (ipv6)
         </span>
         <div
           style={
@@ -429,7 +449,9 @@ exports[`JSONSchemaViewer - string test format 1`] = `
             }
           }
         >
-          string (uuid)
+          string
+           
+          (uuid)
         </span>
         <div
           style={
@@ -464,7 +486,9 @@ exports[`JSONSchemaViewer - string test format 1`] = `
             }
           }
         >
-          string (uri)
+          string
+           
+          (uri)
         </span>
         <div
           style={
@@ -499,7 +523,9 @@ exports[`JSONSchemaViewer - string test format 1`] = `
             }
           }
         >
-          string (uri-reference)
+          string
+           
+          (uri-reference)
         </span>
         <div
           style={
@@ -534,7 +560,9 @@ exports[`JSONSchemaViewer - string test format 1`] = `
             }
           }
         >
-          string (iri)
+          string
+           
+          (iri)
         </span>
         <div
           style={
@@ -569,7 +597,9 @@ exports[`JSONSchemaViewer - string test format 1`] = `
             }
           }
         >
-          string (iri-reference)
+          string
+           
+          (iri-reference)
         </span>
         <div
           style={
@@ -604,7 +634,9 @@ exports[`JSONSchemaViewer - string test format 1`] = `
             }
           }
         >
-          string (uri-template)
+          string
+           
+          (uri-template)
         </span>
         <div
           style={
@@ -639,7 +671,9 @@ exports[`JSONSchemaViewer - string test format 1`] = `
             }
           }
         >
-          string (json-pointer)
+          string
+           
+          (json-pointer)
         </span>
         <div
           style={
@@ -674,7 +708,9 @@ exports[`JSONSchemaViewer - string test format 1`] = `
             }
           }
         >
-          string (relative-json-pointer)
+          string
+           
+          (relative-json-pointer)
         </span>
         <div
           style={
@@ -709,7 +745,9 @@ exports[`JSONSchemaViewer - string test format 1`] = `
             }
           }
         >
-          string (regex)
+          string
+           
+          (regex)
         </span>
         <div
           style={

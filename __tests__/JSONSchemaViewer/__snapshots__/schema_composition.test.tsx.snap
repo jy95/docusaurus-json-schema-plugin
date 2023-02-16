@@ -247,7 +247,7 @@ exports[`JSONSchemaViewer - schema composition test not 1`] = `
   </summary>
   <div>
     <span
-      className="badge badge--info"
+      className="badge badge--danger"
     >
       not
     </span>

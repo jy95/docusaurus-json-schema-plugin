@@ -981,26 +981,6 @@ exports[`JSONSchemaViewer - object test propertyNames 1`] = `
             unknown
           </span>
         </summary>
-        <strong>
-          type
-        </strong>
-         : 
-        <span
-          style={
-            {
-              "opacity": "0.6",
-            }
-          }
-        >
-          unknown
-        </span>
-        <div
-          style={
-            {
-              "marginTop": "var(--ifm-table-cell-padding)",
-            }
-          }
-        />
       </details>
     </li>
   </ul>

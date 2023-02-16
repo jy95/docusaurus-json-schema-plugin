@@ -13,21 +13,17 @@ exports[`JSONSchemaViewer - null type test 0 1`] = `
     type
   </strong>
    : 
-  <span
-    style={
-      {
-        "opacity": "0.6",
-      }
-    }
-  >
-    null
-  </span>
+  <strong>
+    any
+  </strong>
   <div
     style={
       {
         "marginTop": "var(--ifm-table-cell-padding)",
       }
     }
-  />
+  >
+    Always valid
+  </div>
 </details>
 `;

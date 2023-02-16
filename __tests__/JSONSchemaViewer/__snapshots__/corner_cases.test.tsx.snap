@@ -18,8 +18,72 @@ exports[`JSONSchemaViewer - corner cases CreateArray - sub properties as boolean
     array
   </span>,
   <ul />,
-  <ul />,
-  <ul />,
+  <ul>
+    <li>
+      <details
+        open={false}
+      >
+        <summary>
+          <code>
+            items[0]
+          </code>
+           
+          <span>
+            unknown
+          </span>
+        </summary>
+        <strong>
+          type
+        </strong>
+         : 
+        <strong>
+          none
+        </strong>
+        <div
+          style={
+            {
+              "marginTop": "var(--ifm-table-cell-padding)",
+            }
+          }
+        >
+          Always invalid
+        </div>
+      </details>
+    </li>
+  </ul>,
+  <ul>
+    <li>
+      <details
+        open={false}
+      >
+        <summary>
+          <code>
+            contains
+          </code>
+           
+          <span>
+            unknown
+          </span>
+        </summary>
+        <strong>
+          type
+        </strong>
+         : 
+        <strong>
+          none
+        </strong>
+        <div
+          style={
+            {
+              "marginTop": "var(--ifm-table-cell-padding)",
+            }
+          }
+        >
+          Always invalid
+        </div>
+      </details>
+    </li>
+  </ul>,
   <div
     style={
       {
@@ -31,6 +95,27 @@ exports[`JSONSchemaViewer - corner cases CreateArray - sub properties as boolean
       🚨 
       No extra item(s) are authorized in this array
     </div>
+  </div>,
+]
+`;
+
+exports[`JSONSchemaViewer - corner cases CreateNodes - boolean schema 1`] = `
+[
+  <strong>
+    type
+  </strong>,
+  " : ",
+  <strong>
+    none
+  </strong>,
+  <div
+    style={
+      {
+        "marginTop": "var(--ifm-table-cell-padding)",
+      }
+    }
+  >
+    Always invalid
   </div>,
 ]
 `;
@@ -66,8 +151,6 @@ exports[`JSONSchemaViewer - corner cases CreateObject - sub properties as boolea
   </div>,
 ]
 `;
-
-exports[`JSONSchemaViewer - corner cases CreatePrimitive - boolean schema 1`] = `null`;
 
 exports[`JSONSchemaViewer - corner cases SchemaComposition - boolean schema 1`] = `null`;
 
