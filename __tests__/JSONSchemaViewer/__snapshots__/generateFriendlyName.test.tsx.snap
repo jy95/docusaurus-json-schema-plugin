@@ -75,7 +75,17 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Array specified only
                     aria-selected={true}
                     onClick={[Function]}
                     tabIndex={0}
-                  />
+                  >
+                    <span
+                      style={
+                        {
+                          "opacity": "0.6",
+                        }
+                      }
+                    >
+                      integer
+                    </span>
+                  </li>
                   <li
                     aria-selected={false}
                     onClick={[Function]}
@@ -88,7 +98,7 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Array specified only
                         }
                       }
                     >
-                      object
+                      boolean
                     </span>
                   </li>
                 </ul>

@@ -99,7 +99,7 @@ exports[`JSONSchemaViewer - corner cases CreateArray - sub properties as boolean
 ]
 `;
 
-exports[`JSONSchemaViewer - corner cases CreateNodes - boolean schema 1`] = `
+exports[`JSONSchemaViewer - corner cases CreateNodes - boolean schema (false) 1`] = `
 [
   <strong>
     type
@@ -116,6 +116,27 @@ exports[`JSONSchemaViewer - corner cases CreateNodes - boolean schema 1`] = `
     }
   >
     Always invalid
+  </div>,
+]
+`;
+
+exports[`JSONSchemaViewer - corner cases CreateNodes - boolean schema (true) 1`] = `
+[
+  <strong>
+    type
+  </strong>,
+  " : ",
+  <strong>
+    any
+  </strong>,
+  <div
+    style={
+      {
+        "marginTop": "var(--ifm-table-cell-padding)",
+      }
+    }
+  >
+    Always valid
   </div>,
 ]
 `;

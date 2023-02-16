@@ -1,6 +1,14 @@
 import React from "react"
 
-import { ArrayLabel, ObjectLabel, StringLabel } from "../labels/index"
+import {
+  ArrayLabel,
+  ObjectLabel,
+  StringLabel,
+  NumberLabel,
+  IntegerLabel,
+  BooleanLabel,
+  NullLabel,
+} from "../labels/index"
 
 import type { TypeValues } from "../types"
 
@@ -15,12 +23,17 @@ export default function TypeLabelSwitch(props: Props): JSX.Element {
     case "string":
       return <StringLabel {...rest} />
     case "number":
+      return <NumberLabel {...rest} />
     case "boolean":
+      return <BooleanLabel {...rest} />
     case "object":
       return <ObjectLabel {...rest} />
     case "array":
       return <ArrayLabel {...rest} />
     case "integer":
+      return <IntegerLabel {...rest} />
+    case "null":
+      return <NullLabel {...rest} />
     default:
       return <></>
   }

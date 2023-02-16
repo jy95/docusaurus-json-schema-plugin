@@ -15,9 +15,7 @@ import type {
 import type { ReactTestRenderer } from "react-test-renderer"
 
 // Components
-import {
-  CreateNodes
-} from "../../src/theme/JSONSchemaViewer/components/index"
+import { CreateNodes } from "../../src/theme/JSONSchemaViewer/components/index"
 
 import {
   CreateArray,
@@ -32,7 +30,8 @@ const testcases: [
   (props: { schema: JSONSchema; [x: string]: any }) => JSX.Element,
   JSONSchema
 ][] = [
-  ["CreateNodes - boolean schema", CreateNodes, false],
+  ["CreateNodes - boolean schema (false)", CreateNodes, false],
+  ["CreateNodes - boolean schema (true)", CreateNodes, true],
   ["CreateArray - boolean schema", CreateArray, false],
   ["CreateObject - boolean schema", CreateObject, false],
   ["SchemaComposition - boolean schema", SchemaComposition, false],
