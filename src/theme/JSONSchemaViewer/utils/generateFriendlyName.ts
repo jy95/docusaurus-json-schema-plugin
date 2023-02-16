@@ -1,7 +1,7 @@
 // Utility functions to know which case we have
 import { isArrayType, isNumeric, isObjectType, isStringType } from "./index"
 
-import type { JSONSchema, JSONSchemaNS, TypeName } from "../types"
+import type { JSONSchema, JSONSchemaNS } from "../types"
 
 // generate a friendly name for the schema
 // It has to cover nasty cases like omit the "type" that usually helps to know what we have here
@@ -121,10 +121,10 @@ function generateFriendlyName(schema: JSONSchema): string {
   // When multiple types are provided, resolution becomes hard to understand
   // I will just concat the result without duplicate
   if (Array.isArray(schema.type)) {
-    return [...new Set(schema.type as TypeName[])].join(" OR ")
+    return [...new Set(schema.type as string[])].join(" OR ")
   } else {
     // Default return the type or "unknown" as fallback
-    return (schema.type as TypeName | undefined) || "unknown"
+    return (schema.type as string | undefined) || "unknown"
   }
 }
 

@@ -18,10 +18,6 @@ type EdgeProps = {
 function createEdge({ name, schema, required }: EdgeProps): JSX.Element {
   const schemaName = generateFriendlyName(schema)
 
-  if (typeof schema === "boolean") {
-    return <></>
-  }
-
   return (
     <SchemaItem
       schemaName={schemaName}

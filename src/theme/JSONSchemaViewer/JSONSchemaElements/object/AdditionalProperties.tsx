@@ -13,6 +13,8 @@ type Props = {
 function createAdditionalProperties(props: Props): JSX.Element {
   const { schema } = props
 
+  // Because of the previous check : "typeof schema.additionalProperties !== "boolean""
+  // We don't have to care about that as it will be covered by QualifierMessages
   /* istanbul ignore if  */
   if (typeof schema === "boolean") {
     return <></>

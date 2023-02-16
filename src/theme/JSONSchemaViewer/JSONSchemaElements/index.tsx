@@ -10,5 +10,11 @@ export { CreateObject } from "./object/index"
 // Component to deal with Array
 export { CreateArray } from "./array/index"
 
-// Component to deal with primitive stuff
-export { default as CreatePrimitive } from "./CreatePrimitive"
+// Component to deal with String
+export { default as CreateString } from "./CreateString";
+
+// Component to deal with schema defined as "true"
+export { default as CreateAlwaysValid } from "./CreateAlwaysValid"
+
+// Component to deal with schema defined as "false"
+export { default as CreateAlwaysInvalid } from "./CreateAlwaysInvalid"

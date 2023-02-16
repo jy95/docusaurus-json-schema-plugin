@@ -6,4 +6,6 @@ export { default as CreateNodes } from "./CreateNodes"
 
 export { default as CreateEdge } from "./CreateEdge"
 
+export { default as CreateValidOrInvalid } from "./CreateValidOrInvalid"
+
 export { default as SchemaItem } from "./SchemaItem/SchemaItem"
