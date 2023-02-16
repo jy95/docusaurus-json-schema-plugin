@@ -10,7 +10,23 @@ type Props = {
   schema: JSONSchema
 }
 
-function createPrefixItems(props: Props): JSX.Element {
+// Translated label
+function PrefixItemsLabel({ count }: { count: number }): JSX.Element {
+  return (
+    <code>
+      <Translate
+        values={{
+          id: "json-schema.keywords.prefixItemsEntry",
+          count: count,
+        }}
+      >
+        {"items[{count}]"}
+      </Translate>
+    </code>
+  )
+}
+
+export default function CreatePrefixItems(props: Props): JSX.Element {
   const { schema } = props
 
   let typedSchema = schema as JSONSchemaNS.Array
@@ -22,26 +38,16 @@ function createPrefixItems(props: Props): JSX.Element {
 
   let items = typedSchema.prefixItems!
   let minimal = Array.isArray(items) ? items.length : 1
+  let array = (Array.isArray(items) ? items : [items]) as JSONSchema[]
 
   // prefixItems is an array in any case
   return (
     <>
-      {Object.entries(items).map(([key, val]) => {
+      {array.map((val, idx) => {
         return (
           <CreateEdge
-            key={`array_prefixItems_${key}`}
-            name={
-              <code>
-                <Translate
-                  values={{
-                    id: "json-schema.keywords.prefixItemsEntry",
-                    count: key,
-                  }}
-                >
-                  {"items[{count}]"}
-                </Translate>
-              </code>
-            }
+            key={`array_prefixItems_${idx}`}
+            name={<PrefixItemsLabel count={idx} />}
             schema={val}
             required={
               typedSchema.minItems !== undefined &&
@@ -53,5 +59,3 @@ function createPrefixItems(props: Props): JSX.Element {
     </>
   )
 }
-
-export default createPrefixItems
