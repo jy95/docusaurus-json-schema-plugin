@@ -17,7 +17,7 @@ import type { JSONSchema, TypeValues } from "../types"
 // Utily function to render a specific type
 type RenderProvidedTypeProps = {
   schema: JSONSchema
-  type: TypeValues
+  type?: TypeValues
   nullable?: boolean
 }
 

@@ -10,6 +10,7 @@ import {
   isBoolean,
   isNull,
   isNumeric,
+  isInteger,
   isObjectType,
   isStringType,
 } from "../utils/index"
@@ -20,7 +21,7 @@ import type { JSONSchema, TypeValues } from "../types"
 type SingleTypeProps = {
   schema: JSONSchema
   nullable?: boolean
-  type: TypeValues
+  type?: TypeValues
 }
 
 function RenderSingleType(props: SingleTypeProps): JSX.Element {
@@ -59,6 +60,43 @@ function RenderMultipleTypes(props: MultipleTypesProps): JSX.Element {
   )
 }
 
+// Detect types in schema
+// Zero, One or multiple types can match
+function* foundUndeclaredTypes(
+  schema: Exclude<JSONSchema, true | false>
+): Generator<TypeValues, void> {
+  if (isNull(schema)) {
+    yield "null"
+  }
+
+  if (isObjectType(schema)) {
+    yield "object"
+  }
+
+  if (isArrayType(schema)) {
+    yield "array"
+  }
+
+  if (isStringType(schema)) {
+    yield "string"
+  }
+
+  if (isBoolean(schema)) {
+    yield "boolean"
+  }
+
+  if (isInteger(schema)) {
+    yield "integer"
+  }
+
+  if (!isInteger(schema) && isNumeric(schema)) {
+    yield "number"
+  }
+
+  // Job finished
+  return undefined
+}
+
 type Props = {
   [x: string]: any
   schema: Exclude<JSONSchema, true | false>
@@ -84,12 +122,11 @@ export default function CreateTypes(props: Props): JSX.Element {
   // Either a single type that could be null
   const hasNull = declaredTypes.includes("null")
   if (declaredTypes.length === 1 || (hasNull && declaredTypes.length === 2)) {
+    // Find not null type (either first entry or second, depending again of user definition)
+    const notNullType = declaredTypes.find((s) => s !== "null")
+
     return (
-      <RenderSingleType
-        schema={schema}
-        type={declaredTypes[0]}
-        nullable={hasNull}
-      />
+      <RenderSingleType schema={schema} type={notNullType} nullable={hasNull} />
     )
   }
 
@@ -109,8 +146,45 @@ export default function CreateTypes(props: Props): JSX.Element {
   }
 
   // Third, user didn't make my life easier, so it guess time
+  let matchingTypes = [...foundUndeclaredTypes(schema)]
+  const nullDetected = matchingTypes.includes("null")
+
+  if (
+    matchingTypes.length === 1 ||
+    (nullDetected && declaredTypes.length === 2)
+  ) {
+    // Find not null type (either first entry or second, depending of my algorithm order)
+    const notNullType = matchingTypes.find((s) => s !== "null")
+
+    return (
+      <RenderSingleType
+        schema={schema}
+        type={notNullType}
+        nullable={nullDetected}
+      />
+    )
+  }
+
+  // Four, we have multiple type possible
+  if (matchingTypes.length > 1) {
+    // remove null from resultset & prepare values & labels
+    const values = matchingTypes
+      .filter((s) => s !== "null")
+      .map((type) => ({
+        value: type,
+        label: <TypeLabelSwitch type={type} />,
+      }))
+
+    return (
+      <RenderMultipleTypes
+        schema={schema}
+        types={values}
+        nullable={nullDetected}
+      />
+    )
+  }
 
   // If at the end, we cannot find a type, it likely means user put something like :
-  // { "allOf": ... } or { "if": ... } (that will be covered by <CreateNodes /> at the end)
+  // { "allOf": ... } or { "if": ... } (that will be covered by <CreateNodes /> SchemaComposition / SchemaConditional calls)
   return <></>
 }
