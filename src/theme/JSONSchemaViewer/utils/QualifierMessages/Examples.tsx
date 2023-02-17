@@ -9,20 +9,12 @@ import type { JSONSchema } from "../../types"
 import { printSchemaType } from "./index"
 
 type Props = {
-  schema: JSONSchema
+  schema: Exclude<JSONSchema, true | false>
 }
 
 // For "examples" property
-export default function ExamplesQualifierMessage(
-  props: Props
-): null | JSX.Element {
+export default function ExamplesQualifierMessage(props: Props): JSX.Element {
   const { schema } = props
-
-  // fast fail
-  /* istanbul ignore if  */
-  if (typeof schema === "boolean") {
-    return null
-  }
 
   const examplesLabel = (
     <strong>

@@ -7,7 +7,7 @@ import { AndLabel } from "./index"
 import type { JSONSchema } from "../../types"
 
 type Props = {
-  schema: JSONSchema
+  schema: Exclude<JSONSchema, true | false>
 }
 
 // minLength
@@ -45,14 +45,8 @@ function MaxLength({ value }: { value: number }): JSX.Element {
 // for minLength / maxLength
 export default function StringLengthQualifierMessage(
   props: Props
-): null | JSX.Element {
+): JSX.Element {
   const { schema } = props
-
-  // fast fail
-  /* istanbul ignore if  */
-  if (typeof schema === "boolean") {
-    return null
-  }
 
   let minAndMaxLength =
     schema.minLength !== undefined && schema.maxLength !== undefined

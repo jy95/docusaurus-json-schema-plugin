@@ -7,7 +7,7 @@ import { AndLabel } from "./index"
 import type { JSONSchema } from "../../types"
 
 type Props = {
-  schema: JSONSchema
+  schema: Exclude<JSONSchema, true | false>
 }
 
 // format minimum
@@ -77,14 +77,8 @@ function FormatMaximum({
 }
 
 // minimum / exclusiveMinimum / maximum / exclusiveMaximum
-export default function NumberBounds(props: Props): null | JSX.Element {
+export default function NumberBounds(props: Props): JSX.Element {
   const { schema } = props
-
-  // fast fail
-  /* istanbul ignore if  */
-  if (typeof schema === "boolean") {
-    return null
-  }
 
   // Not a fan of ugly IF cascades
   let minimum = schema.exclusiveMinimum || schema.minimum

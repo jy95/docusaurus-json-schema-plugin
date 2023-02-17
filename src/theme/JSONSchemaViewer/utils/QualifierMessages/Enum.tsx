@@ -6,18 +6,12 @@ import type { JSONSchema } from "../../types"
 import { printSchemaType } from "./index"
 
 type Props = {
-  schema: JSONSchema
+  schema: Exclude<JSONSchema, true | false>
 }
 
 // For "enum" property
-export default function EnumQualifierMessage(props: Props): null | JSX.Element {
+export default function EnumQualifierMessage(props: Props): JSX.Element {
   const { schema } = props
-
-  // fast fail
-  /* istanbul ignore if  */
-  if (typeof schema === "boolean") {
-    return null
-  }
 
   const enumLabel = (
     <strong>

@@ -7,18 +7,12 @@ import { printSchemaType } from "./index"
 import type { JSONSchema } from "../../types"
 
 type Props = {
-  schema: JSONSchema
+  schema: Exclude<JSONSchema, true | false>
 }
 
 // Default value
-export default function DefaultValue(props: Props): null | JSX.Element {
+export default function DefaultValue(props: Props): JSX.Element {
   const { schema } = props
-
-  // fast fail
-  /* istanbul ignore if  */
-  if (typeof schema === "boolean") {
-    return null
-  }
 
   // Translated Labels
   const defaultLabel = (
