@@ -9,6 +9,16 @@ import { AndLabel, NotLabel, OrLabel, XorLabel } from "../labels/index"
 
 import type { JSONSchema, JSONSchemaNS, TypeValues } from "../types"
 
+// common function I need below
+function shouldAddSeparator(idx: number, length: number): boolean {
+  // Not useful to add an separator for [], [item] situations
+  if (length <= 1) {
+    return false
+  }
+  // Otherwise
+  return idx !== length - 1
+}
+
 // generate a friendly name for the schema
 // It has to cover nasty cases like omit the "type" that usually helps to know what we have here
 export default function GenerateFriendlyName({
@@ -39,7 +49,7 @@ export default function GenerateFriendlyName({
     <>
       {foundTypes.map((type, idx) => (
         <React.Fragment key={idx}>
-          {idx > 0 && idx !== foundTypes.length - 1 && <OrLabel />}
+          {shouldAddSeparator(idx, foundTypes.length) && <OrLabel />}
           <CustomizeType schema={schema} type={type} />
         </React.Fragment>
       ))}
@@ -86,7 +96,7 @@ function FallbackFriendlyName({
       <>
         {elements.map((elem, idx) => (
           <React.Fragment key={idx}>
-            {idx > 0 && idx !== elements.length - 1 && LINKWORD}
+            {shouldAddSeparator(idx, elements.length) && LINKWORD}
             <GenerateFriendlyName schema={elem} />
           </React.Fragment>
         ))}
@@ -181,7 +191,7 @@ function CustomizeArray({
       {"("}
       {elements.map((elem, idx) => (
         <React.Fragment key={idx}>
-          {idx > 0 && idx !== elements.length - 1 && ","}
+          {shouldAddSeparator(idx, elements.length) && ","}
           {elem}
         </React.Fragment>
       ))}

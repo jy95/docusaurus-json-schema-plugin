@@ -33,6 +33,11 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Array specified only
           </code>
            
           (
+           
+          <strong>
+            OR
+          </strong>
+           
           <span
             style={
               {
@@ -75,6 +80,11 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Array specified only
                 <code>
                   items
                 </code>
+                 
+                 
+                <strong>
+                  OR
+                </strong>
                  
                 <span
                   style={
@@ -256,6 +266,7 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Array specified only
           </code>
            
           (
+          ,
           <span
             style={
               {
@@ -432,6 +443,7 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Array specified with
           </code>
            
           (
+          ,
           <span
             style={
               {
@@ -606,6 +618,11 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Multiple types 1`] =
           <code>
             items[0]
           </code>
+           
+           
+          <strong>
+            OR
+          </strong>
            
           <span
             style={
@@ -869,6 +886,11 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test OR / XOR / AND 1`] =
             items[0]
           </code>
            
+           
+          <strong>
+            OR
+          </strong>
+           
           <span
             style={
               {
@@ -1010,6 +1032,11 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test OR / XOR / AND 1`] =
             items[1]
           </code>
            
+           
+          <strong>
+            XOR
+          </strong>
+           
           <span
             style={
               {
@@ -1150,6 +1177,11 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test OR / XOR / AND 1`] =
           <code>
             items[2]
           </code>
+           
+           
+          <strong>
+            AND
+          </strong>
            
           <span
             style={
