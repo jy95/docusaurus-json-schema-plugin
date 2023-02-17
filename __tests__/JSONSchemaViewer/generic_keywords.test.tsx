@@ -40,6 +40,7 @@ const testcases: [string, JSONSchema][] = [
     "enum",
     {
       enum: ["red", "amber", "green"],
+      examples: ["red"],
     },
   ],
 ]

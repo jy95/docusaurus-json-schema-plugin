@@ -129,6 +129,43 @@ exports[`JSONSchemaViewer - Generic keywords test enum 1`] = `
         ["red","amber","green"]
       </code>
     </div>
+    <div>
+      <strong>
+        Example values :
+      </strong>
+       
+      <div
+        className="tabs-container"
+      >
+        <ul
+          aria-orientation="horizontal"
+          className="tabs"
+          role="tablist"
+        >
+          <li
+            aria-selected={true}
+            onClick={[Function]}
+            tabIndex={0}
+          >
+            Example 0
+          </li>
+        </ul>
+        <div>
+          <div
+            hidden={false}
+            role="tabpanel"
+          >
+            <div
+              role="tabpanel"
+            >
+              <code>
+                red
+              </code>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </details>
 `;
