@@ -166,7 +166,7 @@ export default function CreateTypes(props: Props): JSX.Element {
     const firstType =
       matchingTypes.find(
         (s) => s !== "null"
-      ) || /* istanbul ignore next: technically impossible but better safe than sorry */
+      ) /* istanbul ignore next: technically impossible but better safe than sorry */ ||
       matchingTypes[0]
 
     return (
