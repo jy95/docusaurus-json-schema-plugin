@@ -6,11 +6,11 @@ import { useJSVOptionsContext } from "../contexts/index"
 
 import { TypeLabel, NullLabel } from "../labels/index"
 
-import type { JSONSchema } from "../types"
+import type { JSONSchemaNS } from "../types"
 
 type Props = {
   [x: string]: any
-  schema: JSONSchema
+  schema: JSONSchemaNS.Null
   description?: string
 }
 

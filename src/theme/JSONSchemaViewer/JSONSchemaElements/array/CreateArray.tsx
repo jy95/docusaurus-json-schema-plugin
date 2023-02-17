@@ -10,10 +10,10 @@ import { useJSVOptionsContext } from "../../contexts/index"
 
 import { ArrayLabel, TypeLabel } from "../../labels/index"
 
-import type { JSONSchema, JSONSchemaNS } from "../../types"
+import type { JSONSchemaNS } from "../../types"
 
 type Props = {
-  schema: JSONSchema
+  schema: JSONSchemaNS.Array
   nullable?: boolean
   description?: string
   [x: string]: any
@@ -25,21 +25,11 @@ export default function CreateArray(props: Props): JSX.Element {
   const { schema, nullable, description } = props
   const options = useJSVOptionsContext()
 
-  let typedSchema = schema as JSONSchemaNS.Array
-
-  /* istanbul ignore if  */
-  if (typeof typedSchema === "boolean") {
-    return <></>
-  }
-
-  let items =
-    typedSchema.items !== undefined ? <Items schema={schema} /> : undefined
+  let items = schema.items !== undefined ? <Items schema={schema} /> : undefined
   let contains =
-    typedSchema.contains !== undefined ? (
-      <Contains schema={schema} />
-    ) : undefined
+    schema.contains !== undefined ? <Contains schema={schema} /> : undefined
   let prefixItems =
-    typedSchema.prefixItems !== undefined ? (
+    schema.prefixItems !== undefined ? (
       <PrefixItems schema={schema} />
     ) : undefined
 

@@ -27,13 +27,11 @@ import {
 // Annoying test cases, just for coverage stories ...
 const testcases: [
   string,
-  (props: { schema: JSONSchema; [x: string]: any }) => JSX.Element,
+  (props: { schema: any; [x: string]: any }) => JSX.Element,
   JSONSchema
 ][] = [
   ["CreateNodes - boolean schema (false)", CreateNodes, false],
   ["CreateNodes - boolean schema (true)", CreateNodes, true],
-  ["CreateArray - boolean schema", CreateArray, false],
-  ["CreateObject - boolean schema", CreateObject, false],
   ["SchemaComposition - boolean schema", SchemaComposition, false],
   ["SchemaConditional - boolean schema", SchemaConditional, false],
   [

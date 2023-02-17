@@ -6,13 +6,13 @@ import { useJSVOptionsContext } from "../contexts/index"
 
 import { TypeLabel, NumberLabel } from "../labels/index"
 
-import type { JSONSchema } from "../types"
+import type { JSONSchemaNS } from "../types"
 
 type Props = {
   [x: string]: any
   nullable?: boolean
   description?: string
-  schema: JSONSchema
+  schema: JSONSchemaNS.Number
 }
 
 export default function CreateNumber(props: Props): JSX.Element {

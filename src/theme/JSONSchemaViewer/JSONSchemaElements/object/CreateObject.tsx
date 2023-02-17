@@ -10,10 +10,10 @@ import { useJSVOptionsContext } from "../../contexts/index"
 
 import { ObjectLabel, TypeLabel } from "../../labels/index"
 
-import type { JSONSchema } from "../../types"
+import type { JSONSchemaNS } from "../../types"
 
 type Props = {
-  schema: JSONSchema
+  schema: JSONSchemaNS.Object
   nullable?: boolean
   description?: string
   [x: string]: any
@@ -22,10 +22,6 @@ type Props = {
 export default function CreateObject(props: Props): JSX.Element {
   const { schema, nullable, description } = props
   const options = useJSVOptionsContext()
-
-  if (typeof schema === "boolean") {
-    return <></>
-  }
 
   let additionalProperties =
     schema.additionalProperties !== undefined &&
