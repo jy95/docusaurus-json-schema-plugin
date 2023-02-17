@@ -64,7 +64,13 @@ exports[`JSONSchemaViewer - Array type test 1 1`] = `
             contains
           </code>
            
-          <span>
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
             number
           </span>
         </summary>
@@ -133,7 +139,13 @@ exports[`JSONSchemaViewer - Array type test 2 1`] = `
             items
           </code>
            
-          <span>
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
             number
           </span>
         </summary>
@@ -208,7 +220,9 @@ exports[`JSONSchemaViewer - Array type test 3 1`] = `
         &gt;= 2
       </code>
        
-      AND
+      <strong>
+        AND
+      </strong>
        
       <code>
         &lt;= 3
@@ -250,7 +264,13 @@ exports[`JSONSchemaViewer - Array type test 4 1`] = `
             contains
           </code>
            
-          <span>
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
             integer
           </span>
            
@@ -297,7 +317,9 @@ exports[`JSONSchemaViewer - Array type test 4 1`] = `
         at least 2 valid item(s)
       </code>
        
-      AND
+      <strong>
+        AND
+      </strong>
        
       <code>
         at most 3 valid item(s)
@@ -340,7 +362,13 @@ exports[`JSONSchemaViewer - Array type test 5 1`] = `
             items[0]
           </code>
            
-          <span>
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
             number
           </span>
         </summary>
@@ -384,7 +412,13 @@ exports[`JSONSchemaViewer - Array type test 5 1`] = `
             items[1]
           </code>
            
-          <span>
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
             string
           </span>
         </summary>
@@ -428,7 +462,13 @@ exports[`JSONSchemaViewer - Array type test 5 1`] = `
             items[2]
           </code>
            
-          <span>
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
             string
           </span>
         </summary>
@@ -482,7 +522,13 @@ exports[`JSONSchemaViewer - Array type test 5 1`] = `
             items[3]
           </code>
            
-          <span>
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
             string
           </span>
         </summary>
@@ -794,7 +840,13 @@ exports[`JSONSchemaViewer - Array type test 11 1`] = `
             items[0]
           </code>
            
-          <span>
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
             integer
           </span>
         </summary>
@@ -829,7 +881,13 @@ exports[`JSONSchemaViewer - Array type test 11 1`] = `
             items[1]
           </code>
            
-          <span>
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
             string
           </span>
         </summary>
@@ -908,7 +966,13 @@ exports[`JSONSchemaViewer - Array type test 12 1`] = `
             items[0]
           </code>
            
-          <span>
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
             number
           </span>
            
@@ -947,7 +1011,13 @@ exports[`JSONSchemaViewer - Array type test 12 1`] = `
             items[1]
           </code>
            
-          <span>
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
             string
           </span>
            
@@ -1030,7 +1100,13 @@ exports[`JSONSchemaViewer - Array type test 13 1`] = `
             items
           </code>
            
-          <span>
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
             string
           </span>
            

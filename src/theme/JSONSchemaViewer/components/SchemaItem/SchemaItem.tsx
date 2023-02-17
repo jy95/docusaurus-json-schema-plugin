@@ -9,6 +9,8 @@ import {
   ReadOnlyLabel,
 } from "../../labels/index"
 
+import { GenerateFriendlyName } from "../../utils/index"
+
 import styles from "./styles.module.css"
 
 import type { JSONSchema, JSONSchema_Draft_2019_09 } from "../../types"
@@ -16,20 +18,13 @@ import type { JSONSchema, JSONSchema_Draft_2019_09 } from "../../types"
 type SchemaItemProps = {
   // name of the item (with styles when needed)
   name: ReactNode
-  // From generateFriendlyName function
-  schemaName: string
   // Our schema
   schema: JSONSchema
   // Is it required
   required: boolean
 }
 
-function SchemaItem({
-  schema,
-  name,
-  schemaName,
-  required,
-}: SchemaItemProps): JSX.Element {
+function SchemaItem({ schema, name, required }: SchemaItemProps): JSX.Element {
   // Notice : "deprecated" started at 2019-09
   let typedSchema = schema as JSONSchema_Draft_2019_09
   let isDeprecated =
@@ -44,7 +39,7 @@ function SchemaItem({
   const summary = (
     <>
       {name}&nbsp;
-      <span className={styles.schemaName}>{schemaName}</span>
+      <GenerateFriendlyName schema={schema} />
       {isRequired && <>&nbsp;</>}
       {isRequired && <RequiredLabel />}
       {isDeprecated && <>&nbsp;</>}

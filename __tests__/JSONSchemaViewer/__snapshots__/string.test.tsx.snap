@@ -64,7 +64,13 @@ exports[`JSONSchemaViewer - string test format 1`] = `
             prop1
           </strong>
            
-          <span>
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
             date-time
           </span>
         </summary>
@@ -101,7 +107,13 @@ exports[`JSONSchemaViewer - string test format 1`] = `
             prop2
           </strong>
            
-          <span>
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
             time
           </span>
         </summary>
@@ -138,7 +150,13 @@ exports[`JSONSchemaViewer - string test format 1`] = `
             prop3
           </strong>
            
-          <span>
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
             date
           </span>
         </summary>
@@ -175,7 +193,13 @@ exports[`JSONSchemaViewer - string test format 1`] = `
             prop4
           </strong>
            
-          <span>
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
             duration
           </span>
         </summary>
@@ -212,7 +236,13 @@ exports[`JSONSchemaViewer - string test format 1`] = `
             prop5
           </strong>
            
-          <span>
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
             email
           </span>
         </summary>
@@ -249,7 +279,13 @@ exports[`JSONSchemaViewer - string test format 1`] = `
             prop6
           </strong>
            
-          <span>
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
             idn-email
           </span>
         </summary>
@@ -286,7 +322,13 @@ exports[`JSONSchemaViewer - string test format 1`] = `
             prop7
           </strong>
            
-          <span>
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
             hostname
           </span>
         </summary>
@@ -323,7 +365,13 @@ exports[`JSONSchemaViewer - string test format 1`] = `
             prop8
           </strong>
            
-          <span>
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
             idn-hostname
           </span>
         </summary>
@@ -360,7 +408,13 @@ exports[`JSONSchemaViewer - string test format 1`] = `
             prop9
           </strong>
            
-          <span>
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
             ipv4
           </span>
         </summary>
@@ -397,7 +451,13 @@ exports[`JSONSchemaViewer - string test format 1`] = `
             prop10
           </strong>
            
-          <span>
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
             ipv6
           </span>
         </summary>
@@ -434,7 +494,13 @@ exports[`JSONSchemaViewer - string test format 1`] = `
             prop11
           </strong>
            
-          <span>
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
             uuid
           </span>
         </summary>
@@ -471,7 +537,13 @@ exports[`JSONSchemaViewer - string test format 1`] = `
             prop12
           </strong>
            
-          <span>
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
             uri
           </span>
         </summary>
@@ -508,7 +580,13 @@ exports[`JSONSchemaViewer - string test format 1`] = `
             prop12B
           </strong>
            
-          <span>
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
             uri-reference
           </span>
         </summary>
@@ -545,7 +623,13 @@ exports[`JSONSchemaViewer - string test format 1`] = `
             prop13
           </strong>
            
-          <span>
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
             iri
           </span>
         </summary>
@@ -582,7 +666,13 @@ exports[`JSONSchemaViewer - string test format 1`] = `
             prop13B
           </strong>
            
-          <span>
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
             iri-reference
           </span>
         </summary>
@@ -619,7 +709,13 @@ exports[`JSONSchemaViewer - string test format 1`] = `
             prop14
           </strong>
            
-          <span>
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
             uri-template
           </span>
         </summary>
@@ -656,7 +752,13 @@ exports[`JSONSchemaViewer - string test format 1`] = `
             prop15
           </strong>
            
-          <span>
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
             json-pointer
           </span>
         </summary>
@@ -693,7 +795,13 @@ exports[`JSONSchemaViewer - string test format 1`] = `
             prop16
           </strong>
            
-          <span>
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
             relative-json-pointer
           </span>
         </summary>
@@ -730,7 +838,13 @@ exports[`JSONSchemaViewer - string test format 1`] = `
             prop17
           </strong>
            
-          <span>
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
             regex
           </span>
         </summary>
@@ -849,7 +963,9 @@ exports[`JSONSchemaViewer - string test minLength & maxLength 1`] = `
         &gt;= 2 character(s)
       </code>
        
-      AND
+      <strong>
+        AND
+      </strong>
        
       <code>
         &lt;= 3 character(s)

@@ -60,7 +60,13 @@ exports[`JSONSchemaViewer - Generic keywords test const 1`] = `
             country
           </strong>
            
-          <span>
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
             string
           </span>
         </summary>

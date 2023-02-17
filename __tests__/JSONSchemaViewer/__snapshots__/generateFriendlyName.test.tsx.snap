@@ -32,9 +32,26 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Array specified only
             items[0]
           </code>
            
-          <span>
-            (integer OR boolean)[]
+          (
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
+            integer
           </span>
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
+            boolean
+          </span>
+          )[]
         </summary>
         <strong>
           type
@@ -59,8 +76,23 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Array specified only
                   items
                 </code>
                  
-                <span>
-                  integer OR boolean
+                <span
+                  style={
+                    {
+                      "opacity": "0.6",
+                    }
+                  }
+                >
+                  integer
+                </span>
+                <span
+                  style={
+                    {
+                      "opacity": "0.6",
+                    }
+                  }
+                >
+                  boolean
                 </span>
               </summary>
               <div
@@ -223,9 +255,26 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Array specified only
             items[0]
           </code>
            
-          <span>
-            (boolean,integer)[]
+          (
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
+            boolean
           </span>
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
+            integer
+          </span>
+          )[]
         </summary>
         <strong>
           type
@@ -251,7 +300,13 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Array specified only
                   items[0]
                 </code>
                  
-                <span>
+                <span
+                  style={
+                    {
+                      "opacity": "0.6",
+                    }
+                  }
+                >
                   boolean
                 </span>
               </summary>
@@ -286,7 +341,13 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Array specified only
                   items[1]
                 </code>
                  
-                <span>
+                <span
+                  style={
+                    {
+                      "opacity": "0.6",
+                    }
+                  }
+                >
                   integer
                 </span>
               </summary>
@@ -370,9 +431,30 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Array specified with
             items[0]
           </code>
            
-          <span>
-            (number,...,string,...)[]
+          (
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
+            number
           </span>
+          ,
+          ...
+          ,
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
+            string
+          </span>
+          ...
+          )[]
         </summary>
         <strong>
           type
@@ -397,7 +479,13 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Array specified with
                   items[0]
                 </code>
                  
-                <span>
+                <span
+                  style={
+                    {
+                      "opacity": "0.6",
+                    }
+                  }
+                >
                   number
                 </span>
               </summary>
@@ -434,7 +522,13 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Array specified with
                   contains
                 </code>
                  
-                <span>
+                <span
+                  style={
+                    {
+                      "opacity": "0.6",
+                    }
+                  }
+                >
                   string
                 </span>
               </summary>
@@ -513,7 +607,22 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Multiple types 1`] =
             items[0]
           </code>
            
-          <span>
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
+            null
+          </span>
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
             number
           </span>
         </summary>
@@ -587,9 +696,20 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Not (integer) 1`] = 
             items[0]
           </code>
            
-          <span>
-            NOT (integer)
+          <strong>
+            NOT
+          </strong>
+           ( 
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
+            integer
           </span>
+           ) 
         </summary>
         <div>
           <span
@@ -664,7 +784,13 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Number without expli
             items[0]
           </code>
            
-          <span>
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
             number
           </span>
         </summary>
@@ -743,8 +869,23 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test OR / XOR / AND 1`] =
             items[0]
           </code>
            
-          <span>
-            string OR number
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
+            string
+          </span>
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
+            number
           </span>
         </summary>
         <div>
@@ -869,7 +1010,22 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test OR / XOR / AND 1`] =
             items[1]
           </code>
            
-          <span>
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
+            number
+          </span>
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
             number
           </span>
         </summary>
@@ -995,7 +1151,22 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test OR / XOR / AND 1`] =
             items[2]
           </code>
            
-          <span>
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
+            string
+          </span>
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
             string
           </span>
         </summary>
@@ -1145,7 +1316,13 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Object without expli
             items[0]
           </code>
            
-          <span>
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
             object
           </span>
         </summary>
@@ -1224,9 +1401,7 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Prefer title 1`] = `
             items[0]
           </code>
            
-          <span>
-            My custom title
-          </span>
+          My custom title
         </summary>
         <strong>
           type
@@ -1251,7 +1426,13 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Prefer title 1`] = `
                   text
                 </strong>
                  
-                <span>
+                <span
+                  style={
+                    {
+                      "opacity": "0.6",
+                    }
+                  }
+                >
                   string
                 </span>
               </summary>
@@ -1340,7 +1521,13 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Simple array 1`] = `
             items[0]
           </code>
            
-          <span>
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
             array
           </span>
         </summary>

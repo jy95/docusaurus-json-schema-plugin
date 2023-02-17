@@ -26,9 +26,9 @@ exports[`JSONSchemaViewer - corner cases CreateArray - sub properties as boolean
             items[0]
           </code>
            
-          <span>
-            unknown
-          </span>
+          <strong>
+            none
+          </strong>
         </summary>
         <strong>
           type
@@ -59,9 +59,9 @@ exports[`JSONSchemaViewer - corner cases CreateArray - sub properties as boolean
             contains
           </code>
            
-          <span>
-            unknown
-          </span>
+          <strong>
+            none
+          </strong>
         </summary>
         <strong>
           type

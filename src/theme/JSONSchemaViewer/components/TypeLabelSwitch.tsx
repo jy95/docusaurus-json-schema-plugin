@@ -8,12 +8,15 @@ import {
   IntegerLabel,
   BooleanLabel,
   NullLabel,
+  TrueLabel,
+  FalseLabel,
 } from "../labels/index"
 
 import type { TypeValues } from "../types"
 
 type Props = {
-  type: TypeValues
+  // To cover unknown types, as well "any" or "none"
+  type: TypeValues | true | false | string
   [x: string]: any
 }
 
@@ -34,7 +37,11 @@ export default function TypeLabelSwitch(props: Props): JSX.Element {
       return <IntegerLabel {...rest} />
     case "null":
       return <NullLabel {...rest} />
+    case true:
+      return <TrueLabel {...rest} />
+    case false:
+      return <FalseLabel {...rest} />
     default:
-      return <></>
+      return <span style={{ opacity: "0.6" }}>{type}</span>
   }
 }

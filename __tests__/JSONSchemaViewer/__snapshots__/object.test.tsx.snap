@@ -74,7 +74,13 @@ exports[`JSONSchemaViewer - object test additionalProperties (JSON Schema) 1`] =
             number
           </strong>
            
-          <span>
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
             number
           </span>
         </summary>
@@ -109,7 +115,13 @@ exports[`JSONSchemaViewer - object test additionalProperties (JSON Schema) 1`] =
             street_name
           </strong>
            
-          <span>
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
             string
           </span>
         </summary>
@@ -144,7 +156,13 @@ exports[`JSONSchemaViewer - object test additionalProperties (JSON Schema) 1`] =
             street_type
           </strong>
            
-          <span>
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
             string
           </span>
         </summary>
@@ -191,7 +209,13 @@ exports[`JSONSchemaViewer - object test additionalProperties (JSON Schema) 1`] =
             property name*
           </code>
            
-          <span>
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
             string
           </span>
         </summary>
@@ -260,7 +284,13 @@ exports[`JSONSchemaViewer - object test additionalProperties (false) 1`] = `
             number
           </strong>
            
-          <span>
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
             number
           </span>
         </summary>
@@ -295,7 +325,13 @@ exports[`JSONSchemaViewer - object test additionalProperties (false) 1`] = `
             street_name
           </strong>
            
-          <span>
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
             string
           </span>
         </summary>
@@ -330,7 +366,13 @@ exports[`JSONSchemaViewer - object test additionalProperties (false) 1`] = `
             street_type
           </strong>
            
-          <span>
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
             string
           </span>
         </summary>
@@ -414,7 +456,13 @@ exports[`JSONSchemaViewer - object test additionalProperties with patternPropert
             builtin
           </strong>
            
-          <span>
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
             number
           </span>
         </summary>
@@ -451,7 +499,13 @@ exports[`JSONSchemaViewer - object test additionalProperties with patternPropert
             ^S_
           </code>
            
-          <span>
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
             string
           </span>
         </summary>
@@ -486,7 +540,13 @@ exports[`JSONSchemaViewer - object test additionalProperties with patternPropert
             ^I_
           </code>
            
-          <span>
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
             integer
           </span>
         </summary>
@@ -523,7 +583,13 @@ exports[`JSONSchemaViewer - object test additionalProperties with patternPropert
             property name*
           </code>
            
-          <span>
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
             string
           </span>
         </summary>
@@ -640,7 +706,9 @@ exports[`JSONSchemaViewer - object test minProperties & maxProperties 1`] = `
         &gt;= 2 propertie(s)
       </code>
        
-      AND
+      <strong>
+        AND
+      </strong>
        
       <code>
         &lt;= 3 propertie(s)
@@ -724,7 +792,13 @@ exports[`JSONSchemaViewer - object test patternProperties 1`] = `
             ^S_
           </code>
            
-          <span>
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
             string
           </span>
         </summary>
@@ -759,7 +833,13 @@ exports[`JSONSchemaViewer - object test patternProperties 1`] = `
             ^I_
           </code>
            
-          <span>
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
             integer
           </span>
         </summary>
@@ -828,7 +908,13 @@ exports[`JSONSchemaViewer - object test properties 1`] = `
             number
           </strong>
            
-          <span>
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
             number
           </span>
         </summary>
@@ -863,7 +949,13 @@ exports[`JSONSchemaViewer - object test properties 1`] = `
             street_name
           </strong>
            
-          <span>
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
             string
           </span>
         </summary>
@@ -898,7 +990,13 @@ exports[`JSONSchemaViewer - object test properties 1`] = `
             street_type
           </strong>
            
-          <span>
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
             string
           </span>
         </summary>
@@ -977,9 +1075,9 @@ exports[`JSONSchemaViewer - object test propertyNames 1`] = `
             ^[A-Za-z_][A-Za-z0-9_]*$
           </code>
            
-          <span>
-            unknown
-          </span>
+          <strong>
+            any
+          </strong>
         </summary>
         <strong>
           type
@@ -1042,7 +1140,13 @@ exports[`JSONSchemaViewer - object test required 1`] = `
             id
           </strong>
            
-          <span>
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
             number
           </span>
            
@@ -1086,7 +1190,13 @@ exports[`JSONSchemaViewer - object test required 1`] = `
             name
           </strong>
            
-          <span>
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
             string
           </span>
            
@@ -1125,7 +1235,13 @@ exports[`JSONSchemaViewer - object test required 1`] = `
             email
           </strong>
            
-          <span>
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
             string
           </span>
            
@@ -1164,7 +1280,13 @@ exports[`JSONSchemaViewer - object test required 1`] = `
             address
           </strong>
            
-          <span>
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
             string
           </span>
         </summary>
@@ -1199,7 +1321,13 @@ exports[`JSONSchemaViewer - object test required 1`] = `
             telephone
           </strong>
            
-          <span>
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
             string
           </span>
            
@@ -1243,7 +1371,13 @@ exports[`JSONSchemaViewer - object test required 1`] = `
             pin_code
           </strong>
            
-          <span>
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
             string
           </span>
            
