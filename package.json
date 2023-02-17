@@ -1,7 +1,7 @@
 {
   "name": "docusaurus-json-schema-plugin",
   "version": "0.0.0-development",
-  "description": "A Docusaurus v2 plugin that provides a JSON Schema viewer / editor React component !",
+  "description": "A Docusaurus theme plugin that provides a JSON Schema viewer / editor React component !",
   "keywords": [
     "docusaurus",
     "docusaurus theme",
