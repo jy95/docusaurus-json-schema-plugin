@@ -3,11 +3,11 @@ import Translate from "@docusaurus/Translate"
 
 import { CreateEdge } from "../../components/index"
 
-import type { JSONSchema, JSONSchemaNS } from "../../types"
+import type { JSONSchemaNS } from "../../types"
 
 type Props = {
   [x: string]: any
-  schema: JSONSchema
+  schema: JSONSchemaNS.Array
 }
 
 // Translated labels
@@ -43,21 +43,7 @@ function MultipleItemsLabel({ count }: { count: number }): JSX.Element {
 export default function CreateItems(props: Props): JSX.Element {
   const { schema } = props
 
-  let typedSchema = schema as JSONSchemaNS.Array
-
-  if (
-    typeof typedSchema === "boolean" ||
-    typeof typedSchema.items === "boolean"
-  ) {
-    return <></>
-  }
-
-  let items = typedSchema.items!
-
-  // Unlikely but fail first
-  if (typeof items === "boolean") {
-    return <></>
-  }
+  let items = schema.items!
 
   if (Array.isArray(items)) {
     let minimal = items.length
@@ -70,8 +56,7 @@ export default function CreateItems(props: Props): JSX.Element {
               name={<MultipleItemsLabel count={idx} />}
               schema={val}
               required={
-                typedSchema.minItems !== undefined &&
-                typedSchema.minItems >= minimal
+                schema.minItems !== undefined && schema.minItems >= minimal
               }
             />
           )
@@ -80,16 +65,13 @@ export default function CreateItems(props: Props): JSX.Element {
     )
   } else {
     // singe items (most common case)
-    let typedItem = items as JSONSchema
 
     return (
       <CreateEdge
         key={"array_items"}
         name={<SingleItemLabel />}
-        schema={typedItem}
-        required={
-          typedSchema.minItems !== undefined && typedSchema.minItems > 0
-        }
+        schema={items}
+        required={schema.minItems !== undefined && schema.minItems > 0}
       />
     )
   }

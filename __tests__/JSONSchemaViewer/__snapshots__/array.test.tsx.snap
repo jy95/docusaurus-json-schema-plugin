@@ -351,7 +351,39 @@ exports[`JSONSchemaViewer - Array type test 5 1`] = `
   >
     array
   </span>
-  <ul />
+  <ul>
+    <li>
+      <details
+        open={false}
+      >
+        <summary>
+          <code>
+            items
+          </code>
+           
+          <strong>
+            none
+          </strong>
+        </summary>
+        <strong>
+          type
+        </strong>
+         : 
+        <strong>
+          none
+        </strong>
+        <div
+          style={
+            {
+              "marginTop": "var(--ifm-table-cell-padding)",
+            }
+          }
+        >
+          Always invalid
+        </div>
+      </details>
+    </li>
+  </ul>
   <ul>
     <li>
       <details

@@ -3,10 +3,10 @@ import Translate from "@docusaurus/Translate"
 
 import { CreateEdge } from "../../components/index"
 
-import type { JSONSchema } from "../../types"
+import type { JSONSchemaNS } from "../../types"
 
 type Props = {
-  schema: JSONSchema
+  schema: JSONSchemaNS.Object
   [x: string]: any
 }
 
@@ -25,22 +25,12 @@ function AdditionalPropertiesLabel(): JSX.Element {
   )
 }
 
+// Because of the previous check : "typeof schema.additionalProperties !== "boolean""
+// We don't have to care about that as it will be covered by QualifierMessages
 export default function CreateAdditionalProperties(props: Props): JSX.Element {
   const { schema } = props
 
-  // Because of the previous check : "typeof schema.additionalProperties !== "boolean""
-  // We don't have to care about that as it will be covered by QualifierMessages
-  /* istanbul ignore if  */
-  if (typeof schema === "boolean") {
-    return <></>
-  }
-
   let typedSchema = schema.additionalProperties!
-
-  // don't want to display something in boolean cases, at least from now ...
-  if (typeof typedSchema === "boolean") {
-    return <></>
-  }
 
   return (
     <CreateEdge

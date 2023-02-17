@@ -300,7 +300,39 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Array specified only
         >
           array
         </span>
-        <ul />
+        <ul>
+          <li>
+            <details
+              open={false}
+            >
+              <summary>
+                <code>
+                  items
+                </code>
+                 
+                <strong>
+                  none
+                </strong>
+              </summary>
+              <strong>
+                type
+              </strong>
+               : 
+              <strong>
+                none
+              </strong>
+              <div
+                style={
+                  {
+                    "marginTop": "var(--ifm-table-cell-padding)",
+                  }
+                }
+              >
+                Always invalid
+              </div>
+            </details>
+          </li>
+        </ul>
         <ul>
           <li>
             <details

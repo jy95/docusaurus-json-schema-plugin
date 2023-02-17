@@ -154,8 +154,8 @@ function CustomizeArray({
   if (Array.isArray(schema.prefixItems)) {
     // Prefix items are the first entries in the array
     elements.push(
-      ...schema.prefixItems.map((subSchema) => (
-        <GenerateFriendlyName schema={subSchema} />
+      ...schema.prefixItems.map((subSchema, idx) => (
+        <GenerateFriendlyName schema={subSchema} key={`prefixItems_${idx}`} />
       ))
     )
   }
@@ -167,7 +167,9 @@ function CustomizeArray({
 
     // add items to entries
     elements.push(
-      ...items.map((subSchema) => <GenerateFriendlyName schema={subSchema} />)
+      ...items.map((subSchema, idx) => (
+        <GenerateFriendlyName schema={subSchema} key={`items_${idx}`} />
+      ))
     )
   }
 
@@ -175,14 +177,19 @@ function CustomizeArray({
   if (schema.contains !== undefined) {
     // add contains to entries
     elements.push(
-      ...[<>{"..."}</>, <GenerateFriendlyName schema={schema.contains} />]
+      ...[
+        <React.Fragment key={"before_contains"}>{"..."}</React.Fragment>,
+        <GenerateFriendlyName schema={schema.contains} key={"contains"} />,
+      ]
     )
   }
 
   // 4) Is it a open tuple ?
   if (!(schema.items === false || schema.additionalItems === false)) {
     // notify the user
-    elements.push(...[<>{"..."}</>])
+    elements.push(
+      ...[<React.Fragment key={"open_tuple"}>{"..."}</React.Fragment>]
+    )
   }
 
   // result time
