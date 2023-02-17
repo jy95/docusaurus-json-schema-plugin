@@ -536,7 +536,12 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Multiple types 1`] =
               "marginTop": "var(--ifm-table-cell-padding)",
             }
           }
-        />
+        >
+          <div>
+            ❓ 
+            Nullable
+          </div>
+        </div>
       </details>
     </li>
   </ul>
