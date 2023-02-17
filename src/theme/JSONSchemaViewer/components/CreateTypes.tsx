@@ -3,7 +3,11 @@ import React from "react"
 import TabItem from "@theme-original/TabItem"
 import Tabs from "@theme-original/Tabs"
 
-import { TypeLabelSwitch, RenderProvidedType } from "./index"
+import {
+  TypeLabelSwitch,
+  RenderProvidedType,
+  CreateValidOrInvalid,
+} from "./index"
 
 import {
   isArrayType,
@@ -13,6 +17,7 @@ import {
   isInteger,
   isObjectType,
   isStringType,
+  isSchemaComposition,
 } from "../utils/index"
 
 import type { JSONSchema, TypeValues } from "../types"
@@ -185,6 +190,13 @@ export default function CreateTypes(props: Props): JSX.Element {
   }
 
   // If at the end, we cannot find a type, it likely means user put something like :
-  // { "allOf": ... } or { "if": ... } (that will be covered by <CreateNodes /> SchemaComposition / SchemaConditional calls)
+  // { "allOf": ... } or { "if": ... }
+
+  // If we don't encounter the SchemaComposition (allOf, ...) case, let's assume it is any
+  if (!isSchemaComposition(schema)) {
+    return <CreateValidOrInvalid schema={schema} />
+  }
+
+  // Otherwise, we have a SchemaComposition, which will be handled by CreateNodes
   return <></>
 }

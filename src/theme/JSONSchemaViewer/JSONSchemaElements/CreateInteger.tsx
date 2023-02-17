@@ -11,14 +11,13 @@ import type { JSONSchema } from "../types"
 type Props = {
   [x: string]: any
   nullable?: boolean
+  description?: string
   schema: JSONSchema
 }
 
 export default function CreateInteger(props: Props): JSX.Element {
-  const { schema, nullable } = props
+  const { schema, nullable, description } = props
   const options = useJSVOptionsContext()
-  const description =
-    typeof schema !== "boolean" ? schema.description : undefined
 
   return (
     <>

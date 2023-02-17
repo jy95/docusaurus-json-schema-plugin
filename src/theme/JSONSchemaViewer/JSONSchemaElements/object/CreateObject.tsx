@@ -15,11 +15,12 @@ import type { JSONSchema } from "../../types"
 type Props = {
   schema: JSONSchema
   nullable?: boolean
+  description?: string
   [x: string]: any
 }
 
 export default function CreateObject(props: Props): JSX.Element {
-  const { schema, nullable } = props
+  const { schema, nullable, description } = props
   const options = useJSVOptionsContext()
 
   if (typeof schema === "boolean") {
@@ -56,9 +57,9 @@ export default function CreateObject(props: Props): JSX.Element {
           nullable={nullable}
         />
       </div>
-      {schema.description !== undefined && (
+      {description !== undefined && (
         <div style={{ marginTop: "var(--ifm-table-cell-padding)" }}>
-          {schema.description}
+          {description}
         </div>
       )}
     </>

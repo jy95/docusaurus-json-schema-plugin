@@ -11,13 +11,12 @@ import type { JSONSchema } from "../types"
 type Props = {
   [x: string]: any
   schema: JSONSchema
+  description?: string
 }
 
 export default function CreateNull(props: Props): JSX.Element {
-  const { schema } = props
+  const { schema, description } = props
   const options = useJSVOptionsContext()
-  const description =
-    typeof schema !== "boolean" ? schema.description : undefined
 
   return (
     <>

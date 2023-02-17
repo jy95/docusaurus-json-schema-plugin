@@ -11,15 +11,14 @@ import type { JSONSchema } from "../types"
 type Props = {
   [x: string]: any
   nullable?: boolean
+  description?: string
   schema: JSONSchema
 }
 
 export default function CreateString(props: Props): JSX.Element {
-  const { schema, nullable } = props
+  const { schema, nullable, description } = props
   const options = useJSVOptionsContext()
   const format = typeof schema !== "boolean" ? schema.format : undefined
-  const description =
-    typeof schema !== "boolean" ? schema.description : undefined
 
   return (
     <>

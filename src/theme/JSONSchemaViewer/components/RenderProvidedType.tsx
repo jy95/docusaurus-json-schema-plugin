@@ -26,22 +26,61 @@ export default function RenderProvidedType({
   type,
   nullable,
 }: RenderProvidedTypeProps): JSX.Element {
+  const description =
+    typeof schema !== "boolean" ? schema.description : undefined
+
   switch (type) {
     case "array":
-      return <CreateArray schema={schema} nullable={nullable} />
+      return (
+        <CreateArray
+          schema={schema}
+          nullable={nullable}
+          description={description}
+        />
+      )
     case "object":
-      return <CreateObject schema={schema} nullable={nullable} />
+      return (
+        <CreateObject
+          schema={schema}
+          nullable={nullable}
+          description={description}
+        />
+      )
     case "string":
-      return <CreateString schema={schema} nullable={nullable} />
+      return (
+        <CreateString
+          schema={schema}
+          nullable={nullable}
+          description={description}
+        />
+      )
     case "boolean":
-      return <CreateBoolean schema={schema} nullable={nullable} />
+      return (
+        <CreateBoolean
+          schema={schema}
+          nullable={nullable}
+          description={description}
+        />
+      )
     case "number":
-      return <CreateNumber schema={schema} nullable={nullable} />
+      return (
+        <CreateNumber
+          schema={schema}
+          nullable={nullable}
+          description={description}
+        />
+      )
     case "integer":
-      return <CreateInteger schema={schema} nullable={nullable} />
+      return (
+        <CreateInteger
+          schema={schema}
+          nullable={nullable}
+          description={description}
+        />
+      )
     case "null":
-      return <CreateNull schema={schema} />
+      return <CreateNull schema={schema} description={description} />
     default:
-      return <CreateValidOrInvalid schema={schema} />
+      return <CreateValidOrInvalid schema={schema} description={description} />
   }
 }

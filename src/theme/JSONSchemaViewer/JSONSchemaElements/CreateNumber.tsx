@@ -11,14 +11,13 @@ import type { JSONSchema } from "../types"
 type Props = {
   [x: string]: any
   nullable?: boolean
+  description?: string
   schema: JSONSchema
 }
 
 export default function CreateNumber(props: Props): JSX.Element {
-  const { schema } = props
+  const { schema, description, nullable } = props
   const options = useJSVOptionsContext()
-  const description =
-    typeof schema !== "boolean" ? schema.description : undefined
 
   return (
     <>
@@ -26,7 +25,11 @@ export default function CreateNumber(props: Props): JSX.Element {
       &nbsp;&#58;&nbsp;
       <NumberLabel />
       <div style={{ marginTop: "var(--ifm-table-cell-padding)" }}>
-        <QualifierMessages schema={schema} options={options} />
+        <QualifierMessages
+          schema={schema}
+          options={options}
+          nullable={nullable}
+        />
       </div>
       {description !== undefined && (
         <div style={{ marginTop: "var(--ifm-table-cell-padding)" }}>

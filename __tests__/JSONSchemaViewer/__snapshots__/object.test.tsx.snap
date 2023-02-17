@@ -981,6 +981,22 @@ exports[`JSONSchemaViewer - object test propertyNames 1`] = `
             unknown
           </span>
         </summary>
+        <strong>
+          type
+        </strong>
+         : 
+        <strong>
+          any
+        </strong>
+        <div
+          style={
+            {
+              "marginTop": "var(--ifm-table-cell-padding)",
+            }
+          }
+        >
+          Always valid
+        </div>
       </details>
     </li>
   </ul>

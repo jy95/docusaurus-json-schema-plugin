@@ -9,6 +9,22 @@ exports[`JSONSchemaViewer - Generic keywords test annotations 1`] = `
       Match anything
     </strong>
   </summary>
+  <strong>
+    type
+  </strong>
+   : 
+  <strong>
+    any
+  </strong>
+  <div
+    style={
+      {
+        "marginTop": "var(--ifm-table-cell-padding)",
+      }
+    }
+  >
+    Always valid
+  </div>
 </details>
 `;
 

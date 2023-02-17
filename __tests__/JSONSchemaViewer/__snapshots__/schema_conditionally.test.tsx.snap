@@ -164,6 +164,22 @@ exports[`JSONSchemaViewer - schema conditionally test If Then Else (multiple) 1`
           <div
             role="tabpanel"
           >
+            <strong>
+              type
+            </strong>
+             : 
+            <strong>
+              any
+            </strong>
+            <div
+              style={
+                {
+                  "marginTop": "var(--ifm-table-cell-padding)",
+                }
+              }
+            >
+              Always valid
+            </div>
             <details
               open={true}
             >
@@ -364,6 +380,22 @@ exports[`JSONSchemaViewer - schema conditionally test If Then Else (multiple) 1`
           <div
             role="tabpanel"
           >
+            <strong>
+              type
+            </strong>
+             : 
+            <strong>
+              any
+            </strong>
+            <div
+              style={
+                {
+                  "marginTop": "var(--ifm-table-cell-padding)",
+                }
+              }
+            >
+              Always valid
+            </div>
             <details
               open={true}
             >
@@ -568,6 +600,22 @@ exports[`JSONSchemaViewer - schema conditionally test If Then Else (multiple) 1`
           <div
             role="tabpanel"
           >
+            <strong>
+              type
+            </strong>
+             : 
+            <strong>
+              any
+            </strong>
+            <div
+              style={
+                {
+                  "marginTop": "var(--ifm-table-cell-padding)",
+                }
+              }
+            >
+              Always valid
+            </div>
             <details
               open={true}
             >

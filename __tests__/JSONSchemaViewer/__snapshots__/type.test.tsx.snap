@@ -9,6 +9,22 @@ exports[`JSONSchemaViewer - type test Multiple types 1`] = `
       Schema
     </strong>
   </summary>
+  <strong>
+    type
+  </strong>
+   : 
+  <strong>
+    any
+  </strong>
+  <div
+    style={
+      {
+        "marginTop": "var(--ifm-table-cell-padding)",
+      }
+    }
+  >
+    Always valid
+  </div>
 </details>
 `;
 
@@ -21,6 +37,22 @@ exports[`JSONSchemaViewer - type test Unspecified multiple types 1`] = `
       Schema
     </strong>
   </summary>
+  <strong>
+    type
+  </strong>
+   : 
+  <strong>
+    any
+  </strong>
+  <div
+    style={
+      {
+        "marginTop": "var(--ifm-table-cell-padding)",
+      }
+    }
+  >
+    Always valid
+  </div>
 </details>
 `;
 
@@ -33,6 +65,22 @@ exports[`JSONSchemaViewer - type test Unspecified type (boolean) 1`] = `
       Schema
     </strong>
   </summary>
+  <strong>
+    type
+  </strong>
+   : 
+  <strong>
+    any
+  </strong>
+  <div
+    style={
+      {
+        "marginTop": "var(--ifm-table-cell-padding)",
+      }
+    }
+  >
+    Always valid
+  </div>
 </details>
 `;
 
@@ -45,6 +93,22 @@ exports[`JSONSchemaViewer - type test Unspecified type (numeric) 1`] = `
       Schema
     </strong>
   </summary>
+  <strong>
+    type
+  </strong>
+   : 
+  <strong>
+    any
+  </strong>
+  <div
+    style={
+      {
+        "marginTop": "var(--ifm-table-cell-padding)",
+      }
+    }
+  >
+    Always valid
+  </div>
 </details>
 `;
 
@@ -57,5 +121,21 @@ exports[`JSONSchemaViewer - type test single type 1`] = `
       Schema
     </strong>
   </summary>
+  <strong>
+    type
+  </strong>
+   : 
+  <strong>
+    any
+  </strong>
+  <div
+    style={
+      {
+        "marginTop": "var(--ifm-table-cell-padding)",
+      }
+    }
+  >
+    Always valid
+  </div>
 </details>
 `;
