@@ -4,7 +4,6 @@ import type { JSONSchema, JSONSchemaNS, TypeValues } from "../types"
 export const isObjectType = (schema: JSONSchema) =>
   typeof schema !== "boolean" &&
   (schema.type === "object" ||
-    (Array.isArray(schema.type) && schema.type.some((s) => s === "object")) ||
     schema.properties !== undefined ||
     schema.additionalProperties !== undefined ||
     schema.patternProperties !== undefined ||
@@ -16,7 +15,6 @@ export const isObjectType = (schema: JSONSchema) =>
 export const isArrayType = (schema: JSONSchema) =>
   typeof schema !== "boolean" &&
   (schema.type === "array" ||
-    (Array.isArray(schema.type) && schema.type.some((s) => s === "array")) ||
     schema.items !== undefined ||
     schema.minItems !== undefined ||
     schema.maxItems !== undefined ||
@@ -31,7 +29,6 @@ export const isArrayType = (schema: JSONSchema) =>
 export const isStringType = (schema: JSONSchema) =>
   typeof schema !== "boolean" &&
   (schema.type === "string" ||
-    (Array.isArray(schema.type) && schema.type.some((s) => s === "string")) ||
     schema.minLength !== undefined ||
     schema.maxLength !== undefined ||
     schema.pattern !== undefined ||
@@ -41,7 +38,6 @@ export const isStringType = (schema: JSONSchema) =>
 export const isNumeric = (schema: JSONSchema) =>
   typeof schema !== "boolean" &&
   (schema.type === "number" ||
-    (Array.isArray(schema.type) && schema.type.some((s) => s === "number")) ||
     schema.multipleOf !== undefined ||
     schema.minimum !== undefined ||
     schema.exclusiveMinimum !== undefined ||
@@ -54,7 +50,6 @@ export const isNumeric = (schema: JSONSchema) =>
 export const isInteger = (schema: JSONSchema) =>
   typeof schema !== "boolean" &&
   (schema.type === "integer" ||
-    (Array.isArray(schema.type) && schema.type.some((s) => s === "integer")) ||
     schema.multipleOf === 1 ||
     schema.enum?.some((val) => typeof val === "bigint") ||
     typeof schema.const === "bigint")
@@ -76,14 +71,12 @@ export const isSchemaConditional = (schema: JSONSchema) =>
 export const isBoolean = (schema: JSONSchema) =>
   typeof schema !== "boolean" &&
   (schema.type === "boolean" ||
-    (Array.isArray(schema.type) && schema.type.some((s) => s === "boolean")) ||
     schema.enum?.some((val) => typeof val === "boolean") ||
     typeof schema?.const === "boolean")
 
 export const isNull = (schema: JSONSchema) =>
   typeof schema !== "boolean" &&
   (schema?.type === "null" ||
-    (Array.isArray(schema.type) && schema.type.some((s) => s === "null")) ||
     schema.enum?.some((val) => val === null) ||
     schema.const === null)
 

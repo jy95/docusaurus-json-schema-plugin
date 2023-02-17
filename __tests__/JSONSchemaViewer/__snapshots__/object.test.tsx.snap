@@ -1452,5 +1452,14 @@ exports[`JSONSchemaViewer - object test simple 1`] = `
       }
     }
   />
+  <div
+    style={
+      {
+        "marginTop": "var(--ifm-table-cell-padding)",
+      }
+    }
+  >
+    A simple object
+  </div>
 </details>
 `;

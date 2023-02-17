@@ -18,6 +18,7 @@ const testcases: [string, JSONSchema][] = [
     "simple",
     {
       type: "object",
+      description: "A simple object",
     },
   ],
   [
