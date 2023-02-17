@@ -127,11 +127,13 @@ export default function CreateTypes(props: Props): JSX.Element {
   // Either a single type that could be null
   const hasNull = declaredTypes.includes("null")
   if (declaredTypes.length === 1 || (hasNull && declaredTypes.length === 2)) {
-    // Find not null type (either first entry or second, depending again of user definition)
-    const notNullType = declaredTypes.find((s) => s !== "null")
+    // Either we got the not null type (likely what the final user wants to express)
+    // Either we consider first entry as fallback if it was a standalone "null"
+    const firstType =
+      declaredTypes.find((s) => s !== "null") || declaredTypes[0]
 
     return (
-      <RenderSingleType schema={schema} type={notNullType} nullable={hasNull} />
+      <RenderSingleType schema={schema} type={firstType} nullable={hasNull} />
     )
   }
 
@@ -158,13 +160,15 @@ export default function CreateTypes(props: Props): JSX.Element {
     matchingTypes.length === 1 ||
     (nullDetected && declaredTypes.length === 2)
   ) {
-    // Find not null type (either first entry or second, depending of my algorithm order)
-    const notNullType = matchingTypes.find((s) => s !== "null")
+    // Either we got the not null type (likely what the final user wants to express)
+    // Either we consider first entry as fallback if it was a standalone "null"
+    const firstType =
+      matchingTypes.find((s) => s !== "null") || matchingTypes[0]
 
     return (
       <RenderSingleType
         schema={schema}
-        type={notNullType}
+        type={firstType}
         nullable={nullDetected}
       />
     )
