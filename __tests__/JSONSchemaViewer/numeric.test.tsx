@@ -18,6 +18,7 @@ const testcases: [string, JSONSchema][] = [
     "integer",
     {
       type: "integer",
+      description: "A simple integer",
     },
   ],
   [

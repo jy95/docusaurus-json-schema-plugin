@@ -21,9 +21,16 @@ const testcases: [string, JSONSchema][] = [
     },
   ],
   [
-    "Multiple types",
+    "2 types",
     {
       type: ["number", "string"],
+    },
+  ],
+  [
+    "4 types",
+    {
+      type: ["null", "string", "integer", "boolean"],
+      description: "null | string | integer | boolean",
     },
   ],
   ["Unspecified type (boolean)", true],

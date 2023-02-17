@@ -16,6 +16,7 @@ import type { ReactTestRenderer } from "react-test-renderer"
 const testcases: JSONSchema[] = [
   {
     type: "null",
+    description: "A simple null example",
   },
   {
     enum: [null, "Some constant here ..."],

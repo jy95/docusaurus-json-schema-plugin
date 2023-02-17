@@ -90,6 +90,7 @@ function* foundUndeclaredTypes(
     yield "boolean"
   }
 
+  /* istanbul ignore if  */
   if (isInteger(schema)) {
     yield "integer"
   }
@@ -163,7 +164,10 @@ export default function CreateTypes(props: Props): JSX.Element {
     // Either we got the not null type (likely what the final user wants to express)
     // Either we consider first entry as fallback if it was a standalone "null"
     const firstType =
-      matchingTypes.find((s) => s !== "null") || matchingTypes[0]
+      matchingTypes.find(
+        (s) => s !== "null"
+      ) || /* istanbul ignore next: technically impossible but better safe than sorry */
+      matchingTypes[0]
 
     return (
       <RenderSingleType

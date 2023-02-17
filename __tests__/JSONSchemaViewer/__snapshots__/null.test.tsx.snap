@@ -29,6 +29,15 @@ exports[`JSONSchemaViewer - null type test 0 1`] = `
       }
     }
   />
+  <div
+    style={
+      {
+        "marginTop": "var(--ifm-table-cell-padding)",
+      }
+    }
+  >
+    A simple null example
+  </div>
 </details>
 `;
 

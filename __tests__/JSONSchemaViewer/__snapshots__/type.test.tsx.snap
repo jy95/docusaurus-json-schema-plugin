@@ -1,6 +1,34 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`JSONSchemaViewer - type test Multiple types 1`] = `
+exports[`JSONSchemaViewer - type test 2 types 1`] = `
+<details
+  open={true}
+>
+  <summary>
+    <strong>
+      Schema
+    </strong>
+  </summary>
+  <strong>
+    type
+  </strong>
+   : 
+  <strong>
+    any
+  </strong>
+  <div
+    style={
+      {
+        "marginTop": "var(--ifm-table-cell-padding)",
+      }
+    }
+  >
+    Always valid
+  </div>
+</details>
+`;
+
+exports[`JSONSchemaViewer - type test 4 types 1`] = `
 <details
   open={true}
 >

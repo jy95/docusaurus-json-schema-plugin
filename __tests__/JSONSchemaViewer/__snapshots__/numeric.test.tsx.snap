@@ -29,6 +29,15 @@ exports[`JSONSchemaViewer - numeric test integer 1`] = `
       }
     }
   />
+  <div
+    style={
+      {
+        "marginTop": "var(--ifm-table-cell-padding)",
+      }
+    }
+  >
+    A simple integer
+  </div>
 </details>
 `;
 
