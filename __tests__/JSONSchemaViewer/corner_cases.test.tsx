@@ -20,8 +20,6 @@ import { CreateNodes } from "../../src/theme/JSONSchemaViewer/components/index"
 import {
   CreateArray,
   CreateObject,
-  SchemaComposition,
-  SchemaConditional,
 } from "../../src/theme/JSONSchemaViewer/JSONSchemaElements/index"
 
 // Annoying test cases, just for coverage stories ...
@@ -32,8 +30,6 @@ const testcases: [
 ][] = [
   ["CreateNodes - boolean schema (false)", CreateNodes, false],
   ["CreateNodes - boolean schema (true)", CreateNodes, true],
-  ["SchemaComposition - boolean schema", SchemaComposition, false],
-  ["SchemaConditional - boolean schema", SchemaConditional, false],
   [
     "CreateArray - sub properties as boolean schema",
     CreateArray,

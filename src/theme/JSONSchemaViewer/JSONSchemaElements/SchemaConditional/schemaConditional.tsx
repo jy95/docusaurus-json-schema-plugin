@@ -14,17 +14,13 @@ import { Collapsible } from "../../components/index"
 import type { JSONSchema, JSONSchemaNS } from "../../types"
 
 type Props = {
-  schema: JSONSchema
+  schema: Exclude<JSONSchema, true | false>
   [x: string]: any
 }
 
 // To handle Schema Conditional (if-then-else , dependentRequired , dependentSchemas , dependencies )
 function SchemaConditional(props: Props): JSX.Element {
   const { schema } = props
-
-  if (typeof schema === "boolean") {
-    return <></>
-  }
 
   // Checks
   const isIfThenElse = schema.if !== undefined
