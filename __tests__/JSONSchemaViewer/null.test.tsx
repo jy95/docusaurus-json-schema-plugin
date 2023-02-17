@@ -17,6 +17,9 @@ const testcases: JSONSchema[] = [
   {
     type: "null",
   },
+  {
+    enum: [null, "Some constant here ..."],
+  },
 ]
 
 describe("JSONSchemaViewer - null type", () => {

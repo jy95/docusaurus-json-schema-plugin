@@ -33,6 +33,14 @@ const testcases: [string, JSONSchema][] = [
       multipleOf: 10,
     },
   ],
+  [
+    "Unspecified multiple types",
+    {
+      minLength: 5,
+      minimum: 42,
+      maxLength: 3,
+    },
+  ],
 ]
 
 describe("JSONSchemaViewer - type", () => {

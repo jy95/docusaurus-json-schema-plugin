@@ -12,6 +12,18 @@ exports[`JSONSchemaViewer - type test Multiple types 1`] = `
 </details>
 `;
 
+exports[`JSONSchemaViewer - type test Unspecified multiple types 1`] = `
+<details
+  open={true}
+>
+  <summary>
+    <strong>
+      Schema
+    </strong>
+  </summary>
+</details>
+`;
+
 exports[`JSONSchemaViewer - type test Unspecified type (boolean) 1`] = `
 <details
   open={true}
