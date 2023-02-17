@@ -1,4 +1,4 @@
-import type { JSONSchema, JSONSchemaNS } from "../types"
+import type { JSONSchema, JSONSchemaNS, TypeValues } from "../types"
 
 // Utility functions to know which case we have
 export const isObjectType = (schema: JSONSchema) =>
@@ -86,3 +86,62 @@ export const isNull = (schema: JSONSchema) =>
     (Array.isArray(schema.type) && schema.type.some((s) => s === "null")) ||
     schema.enum?.some((val) => val === null) ||
     schema.const === null)
+
+// Detect types in schema
+// Zero, One or multiple types can match
+function* foundUndeclaredTypes(
+  schema: Exclude<JSONSchema, true | false>
+): Generator<TypeValues, void> {
+  if (isNull(schema)) {
+    yield "null"
+  }
+
+  if (isObjectType(schema)) {
+    yield "object"
+  }
+
+  if (isArrayType(schema)) {
+    yield "array"
+  }
+
+  if (isStringType(schema)) {
+    yield "string"
+  }
+
+  if (isBoolean(schema)) {
+    yield "boolean"
+  }
+
+  /* istanbul ignore if  */
+  if (isInteger(schema)) {
+    yield "integer"
+  }
+
+  if (!isInteger(schema) && isNumeric(schema)) {
+    yield "number"
+  }
+
+  // Job finished
+  return undefined
+}
+
+// Return types provided by user or detected by this library
+export function detectedTypes(
+  schema: Exclude<JSONSchema, true | false>
+): TypeValues[] {
+  // Find declarated type(s) provided by user
+  const declaredTypes: TypeValues[] = Array.isArray(schema.type)
+    ? schema.type
+    : schema.type !== undefined
+    ? [schema.type]
+    : []
+
+  // If not empty, return it as it
+  if (declaredTypes.length !== 0) {
+    return declaredTypes
+  }
+
+  // Find undeclared type(s)
+  // If array is empty, it could mean that it is either "any" or "nothing"
+  return [...foundUndeclaredTypes(schema)]
+}

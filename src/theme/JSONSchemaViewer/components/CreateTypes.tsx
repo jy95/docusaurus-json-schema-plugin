@@ -9,16 +9,7 @@ import {
   CreateValidOrInvalid,
 } from "./index"
 
-import {
-  isArrayType,
-  isBoolean,
-  isNull,
-  isNumeric,
-  isInteger,
-  isObjectType,
-  isStringType,
-  isSchemaComposition,
-} from "../utils/index"
+import { isSchemaComposition, detectedTypes } from "../utils/index"
 
 import type { JSONSchema, TypeValues } from "../types"
 
@@ -65,44 +56,6 @@ function RenderMultipleTypes(props: MultipleTypesProps): JSX.Element {
   )
 }
 
-// Detect types in schema
-// Zero, One or multiple types can match
-function* foundUndeclaredTypes(
-  schema: Exclude<JSONSchema, true | false>
-): Generator<TypeValues, void> {
-  if (isNull(schema)) {
-    yield "null"
-  }
-
-  if (isObjectType(schema)) {
-    yield "object"
-  }
-
-  if (isArrayType(schema)) {
-    yield "array"
-  }
-
-  if (isStringType(schema)) {
-    yield "string"
-  }
-
-  if (isBoolean(schema)) {
-    yield "boolean"
-  }
-
-  /* istanbul ignore if  */
-  if (isInteger(schema)) {
-    yield "integer"
-  }
-
-  if (!isInteger(schema) && isNumeric(schema)) {
-    yield "number"
-  }
-
-  // Job finished
-  return undefined
-}
-
 type Props = {
   [x: string]: any
   schema: Exclude<JSONSchema, true | false>
@@ -112,26 +65,21 @@ type Props = {
 export default function CreateTypes(props: Props): JSX.Element {
   const { schema } = props
 
-  // Find declarated type(s) provided by user
-  const declaredTypes: TypeValues[] = Array.isArray(schema.type)
-    ? schema.type
-    : schema.type !== undefined
-    ? [schema.type]
-    : []
-
   // Several possibilities
   // 1. User only used a single type (most common case)
   // 2. User used multiple types (e.g. ["string", "null"] or ["string", "number"])
   // 3. User didn't use any type and so we must "guess" what (s)he have in mind
 
+  // Let's our function do the magic to find which types are declared or detected
+  const foundTypes = detectedTypes(schema)
+
   // Let's cover simple cases first
   // Either a single type that could be null
-  const hasNull = declaredTypes.includes("null")
-  if (declaredTypes.length === 1 || (hasNull && declaredTypes.length === 2)) {
+  const hasNull = foundTypes.includes("null")
+  if (foundTypes.length === 1 || (hasNull && foundTypes.length === 2)) {
     // Either we got the not null type (likely what the final user wants to express)
     // Either we consider first entry as fallback if it was a standalone "null"
-    const firstType =
-      declaredTypes.find((s) => s !== "null") || declaredTypes[0]
+    const firstType = foundTypes.find((s) => s !== "null") || foundTypes[0]
 
     return (
       <RenderSingleType schema={schema} type={firstType} nullable={hasNull} />
@@ -139,9 +87,9 @@ export default function CreateTypes(props: Props): JSX.Element {
   }
 
   // Second, we have multiple type provided by user
-  if (declaredTypes.length > 1) {
+  if (foundTypes.length > 1) {
     // remove null from resultset & prepare values & labels
-    const values = declaredTypes
+    const values = foundTypes
       .filter((s) => s !== "null")
       .map((type) => ({
         value: type,
@@ -150,50 +98,6 @@ export default function CreateTypes(props: Props): JSX.Element {
 
     return (
       <RenderMultipleTypes schema={schema} types={values} nullable={hasNull} />
-    )
-  }
-
-  // Third, user didn't make my life easier, so it guess time
-  let matchingTypes = [...foundUndeclaredTypes(schema)]
-  const nullDetected = matchingTypes.includes("null")
-
-  if (
-    matchingTypes.length === 1 ||
-    (nullDetected && declaredTypes.length === 2)
-  ) {
-    // Either we got the not null type (likely what the final user wants to express)
-    // Either we consider first entry as fallback if it was a standalone "null"
-    const firstType =
-      matchingTypes.find(
-        (s) => s !== "null"
-      ) /* istanbul ignore next: technically impossible but better safe than sorry */ ||
-      matchingTypes[0]
-
-    return (
-      <RenderSingleType
-        schema={schema}
-        type={firstType}
-        nullable={nullDetected}
-      />
-    )
-  }
-
-  // Four, we have multiple type possible
-  if (matchingTypes.length > 1) {
-    // remove null from resultset & prepare values & labels
-    const values = matchingTypes
-      .filter((s) => s !== "null")
-      .map((type) => ({
-        value: type,
-        label: <TypeLabelSwitch type={type} />,
-      }))
-
-    return (
-      <RenderMultipleTypes
-        schema={schema}
-        types={values}
-        nullable={nullDetected}
-      />
     )
   }
 

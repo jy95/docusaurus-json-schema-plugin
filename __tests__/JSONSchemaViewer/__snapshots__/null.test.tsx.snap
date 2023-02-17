@@ -50,74 +50,38 @@ exports[`JSONSchemaViewer - null type test 1 1`] = `
       Schema
     </strong>
   </summary>
-  <div
-    className="tabs-container"
+  <strong>
+    type
+  </strong>
+   : 
+  <span
+    style={
+      {
+        "opacity": "0.6",
+      }
+    }
   >
-    <ul
-      aria-orientation="horizontal"
-      className="tabs"
-      role="tablist"
-    >
-      <li
-        aria-selected={true}
-        onClick={[Function]}
-        tabIndex={0}
-      >
-        <span
-          style={
-            {
-              "opacity": "0.6",
-            }
-          }
-        >
-          string
-        </span>
-      </li>
-    </ul>
+    string
+  </span>
+  <div
+    style={
+      {
+        "marginTop": "var(--ifm-table-cell-padding)",
+      }
+    }
+  >
     <div>
-      <div
-        hidden={false}
-        role="tabpanel"
-      >
-        <div
-          role="tabpanel"
-        >
-          <strong>
-            type
-          </strong>
-           : 
-          <span
-            style={
-              {
-                "opacity": "0.6",
-              }
-            }
-          >
-            string
-          </span>
-          <div
-            style={
-              {
-                "marginTop": "var(--ifm-table-cell-padding)",
-              }
-            }
-          >
-            <div>
-              ❓ 
-              Nullable
-            </div>
-            <div>
-              <strong>
-                Possible values :
-              </strong>
-               
-              <code>
-                [null,"Some constant here ..."]
-              </code>
-            </div>
-          </div>
-        </div>
-      </div>
+      ❓ 
+      Nullable
+    </div>
+    <div>
+      <strong>
+        Possible values :
+      </strong>
+       
+      <code>
+        [null,"Some constant here ..."]
+      </code>
     </div>
   </div>
 </details>
