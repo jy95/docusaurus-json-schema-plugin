@@ -125,7 +125,7 @@ function* foundUndeclaredTypes(
   return undefined
 }
 
-// Return types provided by user or detected by this library
+// Return unique types provided by user or detected by this library
 export function detectedTypes(
   schema: Exclude<JSONSchema, true | false>
 ): TypeValues[] {
@@ -138,7 +138,7 @@ export function detectedTypes(
 
   // If not empty, return it as it
   if (declaredTypes.length !== 0) {
-    return declaredTypes
+    return [...new Set(declaredTypes)]
   }
 
   // Find undeclared type(s)
