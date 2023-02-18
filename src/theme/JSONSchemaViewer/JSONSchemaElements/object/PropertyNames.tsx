@@ -2,21 +2,16 @@ import React from "react"
 
 import { CreateEdge } from "../../components/index"
 
-import type { JSONSchema } from "../../types"
+import type { JSONSchemaNS } from "../../types"
 
 type Props = {
-  schema: JSONSchema
+  schema: JSONSchemaNS.Object
   [x: string]: any
 }
 
 // Generate propertyNames
 function propertyNames(props: Props): JSX.Element {
   const { schema } = props
-
-  /* istanbul ignore if  */
-  if (typeof schema === "boolean") {
-    return <></>
-  }
 
   let propertyNames = schema.propertyNames!
 
