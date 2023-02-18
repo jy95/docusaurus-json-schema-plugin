@@ -15,9 +15,9 @@ import type { JSONSchema, TypeValues } from "../types"
 
 // Render a single type
 type SingleTypeProps = {
-  schema: JSONSchema
+  schema: Exclude<JSONSchema, true | false>
   nullable?: boolean
-  type?: TypeValues
+  type: TypeValues
 }
 
 function RenderSingleType(props: SingleTypeProps): JSX.Element {
@@ -28,7 +28,7 @@ function RenderSingleType(props: SingleTypeProps): JSX.Element {
 
 // Render multiple type
 type MultipleTypesProps = {
-  schema: JSONSchema
+  schema: Exclude<JSONSchema, true | false>
   nullable?: boolean
   types: {
     value: TypeValues

@@ -1,7 +1,5 @@
 import React from "react"
 
-import { CreateValidOrInvalid } from "./index"
-
 import {
   CreateObject,
   CreateArray,
@@ -16,8 +14,8 @@ import type { JSONSchema, JSONSchemaNS, TypeValues } from "../types"
 
 // Utily function to render a specific type
 type RenderProvidedTypeProps = {
-  schema: JSONSchema
-  type?: TypeValues
+  schema: Exclude<JSONSchema, true | false>
+  type: TypeValues
   nullable?: boolean
 }
 
@@ -26,10 +24,7 @@ export default function RenderProvidedType({
   type,
   nullable,
 }: RenderProvidedTypeProps): JSX.Element {
-  const description =
-    typeof schema !== "boolean" ? schema.description : undefined
-
-  const commonProps = { description, nullable }
+  const commonProps = { description: schema.description, nullable }
 
   switch (type) {
     case "array":
@@ -62,11 +57,9 @@ export default function RenderProvidedType({
           {...commonProps}
         />
       )
-    case "null":
+    default:
       return (
         <CreateNull schema={schema as JSONSchemaNS.Null} {...commonProps} />
       )
-    default:
-      return <CreateValidOrInvalid schema={schema} {...commonProps} />
   }
 }
