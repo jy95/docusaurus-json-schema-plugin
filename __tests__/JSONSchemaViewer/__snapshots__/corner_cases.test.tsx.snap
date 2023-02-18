@@ -22,7 +22,7 @@ exports[`JSONSchemaViewer - corner cases CreateArray - sub properties as boolean
       >
         <summary>
           <code>
-            items
+            items[0]
           </code>
            
           <strong>
@@ -81,39 +81,37 @@ exports[`JSONSchemaViewer - corner cases CreateArray - sub properties as boolean
       </details>
     </li>
   </ul>,
-  <ul>
-    <li>
-      <details
-        open={false}
-      >
-        <summary>
-          <code>
-            contains
-          </code>
-           
-          <strong>
-            none
-          </strong>
-        </summary>
-        <strong>
-          type
-        </strong>
-         : 
+  <li>
+    <details
+      open={false}
+    >
+      <summary>
+        <code>
+          items[..., x, ...]
+        </code>
+         
         <strong>
           none
         </strong>
-        <div
-          style={
-            {
-              "marginTop": "var(--ifm-table-cell-padding)",
-            }
+      </summary>
+      <strong>
+        type
+      </strong>
+       : 
+      <strong>
+        none
+      </strong>
+      <div
+        style={
+          {
+            "marginTop": "var(--ifm-table-cell-padding)",
           }
-        >
-          Always invalid
-        </div>
-      </details>
-    </li>
-  </ul>,
+        }
+      >
+        Always invalid
+      </div>
+    </details>
+  </li>,
   <div
     style={
       {

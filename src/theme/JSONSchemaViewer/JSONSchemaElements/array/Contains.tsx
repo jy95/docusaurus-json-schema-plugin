@@ -13,16 +13,20 @@ type Props = {
 function createContains(props: Props): JSX.Element {
   const { schema } = props
 
-  let item = schema.contains!
+  let item = schema.contains
+
+  if (item === undefined) {
+    return <></>
+  }
 
   const containsLabel = (
     <code>
       <Translate
         values={{
-          id: "json-schema.keywords.contains",
+          id: "json-schema.keywords.containsEntry",
         }}
       >
-        {"contains"}
+        {"items[..., x, ...]"}
       </Translate>
     </code>
   )

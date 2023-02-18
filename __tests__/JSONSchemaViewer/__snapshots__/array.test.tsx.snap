@@ -54,30 +54,15 @@ exports[`JSONSchemaViewer - Array type test 1 1`] = `
   >
     array
   </span>
-  <ul>
-    <li>
-      <details
-        open={false}
-      >
-        <summary>
-          <code>
-            contains
-          </code>
-           
-          <span
-            style={
-              {
-                "opacity": "0.6",
-              }
-            }
-          >
-            number
-          </span>
-        </summary>
-        <strong>
-          type
-        </strong>
-         : 
+  <li>
+    <details
+      open={false}
+    >
+      <summary>
+        <code>
+          items[..., x, ...]
+        </code>
+         
         <span
           style={
             {
@@ -87,16 +72,29 @@ exports[`JSONSchemaViewer - Array type test 1 1`] = `
         >
           number
         </span>
-        <div
-          style={
-            {
-              "marginTop": "var(--ifm-table-cell-padding)",
-            }
+      </summary>
+      <strong>
+        type
+      </strong>
+       : 
+      <span
+        style={
+          {
+            "opacity": "0.6",
           }
-        />
-      </details>
-    </li>
-  </ul>
+        }
+      >
+        number
+      </span>
+      <div
+        style={
+          {
+            "marginTop": "var(--ifm-table-cell-padding)",
+          }
+        }
+      />
+    </details>
+  </li>
   <div
     style={
       {
@@ -136,7 +134,7 @@ exports[`JSONSchemaViewer - Array type test 2 1`] = `
       >
         <summary>
           <code>
-            items
+            items[0]
           </code>
            
           <span
@@ -254,34 +252,15 @@ exports[`JSONSchemaViewer - Array type test 4 1`] = `
   >
     array
   </span>
-  <ul>
-    <li>
-      <details
-        open={false}
-      >
-        <summary>
-          <code>
-            contains
-          </code>
-           
-          <span
-            style={
-              {
-                "opacity": "0.6",
-              }
-            }
-          >
-            integer
-          </span>
-           
-          <strong>
-            required
-          </strong>
-        </summary>
-        <strong>
-          type
-        </strong>
-         : 
+  <li>
+    <details
+      open={false}
+    >
+      <summary>
+        <code>
+          items[..., x, ...]
+        </code>
+         
         <span
           style={
             {
@@ -291,16 +270,33 @@ exports[`JSONSchemaViewer - Array type test 4 1`] = `
         >
           integer
         </span>
-        <div
-          style={
-            {
-              "marginTop": "var(--ifm-table-cell-padding)",
-            }
+         
+        <strong>
+          required
+        </strong>
+      </summary>
+      <strong>
+        type
+      </strong>
+       : 
+      <span
+        style={
+          {
+            "opacity": "0.6",
           }
-        />
-      </details>
-    </li>
-  </ul>
+        }
+      >
+        integer
+      </span>
+      <div
+        style={
+          {
+            "marginTop": "var(--ifm-table-cell-padding)",
+          }
+        }
+      />
+    </details>
+  </li>
   <div
     style={
       {
@@ -351,39 +347,6 @@ exports[`JSONSchemaViewer - Array type test 5 1`] = `
   >
     array
   </span>
-  <ul>
-    <li>
-      <details
-        open={false}
-      >
-        <summary>
-          <code>
-            items
-          </code>
-           
-          <strong>
-            none
-          </strong>
-        </summary>
-        <strong>
-          type
-        </strong>
-         : 
-        <strong>
-          none
-        </strong>
-        <div
-          style={
-            {
-              "marginTop": "var(--ifm-table-cell-padding)",
-            }
-          }
-        >
-          Always invalid
-        </div>
-      </details>
-    </li>
-  </ul>
   <ul>
     <li>
       <details
@@ -602,6 +565,39 @@ exports[`JSONSchemaViewer - Array type test 5 1`] = `
           }
         >
           The city quadrant of the address
+        </div>
+      </details>
+    </li>
+  </ul>
+  <ul>
+    <li>
+      <details
+        open={false}
+      >
+        <summary>
+          <code>
+            items[4]
+          </code>
+           
+          <strong>
+            none
+          </strong>
+        </summary>
+        <strong>
+          type
+        </strong>
+         : 
+        <strong>
+          none
+        </strong>
+        <div
+          style={
+            {
+              "marginTop": "var(--ifm-table-cell-padding)",
+            }
+          }
+        >
+          Always invalid
         </div>
       </details>
     </li>
@@ -1129,7 +1125,7 @@ exports[`JSONSchemaViewer - Array type test 13 1`] = `
       >
         <summary>
           <code>
-            items
+            items[0]
           </code>
            
           <span
