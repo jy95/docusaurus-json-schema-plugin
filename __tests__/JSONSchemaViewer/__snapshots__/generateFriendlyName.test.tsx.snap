@@ -78,7 +78,7 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Array specified only
             >
               <summary>
                 <code>
-                  items
+                  items[0]
                 </code>
                  
                 <span
@@ -307,39 +307,6 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Array specified only
             >
               <summary>
                 <code>
-                  items
-                </code>
-                 
-                <strong>
-                  none
-                </strong>
-              </summary>
-              <strong>
-                type
-              </strong>
-               : 
-              <strong>
-                none
-              </strong>
-              <div
-                style={
-                  {
-                    "marginTop": "var(--ifm-table-cell-padding)",
-                  }
-                }
-              >
-                Always invalid
-              </div>
-            </details>
-          </li>
-        </ul>
-        <ul>
-          <li>
-            <details
-              open={false}
-            >
-              <summary>
-                <code>
                   items[0]
                 </code>
                  
@@ -414,6 +381,39 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Array specified only
                   }
                 }
               />
+            </details>
+          </li>
+        </ul>
+        <ul>
+          <li>
+            <details
+              open={false}
+            >
+              <summary>
+                <code>
+                  items[3]
+                </code>
+                 
+                <strong>
+                  none
+                </strong>
+              </summary>
+              <strong>
+                type
+              </strong>
+               : 
+              <strong>
+                none
+              </strong>
+              <div
+                style={
+                  {
+                    "marginTop": "var(--ifm-table-cell-padding)",
+                  }
+                }
+              >
+                Always invalid
+              </div>
             </details>
           </li>
         </ul>
@@ -556,30 +556,15 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Array specified with
             </details>
           </li>
         </ul>
-        <ul>
-          <li>
-            <details
-              open={false}
-            >
-              <summary>
-                <code>
-                  contains
-                </code>
-                 
-                <span
-                  style={
-                    {
-                      "opacity": "0.6",
-                    }
-                  }
-                >
-                  string
-                </span>
-              </summary>
-              <strong>
-                type
-              </strong>
-               : 
+        <li>
+          <details
+            open={false}
+          >
+            <summary>
+              <code>
+                items[..., x, ...]
+              </code>
+               
               <span
                 style={
                   {
@@ -589,16 +574,29 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Array specified with
               >
                 string
               </span>
-              <div
-                style={
-                  {
-                    "marginTop": "var(--ifm-table-cell-padding)",
-                  }
+            </summary>
+            <strong>
+              type
+            </strong>
+             : 
+            <span
+              style={
+                {
+                  "opacity": "0.6",
                 }
-              />
-            </details>
-          </li>
-        </ul>
+              }
+            >
+              string
+            </span>
+            <div
+              style={
+                {
+                  "marginTop": "var(--ifm-table-cell-padding)",
+                }
+              }
+            />
+          </details>
+        </li>
         <div
           style={
             {

@@ -29,13 +29,19 @@ function PrefixItemsLabel({ count }: { count: number }): JSX.Element {
 export default function CreatePrefixItems(props: Props): JSX.Element {
   const { schema } = props
 
-  let items = schema.prefixItems!
+  let items = schema.prefixItems
+
+  // If undefined, print nothing
+  if (items === undefined) {
+    return <></>
+  }
+
   let minimal = Array.isArray(items) ? items.length : 1
   let array = (Array.isArray(items) ? items : [items]) as JSONSchema[]
 
   // prefixItems is an array in any case
   return (
-    <>
+    <ul>
       {array.map((val, idx) => {
         return (
           <CreateEdge
@@ -48,6 +54,6 @@ export default function CreatePrefixItems(props: Props): JSX.Element {
           />
         )
       })}
-    </>
+    </ul>
   )
 }

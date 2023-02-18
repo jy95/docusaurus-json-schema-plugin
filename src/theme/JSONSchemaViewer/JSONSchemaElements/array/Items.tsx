@@ -10,21 +10,6 @@ type Props = {
   schema: JSONSchemaNS.Array
 }
 
-// Translated labels
-function SingleItemLabel(): JSX.Element {
-  return (
-    <code>
-      <Translate
-        values={{
-          id: "json-schema.keywords.items",
-        }}
-      >
-        {"items"}
-      </Translate>
-    </code>
-  )
-}
-
 function MultipleItemsLabel({ count }: { count: number }): JSX.Element {
   return (
     <code>
@@ -43,36 +28,32 @@ function MultipleItemsLabel({ count }: { count: number }): JSX.Element {
 export default function CreateItems(props: Props): JSX.Element {
   const { schema } = props
 
-  let items = schema.items!
+  let items = schema.items
 
-  if (Array.isArray(items)) {
-    let minimal = items.length
-    return (
-      <>
-        {items.map((val, idx) => {
-          return (
-            <CreateEdge
-              key={`array_items_${idx}`}
-              name={<MultipleItemsLabel count={idx} />}
-              schema={val}
-              required={
-                schema.minItems !== undefined && schema.minItems >= minimal
-              }
-            />
-          )
-        })}
-      </>
-    )
-  } else {
-    // singe items (most common case)
-
-    return (
-      <CreateEdge
-        key={"array_items"}
-        name={<SingleItemLabel />}
-        schema={items}
-        required={schema.minItems !== undefined && schema.minItems > 0}
-      />
-    )
+  // If undefined or boolean, print nothing
+  if (items === undefined) {
+    return <></>
   }
+
+  // Because of "prefixItems", starting index isn't the same
+  const startingIndex = Array.isArray(schema.prefixItems)
+    ? schema.prefixItems.length + 1
+    : 0
+
+  // Generify that part
+  const itemsAsArray = Array.isArray(items) ? items : [items]
+  const minimal = itemsAsArray.length
+
+  return (
+    <ul>
+      {itemsAsArray.map((item, idx) => (
+        <CreateEdge
+          key={`array_items_${idx}`}
+          name={<MultipleItemsLabel count={startingIndex + idx} />}
+          schema={item}
+          required={schema.minItems !== undefined && schema.minItems >= minimal}
+        />
+      ))}
+    </ul>
+  )
 }
