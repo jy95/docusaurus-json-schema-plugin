@@ -72,11 +72,11 @@ export const isBoolean = (schema: JSONSchema) =>
   typeof schema !== "boolean" &&
   (schema.type === "boolean" ||
     schema.enum?.some((val) => typeof val === "boolean") ||
-    typeof schema?.const === "boolean")
+    typeof schema.const === "boolean")
 
 export const isNull = (schema: JSONSchema) =>
   typeof schema !== "boolean" &&
-  (schema?.type === "null" ||
+  (schema.type === "null" ||
     schema.enum?.some((val) => val === null) ||
     schema.const === null)
 
