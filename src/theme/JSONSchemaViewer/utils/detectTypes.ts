@@ -105,7 +105,6 @@ function* foundUndeclaredTypes(
     yield "boolean"
   }
 
-  /* istanbul ignore if  */
   if (isInteger(schema)) {
     yield "integer"
   }

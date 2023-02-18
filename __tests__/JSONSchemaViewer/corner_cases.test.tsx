@@ -22,6 +22,8 @@ import {
   CreateObject,
 } from "../../src/theme/JSONSchemaViewer/JSONSchemaElements/index"
 
+import { detectedTypes } from "../../src/theme/JSONSchemaViewer/utils/index"
+
 // Annoying test cases, just for coverage stories ...
 const testcases: [
   string,
@@ -68,5 +70,13 @@ describe("JSONSchemaViewer - corner cases", () => {
 
     // make assertions on root
     expect(root?.toJSON()).toMatchSnapshot()
+  })
+
+  test("Correctly infer integer when not explictly expressed", async () => {
+    const foundTypes = detectedTypes({
+      multipleOf: 1,
+    })
+
+    expect(foundTypes).toContain("integer")
   })
 })
