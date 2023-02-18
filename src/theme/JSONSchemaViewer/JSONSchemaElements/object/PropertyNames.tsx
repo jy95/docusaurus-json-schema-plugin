@@ -13,10 +13,11 @@ type Props = {
 function propertyNames(props: Props): JSX.Element {
   const { schema } = props
 
-  let propertyNames = schema.propertyNames!
+  let propertyNames = schema.propertyNames
 
   // Fast Fail over
   if (
+    propertyNames === undefined ||
     typeof propertyNames === "boolean" ||
     propertyNames.pattern === undefined
   ) {
@@ -30,12 +31,14 @@ function propertyNames(props: Props): JSX.Element {
   delete newSchema.pattern
 
   return (
-    <CreateEdge
-      key={"propertyNames"}
-      name={<code>{pattern}</code>}
-      schema={newSchema}
-      required={false}
-    />
+    <ul>
+      <CreateEdge
+        key={"propertyNames"}
+        name={<code>{pattern}</code>}
+        schema={newSchema}
+        required={false}
+      />
+    </ul>
   )
 }
 

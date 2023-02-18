@@ -186,7 +186,6 @@ exports[`JSONSchemaViewer - corner cases CreateObject - missing pattern in prope
   >
     object
   </span>,
-  <ul />,
   <div
     style={
       {
@@ -212,6 +211,39 @@ exports[`JSONSchemaViewer - corner cases CreateObject - sub properties as boolea
   >
     object
   </span>,
+  <ul>
+    <li>
+      <details
+        open={false}
+      >
+        <summary>
+          <code>
+            property name*
+          </code>
+           
+          <strong>
+            none
+          </strong>
+        </summary>
+        <strong>
+          type
+        </strong>
+         : 
+        <strong>
+          none
+        </strong>
+        <div
+          style={
+            {
+              "marginTop": "var(--ifm-table-cell-padding)",
+            }
+          }
+        >
+          Always invalid
+        </div>
+      </details>
+    </li>
+  </ul>,
   <div
     style={
       {

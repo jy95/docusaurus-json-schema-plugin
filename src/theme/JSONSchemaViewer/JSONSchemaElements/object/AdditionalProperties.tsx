@@ -30,14 +30,20 @@ function AdditionalPropertiesLabel(): JSX.Element {
 export default function CreateAdditionalProperties(props: Props): JSX.Element {
   const { schema } = props
 
-  let typedSchema = schema.additionalProperties!
+  let additionalProperties = schema.additionalProperties
+
+  if (additionalProperties === undefined) {
+    return <></>
+  }
 
   return (
-    <CreateEdge
-      key={"object_additionalProperties"}
-      name={<AdditionalPropertiesLabel />}
-      schema={typedSchema}
-      required={false}
-    />
+    <ul>
+      <CreateEdge
+        key={"object_additionalProperties"}
+        name={<AdditionalPropertiesLabel />}
+        schema={additionalProperties}
+        required={false}
+      />
+    </ul>
   )
 }

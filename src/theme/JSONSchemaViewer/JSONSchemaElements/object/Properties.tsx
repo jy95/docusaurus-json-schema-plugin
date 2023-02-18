@@ -13,9 +13,16 @@ type Props = {
 export default function CreateProperties(props: Props): JSX.Element {
   const { schema } = props
 
+  const properties = schema.properties
+
+  // If it doesn't exist, print nothing
+  if (properties === undefined) {
+    return <></>
+  }
+
   return (
-    <>
-      {Object.entries(schema.properties!).map(([key, value]) => {
+    <ul>
+      {Object.entries(properties).map(([key, value]) => {
         return (
           <CreateEdge
             key={`object_properties_${key}`}
@@ -29,6 +36,6 @@ export default function CreateProperties(props: Props): JSX.Element {
           />
         )
       })}
-    </>
+    </ul>
   )
 }

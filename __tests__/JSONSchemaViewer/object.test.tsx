@@ -132,6 +132,12 @@ const testcases: [string, JSONSchema][] = [
       minProperties: 1,
     },
   ],
+  [
+    "Unspecified required properties",
+    {
+      required: ["prop1", "prop2"],
+    },
+  ],
 ]
 
 describe("JSONSchemaViewer - object", () => {

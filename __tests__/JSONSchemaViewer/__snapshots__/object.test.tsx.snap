@@ -1,5 +1,109 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`JSONSchemaViewer - object test Unspecified required properties 1`] = `
+<details
+  open={true}
+>
+  <summary>
+    <strong>
+      Schema
+    </strong>
+  </summary>
+  <strong>
+    type
+  </strong>
+   : 
+  <span
+    style={
+      {
+        "opacity": "0.6",
+      }
+    }
+  >
+    object
+  </span>
+  <ul>
+    <li>
+      <details
+        open={false}
+      >
+        <summary>
+          <strong>
+            prop1
+          </strong>
+           
+          <strong>
+            any
+          </strong>
+           
+          <strong>
+            required
+          </strong>
+        </summary>
+        <strong>
+          type
+        </strong>
+         : 
+        <strong>
+          any
+        </strong>
+        <div
+          style={
+            {
+              "marginTop": "var(--ifm-table-cell-padding)",
+            }
+          }
+        >
+          Always valid
+        </div>
+      </details>
+    </li>
+    <li>
+      <details
+        open={false}
+      >
+        <summary>
+          <strong>
+            prop2
+          </strong>
+           
+          <strong>
+            any
+          </strong>
+           
+          <strong>
+            required
+          </strong>
+        </summary>
+        <strong>
+          type
+        </strong>
+         : 
+        <strong>
+          any
+        </strong>
+        <div
+          style={
+            {
+              "marginTop": "var(--ifm-table-cell-padding)",
+            }
+          }
+        >
+          Always valid
+        </div>
+      </details>
+    </li>
+  </ul>
+  <div
+    style={
+      {
+        "marginTop": "var(--ifm-table-cell-padding)",
+      }
+    }
+  />
+</details>
+`;
+
 exports[`JSONSchemaViewer - object test Unspecified type (object) 1`] = `
 <details
   open={true}
@@ -405,6 +509,39 @@ exports[`JSONSchemaViewer - object test additionalProperties (false) 1`] = `
               ["Street","Avenue","Boulevard"]
             </code>
           </div>
+        </div>
+      </details>
+    </li>
+  </ul>
+  <ul>
+    <li>
+      <details
+        open={false}
+      >
+        <summary>
+          <code>
+            property name*
+          </code>
+           
+          <strong>
+            none
+          </strong>
+        </summary>
+        <strong>
+          type
+        </strong>
+         : 
+        <strong>
+          none
+        </strong>
+        <div
+          style={
+            {
+              "marginTop": "var(--ifm-table-cell-padding)",
+            }
+          }
+        >
+          Always invalid
         </div>
       </details>
     </li>

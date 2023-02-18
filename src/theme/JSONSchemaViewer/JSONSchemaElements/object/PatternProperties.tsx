@@ -13,18 +13,23 @@ type Props = {
 export default function CreatePatternProperties(props: Props): JSX.Element {
   const { schema } = props
 
+  const patternProperties = schema.patternProperties
+
+  // If it doesn't exist, print nothing
+  if (patternProperties === undefined) {
+    return <></>
+  }
+
   return (
-    <>
-      {Object.entries(schema.patternProperties!).map(([key, value]) => {
-        return (
-          <CreateEdge
-            key={`object_patternProperties_${key}`}
-            name={<code>{key}</code>}
-            schema={value}
-            required={false}
-          />
-        )
-      })}
-    </>
+    <ul>
+      {Object.entries(patternProperties).map(([key, value]) => (
+        <CreateEdge
+          key={`object_patternProperties_${key}`}
+          name={<code>{key}</code>}
+          schema={value}
+          required={false}
+        />
+      ))}
+    </ul>
   )
 }

@@ -4,6 +4,7 @@ import AdditionalProperties from "./AdditionalProperties"
 import Properties from "./Properties"
 import PatternProperties from "./PatternProperties"
 import PropertyNames from "./PropertyNames"
+import UnlistedProperties from "./UnlistedRequiredProperties"
 
 import { QualifierMessages } from "../../utils/index"
 import { useJSVOptionsContext } from "../../contexts/index"
@@ -23,29 +24,16 @@ export default function CreateObject(props: Props): JSX.Element {
   const { schema, nullable, description } = props
   const options = useJSVOptionsContext()
 
-  let additionalProperties =
-    schema.additionalProperties !== undefined &&
-    typeof schema.additionalProperties !== "boolean" ? (
-      <AdditionalProperties schema={schema} />
-    ) : undefined
-  let properties =
-    schema.properties !== undefined ? <Properties schema={schema} /> : undefined
-  let patternProperties = schema.patternProperties ? (
-    <PatternProperties schema={schema} />
-  ) : undefined
-  let propertyNames = schema.propertyNames ? (
-    <PropertyNames schema={schema} />
-  ) : undefined
-
   return (
     <>
       <TypeLabel />
       &nbsp;&#58;&nbsp;
       <ObjectLabel />
-      {properties !== undefined && <ul>{properties}</ul>}
-      {patternProperties !== undefined && <ul>{patternProperties}</ul>}
-      {propertyNames !== undefined && <ul>{propertyNames}</ul>}
-      {additionalProperties !== undefined && <ul>{additionalProperties}</ul>}
+      <UnlistedProperties schema={schema} />
+      <Properties schema={schema} />
+      <PatternProperties schema={schema} />
+      <PropertyNames schema={schema} />
+      <AdditionalProperties schema={schema} />
       <div style={{ marginTop: "var(--ifm-table-cell-padding)" }}>
         <QualifierMessages
           schema={schema}
