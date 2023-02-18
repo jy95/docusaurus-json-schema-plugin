@@ -5,18 +5,12 @@ import Translate from "@docusaurus/Translate"
 import type { JSONSchema, JSONSchemaNS } from "../../types"
 
 type Props = {
-  schema: JSONSchema
+  schema: Exclude<JSONSchema, true | false>
   [x: string]: any
 }
 
 function DependentRequired(props: Props): JSX.Element {
   const { schema } = props
-
-  // Fast fail
-  /* istanbul ignore if  */
-  if (typeof schema === "boolean") {
-    return <></>
-  }
 
   let dependentRequired = (schema as JSONSchemaNS.Object).dependentRequired!
 

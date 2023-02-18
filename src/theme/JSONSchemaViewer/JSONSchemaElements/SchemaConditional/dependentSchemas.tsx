@@ -12,18 +12,12 @@ import { IfLabel, ThenLabel } from "../../labels/index"
 import type { JSONSchema, JSONSchemaNS } from "../../types"
 
 type Props = {
-  schema: JSONSchema
+  schema: Exclude<JSONSchema, true | false>
   [x: string]: any
 }
 
 function DependentSchemas(props: Props): JSX.Element {
   const { schema } = props
-
-  // Fast fail
-  /* istanbul ignore if  */
-  if (typeof schema === "boolean") {
-    return <></>
-  }
 
   let dependentSchemas = (schema as JSONSchemaNS.Object).dependentSchemas!
 

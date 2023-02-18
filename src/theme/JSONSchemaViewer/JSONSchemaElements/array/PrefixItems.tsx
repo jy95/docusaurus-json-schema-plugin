@@ -7,7 +7,7 @@ import type { JSONSchema, JSONSchemaNS } from "../../types"
 
 type Props = {
   [x: string]: any
-  schema: JSONSchema
+  schema: JSONSchemaNS.Array
 }
 
 // Translated label
@@ -29,14 +29,7 @@ function PrefixItemsLabel({ count }: { count: number }): JSX.Element {
 export default function CreatePrefixItems(props: Props): JSX.Element {
   const { schema } = props
 
-  let typedSchema = schema as JSONSchemaNS.Array
-
-  /* istanbul ignore if  */
-  if (typeof typedSchema === "boolean") {
-    return <></>
-  }
-
-  let items = typedSchema.prefixItems!
+  let items = schema.prefixItems!
   let minimal = Array.isArray(items) ? items.length : 1
   let array = (Array.isArray(items) ? items : [items]) as JSONSchema[]
 
@@ -50,8 +43,7 @@ export default function CreatePrefixItems(props: Props): JSX.Element {
             name={<PrefixItemsLabel count={idx} />}
             schema={val}
             required={
-              typedSchema.minItems !== undefined &&
-              typedSchema.minItems >= minimal
+              schema.minItems !== undefined && schema.minItems >= minimal
             }
           />
         )

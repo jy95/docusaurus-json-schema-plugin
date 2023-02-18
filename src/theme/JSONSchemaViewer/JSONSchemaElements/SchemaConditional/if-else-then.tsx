@@ -10,19 +10,13 @@ import { IfLabel, ThenLabel, ElseLabel } from "../../labels/index"
 import type { JSONSchema } from "../../types"
 
 type Props = {
-  schema: JSONSchema
+  schema: Exclude<JSONSchema, true | false>
   [x: string]: any
 }
 
 // Handle if else then
 function IfElseThen(props: Props): JSX.Element {
   const { schema } = props
-
-  // Fast fail
-  /* istanbul ignore if  */
-  if (typeof schema === "boolean") {
-    return <></>
-  }
 
   const hasThen = schema.then !== undefined
   const hasElse = schema.else !== undefined
@@ -49,14 +43,8 @@ function IfElseThen(props: Props): JSX.Element {
   // Render appropriate case
   function renderSwitch(
     value: "schema_if" | "schema_then" | "schema_else",
-    schema: JSONSchema
+    schema: Exclude<JSONSchema, true | false>
   ) {
-    // fast fallback
-    /* istanbul ignore if  */
-    if (typeof schema === "boolean") {
-      return <></>
-    }
-
     switch (value) {
       case "schema_if":
         return <CreateNodes schema={schema.if!} />

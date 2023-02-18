@@ -3,24 +3,17 @@ import Translate from "@docusaurus/Translate"
 
 import { CreateEdge } from "../../components/index"
 
-import type { JSONSchema, JSONSchemaNS } from "../../types"
+import type { JSONSchemaNS } from "../../types"
 
 type Props = {
   [x: string]: any
-  schema: JSONSchema
+  schema: JSONSchemaNS.Array
 }
 
 function createContains(props: Props): JSX.Element {
   const { schema } = props
 
-  let typedSchema = schema as JSONSchemaNS.Array
-
-  /* istanbul ignore if  */
-  if (typeof typedSchema === "boolean") {
-    return <></>
-  }
-
-  let item = typedSchema.contains!
+  let item = schema.contains!
 
   const containsLabel = (
     <code>
@@ -39,9 +32,7 @@ function createContains(props: Props): JSX.Element {
       key={"contains"}
       name={containsLabel}
       schema={item}
-      required={
-        typedSchema.minContains !== undefined && typedSchema.minContains > 0
-      }
+      required={schema.minContains !== undefined && schema.minContains > 0}
     />
   )
 }

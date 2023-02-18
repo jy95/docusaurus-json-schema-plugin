@@ -1,7 +1,6 @@
 import React from "react"
 
 import Translate from "@docusaurus/Translate"
-//import Details from "@theme-original/Details";
 
 import {
   IfElseThen,

@@ -5,18 +5,12 @@ import { DependentRequired, DependentSchemas } from "./index"
 import type { JSONSchema } from "../../types"
 
 type Props = {
-  schema: JSONSchema
+  schema: Exclude<JSONSchema, true | false>
   [x: string]: any
 }
 
 function Dependencies(props: Props): JSX.Element {
   const { schema } = props
-
-  // Fast fail
-  /* istanbul ignore if  */
-  if (typeof schema === "boolean") {
-    return <></>
-  }
 
   let dependencies = schema.dependencies!
 
@@ -42,20 +36,16 @@ function Dependencies(props: Props): JSX.Element {
     <>
       {Object.keys(dependentRequired).length > 0 && (
         <DependentRequired
-          schema={
-            {
-              dependentRequired: dependentRequired,
-            } as JSONSchema
-          }
+          schema={{
+            dependentRequired: dependentRequired,
+          }}
         />
       )}
       {Object.keys(dependentSchemas).length > 0 && (
         <DependentSchemas
-          schema={
-            {
-              dependentSchemas: dependentSchemas,
-            } as JSONSchema
-          }
+          schema={{
+            dependentSchemas: dependentSchemas,
+          }}
         />
       )}
     </>
