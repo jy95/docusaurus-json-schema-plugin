@@ -171,6 +171,32 @@ exports[`JSONSchemaViewer - corner cases CreateNodes - boolean schema (true) 1`]
 ]
 `;
 
+exports[`JSONSchemaViewer - corner cases CreateObject - missing pattern in propertyNames 1`] = `
+[
+  <strong>
+    type
+  </strong>,
+  " : ",
+  <span
+    style={
+      {
+        "opacity": "0.6",
+      }
+    }
+  >
+    object
+  </span>,
+  <ul />,
+  <div
+    style={
+      {
+        "marginTop": "var(--ifm-table-cell-padding)",
+      }
+    }
+  />,
+]
+`;
+
 exports[`JSONSchemaViewer - corner cases CreateObject - sub properties as boolean schema 1`] = `
 [
   <strong>

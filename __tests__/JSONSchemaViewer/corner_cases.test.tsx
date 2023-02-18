@@ -46,6 +46,15 @@ const testcases: [
       additionalProperties: false,
     } as JSONSchemaNS.Object,
   ],
+  [
+    "CreateObject - missing pattern in propertyNames",
+    CreateObject,
+    {
+      propertyNames: {
+        description: "I forgot the pattern key",
+      },
+    } as JSONSchemaNS.Object,
+  ],
 ]
 
 describe("JSONSchemaViewer - corner cases", () => {
