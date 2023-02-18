@@ -5,17 +5,12 @@ import { CreateNodes } from "../../components/index"
 import type { JSONSchema } from "../../types"
 
 type Props = {
-  schema: JSONSchema
+  schema: Exclude<JSONSchema, true | false>
   [x: string]: any
 }
 
 function NotSchema(props: Props): JSX.Element {
   const { schema } = props
-
-  /* istanbul ignore if  */
-  if (typeof schema === "boolean") {
-    return <></>
-  }
 
   let typedSchema = schema.not!
   let typeOf = "not"

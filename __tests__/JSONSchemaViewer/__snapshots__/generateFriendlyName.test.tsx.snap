@@ -961,14 +961,30 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test OR / XOR / AND 1`] =
                 onClick={[Function]}
                 tabIndex={0}
               >
-                1
+                <span
+                  style={
+                    {
+                      "opacity": "0.6",
+                    }
+                  }
+                >
+                  string
+                </span>
               </li>
               <li
                 aria-selected={false}
                 onClick={[Function]}
                 tabIndex={-1}
               >
-                2
+                <span
+                  style={
+                    {
+                      "opacity": "0.6",
+                    }
+                  }
+                >
+                  number
+                </span>
               </li>
             </ul>
             <div>
@@ -1107,14 +1123,30 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test OR / XOR / AND 1`] =
                 onClick={[Function]}
                 tabIndex={0}
               >
-                1
+                <span
+                  style={
+                    {
+                      "opacity": "0.6",
+                    }
+                  }
+                >
+                  number
+                </span>
               </li>
               <li
                 aria-selected={false}
                 onClick={[Function]}
                 tabIndex={-1}
               >
-                2
+                <span
+                  style={
+                    {
+                      "opacity": "0.6",
+                    }
+                  }
+                >
+                  number
+                </span>
               </li>
             </ul>
             <div>
@@ -1253,14 +1285,30 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test OR / XOR / AND 1`] =
                 onClick={[Function]}
                 tabIndex={0}
               >
-                1
+                <span
+                  style={
+                    {
+                      "opacity": "0.6",
+                    }
+                  }
+                >
+                  string
+                </span>
               </li>
               <li
                 aria-selected={false}
                 onClick={[Function]}
                 tabIndex={-1}
               >
-                2
+                <span
+                  style={
+                    {
+                      "opacity": "0.6",
+                    }
+                  }
+                >
+                  string
+                </span>
               </li>
             </ul>
             <div>
