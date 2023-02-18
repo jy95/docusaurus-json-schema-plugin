@@ -25,7 +25,7 @@ import type { JSONSchema, JSONSchemaNS } from "../types"
 import type { JSVOptions } from "../contexts/index"
 
 type Props = {
-  schema: JSONSchema
+  schema: Exclude<JSONSchema, true | false>
   options: JSVOptions
   nullable?: boolean
 }
@@ -35,13 +35,7 @@ function* conditionallyRenderQMs({
   schema,
   options,
   nullable,
-}: Props): Generator<JSX.Element, void> {
-  // Fast fail over
-  // Either it matches everything, either nothing
-  /* istanbul ignore if  */
-  if (schema === undefined || typeof schema === "boolean") {
-    return undefined
-  }
+}: Props): Generator<JSX.Element> {
 
   // Nullable
   if (nullable) {
@@ -143,6 +137,9 @@ function* conditionallyRenderQMs({
   if (options.showExamples && schema.examples !== undefined) {
     yield <ExamplesQM key={"examples"} schema={schema} />
   }
+
+  // Job completed
+  return undefined;
 }
 
 // The heart of the plugin : Display human friendly messages
