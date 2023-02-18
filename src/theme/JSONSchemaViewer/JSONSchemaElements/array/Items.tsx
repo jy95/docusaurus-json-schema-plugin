@@ -37,7 +37,7 @@ export default function CreateItems(props: Props): JSX.Element {
 
   // Because of "prefixItems", starting index isn't the same
   const startingIndex = Array.isArray(schema.prefixItems)
-    ? schema.prefixItems.length + 1
+    ? schema.prefixItems.length
     : 0
 
   // Generify that part

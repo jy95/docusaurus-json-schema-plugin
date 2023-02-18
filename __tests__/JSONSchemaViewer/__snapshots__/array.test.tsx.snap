@@ -576,7 +576,7 @@ exports[`JSONSchemaViewer - Array type test 5 1`] = `
       >
         <summary>
           <code>
-            items[5]
+            items[4]
           </code>
            
           <strong>
