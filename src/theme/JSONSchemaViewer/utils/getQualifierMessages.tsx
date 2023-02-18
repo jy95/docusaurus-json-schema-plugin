@@ -36,7 +36,6 @@ function* conditionallyRenderQMs({
   options,
   nullable,
 }: Props): Generator<JSX.Element> {
-
   // Nullable
   if (nullable) {
     yield <NullableQM key={"nullable"} />
@@ -139,7 +138,7 @@ function* conditionallyRenderQMs({
   }
 
   // Job completed
-  return undefined;
+  return undefined
 }
 
 // The heart of the plugin : Display human friendly messages
