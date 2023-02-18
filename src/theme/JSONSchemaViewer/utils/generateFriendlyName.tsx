@@ -49,8 +49,8 @@ export default function GenerateFriendlyName({
     <>
       {foundTypes.map((type, idx) => (
         <React.Fragment key={idx}>
-          {shouldAddSeparator(idx, foundTypes.length) && <OrLabel />}
           <CustomizeType schema={schema} type={type} />
+          {shouldAddSeparator(idx, foundTypes.length) && <OrLabel />}
         </React.Fragment>
       ))}
     </>
@@ -91,13 +91,15 @@ function FallbackFriendlyName({
     // Generify the process
     const elements = schema.allOf || schema.anyOf || schema.oneOf!
 
+    // In order to have unique elements
+
     // Return result
     return (
       <>
         {elements.map((elem, idx) => (
           <React.Fragment key={idx}>
-            {shouldAddSeparator(idx, elements.length) && LINKWORD}
             <GenerateFriendlyName schema={elem} />
+            {shouldAddSeparator(idx, elements.length) && LINKWORD}
           </React.Fragment>
         ))}
       </>
@@ -198,8 +200,8 @@ function CustomizeArray({
       {"("}
       {elements.map((elem, idx) => (
         <React.Fragment key={idx}>
-          {shouldAddSeparator(idx, elements.length) && ","}
           {elem}
+          {shouldAddSeparator(idx, elements.length) && ","}
         </React.Fragment>
       ))}
       {")[]"}

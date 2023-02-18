@@ -33,11 +33,6 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Array specified only
           </code>
            
           (
-           
-          <strong>
-            OR
-          </strong>
-           
           <span
             style={
               {
@@ -47,6 +42,11 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Array specified only
           >
             integer
           </span>
+           
+          <strong>
+            OR
+          </strong>
+           
           <span
             style={
               {
@@ -81,11 +81,6 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Array specified only
                   items
                 </code>
                  
-                 
-                <strong>
-                  OR
-                </strong>
-                 
                 <span
                   style={
                     {
@@ -95,6 +90,11 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Array specified only
                 >
                   integer
                 </span>
+                 
+                <strong>
+                  OR
+                </strong>
+                 
                 <span
                   style={
                     {
@@ -266,7 +266,6 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Array specified only
           </code>
            
           (
-          ,
           <span
             style={
               {
@@ -276,6 +275,7 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Array specified only
           >
             boolean
           </span>
+          ,
           <span
             style={
               {
@@ -475,7 +475,6 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Array specified with
           </code>
            
           (
-          ,
           <span
             style={
               {
@@ -497,6 +496,7 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Array specified with
           >
             string
           </span>
+          ,
           ...
           )[]
         </summary>
@@ -651,11 +651,6 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Multiple types 1`] =
             items[0]
           </code>
            
-           
-          <strong>
-            OR
-          </strong>
-           
           <span
             style={
               {
@@ -665,6 +660,11 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Multiple types 1`] =
           >
             null
           </span>
+           
+          <strong>
+            OR
+          </strong>
+           
           <span
             style={
               {
@@ -918,11 +918,6 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test OR / XOR / AND 1`] =
             items[0]
           </code>
            
-           
-          <strong>
-            OR
-          </strong>
-           
           <span
             style={
               {
@@ -932,6 +927,11 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test OR / XOR / AND 1`] =
           >
             string
           </span>
+           
+          <strong>
+            OR
+          </strong>
+           
           <span
             style={
               {
@@ -1080,11 +1080,6 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test OR / XOR / AND 1`] =
             items[1]
           </code>
            
-           
-          <strong>
-            XOR
-          </strong>
-           
           <span
             style={
               {
@@ -1094,6 +1089,11 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test OR / XOR / AND 1`] =
           >
             number
           </span>
+           
+          <strong>
+            XOR
+          </strong>
+           
           <span
             style={
               {
@@ -1242,11 +1242,6 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test OR / XOR / AND 1`] =
             items[2]
           </code>
            
-           
-          <strong>
-            AND
-          </strong>
-           
           <span
             style={
               {
@@ -1256,6 +1251,11 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test OR / XOR / AND 1`] =
           >
             string
           </span>
+           
+          <strong>
+            AND
+          </strong>
+           
           <span
             style={
               {
