@@ -1,7 +1,6 @@
 import React, { ReactNode } from "react"
 
 import { SchemaItem } from "./index"
-import { generateFriendlyName } from "../utils/index"
 
 import type { JSONSchema } from "../types"
 
@@ -16,20 +15,7 @@ type EdgeProps = {
 }
 
 function createEdge({ name, schema, required }: EdgeProps): JSX.Element {
-  const schemaName = generateFriendlyName(schema)
-
-  if (typeof schema === "boolean") {
-    return <></>
-  }
-
-  return (
-    <SchemaItem
-      schemaName={schemaName}
-      name={name}
-      schema={schema}
-      required={required}
-    />
-  )
+  return <SchemaItem name={name} schema={schema} required={required} />
 }
 
 export default createEdge

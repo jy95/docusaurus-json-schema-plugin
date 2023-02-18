@@ -32,7 +32,13 @@ exports[`JSONSchemaViewer - schema conditionally test If Then Else (multiple) 1`
             street_address
           </strong>
            
-          <span>
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
             string
           </span>
         </summary>
@@ -67,7 +73,13 @@ exports[`JSONSchemaViewer - schema conditionally test If Then Else (multiple) 1`
             country
           </strong>
            
-          <span>
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
             string
           </span>
         </summary>
@@ -139,21 +151,27 @@ exports[`JSONSchemaViewer - schema conditionally test If Then Else (multiple) 1`
           onClick={[Function]}
           tabIndex={0}
         >
-          1
+          <strong>
+            any
+          </strong>
         </li>
         <li
           aria-selected={false}
           onClick={[Function]}
           tabIndex={-1}
         >
-          2
+          <strong>
+            any
+          </strong>
         </li>
         <li
           aria-selected={false}
           onClick={[Function]}
           tabIndex={-1}
         >
-          3
+          <strong>
+            any
+          </strong>
         </li>
       </ul>
       <div>
@@ -164,6 +182,22 @@ exports[`JSONSchemaViewer - schema conditionally test If Then Else (multiple) 1`
           <div
             role="tabpanel"
           >
+            <strong>
+              type
+            </strong>
+             : 
+            <strong>
+              any
+            </strong>
+            <div
+              style={
+                {
+                  "marginTop": "var(--ifm-table-cell-padding)",
+                }
+              }
+            >
+              Always valid
+            </div>
             <details
               open={true}
             >
@@ -230,7 +264,13 @@ exports[`JSONSchemaViewer - schema conditionally test If Then Else (multiple) 1`
                                 country
                               </strong>
                                
-                              <span>
+                              <span
+                                style={
+                                  {
+                                    "opacity": "0.6",
+                                  }
+                                }
+                              >
                                 string
                               </span>
                             </summary>
@@ -306,7 +346,13 @@ exports[`JSONSchemaViewer - schema conditionally test If Then Else (multiple) 1`
                                 postal_code
                               </strong>
                                
-                              <span>
+                              <span
+                                style={
+                                  {
+                                    "opacity": "0.6",
+                                  }
+                                }
+                              >
                                 string
                               </span>
                             </summary>
@@ -364,6 +410,22 @@ exports[`JSONSchemaViewer - schema conditionally test If Then Else (multiple) 1`
           <div
             role="tabpanel"
           >
+            <strong>
+              type
+            </strong>
+             : 
+            <strong>
+              any
+            </strong>
+            <div
+              style={
+                {
+                  "marginTop": "var(--ifm-table-cell-padding)",
+                }
+              }
+            >
+              Always valid
+            </div>
             <details
               open={true}
             >
@@ -430,7 +492,13 @@ exports[`JSONSchemaViewer - schema conditionally test If Then Else (multiple) 1`
                                 country
                               </strong>
                                
-                              <span>
+                              <span
+                                style={
+                                  {
+                                    "opacity": "0.6",
+                                  }
+                                }
+                              >
                                 string
                               </span>
                                
@@ -510,7 +578,13 @@ exports[`JSONSchemaViewer - schema conditionally test If Then Else (multiple) 1`
                                 postal_code
                               </strong>
                                
-                              <span>
+                              <span
+                                style={
+                                  {
+                                    "opacity": "0.6",
+                                  }
+                                }
+                              >
                                 string
                               </span>
                             </summary>
@@ -568,6 +642,22 @@ exports[`JSONSchemaViewer - schema conditionally test If Then Else (multiple) 1`
           <div
             role="tabpanel"
           >
+            <strong>
+              type
+            </strong>
+             : 
+            <strong>
+              any
+            </strong>
+            <div
+              style={
+                {
+                  "marginTop": "var(--ifm-table-cell-padding)",
+                }
+              }
+            >
+              Always valid
+            </div>
             <details
               open={true}
             >
@@ -634,7 +724,13 @@ exports[`JSONSchemaViewer - schema conditionally test If Then Else (multiple) 1`
                                 country
                               </strong>
                                
-                              <span>
+                              <span
+                                style={
+                                  {
+                                    "opacity": "0.6",
+                                  }
+                                }
+                              >
                                 string
                               </span>
                                
@@ -714,7 +810,13 @@ exports[`JSONSchemaViewer - schema conditionally test If Then Else (multiple) 1`
                                 postal_code
                               </strong>
                                
-                              <span>
+                              <span
+                                style={
+                                  {
+                                    "opacity": "0.6",
+                                  }
+                                }
+                              >
                                 string
                               </span>
                             </summary>
@@ -803,7 +905,13 @@ exports[`JSONSchemaViewer - schema conditionally test If Then Else 1`] = `
             street_address
           </strong>
            
-          <span>
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
             string
           </span>
         </summary>
@@ -838,7 +946,13 @@ exports[`JSONSchemaViewer - schema conditionally test If Then Else 1`] = `
             country
           </strong>
            
-          <span>
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
             string
           </span>
         </summary>
@@ -966,7 +1080,13 @@ exports[`JSONSchemaViewer - schema conditionally test If Then Else 1`] = `
                       country
                     </strong>
                      
-                    <span>
+                    <span
+                      style={
+                        {
+                          "opacity": "0.6",
+                        }
+                      }
+                    >
                       string
                     </span>
                   </summary>
@@ -1042,7 +1162,13 @@ exports[`JSONSchemaViewer - schema conditionally test If Then Else 1`] = `
                       postal_code
                     </strong>
                      
-                    <span>
+                    <span
+                      style={
+                        {
+                          "opacity": "0.6",
+                        }
+                      }
+                    >
                       string
                     </span>
                   </summary>
@@ -1118,7 +1244,13 @@ exports[`JSONSchemaViewer - schema conditionally test If Then Else 1`] = `
                       postal_code
                     </strong>
                      
-                    <span>
+                    <span
+                      style={
+                        {
+                          "opacity": "0.6",
+                        }
+                      }
+                    >
                       string
                     </span>
                   </summary>
@@ -1202,7 +1334,13 @@ exports[`JSONSchemaViewer - schema conditionally test dependencies (dependentReq
             name
           </strong>
            
-          <span>
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
             string
           </span>
            
@@ -1241,7 +1379,13 @@ exports[`JSONSchemaViewer - schema conditionally test dependencies (dependentReq
             credit_card
           </strong>
            
-          <span>
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
             number
           </span>
         </summary>
@@ -1276,7 +1420,13 @@ exports[`JSONSchemaViewer - schema conditionally test dependencies (dependentReq
             billing_address
           </strong>
            
-          <span>
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
             string
           </span>
         </summary>
@@ -1359,7 +1509,13 @@ exports[`JSONSchemaViewer - schema conditionally test dependencies (dependentSch
             name
           </strong>
            
-          <span>
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
             string
           </span>
            
@@ -1398,7 +1554,13 @@ exports[`JSONSchemaViewer - schema conditionally test dependencies (dependentSch
             credit_card
           </strong>
            
-          <span>
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
             number
           </span>
         </summary>
@@ -1509,7 +1671,13 @@ exports[`JSONSchemaViewer - schema conditionally test dependencies (dependentSch
                         billing_address
                       </strong>
                        
-                      <span>
+                      <span
+                        style={
+                          {
+                            "opacity": "0.6",
+                          }
+                        }
+                      >
                         string
                       </span>
                        
@@ -1588,7 +1756,13 @@ exports[`JSONSchemaViewer - schema conditionally test dependentRequired (bidirec
             name
           </strong>
            
-          <span>
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
             string
           </span>
            
@@ -1627,7 +1801,13 @@ exports[`JSONSchemaViewer - schema conditionally test dependentRequired (bidirec
             credit_card
           </strong>
            
-          <span>
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
             number
           </span>
         </summary>
@@ -1662,7 +1842,13 @@ exports[`JSONSchemaViewer - schema conditionally test dependentRequired (bidirec
             billing_address
           </strong>
            
-          <span>
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
             string
           </span>
         </summary>
@@ -1748,7 +1934,13 @@ exports[`JSONSchemaViewer - schema conditionally test dependentRequired 1`] = `
             name
           </strong>
            
-          <span>
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
             string
           </span>
            
@@ -1787,7 +1979,13 @@ exports[`JSONSchemaViewer - schema conditionally test dependentRequired 1`] = `
             credit_card
           </strong>
            
-          <span>
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
             number
           </span>
         </summary>
@@ -1822,7 +2020,13 @@ exports[`JSONSchemaViewer - schema conditionally test dependentRequired 1`] = `
             billing_address
           </strong>
            
-          <span>
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
             string
           </span>
         </summary>
@@ -1979,7 +2183,13 @@ exports[`JSONSchemaViewer - schema conditionally test dependentSchemas 1`] = `
                         b
                       </strong>
                        
-                      <span>
+                      <span
+                        style={
+                          {
+                            "opacity": "0.6",
+                          }
+                        }
+                      >
                         integer
                       </span>
                     </summary>

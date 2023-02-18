@@ -1,16 +1,16 @@
 import React from "react"
 
-import Translate from "@docusaurus/Translate"
-
 import TabItem from "@theme-original/TabItem"
 import Tabs from "@theme-original/Tabs"
 
 import { CreateNodes } from "../../components/index"
 
+import { IfLabel, ThenLabel, ElseLabel } from "../../labels/index"
+
 import type { JSONSchema } from "../../types"
 
 type Props = {
-  schema: JSONSchema
+  schema: Exclude<JSONSchema, true | false>
   [x: string]: any
 }
 
@@ -18,65 +18,22 @@ type Props = {
 function IfElseThen(props: Props): JSX.Element {
   const { schema } = props
 
-  // Fast fail
-  /* istanbul ignore if  */
-  if (typeof schema === "boolean") {
-    return <></>
-  }
-
   const hasThen = schema.then !== undefined
   const hasElse = schema.else !== undefined
-
-  // Translated labels
-  const ifLabel = (
-    <strong>
-      <Translate
-        values={{
-          id: "json-schema.keywords.if",
-        }}
-      >
-        {"If"}
-      </Translate>
-    </strong>
-  )
-
-  const thenLabel = (
-    <strong>
-      <Translate
-        values={{
-          id: "json-schema.keywords.then",
-        }}
-      >
-        {"Then"}
-      </Translate>
-    </strong>
-  )
-
-  const elseLabel = (
-    <strong>
-      <Translate
-        values={{
-          id: "json-schema.keywords.else",
-        }}
-      >
-        {"Else"}
-      </Translate>
-    </strong>
-  )
 
   // values for Tabs
   let values = [
     {
       value: "schema_if",
-      label: ifLabel,
+      label: <IfLabel />,
     },
     hasThen && {
       value: "schema_then",
-      label: thenLabel,
+      label: <ThenLabel />,
     },
     hasElse && {
       value: "schema_else",
-      label: elseLabel,
+      label: <ElseLabel />,
     },
   ].filter((v) => typeof v !== "boolean") as {
     value: "schema_if" | "schema_then" | "schema_else"
@@ -86,14 +43,8 @@ function IfElseThen(props: Props): JSX.Element {
   // Render appropriate case
   function renderSwitch(
     value: "schema_if" | "schema_then" | "schema_else",
-    schema: JSONSchema
+    schema: Exclude<JSONSchema, true | false>
   ) {
-    // fast fallback
-    /* istanbul ignore if  */
-    if (typeof schema === "boolean") {
-      return <></>
-    }
-
     switch (value) {
       case "schema_if":
         return <CreateNodes schema={schema.if!} />
@@ -101,9 +52,6 @@ function IfElseThen(props: Props): JSX.Element {
         return <CreateNodes schema={schema.then!} />
       case "schema_else":
         return <CreateNodes schema={schema.else!} />
-      /* istanbul ignore next */
-      default:
-        return <></>
     }
   }
 

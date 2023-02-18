@@ -6,20 +6,17 @@ import Tabs from "@theme-original/Tabs"
 
 import { CreateNodes } from "../../components/index"
 
+import { GenerateFriendlyName } from "../../utils/index"
+
 import type { JSONSchema } from "../../types"
 
 type Props = {
-  schema: JSONSchema
+  schema: Exclude<JSONSchema, true | false>
   [x: string]: any
 }
 
 function oneOfSchema(props: Props): JSX.Element {
   const { schema } = props
-
-  /* istanbul ignore if  */
-  if (typeof schema === "boolean") {
-    return <></>
-  }
 
   let typedSchema = schema.oneOf!
   let typeOf = "oneOf"
@@ -29,15 +26,11 @@ function oneOfSchema(props: Props): JSX.Element {
       <span className="badge badge--info">{typeOf}</span>
       <Tabs>
         {typedSchema.map((compositeSchema, index) => {
-          const label =
-            (typeof compositeSchema !== "boolean" && compositeSchema?.title) ||
-            `${index + 1}`
-
           return (
             <TabItem
               key={`schema_${typeOf}_${index}`}
               value={`schema_${typeOf}_${index}`}
-              label={label}
+              label={<GenerateFriendlyName schema={compositeSchema} />}
             >
               <CreateNodes schema={compositeSchema} />
             </TabItem>

@@ -1,6 +1,5 @@
 import React from "react"
 
-import Translate from "@docusaurus/Translate"
 import CodeBlock from "@theme-original/CodeBlock"
 
 // To print all JSONS
@@ -12,23 +11,6 @@ export function printSchemaType(obj: unknown): JSX.Element {
 
   // if it is a object / array, it is likely to be complex so time for my ace card
   return <CodeBlock language="json">{`${JSON.stringify(obj)}`}</CodeBlock>
-}
-
-// And label (commonly used in multiple situation)
-export function AndLabel(): JSX.Element {
-  return (
-    <>
-      &nbsp;
-      <Translate
-        values={{
-          id: "json-schema.labels.and",
-        }}
-      >
-        {"AND"}
-      </Translate>
-      &nbsp;
-    </>
-  )
 }
 
 // Inner functions
@@ -49,3 +31,4 @@ export { default as ExamplesQM } from "./Examples"
 export { default as DeprecatedQM } from "./Deprecated"
 export { default as ReadOnlyQM } from "./ReadOnly"
 export { default as WriteOnlyQM } from "./WriteOnly"
+export { default as NullableQM } from "./Nullable"

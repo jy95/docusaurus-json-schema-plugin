@@ -2,12 +2,12 @@ import React from "react"
 
 import Translate from "@docusaurus/Translate"
 
-import { AndLabel } from "./index"
+import { AndLabel } from "../../labels/index"
 
 import type { JSONSchema } from "../../types"
 
 type Props = {
-  schema: JSONSchema
+  schema: Exclude<JSONSchema, true | false>
 }
 
 // minItems
@@ -43,14 +43,8 @@ function MaxItems({ value }: { value: number }): JSX.Element {
 }
 
 // minItems / maxItems
-export default function ArrayNumberOfItems(props: Props): null | JSX.Element {
+export default function ArrayNumberOfItems(props: Props): JSX.Element {
   const { schema } = props
-
-  // fast fail
-  /* istanbul ignore if  */
-  if (typeof schema === "boolean") {
-    return null
-  }
 
   let minAndMax = schema.minItems !== undefined && schema.maxItems !== undefined
 

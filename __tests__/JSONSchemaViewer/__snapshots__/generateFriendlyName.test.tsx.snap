@@ -32,9 +32,31 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Array specified only
             items[0]
           </code>
            
-          <span>
-            (integer OR boolean)[]
+          (
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
+            integer
           </span>
+           
+          <strong>
+            OR
+          </strong>
+           
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
+            boolean
+          </span>
+          )[]
         </summary>
         <strong>
           type
@@ -59,30 +81,130 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Array specified only
                   items
                 </code>
                  
-                <span>
-                  integer OR boolean
+                <span
+                  style={
+                    {
+                      "opacity": "0.6",
+                    }
+                  }
+                >
+                  integer
+                </span>
+                 
+                <strong>
+                  OR
+                </strong>
+                 
+                <span
+                  style={
+                    {
+                      "opacity": "0.6",
+                    }
+                  }
+                >
+                  boolean
                 </span>
               </summary>
-              <strong>
-                type
-              </strong>
-               : 
-              <span
-                style={
-                  {
-                    "opacity": "0.6",
-                  }
-                }
-              >
-                integer OR boolean
-              </span>
               <div
-                style={
-                  {
-                    "marginTop": "var(--ifm-table-cell-padding)",
-                  }
-                }
-              />
+                className="tabs-container"
+              >
+                <ul
+                  aria-orientation="horizontal"
+                  className="tabs"
+                  role="tablist"
+                >
+                  <li
+                    aria-selected={true}
+                    onClick={[Function]}
+                    tabIndex={0}
+                  >
+                    <span
+                      style={
+                        {
+                          "opacity": "0.6",
+                        }
+                      }
+                    >
+                      integer
+                    </span>
+                  </li>
+                  <li
+                    aria-selected={false}
+                    onClick={[Function]}
+                    tabIndex={-1}
+                  >
+                    <span
+                      style={
+                        {
+                          "opacity": "0.6",
+                        }
+                      }
+                    >
+                      boolean
+                    </span>
+                  </li>
+                </ul>
+                <div>
+                  <div
+                    hidden={false}
+                    role="tabpanel"
+                  >
+                    <div
+                      role="tabpanel"
+                    >
+                      <strong>
+                        type
+                      </strong>
+                       : 
+                      <span
+                        style={
+                          {
+                            "opacity": "0.6",
+                          }
+                        }
+                      >
+                        integer
+                      </span>
+                      <div
+                        style={
+                          {
+                            "marginTop": "var(--ifm-table-cell-padding)",
+                          }
+                        }
+                      />
+                    </div>
+                  </div>
+                  <div
+                    hidden={true}
+                    role="tabpanel"
+                  >
+                    <div
+                      role="tabpanel"
+                    >
+                      <strong>
+                        type
+                      </strong>
+                       : 
+                      <span
+                        style={
+                          {
+                            "opacity": "0.6",
+                          }
+                        }
+                      >
+                        boolean
+                      </span>
+                      <div
+                        style={
+                          {
+                            "marginTop": "var(--ifm-table-cell-padding)",
+                          }
+                        }
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
             </details>
           </li>
         </ul>
@@ -143,9 +265,27 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Array specified only
             items[0]
           </code>
            
-          <span>
-            (boolean,integer)[]
+          (
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
+            boolean
           </span>
+          ,
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
+            integer
+          </span>
+          )[]
         </summary>
         <strong>
           type
@@ -160,7 +300,39 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Array specified only
         >
           array
         </span>
-        <ul />
+        <ul>
+          <li>
+            <details
+              open={false}
+            >
+              <summary>
+                <code>
+                  items
+                </code>
+                 
+                <strong>
+                  none
+                </strong>
+              </summary>
+              <strong>
+                type
+              </strong>
+               : 
+              <strong>
+                none
+              </strong>
+              <div
+                style={
+                  {
+                    "marginTop": "var(--ifm-table-cell-padding)",
+                  }
+                }
+              >
+                Always invalid
+              </div>
+            </details>
+          </li>
+        </ul>
         <ul>
           <li>
             <details
@@ -171,7 +343,13 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Array specified only
                   items[0]
                 </code>
                  
-                <span>
+                <span
+                  style={
+                    {
+                      "opacity": "0.6",
+                    }
+                  }
+                >
                   boolean
                 </span>
               </summary>
@@ -206,7 +384,13 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Array specified only
                   items[1]
                 </code>
                  
-                <span>
+                <span
+                  style={
+                    {
+                      "opacity": "0.6",
+                    }
+                  }
+                >
                   integer
                 </span>
               </summary>
@@ -290,9 +474,31 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Array specified with
             items[0]
           </code>
            
-          <span>
-            (number,...,string,...)[]
+          (
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
+            number
           </span>
+          ,
+          ...
+          ,
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
+            string
+          </span>
+          ,
+          ...
+          )[]
         </summary>
         <strong>
           type
@@ -317,7 +523,13 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Array specified with
                   items[0]
                 </code>
                  
-                <span>
+                <span
+                  style={
+                    {
+                      "opacity": "0.6",
+                    }
+                  }
+                >
                   number
                 </span>
               </summary>
@@ -354,7 +566,13 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Array specified with
                   contains
                 </code>
                  
-                <span>
+                <span
+                  style={
+                    {
+                      "opacity": "0.6",
+                    }
+                  }
+                >
                   string
                 </span>
               </summary>
@@ -433,8 +651,28 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Multiple types 1`] =
             items[0]
           </code>
            
-          <span>
-            null OR number
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
+            null
+          </span>
+           
+          <strong>
+            OR
+          </strong>
+           
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
+            number
           </span>
         </summary>
         <strong>
@@ -448,7 +686,7 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Multiple types 1`] =
             }
           }
         >
-          null OR number
+          number
         </span>
         <div
           style={
@@ -456,7 +694,12 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Multiple types 1`] =
               "marginTop": "var(--ifm-table-cell-padding)",
             }
           }
-        />
+        >
+          <div>
+            ❓ 
+            Nullable
+          </div>
+        </div>
       </details>
     </li>
   </ul>
@@ -502,13 +745,24 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Not (integer) 1`] = 
             items[0]
           </code>
            
-          <span>
-            NOT (integer)
+          <strong>
+            NOT
+          </strong>
+           ( 
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
+            integer
           </span>
+           ) 
         </summary>
         <div>
           <span
-            className="badge badge--info"
+            className="badge badge--danger"
           >
             not
           </span>
@@ -579,7 +833,13 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Number without expli
             items[0]
           </code>
            
-          <span>
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
             number
           </span>
         </summary>
@@ -594,7 +854,7 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Number without expli
             }
           }
         >
-          numeric
+          number
         </span>
         <div
           style={
@@ -658,8 +918,28 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test OR / XOR / AND 1`] =
             items[0]
           </code>
            
-          <span>
-            string OR number
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
+            string
+          </span>
+           
+          <strong>
+            OR
+          </strong>
+           
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
+            number
           </span>
         </summary>
         <div>
@@ -681,14 +961,30 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test OR / XOR / AND 1`] =
                 onClick={[Function]}
                 tabIndex={0}
               >
-                1
+                <span
+                  style={
+                    {
+                      "opacity": "0.6",
+                    }
+                  }
+                >
+                  string
+                </span>
               </li>
               <li
                 aria-selected={false}
                 onClick={[Function]}
                 tabIndex={-1}
               >
-                2
+                <span
+                  style={
+                    {
+                      "opacity": "0.6",
+                    }
+                  }
+                >
+                  number
+                </span>
               </li>
             </ul>
             <div>
@@ -784,7 +1080,27 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test OR / XOR / AND 1`] =
             items[1]
           </code>
            
-          <span>
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
+            number
+          </span>
+           
+          <strong>
+            XOR
+          </strong>
+           
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
             number
           </span>
         </summary>
@@ -807,14 +1123,30 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test OR / XOR / AND 1`] =
                 onClick={[Function]}
                 tabIndex={0}
               >
-                1
+                <span
+                  style={
+                    {
+                      "opacity": "0.6",
+                    }
+                  }
+                >
+                  number
+                </span>
               </li>
               <li
                 aria-selected={false}
                 onClick={[Function]}
                 tabIndex={-1}
               >
-                2
+                <span
+                  style={
+                    {
+                      "opacity": "0.6",
+                    }
+                  }
+                >
+                  number
+                </span>
               </li>
             </ul>
             <div>
@@ -910,7 +1242,27 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test OR / XOR / AND 1`] =
             items[2]
           </code>
            
-          <span>
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
+            string
+          </span>
+           
+          <strong>
+            AND
+          </strong>
+           
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
             string
           </span>
         </summary>
@@ -933,14 +1285,30 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test OR / XOR / AND 1`] =
                 onClick={[Function]}
                 tabIndex={0}
               >
-                1
+                <span
+                  style={
+                    {
+                      "opacity": "0.6",
+                    }
+                  }
+                >
+                  string
+                </span>
               </li>
               <li
                 aria-selected={false}
                 onClick={[Function]}
                 tabIndex={-1}
               >
-                2
+                <span
+                  style={
+                    {
+                      "opacity": "0.6",
+                    }
+                  }
+                >
+                  string
+                </span>
               </li>
             </ul>
             <div>
@@ -1060,7 +1428,13 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Object without expli
             items[0]
           </code>
            
-          <span>
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
             object
           </span>
         </summary>
@@ -1139,9 +1513,7 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Prefer title 1`] = `
             items[0]
           </code>
            
-          <span>
-            My custom title
-          </span>
+          My custom title
         </summary>
         <strong>
           type
@@ -1166,7 +1538,13 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Prefer title 1`] = `
                   text
                 </strong>
                  
-                <span>
+                <span
+                  style={
+                    {
+                      "opacity": "0.6",
+                    }
+                  }
+                >
                   string
                 </span>
               </summary>
@@ -1255,7 +1633,13 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Simple array 1`] = `
             items[0]
           </code>
            
-          <span>
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
             array
           </span>
         </summary>

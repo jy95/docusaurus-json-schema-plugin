@@ -2,12 +2,12 @@ import React from "react"
 
 import Translate from "@docusaurus/Translate"
 
-import { AndLabel } from "./index"
+import { AndLabel } from "../../labels/index"
 
 import type { JSONSchema, JSONSchemaNS } from "../../types"
 
 type Props = {
-  schema: JSONSchema
+  schema: Exclude<JSONSchema, true | false>
 }
 
 // minContains
@@ -43,14 +43,8 @@ function MaxContains({ value }: { value: number }): JSX.Element {
 }
 
 // minContains / maxContains
-export default function ArrayContainsNumber(props: Props): null | JSX.Element {
+export default function ArrayContainsNumber(props: Props): JSX.Element {
   const { schema } = props
-
-  // fast fail
-  /* istanbul ignore if  */
-  if (typeof schema === "boolean") {
-    return null
-  }
 
   let typedArraySchema = schema as JSONSchemaNS.Array
 

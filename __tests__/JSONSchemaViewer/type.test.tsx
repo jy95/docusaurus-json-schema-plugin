@@ -21,9 +21,16 @@ const testcases: [string, JSONSchema][] = [
     },
   ],
   [
-    "Multiple types",
+    "2 types",
     {
       type: ["number", "string"],
+    },
+  ],
+  [
+    "4 types",
+    {
+      type: ["null", "string", "integer", "boolean"],
+      description: "null | string | integer | boolean",
     },
   ],
   ["Unspecified type (boolean)", true],
@@ -31,6 +38,14 @@ const testcases: [string, JSONSchema][] = [
     "Unspecified type (numeric)",
     {
       multipleOf: 10,
+    },
+  ],
+  [
+    "Unspecified multiple types",
+    {
+      minLength: 5,
+      minimum: 42,
+      maxLength: 3,
     },
   ],
 ]

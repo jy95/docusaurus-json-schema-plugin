@@ -15,25 +15,23 @@ import type {
 import type { ReactTestRenderer } from "react-test-renderer"
 
 // Components
+import { CreateNodes } from "../../src/theme/JSONSchemaViewer/components/index"
+
 import {
-  CreatePrimitive,
   CreateArray,
   CreateObject,
-  SchemaComposition,
-  SchemaConditional,
 } from "../../src/theme/JSONSchemaViewer/JSONSchemaElements/index"
+
+import { detectedTypes } from "../../src/theme/JSONSchemaViewer/utils/index"
 
 // Annoying test cases, just for coverage stories ...
 const testcases: [
   string,
-  (props: { schema: JSONSchema; [x: string]: any }) => JSX.Element,
+  (props: { schema: any; [x: string]: any }) => JSX.Element,
   JSONSchema
 ][] = [
-  ["CreatePrimitive - boolean schema", CreatePrimitive, false],
-  ["CreateArray - boolean schema", CreateArray, false],
-  ["CreateObject - boolean schema", CreateObject, false],
-  ["SchemaComposition - boolean schema", SchemaComposition, false],
-  ["SchemaConditional - boolean schema", SchemaConditional, false],
+  ["CreateNodes - boolean schema (false)", CreateNodes, false],
+  ["CreateNodes - boolean schema (true)", CreateNodes, true],
   [
     "CreateArray - sub properties as boolean schema",
     CreateArray,
@@ -50,6 +48,15 @@ const testcases: [
       additionalProperties: false,
     } as JSONSchemaNS.Object,
   ],
+  [
+    "CreateObject - missing pattern in propertyNames",
+    CreateObject,
+    {
+      propertyNames: {
+        description: "I forgot the pattern key",
+      },
+    } as JSONSchemaNS.Object,
+  ],
 ]
 
 describe("JSONSchemaViewer - corner cases", () => {
@@ -63,5 +70,13 @@ describe("JSONSchemaViewer - corner cases", () => {
 
     // make assertions on root
     expect(root?.toJSON()).toMatchSnapshot()
+  })
+
+  test("Correctly infer integer when not explictly expressed", async () => {
+    const foundTypes = detectedTypes({
+      multipleOf: 1,
+    })
+
+    expect(foundTypes).toContain("integer")
   })
 })

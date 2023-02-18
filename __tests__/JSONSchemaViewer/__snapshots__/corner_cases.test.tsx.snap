@@ -1,7 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`JSONSchemaViewer - corner cases CreateArray - boolean schema 1`] = `null`;
-
 exports[`JSONSchemaViewer - corner cases CreateArray - sub properties as boolean schema 1`] = `
 [
   <strong>
@@ -17,9 +15,105 @@ exports[`JSONSchemaViewer - corner cases CreateArray - sub properties as boolean
   >
     array
   </span>,
-  <ul />,
-  <ul />,
-  <ul />,
+  <ul>
+    <li>
+      <details
+        open={false}
+      >
+        <summary>
+          <code>
+            items
+          </code>
+           
+          <strong>
+            none
+          </strong>
+        </summary>
+        <strong>
+          type
+        </strong>
+         : 
+        <strong>
+          none
+        </strong>
+        <div
+          style={
+            {
+              "marginTop": "var(--ifm-table-cell-padding)",
+            }
+          }
+        >
+          Always invalid
+        </div>
+      </details>
+    </li>
+  </ul>,
+  <ul>
+    <li>
+      <details
+        open={false}
+      >
+        <summary>
+          <code>
+            items[0]
+          </code>
+           
+          <strong>
+            none
+          </strong>
+        </summary>
+        <strong>
+          type
+        </strong>
+         : 
+        <strong>
+          none
+        </strong>
+        <div
+          style={
+            {
+              "marginTop": "var(--ifm-table-cell-padding)",
+            }
+          }
+        >
+          Always invalid
+        </div>
+      </details>
+    </li>
+  </ul>,
+  <ul>
+    <li>
+      <details
+        open={false}
+      >
+        <summary>
+          <code>
+            contains
+          </code>
+           
+          <strong>
+            none
+          </strong>
+        </summary>
+        <strong>
+          type
+        </strong>
+         : 
+        <strong>
+          none
+        </strong>
+        <div
+          style={
+            {
+              "marginTop": "var(--ifm-table-cell-padding)",
+            }
+          }
+        >
+          Always invalid
+        </div>
+      </details>
+    </li>
+  </ul>,
   <div
     style={
       {
@@ -35,9 +129,49 @@ exports[`JSONSchemaViewer - corner cases CreateArray - sub properties as boolean
 ]
 `;
 
-exports[`JSONSchemaViewer - corner cases CreateObject - boolean schema 1`] = `null`;
+exports[`JSONSchemaViewer - corner cases CreateNodes - boolean schema (false) 1`] = `
+[
+  <strong>
+    type
+  </strong>,
+  " : ",
+  <strong>
+    none
+  </strong>,
+  <div
+    style={
+      {
+        "marginTop": "var(--ifm-table-cell-padding)",
+      }
+    }
+  >
+    Always invalid
+  </div>,
+]
+`;
 
-exports[`JSONSchemaViewer - corner cases CreateObject - sub properties as boolean schema 1`] = `
+exports[`JSONSchemaViewer - corner cases CreateNodes - boolean schema (true) 1`] = `
+[
+  <strong>
+    type
+  </strong>,
+  " : ",
+  <strong>
+    any
+  </strong>,
+  <div
+    style={
+      {
+        "marginTop": "var(--ifm-table-cell-padding)",
+      }
+    }
+  >
+    Always valid
+  </div>,
+]
+`;
+
+exports[`JSONSchemaViewer - corner cases CreateObject - missing pattern in propertyNames 1`] = `
 [
   <strong>
     type
@@ -58,6 +192,64 @@ exports[`JSONSchemaViewer - corner cases CreateObject - sub properties as boolea
         "marginTop": "var(--ifm-table-cell-padding)",
       }
     }
+  />,
+]
+`;
+
+exports[`JSONSchemaViewer - corner cases CreateObject - sub properties as boolean schema 1`] = `
+[
+  <strong>
+    type
+  </strong>,
+  " : ",
+  <span
+    style={
+      {
+        "opacity": "0.6",
+      }
+    }
+  >
+    object
+  </span>,
+  <ul>
+    <li>
+      <details
+        open={false}
+      >
+        <summary>
+          <code>
+            property name*
+          </code>
+           
+          <strong>
+            none
+          </strong>
+        </summary>
+        <strong>
+          type
+        </strong>
+         : 
+        <strong>
+          none
+        </strong>
+        <div
+          style={
+            {
+              "marginTop": "var(--ifm-table-cell-padding)",
+            }
+          }
+        >
+          Always invalid
+        </div>
+      </details>
+    </li>
+  </ul>,
+  <div
+    style={
+      {
+        "marginTop": "var(--ifm-table-cell-padding)",
+      }
+    }
   >
     <div>
       🚨 
@@ -66,9 +258,3 @@ exports[`JSONSchemaViewer - corner cases CreateObject - sub properties as boolea
   </div>,
 ]
 `;
-
-exports[`JSONSchemaViewer - corner cases CreatePrimitive - boolean schema 1`] = `null`;
-
-exports[`JSONSchemaViewer - corner cases SchemaComposition - boolean schema 1`] = `null`;
-
-exports[`JSONSchemaViewer - corner cases SchemaConditional - boolean schema 1`] = `null`;

@@ -18,25 +18,27 @@ import {
   DeprecatedQM,
   ReadOnlyQM,
   WriteOnlyQM,
+  NullableQM,
 } from "./QualifierMessages/index"
 
 import type { JSONSchema, JSONSchemaNS } from "../types"
 import type { JSVOptions } from "../contexts/index"
 
 type Props = {
-  schema: JSONSchema
+  schema: Exclude<JSONSchema, true | false>
   options: JSVOptions
+  nullable?: boolean
 }
 
 // Zero, One or multiple conditions can match
-function* conditionallyRenderQMs(
-  schema: JSONSchema,
-  options: JSVOptions
-): Generator<JSX.Element, void> {
-  // Fast fail over
-  /* istanbul ignore if  */
-  if (schema === undefined || typeof schema === "boolean") {
-    return undefined
+function* conditionallyRenderQMs({
+  schema,
+  options,
+  nullable,
+}: Props): Generator<JSX.Element> {
+  // Nullable
+  if (nullable) {
+    yield <NullableQM key={"nullable"} />
   }
 
   // Deprecated
@@ -134,14 +136,17 @@ function* conditionallyRenderQMs(
   if (options.showExamples && schema.examples !== undefined) {
     yield <ExamplesQM key={"examples"} schema={schema} />
   }
+
+  // Job completed
+  return undefined
 }
 
 // The heart of the plugin : Display human friendly messages
 export default function QualifierMessages(props: Props): null | JSX.Element {
-  const { schema, options } = props
+  const { schema, options, nullable } = props
 
   // Find out which messages will be triggered
-  let result = [...conditionallyRenderQMs(schema, options)]
+  let result = [...conditionallyRenderQMs({ options, schema, nullable })]
 
   if (result.length === 0) {
     return null

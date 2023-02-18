@@ -13,15 +13,9 @@ exports[`JSONSchemaViewer - Generic keywords test annotations 1`] = `
     type
   </strong>
    : 
-  <span
-    style={
-      {
-        "opacity": "0.6",
-      }
-    }
-  >
-    unknown
-  </span>
+  <strong>
+    any
+  </strong>
   <div
     style={
       {
@@ -29,88 +23,7 @@ exports[`JSONSchemaViewer - Generic keywords test annotations 1`] = `
       }
     }
   >
-    <div>
-      🚨 
-      Deprecated
-    </div>
-    <div>
-      🚨 
-      read only
-    </div>
-    <div>
-      <strong>
-        Default value :
-      </strong>
-       
-      <code>
-        Default value
-      </code>
-    </div>
-    <div>
-      <strong>
-        Example values :
-      </strong>
-       
-      <div
-        className="tabs-container"
-      >
-        <ul
-          aria-orientation="horizontal"
-          className="tabs"
-          role="tablist"
-        >
-          <li
-            aria-selected={true}
-            onClick={[Function]}
-            tabIndex={0}
-          >
-            Example 0
-          </li>
-          <li
-            aria-selected={false}
-            onClick={[Function]}
-            tabIndex={-1}
-          >
-            Example 1
-          </li>
-        </ul>
-        <div>
-          <div
-            hidden={false}
-            role="tabpanel"
-          >
-            <div
-              role="tabpanel"
-            >
-              <code>
-                Anything
-              </code>
-            </div>
-          </div>
-          <div
-            hidden={true}
-            role="tabpanel"
-          >
-            <div
-              role="tabpanel"
-            >
-              <code>
-                4035
-              </code>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div
-    style={
-      {
-        "marginTop": "var(--ifm-table-cell-padding)",
-      }
-    }
-  >
-    This is a schema that matches anything.
+    Always valid
   </div>
 </details>
 `;
@@ -147,7 +60,13 @@ exports[`JSONSchemaViewer - Generic keywords test const 1`] = `
             country
           </strong>
            
-          <span>
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
             string
           </span>
         </summary>
@@ -231,6 +150,43 @@ exports[`JSONSchemaViewer - Generic keywords test enum 1`] = `
       <code>
         ["red","amber","green"]
       </code>
+    </div>
+    <div>
+      <strong>
+        Example values :
+      </strong>
+       
+      <div
+        className="tabs-container"
+      >
+        <ul
+          aria-orientation="horizontal"
+          className="tabs"
+          role="tablist"
+        >
+          <li
+            aria-selected={true}
+            onClick={[Function]}
+            tabIndex={0}
+          >
+            Example 0
+          </li>
+        </ul>
+        <div>
+          <div
+            hidden={false}
+            role="tabpanel"
+          >
+            <div
+              role="tabpanel"
+            >
+              <code>
+                red
+              </code>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </details>

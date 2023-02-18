@@ -5,18 +5,12 @@ import Translate from "@docusaurus/Translate"
 import type { JSONSchema } from "../../types"
 
 type Props = {
-  schema: JSONSchema
+  schema: Exclude<JSONSchema, true | false>
 }
 
 // pattern
-export default function Pattern(props: Props): null | JSX.Element {
+export default function Pattern(props: Props): JSX.Element {
   const { schema } = props
-
-  // fast fail
-  /* istanbul ignore if  */
-  if (typeof schema === "boolean") {
-    return null
-  }
 
   return (
     <div key={"pattern"}>

@@ -18,6 +18,7 @@ const testcases: [string, JSONSchema][] = [
     "simple",
     {
       type: "object",
+      description: "A simple object",
     },
   ],
   [
@@ -129,6 +130,12 @@ const testcases: [string, JSONSchema][] = [
     "Unspecified type (object)",
     {
       minProperties: 1,
+    },
+  ],
+  [
+    "Unspecified required properties",
+    {
+      required: ["prop1", "prop2"],
     },
   ],
 ]
