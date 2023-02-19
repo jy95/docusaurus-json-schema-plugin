@@ -3,7 +3,12 @@ title: "⚡ Quick Start"
 description: "Getting started with docusaurus-json-schema-plugin"
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 > Getting started with `docusaurus-json-schema-plugin`
+
+## Installation
 
 Install `docusaurus-json-schema-plugin` using your desired package manager :
 
@@ -23,8 +28,41 @@ Why `--prefer-dedupe` ? Because of [Invalid Hook Call Warning](https://reactjs.o
 
 :::
 
-Provide a JSON Schema **the way you want** - for example as a static asset :
-```jsx title="/static/schemas/mySuperSchema.json"
+## Configuration
+
+### Configuring `docusaurus.config.js`
+
+```tsx title="docusaurus.config.js"
+{
+   // Allows use of @theme/JSONSchemaEditor or @theme/JSONSchemaViewer
+   themes: ["docusaurus-json-schema-plugin"],
+}
+```
+
+### Configuring website `tsconfig.json`
+
+```json title="tsconfig.json"
+{
+  "extends": "@tsconfig/docusaurus/tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "resolveJsonModule": true,
+    // Extending "@tsconfig/docusaurus/tsconfig.json".types with "docusaurus-json-schema-plugin"
+    "types": ["node", "@docusaurus/module-type-aliases", "@docusaurus/theme-classic", "docusaurus-json-schema-plugin"]
+  }
+}
+```
+
+## Usage
+
+Provide a JSON Schema **the way you want**
+
+<Tabs>
+<TabItem value="staticAsset" label="As a static asset" default>
+
+Suppose you have the following asset defined :
+
+```json title="/static/schemas/mySuperSchema.json"
 {
    "type":"array",
    "description":"Represent a street address such as ['1600','Pennsylvania','Avenue','NW']",
@@ -58,3 +96,23 @@ Provide a JSON Schema **the way you want** - for example as a static asset :
    ]
 }
 ```
+
+Which you can use in your MDX pages as :
+
+```tsx title="/docs/example.mdx"
+import CodeBlock from '@theme/CodeBlock';
+import Schema from "@site/static/schemas/mySuperSchema.json";
+
+# My super Schema 
+
+<JSONSchemaViewer schema={ Schema } />
+
+# Source :
+
+<CodeBlock language="json">{JSON.stringify(Schema, null, 2)}</CodeBlock>
+```
+
+</TabItem>
+</Tabs>
+
+Output : 
