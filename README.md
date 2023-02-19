@@ -84,7 +84,7 @@ import React from "react"
 import Layout from "@theme/Layout"
 import JSONSchemaViewer from "@theme/JSONSchemaViewer"
 
-function ExamplePage(): JSX.Element {
+export default function ExamplePage(): JSX.Element {
 
   // You are free to fetch your schema in your own way (load local file, fetch, ...) :)
   const mySchema = {
@@ -139,7 +139,7 @@ import Layout from "@theme/Layout"
 import JSONSchemaEditor from "@theme/JSONSchemaEditor"
 // import { useColorMode } from "@docusaurus/theme-common"
 
-function ExamplePage(): JSX.Element {
+export default function ExamplePage(): JSX.Element {
 
   // You are free to fetch your schema in your own way (load local file, fetch, ...) :)
   const mySchema = {
