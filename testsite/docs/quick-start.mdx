@@ -55,10 +55,10 @@ Why `--prefer-dedupe` ? Because of [Invalid Hook Call Warning](https://reactjs.o
 
 ## Usage
 
-Provide a JSON Schema **the way you want**
+You are free to fetch your JSON Schema **the way you want**
 
 <Tabs>
-<TabItem value="staticAsset" label="As a static asset" default>
+<TabItem value="staticAsset" label="From a static asset" default>
 
 Suppose you have the following asset defined :
 
@@ -113,6 +113,66 @@ import Schema from "@site/static/schemas/mySuperSchema.json";
 ```
 
 </TabItem>
+
+<TabItem value="fetch" label="From the web">
+
+Suppose your specifications are available somewhere ( [Github Gists](https://gist.github.com/) / [Bitbucket Snippets](https://bitbucket.org/snippets/new) / ... )  
+
+```tsx title="/src/pages/API.tsx"
+import React from "react"
+import Layout from "@theme/Layout"
+import JSONSchemaViewer from "@theme/JSONSchemaViewer"
+
+export default function ExamplePage(): JSX.Element {
+    const [schema, setSchema] = React.useState(undefined as undefined | Error | unknown);
+
+    React.useEffect( () => {
+        fetch(
+            // TODO Your link here
+            "https://gist.githubusercontent.com/jy95/...",
+            {
+                headers: {
+                    'Accept': 'application/json',
+                }
+            }
+        )
+            .then((response) => response.json())
+            .then((data) => setSchema(data))
+            .catch( (err) => setSchema(err) )
+    }, [schema])
+
+    return (
+        <Layout
+            title={`My super JSON Schema`}
+            description="Description will go into a meta tag in <head />"
+        >
+            {schema === undefined && <div>Loading ...</div>}
+            {schema !== undefined && schema instanceof Error && <div>Houston we have a problem : {schema.message}</div>}
+            {schema !== undefined && !(schema instanceof Error) && <JSONSchemaViewer schema={schema} />}
+        </Layout>
+    )
+}
+```
+
+Which you can see by access related page (e.g. `/API` in that case )
+
+</TabItem>
+
+<TabItem value="other" label="From ...">
+
+With the two previous `From` sections, you get the point that there are unlimited possibilities :
+- JSON Schema directly defined in the code
+- NPM packages that exports [JSON Schema](https://www.schemastore.org/json/) directly
+- ...
+
+</TabItem>
+
 </Tabs>
 
-Output : 
+## Output examples
+
+:::tip
+
+We have many examples available on [documentation](demo/viewer) . Check them to see lib in action 😉
+
+:::
