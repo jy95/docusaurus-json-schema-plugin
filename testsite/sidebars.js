@@ -65,7 +65,7 @@ module.exports = {
         },
       ],
     },
-    "next-steps"
+    "next-steps",
   ],
 
   // But you can create a sidebar manually
