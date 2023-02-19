@@ -11,21 +11,22 @@
 module.exports = {
   // By default, Docusaurus generates a sidebar from the docs folder structure
   tutorialSidebar: [
+    "quick-start",
     {
       type: "category",
-      label: "Demos",
+      label: "💡 Demos",
       link: {
         type: "generated-index",
-        title: "Showcases of the theme plugin",
+        title: "💡 Showcases of the theme plugin",
         slug: "/demo",
       },
       items: [
         {
           type: "category",
-          label: "JSON Schema Viewer",
+          label: "🔎 JSON Schema Viewer",
           link: {
             type: "generated-index",
-            title: "JSON Schema Viewer showcases",
+            title: "🔎 JSON Schema Viewer showcases",
             slug: "/demo/viewer",
           },
           items: [
@@ -37,7 +38,7 @@ module.exports = {
         },
         {
           type: "category",
-          label: "Real word examples",
+          label: "🗺️ Real word examples",
           items: [
             {
               type: "link",

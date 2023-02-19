@@ -1,0 +1,60 @@
+---
+title: "⚡ Quick Start"
+description: "Getting started with docusaurus-json-schema-plugin"
+---
+
+> Getting started with `docusaurus-json-schema-plugin`
+
+Install `docusaurus-json-schema-plugin` using your desired package manager :
+
+```bash npm2yarn
+npm install docusaurus-json-schema-plugin
+```
+
+:::tip NPM only
+
+When installing with npm, add this to the previous command : `--prefer-dedupe`
+
+```bash
+npm install docusaurus-json-schema-plugin --prefer-dedupe
+```
+
+Why `--prefer-dedupe` ? Because of [Invalid Hook Call Warning](https://reactjs.org/warnings/invalid-hook-call-warning.html) common issue in projets
+
+:::
+
+Provide a JSON Schema **the way you want** - for example as a static asset :
+```jsx title="/static/schemas/mySuperSchema.json"
+{
+   "type":"array",
+   "description":"Represent a street address such as ['1600','Pennsylvania','Avenue','NW']",
+   "items":false,
+   "prefixItems":[
+      {
+         "type":"number",
+         "description":"The address number"
+      },
+      {
+         "type":"string",
+         "description":"The name of the street"
+      },
+      {
+         "enum":[
+            "Street",
+            "Avenue",
+            "Boulevard"
+         ],
+         "description":"The type of street"
+      },
+      {
+         "enum":[
+            "NW",
+            "NE",
+            "SW",
+            "SE"
+         ],
+         "description":"The city quadrant of the address"
+      }
+   ]
+}
+```

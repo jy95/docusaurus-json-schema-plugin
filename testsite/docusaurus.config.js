@@ -50,6 +50,10 @@ module.exports = {
       "@docusaurus/preset-classic",
       {
         docs: {
+          // https://docusaurus.io/docs/markdown-features/code-blocks#npm2yarn-remark-plugin
+          remarkPlugins: [
+            [require('@docusaurus/remark-plugin-npm2yarn'), {sync: true}],
+          ],
           sidebarPath: require.resolve("./sidebars.js"),
           // Please change this to your repo.
           editUrl:
