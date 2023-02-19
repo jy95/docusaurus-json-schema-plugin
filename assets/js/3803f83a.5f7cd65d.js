@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunktestsite=self.webpackChunktestsite||[]).push([[5691],{21550:e=>{e.exports=JSON.parse('{"title":"Showcases of the theme plugin","slug":"/demo","permalink":"/docusaurus-json-schema-plugin/docs/demo","navigation":{"next":{"title":"JSON Schema Viewer","permalink":"/docusaurus-json-schema-plugin/docs/demo/viewer"}}}')}}]);
