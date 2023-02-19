@@ -45,7 +45,33 @@ Please refer for extra information to :
 </details>
 
 <details>
-<summary>Which features are not supported yet ?</summary>
+<summary>Which features of JSON Schema are not supported yet ?</summary>
 
-It is expressed on the [Roadmap page](next-steps)
+It is explained on the [Roadmap page](next-steps)
+</details>
+
+<details>
+<summary>Why the minimal JSON Schema version is Draft-07 ?</summary>
+
+Several reasons :
+- Many actors (like [ajv](https://ajv.js.org/guide/schema-language.html#draft-07-and-draft-06) ) acknowledge that it is most widely used version of JSON Schema specification
+- Many tools don't care anymore for older versions such as Draft-04
+- It fits my needs when I designed this project
+
+:::tip
+
+You can migrate schemas from draft-04 to draft-07 using [ajv-cli](https://github.com/ajv-validator/ajv-cli#migrate-schemas)
+
+:::
+
+</details>
+
+<details>
+<summary>How to support specifications that extends the one of JSON Schema (such as MongoDB, ... )</summary>
+
+That is a good question that arose around a [request](https://github.com/jy95/docusaurus-json-schema-plugin/discussions/19).
+For the time being, it is on hold as several aspects needs to be considered that might lead to issues , breaking changes, ...
+
+In the meantime, feel free to share your feedback on [Github discussions](https://github.com/jy95/docusaurus-json-schema-plugin/discussions)
+
 </details>
