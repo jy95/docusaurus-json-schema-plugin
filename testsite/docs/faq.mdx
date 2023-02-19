@@ -1,0 +1,51 @@
+---
+title: "❓ FAQ"
+description: "Frequently Asked Questions"
+---
+
+> Frequently asked questions
+
+<details>
+<summary>How can I contribute ?</summary>
+
+Any contribution is welcome! Read more [here](contributing).
+</details>
+
+<details>
+<summary>How to swizzling components ?</summary>
+
+```bash npm2yarn
+npm run swizzle docusaurus-json-schema-plugin [component name]
+```
+
+For extra information, please consult [Docusaurus Swizzling documentation](https://docusaurus.io/docs/swizzling)
+
+</details>
+
+<details>
+<summary>Why do I get `Loading ...` using `JSONSchemaViewer` ?</summary>
+
+Several reasons, most likely :
+
+1. You have an error not related to `docusaurus-json-schema-plugin` in your codebase like [this one](https://github.com/jy95/docusaurus-json-schema-plugin/issues/17) : missing language(s) in prism config / ...
+2. You broke the [rules of hooks](https://reactjs.org/docs/hooks-rules.html) or one of your dependancies did
+3. You have more than [one copy of React in the same app](https://reactjs.org/warnings/invalid-hook-call-warning.html) or mismatching versions of React and React DOM
+
+If none of these helped you, consider to have a reproducible example before asking help to [Docusaurus](https://docusaurus.io/community/support) / [React](https://github.com/facebook/react/issues/13991)
+
+</details>
+
+<details>
+<summary>How to translate labels into my own language ?</summary>
+
+Please refer for extra information to :
+- [docusaurus write-translations](https://docusaurus.io/docs/cli#docusaurus-write-translations-sitedir) CLI command
+- [Internationalization](https://docusaurus.io/docs/i18n/introduction)
+
+</details>
+
+<details>
+<summary>Which features are not supported yet ?</summary>
+
+It is expressed on the [Roadmap page](next-steps)
+</details>
