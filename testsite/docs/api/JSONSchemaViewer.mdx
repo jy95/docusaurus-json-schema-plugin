@@ -1,0 +1,111 @@
+---
+title: "🔎 @theme/JSONSchemaViewer"
+description: "@theme/JSONSchemaViewer API"
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+## Configuration
+
+| Property        | Type          | Required ?  | Note                                                    |
+|-----------------|---------------|-------------|---------------------------------------------------------|
+| schema          | JSONSchema    | Mandatory   | JSON Schema Draft-07 / Draft 2019-09 / Draft 2020-12    |
+| resolverOptions | IResolveOpts  | Optional    | To resolve your $ref (by default, only inline references will be dereferenced). |
+| viewerOptions   | JSVOptions    | Optional    | Options for the viewer itself. |
+
+### Types
+
+```tsx
+// Either Draft-07 / Draft 2019-09 / Draft 2020-12
+type JSONSchema = unknown
+```
+
+```tsx
+type IResolveOpts = {
+    // "IResolveOpts" options from @stoplightio/json-ref-resolver
+    // More info on https://github.com/stoplightio/json-ref-resolver
+    // https://github.com/stoplightio/json-ref-resolver/blob/master/src/types.ts
+}
+```
+
+```tsx
+type JSVOptions = {
+   /**
+   * Should we display "examples" ?
+   * @default false
+   */
+    showExamples?: boolean
+}
+```
+
+## Examples
+
+<Tabs>
+<TabItem value="JSX" label="JSX">
+
+```tsx
+import React from "react"
+import Layout from "@theme/Layout"
+import JSONSchemaViewer from "@theme/JSONSchemaViewer"
+
+export default function ExamplePage(): JSX.Element {
+
+    // You are free to fetch your schema in your own way (load local file, fetch, ...) :)
+    const mySchema = {
+        "type": "object",
+        "properties": {
+            "builtin": {
+                "type": "number"
+            }
+        },
+        "patternProperties": {
+            "^S_": {
+                "type": "string"
+            },
+            "^I_": {
+                "type": "integer"
+            }
+        },
+        "additionalProperties": {
+            "type": "string"
+        }
+    }
+
+    return (
+        <Layout
+            title={`My super JSON Schema`}
+            description="Description will go into a meta tag in <head />"
+        >
+            <JSONSchemaViewer schema={mySchema} />
+        </Layout>
+    )
+}
+```
+
+</TabItem>
+
+<TabItem value="MDX" label="MDX" default>
+
+```tsx
+
+import CodeBlock from '@theme/CodeBlock';
+// To fetch a JSON file from your static folder
+import Schema from "@site/static/schemas/examples/array/tuples.json";
+import JSONSchemaViewer from "@theme/JSONSchemaViewer";
+
+# Tuples
+
+Viewer :
+
+<JSONSchemaViewer schema={ Schema  } />
+
+Source :
+
+<CodeBlock language="json">{JSON.stringify(Schema, null, 2)}</CodeBlock>
+
+```
+
+</TabItem>
+
+</Tabs>

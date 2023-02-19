@@ -14,6 +14,7 @@
   "main": "lib/index.js",
   "types": "src/theme-json-schema.d.ts",
   "repository": "https://github.com/jy95/docusaurus-json-schema-plugin.git",
+  "homepage": "https://jy95.github.io/docusaurus-json-schema-plugin/",
   "author": "jy95",
   "license": "AGPL-3.0-or-later",
   "scripts": {

@@ -4,7 +4,7 @@ const path = require("path")
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
   title: "Docusaurus JSON Schema Plugin",
-  tagline: "JSON Schema plugin viewer / editor in Docusaurus v2.",
+  tagline: "JSON Schema plugin viewer / editor in Docusaurus",
   url: "https://jy95.github.io",
   baseUrl: "/docusaurus-json-schema-plugin/",
   onBrokenLinks: "throw",
@@ -50,6 +50,10 @@ module.exports = {
       "@docusaurus/preset-classic",
       {
         docs: {
+          // https://docusaurus.io/docs/markdown-features/code-blocks#npm2yarn-remark-plugin
+          remarkPlugins: [
+            [require("@docusaurus/remark-plugin-npm2yarn"), { sync: true }],
+          ],
           sidebarPath: require.resolve("./sidebars.js"),
           // Please change this to your repo.
           editUrl:
