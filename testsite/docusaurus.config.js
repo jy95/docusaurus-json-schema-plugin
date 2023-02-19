@@ -4,7 +4,7 @@ const path = require("path")
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
   title: "Docusaurus JSON Schema Plugin",
-  tagline: "JSON Schema plugin viewer / editor in Docusaurus v2.",
+  tagline: "JSON Schema plugin viewer / editor in Docusaurus",
   url: "https://jy95.github.io",
   baseUrl: "/docusaurus-json-schema-plugin/",
   onBrokenLinks: "throw",
