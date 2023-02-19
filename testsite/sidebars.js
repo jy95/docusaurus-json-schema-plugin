@@ -49,6 +49,7 @@ module.exports = {
         },
       ],
     },
+    "contributing",
     {
       type: "category",
       label: "📖 API Reference",
@@ -64,6 +65,7 @@ module.exports = {
         },
       ],
     },
+    "next-steps"
   ],
 
   // But you can create a sidebar manually
