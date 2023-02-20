@@ -29,21 +29,25 @@ exports[`JSONSchemaViewer - corner cases CreateArray - sub properties as boolean
             none
           </strong>
         </summary>
-        <strong>
-          type
-        </strong>
-         : 
-        <strong>
-          none
-        </strong>
-        <div
-          style={
-            {
-              "marginTop": "var(--ifm-table-cell-padding)",
-            }
-          }
-        >
-          Always invalid
+        <div>
+          <div>
+            <strong>
+              type
+            </strong>
+             : 
+            <strong>
+              none
+            </strong>
+            <div
+              style={
+                {
+                  "marginTop": "var(--ifm-table-cell-padding)",
+                }
+              }
+            >
+              Always invalid
+            </div>
+          </div>
         </div>
       </details>
     </li>
@@ -55,28 +59,32 @@ exports[`JSONSchemaViewer - corner cases CreateArray - sub properties as boolean
       >
         <summary>
           <code>
-            items[0]
+            items[x]
           </code>
            
           <strong>
             none
           </strong>
         </summary>
-        <strong>
-          type
-        </strong>
-         : 
-        <strong>
-          none
-        </strong>
-        <div
-          style={
-            {
-              "marginTop": "var(--ifm-table-cell-padding)",
-            }
-          }
-        >
-          Always invalid
+        <div>
+          <div>
+            <strong>
+              type
+            </strong>
+             : 
+            <strong>
+              none
+            </strong>
+            <div
+              style={
+                {
+                  "marginTop": "var(--ifm-table-cell-padding)",
+                }
+              }
+            >
+              Always invalid
+            </div>
+          </div>
         </div>
       </details>
     </li>
@@ -94,21 +102,25 @@ exports[`JSONSchemaViewer - corner cases CreateArray - sub properties as boolean
           none
         </strong>
       </summary>
-      <strong>
-        type
-      </strong>
-       : 
-      <strong>
-        none
-      </strong>
-      <div
-        style={
-          {
-            "marginTop": "var(--ifm-table-cell-padding)",
-          }
-        }
-      >
-        Always invalid
+      <div>
+        <div>
+          <strong>
+            type
+          </strong>
+           : 
+          <strong>
+            none
+          </strong>
+          <div
+            style={
+              {
+                "marginTop": "var(--ifm-table-cell-padding)",
+              }
+            }
+          >
+            Always invalid
+          </div>
+        </div>
       </div>
     </details>
   </li>,
@@ -223,21 +235,25 @@ exports[`JSONSchemaViewer - corner cases CreateObject - sub properties as boolea
             none
           </strong>
         </summary>
-        <strong>
-          type
-        </strong>
-         : 
-        <strong>
-          none
-        </strong>
-        <div
-          style={
-            {
-              "marginTop": "var(--ifm-table-cell-padding)",
-            }
-          }
-        >
-          Always invalid
+        <div>
+          <div>
+            <strong>
+              type
+            </strong>
+             : 
+            <strong>
+              none
+            </strong>
+            <div
+              style={
+                {
+                  "marginTop": "var(--ifm-table-cell-padding)",
+                }
+              }
+            >
+              Always invalid
+            </div>
+          </div>
         </div>
       </details>
     </li>

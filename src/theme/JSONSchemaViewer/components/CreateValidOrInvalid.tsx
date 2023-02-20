@@ -23,7 +23,7 @@ export default function CreateValidOrInvalid(props: Props): JSX.Element {
    */
   return (
     <>
-      {schema && <CreateAlwaysValid />}
+      {schema && <CreateAlwaysValid schema={schema} />}
       {!schema && <CreateAlwaysInvalid />}
     </>
   )

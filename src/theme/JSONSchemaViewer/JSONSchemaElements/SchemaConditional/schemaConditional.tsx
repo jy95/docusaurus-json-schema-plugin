@@ -46,7 +46,7 @@ function SchemaConditional(props: Props): JSX.Element {
     <Collapsible
       summary={schemaConditionalLabel}
       detailsProps={{
-        open: true,
+        open: false,
       }}
     >
       {/* Handles if-then-else case */}

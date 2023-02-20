@@ -1,13 +1,6 @@
 import React from "react"
 
-import Translate from "@docusaurus/Translate"
-
-import TabItem from "@theme-original/TabItem"
-import Tabs from "@theme-original/Tabs"
-
-import { CreateNodes } from "../../components/index"
-
-import { IfLabel, ThenLabel } from "../../labels/index"
+import { AllOfSchema } from "../schemaComposition/index"
 
 import type { JSONSchema, JSONSchemaNS } from "../../types"
 
@@ -21,39 +14,19 @@ function DependentSchemas(props: Props): JSX.Element {
 
   let dependentSchemas = (schema as JSONSchemaNS.Object).dependentSchemas!
 
-  let items = Object.entries(dependentSchemas).map(([property, subSchema]) => ({
-    id: property,
-    subSchema: subSchema,
-    label: (
-      <Translate
-        values={{
-          id: "json-schema.labels.dependentSchemas",
-          ifProperty: property,
-        }}
-      >
-        {"When {ifProperty} property is provided"}
-      </Translate>
-    ),
-  }))
+  // simplified schema : in fact, dependentSchemas is an combination of "allOf" with "if" / "then" as element
+  let simplifiedSchema: Exclude<JSONSchema, true | false> = {
+    allOf: Object.entries(dependentSchemas).map(([property, subSchema]) => ({
+      if: {
+        type: "object",
+        required: [property],
+      },
+      then: subSchema,
+    })),
+  }
 
-  return (
-    <ul>
-      {items.map((item) => (
-        <Tabs key={item.id}>
-          <TabItem key={"schema_if"} value={"schema_if"} label={<IfLabel />}>
-            {item.label}
-          </TabItem>
-          <TabItem
-            key={"schema_then"}
-            value={"schema_then"}
-            label={<ThenLabel />}
-          >
-            <CreateNodes schema={item.subSchema} />
-          </TabItem>
-        </Tabs>
-      ))}
-    </ul>
-  )
+  // Let's reuse "AllOfSchema" for this part
+  return <AllOfSchema schema={simplifiedSchema} />
 }
 
 export default DependentSchemas

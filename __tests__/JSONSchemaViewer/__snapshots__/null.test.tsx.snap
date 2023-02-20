@@ -9,34 +9,38 @@ exports[`JSONSchemaViewer - null type test 0 1`] = `
       Schema
     </strong>
   </summary>
-  <strong>
-    type
-  </strong>
-   : 
-  <span
-    style={
-      {
-        "opacity": "0.6",
-      }
-    }
-  >
-    null
-  </span>
-  <div
-    style={
-      {
-        "marginTop": "var(--ifm-table-cell-padding)",
-      }
-    }
-  />
-  <div
-    style={
-      {
-        "marginTop": "var(--ifm-table-cell-padding)",
-      }
-    }
-  >
-    A simple null example
+  <div>
+    <div>
+      <strong>
+        type
+      </strong>
+       : 
+      <span
+        style={
+          {
+            "opacity": "0.6",
+          }
+        }
+      >
+        null
+      </span>
+      <div
+        style={
+          {
+            "marginTop": "var(--ifm-table-cell-padding)",
+          }
+        }
+      />
+      <div
+        style={
+          {
+            "marginTop": "var(--ifm-table-cell-padding)",
+          }
+        }
+      >
+        A simple null example
+      </div>
+    </div>
   </div>
 </details>
 `;
@@ -50,38 +54,42 @@ exports[`JSONSchemaViewer - null type test 1 1`] = `
       Schema
     </strong>
   </summary>
-  <strong>
-    type
-  </strong>
-   : 
-  <span
-    style={
-      {
-        "opacity": "0.6",
-      }
-    }
-  >
-    string
-  </span>
-  <div
-    style={
-      {
-        "marginTop": "var(--ifm-table-cell-padding)",
-      }
-    }
-  >
-    <div>
-      ❓ 
-      Nullable
-    </div>
+  <div>
     <div>
       <strong>
-        Possible values :
+        type
       </strong>
-       
-      <code>
-        [null,"Some constant here ..."]
-      </code>
+       : 
+      <span
+        style={
+          {
+            "opacity": "0.6",
+          }
+        }
+      >
+        string
+      </span>
+      <div
+        style={
+          {
+            "marginTop": "var(--ifm-table-cell-padding)",
+          }
+        }
+      >
+        <div>
+          ❓ 
+          Nullable
+        </div>
+        <div>
+          <strong>
+            Possible values :
+          </strong>
+           
+          <code>
+            [null,"Some constant here ..."]
+          </code>
+        </div>
+      </div>
     </div>
   </div>
 </details>

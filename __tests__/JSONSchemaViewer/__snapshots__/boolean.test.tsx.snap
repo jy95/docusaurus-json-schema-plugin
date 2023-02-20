@@ -9,26 +9,30 @@ exports[`JSONSchemaViewer - Boolean type test 0 1`] = `
       Schema
     </strong>
   </summary>
-  <strong>
-    type
-  </strong>
-   : 
-  <span
-    style={
-      {
-        "opacity": "0.6",
-      }
-    }
-  >
-    boolean
-  </span>
-  <div
-    style={
-      {
-        "marginTop": "var(--ifm-table-cell-padding)",
-      }
-    }
-  />
+  <div>
+    <div>
+      <strong>
+        type
+      </strong>
+       : 
+      <span
+        style={
+          {
+            "opacity": "0.6",
+          }
+        }
+      >
+        boolean
+      </span>
+      <div
+        style={
+          {
+            "marginTop": "var(--ifm-table-cell-padding)",
+          }
+        }
+      />
+    </div>
+  </div>
 </details>
 `;
 
@@ -41,53 +45,57 @@ exports[`JSONSchemaViewer - Boolean type test 1 1`] = `
       Schema
     </strong>
   </summary>
-  <strong>
-    type
-  </strong>
-   : 
-  <span
-    style={
-      {
-        "opacity": "0.6",
-      }
-    }
-  >
-    boolean
-  </span>
-  <div
-    style={
-      {
-        "marginTop": "var(--ifm-table-cell-padding)",
-      }
-    }
-  >
+  <div>
     <div>
       <strong>
-        Possible values :
+        type
       </strong>
-       
-      <code>
-        [true,false]
-      </code>
+       : 
+      <span
+        style={
+          {
+            "opacity": "0.6",
+          }
+        }
+      >
+        boolean
+      </span>
+      <div
+        style={
+          {
+            "marginTop": "var(--ifm-table-cell-padding)",
+          }
+        }
+      >
+        <div>
+          <strong>
+            Possible values :
+          </strong>
+           
+          <code>
+            [true,false]
+          </code>
+        </div>
+        <div>
+          <strong>
+            Default value :
+          </strong>
+           
+          <code>
+            false
+          </code>
+        </div>
+      </div>
+      <div
+        style={
+          {
+            "marginTop": "var(--ifm-table-cell-padding)",
+          }
+        }
+      >
+        Boolean without the explict type
+      </div>
     </div>
-    <div>
-      <strong>
-        Default value :
-      </strong>
-       
-      <code>
-        false
-      </code>
-    </div>
-  </div>
-  <div
-    style={
-      {
-        "marginTop": "var(--ifm-table-cell-padding)",
-      }
-    }
-  >
-    Boolean without the explict type
   </div>
 </details>
 `;

@@ -14,37 +14,39 @@ function Dependencies(props: Props): JSX.Element {
 
   let dependencies = schema.dependencies!
 
-  // Distinguish dependentRequired inside dependencies
-  const dependentRequired = Object.entries(dependencies)
-    // If the dependency value was an array, it would behave like dependentRequired
-    .filter(([_, subSchema]) => Array.isArray(subSchema))
-    .reduce((acc, [property, subSchema]) => {
-      acc[property] = subSchema as readonly string[]
-      return acc
-    }, {} as Record<string, string[] | readonly string[]>)
+  // Split dependencies into dependentRequired / dependentSchemas
+  let result = Object.entries(dependencies).reduce(
+    (acc, [property, subSchema]) => {
+      if (Array.isArray(subSchema)) {
+        // dependentRequired case
+        acc["dependentRequired"][property] = subSchema
+      } else {
+        // dependentSchemas case
+        acc["dependentSchemas"][property] = subSchema as JSONSchema
+      }
 
-  // Distinguish dependentSchemas inside dependencies
-  const dependentSchemas = Object.entries(dependencies)
-    // if the dependency value was a schema, it would behave like dependentSchemas
-    .filter(([_, subSchema]) => !Array.isArray(subSchema))
-    .reduce((acc, [property, subSchema]) => {
-      acc[property] = subSchema as JSONSchema
+      // return result
       return acc
-    }, {} as Record<string, JSONSchema>)
+    },
+    {
+      dependentRequired: {} as Record<string, string[] | readonly string[]>,
+      dependentSchemas: {} as Record<string, JSONSchema>,
+    }
+  )
 
   return (
     <>
-      {Object.keys(dependentRequired).length > 0 && (
+      {Object.keys(result.dependentRequired).length > 0 && (
         <DependentRequired
           schema={{
-            dependentRequired: dependentRequired,
+            dependentRequired: result.dependentRequired,
           }}
         />
       )}
-      {Object.keys(dependentSchemas).length > 0 && (
+      {Object.keys(result.dependentSchemas).length > 0 && (
         <DependentSchemas
           schema={{
-            dependentSchemas: dependentSchemas,
+            dependentSchemas: result.dependentSchemas,
           }}
         />
       )}

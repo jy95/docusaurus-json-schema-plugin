@@ -1,6 +1,6 @@
 import React from "react"
 
-import Translate from "@docusaurus/Translate"
+import { AllOfSchema } from "../schemaComposition/index"
 
 import type { JSONSchema, JSONSchemaNS } from "../../types"
 
@@ -14,33 +14,24 @@ function DependentRequired(props: Props): JSX.Element {
 
   let dependentRequired = (schema as JSONSchemaNS.Object).dependentRequired!
 
-  let items = Object.entries(dependentRequired).map(
-    ([property1, property2]) => ({
-      id: property1,
-      label: (
-        <Translate
-          values={{
-            id: "json-schema.labels.dependentRequired",
-            ifProperty: property1,
-            count: property2.length,
-            otherProperty: property2.join(" "),
-          }}
-        >
-          {
-            "If {ifProperty} property is provided, then {count} propertie(s) must also be present: {otherProperty}"
-          }
-        </Translate>
-      ),
-    })
-  )
+  // simplified schema : in fact, dependentRequired is an combination of "allOf" with "if" / "then" as element
+  let simplifiedSchema: Exclude<JSONSchema, true | false> = {
+    allOf: Object.entries(dependentRequired).map(
+      ([property, requiredProperties]) => ({
+        if: {
+          type: "object",
+          required: [property],
+        },
+        then: {
+          type: "object",
+          required: requiredProperties,
+        },
+      })
+    ),
+  }
 
-  return (
-    <ul>
-      {items.map((item) => (
-        <li key={item.id}>{item.label}</li>
-      ))}
-    </ul>
-  )
+  // Let's reuse "AllOfSchema" for this part
+  return <AllOfSchema schema={simplifiedSchema} />
 }
 
 export default DependentRequired

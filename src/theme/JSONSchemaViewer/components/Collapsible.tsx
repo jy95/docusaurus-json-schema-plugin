@@ -4,8 +4,11 @@ import React, {
   DetailsHTMLAttributes,
 } from "react"
 
+// import Details from "@theme-original/Details"
+import Details from "@theme-original/Details"
+
 // For collapse component
-function Collapsible(props: {
+export default function Collapsible(props: {
   summary: ReactNode
   children: ReactNode
   detailsProps?: DetailedHTMLProps<
@@ -16,11 +19,8 @@ function Collapsible(props: {
   const { summary, children, detailsProps } = props
 
   return (
-    <details {...detailsProps}>
-      <summary>{summary}</summary>
+    <Details summary={<summary>{summary}</summary>} {...detailsProps}>
       {children}
-    </details>
+    </Details>
   )
 }
-
-export default Collapsible

@@ -2,9 +2,22 @@ import React from "react"
 import Translate from "@docusaurus/Translate"
 
 import { TypeLabel, TrueLabel } from "../labels/index"
+import { useJSVOptionsContext } from "../contexts/index"
+import { QualifierMessages } from "../utils/index"
 
-// When schema has the value "true", it means that it is ALWAYS valid
-export default function CreateAlwaysValid(): JSX.Element {
+import type { JSONSchema } from "../types"
+
+type Props = {
+  [x: string]: any
+  schema: JSONSchema
+}
+
+// When schema has the value "true" or empty object, it means that it is ALWAYS valid
+export default function CreateAlwaysValid({ schema }: Props): JSX.Element {
+  const options = useJSVOptionsContext()
+  const notBoolean = typeof schema !== "boolean"
+  const description = notBoolean ? schema.description : undefined
+
   return (
     <>
       <TypeLabel />
@@ -19,6 +32,16 @@ export default function CreateAlwaysValid(): JSX.Element {
           {"Always valid"}
         </Translate>
       </div>
+      {notBoolean && (
+        <div style={{ marginTop: "var(--ifm-table-cell-padding)" }}>
+          <QualifierMessages schema={schema} options={options} />
+        </div>
+      )}
+      {description !== undefined && (
+        <div style={{ marginTop: "var(--ifm-table-cell-padding)" }}>
+          {description}
+        </div>
+      )}
     </>
   )
 }
