@@ -9,21 +9,25 @@ exports[`JSONSchemaViewer - Generic keywords test annotations 1`] = `
       Match anything
     </strong>
   </summary>
-  <strong>
-    type
-  </strong>
-   : 
-  <strong>
-    any
-  </strong>
-  <div
-    style={
-      {
-        "marginTop": "var(--ifm-table-cell-padding)",
-      }
-    }
-  >
-    Always valid
+  <div>
+    <div>
+      <strong>
+        type
+      </strong>
+       : 
+      <strong>
+        any
+      </strong>
+      <div
+        style={
+          {
+            "marginTop": "var(--ifm-table-cell-padding)",
+          }
+        }
+      >
+        Always valid
+      </div>
+    </div>
   </div>
 </details>
 `;
@@ -37,79 +41,87 @@ exports[`JSONSchemaViewer - Generic keywords test const 1`] = `
       Schema
     </strong>
   </summary>
-  <strong>
-    type
-  </strong>
-   : 
-  <span
-    style={
-      {
-        "opacity": "0.6",
-      }
-    }
-  >
-    object
-  </span>
-  <ul>
-    <li>
-      <details
-        open={false}
+  <div>
+    <div>
+      <strong>
+        type
+      </strong>
+       : 
+      <span
+        style={
+          {
+            "opacity": "0.6",
+          }
+        }
       >
-        <summary>
-          <strong>
-            country
-          </strong>
-           
-          <span
-            style={
-              {
-                "opacity": "0.6",
-              }
-            }
+        object
+      </span>
+      <ul>
+        <li>
+          <details
+            open={false}
           >
-            string
-          </span>
-        </summary>
-        <strong>
-          type
-        </strong>
-         : 
-        <span
-          style={
-            {
-              "opacity": "0.6",
-            }
+            <summary>
+              <strong>
+                country
+              </strong>
+               
+              <span
+                style={
+                  {
+                    "opacity": "0.6",
+                  }
+                }
+              >
+                string
+              </span>
+            </summary>
+            <div>
+              <div>
+                <strong>
+                  type
+                </strong>
+                 : 
+                <span
+                  style={
+                    {
+                      "opacity": "0.6",
+                    }
+                  }
+                >
+                  string
+                </span>
+                <div
+                  style={
+                    {
+                      "marginTop": "var(--ifm-table-cell-padding)",
+                    }
+                  }
+                >
+                  <div>
+                    <strong>
+                      Constant value :
+                    </strong>
+                     
+                    <code>
+                      United States of America
+                    </code>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </details>
+        </li>
+      </ul>
+      <div
+        style={
+          {
+            "marginTop": "var(--ifm-table-cell-padding)",
           }
-        >
-          string
-        </span>
-        <div
-          style={
-            {
-              "marginTop": "var(--ifm-table-cell-padding)",
-            }
-          }
-        >
-          <div>
-            <strong>
-              Constant value :
-            </strong>
-             
-            <code>
-              United States of America
-            </code>
-          </div>
-        </div>
-      </details>
-    </li>
-  </ul>
-  <div
-    style={
-      {
-        "marginTop": "var(--ifm-table-cell-padding)",
-      }
-    }
-  />
+        }
+      />
+    </div>
+  </div>
 </details>
 `;
 
@@ -122,67 +134,71 @@ exports[`JSONSchemaViewer - Generic keywords test enum 1`] = `
       Schema
     </strong>
   </summary>
-  <strong>
-    type
-  </strong>
-   : 
-  <span
-    style={
-      {
-        "opacity": "0.6",
-      }
-    }
-  >
-    string
-  </span>
-  <div
-    style={
-      {
-        "marginTop": "var(--ifm-table-cell-padding)",
-      }
-    }
-  >
+  <div>
     <div>
       <strong>
-        Possible values :
+        type
       </strong>
-       
-      <code>
-        ["red","amber","green"]
-      </code>
-    </div>
-    <div>
-      <strong>
-        Example values :
-      </strong>
-       
-      <div
-        className="tabs-container"
+       : 
+      <span
+        style={
+          {
+            "opacity": "0.6",
+          }
+        }
       >
-        <ul
-          aria-orientation="horizontal"
-          className="tabs"
-          role="tablist"
-        >
-          <li
-            aria-selected={true}
-            onClick={[Function]}
-            tabIndex={0}
-          >
-            Example 0
-          </li>
-        </ul>
+        string
+      </span>
+      <div
+        style={
+          {
+            "marginTop": "var(--ifm-table-cell-padding)",
+          }
+        }
+      >
         <div>
+          <strong>
+            Possible values :
+          </strong>
+           
+          <code>
+            ["red","amber","green"]
+          </code>
+        </div>
+        <div>
+          <strong>
+            Example values :
+          </strong>
+           
           <div
-            hidden={false}
-            role="tabpanel"
+            className="tabs-container"
           >
-            <div
-              role="tabpanel"
+            <ul
+              aria-orientation="horizontal"
+              className="tabs"
+              role="tablist"
             >
-              <code>
-                red
-              </code>
+              <li
+                aria-selected={true}
+                onClick={[Function]}
+                tabIndex={0}
+              >
+                Example 0
+              </li>
+            </ul>
+            <div>
+              <div
+                hidden={false}
+                role="tabpanel"
+              >
+                <div
+                  role="tabpanel"
+                >
+                  <code>
+                    red
+                  </code>
+                </div>
+              </div>
             </div>
           </div>
         </div>

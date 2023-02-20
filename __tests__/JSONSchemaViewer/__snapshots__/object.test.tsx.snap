@@ -9,98 +9,110 @@ exports[`JSONSchemaViewer - object test Unspecified required properties 1`] = `
       Schema
     </strong>
   </summary>
-  <strong>
-    type
-  </strong>
-   : 
-  <span
-    style={
-      {
-        "opacity": "0.6",
-      }
-    }
-  >
-    object
-  </span>
-  <ul>
-    <li>
-      <details
-        open={false}
-      >
-        <summary>
-          <strong>
-            prop1
-          </strong>
-           
-          <strong>
-            any
-          </strong>
-           
-          <strong>
-            required
-          </strong>
-        </summary>
-        <strong>
-          type
-        </strong>
-         : 
-        <strong>
-          any
-        </strong>
-        <div
-          style={
-            {
-              "marginTop": "var(--ifm-table-cell-padding)",
-            }
+  <div>
+    <div>
+      <strong>
+        type
+      </strong>
+       : 
+      <span
+        style={
+          {
+            "opacity": "0.6",
           }
-        >
-          Always valid
-        </div>
-      </details>
-    </li>
-    <li>
-      <details
-        open={false}
+        }
       >
-        <summary>
-          <strong>
-            prop2
-          </strong>
-           
-          <strong>
-            any
-          </strong>
-           
-          <strong>
-            required
-          </strong>
-        </summary>
-        <strong>
-          type
-        </strong>
-         : 
-        <strong>
-          any
-        </strong>
-        <div
-          style={
-            {
-              "marginTop": "var(--ifm-table-cell-padding)",
-            }
+        object
+      </span>
+      <ul>
+        <li>
+          <details
+            open={false}
+          >
+            <summary>
+              <strong>
+                prop1
+              </strong>
+               
+              <strong>
+                any
+              </strong>
+               
+              <strong>
+                required
+              </strong>
+            </summary>
+            <div>
+              <div>
+                <strong>
+                  type
+                </strong>
+                 : 
+                <strong>
+                  any
+                </strong>
+                <div
+                  style={
+                    {
+                      "marginTop": "var(--ifm-table-cell-padding)",
+                    }
+                  }
+                >
+                  Always valid
+                </div>
+              </div>
+            </div>
+          </details>
+        </li>
+        <li>
+          <details
+            open={false}
+          >
+            <summary>
+              <strong>
+                prop2
+              </strong>
+               
+              <strong>
+                any
+              </strong>
+               
+              <strong>
+                required
+              </strong>
+            </summary>
+            <div>
+              <div>
+                <strong>
+                  type
+                </strong>
+                 : 
+                <strong>
+                  any
+                </strong>
+                <div
+                  style={
+                    {
+                      "marginTop": "var(--ifm-table-cell-padding)",
+                    }
+                  }
+                >
+                  Always valid
+                </div>
+              </div>
+            </div>
+          </details>
+        </li>
+      </ul>
+      <div
+        style={
+          {
+            "marginTop": "var(--ifm-table-cell-padding)",
           }
-        >
-          Always valid
-        </div>
-      </details>
-    </li>
-  </ul>
-  <div
-    style={
-      {
-        "marginTop": "var(--ifm-table-cell-padding)",
-      }
-    }
-  />
+        }
+      />
+    </div>
+  </div>
 </details>
 `;
 
@@ -113,34 +125,38 @@ exports[`JSONSchemaViewer - object test Unspecified type (object) 1`] = `
       Schema
     </strong>
   </summary>
-  <strong>
-    type
-  </strong>
-   : 
-  <span
-    style={
-      {
-        "opacity": "0.6",
-      }
-    }
-  >
-    object
-  </span>
-  <div
-    style={
-      {
-        "marginTop": "var(--ifm-table-cell-padding)",
-      }
-    }
-  >
+  <div>
     <div>
       <strong>
-        Length :
+        type
       </strong>
-       
-      <code>
-        &gt;= 1 propertie(s)
-      </code>
+       : 
+      <span
+        style={
+          {
+            "opacity": "0.6",
+          }
+        }
+      >
+        object
+      </span>
+      <div
+        style={
+          {
+            "marginTop": "var(--ifm-table-cell-padding)",
+          }
+        }
+      >
+        <div>
+          <strong>
+            Length :
+          </strong>
+           
+          <code>
+            &gt;= 1 propertie(s)
+          </code>
+        </div>
+      </div>
     </div>
   </div>
 </details>
@@ -155,204 +171,224 @@ exports[`JSONSchemaViewer - object test additionalProperties (JSON Schema) 1`] =
       Schema
     </strong>
   </summary>
-  <strong>
-    type
-  </strong>
-   : 
-  <span
-    style={
-      {
-        "opacity": "0.6",
-      }
-    }
-  >
-    object
-  </span>
-  <ul>
-    <li>
-      <details
-        open={false}
+  <div>
+    <div>
+      <strong>
+        type
+      </strong>
+       : 
+      <span
+        style={
+          {
+            "opacity": "0.6",
+          }
+        }
       >
-        <summary>
-          <strong>
-            number
-          </strong>
-           
-          <span
-            style={
-              {
-                "opacity": "0.6",
-              }
-            }
+        object
+      </span>
+      <ul>
+        <li>
+          <details
+            open={false}
           >
-            number
-          </span>
-        </summary>
-        <strong>
-          type
-        </strong>
-         : 
-        <span
-          style={
-            {
-              "opacity": "0.6",
-            }
-          }
-        >
-          number
-        </span>
-        <div
-          style={
-            {
-              "marginTop": "var(--ifm-table-cell-padding)",
-            }
-          }
-        />
-      </details>
-    </li>
-    <li>
-      <details
-        open={false}
-      >
-        <summary>
-          <strong>
-            street_name
-          </strong>
-           
-          <span
-            style={
-              {
-                "opacity": "0.6",
-              }
-            }
+            <summary>
+              <strong>
+                number
+              </strong>
+               
+              <span
+                style={
+                  {
+                    "opacity": "0.6",
+                  }
+                }
+              >
+                number
+              </span>
+            </summary>
+            <div>
+              <div>
+                <strong>
+                  type
+                </strong>
+                 : 
+                <span
+                  style={
+                    {
+                      "opacity": "0.6",
+                    }
+                  }
+                >
+                  number
+                </span>
+                <div
+                  style={
+                    {
+                      "marginTop": "var(--ifm-table-cell-padding)",
+                    }
+                  }
+                />
+              </div>
+            </div>
+          </details>
+        </li>
+        <li>
+          <details
+            open={false}
           >
-            string
-          </span>
-        </summary>
-        <strong>
-          type
-        </strong>
-         : 
-        <span
-          style={
-            {
-              "opacity": "0.6",
-            }
-          }
-        >
-          string
-        </span>
-        <div
-          style={
-            {
-              "marginTop": "var(--ifm-table-cell-padding)",
-            }
-          }
-        />
-      </details>
-    </li>
-    <li>
-      <details
-        open={false}
-      >
-        <summary>
-          <strong>
-            street_type
-          </strong>
-           
-          <span
-            style={
-              {
-                "opacity": "0.6",
-              }
-            }
+            <summary>
+              <strong>
+                street_name
+              </strong>
+               
+              <span
+                style={
+                  {
+                    "opacity": "0.6",
+                  }
+                }
+              >
+                string
+              </span>
+            </summary>
+            <div>
+              <div>
+                <strong>
+                  type
+                </strong>
+                 : 
+                <span
+                  style={
+                    {
+                      "opacity": "0.6",
+                    }
+                  }
+                >
+                  string
+                </span>
+                <div
+                  style={
+                    {
+                      "marginTop": "var(--ifm-table-cell-padding)",
+                    }
+                  }
+                />
+              </div>
+            </div>
+          </details>
+        </li>
+        <li>
+          <details
+            open={false}
           >
-            string
-          </span>
-        </summary>
-        <strong>
-          type
-        </strong>
-         : 
-        <span
-          style={
-            {
-              "opacity": "0.6",
-            }
-          }
-        >
-          string
-        </span>
-        <div
-          style={
-            {
-              "marginTop": "var(--ifm-table-cell-padding)",
-            }
-          }
-        >
-          <div>
-            <strong>
-              Possible values :
-            </strong>
-             
-            <code>
-              ["Street","Avenue","Boulevard"]
-            </code>
-          </div>
-        </div>
-      </details>
-    </li>
-  </ul>
-  <ul>
-    <li>
-      <details
-        open={false}
-      >
-        <summary>
-          <code>
-            property name*
-          </code>
-           
-          <span
-            style={
-              {
-                "opacity": "0.6",
-              }
-            }
+            <summary>
+              <strong>
+                street_type
+              </strong>
+               
+              <span
+                style={
+                  {
+                    "opacity": "0.6",
+                  }
+                }
+              >
+                string
+              </span>
+            </summary>
+            <div>
+              <div>
+                <strong>
+                  type
+                </strong>
+                 : 
+                <span
+                  style={
+                    {
+                      "opacity": "0.6",
+                    }
+                  }
+                >
+                  string
+                </span>
+                <div
+                  style={
+                    {
+                      "marginTop": "var(--ifm-table-cell-padding)",
+                    }
+                  }
+                >
+                  <div>
+                    <strong>
+                      Possible values :
+                    </strong>
+                     
+                    <code>
+                      ["Street","Avenue","Boulevard"]
+                    </code>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </details>
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <details
+            open={false}
           >
-            string
-          </span>
-        </summary>
-        <strong>
-          type
-        </strong>
-         : 
-        <span
-          style={
-            {
-              "opacity": "0.6",
-            }
+            <summary>
+              <code>
+                property name*
+              </code>
+               
+              <span
+                style={
+                  {
+                    "opacity": "0.6",
+                  }
+                }
+              >
+                string
+              </span>
+            </summary>
+            <div>
+              <div>
+                <strong>
+                  type
+                </strong>
+                 : 
+                <span
+                  style={
+                    {
+                      "opacity": "0.6",
+                    }
+                  }
+                >
+                  string
+                </span>
+                <div
+                  style={
+                    {
+                      "marginTop": "var(--ifm-table-cell-padding)",
+                    }
+                  }
+                />
+              </div>
+            </div>
+          </details>
+        </li>
+      </ul>
+      <div
+        style={
+          {
+            "marginTop": "var(--ifm-table-cell-padding)",
           }
-        >
-          string
-        </span>
-        <div
-          style={
-            {
-              "marginTop": "var(--ifm-table-cell-padding)",
-            }
-          }
-        />
-      </details>
-    </li>
-  </ul>
-  <div
-    style={
-      {
-        "marginTop": "var(--ifm-table-cell-padding)",
-      }
-    }
-  />
+        }
+      />
+    </div>
+  </div>
 </details>
 `;
 
@@ -365,197 +401,217 @@ exports[`JSONSchemaViewer - object test additionalProperties (false) 1`] = `
       Schema
     </strong>
   </summary>
-  <strong>
-    type
-  </strong>
-   : 
-  <span
-    style={
-      {
-        "opacity": "0.6",
-      }
-    }
-  >
-    object
-  </span>
-  <ul>
-    <li>
-      <details
-        open={false}
-      >
-        <summary>
-          <strong>
-            number
-          </strong>
-           
-          <span
-            style={
-              {
-                "opacity": "0.6",
-              }
-            }
-          >
-            number
-          </span>
-        </summary>
-        <strong>
-          type
-        </strong>
-         : 
-        <span
-          style={
-            {
-              "opacity": "0.6",
-            }
-          }
-        >
-          number
-        </span>
-        <div
-          style={
-            {
-              "marginTop": "var(--ifm-table-cell-padding)",
-            }
-          }
-        />
-      </details>
-    </li>
-    <li>
-      <details
-        open={false}
-      >
-        <summary>
-          <strong>
-            street_name
-          </strong>
-           
-          <span
-            style={
-              {
-                "opacity": "0.6",
-              }
-            }
-          >
-            string
-          </span>
-        </summary>
-        <strong>
-          type
-        </strong>
-         : 
-        <span
-          style={
-            {
-              "opacity": "0.6",
-            }
-          }
-        >
-          string
-        </span>
-        <div
-          style={
-            {
-              "marginTop": "var(--ifm-table-cell-padding)",
-            }
-          }
-        />
-      </details>
-    </li>
-    <li>
-      <details
-        open={false}
-      >
-        <summary>
-          <strong>
-            street_type
-          </strong>
-           
-          <span
-            style={
-              {
-                "opacity": "0.6",
-              }
-            }
-          >
-            string
-          </span>
-        </summary>
-        <strong>
-          type
-        </strong>
-         : 
-        <span
-          style={
-            {
-              "opacity": "0.6",
-            }
-          }
-        >
-          string
-        </span>
-        <div
-          style={
-            {
-              "marginTop": "var(--ifm-table-cell-padding)",
-            }
-          }
-        >
-          <div>
-            <strong>
-              Possible values :
-            </strong>
-             
-            <code>
-              ["Street","Avenue","Boulevard"]
-            </code>
-          </div>
-        </div>
-      </details>
-    </li>
-  </ul>
-  <ul>
-    <li>
-      <details
-        open={false}
-      >
-        <summary>
-          <code>
-            property name*
-          </code>
-           
-          <strong>
-            none
-          </strong>
-        </summary>
-        <strong>
-          type
-        </strong>
-         : 
-        <strong>
-          none
-        </strong>
-        <div
-          style={
-            {
-              "marginTop": "var(--ifm-table-cell-padding)",
-            }
-          }
-        >
-          Always invalid
-        </div>
-      </details>
-    </li>
-  </ul>
-  <div
-    style={
-      {
-        "marginTop": "var(--ifm-table-cell-padding)",
-      }
-    }
-  >
+  <div>
     <div>
-      🚨 
-      No extra propertie(s) are authorized in this object
+      <strong>
+        type
+      </strong>
+       : 
+      <span
+        style={
+          {
+            "opacity": "0.6",
+          }
+        }
+      >
+        object
+      </span>
+      <ul>
+        <li>
+          <details
+            open={false}
+          >
+            <summary>
+              <strong>
+                number
+              </strong>
+               
+              <span
+                style={
+                  {
+                    "opacity": "0.6",
+                  }
+                }
+              >
+                number
+              </span>
+            </summary>
+            <div>
+              <div>
+                <strong>
+                  type
+                </strong>
+                 : 
+                <span
+                  style={
+                    {
+                      "opacity": "0.6",
+                    }
+                  }
+                >
+                  number
+                </span>
+                <div
+                  style={
+                    {
+                      "marginTop": "var(--ifm-table-cell-padding)",
+                    }
+                  }
+                />
+              </div>
+            </div>
+          </details>
+        </li>
+        <li>
+          <details
+            open={false}
+          >
+            <summary>
+              <strong>
+                street_name
+              </strong>
+               
+              <span
+                style={
+                  {
+                    "opacity": "0.6",
+                  }
+                }
+              >
+                string
+              </span>
+            </summary>
+            <div>
+              <div>
+                <strong>
+                  type
+                </strong>
+                 : 
+                <span
+                  style={
+                    {
+                      "opacity": "0.6",
+                    }
+                  }
+                >
+                  string
+                </span>
+                <div
+                  style={
+                    {
+                      "marginTop": "var(--ifm-table-cell-padding)",
+                    }
+                  }
+                />
+              </div>
+            </div>
+          </details>
+        </li>
+        <li>
+          <details
+            open={false}
+          >
+            <summary>
+              <strong>
+                street_type
+              </strong>
+               
+              <span
+                style={
+                  {
+                    "opacity": "0.6",
+                  }
+                }
+              >
+                string
+              </span>
+            </summary>
+            <div>
+              <div>
+                <strong>
+                  type
+                </strong>
+                 : 
+                <span
+                  style={
+                    {
+                      "opacity": "0.6",
+                    }
+                  }
+                >
+                  string
+                </span>
+                <div
+                  style={
+                    {
+                      "marginTop": "var(--ifm-table-cell-padding)",
+                    }
+                  }
+                >
+                  <div>
+                    <strong>
+                      Possible values :
+                    </strong>
+                     
+                    <code>
+                      ["Street","Avenue","Boulevard"]
+                    </code>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </details>
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <details
+            open={false}
+          >
+            <summary>
+              <code>
+                property name*
+              </code>
+               
+              <strong>
+                none
+              </strong>
+            </summary>
+            <div>
+              <div>
+                <strong>
+                  type
+                </strong>
+                 : 
+                <strong>
+                  none
+                </strong>
+                <div
+                  style={
+                    {
+                      "marginTop": "var(--ifm-table-cell-padding)",
+                    }
+                  }
+                >
+                  Always invalid
+                </div>
+              </div>
+            </div>
+          </details>
+        </li>
+      </ul>
+      <div
+        style={
+          {
+            "marginTop": "var(--ifm-table-cell-padding)",
+          }
+        }
+      >
+        <div>
+          🚨 
+          No extra propertie(s) are authorized in this object
+        </div>
+      </div>
     </div>
   </div>
 </details>
@@ -570,196 +626,216 @@ exports[`JSONSchemaViewer - object test additionalProperties with patternPropert
       Schema
     </strong>
   </summary>
-  <strong>
-    type
-  </strong>
-   : 
-  <span
-    style={
-      {
-        "opacity": "0.6",
-      }
-    }
-  >
-    object
-  </span>
-  <ul>
-    <li>
-      <details
-        open={false}
+  <div>
+    <div>
+      <strong>
+        type
+      </strong>
+       : 
+      <span
+        style={
+          {
+            "opacity": "0.6",
+          }
+        }
       >
-        <summary>
-          <strong>
-            builtin
-          </strong>
-           
-          <span
-            style={
-              {
-                "opacity": "0.6",
-              }
-            }
+        object
+      </span>
+      <ul>
+        <li>
+          <details
+            open={false}
           >
-            number
-          </span>
-        </summary>
-        <strong>
-          type
-        </strong>
-         : 
-        <span
-          style={
-            {
-              "opacity": "0.6",
-            }
-          }
-        >
-          number
-        </span>
-        <div
-          style={
-            {
-              "marginTop": "var(--ifm-table-cell-padding)",
-            }
-          }
-        />
-      </details>
-    </li>
-  </ul>
-  <ul>
-    <li>
-      <details
-        open={false}
-      >
-        <summary>
-          <code>
-            ^S_
-          </code>
-           
-          <span
-            style={
-              {
-                "opacity": "0.6",
-              }
-            }
+            <summary>
+              <strong>
+                builtin
+              </strong>
+               
+              <span
+                style={
+                  {
+                    "opacity": "0.6",
+                  }
+                }
+              >
+                number
+              </span>
+            </summary>
+            <div>
+              <div>
+                <strong>
+                  type
+                </strong>
+                 : 
+                <span
+                  style={
+                    {
+                      "opacity": "0.6",
+                    }
+                  }
+                >
+                  number
+                </span>
+                <div
+                  style={
+                    {
+                      "marginTop": "var(--ifm-table-cell-padding)",
+                    }
+                  }
+                />
+              </div>
+            </div>
+          </details>
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <details
+            open={false}
           >
-            string
-          </span>
-        </summary>
-        <strong>
-          type
-        </strong>
-         : 
-        <span
-          style={
-            {
-              "opacity": "0.6",
-            }
-          }
-        >
-          string
-        </span>
-        <div
-          style={
-            {
-              "marginTop": "var(--ifm-table-cell-padding)",
-            }
-          }
-        />
-      </details>
-    </li>
-    <li>
-      <details
-        open={false}
-      >
-        <summary>
-          <code>
-            ^I_
-          </code>
-           
-          <span
-            style={
-              {
-                "opacity": "0.6",
-              }
-            }
+            <summary>
+              <code>
+                ^S_
+              </code>
+               
+              <span
+                style={
+                  {
+                    "opacity": "0.6",
+                  }
+                }
+              >
+                string
+              </span>
+            </summary>
+            <div>
+              <div>
+                <strong>
+                  type
+                </strong>
+                 : 
+                <span
+                  style={
+                    {
+                      "opacity": "0.6",
+                    }
+                  }
+                >
+                  string
+                </span>
+                <div
+                  style={
+                    {
+                      "marginTop": "var(--ifm-table-cell-padding)",
+                    }
+                  }
+                />
+              </div>
+            </div>
+          </details>
+        </li>
+        <li>
+          <details
+            open={false}
           >
-            integer
-          </span>
-        </summary>
-        <strong>
-          type
-        </strong>
-         : 
-        <span
-          style={
-            {
-              "opacity": "0.6",
-            }
-          }
-        >
-          integer
-        </span>
-        <div
-          style={
-            {
-              "marginTop": "var(--ifm-table-cell-padding)",
-            }
-          }
-        />
-      </details>
-    </li>
-  </ul>
-  <ul>
-    <li>
-      <details
-        open={false}
-      >
-        <summary>
-          <code>
-            property name*
-          </code>
-           
-          <span
-            style={
-              {
-                "opacity": "0.6",
-              }
-            }
+            <summary>
+              <code>
+                ^I_
+              </code>
+               
+              <span
+                style={
+                  {
+                    "opacity": "0.6",
+                  }
+                }
+              >
+                integer
+              </span>
+            </summary>
+            <div>
+              <div>
+                <strong>
+                  type
+                </strong>
+                 : 
+                <span
+                  style={
+                    {
+                      "opacity": "0.6",
+                    }
+                  }
+                >
+                  integer
+                </span>
+                <div
+                  style={
+                    {
+                      "marginTop": "var(--ifm-table-cell-padding)",
+                    }
+                  }
+                />
+              </div>
+            </div>
+          </details>
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <details
+            open={false}
           >
-            string
-          </span>
-        </summary>
-        <strong>
-          type
-        </strong>
-         : 
-        <span
-          style={
-            {
-              "opacity": "0.6",
-            }
+            <summary>
+              <code>
+                property name*
+              </code>
+               
+              <span
+                style={
+                  {
+                    "opacity": "0.6",
+                  }
+                }
+              >
+                string
+              </span>
+            </summary>
+            <div>
+              <div>
+                <strong>
+                  type
+                </strong>
+                 : 
+                <span
+                  style={
+                    {
+                      "opacity": "0.6",
+                    }
+                  }
+                >
+                  string
+                </span>
+                <div
+                  style={
+                    {
+                      "marginTop": "var(--ifm-table-cell-padding)",
+                    }
+                  }
+                />
+              </div>
+            </div>
+          </details>
+        </li>
+      </ul>
+      <div
+        style={
+          {
+            "marginTop": "var(--ifm-table-cell-padding)",
           }
-        >
-          string
-        </span>
-        <div
-          style={
-            {
-              "marginTop": "var(--ifm-table-cell-padding)",
-            }
-          }
-        />
-      </details>
-    </li>
-  </ul>
-  <div
-    style={
-      {
-        "marginTop": "var(--ifm-table-cell-padding)",
-      }
-    }
-  />
+        }
+      />
+    </div>
+  </div>
 </details>
 `;
 
@@ -772,34 +848,38 @@ exports[`JSONSchemaViewer - object test maxProperties 1`] = `
       Schema
     </strong>
   </summary>
-  <strong>
-    type
-  </strong>
-   : 
-  <span
-    style={
-      {
-        "opacity": "0.6",
-      }
-    }
-  >
-    object
-  </span>
-  <div
-    style={
-      {
-        "marginTop": "var(--ifm-table-cell-padding)",
-      }
-    }
-  >
+  <div>
     <div>
       <strong>
-        Length :
+        type
       </strong>
-       
-      <code>
-        &lt;= 3 propertie(s)
-      </code>
+       : 
+      <span
+        style={
+          {
+            "opacity": "0.6",
+          }
+        }
+      >
+        object
+      </span>
+      <div
+        style={
+          {
+            "marginTop": "var(--ifm-table-cell-padding)",
+          }
+        }
+      >
+        <div>
+          <strong>
+            Length :
+          </strong>
+           
+          <code>
+            &lt;= 3 propertie(s)
+          </code>
+        </div>
+      </div>
     </div>
   </div>
 </details>
@@ -814,42 +894,46 @@ exports[`JSONSchemaViewer - object test minProperties & maxProperties 1`] = `
       Schema
     </strong>
   </summary>
-  <strong>
-    type
-  </strong>
-   : 
-  <span
-    style={
-      {
-        "opacity": "0.6",
-      }
-    }
-  >
-    object
-  </span>
-  <div
-    style={
-      {
-        "marginTop": "var(--ifm-table-cell-padding)",
-      }
-    }
-  >
+  <div>
     <div>
       <strong>
-        Length :
+        type
       </strong>
-       
-      <code>
-        &gt;= 2 propertie(s)
-      </code>
-       
-      <strong>
-        AND
-      </strong>
-       
-      <code>
-        &lt;= 3 propertie(s)
-      </code>
+       : 
+      <span
+        style={
+          {
+            "opacity": "0.6",
+          }
+        }
+      >
+        object
+      </span>
+      <div
+        style={
+          {
+            "marginTop": "var(--ifm-table-cell-padding)",
+          }
+        }
+      >
+        <div>
+          <strong>
+            Length :
+          </strong>
+           
+          <code>
+            &gt;= 2 propertie(s)
+          </code>
+           
+          <strong>
+            AND
+          </strong>
+           
+          <code>
+            &lt;= 3 propertie(s)
+          </code>
+        </div>
+      </div>
     </div>
   </div>
 </details>
@@ -864,34 +948,38 @@ exports[`JSONSchemaViewer - object test minProperties 1`] = `
       Schema
     </strong>
   </summary>
-  <strong>
-    type
-  </strong>
-   : 
-  <span
-    style={
-      {
-        "opacity": "0.6",
-      }
-    }
-  >
-    object
-  </span>
-  <div
-    style={
-      {
-        "marginTop": "var(--ifm-table-cell-padding)",
-      }
-    }
-  >
+  <div>
     <div>
       <strong>
-        Length :
+        type
       </strong>
-       
-      <code>
-        &gt;= 2 propertie(s)
-      </code>
+       : 
+      <span
+        style={
+          {
+            "opacity": "0.6",
+          }
+        }
+      >
+        object
+      </span>
+      <div
+        style={
+          {
+            "marginTop": "var(--ifm-table-cell-padding)",
+          }
+        }
+      >
+        <div>
+          <strong>
+            Length :
+          </strong>
+           
+          <code>
+            &gt;= 2 propertie(s)
+          </code>
+        </div>
+      </div>
     </div>
   </div>
 </details>
@@ -906,110 +994,122 @@ exports[`JSONSchemaViewer - object test patternProperties 1`] = `
       Schema
     </strong>
   </summary>
-  <strong>
-    type
-  </strong>
-   : 
-  <span
-    style={
-      {
-        "opacity": "0.6",
-      }
-    }
-  >
-    object
-  </span>
-  <ul>
-    <li>
-      <details
-        open={false}
+  <div>
+    <div>
+      <strong>
+        type
+      </strong>
+       : 
+      <span
+        style={
+          {
+            "opacity": "0.6",
+          }
+        }
       >
-        <summary>
-          <code>
-            ^S_
-          </code>
-           
-          <span
-            style={
-              {
-                "opacity": "0.6",
-              }
-            }
+        object
+      </span>
+      <ul>
+        <li>
+          <details
+            open={false}
           >
-            string
-          </span>
-        </summary>
-        <strong>
-          type
-        </strong>
-         : 
-        <span
-          style={
-            {
-              "opacity": "0.6",
-            }
-          }
-        >
-          string
-        </span>
-        <div
-          style={
-            {
-              "marginTop": "var(--ifm-table-cell-padding)",
-            }
-          }
-        />
-      </details>
-    </li>
-    <li>
-      <details
-        open={false}
-      >
-        <summary>
-          <code>
-            ^I_
-          </code>
-           
-          <span
-            style={
-              {
-                "opacity": "0.6",
-              }
-            }
+            <summary>
+              <code>
+                ^S_
+              </code>
+               
+              <span
+                style={
+                  {
+                    "opacity": "0.6",
+                  }
+                }
+              >
+                string
+              </span>
+            </summary>
+            <div>
+              <div>
+                <strong>
+                  type
+                </strong>
+                 : 
+                <span
+                  style={
+                    {
+                      "opacity": "0.6",
+                    }
+                  }
+                >
+                  string
+                </span>
+                <div
+                  style={
+                    {
+                      "marginTop": "var(--ifm-table-cell-padding)",
+                    }
+                  }
+                />
+              </div>
+            </div>
+          </details>
+        </li>
+        <li>
+          <details
+            open={false}
           >
-            integer
-          </span>
-        </summary>
-        <strong>
-          type
-        </strong>
-         : 
-        <span
-          style={
-            {
-              "opacity": "0.6",
-            }
+            <summary>
+              <code>
+                ^I_
+              </code>
+               
+              <span
+                style={
+                  {
+                    "opacity": "0.6",
+                  }
+                }
+              >
+                integer
+              </span>
+            </summary>
+            <div>
+              <div>
+                <strong>
+                  type
+                </strong>
+                 : 
+                <span
+                  style={
+                    {
+                      "opacity": "0.6",
+                    }
+                  }
+                >
+                  integer
+                </span>
+                <div
+                  style={
+                    {
+                      "marginTop": "var(--ifm-table-cell-padding)",
+                    }
+                  }
+                />
+              </div>
+            </div>
+          </details>
+        </li>
+      </ul>
+      <div
+        style={
+          {
+            "marginTop": "var(--ifm-table-cell-padding)",
           }
-        >
-          integer
-        </span>
-        <div
-          style={
-            {
-              "marginTop": "var(--ifm-table-cell-padding)",
-            }
-          }
-        />
-      </details>
-    </li>
-  </ul>
-  <div
-    style={
-      {
-        "marginTop": "var(--ifm-table-cell-padding)",
-      }
-    }
-  />
+        }
+      />
+    </div>
+  </div>
 </details>
 `;
 
@@ -1022,161 +1122,177 @@ exports[`JSONSchemaViewer - object test properties 1`] = `
       Schema
     </strong>
   </summary>
-  <strong>
-    type
-  </strong>
-   : 
-  <span
-    style={
-      {
-        "opacity": "0.6",
-      }
-    }
-  >
-    object
-  </span>
-  <ul>
-    <li>
-      <details
-        open={false}
+  <div>
+    <div>
+      <strong>
+        type
+      </strong>
+       : 
+      <span
+        style={
+          {
+            "opacity": "0.6",
+          }
+        }
       >
-        <summary>
-          <strong>
-            number
-          </strong>
-           
-          <span
-            style={
-              {
-                "opacity": "0.6",
-              }
-            }
+        object
+      </span>
+      <ul>
+        <li>
+          <details
+            open={false}
           >
-            number
-          </span>
-        </summary>
-        <strong>
-          type
-        </strong>
-         : 
-        <span
-          style={
-            {
-              "opacity": "0.6",
-            }
-          }
-        >
-          number
-        </span>
-        <div
-          style={
-            {
-              "marginTop": "var(--ifm-table-cell-padding)",
-            }
-          }
-        />
-      </details>
-    </li>
-    <li>
-      <details
-        open={false}
-      >
-        <summary>
-          <strong>
-            street_name
-          </strong>
-           
-          <span
-            style={
-              {
-                "opacity": "0.6",
-              }
-            }
+            <summary>
+              <strong>
+                number
+              </strong>
+               
+              <span
+                style={
+                  {
+                    "opacity": "0.6",
+                  }
+                }
+              >
+                number
+              </span>
+            </summary>
+            <div>
+              <div>
+                <strong>
+                  type
+                </strong>
+                 : 
+                <span
+                  style={
+                    {
+                      "opacity": "0.6",
+                    }
+                  }
+                >
+                  number
+                </span>
+                <div
+                  style={
+                    {
+                      "marginTop": "var(--ifm-table-cell-padding)",
+                    }
+                  }
+                />
+              </div>
+            </div>
+          </details>
+        </li>
+        <li>
+          <details
+            open={false}
           >
-            string
-          </span>
-        </summary>
-        <strong>
-          type
-        </strong>
-         : 
-        <span
-          style={
-            {
-              "opacity": "0.6",
-            }
-          }
-        >
-          string
-        </span>
-        <div
-          style={
-            {
-              "marginTop": "var(--ifm-table-cell-padding)",
-            }
-          }
-        />
-      </details>
-    </li>
-    <li>
-      <details
-        open={false}
-      >
-        <summary>
-          <strong>
-            street_type
-          </strong>
-           
-          <span
-            style={
-              {
-                "opacity": "0.6",
-              }
-            }
+            <summary>
+              <strong>
+                street_name
+              </strong>
+               
+              <span
+                style={
+                  {
+                    "opacity": "0.6",
+                  }
+                }
+              >
+                string
+              </span>
+            </summary>
+            <div>
+              <div>
+                <strong>
+                  type
+                </strong>
+                 : 
+                <span
+                  style={
+                    {
+                      "opacity": "0.6",
+                    }
+                  }
+                >
+                  string
+                </span>
+                <div
+                  style={
+                    {
+                      "marginTop": "var(--ifm-table-cell-padding)",
+                    }
+                  }
+                />
+              </div>
+            </div>
+          </details>
+        </li>
+        <li>
+          <details
+            open={false}
           >
-            string
-          </span>
-        </summary>
-        <strong>
-          type
-        </strong>
-         : 
-        <span
-          style={
-            {
-              "opacity": "0.6",
-            }
+            <summary>
+              <strong>
+                street_type
+              </strong>
+               
+              <span
+                style={
+                  {
+                    "opacity": "0.6",
+                  }
+                }
+              >
+                string
+              </span>
+            </summary>
+            <div>
+              <div>
+                <strong>
+                  type
+                </strong>
+                 : 
+                <span
+                  style={
+                    {
+                      "opacity": "0.6",
+                    }
+                  }
+                >
+                  string
+                </span>
+                <div
+                  style={
+                    {
+                      "marginTop": "var(--ifm-table-cell-padding)",
+                    }
+                  }
+                >
+                  <div>
+                    <strong>
+                      Possible values :
+                    </strong>
+                     
+                    <code>
+                      ["Street","Avenue","Boulevard"]
+                    </code>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </details>
+        </li>
+      </ul>
+      <div
+        style={
+          {
+            "marginTop": "var(--ifm-table-cell-padding)",
           }
-        >
-          string
-        </span>
-        <div
-          style={
-            {
-              "marginTop": "var(--ifm-table-cell-padding)",
-            }
-          }
-        >
-          <div>
-            <strong>
-              Possible values :
-            </strong>
-             
-            <code>
-              ["Street","Avenue","Boulevard"]
-            </code>
-          </div>
-        </div>
-      </details>
-    </li>
-  </ul>
-  <div
-    style={
-      {
-        "marginTop": "var(--ifm-table-cell-padding)",
-      }
-    }
-  />
+        }
+      />
+    </div>
+  </div>
 </details>
 `;
 
@@ -1189,59 +1305,67 @@ exports[`JSONSchemaViewer - object test propertyNames 1`] = `
       Schema
     </strong>
   </summary>
-  <strong>
-    type
-  </strong>
-   : 
-  <span
-    style={
-      {
-        "opacity": "0.6",
-      }
-    }
-  >
-    object
-  </span>
-  <ul>
-    <li>
-      <details
-        open={false}
-      >
-        <summary>
-          <code>
-            ^[A-Za-z_][A-Za-z0-9_]*$
-          </code>
-           
-          <strong>
-            any
-          </strong>
-        </summary>
-        <strong>
-          type
-        </strong>
-         : 
-        <strong>
-          any
-        </strong>
-        <div
-          style={
-            {
-              "marginTop": "var(--ifm-table-cell-padding)",
-            }
+  <div>
+    <div>
+      <strong>
+        type
+      </strong>
+       : 
+      <span
+        style={
+          {
+            "opacity": "0.6",
           }
-        >
-          Always valid
-        </div>
-      </details>
-    </li>
-  </ul>
-  <div
-    style={
-      {
-        "marginTop": "var(--ifm-table-cell-padding)",
-      }
-    }
-  />
+        }
+      >
+        object
+      </span>
+      <ul>
+        <li>
+          <details
+            open={false}
+          >
+            <summary>
+              <code>
+                ^[A-Za-z_][A-Za-z0-9_]*$
+              </code>
+               
+              <strong>
+                any
+              </strong>
+            </summary>
+            <div>
+              <div>
+                <strong>
+                  type
+                </strong>
+                 : 
+                <strong>
+                  any
+                </strong>
+                <div
+                  style={
+                    {
+                      "marginTop": "var(--ifm-table-cell-padding)",
+                    }
+                  }
+                >
+                  Always valid
+                </div>
+              </div>
+            </div>
+          </details>
+        </li>
+      </ul>
+      <div
+        style={
+          {
+            "marginTop": "var(--ifm-table-cell-padding)",
+          }
+        }
+      />
+    </div>
+  </div>
 </details>
 `;
 
@@ -1254,309 +1378,337 @@ exports[`JSONSchemaViewer - object test required 1`] = `
       Schema
     </strong>
   </summary>
-  <strong>
-    type
-  </strong>
-   : 
-  <span
-    style={
-      {
-        "opacity": "0.6",
-      }
-    }
-  >
-    object
-  </span>
-  <ul>
-    <li>
-      <details
-        open={false}
+  <div>
+    <div>
+      <strong>
+        type
+      </strong>
+       : 
+      <span
+        style={
+          {
+            "opacity": "0.6",
+          }
+        }
       >
-        <summary>
-          <strong>
-            id
-          </strong>
-           
-          <span
-            style={
-              {
-                "opacity": "0.6",
-              }
-            }
+        object
+      </span>
+      <ul>
+        <li>
+          <details
+            open={false}
           >
-            number
-          </span>
-           
-          <strong>
-            readOnly
-          </strong>
-        </summary>
-        <strong>
-          type
-        </strong>
-         : 
-        <span
-          style={
-            {
-              "opacity": "0.6",
-            }
-          }
-        >
-          number
-        </span>
-        <div
-          style={
-            {
-              "marginTop": "var(--ifm-table-cell-padding)",
-            }
-          }
-        >
-          <div>
-            🚨 
-            read only
-          </div>
-        </div>
-      </details>
-    </li>
-    <li>
-      <details
-        open={false}
-      >
-        <summary>
-          <strong>
-            name
-          </strong>
-           
-          <span
-            style={
-              {
-                "opacity": "0.6",
-              }
-            }
+            <summary>
+              <strong>
+                id
+              </strong>
+               
+              <span
+                style={
+                  {
+                    "opacity": "0.6",
+                  }
+                }
+              >
+                number
+              </span>
+               
+              <strong>
+                readOnly
+              </strong>
+            </summary>
+            <div>
+              <div>
+                <strong>
+                  type
+                </strong>
+                 : 
+                <span
+                  style={
+                    {
+                      "opacity": "0.6",
+                    }
+                  }
+                >
+                  number
+                </span>
+                <div
+                  style={
+                    {
+                      "marginTop": "var(--ifm-table-cell-padding)",
+                    }
+                  }
+                >
+                  <div>
+                    🚨 
+                    read only
+                  </div>
+                </div>
+              </div>
+            </div>
+          </details>
+        </li>
+        <li>
+          <details
+            open={false}
           >
-            string
-          </span>
-           
-          <strong>
-            required
-          </strong>
-        </summary>
-        <strong>
-          type
-        </strong>
-         : 
-        <span
-          style={
-            {
-              "opacity": "0.6",
-            }
-          }
-        >
-          string
-        </span>
-        <div
-          style={
-            {
-              "marginTop": "var(--ifm-table-cell-padding)",
-            }
-          }
-        />
-      </details>
-    </li>
-    <li>
-      <details
-        open={false}
-      >
-        <summary>
-          <strong>
-            email
-          </strong>
-           
-          <span
-            style={
-              {
-                "opacity": "0.6",
-              }
-            }
+            <summary>
+              <strong>
+                name
+              </strong>
+               
+              <span
+                style={
+                  {
+                    "opacity": "0.6",
+                  }
+                }
+              >
+                string
+              </span>
+               
+              <strong>
+                required
+              </strong>
+            </summary>
+            <div>
+              <div>
+                <strong>
+                  type
+                </strong>
+                 : 
+                <span
+                  style={
+                    {
+                      "opacity": "0.6",
+                    }
+                  }
+                >
+                  string
+                </span>
+                <div
+                  style={
+                    {
+                      "marginTop": "var(--ifm-table-cell-padding)",
+                    }
+                  }
+                />
+              </div>
+            </div>
+          </details>
+        </li>
+        <li>
+          <details
+            open={false}
           >
-            string
-          </span>
-           
-          <strong>
-            required
-          </strong>
-        </summary>
-        <strong>
-          type
-        </strong>
-         : 
-        <span
-          style={
-            {
-              "opacity": "0.6",
-            }
-          }
-        >
-          string
-        </span>
-        <div
-          style={
-            {
-              "marginTop": "var(--ifm-table-cell-padding)",
-            }
-          }
-        />
-      </details>
-    </li>
-    <li>
-      <details
-        open={false}
-      >
-        <summary>
-          <strong>
-            address
-          </strong>
-           
-          <span
-            style={
-              {
-                "opacity": "0.6",
-              }
-            }
+            <summary>
+              <strong>
+                email
+              </strong>
+               
+              <span
+                style={
+                  {
+                    "opacity": "0.6",
+                  }
+                }
+              >
+                string
+              </span>
+               
+              <strong>
+                required
+              </strong>
+            </summary>
+            <div>
+              <div>
+                <strong>
+                  type
+                </strong>
+                 : 
+                <span
+                  style={
+                    {
+                      "opacity": "0.6",
+                    }
+                  }
+                >
+                  string
+                </span>
+                <div
+                  style={
+                    {
+                      "marginTop": "var(--ifm-table-cell-padding)",
+                    }
+                  }
+                />
+              </div>
+            </div>
+          </details>
+        </li>
+        <li>
+          <details
+            open={false}
           >
-            string
-          </span>
-        </summary>
-        <strong>
-          type
-        </strong>
-         : 
-        <span
-          style={
-            {
-              "opacity": "0.6",
-            }
-          }
-        >
-          string
-        </span>
-        <div
-          style={
-            {
-              "marginTop": "var(--ifm-table-cell-padding)",
-            }
-          }
-        />
-      </details>
-    </li>
-    <li>
-      <details
-        open={false}
-      >
-        <summary>
-          <strong>
-            telephone
-          </strong>
-           
-          <span
-            style={
-              {
-                "opacity": "0.6",
-              }
-            }
+            <summary>
+              <strong>
+                address
+              </strong>
+               
+              <span
+                style={
+                  {
+                    "opacity": "0.6",
+                  }
+                }
+              >
+                string
+              </span>
+            </summary>
+            <div>
+              <div>
+                <strong>
+                  type
+                </strong>
+                 : 
+                <span
+                  style={
+                    {
+                      "opacity": "0.6",
+                    }
+                  }
+                >
+                  string
+                </span>
+                <div
+                  style={
+                    {
+                      "marginTop": "var(--ifm-table-cell-padding)",
+                    }
+                  }
+                />
+              </div>
+            </div>
+          </details>
+        </li>
+        <li>
+          <details
+            open={false}
           >
-            string
-          </span>
-           
-          <strong>
-            deprecated
-          </strong>
-        </summary>
-        <strong>
-          type
-        </strong>
-         : 
-        <span
-          style={
-            {
-              "opacity": "0.6",
-            }
-          }
-        >
-          string
-        </span>
-        <div
-          style={
-            {
-              "marginTop": "var(--ifm-table-cell-padding)",
-            }
-          }
-        >
-          <div>
-            🚨 
-            Deprecated
-          </div>
-        </div>
-      </details>
-    </li>
-    <li>
-      <details
-        open={false}
-      >
-        <summary>
-          <strong>
-            pin_code
-          </strong>
-           
-          <span
-            style={
-              {
-                "opacity": "0.6",
-              }
-            }
+            <summary>
+              <strong>
+                telephone
+              </strong>
+               
+              <span
+                style={
+                  {
+                    "opacity": "0.6",
+                  }
+                }
+              >
+                string
+              </span>
+               
+              <strong>
+                deprecated
+              </strong>
+            </summary>
+            <div>
+              <div>
+                <strong>
+                  type
+                </strong>
+                 : 
+                <span
+                  style={
+                    {
+                      "opacity": "0.6",
+                    }
+                  }
+                >
+                  string
+                </span>
+                <div
+                  style={
+                    {
+                      "marginTop": "var(--ifm-table-cell-padding)",
+                    }
+                  }
+                >
+                  <div>
+                    🚨 
+                    Deprecated
+                  </div>
+                </div>
+              </div>
+            </div>
+          </details>
+        </li>
+        <li>
+          <details
+            open={false}
           >
-            string
-          </span>
-           
-          <strong>
-            writeOnly
-          </strong>
-        </summary>
-        <strong>
-          type
-        </strong>
-         : 
-        <span
-          style={
-            {
-              "opacity": "0.6",
-            }
+            <summary>
+              <strong>
+                pin_code
+              </strong>
+               
+              <span
+                style={
+                  {
+                    "opacity": "0.6",
+                  }
+                }
+              >
+                string
+              </span>
+               
+              <strong>
+                writeOnly
+              </strong>
+            </summary>
+            <div>
+              <div>
+                <strong>
+                  type
+                </strong>
+                 : 
+                <span
+                  style={
+                    {
+                      "opacity": "0.6",
+                    }
+                  }
+                >
+                  string
+                </span>
+                <div
+                  style={
+                    {
+                      "marginTop": "var(--ifm-table-cell-padding)",
+                    }
+                  }
+                >
+                  <div>
+                    🚨 
+                    write only
+                  </div>
+                </div>
+              </div>
+            </div>
+          </details>
+        </li>
+      </ul>
+      <div
+        style={
+          {
+            "marginTop": "var(--ifm-table-cell-padding)",
           }
-        >
-          string
-        </span>
-        <div
-          style={
-            {
-              "marginTop": "var(--ifm-table-cell-padding)",
-            }
-          }
-        >
-          <div>
-            🚨 
-            write only
-          </div>
-        </div>
-      </details>
-    </li>
-  </ul>
-  <div
-    style={
-      {
-        "marginTop": "var(--ifm-table-cell-padding)",
-      }
-    }
-  />
+        }
+      />
+    </div>
+  </div>
 </details>
 `;
 
@@ -1569,34 +1721,38 @@ exports[`JSONSchemaViewer - object test simple 1`] = `
       Schema
     </strong>
   </summary>
-  <strong>
-    type
-  </strong>
-   : 
-  <span
-    style={
-      {
-        "opacity": "0.6",
-      }
-    }
-  >
-    object
-  </span>
-  <div
-    style={
-      {
-        "marginTop": "var(--ifm-table-cell-padding)",
-      }
-    }
-  />
-  <div
-    style={
-      {
-        "marginTop": "var(--ifm-table-cell-padding)",
-      }
-    }
-  >
-    A simple object
+  <div>
+    <div>
+      <strong>
+        type
+      </strong>
+       : 
+      <span
+        style={
+          {
+            "opacity": "0.6",
+          }
+        }
+      >
+        object
+      </span>
+      <div
+        style={
+          {
+            "marginTop": "var(--ifm-table-cell-padding)",
+          }
+        }
+      />
+      <div
+        style={
+          {
+            "marginTop": "var(--ifm-table-cell-padding)",
+          }
+        }
+      >
+        A simple object
+      </div>
+    </div>
   </div>
 </details>
 `;

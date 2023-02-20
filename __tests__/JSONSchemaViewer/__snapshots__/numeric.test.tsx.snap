@@ -9,34 +9,38 @@ exports[`JSONSchemaViewer - numeric test integer 1`] = `
       Schema
     </strong>
   </summary>
-  <strong>
-    type
-  </strong>
-   : 
-  <span
-    style={
-      {
-        "opacity": "0.6",
-      }
-    }
-  >
-    integer
-  </span>
-  <div
-    style={
-      {
-        "marginTop": "var(--ifm-table-cell-padding)",
-      }
-    }
-  />
-  <div
-    style={
-      {
-        "marginTop": "var(--ifm-table-cell-padding)",
-      }
-    }
-  >
-    A simple integer
+  <div>
+    <div>
+      <strong>
+        type
+      </strong>
+       : 
+      <span
+        style={
+          {
+            "opacity": "0.6",
+          }
+        }
+      >
+        integer
+      </span>
+      <div
+        style={
+          {
+            "marginTop": "var(--ifm-table-cell-padding)",
+          }
+        }
+      />
+      <div
+        style={
+          {
+            "marginTop": "var(--ifm-table-cell-padding)",
+          }
+        }
+      >
+        A simple integer
+      </div>
+    </div>
   </div>
 </details>
 `;
@@ -50,34 +54,38 @@ exports[`JSONSchemaViewer - numeric test multipleOf 1`] = `
       Schema
     </strong>
   </summary>
-  <strong>
-    type
-  </strong>
-   : 
-  <span
-    style={
-      {
-        "opacity": "0.6",
-      }
-    }
-  >
-    integer
-  </span>
-  <div
-    style={
-      {
-        "marginTop": "var(--ifm-table-cell-padding)",
-      }
-    }
-  >
+  <div>
     <div>
       <strong>
-        Possible values :
+        type
       </strong>
-       
-      <code>
-        multiple of 10
-      </code>
+       : 
+      <span
+        style={
+          {
+            "opacity": "0.6",
+          }
+        }
+      >
+        integer
+      </span>
+      <div
+        style={
+          {
+            "marginTop": "var(--ifm-table-cell-padding)",
+          }
+        }
+      >
+        <div>
+          <strong>
+            Possible values :
+          </strong>
+           
+          <code>
+            multiple of 10
+          </code>
+        </div>
+      </div>
     </div>
   </div>
 </details>
@@ -92,26 +100,30 @@ exports[`JSONSchemaViewer - numeric test number 1`] = `
       Schema
     </strong>
   </summary>
-  <strong>
-    type
-  </strong>
-   : 
-  <span
-    style={
-      {
-        "opacity": "0.6",
-      }
-    }
-  >
-    number
-  </span>
-  <div
-    style={
-      {
-        "marginTop": "var(--ifm-table-cell-padding)",
-      }
-    }
-  />
+  <div>
+    <div>
+      <strong>
+        type
+      </strong>
+       : 
+      <span
+        style={
+          {
+            "opacity": "0.6",
+          }
+        }
+      >
+        number
+      </span>
+      <div
+        style={
+          {
+            "marginTop": "var(--ifm-table-cell-padding)",
+          }
+        }
+      />
+    </div>
+  </div>
 </details>
 `;
 
@@ -124,42 +136,46 @@ exports[`JSONSchemaViewer - numeric test ranges (1) 1`] = `
       Schema
     </strong>
   </summary>
-  <strong>
-    type
-  </strong>
-   : 
-  <span
-    style={
-      {
-        "opacity": "0.6",
-      }
-    }
-  >
-    number
-  </span>
-  <div
-    style={
-      {
-        "marginTop": "var(--ifm-table-cell-padding)",
-      }
-    }
-  >
+  <div>
     <div>
       <strong>
-        Possible values :
+        type
       </strong>
-       
-      <code>
-        &gt;= 0
-      </code>
-       
-      <strong>
-        AND
-      </strong>
-       
-      <code>
-        &lt; 100
-      </code>
+       : 
+      <span
+        style={
+          {
+            "opacity": "0.6",
+          }
+        }
+      >
+        number
+      </span>
+      <div
+        style={
+          {
+            "marginTop": "var(--ifm-table-cell-padding)",
+          }
+        }
+      >
+        <div>
+          <strong>
+            Possible values :
+          </strong>
+           
+          <code>
+            &gt;= 0
+          </code>
+           
+          <strong>
+            AND
+          </strong>
+           
+          <code>
+            &lt; 100
+          </code>
+        </div>
+      </div>
     </div>
   </div>
 </details>
@@ -174,42 +190,46 @@ exports[`JSONSchemaViewer - numeric test ranges (2) 1`] = `
       Schema
     </strong>
   </summary>
-  <strong>
-    type
-  </strong>
-   : 
-  <span
-    style={
-      {
-        "opacity": "0.6",
-      }
-    }
-  >
-    number
-  </span>
-  <div
-    style={
-      {
-        "marginTop": "var(--ifm-table-cell-padding)",
-      }
-    }
-  >
+  <div>
     <div>
       <strong>
-        Possible values :
+        type
       </strong>
-       
-      <code>
-        &gt; 1
-      </code>
-       
-      <strong>
-        AND
-      </strong>
-       
-      <code>
-        &lt;= 100
-      </code>
+       : 
+      <span
+        style={
+          {
+            "opacity": "0.6",
+          }
+        }
+      >
+        number
+      </span>
+      <div
+        style={
+          {
+            "marginTop": "var(--ifm-table-cell-padding)",
+          }
+        }
+      >
+        <div>
+          <strong>
+            Possible values :
+          </strong>
+           
+          <code>
+            &gt; 1
+          </code>
+           
+          <strong>
+            AND
+          </strong>
+           
+          <code>
+            &lt;= 100
+          </code>
+        </div>
+      </div>
     </div>
   </div>
 </details>
@@ -224,34 +244,38 @@ exports[`JSONSchemaViewer - numeric test ranges (3) 1`] = `
       Schema
     </strong>
   </summary>
-  <strong>
-    type
-  </strong>
-   : 
-  <span
-    style={
-      {
-        "opacity": "0.6",
-      }
-    }
-  >
-    number
-  </span>
-  <div
-    style={
-      {
-        "marginTop": "var(--ifm-table-cell-padding)",
-      }
-    }
-  >
+  <div>
     <div>
       <strong>
-        Possible values :
+        type
       </strong>
-       
-      <code>
-        &gt; 1
-      </code>
+       : 
+      <span
+        style={
+          {
+            "opacity": "0.6",
+          }
+        }
+      >
+        number
+      </span>
+      <div
+        style={
+          {
+            "marginTop": "var(--ifm-table-cell-padding)",
+          }
+        }
+      >
+        <div>
+          <strong>
+            Possible values :
+          </strong>
+           
+          <code>
+            &gt; 1
+          </code>
+        </div>
+      </div>
     </div>
   </div>
 </details>
@@ -266,34 +290,38 @@ exports[`JSONSchemaViewer - numeric test ranges (4) 1`] = `
       Schema
     </strong>
   </summary>
-  <strong>
-    type
-  </strong>
-   : 
-  <span
-    style={
-      {
-        "opacity": "0.6",
-      }
-    }
-  >
-    number
-  </span>
-  <div
-    style={
-      {
-        "marginTop": "var(--ifm-table-cell-padding)",
-      }
-    }
-  >
+  <div>
     <div>
       <strong>
-        Possible values :
+        type
       </strong>
-       
-      <code>
-        &lt; 1
-      </code>
+       : 
+      <span
+        style={
+          {
+            "opacity": "0.6",
+          }
+        }
+      >
+        number
+      </span>
+      <div
+        style={
+          {
+            "marginTop": "var(--ifm-table-cell-padding)",
+          }
+        }
+      >
+        <div>
+          <strong>
+            Possible values :
+          </strong>
+           
+          <code>
+            &lt; 1
+          </code>
+        </div>
+      </div>
     </div>
   </div>
 </details>
