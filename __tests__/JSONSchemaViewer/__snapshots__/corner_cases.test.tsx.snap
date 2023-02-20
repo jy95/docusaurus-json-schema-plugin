@@ -59,7 +59,7 @@ exports[`JSONSchemaViewer - corner cases CreateArray - sub properties as boolean
       >
         <summary>
           <code>
-            items[0]
+            items[x]
           </code>
            
           <strong>

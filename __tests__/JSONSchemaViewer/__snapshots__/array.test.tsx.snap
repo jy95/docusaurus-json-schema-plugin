@@ -148,7 +148,7 @@ exports[`JSONSchemaViewer - Array type test 2 1`] = `
           >
             <summary>
               <code>
-                items[0]
+                items[x]
               </code>
                
               <span
@@ -626,7 +626,7 @@ exports[`JSONSchemaViewer - Array type test 5 1`] = `
           >
             <summary>
               <code>
-                items[4]
+                items[x]
               </code>
                
               <strong>
@@ -1227,7 +1227,7 @@ exports[`JSONSchemaViewer - Array type test 13 1`] = `
           >
             <summary>
               <code>
-                items[0]
+                items[x]
               </code>
                
               <span

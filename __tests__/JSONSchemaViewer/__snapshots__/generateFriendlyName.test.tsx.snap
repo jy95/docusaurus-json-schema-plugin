@@ -82,7 +82,7 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Array specified only
                     >
                       <summary>
                         <code>
-                          items[0]
+                          items[x]
                         </code>
                          
                         <span
@@ -415,7 +415,7 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Array specified only
                     >
                       <summary>
                         <code>
-                          items[2]
+                          items[x]
                         </code>
                          
                         <strong>

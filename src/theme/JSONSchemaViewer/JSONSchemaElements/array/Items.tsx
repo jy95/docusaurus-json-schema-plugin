@@ -10,16 +10,25 @@ type Props = {
   schema: JSONSchemaNS.Array
 }
 
-function MultipleItemsLabel({ count }: { count: number }): JSX.Element {
+function ItemsLabel({
+  index,
+  isArray,
+}: {
+  index: number
+  isArray: boolean
+}): JSX.Element {
+  // When items is not an array, we have to use a generic index
+  let finalIdx = isArray ? index : "x"
+
   return (
     <code>
       <Translate
         values={{
           id: "json-schema.keywords.itemsEntry",
-          count: count,
+          index: finalIdx,
         }}
       >
-        {"items[{count}]"}
+        {"items[{index}]"}
       </Translate>
     </code>
   )
@@ -41,6 +50,7 @@ export default function CreateItems(props: Props): JSX.Element {
     : 0
 
   // Generify that part
+  const isArray = Array.isArray(items)
   const itemsAsArray = Array.isArray(items) ? items : [items]
   const minimal = itemsAsArray.length
 
@@ -49,7 +59,7 @@ export default function CreateItems(props: Props): JSX.Element {
       {itemsAsArray.map((item, idx) => (
         <CreateEdge
           key={`array_items_${idx}`}
-          name={<MultipleItemsLabel count={startingIndex + idx} />}
+          name={<ItemsLabel index={startingIndex + idx} isArray={isArray} />}
           schema={item}
           required={schema.minItems !== undefined && schema.minItems >= minimal}
         />
