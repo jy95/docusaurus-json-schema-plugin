@@ -1,2 +1,4 @@
 testsite
 .github
+__tests__/JSONSchemaViewer/__snapshots__
+coverage
