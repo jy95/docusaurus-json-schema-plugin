@@ -18,7 +18,7 @@ module.exports = {
       title: "JSON Schema viewer / editor",
       logo: {
         alt: "My Site Logo",
-        src: "img/logo.svg",
+        src: "img/project_icon.svg",
       },
       items: [
         {
