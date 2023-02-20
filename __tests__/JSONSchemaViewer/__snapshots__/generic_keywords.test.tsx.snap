@@ -27,6 +27,96 @@ exports[`JSONSchemaViewer - Generic keywords test annotations 1`] = `
       >
         Always valid
       </div>
+      <div
+        style={
+          {
+            "marginTop": "var(--ifm-table-cell-padding)",
+          }
+        }
+      >
+        <div>
+          🚨 
+          Deprecated
+        </div>
+        <div>
+          🚨 
+          read only
+        </div>
+        <div>
+          <strong>
+            Default value :
+          </strong>
+           
+          <code>
+            Default value
+          </code>
+        </div>
+        <div>
+          <strong>
+            Example values :
+          </strong>
+           
+          <div
+            className="tabs-container"
+          >
+            <ul
+              aria-orientation="horizontal"
+              className="tabs"
+              role="tablist"
+            >
+              <li
+                aria-selected={true}
+                onClick={[Function]}
+                tabIndex={0}
+              >
+                Example 0
+              </li>
+              <li
+                aria-selected={false}
+                onClick={[Function]}
+                tabIndex={-1}
+              >
+                Example 1
+              </li>
+            </ul>
+            <div>
+              <div
+                hidden={false}
+                role="tabpanel"
+              >
+                <div
+                  role="tabpanel"
+                >
+                  <code>
+                    Anything
+                  </code>
+                </div>
+              </div>
+              <div
+                hidden={true}
+                role="tabpanel"
+              >
+                <div
+                  role="tabpanel"
+                >
+                  <code>
+                    4035
+                  </code>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        style={
+          {
+            "marginTop": "var(--ifm-table-cell-padding)",
+          }
+        }
+      >
+        This is a schema that matches anything.
+      </div>
     </div>
   </div>
 </details>

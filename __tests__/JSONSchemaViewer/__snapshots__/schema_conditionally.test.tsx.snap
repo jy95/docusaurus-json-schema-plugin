@@ -208,6 +208,13 @@ exports[`JSONSchemaViewer - schema conditionally test If Then Else (multiple) 1`
                 >
                   Always valid
                 </div>
+                <div
+                  style={
+                    {
+                      "marginTop": "var(--ifm-table-cell-padding)",
+                    }
+                  }
+                />
                 <details
                   open={false}
                 >
@@ -448,6 +455,13 @@ exports[`JSONSchemaViewer - schema conditionally test If Then Else (multiple) 1`
                 >
                   Always valid
                 </div>
+                <div
+                  style={
+                    {
+                      "marginTop": "var(--ifm-table-cell-padding)",
+                    }
+                  }
+                />
                 <details
                   open={false}
                 >
@@ -692,6 +706,13 @@ exports[`JSONSchemaViewer - schema conditionally test If Then Else (multiple) 1`
                 >
                   Always valid
                 </div>
+                <div
+                  style={
+                    {
+                      "marginTop": "var(--ifm-table-cell-padding)",
+                    }
+                  }
+                />
                 <details
                   open={false}
                 >
@@ -1608,6 +1629,13 @@ exports[`JSONSchemaViewer - schema conditionally test dependencies (dependentReq
                       >
                         Always valid
                       </div>
+                      <div
+                        style={
+                          {
+                            "marginTop": "var(--ifm-table-cell-padding)",
+                          }
+                        }
+                      />
                       <details
                         open={false}
                       >
@@ -1989,6 +2017,13 @@ exports[`JSONSchemaViewer - schema conditionally test dependencies (dependentSch
                       >
                         Always valid
                       </div>
+                      <div
+                        style={
+                          {
+                            "marginTop": "var(--ifm-table-cell-padding)",
+                          }
+                        }
+                      />
                       <details
                         open={false}
                       >
@@ -2434,6 +2469,13 @@ exports[`JSONSchemaViewer - schema conditionally test dependentRequired (bidirec
                       >
                         Always valid
                       </div>
+                      <div
+                        style={
+                          {
+                            "marginTop": "var(--ifm-table-cell-padding)",
+                          }
+                        }
+                      />
                       <details
                         open={false}
                       >
@@ -2642,6 +2684,13 @@ exports[`JSONSchemaViewer - schema conditionally test dependentRequired (bidirec
                       >
                         Always valid
                       </div>
+                      <div
+                        style={
+                          {
+                            "marginTop": "var(--ifm-table-cell-padding)",
+                          }
+                        }
+                      />
                       <details
                         open={false}
                       >
@@ -3068,6 +3117,13 @@ exports[`JSONSchemaViewer - schema conditionally test dependentRequired 1`] = `
                       >
                         Always valid
                       </div>
+                      <div
+                        style={
+                          {
+                            "marginTop": "var(--ifm-table-cell-padding)",
+                          }
+                        }
+                      />
                       <details
                         open={false}
                       >
@@ -3353,6 +3409,13 @@ exports[`JSONSchemaViewer - schema conditionally test dependentSchemas 1`] = `
                       >
                         Always valid
                       </div>
+                      <div
+                        style={
+                          {
+                            "marginTop": "var(--ifm-table-cell-padding)",
+                          }
+                        }
+                      />
                       <details
                         open={false}
                       >
