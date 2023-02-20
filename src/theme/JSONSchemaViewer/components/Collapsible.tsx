@@ -19,10 +19,7 @@ export default function Collapsible(props: {
   const { summary, children, detailsProps } = props
 
   return (
-    <Details 
-      summary={<summary>{summary}</summary>}
-      {...detailsProps}
-    >
+    <Details summary={<summary>{summary}</summary>} {...detailsProps}>
       {children}
     </Details>
   )
