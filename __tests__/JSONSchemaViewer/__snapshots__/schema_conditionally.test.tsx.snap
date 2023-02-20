@@ -1468,11 +1468,230 @@ exports[`JSONSchemaViewer - schema conditionally test dependencies (dependentReq
         Conditional subschemas
       </strong>
     </summary>
-    <ul>
-      <li>
-        If credit_card property is provided, then 1 propertie(s) must also be present: billing_address
-      </li>
-    </ul>
+    <div>
+      <span
+        className="badge badge--info"
+      >
+        allOf
+      </span>
+      <div
+        className="tabs-container"
+      >
+        <ul
+          aria-orientation="horizontal"
+          className="tabs"
+          role="tablist"
+        >
+          <li
+            aria-selected={true}
+            onClick={[Function]}
+            tabIndex={0}
+          >
+            <strong>
+              any
+            </strong>
+          </li>
+        </ul>
+        <div>
+          <div
+            hidden={false}
+            role="tabpanel"
+          >
+            <div
+              role="tabpanel"
+            >
+              <strong>
+                type
+              </strong>
+               : 
+              <strong>
+                any
+              </strong>
+              <div
+                style={
+                  {
+                    "marginTop": "var(--ifm-table-cell-padding)",
+                  }
+                }
+              >
+                Always valid
+              </div>
+              <details
+                open={true}
+              >
+                <summary>
+                  <strong>
+                    Conditional subschemas
+                  </strong>
+                </summary>
+                <div
+                  className="tabs-container"
+                >
+                  <ul
+                    aria-orientation="horizontal"
+                    className="tabs"
+                    role="tablist"
+                  >
+                    <li
+                      aria-selected={true}
+                      onClick={[Function]}
+                      tabIndex={0}
+                    >
+                      <strong>
+                        If
+                      </strong>
+                    </li>
+                    <li
+                      aria-selected={false}
+                      onClick={[Function]}
+                      tabIndex={-1}
+                    >
+                      <strong>
+                        Then
+                      </strong>
+                    </li>
+                  </ul>
+                  <div>
+                    <div
+                      hidden={false}
+                      role="tabpanel"
+                    >
+                      <div
+                        role="tabpanel"
+                      >
+                        <strong>
+                          type
+                        </strong>
+                         : 
+                        <span
+                          style={
+                            {
+                              "opacity": "0.6",
+                            }
+                          }
+                        >
+                          object
+                        </span>
+                        <ul>
+                          <li>
+                            <details
+                              open={false}
+                            >
+                              <summary>
+                                <strong>
+                                  credit_card
+                                </strong>
+                                 
+                                <strong>
+                                  any
+                                </strong>
+                                 
+                                <strong>
+                                  required
+                                </strong>
+                              </summary>
+                              <strong>
+                                type
+                              </strong>
+                               : 
+                              <strong>
+                                any
+                              </strong>
+                              <div
+                                style={
+                                  {
+                                    "marginTop": "var(--ifm-table-cell-padding)",
+                                  }
+                                }
+                              >
+                                Always valid
+                              </div>
+                            </details>
+                          </li>
+                        </ul>
+                        <div
+                          style={
+                            {
+                              "marginTop": "var(--ifm-table-cell-padding)",
+                            }
+                          }
+                        />
+                      </div>
+                    </div>
+                    <div
+                      hidden={true}
+                      role="tabpanel"
+                    >
+                      <div
+                        role="tabpanel"
+                      >
+                        <strong>
+                          type
+                        </strong>
+                         : 
+                        <span
+                          style={
+                            {
+                              "opacity": "0.6",
+                            }
+                          }
+                        >
+                          object
+                        </span>
+                        <ul>
+                          <li>
+                            <details
+                              open={false}
+                            >
+                              <summary>
+                                <strong>
+                                  billing_address
+                                </strong>
+                                 
+                                <strong>
+                                  any
+                                </strong>
+                                 
+                                <strong>
+                                  required
+                                </strong>
+                              </summary>
+                              <strong>
+                                type
+                              </strong>
+                               : 
+                              <strong>
+                                any
+                              </strong>
+                              <div
+                                style={
+                                  {
+                                    "marginTop": "var(--ifm-table-cell-padding)",
+                                  }
+                                }
+                              >
+                                Always valid
+                              </div>
+                            </details>
+                          </li>
+                        </ul>
+                        <div
+                          style={
+                            {
+                              "marginTop": "var(--ifm-table-cell-padding)",
+                            }
+                          }
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </details>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </details>
 </details>
 `;
@@ -1602,7 +1821,12 @@ exports[`JSONSchemaViewer - schema conditionally test dependencies (dependentSch
         Conditional subschemas
       </strong>
     </summary>
-    <ul>
+    <div>
+      <span
+        className="badge badge--info"
+      >
+        allOf
+      </span>
       <div
         className="tabs-container"
       >
@@ -1617,16 +1841,7 @@ exports[`JSONSchemaViewer - schema conditionally test dependencies (dependentSch
             tabIndex={0}
           >
             <strong>
-              If
-            </strong>
-          </li>
-          <li
-            aria-selected={false}
-            onClick={[Function]}
-            tabIndex={-1}
-          >
-            <strong>
-              Then
+              any
             </strong>
           </li>
         </ul>
@@ -1638,88 +1853,208 @@ exports[`JSONSchemaViewer - schema conditionally test dependencies (dependentSch
             <div
               role="tabpanel"
             >
-              When credit_card property is provided
-            </div>
-          </div>
-          <div
-            hidden={true}
-            role="tabpanel"
-          >
-            <div
-              role="tabpanel"
-            >
               <strong>
                 type
               </strong>
                : 
-              <span
-                style={
-                  {
-                    "opacity": "0.6",
-                  }
-                }
-              >
-                object
-              </span>
-              <ul>
-                <li>
-                  <details
-                    open={false}
-                  >
-                    <summary>
-                      <strong>
-                        billing_address
-                      </strong>
-                       
-                      <span
-                        style={
-                          {
-                            "opacity": "0.6",
-                          }
-                        }
-                      >
-                        string
-                      </span>
-                       
-                      <strong>
-                        required
-                      </strong>
-                    </summary>
-                    <strong>
-                      type
-                    </strong>
-                     : 
-                    <span
-                      style={
-                        {
-                          "opacity": "0.6",
-                        }
-                      }
-                    >
-                      string
-                    </span>
-                    <div
-                      style={
-                        {
-                          "marginTop": "var(--ifm-table-cell-padding)",
-                        }
-                      }
-                    />
-                  </details>
-                </li>
-              </ul>
+              <strong>
+                any
+              </strong>
               <div
                 style={
                   {
                     "marginTop": "var(--ifm-table-cell-padding)",
                   }
                 }
-              />
+              >
+                Always valid
+              </div>
+              <details
+                open={true}
+              >
+                <summary>
+                  <strong>
+                    Conditional subschemas
+                  </strong>
+                </summary>
+                <div
+                  className="tabs-container"
+                >
+                  <ul
+                    aria-orientation="horizontal"
+                    className="tabs"
+                    role="tablist"
+                  >
+                    <li
+                      aria-selected={true}
+                      onClick={[Function]}
+                      tabIndex={0}
+                    >
+                      <strong>
+                        If
+                      </strong>
+                    </li>
+                    <li
+                      aria-selected={false}
+                      onClick={[Function]}
+                      tabIndex={-1}
+                    >
+                      <strong>
+                        Then
+                      </strong>
+                    </li>
+                  </ul>
+                  <div>
+                    <div
+                      hidden={false}
+                      role="tabpanel"
+                    >
+                      <div
+                        role="tabpanel"
+                      >
+                        <strong>
+                          type
+                        </strong>
+                         : 
+                        <span
+                          style={
+                            {
+                              "opacity": "0.6",
+                            }
+                          }
+                        >
+                          object
+                        </span>
+                        <ul>
+                          <li>
+                            <details
+                              open={false}
+                            >
+                              <summary>
+                                <strong>
+                                  credit_card
+                                </strong>
+                                 
+                                <strong>
+                                  any
+                                </strong>
+                                 
+                                <strong>
+                                  required
+                                </strong>
+                              </summary>
+                              <strong>
+                                type
+                              </strong>
+                               : 
+                              <strong>
+                                any
+                              </strong>
+                              <div
+                                style={
+                                  {
+                                    "marginTop": "var(--ifm-table-cell-padding)",
+                                  }
+                                }
+                              >
+                                Always valid
+                              </div>
+                            </details>
+                          </li>
+                        </ul>
+                        <div
+                          style={
+                            {
+                              "marginTop": "var(--ifm-table-cell-padding)",
+                            }
+                          }
+                        />
+                      </div>
+                    </div>
+                    <div
+                      hidden={true}
+                      role="tabpanel"
+                    >
+                      <div
+                        role="tabpanel"
+                      >
+                        <strong>
+                          type
+                        </strong>
+                         : 
+                        <span
+                          style={
+                            {
+                              "opacity": "0.6",
+                            }
+                          }
+                        >
+                          object
+                        </span>
+                        <ul>
+                          <li>
+                            <details
+                              open={false}
+                            >
+                              <summary>
+                                <strong>
+                                  billing_address
+                                </strong>
+                                 
+                                <span
+                                  style={
+                                    {
+                                      "opacity": "0.6",
+                                    }
+                                  }
+                                >
+                                  string
+                                </span>
+                                 
+                                <strong>
+                                  required
+                                </strong>
+                              </summary>
+                              <strong>
+                                type
+                              </strong>
+                               : 
+                              <span
+                                style={
+                                  {
+                                    "opacity": "0.6",
+                                  }
+                                }
+                              >
+                                string
+                              </span>
+                              <div
+                                style={
+                                  {
+                                    "marginTop": "var(--ifm-table-cell-padding)",
+                                  }
+                                }
+                              />
+                            </details>
+                          </li>
+                        </ul>
+                        <div
+                          style={
+                            {
+                              "marginTop": "var(--ifm-table-cell-padding)",
+                            }
+                          }
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </details>
             </div>
           </div>
         </div>
       </div>
-    </ul>
+    </div>
   </details>
 </details>
 `;
@@ -1890,14 +2225,435 @@ exports[`JSONSchemaViewer - schema conditionally test dependentRequired (bidirec
         Conditional subschemas
       </strong>
     </summary>
-    <ul>
-      <li>
-        If credit_card property is provided, then 1 propertie(s) must also be present: billing_address
-      </li>
-      <li>
-        If billing_address property is provided, then 1 propertie(s) must also be present: credit_card
-      </li>
-    </ul>
+    <div>
+      <span
+        className="badge badge--info"
+      >
+        allOf
+      </span>
+      <div
+        className="tabs-container"
+      >
+        <ul
+          aria-orientation="horizontal"
+          className="tabs"
+          role="tablist"
+        >
+          <li
+            aria-selected={true}
+            onClick={[Function]}
+            tabIndex={0}
+          >
+            <strong>
+              any
+            </strong>
+          </li>
+          <li
+            aria-selected={false}
+            onClick={[Function]}
+            tabIndex={-1}
+          >
+            <strong>
+              any
+            </strong>
+          </li>
+        </ul>
+        <div>
+          <div
+            hidden={false}
+            role="tabpanel"
+          >
+            <div
+              role="tabpanel"
+            >
+              <strong>
+                type
+              </strong>
+               : 
+              <strong>
+                any
+              </strong>
+              <div
+                style={
+                  {
+                    "marginTop": "var(--ifm-table-cell-padding)",
+                  }
+                }
+              >
+                Always valid
+              </div>
+              <details
+                open={true}
+              >
+                <summary>
+                  <strong>
+                    Conditional subschemas
+                  </strong>
+                </summary>
+                <div
+                  className="tabs-container"
+                >
+                  <ul
+                    aria-orientation="horizontal"
+                    className="tabs"
+                    role="tablist"
+                  >
+                    <li
+                      aria-selected={true}
+                      onClick={[Function]}
+                      tabIndex={0}
+                    >
+                      <strong>
+                        If
+                      </strong>
+                    </li>
+                    <li
+                      aria-selected={false}
+                      onClick={[Function]}
+                      tabIndex={-1}
+                    >
+                      <strong>
+                        Then
+                      </strong>
+                    </li>
+                  </ul>
+                  <div>
+                    <div
+                      hidden={false}
+                      role="tabpanel"
+                    >
+                      <div
+                        role="tabpanel"
+                      >
+                        <strong>
+                          type
+                        </strong>
+                         : 
+                        <span
+                          style={
+                            {
+                              "opacity": "0.6",
+                            }
+                          }
+                        >
+                          object
+                        </span>
+                        <ul>
+                          <li>
+                            <details
+                              open={false}
+                            >
+                              <summary>
+                                <strong>
+                                  credit_card
+                                </strong>
+                                 
+                                <strong>
+                                  any
+                                </strong>
+                                 
+                                <strong>
+                                  required
+                                </strong>
+                              </summary>
+                              <strong>
+                                type
+                              </strong>
+                               : 
+                              <strong>
+                                any
+                              </strong>
+                              <div
+                                style={
+                                  {
+                                    "marginTop": "var(--ifm-table-cell-padding)",
+                                  }
+                                }
+                              >
+                                Always valid
+                              </div>
+                            </details>
+                          </li>
+                        </ul>
+                        <div
+                          style={
+                            {
+                              "marginTop": "var(--ifm-table-cell-padding)",
+                            }
+                          }
+                        />
+                      </div>
+                    </div>
+                    <div
+                      hidden={true}
+                      role="tabpanel"
+                    >
+                      <div
+                        role="tabpanel"
+                      >
+                        <strong>
+                          type
+                        </strong>
+                         : 
+                        <span
+                          style={
+                            {
+                              "opacity": "0.6",
+                            }
+                          }
+                        >
+                          object
+                        </span>
+                        <ul>
+                          <li>
+                            <details
+                              open={false}
+                            >
+                              <summary>
+                                <strong>
+                                  billing_address
+                                </strong>
+                                 
+                                <strong>
+                                  any
+                                </strong>
+                                 
+                                <strong>
+                                  required
+                                </strong>
+                              </summary>
+                              <strong>
+                                type
+                              </strong>
+                               : 
+                              <strong>
+                                any
+                              </strong>
+                              <div
+                                style={
+                                  {
+                                    "marginTop": "var(--ifm-table-cell-padding)",
+                                  }
+                                }
+                              >
+                                Always valid
+                              </div>
+                            </details>
+                          </li>
+                        </ul>
+                        <div
+                          style={
+                            {
+                              "marginTop": "var(--ifm-table-cell-padding)",
+                            }
+                          }
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </details>
+            </div>
+          </div>
+          <div
+            hidden={true}
+            role="tabpanel"
+          >
+            <div
+              role="tabpanel"
+            >
+              <strong>
+                type
+              </strong>
+               : 
+              <strong>
+                any
+              </strong>
+              <div
+                style={
+                  {
+                    "marginTop": "var(--ifm-table-cell-padding)",
+                  }
+                }
+              >
+                Always valid
+              </div>
+              <details
+                open={true}
+              >
+                <summary>
+                  <strong>
+                    Conditional subschemas
+                  </strong>
+                </summary>
+                <div
+                  className="tabs-container"
+                >
+                  <ul
+                    aria-orientation="horizontal"
+                    className="tabs"
+                    role="tablist"
+                  >
+                    <li
+                      aria-selected={true}
+                      onClick={[Function]}
+                      tabIndex={0}
+                    >
+                      <strong>
+                        If
+                      </strong>
+                    </li>
+                    <li
+                      aria-selected={false}
+                      onClick={[Function]}
+                      tabIndex={-1}
+                    >
+                      <strong>
+                        Then
+                      </strong>
+                    </li>
+                  </ul>
+                  <div>
+                    <div
+                      hidden={false}
+                      role="tabpanel"
+                    >
+                      <div
+                        role="tabpanel"
+                      >
+                        <strong>
+                          type
+                        </strong>
+                         : 
+                        <span
+                          style={
+                            {
+                              "opacity": "0.6",
+                            }
+                          }
+                        >
+                          object
+                        </span>
+                        <ul>
+                          <li>
+                            <details
+                              open={false}
+                            >
+                              <summary>
+                                <strong>
+                                  billing_address
+                                </strong>
+                                 
+                                <strong>
+                                  any
+                                </strong>
+                                 
+                                <strong>
+                                  required
+                                </strong>
+                              </summary>
+                              <strong>
+                                type
+                              </strong>
+                               : 
+                              <strong>
+                                any
+                              </strong>
+                              <div
+                                style={
+                                  {
+                                    "marginTop": "var(--ifm-table-cell-padding)",
+                                  }
+                                }
+                              >
+                                Always valid
+                              </div>
+                            </details>
+                          </li>
+                        </ul>
+                        <div
+                          style={
+                            {
+                              "marginTop": "var(--ifm-table-cell-padding)",
+                            }
+                          }
+                        />
+                      </div>
+                    </div>
+                    <div
+                      hidden={true}
+                      role="tabpanel"
+                    >
+                      <div
+                        role="tabpanel"
+                      >
+                        <strong>
+                          type
+                        </strong>
+                         : 
+                        <span
+                          style={
+                            {
+                              "opacity": "0.6",
+                            }
+                          }
+                        >
+                          object
+                        </span>
+                        <ul>
+                          <li>
+                            <details
+                              open={false}
+                            >
+                              <summary>
+                                <strong>
+                                  credit_card
+                                </strong>
+                                 
+                                <strong>
+                                  any
+                                </strong>
+                                 
+                                <strong>
+                                  required
+                                </strong>
+                              </summary>
+                              <strong>
+                                type
+                              </strong>
+                               : 
+                              <strong>
+                                any
+                              </strong>
+                              <div
+                                style={
+                                  {
+                                    "marginTop": "var(--ifm-table-cell-padding)",
+                                  }
+                                }
+                              >
+                                Always valid
+                              </div>
+                            </details>
+                          </li>
+                        </ul>
+                        <div
+                          style={
+                            {
+                              "marginTop": "var(--ifm-table-cell-padding)",
+                            }
+                          }
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </details>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </details>
 </details>
 `;
@@ -2068,11 +2824,230 @@ exports[`JSONSchemaViewer - schema conditionally test dependentRequired 1`] = `
         Conditional subschemas
       </strong>
     </summary>
-    <ul>
-      <li>
-        If credit_card property is provided, then 1 propertie(s) must also be present: billing_address
-      </li>
-    </ul>
+    <div>
+      <span
+        className="badge badge--info"
+      >
+        allOf
+      </span>
+      <div
+        className="tabs-container"
+      >
+        <ul
+          aria-orientation="horizontal"
+          className="tabs"
+          role="tablist"
+        >
+          <li
+            aria-selected={true}
+            onClick={[Function]}
+            tabIndex={0}
+          >
+            <strong>
+              any
+            </strong>
+          </li>
+        </ul>
+        <div>
+          <div
+            hidden={false}
+            role="tabpanel"
+          >
+            <div
+              role="tabpanel"
+            >
+              <strong>
+                type
+              </strong>
+               : 
+              <strong>
+                any
+              </strong>
+              <div
+                style={
+                  {
+                    "marginTop": "var(--ifm-table-cell-padding)",
+                  }
+                }
+              >
+                Always valid
+              </div>
+              <details
+                open={true}
+              >
+                <summary>
+                  <strong>
+                    Conditional subschemas
+                  </strong>
+                </summary>
+                <div
+                  className="tabs-container"
+                >
+                  <ul
+                    aria-orientation="horizontal"
+                    className="tabs"
+                    role="tablist"
+                  >
+                    <li
+                      aria-selected={true}
+                      onClick={[Function]}
+                      tabIndex={0}
+                    >
+                      <strong>
+                        If
+                      </strong>
+                    </li>
+                    <li
+                      aria-selected={false}
+                      onClick={[Function]}
+                      tabIndex={-1}
+                    >
+                      <strong>
+                        Then
+                      </strong>
+                    </li>
+                  </ul>
+                  <div>
+                    <div
+                      hidden={false}
+                      role="tabpanel"
+                    >
+                      <div
+                        role="tabpanel"
+                      >
+                        <strong>
+                          type
+                        </strong>
+                         : 
+                        <span
+                          style={
+                            {
+                              "opacity": "0.6",
+                            }
+                          }
+                        >
+                          object
+                        </span>
+                        <ul>
+                          <li>
+                            <details
+                              open={false}
+                            >
+                              <summary>
+                                <strong>
+                                  credit_card
+                                </strong>
+                                 
+                                <strong>
+                                  any
+                                </strong>
+                                 
+                                <strong>
+                                  required
+                                </strong>
+                              </summary>
+                              <strong>
+                                type
+                              </strong>
+                               : 
+                              <strong>
+                                any
+                              </strong>
+                              <div
+                                style={
+                                  {
+                                    "marginTop": "var(--ifm-table-cell-padding)",
+                                  }
+                                }
+                              >
+                                Always valid
+                              </div>
+                            </details>
+                          </li>
+                        </ul>
+                        <div
+                          style={
+                            {
+                              "marginTop": "var(--ifm-table-cell-padding)",
+                            }
+                          }
+                        />
+                      </div>
+                    </div>
+                    <div
+                      hidden={true}
+                      role="tabpanel"
+                    >
+                      <div
+                        role="tabpanel"
+                      >
+                        <strong>
+                          type
+                        </strong>
+                         : 
+                        <span
+                          style={
+                            {
+                              "opacity": "0.6",
+                            }
+                          }
+                        >
+                          object
+                        </span>
+                        <ul>
+                          <li>
+                            <details
+                              open={false}
+                            >
+                              <summary>
+                                <strong>
+                                  billing_address
+                                </strong>
+                                 
+                                <strong>
+                                  any
+                                </strong>
+                                 
+                                <strong>
+                                  required
+                                </strong>
+                              </summary>
+                              <strong>
+                                type
+                              </strong>
+                               : 
+                              <strong>
+                                any
+                              </strong>
+                              <div
+                                style={
+                                  {
+                                    "marginTop": "var(--ifm-table-cell-padding)",
+                                  }
+                                }
+                              >
+                                Always valid
+                              </div>
+                            </details>
+                          </li>
+                        </ul>
+                        <div
+                          style={
+                            {
+                              "marginTop": "var(--ifm-table-cell-padding)",
+                            }
+                          }
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </details>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </details>
 </details>
 `;
@@ -2114,7 +3089,12 @@ exports[`JSONSchemaViewer - schema conditionally test dependentSchemas 1`] = `
         Conditional subschemas
       </strong>
     </summary>
-    <ul>
+    <div>
+      <span
+        className="badge badge--info"
+      >
+        allOf
+      </span>
       <div
         className="tabs-container"
       >
@@ -2129,16 +3109,7 @@ exports[`JSONSchemaViewer - schema conditionally test dependentSchemas 1`] = `
             tabIndex={0}
           >
             <strong>
-              If
-            </strong>
-          </li>
-          <li
-            aria-selected={false}
-            onClick={[Function]}
-            tabIndex={-1}
-          >
-            <strong>
-              Then
+              any
             </strong>
           </li>
         </ul>
@@ -2150,84 +3121,204 @@ exports[`JSONSchemaViewer - schema conditionally test dependentSchemas 1`] = `
             <div
               role="tabpanel"
             >
-              When c property is provided
-            </div>
-          </div>
-          <div
-            hidden={true}
-            role="tabpanel"
-          >
-            <div
-              role="tabpanel"
-            >
               <strong>
                 type
               </strong>
                : 
-              <span
-                style={
-                  {
-                    "opacity": "0.6",
-                  }
-                }
-              >
-                object
-              </span>
-              <ul>
-                <li>
-                  <details
-                    open={false}
-                  >
-                    <summary>
-                      <strong>
-                        b
-                      </strong>
-                       
-                      <span
-                        style={
-                          {
-                            "opacity": "0.6",
-                          }
-                        }
-                      >
-                        integer
-                      </span>
-                    </summary>
-                    <strong>
-                      type
-                    </strong>
-                     : 
-                    <span
-                      style={
-                        {
-                          "opacity": "0.6",
-                        }
-                      }
-                    >
-                      integer
-                    </span>
-                    <div
-                      style={
-                        {
-                          "marginTop": "var(--ifm-table-cell-padding)",
-                        }
-                      }
-                    />
-                  </details>
-                </li>
-              </ul>
+              <strong>
+                any
+              </strong>
               <div
                 style={
                   {
                     "marginTop": "var(--ifm-table-cell-padding)",
                   }
                 }
-              />
+              >
+                Always valid
+              </div>
+              <details
+                open={true}
+              >
+                <summary>
+                  <strong>
+                    Conditional subschemas
+                  </strong>
+                </summary>
+                <div
+                  className="tabs-container"
+                >
+                  <ul
+                    aria-orientation="horizontal"
+                    className="tabs"
+                    role="tablist"
+                  >
+                    <li
+                      aria-selected={true}
+                      onClick={[Function]}
+                      tabIndex={0}
+                    >
+                      <strong>
+                        If
+                      </strong>
+                    </li>
+                    <li
+                      aria-selected={false}
+                      onClick={[Function]}
+                      tabIndex={-1}
+                    >
+                      <strong>
+                        Then
+                      </strong>
+                    </li>
+                  </ul>
+                  <div>
+                    <div
+                      hidden={false}
+                      role="tabpanel"
+                    >
+                      <div
+                        role="tabpanel"
+                      >
+                        <strong>
+                          type
+                        </strong>
+                         : 
+                        <span
+                          style={
+                            {
+                              "opacity": "0.6",
+                            }
+                          }
+                        >
+                          object
+                        </span>
+                        <ul>
+                          <li>
+                            <details
+                              open={false}
+                            >
+                              <summary>
+                                <strong>
+                                  c
+                                </strong>
+                                 
+                                <strong>
+                                  any
+                                </strong>
+                                 
+                                <strong>
+                                  required
+                                </strong>
+                              </summary>
+                              <strong>
+                                type
+                              </strong>
+                               : 
+                              <strong>
+                                any
+                              </strong>
+                              <div
+                                style={
+                                  {
+                                    "marginTop": "var(--ifm-table-cell-padding)",
+                                  }
+                                }
+                              >
+                                Always valid
+                              </div>
+                            </details>
+                          </li>
+                        </ul>
+                        <div
+                          style={
+                            {
+                              "marginTop": "var(--ifm-table-cell-padding)",
+                            }
+                          }
+                        />
+                      </div>
+                    </div>
+                    <div
+                      hidden={true}
+                      role="tabpanel"
+                    >
+                      <div
+                        role="tabpanel"
+                      >
+                        <strong>
+                          type
+                        </strong>
+                         : 
+                        <span
+                          style={
+                            {
+                              "opacity": "0.6",
+                            }
+                          }
+                        >
+                          object
+                        </span>
+                        <ul>
+                          <li>
+                            <details
+                              open={false}
+                            >
+                              <summary>
+                                <strong>
+                                  b
+                                </strong>
+                                 
+                                <span
+                                  style={
+                                    {
+                                      "opacity": "0.6",
+                                    }
+                                  }
+                                >
+                                  integer
+                                </span>
+                              </summary>
+                              <strong>
+                                type
+                              </strong>
+                               : 
+                              <span
+                                style={
+                                  {
+                                    "opacity": "0.6",
+                                  }
+                                }
+                              >
+                                integer
+                              </span>
+                              <div
+                                style={
+                                  {
+                                    "marginTop": "var(--ifm-table-cell-padding)",
+                                  }
+                                }
+                              />
+                            </details>
+                          </li>
+                        </ul>
+                        <div
+                          style={
+                            {
+                              "marginTop": "var(--ifm-table-cell-padding)",
+                            }
+                          }
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </details>
             </div>
           </div>
         </div>
       </div>
-    </ul>
+    </div>
   </details>
 </details>
 `;
