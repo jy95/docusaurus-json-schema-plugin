@@ -14,7 +14,7 @@
   background-color: var(--ifm-menu-color-background-active);
 }
 
-[class^="schemaItem"]:before {
+[class^="schemaItem"]::before {
   border-bottom: thin solid var(--ifm-color-gray-500);
   content: "";
   display: inline-block;
