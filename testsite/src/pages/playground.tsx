@@ -7,13 +7,32 @@ import BrowserOnly from "@docusaurus/BrowserOnly"
 import DefaultSchema from "@site/static/schemas/examples/object/additionalProperties.json"
 
 function PlaygroundInner(): JSX.Element {
+  // The current schema displayed
   let [userSchema, setUserSchema] = React.useState({
     // To help monaco editor for JSON Schema definition
     $schema: "http://json-schema.org/draft-07/schema",
     // The demo schema
     ...DefaultSchema,
   } as { [x: string]: any })
+  // The schema user is currently writting
+  let [customSchemaString, setCustomSchemaString] = React.useState("")
+
   const { colorMode } = useColorMode()
+
+  React.useEffect(() => {
+    setCustomSchemaString(JSON.stringify(userSchema))
+  }, [userSchema])
+
+  // Turn user schema to other components
+  function updateView() {
+    try {
+      let newSchema = JSON.parse(customSchemaString)
+      setUserSchema(newSchema)
+    } catch (error) {
+      // KIS warning
+      alert(error)
+    }
+  }
 
   const JSONSchemaViewer = require("@theme/JSONSchemaViewer").default
   const JSONSchemaEditor = require("@theme/JSONSchemaEditor").default
@@ -23,21 +42,21 @@ function PlaygroundInner(): JSX.Element {
       <div style={{ display: "flex", flexWrap: "wrap" }}>
         <div style={{ boxSizing: "border-box", width: "50%" }}>
           <h1>Schema</h1>
+          <button onClick={() => updateView()}>Update Editor / Viewer</button>
           <JSONSchemaEditor
             value={JSON.stringify(userSchema, null, "\t")}
             // For some reason, monaco editor can ignore empty schema when $schema is provided
             schema={{}}
             onChange={(newValue: string) => {
-              try {
-                let newSchema = JSON.parse(newValue)
-                setUserSchema(newSchema)
-              } catch (error) {
-                // ignore that, still typing
-              }
+              // Remember what the user puts
+              setCustomSchemaString(newValue)
             }}
           />
         </div>
-        <div style={{ boxSizing: "border-box", width: "50%" }}>
+        <div
+          style={{ boxSizing: "border-box", width: "50%" }}
+          key={JSON.stringify(userSchema)}
+        >
           <h1>JSON Schema Editor</h1>
           <JSONSchemaEditor
             schema={userSchema}
@@ -45,7 +64,7 @@ function PlaygroundInner(): JSX.Element {
           />
         </div>
       </div>
-      <div>
+      <div key={JSON.stringify(userSchema)}>
         <h1>JSON Schema Viewer</h1>
         <JSONSchemaViewer schema={userSchema} />
       </div>
