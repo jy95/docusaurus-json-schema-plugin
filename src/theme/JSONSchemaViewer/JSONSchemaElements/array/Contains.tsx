@@ -10,7 +10,7 @@ type Props = {
   schema: JSONSchemaNS.Array
 }
 
-function createContains(props: Props): JSX.Element {
+export default function CreateContains(props: Props): JSX.Element {
   const { schema } = props
 
   let item = schema.contains
@@ -40,5 +40,3 @@ function createContains(props: Props): JSX.Element {
     />
   )
 }
-
-export default createContains

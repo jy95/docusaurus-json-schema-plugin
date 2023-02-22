@@ -9,7 +9,7 @@ type Props = {
   [x: string]: any
 }
 
-function NotSchema(props: Props): JSX.Element {
+export default function NotSchema(props: Props): JSX.Element {
   const { schema } = props
 
   let typedSchema = schema.not!
@@ -23,5 +23,3 @@ function NotSchema(props: Props): JSX.Element {
     </div>
   )
 }
-
-export default NotSchema

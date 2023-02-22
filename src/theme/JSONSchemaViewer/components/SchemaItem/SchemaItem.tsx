@@ -24,7 +24,11 @@ type SchemaItemProps = {
   required: boolean
 }
 
-function SchemaItem({ schema, name, required }: SchemaItemProps): JSX.Element {
+export default function SchemaItem({
+  schema,
+  name,
+  required,
+}: SchemaItemProps): JSX.Element {
   // Notice : "deprecated" started at 2019-09
   let typedSchema = schema as JSONSchema_Draft_2019_09
   let isDeprecated =
@@ -66,5 +70,3 @@ function SchemaItem({ schema, name, required }: SchemaItemProps): JSX.Element {
     </li>
   )
 }
-
-export default SchemaItem

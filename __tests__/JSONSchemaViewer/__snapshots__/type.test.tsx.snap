@@ -15,9 +15,15 @@ exports[`JSONSchemaViewer - type test 2 types 1`] = `
         type
       </strong>
        : 
-      <strong>
+      <span
+        style={
+          {
+            "opacity": "0.6",
+          }
+        }
+      >
         any
-      </strong>
+      </span>
       <div
         style={
           {
@@ -54,9 +60,15 @@ exports[`JSONSchemaViewer - type test 4 types 1`] = `
         type
       </strong>
        : 
-      <strong>
+      <span
+        style={
+          {
+            "opacity": "0.6",
+          }
+        }
+      >
         any
-      </strong>
+      </span>
       <div
         style={
           {
@@ -93,9 +105,15 @@ exports[`JSONSchemaViewer - type test Unspecified multiple types 1`] = `
         type
       </strong>
        : 
-      <strong>
+      <span
+        style={
+          {
+            "opacity": "0.6",
+          }
+        }
+      >
         any
-      </strong>
+      </span>
       <div
         style={
           {
@@ -132,9 +150,15 @@ exports[`JSONSchemaViewer - type test Unspecified type (boolean) 1`] = `
         type
       </strong>
        : 
-      <strong>
+      <span
+        style={
+          {
+            "opacity": "0.6",
+          }
+        }
+      >
         any
-      </strong>
+      </span>
       <div
         style={
           {
@@ -171,9 +195,15 @@ exports[`JSONSchemaViewer - type test Unspecified type (numeric) 1`] = `
         type
       </strong>
        : 
-      <strong>
+      <span
+        style={
+          {
+            "opacity": "0.6",
+          }
+        }
+      >
         any
-      </strong>
+      </span>
       <div
         style={
           {
@@ -210,9 +240,15 @@ exports[`JSONSchemaViewer - type test single type 1`] = `
         type
       </strong>
        : 
-      <strong>
+      <span
+        style={
+          {
+            "opacity": "0.6",
+          }
+        }
+      >
         any
-      </strong>
+      </span>
       <div
         style={
           {

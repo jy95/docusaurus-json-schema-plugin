@@ -9,7 +9,7 @@ type Props = {
   [x: string]: any
 }
 
-function Dependencies(props: Props): JSX.Element {
+export default function Dependencies(props: Props): JSX.Element {
   const { schema } = props
 
   let dependencies = schema.dependencies!
@@ -53,5 +53,3 @@ function Dependencies(props: Props): JSX.Element {
     </>
   )
 }
-
-export default Dependencies

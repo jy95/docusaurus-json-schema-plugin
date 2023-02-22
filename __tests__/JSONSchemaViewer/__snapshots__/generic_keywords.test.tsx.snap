@@ -15,9 +15,15 @@ exports[`JSONSchemaViewer - Generic keywords test annotations 1`] = `
         type
       </strong>
        : 
-      <strong>
+      <span
+        style={
+          {
+            "opacity": "0.6",
+          }
+        }
+      >
         any
-      </strong>
+      </span>
       <div
         style={
           {

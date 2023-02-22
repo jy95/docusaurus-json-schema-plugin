@@ -418,9 +418,15 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Array specified only
                           items[x]
                         </code>
                          
-                        <strong>
+                        <span
+                          style={
+                            {
+                              "opacity": "0.6",
+                            }
+                          }
+                        >
                           none
-                        </strong>
+                        </span>
                       </summary>
                       <div>
                         <div>
@@ -428,9 +434,15 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Array specified only
                             type
                           </strong>
                            : 
-                          <strong>
+                          <span
+                            style={
+                              {
+                                "opacity": "0.6",
+                              }
+                            }
+                          >
                             none
-                          </strong>
+                          </span>
                           <div
                             style={
                               {

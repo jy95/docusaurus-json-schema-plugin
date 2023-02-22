@@ -15,7 +15,7 @@ type Props = {
   [x: string]: any
 }
 
-function anyOfSchema(props: Props): JSX.Element {
+export default function AnyOfSchema(props: Props): JSX.Element {
   const { schema } = props
 
   let typedSchema = schema.anyOf!
@@ -41,5 +41,3 @@ function anyOfSchema(props: Props): JSX.Element {
     </div>
   )
 }
-
-export default anyOfSchema

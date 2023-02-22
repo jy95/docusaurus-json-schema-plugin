@@ -10,7 +10,7 @@ type Props = {
 }
 
 // Generate propertyNames
-function propertyNames(props: Props): JSX.Element {
+export default function PropertyNames(props: Props): JSX.Element {
   const { schema } = props
 
   let propertyNames = schema.propertyNames
@@ -41,5 +41,3 @@ function propertyNames(props: Props): JSX.Element {
     </ul>
   )
 }
-
-export default propertyNames

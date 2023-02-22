@@ -67,10 +67,16 @@ You can migrate schemas from draft-04 to draft-07 using [ajv-cli](https://github
 </details>
 
 <details>
-<summary>How to support specifications that extends the one of JSON Schema (such as MongoDB, ... )</summary>
+<summary>How to support specifications that extends the one of JSON Schema (such as OpenAPI, MongoDB, ... )</summary>
 
-That is a good question that arose around a [request](https://github.com/jy95/docusaurus-json-schema-plugin/discussions/19).
-For the time being, it is on hold as several aspects needs to be considered that might lead to issues , breaking changes, ...
+That is a good question as many extensions exist in the wild : 
+- [OpenAPI](https://spec.openapis.org/oas/latest.html) 
+- [MongoDB](https://www.mongodb.com/docs/manual/reference/operator/query/jsonSchema/)
+- ...
+
+In the case of OpenAPI, since [OpenAPI 3.1](https://www.openapis.org/blog/2021/02/16/migrating-from-openapi-3-0-to-3-1-0)+ , they are now valid [Draft 2020-12](https://json-schema.org/draft/2020-12/release-notes.html) JSON Schema so compatible with this lib.  
+
+For the time being, it is low priority as several aspects needs to be considered that might lead to issues , breaking changes, ...
 
 In the meantime, feel free to share your feedback on [Github discussions](https://github.com/jy95/docusaurus-json-schema-plugin/discussions)
 

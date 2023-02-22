@@ -9,7 +9,7 @@ type Props = {
   [x: string]: any
 }
 
-function DependentRequired(props: Props): JSX.Element {
+export default function DependentRequired(props: Props): JSX.Element {
   const { schema } = props
 
   let dependentRequired = (schema as JSONSchemaNS.Object).dependentRequired!
@@ -33,5 +33,3 @@ function DependentRequired(props: Props): JSX.Element {
   // Let's reuse "AllOfSchema" for this part
   return <AllOfSchema schema={simplifiedSchema} />
 }
-
-export default DependentRequired

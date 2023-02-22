@@ -629,9 +629,15 @@ exports[`JSONSchemaViewer - Array type test 5 1`] = `
                 items[x]
               </code>
                
-              <strong>
+              <span
+                style={
+                  {
+                    "opacity": "0.6",
+                  }
+                }
+              >
                 none
-              </strong>
+              </span>
             </summary>
             <div>
               <div>
@@ -639,9 +645,15 @@ exports[`JSONSchemaViewer - Array type test 5 1`] = `
                   type
                 </strong>
                  : 
-                <strong>
+                <span
+                  style={
+                    {
+                      "opacity": "0.6",
+                    }
+                  }
+                >
                   none
-                </strong>
+                </span>
                 <div
                   style={
                     {
