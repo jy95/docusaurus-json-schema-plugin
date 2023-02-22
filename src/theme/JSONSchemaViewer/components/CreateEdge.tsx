@@ -14,8 +14,10 @@ type EdgeProps = {
   required: boolean
 }
 
-function createEdge({ name, schema, required }: EdgeProps): JSX.Element {
+export default function CreateEdge({
+  name,
+  schema,
+  required,
+}: EdgeProps): JSX.Element {
   return <SchemaItem name={name} schema={schema} required={required} />
 }
-
-export default createEdge

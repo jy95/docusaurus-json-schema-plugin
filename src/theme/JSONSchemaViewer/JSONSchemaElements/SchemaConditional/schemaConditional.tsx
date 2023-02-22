@@ -18,7 +18,7 @@ type Props = {
 }
 
 // To handle Schema Conditional (if-then-else , dependentRequired , dependentSchemas , dependencies )
-function SchemaConditional(props: Props): JSX.Element {
+export default function SchemaConditional(props: Props): JSX.Element {
   const { schema } = props
 
   // Checks
@@ -60,5 +60,3 @@ function SchemaConditional(props: Props): JSX.Element {
     </Collapsible>
   )
 }
-
-export default SchemaConditional

@@ -15,7 +15,7 @@ type Props = {
   [x: string]: any
 }
 
-function oneOfSchema(props: Props): JSX.Element {
+export default function OneOfSchema(props: Props): JSX.Element {
   const { schema } = props
 
   let typedSchema = schema.oneOf!
@@ -40,5 +40,3 @@ function oneOfSchema(props: Props): JSX.Element {
     </div>
   )
 }
-
-export default oneOfSchema

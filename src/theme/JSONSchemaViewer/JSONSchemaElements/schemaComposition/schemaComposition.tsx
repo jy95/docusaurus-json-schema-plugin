@@ -10,7 +10,7 @@ type Props = {
 }
 
 // To handle Schema Composition (anyOf, oneOf, not, allOf)
-function SchemaComposition(props: Props): JSX.Element {
+export default function SchemaComposition(props: Props): JSX.Element {
   const { schema } = props
 
   return (
@@ -22,5 +22,3 @@ function SchemaComposition(props: Props): JSX.Element {
     </>
   )
 }
-
-export default SchemaComposition

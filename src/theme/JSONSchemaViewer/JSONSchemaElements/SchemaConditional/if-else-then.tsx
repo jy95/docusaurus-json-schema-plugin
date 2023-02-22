@@ -15,7 +15,7 @@ type Props = {
 }
 
 // Handle if else then
-function IfElseThen(props: Props): JSX.Element {
+export default function IfElseThen(props: Props): JSX.Element {
   const { schema } = props
 
   const hasThen = schema.then !== undefined
@@ -65,5 +65,3 @@ function IfElseThen(props: Props): JSX.Element {
     </Tabs>
   )
 }
-
-export default IfElseThen
