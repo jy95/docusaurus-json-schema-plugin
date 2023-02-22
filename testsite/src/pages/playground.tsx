@@ -58,6 +58,7 @@ function PlaygroundInner(): JSX.Element {
           key={JSON.stringify(userSchema)}
         >
           <h1>JSON Schema Editor</h1>
+          <br />
           <JSONSchemaEditor
             schema={userSchema}
             theme={colorMode === "dark" ? "vs-dark" : "vs"}
