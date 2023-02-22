@@ -34,9 +34,15 @@ exports[`JSONSchemaViewer - object test Unspecified required properties 1`] = `
                 prop1
               </strong>
                
-              <strong>
+              <span
+                style={
+                  {
+                    "opacity": "0.6",
+                  }
+                }
+              >
                 any
-              </strong>
+              </span>
                
               <strong>
                 required
@@ -48,9 +54,15 @@ exports[`JSONSchemaViewer - object test Unspecified required properties 1`] = `
                   type
                 </strong>
                  : 
-                <strong>
+                <span
+                  style={
+                    {
+                      "opacity": "0.6",
+                    }
+                  }
+                >
                   any
-                </strong>
+                </span>
                 <div
                   style={
                     {
@@ -73,9 +85,15 @@ exports[`JSONSchemaViewer - object test Unspecified required properties 1`] = `
                 prop2
               </strong>
                
-              <strong>
+              <span
+                style={
+                  {
+                    "opacity": "0.6",
+                  }
+                }
+              >
                 any
-              </strong>
+              </span>
                
               <strong>
                 required
@@ -87,9 +105,15 @@ exports[`JSONSchemaViewer - object test Unspecified required properties 1`] = `
                   type
                 </strong>
                  : 
-                <strong>
+                <span
+                  style={
+                    {
+                      "opacity": "0.6",
+                    }
+                  }
+                >
                   any
-                </strong>
+                </span>
                 <div
                   style={
                     {
@@ -573,9 +597,15 @@ exports[`JSONSchemaViewer - object test additionalProperties (false) 1`] = `
                 property name*
               </code>
                
-              <strong>
+              <span
+                style={
+                  {
+                    "opacity": "0.6",
+                  }
+                }
+              >
                 none
-              </strong>
+              </span>
             </summary>
             <div>
               <div>
@@ -583,9 +613,15 @@ exports[`JSONSchemaViewer - object test additionalProperties (false) 1`] = `
                   type
                 </strong>
                  : 
-                <strong>
+                <span
+                  style={
+                    {
+                      "opacity": "0.6",
+                    }
+                  }
+                >
                   none
-                </strong>
+                </span>
                 <div
                   style={
                     {
@@ -1330,9 +1366,15 @@ exports[`JSONSchemaViewer - object test propertyNames 1`] = `
                 ^[A-Za-z_][A-Za-z0-9_]*$
               </code>
                
-              <strong>
+              <span
+                style={
+                  {
+                    "opacity": "0.6",
+                  }
+                }
+              >
                 any
-              </strong>
+              </span>
             </summary>
             <div>
               <div>
@@ -1340,9 +1382,15 @@ exports[`JSONSchemaViewer - object test propertyNames 1`] = `
                   type
                 </strong>
                  : 
-                <strong>
+                <span
+                  style={
+                    {
+                      "opacity": "0.6",
+                    }
+                  }
+                >
                   any
-                </strong>
+                </span>
                 <div
                   style={
                     {

@@ -5,7 +5,7 @@ import Translate from "@docusaurus/Translate"
 // Label for "false"
 export default function FalseLabel(): JSX.Element {
   return (
-    <strong>
+    <span style={{ opacity: "0.6" }}>
       <Translate
         values={{
           id: "json-schema.keywords.false",
@@ -13,6 +13,6 @@ export default function FalseLabel(): JSX.Element {
       >
         {"none"}
       </Translate>
-    </strong>
+    </span>
   )
 }

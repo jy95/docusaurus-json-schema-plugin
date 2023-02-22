@@ -5,7 +5,7 @@ import Translate from "@docusaurus/Translate"
 // Label for "true"
 export default function TrueLabel(): JSX.Element {
   return (
-    <strong>
+    <span style={{ opacity: "0.6" }}>
       <Translate
         values={{
           id: "json-schema.keywords.true",
@@ -13,6 +13,6 @@ export default function TrueLabel(): JSX.Element {
       >
         {"any"}
       </Translate>
-    </strong>
+    </span>
   )
 }

@@ -25,9 +25,15 @@ exports[`JSONSchemaViewer - corner cases CreateArray - sub properties as boolean
             items[0]
           </code>
            
-          <strong>
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
             none
-          </strong>
+          </span>
         </summary>
         <div>
           <div>
@@ -35,9 +41,15 @@ exports[`JSONSchemaViewer - corner cases CreateArray - sub properties as boolean
               type
             </strong>
              : 
-            <strong>
+            <span
+              style={
+                {
+                  "opacity": "0.6",
+                }
+              }
+            >
               none
-            </strong>
+            </span>
             <div
               style={
                 {
@@ -62,9 +74,15 @@ exports[`JSONSchemaViewer - corner cases CreateArray - sub properties as boolean
             items[x]
           </code>
            
-          <strong>
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
             none
-          </strong>
+          </span>
         </summary>
         <div>
           <div>
@@ -72,9 +90,15 @@ exports[`JSONSchemaViewer - corner cases CreateArray - sub properties as boolean
               type
             </strong>
              : 
-            <strong>
+            <span
+              style={
+                {
+                  "opacity": "0.6",
+                }
+              }
+            >
               none
-            </strong>
+            </span>
             <div
               style={
                 {
@@ -98,9 +122,15 @@ exports[`JSONSchemaViewer - corner cases CreateArray - sub properties as boolean
           items[..., x, ...]
         </code>
          
-        <strong>
+        <span
+          style={
+            {
+              "opacity": "0.6",
+            }
+          }
+        >
           none
-        </strong>
+        </span>
       </summary>
       <div>
         <div>
@@ -108,9 +138,15 @@ exports[`JSONSchemaViewer - corner cases CreateArray - sub properties as boolean
             type
           </strong>
            : 
-          <strong>
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
             none
-          </strong>
+          </span>
           <div
             style={
               {
@@ -145,9 +181,15 @@ exports[`JSONSchemaViewer - corner cases CreateNodes - boolean schema (false) 1`
     type
   </strong>,
   " : ",
-  <strong>
+  <span
+    style={
+      {
+        "opacity": "0.6",
+      }
+    }
+  >
     none
-  </strong>,
+  </span>,
   <div
     style={
       {
@@ -166,9 +208,15 @@ exports[`JSONSchemaViewer - corner cases CreateNodes - boolean schema (true) 1`]
     type
   </strong>,
   " : ",
-  <strong>
+  <span
+    style={
+      {
+        "opacity": "0.6",
+      }
+    }
+  >
     any
-  </strong>,
+  </span>,
   <div
     style={
       {
@@ -231,9 +279,15 @@ exports[`JSONSchemaViewer - corner cases CreateObject - sub properties as boolea
             property name*
           </code>
            
-          <strong>
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
             none
-          </strong>
+          </span>
         </summary>
         <div>
           <div>
@@ -241,9 +295,15 @@ exports[`JSONSchemaViewer - corner cases CreateObject - sub properties as boolea
               type
             </strong>
              : 
-            <strong>
+            <span
+              style={
+                {
+                  "opacity": "0.6",
+                }
+              }
+            >
               none
-            </strong>
+            </span>
             <div
               style={
                 {

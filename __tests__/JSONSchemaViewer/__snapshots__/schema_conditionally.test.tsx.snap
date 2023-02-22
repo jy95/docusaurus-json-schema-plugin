@@ -161,27 +161,45 @@ exports[`JSONSchemaViewer - schema conditionally test If Then Else (multiple) 1`
               onClick={[Function]}
               tabIndex={0}
             >
-              <strong>
+              <span
+                style={
+                  {
+                    "opacity": "0.6",
+                  }
+                }
+              >
                 any
-              </strong>
+              </span>
             </li>
             <li
               aria-selected={false}
               onClick={[Function]}
               tabIndex={-1}
             >
-              <strong>
+              <span
+                style={
+                  {
+                    "opacity": "0.6",
+                  }
+                }
+              >
                 any
-              </strong>
+              </span>
             </li>
             <li
               aria-selected={false}
               onClick={[Function]}
               tabIndex={-1}
             >
-              <strong>
+              <span
+                style={
+                  {
+                    "opacity": "0.6",
+                  }
+                }
+              >
                 any
-              </strong>
+              </span>
             </li>
           </ul>
           <div>
@@ -196,9 +214,15 @@ exports[`JSONSchemaViewer - schema conditionally test If Then Else (multiple) 1`
                   type
                 </strong>
                  : 
-                <strong>
+                <span
+                  style={
+                    {
+                      "opacity": "0.6",
+                    }
+                  }
+                >
                   any
-                </strong>
+                </span>
                 <div
                   style={
                     {
@@ -443,9 +467,15 @@ exports[`JSONSchemaViewer - schema conditionally test If Then Else (multiple) 1`
                   type
                 </strong>
                  : 
-                <strong>
+                <span
+                  style={
+                    {
+                      "opacity": "0.6",
+                    }
+                  }
+                >
                   any
-                </strong>
+                </span>
                 <div
                   style={
                     {
@@ -694,9 +724,15 @@ exports[`JSONSchemaViewer - schema conditionally test If Then Else (multiple) 1`
                   type
                 </strong>
                  : 
-                <strong>
+                <span
+                  style={
+                    {
+                      "opacity": "0.6",
+                    }
+                  }
+                >
                   any
-                </strong>
+                </span>
                 <div
                   style={
                     {
@@ -1600,9 +1636,15 @@ exports[`JSONSchemaViewer - schema conditionally test dependencies (dependentReq
                     onClick={[Function]}
                     tabIndex={0}
                   >
-                    <strong>
+                    <span
+                      style={
+                        {
+                          "opacity": "0.6",
+                        }
+                      }
+                    >
                       any
-                    </strong>
+                    </span>
                   </li>
                 </ul>
                 <div>
@@ -1617,9 +1659,15 @@ exports[`JSONSchemaViewer - schema conditionally test dependencies (dependentReq
                         type
                       </strong>
                        : 
-                      <strong>
+                      <span
+                        style={
+                          {
+                            "opacity": "0.6",
+                          }
+                        }
+                      >
                         any
-                      </strong>
+                      </span>
                       <div
                         style={
                           {
@@ -1704,9 +1752,15 @@ exports[`JSONSchemaViewer - schema conditionally test dependencies (dependentReq
                                               credit_card
                                             </strong>
                                              
-                                            <strong>
+                                            <span
+                                              style={
+                                                {
+                                                  "opacity": "0.6",
+                                                }
+                                              }
+                                            >
                                               any
-                                            </strong>
+                                            </span>
                                              
                                             <strong>
                                               required
@@ -1718,9 +1772,15 @@ exports[`JSONSchemaViewer - schema conditionally test dependencies (dependentReq
                                                 type
                                               </strong>
                                                : 
-                                              <strong>
+                                              <span
+                                                style={
+                                                  {
+                                                    "opacity": "0.6",
+                                                  }
+                                                }
+                                              >
                                                 any
-                                              </strong>
+                                              </span>
                                               <div
                                                 style={
                                                   {
@@ -1774,9 +1834,15 @@ exports[`JSONSchemaViewer - schema conditionally test dependencies (dependentReq
                                               billing_address
                                             </strong>
                                              
-                                            <strong>
+                                            <span
+                                              style={
+                                                {
+                                                  "opacity": "0.6",
+                                                }
+                                              }
+                                            >
                                               any
-                                            </strong>
+                                            </span>
                                              
                                             <strong>
                                               required
@@ -1788,9 +1854,15 @@ exports[`JSONSchemaViewer - schema conditionally test dependencies (dependentReq
                                                 type
                                               </strong>
                                                : 
-                                              <strong>
+                                              <span
+                                                style={
+                                                  {
+                                                    "opacity": "0.6",
+                                                  }
+                                                }
+                                              >
                                                 any
-                                              </strong>
+                                              </span>
                                               <div
                                                 style={
                                                   {
@@ -1988,9 +2060,15 @@ exports[`JSONSchemaViewer - schema conditionally test dependencies (dependentSch
                     onClick={[Function]}
                     tabIndex={0}
                   >
-                    <strong>
+                    <span
+                      style={
+                        {
+                          "opacity": "0.6",
+                        }
+                      }
+                    >
                       any
-                    </strong>
+                    </span>
                   </li>
                 </ul>
                 <div>
@@ -2005,9 +2083,15 @@ exports[`JSONSchemaViewer - schema conditionally test dependencies (dependentSch
                         type
                       </strong>
                        : 
-                      <strong>
+                      <span
+                        style={
+                          {
+                            "opacity": "0.6",
+                          }
+                        }
+                      >
                         any
-                      </strong>
+                      </span>
                       <div
                         style={
                           {
@@ -2092,9 +2176,15 @@ exports[`JSONSchemaViewer - schema conditionally test dependencies (dependentSch
                                               credit_card
                                             </strong>
                                              
-                                            <strong>
+                                            <span
+                                              style={
+                                                {
+                                                  "opacity": "0.6",
+                                                }
+                                              }
+                                            >
                                               any
-                                            </strong>
+                                            </span>
                                              
                                             <strong>
                                               required
@@ -2106,9 +2196,15 @@ exports[`JSONSchemaViewer - schema conditionally test dependencies (dependentSch
                                                 type
                                               </strong>
                                                : 
-                                              <strong>
+                                              <span
+                                                style={
+                                                  {
+                                                    "opacity": "0.6",
+                                                  }
+                                                }
+                                              >
                                                 any
-                                              </strong>
+                                              </span>
                                               <div
                                                 style={
                                                   {
@@ -2431,18 +2527,30 @@ exports[`JSONSchemaViewer - schema conditionally test dependentRequired (bidirec
                     onClick={[Function]}
                     tabIndex={0}
                   >
-                    <strong>
+                    <span
+                      style={
+                        {
+                          "opacity": "0.6",
+                        }
+                      }
+                    >
                       any
-                    </strong>
+                    </span>
                   </li>
                   <li
                     aria-selected={false}
                     onClick={[Function]}
                     tabIndex={-1}
                   >
-                    <strong>
+                    <span
+                      style={
+                        {
+                          "opacity": "0.6",
+                        }
+                      }
+                    >
                       any
-                    </strong>
+                    </span>
                   </li>
                 </ul>
                 <div>
@@ -2457,9 +2565,15 @@ exports[`JSONSchemaViewer - schema conditionally test dependentRequired (bidirec
                         type
                       </strong>
                        : 
-                      <strong>
+                      <span
+                        style={
+                          {
+                            "opacity": "0.6",
+                          }
+                        }
+                      >
                         any
-                      </strong>
+                      </span>
                       <div
                         style={
                           {
@@ -2544,9 +2658,15 @@ exports[`JSONSchemaViewer - schema conditionally test dependentRequired (bidirec
                                               credit_card
                                             </strong>
                                              
-                                            <strong>
+                                            <span
+                                              style={
+                                                {
+                                                  "opacity": "0.6",
+                                                }
+                                              }
+                                            >
                                               any
-                                            </strong>
+                                            </span>
                                              
                                             <strong>
                                               required
@@ -2558,9 +2678,15 @@ exports[`JSONSchemaViewer - schema conditionally test dependentRequired (bidirec
                                                 type
                                               </strong>
                                                : 
-                                              <strong>
+                                              <span
+                                                style={
+                                                  {
+                                                    "opacity": "0.6",
+                                                  }
+                                                }
+                                              >
                                                 any
-                                              </strong>
+                                              </span>
                                               <div
                                                 style={
                                                   {
@@ -2614,9 +2740,15 @@ exports[`JSONSchemaViewer - schema conditionally test dependentRequired (bidirec
                                               billing_address
                                             </strong>
                                              
-                                            <strong>
+                                            <span
+                                              style={
+                                                {
+                                                  "opacity": "0.6",
+                                                }
+                                              }
+                                            >
                                               any
-                                            </strong>
+                                            </span>
                                              
                                             <strong>
                                               required
@@ -2628,9 +2760,15 @@ exports[`JSONSchemaViewer - schema conditionally test dependentRequired (bidirec
                                                 type
                                               </strong>
                                                : 
-                                              <strong>
+                                              <span
+                                                style={
+                                                  {
+                                                    "opacity": "0.6",
+                                                  }
+                                                }
+                                              >
                                                 any
-                                              </strong>
+                                              </span>
                                               <div
                                                 style={
                                                   {
@@ -2672,9 +2810,15 @@ exports[`JSONSchemaViewer - schema conditionally test dependentRequired (bidirec
                         type
                       </strong>
                        : 
-                      <strong>
+                      <span
+                        style={
+                          {
+                            "opacity": "0.6",
+                          }
+                        }
+                      >
                         any
-                      </strong>
+                      </span>
                       <div
                         style={
                           {
@@ -2759,9 +2903,15 @@ exports[`JSONSchemaViewer - schema conditionally test dependentRequired (bidirec
                                               billing_address
                                             </strong>
                                              
-                                            <strong>
+                                            <span
+                                              style={
+                                                {
+                                                  "opacity": "0.6",
+                                                }
+                                              }
+                                            >
                                               any
-                                            </strong>
+                                            </span>
                                              
                                             <strong>
                                               required
@@ -2773,9 +2923,15 @@ exports[`JSONSchemaViewer - schema conditionally test dependentRequired (bidirec
                                                 type
                                               </strong>
                                                : 
-                                              <strong>
+                                              <span
+                                                style={
+                                                  {
+                                                    "opacity": "0.6",
+                                                  }
+                                                }
+                                              >
                                                 any
-                                              </strong>
+                                              </span>
                                               <div
                                                 style={
                                                   {
@@ -2829,9 +2985,15 @@ exports[`JSONSchemaViewer - schema conditionally test dependentRequired (bidirec
                                               credit_card
                                             </strong>
                                              
-                                            <strong>
+                                            <span
+                                              style={
+                                                {
+                                                  "opacity": "0.6",
+                                                }
+                                              }
+                                            >
                                               any
-                                            </strong>
+                                            </span>
                                              
                                             <strong>
                                               required
@@ -2843,9 +3005,15 @@ exports[`JSONSchemaViewer - schema conditionally test dependentRequired (bidirec
                                                 type
                                               </strong>
                                                : 
-                                              <strong>
+                                              <span
+                                                style={
+                                                  {
+                                                    "opacity": "0.6",
+                                                  }
+                                                }
+                                              >
                                                 any
-                                              </strong>
+                                              </span>
                                               <div
                                                 style={
                                                   {
@@ -3088,9 +3256,15 @@ exports[`JSONSchemaViewer - schema conditionally test dependentRequired 1`] = `
                     onClick={[Function]}
                     tabIndex={0}
                   >
-                    <strong>
+                    <span
+                      style={
+                        {
+                          "opacity": "0.6",
+                        }
+                      }
+                    >
                       any
-                    </strong>
+                    </span>
                   </li>
                 </ul>
                 <div>
@@ -3105,9 +3279,15 @@ exports[`JSONSchemaViewer - schema conditionally test dependentRequired 1`] = `
                         type
                       </strong>
                        : 
-                      <strong>
+                      <span
+                        style={
+                          {
+                            "opacity": "0.6",
+                          }
+                        }
+                      >
                         any
-                      </strong>
+                      </span>
                       <div
                         style={
                           {
@@ -3192,9 +3372,15 @@ exports[`JSONSchemaViewer - schema conditionally test dependentRequired 1`] = `
                                               credit_card
                                             </strong>
                                              
-                                            <strong>
+                                            <span
+                                              style={
+                                                {
+                                                  "opacity": "0.6",
+                                                }
+                                              }
+                                            >
                                               any
-                                            </strong>
+                                            </span>
                                              
                                             <strong>
                                               required
@@ -3206,9 +3392,15 @@ exports[`JSONSchemaViewer - schema conditionally test dependentRequired 1`] = `
                                                 type
                                               </strong>
                                                : 
-                                              <strong>
+                                              <span
+                                                style={
+                                                  {
+                                                    "opacity": "0.6",
+                                                  }
+                                                }
+                                              >
                                                 any
-                                              </strong>
+                                              </span>
                                               <div
                                                 style={
                                                   {
@@ -3262,9 +3454,15 @@ exports[`JSONSchemaViewer - schema conditionally test dependentRequired 1`] = `
                                               billing_address
                                             </strong>
                                              
-                                            <strong>
+                                            <span
+                                              style={
+                                                {
+                                                  "opacity": "0.6",
+                                                }
+                                              }
+                                            >
                                               any
-                                            </strong>
+                                            </span>
                                              
                                             <strong>
                                               required
@@ -3276,9 +3474,15 @@ exports[`JSONSchemaViewer - schema conditionally test dependentRequired 1`] = `
                                                 type
                                               </strong>
                                                : 
-                                              <strong>
+                                              <span
+                                                style={
+                                                  {
+                                                    "opacity": "0.6",
+                                                  }
+                                                }
+                                              >
                                                 any
-                                              </strong>
+                                              </span>
                                               <div
                                                 style={
                                                   {
@@ -3380,9 +3584,15 @@ exports[`JSONSchemaViewer - schema conditionally test dependentSchemas 1`] = `
                     onClick={[Function]}
                     tabIndex={0}
                   >
-                    <strong>
+                    <span
+                      style={
+                        {
+                          "opacity": "0.6",
+                        }
+                      }
+                    >
                       any
-                    </strong>
+                    </span>
                   </li>
                 </ul>
                 <div>
@@ -3397,9 +3607,15 @@ exports[`JSONSchemaViewer - schema conditionally test dependentSchemas 1`] = `
                         type
                       </strong>
                        : 
-                      <strong>
+                      <span
+                        style={
+                          {
+                            "opacity": "0.6",
+                          }
+                        }
+                      >
                         any
-                      </strong>
+                      </span>
                       <div
                         style={
                           {
@@ -3484,9 +3700,15 @@ exports[`JSONSchemaViewer - schema conditionally test dependentSchemas 1`] = `
                                               c
                                             </strong>
                                              
-                                            <strong>
+                                            <span
+                                              style={
+                                                {
+                                                  "opacity": "0.6",
+                                                }
+                                              }
+                                            >
                                               any
-                                            </strong>
+                                            </span>
                                              
                                             <strong>
                                               required
@@ -3498,9 +3720,15 @@ exports[`JSONSchemaViewer - schema conditionally test dependentSchemas 1`] = `
                                                 type
                                               </strong>
                                                : 
-                                              <strong>
+                                              <span
+                                                style={
+                                                  {
+                                                    "opacity": "0.6",
+                                                  }
+                                                }
+                                              >
                                                 any
-                                              </strong>
+                                              </span>
                                               <div
                                                 style={
                                                   {
