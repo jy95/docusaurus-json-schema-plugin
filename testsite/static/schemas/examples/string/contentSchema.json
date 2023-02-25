@@ -1,0 +1,7 @@
+{
+  "type": "string",
+  "contentSchema": {
+    "type": "object",
+    "required": ["name", "age"]
+  }
+}

@@ -1,0 +1,18 @@
+---
+description: string with contentSchema showcase
+title: "📑 ContentSchema"
+---
+
+import CodeBlock from '@theme/CodeBlock';
+import Schema from "@site/static/schemas/examples/string/contentSchema.json";
+import JSONSchemaViewer from "@theme/JSONSchemaViewer";
+
+# ContentSchema
+
+JSON Schema :
+
+<CodeBlock language="json">{JSON.stringify(Schema, null, 2)}</CodeBlock>
+
+Viewer :
+
+<JSONSchemaViewer schema={ Schema  } />
