@@ -36,7 +36,42 @@ type JSVOptions = {
    * @default false
    */
     showExamples?: boolean
+    /**
+     * To overwrite the order to display qualifier messages
+     * @default ["nullable","deprecated","readOnly","writeOnly","enum","stringLength","objectProperties","no-extra-properties","arrayItems","arrayContains","no-extra-items","number-range","pattern","multipleOf","uniqueItems","contentEncoding","contentMediaType","contentSchema","default","const","examples"]
+     */
+    qualifierMessagesOrder?: CheckKey[]
 }
+```
+
+```tsx
+type CheckKey =
+  | "nullable"
+  | "deprecated"
+  | "readOnly"
+  | "writeOnly"
+  | "enum"
+// minLength / maxLength
+  | "stringLength"
+// minProperties / maxProperties
+  | "objectProperties"
+  | "no-extra-properties"
+// minItems / maxItems
+  | "arrayItems"
+// minContains / maxContains
+  | "arrayContains"
+  | "no-extra-items"
+// minimum / exclusiveMinimum / maximum / exclusiveMaximum
+  | "number-range"
+  | "pattern"
+  | "multipleOf"
+  | "uniqueItems"
+  | "default"
+  | "const"
+  | "examples"
+  | "contentMediaType"
+  | "contentEncoding"
+  | "contentSchema"
 ```
 
 ## Examples
