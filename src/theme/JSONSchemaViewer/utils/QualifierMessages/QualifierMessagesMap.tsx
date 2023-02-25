@@ -41,6 +41,7 @@ type CheckKey =
   | "examples"
   | "contentMediaType"
   | "contentEncoding"
+  | "contentSchema"
 
 // Available qualifier message
 const CHECKS_MAP: Record<CheckKey, CheckInfo> = {
@@ -158,6 +159,16 @@ const CHECKS_MAP: Record<CheckKey, CheckInfo> = {
       <QMS.ContentEncodingQM key={"contentEncoding"} schema={schema} />
     ),
   },
+  contentSchema: {
+    match: ({ schema }) =>
+      (schema as JSONSchemaNS.String).contentSchema !== undefined,
+    Component: ({ schema }) => (
+      <QMS.ContentSchemaQM
+        key={"contentSchema"}
+        schema={schema as JSONSchemaNS.String}
+      />
+    ),
+  },
 }
 
 // Default order I assume
@@ -179,11 +190,10 @@ const DEFAULT_ORDER: CheckKey[] = [
   "uniqueItems",
   "contentEncoding",
   "contentMediaType",
+  "contentSchema",
   "default",
   "const",
   "examples",
 ]
-
-// TODO integrate "contentSchema"
 
 export { CHECKS_MAP, DEFAULT_ORDER }

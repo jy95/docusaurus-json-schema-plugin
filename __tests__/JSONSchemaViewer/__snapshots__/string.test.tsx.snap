@@ -183,6 +183,173 @@ exports[`JSONSchemaViewer - string test contentMediaType 1`] = `
 </details>
 `;
 
+exports[`JSONSchemaViewer - string test contentSchema 1`] = `
+<details
+  open={true}
+>
+  <summary>
+    <strong>
+      Schema
+    </strong>
+  </summary>
+  <div>
+    <div>
+      <strong>
+        type
+      </strong>
+       : 
+      <span
+        style={
+          {
+            "opacity": "0.6",
+          }
+        }
+      >
+        string
+      </span>
+      <div
+        style={
+          {
+            "marginTop": "var(--ifm-table-cell-padding)",
+          }
+        }
+      >
+        <div>
+          <strong>
+            Decoded content must be validated against this schema :
+          </strong>
+           
+          <strong>
+            type
+          </strong>
+           : 
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
+            object
+          </span>
+          <ul>
+            <li>
+              <details
+                open={false}
+              >
+                <summary>
+                  <strong>
+                    name
+                  </strong>
+                   
+                  <span
+                    style={
+                      {
+                        "opacity": "0.6",
+                      }
+                    }
+                  >
+                    any
+                  </span>
+                   
+                  <strong>
+                    required
+                  </strong>
+                </summary>
+                <div>
+                  <div>
+                    <strong>
+                      type
+                    </strong>
+                     : 
+                    <span
+                      style={
+                        {
+                          "opacity": "0.6",
+                        }
+                      }
+                    >
+                      any
+                    </span>
+                    <div
+                      style={
+                        {
+                          "marginTop": "var(--ifm-table-cell-padding)",
+                        }
+                      }
+                    >
+                      Always valid
+                    </div>
+                  </div>
+                </div>
+              </details>
+            </li>
+            <li>
+              <details
+                open={false}
+              >
+                <summary>
+                  <strong>
+                    age
+                  </strong>
+                   
+                  <span
+                    style={
+                      {
+                        "opacity": "0.6",
+                      }
+                    }
+                  >
+                    any
+                  </span>
+                   
+                  <strong>
+                    required
+                  </strong>
+                </summary>
+                <div>
+                  <div>
+                    <strong>
+                      type
+                    </strong>
+                     : 
+                    <span
+                      style={
+                        {
+                          "opacity": "0.6",
+                        }
+                      }
+                    >
+                      any
+                    </span>
+                    <div
+                      style={
+                        {
+                          "marginTop": "var(--ifm-table-cell-padding)",
+                        }
+                      }
+                    >
+                      Always valid
+                    </div>
+                  </div>
+                </div>
+              </details>
+            </li>
+          </ul>
+          <div
+            style={
+              {
+                "marginTop": "var(--ifm-table-cell-padding)",
+              }
+            }
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</details>
+`;
+
 exports[`JSONSchemaViewer - string test format 1`] = `
 <details
   open={true}

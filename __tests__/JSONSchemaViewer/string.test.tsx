@@ -169,6 +169,16 @@ const testcases: [string, JSONSchema][] = [
       contentMediaType: "application/json",
     },
   ],
+  [
+    "contentSchema",
+    {
+      type: "string",
+      contentSchema: {
+        type: "object",
+        required: ["name", "age"],
+      },
+    },
+  ],
 ]
 
 describe("JSONSchemaViewer - string", () => {

@@ -34,6 +34,7 @@ export { default as WriteOnlyQM } from "./WriteOnly"
 export { default as NullableQM } from "./Nullable"
 export { default as ContentMediaTypeQM } from "./ContentMediaType"
 export { default as ContentEncodingQM } from "./ContentEncoding"
+export { default as ContentSchemaQM } from "./ContentSchema"
 export {
   CHECKS_MAP as QUALIFIERS_MAP,
   DEFAULT_ORDER as QUALIFIERS_DEFAULT_ORDER,
