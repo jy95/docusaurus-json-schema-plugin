@@ -39,3 +39,5 @@ export {
   CHECKS_MAP as QUALIFIERS_MAP,
   DEFAULT_ORDER as QUALIFIERS_DEFAULT_ORDER,
 } from "./QualifierMessagesMap"
+
+export type { CheckKey } from "./QualifierMessagesMap"

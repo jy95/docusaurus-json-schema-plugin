@@ -20,7 +20,7 @@ interface CheckInfo {
 }
 
 // What are the possible checks for user
-type CheckKey =
+export type CheckKey =
   | "nullable"
   | "deprecated"
   | "readOnly"
