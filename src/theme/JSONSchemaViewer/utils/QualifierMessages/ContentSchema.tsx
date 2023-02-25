@@ -2,7 +2,7 @@ import React from "react"
 
 import Translate from "@docusaurus/Translate"
 
-import { CreateNodes } from "../../components/index"
+import { Collapsible, CreateNodes } from "../../components/index"
 
 import type { JSONSchemaNS } from "../../types"
 
@@ -26,11 +26,21 @@ export default function ContentSchema(props: Props): JSX.Element {
     </strong>
   )
 
+  // TODO maybe later refactor this name ...
+  const title = "Schema";
+
   return (
     <div key={"contentSchema"}>
       {contentSchemaLabel}
       &nbsp;
-      <CreateNodes schema={schema.contentSchema!} />
+      <Collapsible
+        summary={<strong>{title}</strong>}
+        detailsProps={{
+          open: true,
+        }}
+      >
+        <CreateNodes schema={schema.contentSchema!} />
+      </Collapsible>
     </div>
   )
 }

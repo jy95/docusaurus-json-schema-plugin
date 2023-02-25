@@ -219,130 +219,143 @@ exports[`JSONSchemaViewer - string test contentSchema 1`] = `
             Decoded content must be validated against this schema :
           </strong>
            
-          <strong>
-            type
-          </strong>
-           : 
-          <span
-            style={
-              {
-                "opacity": "0.6",
-              }
-            }
+          <details
+            open={true}
           >
-            object
-          </span>
-          <ul>
-            <li>
-              <details
-                open={false}
-              >
-                <summary>
-                  <strong>
-                    name
-                  </strong>
-                   
-                  <span
-                    style={
-                      {
-                        "opacity": "0.6",
-                      }
+            <summary>
+              <strong>
+                Schema
+              </strong>
+            </summary>
+            <div>
+              <div>
+                <strong>
+                  type
+                </strong>
+                 : 
+                <span
+                  style={
+                    {
+                      "opacity": "0.6",
                     }
-                  >
-                    any
-                  </span>
-                   
-                  <strong>
-                    required
-                  </strong>
-                </summary>
-                <div>
-                  <div>
-                    <strong>
-                      type
-                    </strong>
-                     : 
-                    <span
-                      style={
-                        {
-                          "opacity": "0.6",
-                        }
-                      }
+                  }
+                >
+                  object
+                </span>
+                <ul>
+                  <li>
+                    <details
+                      open={false}
                     >
-                      any
-                    </span>
-                    <div
-                      style={
-                        {
-                          "marginTop": "var(--ifm-table-cell-padding)",
-                        }
-                      }
+                      <summary>
+                        <strong>
+                          name
+                        </strong>
+                         
+                        <span
+                          style={
+                            {
+                              "opacity": "0.6",
+                            }
+                          }
+                        >
+                          any
+                        </span>
+                         
+                        <strong>
+                          required
+                        </strong>
+                      </summary>
+                      <div>
+                        <div>
+                          <strong>
+                            type
+                          </strong>
+                           : 
+                          <span
+                            style={
+                              {
+                                "opacity": "0.6",
+                              }
+                            }
+                          >
+                            any
+                          </span>
+                          <div
+                            style={
+                              {
+                                "marginTop": "var(--ifm-table-cell-padding)",
+                              }
+                            }
+                          >
+                            Always valid
+                          </div>
+                        </div>
+                      </div>
+                    </details>
+                  </li>
+                  <li>
+                    <details
+                      open={false}
                     >
-                      Always valid
-                    </div>
-                  </div>
-                </div>
-              </details>
-            </li>
-            <li>
-              <details
-                open={false}
-              >
-                <summary>
-                  <strong>
-                    age
-                  </strong>
-                   
-                  <span
-                    style={
-                      {
-                        "opacity": "0.6",
-                      }
+                      <summary>
+                        <strong>
+                          age
+                        </strong>
+                         
+                        <span
+                          style={
+                            {
+                              "opacity": "0.6",
+                            }
+                          }
+                        >
+                          any
+                        </span>
+                         
+                        <strong>
+                          required
+                        </strong>
+                      </summary>
+                      <div>
+                        <div>
+                          <strong>
+                            type
+                          </strong>
+                           : 
+                          <span
+                            style={
+                              {
+                                "opacity": "0.6",
+                              }
+                            }
+                          >
+                            any
+                          </span>
+                          <div
+                            style={
+                              {
+                                "marginTop": "var(--ifm-table-cell-padding)",
+                              }
+                            }
+                          >
+                            Always valid
+                          </div>
+                        </div>
+                      </div>
+                    </details>
+                  </li>
+                </ul>
+                <div
+                  style={
+                    {
+                      "marginTop": "var(--ifm-table-cell-padding)",
                     }
-                  >
-                    any
-                  </span>
-                   
-                  <strong>
-                    required
-                  </strong>
-                </summary>
-                <div>
-                  <div>
-                    <strong>
-                      type
-                    </strong>
-                     : 
-                    <span
-                      style={
-                        {
-                          "opacity": "0.6",
-                        }
-                      }
-                    >
-                      any
-                    </span>
-                    <div
-                      style={
-                        {
-                          "marginTop": "var(--ifm-table-cell-padding)",
-                        }
-                      }
-                    >
-                      Always valid
-                    </div>
-                  </div>
-                </div>
-              </details>
-            </li>
-          </ul>
-          <div
-            style={
-              {
-                "marginTop": "var(--ifm-table-cell-padding)",
-              }
-            }
-          />
+                  }
+                />
+              </div>
+            </div>
+          </details>
         </div>
       </div>
     </div>
