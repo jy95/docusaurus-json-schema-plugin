@@ -27,7 +27,7 @@ export default function ContentSchema(props: Props): JSX.Element {
   )
 
   // TODO maybe later refactor this name ...
-  const title = "Schema";
+  const title = "Schema"
 
   return (
     <div key={"contentSchema"}>
