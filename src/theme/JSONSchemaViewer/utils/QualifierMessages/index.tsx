@@ -32,3 +32,7 @@ export { default as DeprecatedQM } from "./Deprecated"
 export { default as ReadOnlyQM } from "./ReadOnly"
 export { default as WriteOnlyQM } from "./WriteOnly"
 export { default as NullableQM } from "./Nullable"
+export {
+  CHECKS_MAP as QUALIFIERS_MAP,
+  DEFAULT_ORDER as QUALIFIERS_DEFAULT_ORDER,
+} from "./QualifierMessagesMap"
