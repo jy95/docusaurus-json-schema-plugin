@@ -33,9 +33,9 @@ type Props = {
 // To generify the addition of qualifier messages in the future
 interface CheckInfo {
   // To check if qualifier message should be invoked
-  match: (args: Props) => boolean
+  match: (props: Props) => boolean
   // To render the component when asked
-  Component: (args: Props) => JSX.Element
+  Component: (props: Props) => JSX.Element
 }
 
 // What are the possible checks for user

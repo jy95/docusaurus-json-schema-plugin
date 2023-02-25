@@ -16,16 +16,12 @@ type Props = {
 
 // The heart of the plugin : Display human friendly messages
 export default function QualifierMessages(props: Props): null | JSX.Element {
-  const { schema, options, nullable } = props
-
   // Find out which messages will be triggered
   return (
     <>
       {QUALIFIERS_DEFAULT_ORDER.filter((item) =>
-        QUALIFIERS_MAP[item].match({ schema, options, nullable })
-      ).map((item) =>
-        QUALIFIERS_MAP[item].Component({ schema, options, nullable })
-      )}
+        QUALIFIERS_MAP[item].match(props)
+      ).map((item) => QUALIFIERS_MAP[item].Component(props))}
     </>
   )
 }
