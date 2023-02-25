@@ -147,6 +147,28 @@ const testcases: [string, JSONSchema][] = [
       pattern: "^(\\([0-9]{3}\\))?[0-9]{3}-[0-9]{4}$",
     },
   ],
+  [
+    "contentEncoding",
+    {
+      type: "string",
+      contentEncoding: "base64",
+    },
+  ],
+  [
+    "contentMediaType",
+    {
+      type: "string",
+      contentMediaType: "application/json",
+    },
+  ],
+  [
+    "contentEncoding with contentMediaType",
+    {
+      type: "string",
+      contentEncoding: "base64",
+      contentMediaType: "application/json",
+    },
+  ],
 ]
 
 describe("JSONSchemaViewer - string", () => {

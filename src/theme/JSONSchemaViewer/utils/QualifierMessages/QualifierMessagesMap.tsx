@@ -1,25 +1,6 @@
 import React from "react"
 
-import {
-  EnumQM,
-  StringLengthQM,
-  ObjectPropertiesQM,
-  NoExtraPropertiesQM,
-  ArrayNumberOfItemsQM,
-  ArrayContainsNumberQM,
-  NoExtraItemsQM,
-  NumberBoundsQM,
-  PatternQM,
-  MultipleOfQM,
-  ArrayUniqueItemsQM,
-  DefaultValueQM,
-  ConstantQM,
-  ExamplesQM,
-  DeprecatedQM,
-  ReadOnlyQM,
-  WriteOnlyQM,
-  NullableQM,
-} from "./index"
+import * as QMS from "./index"
 
 import type { JSONSchema, JSONSchemaNS } from "../../types"
 import type { JSVOptions } from "../../contexts/index"
@@ -58,52 +39,54 @@ type CheckKey =
   | "default"
   | "const"
   | "examples"
+  | "contentMediaType"
+  | "contentEncoding"
 
 // Available qualifier message
 const CHECKS_MAP: Record<CheckKey, CheckInfo> = {
   nullable: {
     match: ({ nullable }) => nullable === true,
-    Component: () => <NullableQM key={"nullable"} />,
+    Component: () => <QMS.NullableQM key={"nullable"} />,
   },
   deprecated: {
     match: ({ schema }) => (schema as JSONSchemaNS.Object).deprecated === true,
-    Component: () => <DeprecatedQM key={"deprecated"} />,
+    Component: () => <QMS.DeprecatedQM key={"deprecated"} />,
   },
   readOnly: {
     match: ({ schema }) => (schema as JSONSchemaNS.Object).readOnly === true,
-    Component: () => <ReadOnlyQM key={"readOnly"} />,
+    Component: () => <QMS.ReadOnlyQM key={"readOnly"} />,
   },
   writeOnly: {
     match: ({ schema }) => (schema as JSONSchemaNS.Object).writeOnly === true,
-    Component: () => <WriteOnlyQM key={"writeOnly"} />,
+    Component: () => <QMS.WriteOnlyQM key={"writeOnly"} />,
   },
   enum: {
     match: ({ schema }) => schema.enum !== undefined,
-    Component: ({ schema }) => <EnumQM key={"enum"} schema={schema} />,
+    Component: ({ schema }) => <QMS.EnumQM key={"enum"} schema={schema} />,
   },
   stringLength: {
     match: ({ schema }) =>
       schema.minLength !== undefined || schema.maxLength !== undefined,
     Component: ({ schema }) => (
-      <StringLengthQM key={"stringLength"} schema={schema} />
+      <QMS.StringLengthQM key={"stringLength"} schema={schema} />
     ),
   },
   objectProperties: {
     match: ({ schema }) =>
       schema.minProperties !== undefined || schema.maxProperties !== undefined,
     Component: ({ schema }) => (
-      <ObjectPropertiesQM key={"objectProperties"} schema={schema} />
+      <QMS.ObjectPropertiesQM key={"objectProperties"} schema={schema} />
     ),
   },
   "no-extra-properties": {
     match: ({ schema }) => schema.additionalProperties === false,
-    Component: () => <NoExtraPropertiesQM key={"no-extra-properties"} />,
+    Component: () => <QMS.NoExtraPropertiesQM key={"no-extra-properties"} />,
   },
   arrayItems: {
     match: ({ schema }) =>
       schema.minItems !== undefined || schema.maxItems !== undefined,
     Component: ({ schema }) => (
-      <ArrayNumberOfItemsQM key={"arrayItems"} schema={schema} />
+      <QMS.ArrayNumberOfItemsQM key={"arrayItems"} schema={schema} />
     ),
   },
   arrayContains: {
@@ -111,13 +94,13 @@ const CHECKS_MAP: Record<CheckKey, CheckInfo> = {
       (schema as JSONSchemaNS.Array).minContains !== undefined ||
       (schema as JSONSchemaNS.Array).maxContains !== undefined,
     Component: ({ schema }) => (
-      <ArrayContainsNumberQM key={"arrayContains"} schema={schema} />
+      <QMS.ArrayContainsNumberQM key={"arrayContains"} schema={schema} />
     ),
   },
   "no-extra-items": {
     match: ({ schema }) =>
       schema.items === false || schema.additionalItems === false,
-    Component: () => <NoExtraItemsQM key={"no-extra-items"} />,
+    Component: () => <QMS.NoExtraItemsQM key={"no-extra-items"} />,
   },
   "number-range": {
     match: ({ schema }) =>
@@ -126,38 +109,54 @@ const CHECKS_MAP: Record<CheckKey, CheckInfo> = {
       schema.maximum !== undefined ||
       schema.exclusiveMaximum !== undefined,
     Component: ({ schema }) => (
-      <NumberBoundsQM key={"number-range"} schema={schema} />
+      <QMS.NumberBoundsQM key={"number-range"} schema={schema} />
     ),
   },
   pattern: {
     match: ({ schema }) => schema.pattern !== undefined,
-    Component: ({ schema }) => <PatternQM key={"pattern"} schema={schema} />,
+    Component: ({ schema }) => (
+      <QMS.PatternQM key={"pattern"} schema={schema} />
+    ),
   },
   multipleOf: {
     match: ({ schema }) => schema.multipleOf !== undefined,
     Component: ({ schema }) => (
-      <MultipleOfQM key={"multipleOf"} schema={schema} />
+      <QMS.MultipleOfQM key={"multipleOf"} schema={schema} />
     ),
   },
   uniqueItems: {
     match: ({ schema }) =>
       schema.uniqueItems !== undefined && schema.uniqueItems === true,
-    Component: () => <ArrayUniqueItemsQM key={"uniqueItems"} />,
+    Component: () => <QMS.ArrayUniqueItemsQM key={"uniqueItems"} />,
   },
   default: {
     match: ({ schema }) => schema.default !== undefined,
     Component: ({ schema }) => (
-      <DefaultValueQM key={"default"} schema={schema} />
+      <QMS.DefaultValueQM key={"default"} schema={schema} />
     ),
   },
   const: {
     match: ({ schema }) => schema.const !== undefined,
-    Component: ({ schema }) => <ConstantQM key={"const"} schema={schema} />,
+    Component: ({ schema }) => <QMS.ConstantQM key={"const"} schema={schema} />,
   },
   examples: {
     match: ({ schema, options }) =>
       options.showExamples === true && schema.examples !== undefined,
-    Component: ({ schema }) => <ExamplesQM key={"examples"} schema={schema} />,
+    Component: ({ schema }) => (
+      <QMS.ExamplesQM key={"examples"} schema={schema} />
+    ),
+  },
+  contentMediaType: {
+    match: ({ schema }) => schema.contentMediaType !== undefined,
+    Component: ({ schema }) => (
+      <QMS.ContentMediaTypeQM key={"contentMediaType"} schema={schema} />
+    ),
+  },
+  contentEncoding: {
+    match: ({ schema }) => schema.contentEncoding !== undefined,
+    Component: ({ schema }) => (
+      <QMS.ContentEncodingQM key={"contentEncoding"} schema={schema} />
+    ),
   },
 }
 
@@ -178,11 +177,13 @@ const DEFAULT_ORDER: CheckKey[] = [
   "pattern",
   "multipleOf",
   "uniqueItems",
+  "contentEncoding",
+  "contentMediaType",
   "default",
   "const",
   "examples",
 ]
 
-// TODO integrate contentMediaType / contentEncoding / contentSchema
+// TODO integrate "contentSchema"
 
 export { CHECKS_MAP, DEFAULT_ORDER }
