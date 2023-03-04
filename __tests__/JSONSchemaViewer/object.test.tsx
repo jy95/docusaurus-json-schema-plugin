@@ -141,9 +141,9 @@ const testcases: [string, JSONSchema][] = [
   [
     "unevaluatedProperties = false",
     {
-      unevaluatedProperties: false
-    }
-  ]
+      unevaluatedProperties: false,
+    },
+  ],
 ]
 
 describe("JSONSchemaViewer - object", () => {
