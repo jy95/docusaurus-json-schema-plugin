@@ -100,8 +100,8 @@ const testcases: JSONSchema[] = [
     minItems: 1,
   },
   {
-    unevaluatedItems: false
-  }
+    unevaluatedItems: false,
+  },
 ]
 
 describe("JSONSchemaViewer - Array type", () => {
