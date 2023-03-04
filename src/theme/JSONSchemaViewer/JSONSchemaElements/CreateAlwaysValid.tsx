@@ -4,6 +4,7 @@ import Translate from "@docusaurus/Translate"
 import { TypeLabel, TrueLabel } from "../labels/index"
 import { useJSVOptionsContext } from "../contexts/index"
 import { QualifierMessages } from "../utils/index"
+import { CreateDescription } from "./index"
 
 import type { JSONSchema } from "../types"
 
@@ -38,9 +39,7 @@ export default function CreateAlwaysValid({ schema }: Props): JSX.Element {
         </div>
       )}
       {description !== undefined && (
-        <div style={{ marginTop: "var(--ifm-table-cell-padding)" }}>
-          {description}
-        </div>
+        <CreateDescription description={description} />
       )}
     </>
   )

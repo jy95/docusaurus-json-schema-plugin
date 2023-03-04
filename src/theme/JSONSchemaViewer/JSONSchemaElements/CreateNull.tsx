@@ -6,6 +6,8 @@ import { useJSVOptionsContext } from "../contexts/index"
 
 import { TypeLabel, NullLabel } from "../labels/index"
 
+import { CreateDescription } from "./index"
+
 import type { JSONSchemaNS } from "../types"
 
 type Props = {
@@ -27,9 +29,7 @@ export default function CreateNull(props: Props): JSX.Element {
         <QualifierMessages schema={schema} options={options} />
       </div>
       {description !== undefined && (
-        <div style={{ marginTop: "var(--ifm-table-cell-padding)" }}>
-          {description}
-        </div>
+        <CreateDescription description={description} />
       )}
     </>
   )
