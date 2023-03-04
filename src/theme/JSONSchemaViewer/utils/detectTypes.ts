@@ -24,6 +24,7 @@ export const isArrayType = (schema: JSONSchema) =>
     (schema as JSONSchemaNS.Array).minContains !== undefined ||
     (schema as JSONSchemaNS.Array).maxContains !== undefined ||
     (schema as JSONSchemaNS.Array).prefixItems !== undefined ||
+    (schema as JSONSchemaNS.Array).unevaluatedItems !== undefined ||
     Array.isArray(schema.const) ||
     schema.enum?.some((s) => Array.isArray(s)))
 

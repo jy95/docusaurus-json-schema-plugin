@@ -102,7 +102,7 @@ const CHECKS_MAP: Record<CheckKey, CheckInfo> = {
   },
   "no-extra-items": {
     match: ({ schema }) =>
-      schema.items === false || schema.additionalItems === false,
+      (schema as JSONSchemaNS.Array).unevaluatedItems === false || schema.items === false || schema.additionalItems === false,
     Component: () => <QMS.NoExtraItemsQM key={"no-extra-items"} />,
   },
   "number-range": {
