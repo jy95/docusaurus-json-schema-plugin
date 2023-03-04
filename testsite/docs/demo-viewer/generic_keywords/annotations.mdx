@@ -6,6 +6,7 @@ title: "📌 Annotations"
 import CodeBlock from '@theme/CodeBlock';
 import Schema from "@site/static/schemas/examples/generic_keywords/annotations.json";
 import JSONSchemaViewer from "@theme/JSONSchemaViewer";
+import ReactMarkdown from 'react-markdown'
 
 # Annotations
 
@@ -15,8 +16,19 @@ JSON Schema :
 
 viewerOptions :
 
-<CodeBlock language="json">{JSON.stringify({showExamples: true}, null, 2)}</CodeBlock>
+```js
+{
+    showExamples: true,
+    DescriptionComponent: ({description}) => <ReactMarkdown children={description} />
+}
+```
 
 Viewer :
 
-<JSONSchemaViewer schema={ Schema } viewerOptions={{ showExamples: true }} />
+<JSONSchemaViewer 
+    schema={ Schema } 
+    viewerOptions={{ 
+        showExamples: true,
+        DescriptionComponent: ({description}) => <ReactMarkdown children={description} /> 
+    }}
+/>

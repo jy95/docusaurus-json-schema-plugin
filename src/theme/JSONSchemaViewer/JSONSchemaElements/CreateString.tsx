@@ -6,6 +6,8 @@ import { useJSVOptionsContext } from "../contexts/index"
 
 import { TypeLabel, StringLabel } from "../labels/index"
 
+import { CreateDescription } from "./index"
+
 import type { JSONSchemaNS } from "../types"
 
 type Props = {
@@ -33,9 +35,7 @@ export default function CreateString(props: Props): JSX.Element {
         />
       </div>
       {description !== undefined && (
-        <div style={{ marginTop: "var(--ifm-table-cell-padding)" }}>
-          {description}
-        </div>
+        <CreateDescription description={description} />
       )}
     </>
   )

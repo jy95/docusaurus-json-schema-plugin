@@ -34,4 +34,36 @@ describe("JSONSchemaViewer - constructor", () => {
     // make assertions on root
     expect(root?.toJSON()).toMatchSnapshot()
   })
+
+  test("Overwrite default DescriptionComponent value", async () => {
+    const fakeSchema: JSONSchema = {
+      type: "object",
+      // Markdown text
+      description: "# Hello, *world*!",
+    }
+
+    // render the component
+    let root: ReactTestRenderer | undefined
+    await act(async () => {
+      root = create(
+        <JSONSchemaViewer
+          schema={fakeSchema}
+          viewerOptions={{
+            // To simulate "react-markdown" like libraries
+            // In prod context, it will likely be invoked like this
+            // DescriptionComponent: ({description}) => <ReactMarkdown children={description} />
+            DescriptionComponent: () => (
+              <h1>
+                {" "}
+                Hello, <em>world</em>!{" "}
+              </h1>
+            ),
+          }}
+        />
+      )
+    })
+
+    // make assertions on root
+    expect(root?.toJSON()).toMatchSnapshot()
+  })
 })

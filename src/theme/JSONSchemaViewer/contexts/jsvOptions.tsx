@@ -16,12 +16,19 @@ export type JSVOptions = {
    * @default ["nullable","deprecated","readOnly","writeOnly","enum","stringLength","objectProperties","no-extra-properties","arrayItems","arrayContains","no-extra-items","number-range","pattern","multipleOf","uniqueItems","contentEncoding","contentMediaType","contentSchema","default","const","examples"]
    */
   qualifierMessagesOrder?: CheckKey[]
+  /**
+   * To overwrite the printout of "description"
+   * By default, print out as provided
+   * @default undefined
+   */
+  DescriptionComponent?: (params: { description: string }) => JSX.Element
 }
 
 export const JSVOptionsContext = createContext<JSVOptions>({
   fullSchema: false,
   showExamples: false,
   qualifierMessagesOrder: undefined,
+  DescriptionComponent: undefined,
 })
 
 export const useJSVOptionsContext = () => useContext(JSVOptionsContext)

@@ -30,3 +30,6 @@ export { default as CreateAlwaysValid } from "./CreateAlwaysValid"
 
 // Component to deal with schema defined as "false"
 export { default as CreateAlwaysInvalid } from "./CreateAlwaysInvalid"
+
+// Component to deal with description
+export { default as CreateDescription } from "./CreateDescription"
