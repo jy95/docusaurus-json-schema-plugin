@@ -80,7 +80,9 @@ const CHECKS_MAP: Record<CheckKey, CheckInfo> = {
     ),
   },
   "no-extra-properties": {
-    match: ({ schema }) => schema.additionalProperties === false,
+    match: ({ schema }) =>
+      schema.additionalProperties === false ||
+      (schema as JSONSchemaNS.Object).unevaluatedProperties === false,
     Component: () => <QMS.NoExtraPropertiesQM key={"no-extra-properties"} />,
   },
   arrayItems: {

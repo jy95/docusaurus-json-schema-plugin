@@ -1811,3 +1811,44 @@ exports[`JSONSchemaViewer - object test simple 1`] = `
   </div>
 </details>
 `;
+
+exports[`JSONSchemaViewer - object test unevaluatedProperties = false 1`] = `
+<details
+  open={true}
+>
+  <summary>
+    <strong>
+      Schema
+    </strong>
+  </summary>
+  <div>
+    <div>
+      <strong>
+        type
+      </strong>
+       : 
+      <span
+        style={
+          {
+            "opacity": "0.6",
+          }
+        }
+      >
+        object
+      </span>
+      <div
+        style={
+          {
+            "marginTop": "var(--ifm-table-cell-padding)",
+          }
+        }
+      >
+        <div>
+          🚨 
+          No extra propertie(s) are authorized in this object
+        </div>
+      </div>
+    </div>
+  </div>
+</details>
+`;
