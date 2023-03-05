@@ -62,13 +62,13 @@ const testcases: [
     CreateArray,
     {
       items: {
-        type: "string"
+        type: "string",
       },
       additionalItems: {
-        type: "boolean"
-      }
+        type: "boolean",
+      },
     } as JSONSchemaNS.Array,
-  ]
+  ],
 ]
 
 describe("JSONSchemaViewer - corner cases", () => {
