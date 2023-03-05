@@ -1098,6 +1098,53 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Array specified with
                     </details>
                   </li>
                 </ul>
+                <ul>
+                  <li>
+                    <details
+                      open={false}
+                    >
+                      <summary>
+                        <code>
+                          items[y]
+                        </code>
+                         
+                        <span
+                          style={
+                            {
+                              "opacity": "0.6",
+                            }
+                          }
+                        >
+                          boolean
+                        </span>
+                      </summary>
+                      <div>
+                        <div>
+                          <strong>
+                            type
+                          </strong>
+                           : 
+                          <span
+                            style={
+                              {
+                                "opacity": "0.6",
+                              }
+                            }
+                          >
+                            boolean
+                          </span>
+                          <div
+                            style={
+                              {
+                                "marginTop": "var(--ifm-table-cell-padding)",
+                              }
+                            }
+                          />
+                        </div>
+                      </div>
+                    </details>
+                  </li>
+                </ul>
                 <div
                   style={
                     {
