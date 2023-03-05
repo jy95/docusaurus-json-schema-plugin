@@ -60,31 +60,16 @@ exports[`JSONSchemaViewer - Array type test 1 1`] = `
       >
         array
       </span>
-      <li>
-        <details
-          open={false}
-        >
-          <summary>
-            <code>
-              items[..., x, ...]
-            </code>
-             
-            <span
-              style={
-                {
-                  "opacity": "0.6",
-                }
-              }
-            >
-              number
-            </span>
-          </summary>
-          <div>
-            <div>
-              <strong>
-                type
-              </strong>
-               : 
+      <ul>
+        <li>
+          <details
+            open={false}
+          >
+            <summary>
+              <code>
+                items[..., x, ...]
+              </code>
+               
               <span
                 style={
                   {
@@ -94,17 +79,34 @@ exports[`JSONSchemaViewer - Array type test 1 1`] = `
               >
                 number
               </span>
-              <div
-                style={
-                  {
-                    "marginTop": "var(--ifm-table-cell-padding)",
+            </summary>
+            <div>
+              <div>
+                <strong>
+                  type
+                </strong>
+                 : 
+                <span
+                  style={
+                    {
+                      "opacity": "0.6",
+                    }
                   }
-                }
-              />
+                >
+                  number
+                </span>
+                <div
+                  style={
+                    {
+                      "marginTop": "var(--ifm-table-cell-padding)",
+                    }
+                  }
+                />
+              </div>
             </div>
-          </div>
-        </details>
-      </li>
+          </details>
+        </li>
+      </ul>
       <div
         style={
           {
@@ -278,35 +280,16 @@ exports[`JSONSchemaViewer - Array type test 4 1`] = `
       >
         array
       </span>
-      <li>
-        <details
-          open={false}
-        >
-          <summary>
-            <code>
-              items[..., x, ...]
-            </code>
-             
-            <span
-              style={
-                {
-                  "opacity": "0.6",
-                }
-              }
-            >
-              integer
-            </span>
-             
-            <strong>
-              required
-            </strong>
-          </summary>
-          <div>
-            <div>
-              <strong>
-                type
-              </strong>
-               : 
+      <ul>
+        <li>
+          <details
+            open={false}
+          >
+            <summary>
+              <code>
+                items[..., x, ...]
+              </code>
+               
               <span
                 style={
                   {
@@ -316,17 +299,38 @@ exports[`JSONSchemaViewer - Array type test 4 1`] = `
               >
                 integer
               </span>
-              <div
-                style={
-                  {
-                    "marginTop": "var(--ifm-table-cell-padding)",
+               
+              <strong>
+                required
+              </strong>
+            </summary>
+            <div>
+              <div>
+                <strong>
+                  type
+                </strong>
+                 : 
+                <span
+                  style={
+                    {
+                      "opacity": "0.6",
+                    }
                   }
-                }
-              />
+                >
+                  integer
+                </span>
+                <div
+                  style={
+                    {
+                      "marginTop": "var(--ifm-table-cell-padding)",
+                    }
+                  }
+                />
+              </div>
             </div>
-          </div>
-        </details>
-      </li>
+          </details>
+        </li>
+      </ul>
       <div
         style={
           {

@@ -32,11 +32,13 @@ export default function CreateContains(props: Props): JSX.Element {
   )
 
   return (
-    <CreateEdge
-      key={"contains"}
-      name={containsLabel}
-      schema={item}
-      required={schema.minContains !== undefined && schema.minContains > 0}
-    />
+    <ul>
+      <CreateEdge
+        key={"contains"}
+        name={containsLabel}
+        schema={item}
+        required={schema.minContains !== undefined && schema.minContains > 0}
+      />
+    </ul>
   )
 }

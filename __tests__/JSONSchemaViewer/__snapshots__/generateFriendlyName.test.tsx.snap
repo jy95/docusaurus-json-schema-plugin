@@ -854,31 +854,16 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Array specified with
                     </details>
                   </li>
                 </ul>
-                <li>
-                  <details
-                    open={false}
-                  >
-                    <summary>
-                      <code>
-                        items[..., x, ...]
-                      </code>
-                       
-                      <span
-                        style={
-                          {
-                            "opacity": "0.6",
-                          }
-                        }
-                      >
-                        string
-                      </span>
-                    </summary>
-                    <div>
-                      <div>
-                        <strong>
-                          type
-                        </strong>
-                         : 
+                <ul>
+                  <li>
+                    <details
+                      open={false}
+                    >
+                      <summary>
+                        <code>
+                          items[..., x, ...]
+                        </code>
+                         
                         <span
                           style={
                             {
@@ -888,17 +873,34 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Array specified with
                         >
                           string
                         </span>
-                        <div
-                          style={
-                            {
-                              "marginTop": "var(--ifm-table-cell-padding)",
+                      </summary>
+                      <div>
+                        <div>
+                          <strong>
+                            type
+                          </strong>
+                           : 
+                          <span
+                            style={
+                              {
+                                "opacity": "0.6",
+                              }
                             }
-                          }
-                        />
+                          >
+                            string
+                          </span>
+                          <div
+                            style={
+                              {
+                                "marginTop": "var(--ifm-table-cell-padding)",
+                              }
+                            }
+                          />
+                        </div>
                       </div>
-                    </div>
-                  </details>
-                </li>
+                    </details>
+                  </li>
+                </ul>
                 <div
                   style={
                     {

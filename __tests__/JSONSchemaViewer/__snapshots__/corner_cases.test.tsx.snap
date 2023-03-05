@@ -232,31 +232,16 @@ exports[`JSONSchemaViewer - corner cases CreateArray - sub properties as boolean
       </details>
     </li>
   </ul>,
-  <li>
-    <details
-      open={false}
-    >
-      <summary>
-        <code>
-          items[..., x, ...]
-        </code>
-         
-        <span
-          style={
-            {
-              "opacity": "0.6",
-            }
-          }
-        >
-          none
-        </span>
-      </summary>
-      <div>
-        <div>
-          <strong>
-            type
-          </strong>
-           : 
+  <ul>
+    <li>
+      <details
+        open={false}
+      >
+        <summary>
+          <code>
+            items[..., x, ...]
+          </code>
+           
           <span
             style={
               {
@@ -266,19 +251,36 @@ exports[`JSONSchemaViewer - corner cases CreateArray - sub properties as boolean
           >
             none
           </span>
-          <div
-            style={
-              {
-                "marginTop": "var(--ifm-table-cell-padding)",
+        </summary>
+        <div>
+          <div>
+            <strong>
+              type
+            </strong>
+             : 
+            <span
+              style={
+                {
+                  "opacity": "0.6",
+                }
               }
-            }
-          >
-            Always invalid
+            >
+              none
+            </span>
+            <div
+              style={
+                {
+                  "marginTop": "var(--ifm-table-cell-padding)",
+                }
+              }
+            >
+              Always invalid
+            </div>
           </div>
         </div>
-      </div>
-    </details>
-  </li>,
+      </details>
+    </li>
+  </ul>,
   <div
     style={
       {
