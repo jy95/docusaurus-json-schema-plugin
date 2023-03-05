@@ -1,0 +1,5 @@
+{
+  "type": "array",
+  "prefixItems": [{ "type": "integer" }, { "type": "string" }],
+  "unevaluatedItems": false
+}

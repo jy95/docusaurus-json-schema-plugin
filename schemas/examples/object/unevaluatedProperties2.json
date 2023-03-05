@@ -1,25 +1,11 @@
 {
   "type": "object",
   "properties": {
-    "street_address": { "type": "string" },
-    "city": { "type": "string" },
-    "state": { "type": "string" },
-    "type": { "enum": ["residential", "business"] }
+    "number": { "type": "number" },
+    "street_name": { "type": "string" },
+    "street_type": { "enum": ["Street", "Avenue", "Boulevard"] }
   },
-  "required": ["street_address", "city", "state", "type"],
-
-  "if": {
-    "type": "object",
-    "properties": {
-      "type": { "const": "business" }
-    },
-    "required": ["type"]
-  },
-  "then": {
-    "properties": {
-      "department": { "type": "string" }
-    }
-  },
-
-  "unevaluatedProperties": false
+  "unevaluatedProperties": {
+    "type": "boolean"
+  }
 }
