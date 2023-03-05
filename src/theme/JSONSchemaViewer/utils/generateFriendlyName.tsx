@@ -175,6 +175,20 @@ function CustomizeArray({
     )
   }
 
+  // 2B) "additionalItems" (to cover cases for specs below the draft-2020-12 versions)
+  if (
+    schema.additionalItems !== undefined &&
+    typeof schema.additionalItems !== "boolean"
+  ) {
+    // add items to entries
+    elements.push(
+      <GenerateFriendlyName
+        schema={schema.additionalItems}
+        key={"additionalItems"}
+      />
+    )
+  }
+
   // 3) "contains"
   if (schema.contains !== undefined) {
     // add contains to entries

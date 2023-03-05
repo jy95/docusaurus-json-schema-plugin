@@ -165,6 +165,19 @@ const testcases: [string, JSONSchema][] = [
       ],
     } as JSONSchemaNS.Array,
   ],
+  [
+    "Array specified with items & additionalItems",
+    {
+      type: "array",
+      items: {
+        type: "array",
+        items: [{ type: "integer" }, { type: "string" }],
+        additionalItems: {
+          type: "boolean",
+        },
+      },
+    } as JSONSchemaNS.Array,
+  ],
 ]
 
 describe("JSONSchemaViewer - generateFriendlyName cases", () => {
