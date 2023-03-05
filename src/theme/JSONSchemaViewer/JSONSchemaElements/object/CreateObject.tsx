@@ -5,6 +5,7 @@ import Properties from "./Properties"
 import PatternProperties from "./PatternProperties"
 import PropertyNames from "./PropertyNames"
 import UnlistedProperties from "./UnlistedRequiredProperties"
+import UnevaluatedProperties from "./UnevaluatedProperties"
 
 import { QualifierMessages } from "../../utils/index"
 import { useJSVOptionsContext } from "../../contexts/index"
@@ -36,6 +37,7 @@ export default function CreateObject(props: Props): JSX.Element {
       <PatternProperties schema={schema} />
       <PropertyNames schema={schema} />
       <AdditionalProperties schema={schema} />
+      <UnevaluatedProperties schema={schema} />
       <div style={{ marginTop: "var(--ifm-table-cell-padding)" }}>
         <QualifierMessages
           schema={schema}

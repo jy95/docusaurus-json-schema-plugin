@@ -587,55 +587,6 @@ exports[`JSONSchemaViewer - object test additionalProperties (false) 1`] = `
           </details>
         </li>
       </ul>
-      <ul>
-        <li>
-          <details
-            open={false}
-          >
-            <summary>
-              <code>
-                property name*
-              </code>
-               
-              <span
-                style={
-                  {
-                    "opacity": "0.6",
-                  }
-                }
-              >
-                none
-              </span>
-            </summary>
-            <div>
-              <div>
-                <strong>
-                  type
-                </strong>
-                 : 
-                <span
-                  style={
-                    {
-                      "opacity": "0.6",
-                    }
-                  }
-                >
-                  none
-                </span>
-                <div
-                  style={
-                    {
-                      "marginTop": "var(--ifm-table-cell-padding)",
-                    }
-                  }
-                >
-                  Always invalid
-                </div>
-              </div>
-            </div>
-          </details>
-        </li>
-      </ul>
       <div
         style={
           {
@@ -1848,6 +1799,89 @@ exports[`JSONSchemaViewer - object test unevaluatedProperties = false 1`] = `
           No extra propertie(s) are authorized in this object
         </div>
       </div>
+    </div>
+  </div>
+</details>
+`;
+
+exports[`JSONSchemaViewer - object test unevaluatedProperties as not a boolean 1`] = `
+<details
+  open={true}
+>
+  <summary>
+    <strong>
+      Schema
+    </strong>
+  </summary>
+  <div>
+    <div>
+      <strong>
+        type
+      </strong>
+       : 
+      <span
+        style={
+          {
+            "opacity": "0.6",
+          }
+        }
+      >
+        object
+      </span>
+      <ul>
+        <li>
+          <details
+            open={false}
+          >
+            <summary>
+              <code>
+                property name*
+              </code>
+               
+              <span
+                style={
+                  {
+                    "opacity": "0.6",
+                  }
+                }
+              >
+                number
+              </span>
+            </summary>
+            <div>
+              <div>
+                <strong>
+                  type
+                </strong>
+                 : 
+                <span
+                  style={
+                    {
+                      "opacity": "0.6",
+                    }
+                  }
+                >
+                  number
+                </span>
+                <div
+                  style={
+                    {
+                      "marginTop": "var(--ifm-table-cell-padding)",
+                    }
+                  }
+                />
+              </div>
+            </div>
+          </details>
+        </li>
+      </ul>
+      <div
+        style={
+          {
+            "marginTop": "var(--ifm-table-cell-padding)",
+          }
+        }
+      />
     </div>
   </div>
 </details>

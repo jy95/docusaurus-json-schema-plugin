@@ -144,6 +144,14 @@ const testcases: [string, JSONSchema][] = [
       unevaluatedProperties: false,
     },
   ],
+  [
+    "unevaluatedProperties as not a boolean",
+    {
+      unevaluatedProperties: {
+        type: "number",
+      },
+    },
+  ],
 ]
 
 describe("JSONSchemaViewer - object", () => {
