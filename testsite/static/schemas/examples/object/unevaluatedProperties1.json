@@ -5,7 +5,5 @@
     "street_name": { "type": "string" },
     "street_type": { "enum": ["Street", "Avenue", "Boulevard"] }
   },
-  "unevaluatedProperties": {
-    "type": "boolean"
-  }
+  "unevaluatedProperties": false
 }
