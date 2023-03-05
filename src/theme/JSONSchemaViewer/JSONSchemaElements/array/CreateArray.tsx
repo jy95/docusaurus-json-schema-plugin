@@ -3,6 +3,7 @@ import React from "react"
 import Items from "./Items"
 import Contains from "./Contains"
 import PrefixItems from "./PrefixItems"
+import AdditionalItems from "./AdditionalItems"
 
 import { QualifierMessages } from "../../utils/index"
 
@@ -32,6 +33,7 @@ export default function CreateArray(props: Props): JSX.Element {
       <ArrayLabel />
       <PrefixItems schema={schema} />
       <Items schema={schema} />
+      <AdditionalItems schema={schema} />
       <Contains schema={schema} />
       <div style={{ marginTop: "var(--ifm-table-cell-padding)" }}>
         <QualifierMessages

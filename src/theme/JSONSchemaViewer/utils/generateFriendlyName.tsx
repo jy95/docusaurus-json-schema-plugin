@@ -187,7 +187,13 @@ function CustomizeArray({
   }
 
   // 4) Is it a open tuple ?
-  if (!(schema.items === false || schema.additionalItems === false)) {
+  if (
+    !(
+      (schema as JSONSchemaNS.Array).unevaluatedItems === false ||
+      schema.items === false ||
+      schema.additionalItems === false
+    )
+  ) {
     // notify the user
     elements.push(
       ...[<React.Fragment key={"open_tuple"}>{"..."}</React.Fragment>]

@@ -1,5 +1,124 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`JSONSchemaViewer - corner cases CreateArray - invalid usage of Additional Items 1`] = `
+[
+  <strong>
+    type
+  </strong>,
+  " : ",
+  <span
+    style={
+      {
+        "opacity": "0.6",
+      }
+    }
+  >
+    array
+  </span>,
+  <ul>
+    <li>
+      <details
+        open={false}
+      >
+        <summary>
+          <code>
+            items[x]
+          </code>
+           
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
+            string
+          </span>
+        </summary>
+        <div>
+          <div>
+            <strong>
+              type
+            </strong>
+             : 
+            <span
+              style={
+                {
+                  "opacity": "0.6",
+                }
+              }
+            >
+              string
+            </span>
+            <div
+              style={
+                {
+                  "marginTop": "var(--ifm-table-cell-padding)",
+                }
+              }
+            />
+          </div>
+        </div>
+      </details>
+    </li>
+  </ul>,
+  <ul>
+    <li>
+      <details
+        open={false}
+      >
+        <summary>
+          <code>
+            items[1,...]
+          </code>
+           
+          <span
+            style={
+              {
+                "opacity": "0.6",
+              }
+            }
+          >
+            boolean
+          </span>
+        </summary>
+        <div>
+          <div>
+            <strong>
+              type
+            </strong>
+             : 
+            <span
+              style={
+                {
+                  "opacity": "0.6",
+                }
+              }
+            >
+              boolean
+            </span>
+            <div
+              style={
+                {
+                  "marginTop": "var(--ifm-table-cell-padding)",
+                }
+              }
+            />
+          </div>
+        </div>
+      </details>
+    </li>
+  </ul>,
+  <div
+    style={
+      {
+        "marginTop": "var(--ifm-table-cell-padding)",
+      }
+    }
+  />,
+]
+`;
+
 exports[`JSONSchemaViewer - corner cases CreateArray - sub properties as boolean schema 1`] = `
 [
   <strong>

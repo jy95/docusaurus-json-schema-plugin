@@ -1345,3 +1345,200 @@ exports[`JSONSchemaViewer - Array type test 14 1`] = `
   </div>
 </details>
 `;
+
+exports[`JSONSchemaViewer - Array type test 15 1`] = `
+<details
+  open={true}
+>
+  <summary>
+    <strong>
+      Schema
+    </strong>
+  </summary>
+  <div>
+    <div>
+      <strong>
+        type
+      </strong>
+       : 
+      <span
+        style={
+          {
+            "opacity": "0.6",
+          }
+        }
+      >
+        array
+      </span>
+      <ul>
+        <li>
+          <details
+            open={false}
+          >
+            <summary>
+              <code>
+                items[0]
+              </code>
+               
+              <span
+                style={
+                  {
+                    "opacity": "0.6",
+                  }
+                }
+              >
+                integer
+              </span>
+               
+              <strong>
+                required
+              </strong>
+            </summary>
+            <div>
+              <div>
+                <strong>
+                  type
+                </strong>
+                 : 
+                <span
+                  style={
+                    {
+                      "opacity": "0.6",
+                    }
+                  }
+                >
+                  integer
+                </span>
+                <div
+                  style={
+                    {
+                      "marginTop": "var(--ifm-table-cell-padding)",
+                    }
+                  }
+                />
+              </div>
+            </div>
+          </details>
+        </li>
+        <li>
+          <details
+            open={false}
+          >
+            <summary>
+              <code>
+                items[1]
+              </code>
+               
+              <span
+                style={
+                  {
+                    "opacity": "0.6",
+                  }
+                }
+              >
+                string
+              </span>
+               
+              <strong>
+                required
+              </strong>
+            </summary>
+            <div>
+              <div>
+                <strong>
+                  type
+                </strong>
+                 : 
+                <span
+                  style={
+                    {
+                      "opacity": "0.6",
+                    }
+                  }
+                >
+                  string
+                </span>
+                <div
+                  style={
+                    {
+                      "marginTop": "var(--ifm-table-cell-padding)",
+                    }
+                  }
+                />
+              </div>
+            </div>
+          </details>
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <details
+            open={false}
+          >
+            <summary>
+              <code>
+                items[2,...]
+              </code>
+               
+              <span
+                style={
+                  {
+                    "opacity": "0.6",
+                  }
+                }
+              >
+                boolean
+              </span>
+               
+              <strong>
+                required
+              </strong>
+            </summary>
+            <div>
+              <div>
+                <strong>
+                  type
+                </strong>
+                 : 
+                <span
+                  style={
+                    {
+                      "opacity": "0.6",
+                    }
+                  }
+                >
+                  boolean
+                </span>
+                <div
+                  style={
+                    {
+                      "marginTop": "var(--ifm-table-cell-padding)",
+                    }
+                  }
+                />
+              </div>
+            </div>
+          </details>
+        </li>
+      </ul>
+      <div
+        style={
+          {
+            "marginTop": "var(--ifm-table-cell-padding)",
+          }
+        }
+      >
+        <div>
+          <strong>
+            Length :
+          </strong>
+           
+          <code>
+            &gt;= 2
+          </code>
+        </div>
+      </div>
+    </div>
+  </div>
+</details>
+`;
