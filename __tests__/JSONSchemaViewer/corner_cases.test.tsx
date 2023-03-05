@@ -57,6 +57,18 @@ const testcases: [
       },
     } as JSONSchemaNS.Object,
   ],
+  [
+    "CreateArray - invalid usage of Additional Items",
+    CreateArray,
+    {
+      items: {
+        type: "string",
+      },
+      additionalItems: {
+        type: "boolean",
+      },
+    } as JSONSchemaNS.Array,
+  ],
 ]
 
 describe("JSONSchemaViewer - corner cases", () => {

@@ -175,6 +175,34 @@ function CustomizeArray({
     )
   }
 
+  // 2B) "additionalItems" (to cover cases for specs below the draft-2020-12 version)
+  if (
+    schema.additionalItems !== undefined &&
+    typeof schema.additionalItems !== "boolean"
+  ) {
+    // add items to entries
+    elements.push(
+      <GenerateFriendlyName
+        schema={schema.additionalItems}
+        key={"additionalItems"}
+      />
+    )
+  }
+
+  // 2C) "unevaluatedItems" (to cover cases specs >= draft-2020-12 version)
+  if (
+    schema.unevaluatedItems !== undefined &&
+    typeof schema.unevaluatedItems !== "boolean"
+  ) {
+    // add items to entries
+    elements.push(
+      <GenerateFriendlyName
+        schema={schema.unevaluatedItems}
+        key={"unevaluatedItems"}
+      />
+    )
+  }
+
   // 3) "contains"
   if (schema.contains !== undefined) {
     // add contains to entries
@@ -187,7 +215,13 @@ function CustomizeArray({
   }
 
   // 4) Is it a open tuple ?
-  if (!(schema.items === false || schema.additionalItems === false)) {
+  if (
+    !(
+      (schema as JSONSchemaNS.Array).unevaluatedItems === false ||
+      schema.items === false ||
+      schema.additionalItems === false
+    )
+  ) {
     // notify the user
     elements.push(
       ...[<React.Fragment key={"open_tuple"}>{"..."}</React.Fragment>]

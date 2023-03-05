@@ -1,0 +1,7 @@
+{
+  "type": "array",
+  "items": [{ "type": "integer" }, { "type": "string" }],
+  "additionalItems": {
+    "type": "boolean"
+  }
+}

@@ -11,12 +11,12 @@ type Props = {
 }
 
 // Translated label
-function AdditionalPropertiesLabel(): JSX.Element {
+function UnevaluatedPropertiesLabel(): JSX.Element {
   return (
     <code>
       <Translate
         values={{
-          id: "json-schema.labels.additionalProperties",
+          id: "json-schema.labels.unevaluatedProperties",
         }}
       >
         {"property name*"}
@@ -25,15 +25,15 @@ function AdditionalPropertiesLabel(): JSX.Element {
   )
 }
 
-export default function CreateAdditionalProperties(props: Props): JSX.Element {
+export default function CreateUnevaluatedProperties(props: Props): JSX.Element {
   const { schema } = props
 
-  let additionalProperties = schema.additionalProperties
+  let unevaluatedProperties = schema.unevaluatedProperties
 
   // We don't have to care about that as it will be covered by QualifierMessages
   if (
-    additionalProperties === undefined ||
-    typeof additionalProperties === "boolean"
+    unevaluatedProperties === undefined ||
+    typeof unevaluatedProperties === "boolean"
   ) {
     return <></>
   }
@@ -41,9 +41,9 @@ export default function CreateAdditionalProperties(props: Props): JSX.Element {
   return (
     <ul>
       <CreateEdge
-        key={"object_additionalProperties"}
-        name={<AdditionalPropertiesLabel />}
-        schema={additionalProperties}
+        key={"object_unevaluatedProperties"}
+        name={<UnevaluatedPropertiesLabel />}
+        schema={unevaluatedProperties}
         required={false}
       />
     </ul>

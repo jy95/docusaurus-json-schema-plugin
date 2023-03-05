@@ -99,6 +99,24 @@ const testcases: JSONSchema[] = [
     },
     minItems: 1,
   },
+  {
+    unevaluatedItems: false,
+  },
+  {
+    type: "array",
+    items: [{ type: "integer" }, { type: "string" }],
+    additionalItems: {
+      type: "boolean",
+    },
+    minItems: 2,
+  },
+  {
+    type: "array",
+    prefixItems: [{ type: "string" }],
+    unevaluatedItems: {
+      type: "number",
+    },
+  },
 ]
 
 describe("JSONSchemaViewer - Array type", () => {

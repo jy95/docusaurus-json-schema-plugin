@@ -486,6 +486,252 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Array specified only
 </details>
 `;
 
+exports[`JSONSchemaViewer - generateFriendlyName cases test Array specified with items & additionalItems 1`] = `
+<details
+  open={true}
+>
+  <summary>
+    <strong>
+      Schema
+    </strong>
+  </summary>
+  <div>
+    <div>
+      <strong>
+        type
+      </strong>
+       : 
+      <span
+        style={
+          {
+            "opacity": "0.6",
+          }
+        }
+      >
+        array
+      </span>
+      <ul>
+        <li>
+          <details
+            open={false}
+          >
+            <summary>
+              <code>
+                items[x]
+              </code>
+               
+              (
+              <span
+                style={
+                  {
+                    "opacity": "0.6",
+                  }
+                }
+              >
+                integer
+              </span>
+              ,
+              <span
+                style={
+                  {
+                    "opacity": "0.6",
+                  }
+                }
+              >
+                string
+              </span>
+              ,
+              <span
+                style={
+                  {
+                    "opacity": "0.6",
+                  }
+                }
+              >
+                boolean
+              </span>
+              ,
+              ...
+              )[]
+            </summary>
+            <div>
+              <div>
+                <strong>
+                  type
+                </strong>
+                 : 
+                <span
+                  style={
+                    {
+                      "opacity": "0.6",
+                    }
+                  }
+                >
+                  array
+                </span>
+                <ul>
+                  <li>
+                    <details
+                      open={false}
+                    >
+                      <summary>
+                        <code>
+                          items[0]
+                        </code>
+                         
+                        <span
+                          style={
+                            {
+                              "opacity": "0.6",
+                            }
+                          }
+                        >
+                          integer
+                        </span>
+                      </summary>
+                      <div>
+                        <div>
+                          <strong>
+                            type
+                          </strong>
+                           : 
+                          <span
+                            style={
+                              {
+                                "opacity": "0.6",
+                              }
+                            }
+                          >
+                            integer
+                          </span>
+                          <div
+                            style={
+                              {
+                                "marginTop": "var(--ifm-table-cell-padding)",
+                              }
+                            }
+                          />
+                        </div>
+                      </div>
+                    </details>
+                  </li>
+                  <li>
+                    <details
+                      open={false}
+                    >
+                      <summary>
+                        <code>
+                          items[1]
+                        </code>
+                         
+                        <span
+                          style={
+                            {
+                              "opacity": "0.6",
+                            }
+                          }
+                        >
+                          string
+                        </span>
+                      </summary>
+                      <div>
+                        <div>
+                          <strong>
+                            type
+                          </strong>
+                           : 
+                          <span
+                            style={
+                              {
+                                "opacity": "0.6",
+                              }
+                            }
+                          >
+                            string
+                          </span>
+                          <div
+                            style={
+                              {
+                                "marginTop": "var(--ifm-table-cell-padding)",
+                              }
+                            }
+                          />
+                        </div>
+                      </div>
+                    </details>
+                  </li>
+                </ul>
+                <ul>
+                  <li>
+                    <details
+                      open={false}
+                    >
+                      <summary>
+                        <code>
+                          items[2,...]
+                        </code>
+                         
+                        <span
+                          style={
+                            {
+                              "opacity": "0.6",
+                            }
+                          }
+                        >
+                          boolean
+                        </span>
+                      </summary>
+                      <div>
+                        <div>
+                          <strong>
+                            type
+                          </strong>
+                           : 
+                          <span
+                            style={
+                              {
+                                "opacity": "0.6",
+                              }
+                            }
+                          >
+                            boolean
+                          </span>
+                          <div
+                            style={
+                              {
+                                "marginTop": "var(--ifm-table-cell-padding)",
+                              }
+                            }
+                          />
+                        </div>
+                      </div>
+                    </details>
+                  </li>
+                </ul>
+                <div
+                  style={
+                    {
+                      "marginTop": "var(--ifm-table-cell-padding)",
+                    }
+                  }
+                />
+              </div>
+            </div>
+          </details>
+        </li>
+      </ul>
+      <div
+        style={
+          {
+            "marginTop": "var(--ifm-table-cell-padding)",
+          }
+        }
+      />
+    </div>
+  </div>
+</details>
+`;
+
 exports[`JSONSchemaViewer - generateFriendlyName cases test Array specified with items and contains 1`] = `
 <details
   open={true}
@@ -653,6 +899,252 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Array specified with
                     </div>
                   </details>
                 </li>
+                <div
+                  style={
+                    {
+                      "marginTop": "var(--ifm-table-cell-padding)",
+                    }
+                  }
+                />
+              </div>
+            </div>
+          </details>
+        </li>
+      </ul>
+      <div
+        style={
+          {
+            "marginTop": "var(--ifm-table-cell-padding)",
+          }
+        }
+      />
+    </div>
+  </div>
+</details>
+`;
+
+exports[`JSONSchemaViewer - generateFriendlyName cases test Array specified with unevaluatedItems 1`] = `
+<details
+  open={true}
+>
+  <summary>
+    <strong>
+      Schema
+    </strong>
+  </summary>
+  <div>
+    <div>
+      <strong>
+        type
+      </strong>
+       : 
+      <span
+        style={
+          {
+            "opacity": "0.6",
+          }
+        }
+      >
+        array
+      </span>
+      <ul>
+        <li>
+          <details
+            open={false}
+          >
+            <summary>
+              <code>
+                items[x]
+              </code>
+               
+              (
+              <span
+                style={
+                  {
+                    "opacity": "0.6",
+                  }
+                }
+              >
+                string
+              </span>
+              ,
+              <span
+                style={
+                  {
+                    "opacity": "0.6",
+                  }
+                }
+              >
+                integer
+              </span>
+              ,
+              <span
+                style={
+                  {
+                    "opacity": "0.6",
+                  }
+                }
+              >
+                boolean
+              </span>
+              ,
+              ...
+              )[]
+            </summary>
+            <div>
+              <div>
+                <strong>
+                  type
+                </strong>
+                 : 
+                <span
+                  style={
+                    {
+                      "opacity": "0.6",
+                    }
+                  }
+                >
+                  array
+                </span>
+                <ul>
+                  <li>
+                    <details
+                      open={false}
+                    >
+                      <summary>
+                        <code>
+                          items[0]
+                        </code>
+                         
+                        <span
+                          style={
+                            {
+                              "opacity": "0.6",
+                            }
+                          }
+                        >
+                          string
+                        </span>
+                      </summary>
+                      <div>
+                        <div>
+                          <strong>
+                            type
+                          </strong>
+                           : 
+                          <span
+                            style={
+                              {
+                                "opacity": "0.6",
+                              }
+                            }
+                          >
+                            string
+                          </span>
+                          <div
+                            style={
+                              {
+                                "marginTop": "var(--ifm-table-cell-padding)",
+                              }
+                            }
+                          />
+                        </div>
+                      </div>
+                    </details>
+                  </li>
+                  <li>
+                    <details
+                      open={false}
+                    >
+                      <summary>
+                        <code>
+                          items[1]
+                        </code>
+                         
+                        <span
+                          style={
+                            {
+                              "opacity": "0.6",
+                            }
+                          }
+                        >
+                          integer
+                        </span>
+                      </summary>
+                      <div>
+                        <div>
+                          <strong>
+                            type
+                          </strong>
+                           : 
+                          <span
+                            style={
+                              {
+                                "opacity": "0.6",
+                              }
+                            }
+                          >
+                            integer
+                          </span>
+                          <div
+                            style={
+                              {
+                                "marginTop": "var(--ifm-table-cell-padding)",
+                              }
+                            }
+                          />
+                        </div>
+                      </div>
+                    </details>
+                  </li>
+                </ul>
+                <ul>
+                  <li>
+                    <details
+                      open={false}
+                    >
+                      <summary>
+                        <code>
+                          items[y]
+                        </code>
+                         
+                        <span
+                          style={
+                            {
+                              "opacity": "0.6",
+                            }
+                          }
+                        >
+                          boolean
+                        </span>
+                      </summary>
+                      <div>
+                        <div>
+                          <strong>
+                            type
+                          </strong>
+                           : 
+                          <span
+                            style={
+                              {
+                                "opacity": "0.6",
+                              }
+                            }
+                          >
+                            boolean
+                          </span>
+                          <div
+                            style={
+                              {
+                                "marginTop": "var(--ifm-table-cell-padding)",
+                              }
+                            }
+                          />
+                        </div>
+                      </div>
+                    </details>
+                  </li>
+                </ul>
                 <div
                   style={
                     {
