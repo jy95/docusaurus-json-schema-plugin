@@ -175,7 +175,7 @@ function CustomizeArray({
     )
   }
 
-  // 2B) "additionalItems" (to cover cases for specs below the draft-2020-12 versions)
+  // 2B) "additionalItems" (to cover cases for specs below the draft-2020-12 version)
   if (
     schema.additionalItems !== undefined &&
     typeof schema.additionalItems !== "boolean"
@@ -185,6 +185,20 @@ function CustomizeArray({
       <GenerateFriendlyName
         schema={schema.additionalItems}
         key={"additionalItems"}
+      />
+    )
+  }
+
+  // 2C) "unevaluatedItems" (to cover cases specs >= draft-2020-12 version)
+  if (
+    schema.unevaluatedItems !== undefined &&
+    typeof schema.unevaluatedItems !== "boolean"
+  ) {
+    // add items to entries
+    elements.push(
+      <GenerateFriendlyName
+        schema={schema.unevaluatedItems}
+        key={"unevaluatedItems"}
       />
     )
   }
