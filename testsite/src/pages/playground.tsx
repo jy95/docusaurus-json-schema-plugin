@@ -3,8 +3,15 @@ import Layout from "@theme/Layout"
 import { useColorMode } from "@docusaurus/theme-common"
 import BrowserOnly from "@docusaurus/BrowserOnly"
 
+import JSONSchemaEditor from "@theme/JSONSchemaEditor"
+import JSONSchemaViewer from "@theme/JSONSchemaViewer"
+import { JSONSchemaFaker } from "json-schema-faker"
+
 // Default example to illustrate stuff (it is Draft-07 for info)
 import DefaultSchema from "@site/static/schemas/examples/object/additionalProperties.json"
+
+// Transitive dep I need the type
+import type { editor as MonacoEditor } from "monaco-editor/esm/vs/editor/editor.api"
 
 function PlaygroundInner(): JSX.Element {
   // The current schema displayed
@@ -22,6 +29,11 @@ function PlaygroundInner(): JSX.Element {
   let [jsonPointer, setJsonPointer] = React.useState("")
 
   const { colorMode } = useColorMode()
+
+  // Reference for example editor
+  const editorRef = React.useRef(
+    null as null | MonacoEditor.IStandaloneCodeEditor
+  )
 
   React.useEffect(() => {
     setCustomSchemaString(JSON.stringify(userSchema))
@@ -47,8 +59,19 @@ function PlaygroundInner(): JSX.Element {
     }
   }
 
-  const JSONSchemaViewer = require("@theme/JSONSchemaViewer").default
-  const JSONSchemaEditor = require("@theme/JSONSchemaEditor").default
+  function generateFakeData() {
+    const editor = editorRef.current
+    if (editor) {
+      JSONSchemaFaker.resolve(userSchema)
+        .then((sample) => {
+          editor.setValue(JSON.stringify(sample, null, "\t"))
+        })
+        .catch((err) => alert(err))
+    }
+  }
+
+  //const JSONSchemaViewer = require("@theme/JSONSchemaViewer").default
+  //const JSONSchemaEditor = require("@theme/JSONSchemaEditor").default
 
   return (
     <>
@@ -88,10 +111,17 @@ function PlaygroundInner(): JSX.Element {
           key={JSON.stringify(userSchema)}
         >
           <h1>JSON Schema Editor</h1>
-          <br />
+          <div>
+            <button onClick={() => generateFakeData()}>
+              Generate fake data
+            </button>
+          </div>
           <JSONSchemaEditor
             schema={userSchema}
             theme={colorMode === "dark" ? "vs-dark" : "vs"}
+            editorDidMount={(editor) => {
+              editorRef.current = editor
+            }}
           />
         </div>
       </div>
