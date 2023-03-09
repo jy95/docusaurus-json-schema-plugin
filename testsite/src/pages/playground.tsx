@@ -3,8 +3,8 @@ import Layout from "@theme/Layout"
 import { useColorMode } from "@docusaurus/theme-common"
 import BrowserOnly from "@docusaurus/BrowserOnly"
 
-import JSONSchemaEditor from "@theme/JSONSchemaEditor"
-import JSONSchemaViewer from "@theme/JSONSchemaViewer"
+//import JSONSchemaEditor from "@theme/JSONSchemaEditor"
+//import JSONSchemaViewer from "@theme/JSONSchemaViewer"
 import { JSONSchemaFaker } from "json-schema-faker"
 
 // Default example to illustrate stuff (it is Draft-07 for info)
@@ -70,8 +70,8 @@ function PlaygroundInner(): JSX.Element {
     }
   }
 
-  //const JSONSchemaViewer = require("@theme/JSONSchemaViewer").default
-  //const JSONSchemaEditor = require("@theme/JSONSchemaEditor").default
+  const JSONSchemaViewer = require("@theme/JSONSchemaViewer").default
+  const JSONSchemaEditor = require("@theme/JSONSchemaEditor").default
 
   return (
     <>
