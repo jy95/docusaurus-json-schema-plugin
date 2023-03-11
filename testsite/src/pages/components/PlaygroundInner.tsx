@@ -16,10 +16,10 @@ import { jsonpos } from "jsonpos"
 import DefaultSchema from "@site/static/schemas/examples/object/additionalProperties.json"
 
 // Transitive dep I need to add validation in the schema
-import { monaco } from "@theme/JSONSchemaEditor"
+import { monaco } from "@theme/MonacoEditor"
 
 // Type I need for useRef
-import type { MonacoEditor } from "@theme/JSONSchemaEditor"
+import type { MonacoEditorTypes } from "@theme/MonacoEditor"
 
 // Common stringify of the JSON
 const STRINGIFY_JSON = (json: unknown) => JSON.stringify(json, null, "\t")
@@ -42,12 +42,12 @@ function PlaygroundInner(): JSX.Element {
   const { colorMode } = useColorMode()
 
   // Reference for example editor
-  const editorRef = React.useRef<null | MonacoEditor.IStandaloneCodeEditor>(
+  const editorRef = React.useRef<null | MonacoEditorTypes.IStandaloneCodeEditor>(
     null
   )
 
   // Reference for source editor
-  const sourceRef = React.useRef<null | MonacoEditor.IStandaloneCodeEditor>(
+  const sourceRef = React.useRef<null | MonacoEditorTypes.IStandaloneCodeEditor>(
     null
   )
 
