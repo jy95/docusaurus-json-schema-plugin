@@ -10,8 +10,8 @@ import { JSONSchemaFaker } from "json-schema-faker"
 // Default example to illustrate stuff (it is Draft-07 for info)
 import DefaultSchema from "@site/static/schemas/examples/object/additionalProperties.json"
 
-// Transitive dep I need the type
-import type { editor as MonacoEditor } from "monaco-editor/esm/vs/editor/editor.api"
+// Type I need for useRef
+import type { MonacoEditor } from "@theme/JSONSchemaEditor"
 
 function PlaygroundInner(): JSX.Element {
   // The current schema displayed

@@ -11,12 +11,18 @@ import {
 import type { JSONSchema as Draft_07 } from "json-schema-typed/draft-07"
 import type { EditorWillMount, MonacoEditorProps } from "react-monaco-editor"
 import type { Props as ErrorProps } from "@theme/Error"
+import type { languages as MonacoLanguages } from "monaco-editor/esm/vs/editor/editor.api"
 
 export type Props = {
   /**
    * The JSON schema to use
    */
   schema: unknown | unknown[]
+  /**
+   * Options for Monaco Editor diagnostic
+   * (useful for instance to enable enableSchemaRequest)
+   */
+  diagnosticsOptions?: MonacoLanguages.json.DiagnosticsOptions
 } & MonacoEditorProps
 
 // When something bad happens
@@ -44,7 +50,7 @@ function findOrGenerateId(schema: unknown, idx: number): string {
 
 // Main component
 function JSONSchemaEditorInner(props: Props): JSX.Element {
-  const { schema, ...editorProps } = props
+  const { schema, diagnosticsOptions, ...editorProps } = props
 
   const editorWillMount: EditorWillMount = (monaco) => {
     // Streamline algorithm
@@ -60,6 +66,7 @@ function JSONSchemaEditorInner(props: Props): JSX.Element {
     monaco.languages.json.jsonDefaults.setDiagnosticsOptions({
       validate: true,
       schemas: monacoSchemas,
+      ...diagnosticsOptions,
     })
   }
 

@@ -20,4 +20,10 @@ declare module "@theme/JSONSchemaEditor" {
   import type { Props } from "docusaurus-json-schema-plugin/src/theme/JSONSchemaEditor/index"
 
   export default function JSONSchemaEditor(props: Props): JSX.Element
+
+  // Useful for people using "useRef" with monaco
+  export type { editor as MonacoEditor } from "monaco-editor/esm/vs/editor/editor.api"
+
+  // Useful for people using typescript
+  export type { MonacoEditorProps } from "react-monaco-editor"
 }
