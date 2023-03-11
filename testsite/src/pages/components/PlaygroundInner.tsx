@@ -42,14 +42,12 @@ function PlaygroundInner(): JSX.Element {
   const { colorMode } = useColorMode()
 
   // Reference for example editor
-  const editorRef = React.useRef<null | MonacoEditorTypes.IStandaloneCodeEditor>(
-    null
-  )
+  const editorRef =
+    React.useRef<null | MonacoEditorTypes.IStandaloneCodeEditor>(null)
 
   // Reference for source editor
-  const sourceRef = React.useRef<null | MonacoEditorTypes.IStandaloneCodeEditor>(
-    null
-  )
+  const sourceRef =
+    React.useRef<null | MonacoEditorTypes.IStandaloneCodeEditor>(null)
 
   React.useEffect(() => {
     setCustomSchemaString(STRINGIFY_JSON(userSchema))
