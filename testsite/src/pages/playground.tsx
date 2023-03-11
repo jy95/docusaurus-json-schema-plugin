@@ -7,11 +7,23 @@ import BrowserOnly from "@docusaurus/BrowserOnly"
 //import JSONSchemaViewer from "@theme/JSONSchemaViewer"
 import { JSONSchemaFaker } from "json-schema-faker"
 
+// For validate json schema, since I can't rely on Monaco Editor
+import Ajv from "ajv"
+
+// To get the location of line
+import { jsonpos } from "jsonpos"
+
 // Default example to illustrate stuff (it is Draft-07 for info)
 import DefaultSchema from "@site/static/schemas/examples/object/additionalProperties.json"
 
+// Transitive dep I need to add validation in the schema
+import { monaco } from "@theme/JSONSchemaEditor"
+
 // Type I need for useRef
 import type { MonacoEditor } from "@theme/JSONSchemaEditor"
+
+// Common stringify of the JSON
+const STRINGIFY_JSON = (json: unknown) => JSON.stringify(json, null, "\t")
 
 function PlaygroundInner(): JSX.Element {
   // The current schema displayed
@@ -31,12 +43,17 @@ function PlaygroundInner(): JSX.Element {
   const { colorMode } = useColorMode()
 
   // Reference for example editor
-  const editorRef = React.useRef(
-    null as null | MonacoEditor.IStandaloneCodeEditor
+  const editorRef = React.useRef<null | MonacoEditor.IStandaloneCodeEditor>(
+    null
+  )
+
+  // Reference for source editor
+  const sourceRef = React.useRef<null | MonacoEditor.IStandaloneCodeEditor>(
+    null
   )
 
   React.useEffect(() => {
-    setCustomSchemaString(JSON.stringify(userSchema))
+    setCustomSchemaString(STRINGIFY_JSON(userSchema))
   }, [userSchema])
 
   // Turn user schema to other components
@@ -53,10 +70,71 @@ function PlaygroundInner(): JSX.Element {
         newSchema["$ref"] = jsonPointer
       }
       setUserSchema(newSchema)
+      validateJSONSchema(newSchema)
     } catch (error) {
       // KIS warning
       alert(error)
     }
+  }
+
+  // Apply validation of AJV
+  function validateJSONSchema(newSchema: unknown) {
+    const editor = sourceRef.current
+
+    if (!editor) {
+      return
+    }
+
+    const ajv = new Ajv({
+      allErrors: true,
+      // I don't care if people add extra stuff in their schema
+      strictSchema: false,
+      // Overlap between "properties" and "patternProperties" keywords
+      allowMatchingProperties: true,
+      // Defined required properties strictRequired option (used in "if" for instance)
+      strictRequired: false,
+      // type compatibility is troublesome, so enable it
+      strictTypes: true,
+      // Unconstrained tuples is user own issue, not mine
+      strictTuples: false,
+      // Don't care about format
+      validateFormats: false,
+      // Schema needs to be validated
+      validateSchema: true,
+    })
+
+    const markers = []
+    const jsonASString = STRINGIFY_JSON(newSchema)
+
+    let valid = ajv.validateSchema(newSchema)
+
+    if (!valid) {
+      const errors = ajv.errors
+      errors.forEach((error) => {
+        // Get location information
+        const location = jsonpos(jsonASString, {
+          // error.schemaPath would match the Draft-7, ... specs which isn't what user wants
+          pointerPath: error.instancePath,
+        })
+
+        // Add the marker
+        markers.push({
+          startLineNumber: location.start.line,
+          startColumn: location.start.column,
+          endLineNumber: location.end.line,
+          endColumn: location.end.column,
+          message: error.message,
+          severity: monaco.MarkerSeverity.Error,
+        })
+      })
+    }
+
+    // Set up validation error, if any
+    monaco.editor.setModelMarkers(
+      editor.getModel(),
+      "schema-validation",
+      markers
+    )
   }
 
   function generateFakeData() {
@@ -64,7 +142,7 @@ function PlaygroundInner(): JSX.Element {
     if (editor) {
       JSONSchemaFaker.resolve(userSchema)
         .then((sample) => {
-          editor.setValue(JSON.stringify(sample, null, "\t"))
+          editor.setValue(STRINGIFY_JSON(sample))
         })
         .catch((err) => alert(err))
     }
@@ -97,18 +175,21 @@ function PlaygroundInner(): JSX.Element {
             />
           </div>
           <JSONSchemaEditor
-            value={JSON.stringify(userSchema, null, "\t")}
+            value={STRINGIFY_JSON(userSchema)}
             // For some reason, monaco editor can ignore empty schema when $schema is provided
             schema={{}}
             onChange={(newValue: string) => {
               // Remember what the user puts
               setCustomSchemaString(newValue)
             }}
+            editorDidMount={(editor) => {
+              sourceRef.current = editor
+            }}
           />
         </div>
         <div
           style={{ boxSizing: "border-box", width: "50%" }}
-          key={JSON.stringify(userSchema)}
+          key={STRINGIFY_JSON(userSchema)}
         >
           <h1>JSON Schema Editor</h1>
           <div>
@@ -125,7 +206,7 @@ function PlaygroundInner(): JSX.Element {
           />
         </div>
       </div>
-      <div key={JSON.stringify(userSchema)}>
+      <div key={STRINGIFY_JSON(userSchema)}>
         <h1>JSON Schema Viewer</h1>
         <JSONSchemaViewer
           schema={userSchema}

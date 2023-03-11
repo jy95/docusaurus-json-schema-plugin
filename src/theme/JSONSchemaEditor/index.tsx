@@ -25,6 +25,12 @@ export type Props = {
   diagnosticsOptions?: MonacoLanguages.json.DiagnosticsOptions
 } & MonacoEditorProps
 
+// Useful for people using "useRef" with monaco
+export type { editor as MonacoEditor } from "monaco-editor/esm/vs/editor/editor.api"
+
+// Re-export Monaco own interface, in case people want to add custom validation, ...
+export * as monaco from "monaco-editor"
+
 // When something bad happens
 function EditorError({ error, tryAgain }: ErrorProps): JSX.Element {
   return (

@@ -22,8 +22,8 @@ declare module "@theme/JSONSchemaEditor" {
   export default function JSONSchemaEditor(props: Props): JSX.Element
 
   // Useful for people using "useRef" with monaco
-  export type { editor as MonacoEditor } from "monaco-editor/esm/vs/editor/editor.api"
+  export type { MonacoEditor } from "docusaurus-json-schema-plugin/src/theme/JSONSchemaEditor/index"
 
-  // Useful for people using typescript
-  export type { MonacoEditorProps } from "react-monaco-editor"
+  // Re-export Monaco own interface, in case people want to add custom validation, ...
+  export * as monaco from "monaco-editor"
 }
