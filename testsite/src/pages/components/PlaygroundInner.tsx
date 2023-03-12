@@ -54,7 +54,7 @@ function PlaygroundInner(): JSX.Element {
   }, [userSchema])
 
   // Turn user schema to other components
-  function updateView() {
+  async function updateView() {
     try {
       let newSchema = JSON.parse(customSchemaString)
       // if "$ref" is found at the root level and "jsonPointer" wasn't set, consider it as default
@@ -67,7 +67,7 @@ function PlaygroundInner(): JSX.Element {
         newSchema["$ref"] = jsonPointer
       }
       setUserSchema(newSchema)
-      validateJSONSchema(newSchema)
+      await validateJSONSchema(newSchema)
     } catch (error) {
       // KIS warning
       alert(error)
@@ -75,8 +75,11 @@ function PlaygroundInner(): JSX.Element {
   }
 
   // Apply validation of AJV
-  function validateJSONSchema(newSchema: unknown) {
+  async function validateJSONSchema(newSchema: unknown) {
     const editor = sourceRef.current
+
+    // Wait for the `monaco` object to be loaded
+    const monacoInstance = await monaco
 
     if (!editor) {
       return
@@ -121,13 +124,13 @@ function PlaygroundInner(): JSX.Element {
           endLineNumber: location.end.line,
           endColumn: location.end.column,
           message: error.message,
-          severity: monaco.MarkerSeverity.Error,
+          severity: monacoInstance.MarkerSeverity.Error,
         })
       })
     }
 
     // Set up validation error, if any
-    monaco.editor.setModelMarkers(
+    monacoInstance.editor.setModelMarkers(
       editor.getModel(),
       "schema-validation",
       markers

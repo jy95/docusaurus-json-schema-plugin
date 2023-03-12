@@ -15,11 +15,11 @@ import type { MonacoEditorProps } from "react-monaco-editor"
 export type Props = MonacoEditorProps
 
 // Useful for people using "useRef" with monaco
-import * as MonacoEditorTypes from "monaco-editor/esm/vs/editor/editor.api"
+import type * as MonacoEditorTypes from "monaco-editor/esm/vs/editor/editor.api"
 export type { MonacoEditorTypes }
 
 // Re-export Monaco own interface, in case people want to add custom validation, ...
-export * as monaco from "monaco-editor"
+export const monaco = import("monaco-editor/esm/vs/editor/editor.api")
 
 // When something bad happens
 function EditorError({ error, tryAgain }: ErrorProps): JSX.Element {
