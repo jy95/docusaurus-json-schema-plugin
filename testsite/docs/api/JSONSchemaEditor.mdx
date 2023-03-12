@@ -10,7 +10,8 @@ import TabItem from '@theme/TabItem';
 
 | Property        | Type              | Required ?  | Note                                               |
 |-----------------|-------------------|-------------|----------------------------------------------------|
-| schema          | JSONSchema        | Mandatory   | JSON Schema supported by [monaco-editor](https://github.com/microsoft/monaco-editor), which powers [VS Code](https://code.visualstudio.com/Docs/languages/json#_json-schemas-and-settings) - Currently, it supports all draft versions from Draft 4 to JSON Schema Draft 2020-12  |
+| schema          | JSONSchema \|   JSONSchema[]    | Mandatory   | JSON Schema(s) supported by [monaco-editor](https://github.com/microsoft/monaco-editor), which powers [VS Code](https://code.visualstudio.com/Docs/languages/json#_json-schemas-and-settings) - Currently, it supports all draft versions from Draft 4 to JSON Schema Draft 2020-12  |
+| diagnosticsOptions   | MonacoEditorProps | Optional    | Options for Monaco Editor diagnostic (useful for instance to enable enableSchemaRequest) | 
 | ....            | MonacoEditorProps | Optional    | [Properties](https://github.com/react-monaco-editor/react-monaco-editor#properties) of [react-monaco-editor](https://github.com/react-monaco-editor/react-monaco-editor) | 
 
 ## Examples
