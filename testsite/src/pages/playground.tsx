@@ -5,7 +5,8 @@ import ErrorBoundary from "@docusaurus/ErrorBoundary"
 
 // Monaco isn't SSR friendly
 function PlaygroundInner(): JSX.Element {
-  const PlaygroundInnerComponent = require("@site/src/pages/components/PlaygroundInner").default;
+  const PlaygroundInnerComponent =
+    require("@site/src/pages/components/PlaygroundInner").default
   return <PlaygroundInnerComponent />
 }
 
