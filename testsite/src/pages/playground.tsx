@@ -2,7 +2,12 @@ import React from "react"
 import Layout from "@theme/Layout"
 import BrowserOnly from "@docusaurus/BrowserOnly"
 import ErrorBoundary from "@docusaurus/ErrorBoundary"
-import PlaygroundInner from "@site/src/pages/components/PlaygroundInner"
+
+// Monaco isn't SSR friendly
+function PlaygroundInner(): JSX.Element {
+  const PlaygroundInnerComponent = require("@site/src/pages/components/PlaygroundInner").default;
+  return <PlaygroundInnerComponent />
+}
 
 function PlaygroundComponent(): JSX.Element {
   // No SSR for the live preview
