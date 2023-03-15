@@ -20,7 +20,7 @@ function PlaygroundComponent(): JSX.Element {
       <BrowserOnly fallback={<div>Loading...</div>}>
         {() => {
           const PlaygroundInnerComponent =
-            require("@site/src/pages/components/PlaygroundInner").default
+            require("@site/src/components/PlaygroundInner").default
           return <PlaygroundInnerComponent />
         }}
       </BrowserOnly>
