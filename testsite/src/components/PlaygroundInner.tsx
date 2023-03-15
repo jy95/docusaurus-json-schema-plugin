@@ -16,7 +16,7 @@ import { jsonpos } from "jsonpos"
 import DefaultSchema from "@site/static/schemas/examples/object/additionalProperties.json"
 
 // Transitive dep I need to add validation in the schema
-import { monaco } from "@theme/MonacoEditor"
+import MonacoEditor, { monaco } from "@theme/MonacoEditor"
 
 // Type I need for useRef
 import type { MonacoEditorTypes } from "@theme/MonacoEditor"
@@ -67,9 +67,6 @@ function PlaygroundInner(): JSX.Element {
     ...DefaultSchema,
   } as { [x: string]: any })
 
-  // The schema user is currently writting
-  let [customSchemaString, setCustomSchemaString] = React.useState("")
-
   // If user put a root "$ref"
   let [jsonPointer, setJsonPointer] = React.useState("")
 
@@ -83,13 +80,17 @@ function PlaygroundInner(): JSX.Element {
   const sourceRef =
     React.useRef<null | MonacoEditorTypes.IStandaloneCodeEditor>(null)
 
-  React.useEffect(() => {
-    setCustomSchemaString(STRINGIFY_JSON(userSchema))
-  }, [userSchema])
-
   // Turn user schema to other components
   async function updateView() {
     try {
+      const editor = sourceRef.current
+      if (!editor) {
+        return
+      }
+
+      // What the user puts
+      let customSchemaString = editor.getModel().getValue()
+
       let newSchema = JSON.parse(customSchemaString)
       // if "$ref" is found at the root level and "jsonPointer" wasn't set, consider it as default
       if (jsonPointer.length === 0 && newSchema["$ref"] !== undefined) {
@@ -151,7 +152,7 @@ function PlaygroundInner(): JSX.Element {
           severity: evaluatedError.severity,
         }
 
-        //
+        // if location can be found
         if (error.instancePath.length > 0) {
           // Get location information
           const location = jsonpos(jsonASString, {
@@ -214,14 +215,9 @@ function PlaygroundInner(): JSX.Element {
               value={jsonPointer}
             />
           </div>
-          <JSONSchemaEditor
+          <MonacoEditor
             value={STRINGIFY_JSON(userSchema)}
-            // For some reason, monaco editor can ignore empty schema when $schema is provided
-            schema={{}}
-            onChange={(newValue: string) => {
-              // Remember what the user puts
-              setCustomSchemaString(newValue)
-            }}
+            language="json"
             editorDidMount={(editor) => {
               sourceRef.current = editor
             }}
