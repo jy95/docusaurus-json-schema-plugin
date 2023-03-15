@@ -21,6 +21,40 @@ import { monaco } from "@theme/MonacoEditor"
 // Type I need for useRef
 import type { MonacoEditorTypes } from "@theme/MonacoEditor"
 
+import type { DefinedError } from "ajv"
+
+// To estimate the criticity of an error
+type ReturnedSeverity = {
+  markIdentifier: boolean
+  severity: MonacoEditorTypes.MarkerSeverity
+}
+function getSeverity(error: DefinedError): ReturnedSeverity {
+  switch (error.keyword) {
+    case "type":
+    case "maxItems":
+    case "minItems":
+    case "minLength":
+    case "maxLength":
+    case "maximum":
+    case "minimum":
+    case "exclusiveMaximum":
+    case "exclusiveMinimum":
+    case "minProperties":
+    case "maxProperties":
+    case "pattern":
+    case "multipleOf":
+      return { markIdentifier: false, severity: monaco.MarkerSeverity.Warning }
+    case "format":
+    case "uniqueItems":
+      return { markIdentifier: false, severity: monaco.MarkerSeverity.Info }
+    case "const":
+    case "enum":
+      return { markIdentifier: false, severity: monaco.MarkerSeverity.Hint }
+    default:
+      return { markIdentifier: false, severity: monaco.MarkerSeverity.Error }
+  }
+}
+
 // Common stringify of the JSON
 const STRINGIFY_JSON = (json: unknown) => JSON.stringify(json, null, "\t")
 
@@ -78,9 +112,6 @@ function PlaygroundInner(): JSX.Element {
   async function validateJSONSchema(newSchema: unknown) {
     const editor = sourceRef.current
 
-    // Wait for the `monaco` object to be loaded
-    const monacoInstance = monaco
-
     if (!editor) {
       return
     }
@@ -111,26 +142,38 @@ function PlaygroundInner(): JSX.Element {
     if (!valid) {
       const errors = ajv.errors
       errors.forEach((error) => {
-        // Get location information
-        const location = jsonpos(jsonASString, {
-          // error.schemaPath would match the Draft-7, ... specs which isn't what user wants
-          pointerPath: error.instancePath,
-        })
+        // Criticy of the error
+        const evaluatedError = getSeverity(error as DefinedError)
+
+        // common props for marker
+        let marker: MonacoEditorTypes.IMarkerData = {
+          message: error.message,
+          severity: evaluatedError.severity,
+        }
+
+        //
+        if (error.instancePath.length > 0) {
+          // Get location information
+          const location = jsonpos(jsonASString, {
+            // error.schemaPath would match the Draft-7, ... specs which isn't what user wants
+            pointerPath: error.instancePath,
+            markIdentifier: evaluatedError.markIdentifier,
+          })
+
+          // set up location
+          marker.startLineNumber = location.start.line
+          marker.startColumn = location.start.column
+          marker.endLineNumber = location.end.line
+          marker.endColumn = location.end.column
+        }
 
         // Add the marker
-        markers.push({
-          startLineNumber: location.start.line,
-          startColumn: location.start.column,
-          endLineNumber: location.end.line,
-          endColumn: location.end.column,
-          message: error.message,
-          severity: monacoInstance.MarkerSeverity.Error,
-        })
+        markers.push(marker)
       })
     }
 
     // Set up validation error, if any
-    monacoInstance.editor.setModelMarkers(
+    monaco.editor.setModelMarkers(
       editor.getModel(),
       "schema-validation",
       markers
