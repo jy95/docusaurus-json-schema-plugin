@@ -19,7 +19,7 @@ import type * as MonacoEditorTypes from "monaco-editor/esm/vs/editor/editor.api"
 export type { MonacoEditorTypes }
 
 // Re-export Monaco own interface, in case people want to add custom validation, ...
-export * as monaco from "monaco-editor/esm/vs/editor/editor.api";
+export * as monaco from "monaco-editor/esm/vs/editor/editor.api"
 
 // When something bad happens
 function EditorError({ error, tryAgain }: ErrorProps): JSX.Element {
