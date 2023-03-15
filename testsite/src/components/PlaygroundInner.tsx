@@ -48,15 +48,13 @@ function PlaygroundInner(): JSX.Element {
   return (
     <>
       <div style={{ display: "flex", flexWrap: "wrap" }}>
-        <JSONSchemaCreator 
-          jsonPointer={jsonPointer} 
-          setJsonPointer={setJsonPointer} 
-          userSchema={userSchema} 
-          setUserSchema={setUserSchema} 
+        <JSONSchemaCreator
+          jsonPointer={jsonPointer}
+          setJsonPointer={setJsonPointer}
+          userSchema={userSchema}
+          setUserSchema={setUserSchema}
         />
-        <div
-          style={{ boxSizing: "border-box", width: "50%" }}
-        >
+        <div style={{ boxSizing: "border-box", width: "50%" }}>
           <h1>JSON Schema Editor</h1>
           <div>
             <button onClick={() => generateFakeData()}>
