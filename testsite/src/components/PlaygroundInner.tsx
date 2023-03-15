@@ -79,7 +79,7 @@ function PlaygroundInner(): JSX.Element {
     const editor = sourceRef.current
 
     // Wait for the `monaco` object to be loaded
-    const monacoInstance = await monaco
+    const monacoInstance = monaco
 
     if (!editor) {
       return

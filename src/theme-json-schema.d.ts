@@ -34,5 +34,5 @@ declare module "@theme/MonacoEditor" {
   } from "docusaurus-json-schema-plugin/src/theme/MonacoEditor/index"
 
   // Re-export Monaco own interface, in case people want to add custom validation, ...
-  export const monaco = import("monaco-editor/esm/vs/editor/editor.api")
+  export * as monaco from "monaco-editor/esm/vs/editor/editor.api";
 }
