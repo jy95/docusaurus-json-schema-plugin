@@ -6,7 +6,6 @@ import JSONSchemaEditor from "@theme/JSONSchemaEditor"
 import JSONSchemaViewer from "@theme/JSONSchemaViewer"
 import JSONSchemaCreator from "@site/src/components/JSONSchemaCreator"
 import { JSONSchemaFaker } from "json-schema-faker"
-import { Resolver } from "@stoplight/json-ref-resolver"
 
 import {
   PlaygroundContextProvider,
@@ -26,7 +25,7 @@ const STRINGIFY_JSON = (json: unknown) => JSON.stringify(json, null, "\t")
 
 function PlaygroundInner(): JSX.Element {
   const {
-    state: { jsonPointer, userSchema },
+    state: { userSchema },
   } = usePlaygroundContext()
   const { colorMode } = useColorMode()
 
@@ -37,20 +36,7 @@ function PlaygroundInner(): JSX.Element {
   function generateFakeData() {
     const editor = editorRef.current
     if (editor) {
-      new Resolver()
-        .resolve(userSchema, {
-          // Add pointer only when useful
-          jsonPointer:
-            jsonPointer.length > 0 &&
-            typeof userSchema === "object" &&
-            !Array.isArray(userSchema) &&
-            userSchema !== null
-              ? jsonPointer
-              : undefined,
-        })
-        .then((result) => {
-          return JSONSchemaFaker.resolve(result.result)
-        })
+      JSONSchemaFaker.resolve(userSchema)
         .then((sample) => {
           editor.setValue(STRINGIFY_JSON(sample))
         })
@@ -75,7 +61,7 @@ function PlaygroundInner(): JSX.Element {
             editorDidMount={(editor) => {
               editorRef.current = editor
             }}
-            key={STRINGIFY_JSON(userSchema) + jsonPointer}
+            key={STRINGIFY_JSON(userSchema)}
           />
         </div>
       </div>
@@ -83,10 +69,7 @@ function PlaygroundInner(): JSX.Element {
         <h1>JSON Schema Viewer</h1>
         <JSONSchemaViewer
           schema={userSchema}
-          key={STRINGIFY_JSON(userSchema) + jsonPointer}
-          resolverOptions={{
-            jsonPointer: jsonPointer.length !== 0 ? jsonPointer : undefined,
-          }}
+          key={STRINGIFY_JSON(userSchema)}
         />
       </div>
     </>
@@ -94,14 +77,16 @@ function PlaygroundInner(): JSX.Element {
 }
 
 function StateProvider(): JSX.Element {
+  const defaultSchema = {
+    // To help monaco editor for JSON Schema definition
+    $schema: "http://json-schema.org/draft-07/schema",
+    // The demo schema
+    ...DefaultSchema,
+  }
   const [state, setState] = React.useState({
     jsonPointer: "",
-    userSchema: {
-      // To help monaco editor for JSON Schema definition
-      $schema: "http://json-schema.org/draft-07/schema",
-      // The demo schema
-      ...DefaultSchema,
-    },
+    userSchema: defaultSchema,
+    fullSchema: defaultSchema,
   } as PlaygroundState)
 
   // define a function to update the state

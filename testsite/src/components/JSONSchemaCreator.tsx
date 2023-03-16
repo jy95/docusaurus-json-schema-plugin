@@ -1,6 +1,7 @@
 import React from "react"
 import { useColorMode } from "@docusaurus/theme-common"
 import BrowserOnly from "@docusaurus/BrowserOnly"
+import { Resolver } from "@stoplight/json-ref-resolver"
 
 // For validate json schema, since I can't rely on Monaco Editor
 import Ajv from "ajv"
@@ -56,7 +57,7 @@ function getSeverity(error: DefinedError): ReturnedSeverity {
 
 function JSONSchemaCreatorInner(): JSX.Element {
   const {
-    state: { jsonPointer, userSchema },
+    state: { jsonPointer, fullSchema },
     updateState,
   } = usePlaygroundContext()
   const inputRef = React.useRef<HTMLInputElement>(null)
@@ -67,7 +68,7 @@ function JSONSchemaCreatorInner(): JSX.Element {
     React.useRef<null | MonacoEditorTypes.IStandaloneCodeEditor>(null)
 
   // Properly handle pointer change
-  function handlePointerChange(newSchema: any) {
+  async function handlePointerChange(newSchema: any) {
     // What is currently on input field
     const currentPointer = inputRef.current.value
 
@@ -92,6 +93,27 @@ function JSONSchemaCreatorInner(): JSX.Element {
     // At the end, update ref
     inputRef.current.value = nextPointer
     updateState({ jsonPointer: nextPointer })
+
+    // Update the user schema according to the modification
+    if (nextPointer.length === 0) {
+      updateState({ userSchema: newSchema })
+    } else {
+      try {
+        const resolvedSchema = await new Resolver().resolve(newSchema, {
+          // Add pointer only when useful
+          jsonPointer:
+            typeof newSchema === "object" &&
+            !Array.isArray(newSchema) &&
+            newSchema !== null
+              ? nextPointer
+              : undefined,
+        })
+        updateState({ userSchema: resolvedSchema.result })
+      } catch (error) {
+        // KIS strategy
+        alert(error)
+      }
+    }
   }
 
   // Turn user schema to other components
@@ -106,11 +128,11 @@ function JSONSchemaCreatorInner(): JSX.Element {
       let customSchemaString = editor.getModel().getValue()
       let newSchema = JSON.parse(customSchemaString)
 
-      // Update schema
-      updateState({ userSchema: newSchema })
+      // Update full schema
+      updateState({ fullSchema: newSchema })
 
       // $ref handling
-      handlePointerChange(newSchema)
+      await handlePointerChange(newSchema)
 
       // Run validations
       await validateJSONSchema(newSchema)
@@ -214,7 +236,7 @@ function JSONSchemaCreatorInner(): JSX.Element {
         />
       </div>
       <MonacoEditor
-        value={STRINGIFY_JSON(userSchema)}
+        value={STRINGIFY_JSON(fullSchema)}
         theme={colorMode === "dark" ? "vs-dark" : "vs"}
         language="json"
         editorDidMount={(editor) => {
