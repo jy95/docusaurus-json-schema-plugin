@@ -11,6 +11,9 @@ import MonacoEditor, { monaco } from "@theme/MonacoEditor"
 // To get the location of line
 import { jsonpos } from "jsonpos"
 
+// Context
+import { usePlaygroundContext } from "@site/src/contexts/PlaygroundContext"
+
 // Type I need for useRef
 import type { MonacoEditorTypes } from "@theme/MonacoEditor"
 
@@ -51,20 +54,45 @@ function getSeverity(error: DefinedError): ReturnedSeverity {
   }
 }
 
-type Props = {
-  setJsonPointer: (_: string) => void
-  jsonPointer: string
-  userSchema: unknown
-  setUserSchema: (_: unknown) => void
-}
-
-function JSONSchemaCreatorInner(props: Props): JSX.Element {
-  const { setJsonPointer, jsonPointer, userSchema, setUserSchema } = props
+function JSONSchemaCreatorInner(): JSX.Element {
+  const {
+    state: { jsonPointer, userSchema },
+    updateState,
+  } = usePlaygroundContext()
+  const inputRef = React.useRef<HTMLInputElement>(null)
   const { colorMode } = useColorMode()
 
   // Reference for source editor
   const sourceRef =
     React.useRef<null | MonacoEditorTypes.IStandaloneCodeEditor>(null)
+
+  // Properly handle pointer change
+  function handlePointerChange(newSchema: any) {
+    // What is currently on input field
+    const currentPointer = inputRef.current.value
+
+    // Next pointer value
+    let nextPointer = ""
+
+    // If input field is empty but "$ref" is found at the root level, consider it first
+    if (currentPointer.length === 0 && newSchema["$ref"] !== undefined) {
+      nextPointer = newSchema["$ref"]
+    }
+
+    // If input is not empty, let's take it
+    if (currentPointer.length > 0) {
+      nextPointer = currentPointer
+    }
+
+    // Otherwise, if user wants to remove it, respect the choice
+    if (currentPointer.length === 0 && jsonPointer.length > 0) {
+      nextPointer = ""
+    }
+
+    // At the end, update ref
+    inputRef.current.value = nextPointer
+    updateState({ jsonPointer: nextPointer })
+  }
 
   // Turn user schema to other components
   async function updateView() {
@@ -78,18 +106,13 @@ function JSONSchemaCreatorInner(props: Props): JSX.Element {
       let customSchemaString = editor.getModel().getValue()
       let newSchema = JSON.parse(customSchemaString)
 
-      // if "$ref" is found at the root level and "jsonPointer" wasn't set, consider it as default
-      if (jsonPointer.length === 0 && newSchema["$ref"] !== undefined) {
-        setJsonPointer(newSchema["$ref"])
-      }
+      // Update schema
+      updateState({ userSchema: newSchema })
 
-      // Overwrite (if needed) root "$ref" in case the user wants to test out stuff
-      // monaco editor relies on that to provide valuable auto-complete
-      if (jsonPointer.length !== 0) {
-        newSchema["$ref"] = jsonPointer
-      }
+      // $ref handling
+      handlePointerChange(newSchema)
 
-      setUserSchema(newSchema)
+      // Run validations
       await validateJSONSchema(newSchema)
     } catch (error) {
       // KIS warning
@@ -186,8 +209,8 @@ function JSONSchemaCreatorInner(props: Props): JSX.Element {
           type="text"
           id="jsonPointer"
           name="jsonPointer"
-          onChange={(e) => setJsonPointer(e.target.value)}
-          value={jsonPointer}
+          ref={inputRef}
+          defaultValue={jsonPointer}
         />
       </div>
       <MonacoEditor
@@ -202,11 +225,11 @@ function JSONSchemaCreatorInner(props: Props): JSX.Element {
   )
 }
 
-export default function JSONSchemaCreatorComponent(props: Props): JSX.Element {
+export default function JSONSchemaCreatorComponent(): JSX.Element {
   return (
     <BrowserOnly fallback={<div>Loading...</div>}>
       {() => {
-        return <JSONSchemaCreatorInner {...props} />
+        return <JSONSchemaCreatorInner />
       }}
     </BrowserOnly>
   )
