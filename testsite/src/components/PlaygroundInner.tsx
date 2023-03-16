@@ -83,7 +83,7 @@ function PlaygroundInner(): JSX.Element {
         <h1>JSON Schema Viewer</h1>
         <JSONSchemaViewer
           schema={userSchema}
-          //key={STRINGIFY_JSON(userSchema) + jsonPointer}
+          key={STRINGIFY_JSON(userSchema) + jsonPointer}
           resolverOptions={{
             jsonPointer: jsonPointer.length !== 0 ? jsonPointer : undefined,
           }}
