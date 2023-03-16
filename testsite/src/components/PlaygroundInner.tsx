@@ -75,7 +75,7 @@ function PlaygroundInner(): JSX.Element {
             editorDidMount={(editor) => {
               editorRef.current = editor
             }}
-            //key={STRINGIFY_JSON(userSchema) + jsonPointer}
+            key={STRINGIFY_JSON(userSchema) + jsonPointer}
           />
         </div>
       </div>
