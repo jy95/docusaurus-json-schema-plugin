@@ -11,12 +11,18 @@ import {
 import type { JSONSchema as Draft_07 } from "json-schema-typed/draft-07"
 import type { EditorWillMount, MonacoEditorProps } from "react-monaco-editor"
 import type { Props as ErrorProps } from "@theme/Error"
+import type { languages as MonacoLanguages } from "monaco-editor/esm/vs/editor/editor.api"
 
 export type Props = {
   /**
    * The JSON schema to use
    */
-  schema: unknown
+  schema: unknown | unknown[]
+  /**
+   * Options for Monaco Editor diagnostic
+   * (useful for instance to enable enableSchemaRequest)
+   */
+  diagnosticsOptions?: MonacoLanguages.json.DiagnosticsOptions
 } & MonacoEditorProps
 
 // When something bad happens
@@ -31,27 +37,36 @@ function EditorError({ error, tryAgain }: ErrorProps): JSX.Element {
   )
 }
 
+// Find id or generate a default one
+function findOrGenerateId(schema: unknown, idx: number): string {
+  let typedSchema = schema as Draft_07
+
+  if (typeof typedSchema === "boolean" || typedSchema.$id === undefined) {
+    return `https://docusaurus.io/json-viewer/schema_${idx}.json`
+  }
+
+  return typedSchema.$id
+}
+
 // Main component
 function JSONSchemaEditorInner(props: Props): JSX.Element {
-  const { schema, ...editorProps } = props
+  const { schema, diagnosticsOptions, ...editorProps } = props
 
   const editorWillMount: EditorWillMount = (monaco) => {
-    // Assume it is a JSONSchema 7 by default
-    let typedSchema = schema as Draft_07
-    let schemaId =
-      typeof typedSchema !== "boolean" && typedSchema?.$id !== undefined
-        ? typedSchema.$id
-        : "https://docusaurus.io/json-viewer/schema.json"
+    // Streamline algorithm
+    const userSchemas = Array.isArray(schema) ? schema : [schema]
+
+    // monaco schema
+    const monacoSchemas = userSchemas.map((userSchema, idx) => ({
+      uri: findOrGenerateId(schema, idx),
+      fileMatch: ["*"], // associate with our model
+      schema: userSchema,
+    }))
 
     monaco.languages.json.jsonDefaults.setDiagnosticsOptions({
       validate: true,
-      schemas: [
-        {
-          uri: schemaId,
-          fileMatch: ["*"], // associate with our model
-          schema: schema,
-        },
-      ],
+      schemas: monacoSchemas,
+      ...diagnosticsOptions,
     })
   }
 

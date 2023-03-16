@@ -16,9 +16,12 @@
     "@docusaurus/preset-classic": "^2.3.1",
     "@docusaurus/remark-plugin-npm2yarn": "^2.3.1",
     "@mdx-js/react": "^1.6.21",
+    "@stoplight/json-ref-resolver": "^3.1.5",
+    "ajv": "^8.12.0",
     "clsx": "^1.1.1",
     "docusaurus-json-schema-plugin": "file:..",
     "json-schema-faker": "^0.5.0-rcv.46",
+    "jsonpos": "^4.1.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-markdown": "^8.0.5"

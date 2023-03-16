@@ -1,0 +1,83 @@
+---
+title: "🔧 @theme/MonacoEditor"
+description: "@theme/MonacoEditor API"
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+## Configuration
+
+| Property        | Type              | Required ?  | Note                                               |
+|-----------------|-------------------|-------------|----------------------------------------------------|
+| ....            | MonacoEditorProps | Optional    | [Properties](https://github.com/react-monaco-editor/react-monaco-editor#properties) of [react-monaco-editor](https://github.com/react-monaco-editor/react-monaco-editor) | 
+
+## Examples
+
+<Tabs>
+<TabItem value="JSX" label="JSX" default>
+
+```tsx
+import React from "react";
+import Layout from "@theme/Layout";
+import MonacoEditor, { monaco } from "@theme/MonacoEditor";
+// import { useColorMode } from "@docusaurus/theme-common"
+
+// To have the monacco types
+import type { MonacoEditorTypes } from "@theme/MonacoEditor";
+
+export default function ExamplePage(): JSX.Element {
+  const editorRef =
+    React.useRef<null | MonacoEditorTypes.IStandaloneCodeEditor>(null);
+
+  function generateFakeData() {
+    const editor = editorRef.current;
+    if (editor) {
+      const randomPayload = [
+        { name: "test", luck: 42.0 },
+        { items: [{ id: 1, amount: 7, isValidated: true }] },
+        [1, 2, 3, 4, 5],
+      ];
+      // Set a value
+      editor.setValue(
+        JSON.stringify(
+          randomPayload[Math.floor(Math.random() * randomPayload.length)],
+          null,
+          "\t"
+        )
+      );
+      // And a advanced method from monaco
+      monacoInstance.editor.setModelMarkers(
+        editor.getModel(),
+        "schema-validation",
+        []
+      );
+    }
+  }
+
+  // https://docusaurus.io/docs/api/themes/configuration#use-color-mode
+  return (
+    <Layout
+      title={`My custom Monaco Editor`}
+      description="Description will go into a meta tag in <head />"
+    >
+      <>
+        <div>
+          <button onClick={() => generateFakeData()}>Generate fake data</button>
+        </div>
+        {/* You can "useColorMode" if you want to take into account current Docusaurus color */}
+        <MonacoEditor
+          theme={"vs-dark"}
+          language="json"
+          editorDidMount={(editor) => {
+            editorRef.current = editor;
+          }}
+        />
+      </>
+    </Layout>
+  );
+}
+```
+
+</TabItem>
+</Tabs>
