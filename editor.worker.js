@@ -125,7 +125,7 @@ class NotSupportedError extends Error {
 class ErrorNoTelemetry extends Error {
     constructor(msg) {
         super(msg);
-        this.name = 'ErrorNoTelemetry';
+        this.name = 'CodeExpectedError';
     }
     static fromError(err) {
         if (err instanceof ErrorNoTelemetry) {
@@ -137,7 +137,7 @@ class ErrorNoTelemetry extends Error {
         return result;
     }
     static isErrorNoTelemetry(err) {
-        return err.name === 'ErrorNoTelemetry';
+        return err.name === 'CodeExpectedError';
     }
 }
 /**
@@ -195,6 +195,15 @@ var Iterable;
         yield element;
     }
     Iterable.single = single;
+    function wrap(iterableOrElement) {
+        if (is(iterableOrElement)) {
+            return iterableOrElement;
+        }
+        else {
+            return single(iterableOrElement);
+        }
+    }
+    Iterable.wrap = wrap;
     function from(iterable) {
         return iterable || _empty;
     }
@@ -248,14 +257,6 @@ var Iterable;
         }
     }
     Iterable.concat = concat;
-    function* concatNested(iterables) {
-        for (const iterable of iterables) {
-            for (const element of iterable) {
-                yield element;
-            }
-        }
-    }
-    Iterable.concatNested = concatNested;
     function reduce(iterable, reducer, initialValue) {
         let value = initialValue;
         for (const element of iterable) {
@@ -264,13 +265,6 @@ var Iterable;
         return value;
     }
     Iterable.reduce = reduce;
-    function forEach(iterable, fn) {
-        let index = 0;
-        for (const element of iterable) {
-            fn(element, index++);
-        }
-    }
-    Iterable.forEach = forEach;
     /**
      * Returns an iterable slice of the array, with the same semantics as `array.slice()`.
      */
@@ -309,36 +303,6 @@ var Iterable;
         return [consumed, { [Symbol.iterator]() { return iterator; } }];
     }
     Iterable.consume = consume;
-    /**
-     * Consumes `atMost` elements from iterable and returns the consumed elements,
-     * and an iterable for the rest of the elements.
-     */
-    function collect(iterable) {
-        return consume(iterable)[0];
-    }
-    Iterable.collect = collect;
-    /**
-     * Returns whether the iterables are the same length and all items are
-     * equal using the comparator function.
-     */
-    function equals(a, b, comparator = (at, bt) => at === bt) {
-        const ai = a[Symbol.iterator]();
-        const bi = b[Symbol.iterator]();
-        while (true) {
-            const an = ai.next();
-            const bn = bi.next();
-            if (an.done !== bn.done) {
-                return false;
-            }
-            else if (an.done) {
-                return true;
-            }
-            else if (!comparator(an.value, bn.value)) {
-                return false;
-            }
-        }
-    }
-    Iterable.equals = equals;
 })(Iterable || (Iterable = {}));
 
 ;// CONCATENATED MODULE: ../node_modules/monaco-editor/esm/vs/base/common/lifecycle.js
@@ -348,6 +312,7 @@ var Iterable;
  *--------------------------------------------------------------------------------------------*/
 
 
+// #region Disposable Tracking
 /**
  * Enables logging of potentially leaked disposables.
  *
@@ -419,12 +384,9 @@ function markAsSingleton(singleton) {
     disposableTracker === null || disposableTracker === void 0 ? void 0 : disposableTracker.markAsSingleton(singleton);
     return singleton;
 }
-class MultiDisposeError extends Error {
-    constructor(errors) {
-        super(`Encountered errors while disposing of store. Errors: [${errors.join(', ')}]`);
-        this.errors = errors;
-    }
-}
+/**
+ * Check if `thing` is {@link IDisposable disposable}.
+ */
 function isDisposable(thing) {
     return typeof thing.dispose === 'function' && thing.dispose.length === 0;
 }
@@ -445,7 +407,7 @@ function dispose(arg) {
             throw errors[0];
         }
         else if (errors.length > 1) {
-            throw new MultiDisposeError(errors);
+            throw new AggregateError(errors, 'Encountered errors while disposing of store');
         }
         return Array.isArray(arg) ? [] : arg;
     }
@@ -454,12 +416,18 @@ function dispose(arg) {
         return arg;
     }
 }
+/**
+ * Combine multiple disposable values into a single {@link IDisposable}.
+ */
 function combinedDisposable(...disposables) {
-    const parent = toDisposable(() => dispose(disposables));
+    const parent = lifecycle_toDisposable(() => dispose(disposables));
     setParentOfDisposables(disposables, parent);
     return parent;
 }
-function toDisposable(fn) {
+/**
+ * Turn a function that implements dispose into an {@link IDisposable}.
+ */
+function lifecycle_toDisposable(fn) {
     const self = trackDisposable({
         dispose: once(() => {
             markAsDisposed(self);
@@ -468,6 +436,13 @@ function toDisposable(fn) {
     });
     return self;
 }
+/**
+ * Manages a collection of disposable values.
+ *
+ * This is the preferred way to manage multiple disposables. A `DisposableStore` is safer to work with than an
+ * `IDisposable[]` as it considers edge cases, such as registering the same value multiple times or adding an item to a
+ * store that has already been disposed of.
+ */
 class DisposableStore {
     constructor() {
         this._toDispose = new Set();
@@ -488,7 +463,7 @@ class DisposableStore {
         this.clear();
     }
     /**
-     * Returns `true` if this object has been disposed
+     * @return `true` if this object has been disposed of.
      */
     get isDisposed() {
         return this._isDisposed;
@@ -497,13 +472,19 @@ class DisposableStore {
      * Dispose of all registered disposables but do not mark this object as disposed.
      */
     clear() {
+        if (this._toDispose.size === 0) {
+            return;
+        }
         try {
-            dispose(this._toDispose.values());
+            dispose(this._toDispose);
         }
         finally {
             this._toDispose.clear();
         }
     }
+    /**
+     * Add a new {@link IDisposable disposable} to the collection.
+     */
     add(o) {
         if (!o) {
             return o;
@@ -524,6 +505,12 @@ class DisposableStore {
     }
 }
 DisposableStore.DISABLE_DISPOSED_WARNING = false;
+
+/**
+ * Abstract base class for a {@link IDisposable disposable} object.
+ *
+ * Subclasses can {@linkcode _register} disposables that will be automatically cleaned up when this object is disposed of.
+ */
 class lifecycle_Disposable {
     constructor() {
         this._store = new DisposableStore();
@@ -534,6 +521,9 @@ class lifecycle_Disposable {
         markAsDisposed(this);
         this._store.dispose();
     }
+    /**
+     * Adds `o` to the collection of disposables managed by this object.
+     */
     _register(o) {
         if (o === this) {
             throw new Error('Cannot register a disposable on itself!');
@@ -541,7 +531,13 @@ class lifecycle_Disposable {
         return this._store.add(o);
     }
 }
+/**
+ * A disposable that does nothing when it is disposed of.
+ *
+ * TODO: This should not be a static property.
+ */
 lifecycle_Disposable.None = Object.freeze({ dispose() { } });
+
 /**
  * Manages the lifecycle of a disposable value that may be changed.
  *
@@ -567,6 +563,9 @@ class MutableDisposable {
         }
         this._value = value;
     }
+    /**
+     * Resets the stored value and disposed of the previously stored value.
+     */
     clear() {
         this.value = undefined;
     }
@@ -636,6 +635,56 @@ class ImmortalReference {
         this.object = object;
     }
     dispose() { }
+}
+/**
+ * A map the manages the lifecycle of the values that it stores.
+ */
+class DisposableMap {
+    constructor() {
+        this._store = new Map();
+        this._isDisposed = false;
+        trackDisposable(this);
+    }
+    /**
+     * Disposes of all stored values and mark this object as disposed.
+     *
+     * Trying to use this object after it has been disposed of is an error.
+     */
+    dispose() {
+        markAsDisposed(this);
+        this._isDisposed = true;
+        this.clearAndDisposeAll();
+    }
+    /**
+     * Disposes of all stored values and clear the map, but DO NOT mark this object as disposed.
+     */
+    clearAndDisposeAll() {
+        if (!this._store.size) {
+            return;
+        }
+        try {
+            dispose(this._store.values());
+        }
+        finally {
+            this._store.clear();
+        }
+    }
+    get(key) {
+        return this._store.get(key);
+    }
+    set(key, value, skipDisposeOnOverwrite = false) {
+        var _a;
+        if (this._isDisposed) {
+            console.warn(new Error('Trying to add a disposable to a DisposableMap that has already been disposed of. The added object will be leaked!').stack);
+        }
+        if (!skipDisposeOnOverwrite) {
+            (_a = this._store.get(key)) === null || _a === void 0 ? void 0 : _a.dispose();
+        }
+        this._store.set(key, value);
+    }
+    [Symbol.iterator]() {
+        return this._store[Symbol.iterator]();
+    }
 }
 
 ;// CONCATENATED MODULE: ../node_modules/monaco-editor/esm/vs/base/common/linkedList.js
@@ -959,10 +1008,14 @@ let _isWeb = false;
 let _isElectron = false;
 let _isIOS = false;
 let _isCI = false;
+let _isMobile = false;
 let _locale = undefined;
 let _language = (/* unused pure expression or super */ null && (LANGUAGE_DEFAULT));
 let _translationsConfigFile = (/* unused pure expression or super */ null && (undefined));
 let _userAgent = undefined;
+/**
+ * @deprecated use `globalThis` instead
+ */
 const platform_globals = (typeof self === 'object' ? self : typeof global === 'object' ? global : {});
 let nodeProcess = undefined;
 if (typeof platform_globals.vscode !== 'undefined' && typeof platform_globals.vscode.process !== 'undefined') {
@@ -982,6 +1035,7 @@ if (typeof navigator === 'object' && !isElectronRenderer) {
     _isMacintosh = _userAgent.indexOf('Macintosh') >= 0;
     _isIOS = (_userAgent.indexOf('Macintosh') >= 0 || _userAgent.indexOf('iPad') >= 0 || _userAgent.indexOf('iPhone') >= 0) && !!navigator.maxTouchPoints && navigator.maxTouchPoints > 0;
     _isLinux = _userAgent.indexOf('Linux') >= 0;
+    _isMobile = (_userAgent === null || _userAgent === void 0 ? void 0 : _userAgent.indexOf('Mobi')) >= 0;
     _isWeb = true;
     const configuredLocale = getConfiguredDefaultLocale(
     // This call _must_ be done in the file that calls `nls.getConfiguredDefaultLocale`
@@ -1038,10 +1092,11 @@ const isNative = (/* unused pure expression or super */ null && (_isNative));
 const platform_isWeb = (/* unused pure expression or super */ null && (_isWeb));
 const isWebWorker = (_isWeb && typeof platform_globals.importScripts === 'function');
 const isIOS = (/* unused pure expression or super */ null && (_isIOS));
+const isMobile = (/* unused pure expression or super */ null && (_isMobile));
 const userAgent = _userAgent;
 /**
- * The language used for the user interface. The format of
- * the string is all lower case (e.g. zh-tw for Traditional
+ * The language used for the user interface. or the locale specified by --locale
+ * The format of the string is all lower case (e.g. zh-tw for Traditional
  * Chinese)
  */
 const language = (/* unused pure expression or super */ null && (_language));
@@ -1107,13 +1162,13 @@ const isAndroid = !!(userAgent && userAgent.indexOf('Android') >= 0);
 
 const hasPerformanceNow = (platform_globals.performance && typeof platform_globals.performance.now === 'function');
 class StopWatch {
+    static create(highResolution = true) {
+        return new StopWatch(highResolution);
+    }
     constructor(highResolution) {
         this._highResolution = hasPerformanceNow && highResolution;
         this._startTime = this._now();
         this._stopTime = -1;
-    }
-    static create(highResolution = true) {
-        return new StopWatch(highResolution);
     }
     stop() {
         this._stopTime = this._now();
@@ -1134,6 +1189,7 @@ class StopWatch {
 
 
 
+
 // -----------------------------------------------------------------------------------------------------------------------
 // Uncomment the next line to print warnings whenever an emitter with listeners is disposed. That is a sign of code smell.
 // -----------------------------------------------------------------------------------------------------------------------
@@ -1149,10 +1205,10 @@ var Event;
     Event.None = () => lifecycle_Disposable.None;
     function _addLeakageTraceLogic(options) {
         if (_enableSnapshotPotentialLeakWarning) {
-            const { onListenerDidAdd: origListenerDidAdd } = options;
+            const { onDidAddListener: origListenerDidAdd } = options;
             const stack = Stacktrace.create();
             let count = 0;
-            options.onListenerDidAdd = () => {
+            options.onDidAddListener = () => {
                 if (++count === 2) {
                     console.warn('snapshotted emitter LIKELY used public and SHOULD HAVE BEEN created with DisposableStore. snapshotted here');
                     stack.print();
@@ -1162,7 +1218,29 @@ var Event;
         }
     }
     /**
+     * Given an event, returns another event which debounces calls and defers the listeners to a later task via a shared
+     * `setTimeout`. The event is converted into a signal (`Event<void>`) to avoid additional object creation as a
+     * result of merging events and to try prevent race conditions that could arise when using related deferred and
+     * non-deferred events.
+     *
+     * This is useful for deferring non-critical work (eg. general UI updates) to ensure it does not block critical work
+     * (eg. latency of keypress to text rendered).
+     *
+     * *NOTE* that this function returns an `Event` and it MUST be called with a `DisposableStore` whenever the returned
+     * event is accessible to "third parties", e.g the event is a public property. Otherwise a leaked listener on the
+     * returned event causes this utility to leak a listener on the original event.
+     *
+     * @param event The event source for the new event.
+     * @param disposable A disposable store to add the new EventEmitter to.
+     */
+    function defer(event, disposable) {
+        return debounce(event, () => void 0, 0, undefined, true, undefined, disposable);
+    }
+    Event.defer = defer;
+    /**
      * Given an event, returns another event which only fires once.
+     *
+     * @param event The event source for the new event.
      */
     function once(event) {
         return (listener, thisArgs = null, disposables) => {
@@ -1189,9 +1267,16 @@ var Event;
     }
     Event.once = once;
     /**
+     * Maps an event of one type into an event of another type using a mapping function, similar to how
+     * `Array.prototype.map` works.
+     *
      * *NOTE* that this function returns an `Event` and it MUST be called with a `DisposableStore` whenever the returned
      * event is accessible to "third parties", e.g the event is a public property. Otherwise a leaked listener on the
      * returned event causes this utility to leak a listener on the original event.
+     *
+     * @param event The event source for the new event.
+     * @param map The mapping function.
+     * @param disposable A disposable store to add the new EventEmitter to.
      */
     function map(event, map, disposable) {
         return snapshot((listener, thisArgs = null, disposables) => event(i => listener.call(thisArgs, map(i)), null, disposables), disposable);
@@ -1237,10 +1322,10 @@ var Event;
     function snapshot(event, disposable) {
         let listener;
         const options = {
-            onFirstListenerAdd() {
+            onWillAddFirstListener() {
                 listener = event(emitter.fire, emitter);
             },
-            onLastListenerRemove() {
+            onDidRemoveLastListener() {
                 listener === null || listener === void 0 ? void 0 : listener.dispose();
             }
         };
@@ -1251,14 +1336,15 @@ var Event;
         disposable === null || disposable === void 0 ? void 0 : disposable.add(emitter);
         return emitter.event;
     }
-    function debounce(event, merge, delay = 100, leading = false, leakWarningThreshold, disposable) {
+    function debounce(event, merge, delay = 100, leading = false, flushOnListenerRemove = false, leakWarningThreshold, disposable) {
         let subscription;
         let output = undefined;
         let handle = undefined;
         let numDebouncedCalls = 0;
+        let doFire;
         const options = {
             leakWarningThreshold,
-            onFirstListenerAdd() {
+            onWillAddFirstListener() {
                 subscription = event(cur => {
                     numDebouncedCalls++;
                     output = merge(output, cur);
@@ -1266,8 +1352,7 @@ var Event;
                         emitter.fire(output);
                         output = undefined;
                     }
-                    clearTimeout(handle);
-                    handle = setTimeout(() => {
+                    doFire = () => {
                         const _output = output;
                         output = undefined;
                         handle = undefined;
@@ -1275,10 +1360,26 @@ var Event;
                             emitter.fire(_output);
                         }
                         numDebouncedCalls = 0;
-                    }, delay);
+                    };
+                    if (typeof delay === 'number') {
+                        clearTimeout(handle);
+                        handle = setTimeout(doFire, delay);
+                    }
+                    else {
+                        if (handle === undefined) {
+                            handle = 0;
+                            queueMicrotask(doFire);
+                        }
+                    }
                 });
             },
-            onLastListenerRemove() {
+            onWillRemoveListener() {
+                if (flushOnListenerRemove && numDebouncedCalls > 0) {
+                    doFire === null || doFire === void 0 ? void 0 : doFire();
+                }
+            },
+            onDidRemoveLastListener() {
+                doFire = undefined;
                 subscription.dispose();
             }
         };
@@ -1290,6 +1391,23 @@ var Event;
         return emitter.event;
     }
     Event.debounce = debounce;
+    /**
+     * Debounces an event, firing after some delay (default=0) with an array of all event original objects.
+     *
+     * *NOTE* that this function returns an `Event` and it MUST be called with a `DisposableStore` whenever the returned
+     * event is accessible to "third parties", e.g the event is a public property. Otherwise a leaked listener on the
+     * returned event causes this utility to leak a listener on the original event.
+     */
+    function accumulate(event, delay = 0, disposable) {
+        return Event.debounce(event, (last, e) => {
+            if (!last) {
+                return [e];
+            }
+            last.push(e);
+            return last;
+        }, delay, undefined, true, undefined, disposable);
+    }
+    Event.accumulate = accumulate;
     /**
      * *NOTE* that this function returns an `Event` and it MUST be called with a `DisposableStore` whenever the returned
      * event is accessible to "third parties", e.g the event is a public property. Otherwise a leaked listener on the
@@ -1307,9 +1425,21 @@ var Event;
     }
     Event.latch = latch;
     /**
+     * Splits an event whose parameter is a union type into 2 separate events for each type in the union.
+     *
      * *NOTE* that this function returns an `Event` and it MUST be called with a `DisposableStore` whenever the returned
      * event is accessible to "third parties", e.g the event is a public property. Otherwise a leaked listener on the
      * returned event causes this utility to leak a listener on the original event.
+     *
+     * @example
+     * ```
+     * const event = new EventEmitter<number | undefined>().event;
+     * const [numberEvent, undefinedEvent] = Event.split(event, isUndefined);
+     * ```
+     *
+     * @param event The event source for the new event.
+     * @param isT A function that determines what event is of the first type.
+     * @param disposable A disposable store to add the new EventEmitter to.
      */
     function split(event, isT, disposable) {
         return [
@@ -1338,12 +1468,12 @@ var Event;
             buffer = null;
         };
         const emitter = new Emitter({
-            onFirstListenerAdd() {
+            onWillAddFirstListener() {
                 if (!listener) {
                     listener = event(e => emitter.fire(e));
                 }
             },
-            onFirstListenerDidAdd() {
+            onDidAddFirstListener() {
                 if (buffer) {
                     if (flushAfterTimeout) {
                         setTimeout(flush);
@@ -1353,7 +1483,7 @@ var Event;
                     }
                 }
             },
-            onLastListenerRemove() {
+            onDidRemoveLastListener() {
                 if (listener) {
                     listener.dispose();
                 }
@@ -1383,8 +1513,8 @@ var Event;
         latch() {
             return new ChainableEvent(latch(this.event, undefined, this.disposables));
         }
-        debounce(merge, delay = 100, leading = false, leakWarningThreshold) {
-            return new ChainableEvent(debounce(this.event, merge, delay, leading, leakWarningThreshold, this.disposables));
+        debounce(merge, delay = 100, leading = false, flushOnListenerRemove = false, leakWarningThreshold) {
+            return new ChainableEvent(debounce(this.event, merge, delay, leading, flushOnListenerRemove, leakWarningThreshold, this.disposables));
         }
         on(listener, thisArgs, disposables) {
             return this.event(listener, thisArgs, disposables);
@@ -1404,7 +1534,7 @@ var Event;
         const fn = (...args) => result.fire(map(...args));
         const onFirstListenerAdd = () => emitter.on(eventName, fn);
         const onLastListenerRemove = () => emitter.removeListener(eventName, fn);
-        const result = new Emitter({ onFirstListenerAdd, onLastListenerRemove });
+        const result = new Emitter({ onWillAddFirstListener: onFirstListenerAdd, onDidRemoveLastListener: onLastListenerRemove });
         return result.event;
     }
     Event.fromNodeEventEmitter = fromNodeEventEmitter;
@@ -1412,7 +1542,7 @@ var Event;
         const fn = (...args) => result.fire(map(...args));
         const onFirstListenerAdd = () => emitter.addEventListener(eventName, fn);
         const onLastListenerRemove = () => emitter.removeEventListener(eventName, fn);
-        const result = new Emitter({ onFirstListenerAdd, onLastListenerRemove });
+        const result = new Emitter({ onWillAddFirstListener: onFirstListenerAdd, onDidRemoveLastListener: onLastListenerRemove });
         return result.event;
     }
     Event.fromDOMEventEmitter = fromDOMEventEmitter;
@@ -1434,7 +1564,7 @@ var Event;
         }
         run(undefined);
         const disposable = event(e => run(e));
-        return toDisposable(() => {
+        return lifecycle_toDisposable(() => {
             disposable.dispose();
             store === null || store === void 0 ? void 0 : store.dispose();
         });
@@ -1446,10 +1576,10 @@ var Event;
             this._counter = 0;
             this._hasChanged = false;
             const options = {
-                onFirstListenerAdd: () => {
+                onWillAddFirstListener: () => {
                     obs.addObserver(this);
                 },
-                onLastListenerRemove: () => {
+                onDidRemoveLastListener: () => {
                     obs.removeObserver(this);
                 }
             };
@@ -1485,43 +1615,43 @@ var Event;
 })(Event || (Event = {}));
 class EventProfiling {
     constructor(name) {
-        this._listenerCount = 0;
-        this._invocationCount = 0;
-        this._elapsedOverall = 0;
-        this._name = `${name}_${EventProfiling._idPool++}`;
+        this.listenerCount = 0;
+        this.invocationCount = 0;
+        this.elapsedOverall = 0;
+        this.durations = [];
+        this.name = `${name}_${EventProfiling._idPool++}`;
+        EventProfiling.all.add(this);
     }
     start(listenerCount) {
         this._stopWatch = new StopWatch(true);
-        this._listenerCount = listenerCount;
+        this.listenerCount = listenerCount;
     }
     stop() {
         if (this._stopWatch) {
             const elapsed = this._stopWatch.elapsed();
-            this._elapsedOverall += elapsed;
-            this._invocationCount += 1;
-            console.info(`did FIRE ${this._name}: elapsed_ms: ${elapsed.toFixed(5)}, listener: ${this._listenerCount} (elapsed_overall: ${this._elapsedOverall.toFixed(2)}, invocations: ${this._invocationCount})`);
+            this.durations.push(elapsed);
+            this.elapsedOverall += elapsed;
+            this.invocationCount += 1;
             this._stopWatch = undefined;
         }
     }
 }
+EventProfiling.all = new Set();
 EventProfiling._idPool = 0;
+
 let _globalLeakWarningThreshold = -1;
 class LeakageMonitor {
-    constructor(customThreshold, name = Math.random().toString(18).slice(2, 5)) {
-        this.customThreshold = customThreshold;
+    constructor(threshold, name = Math.random().toString(18).slice(2, 5)) {
+        this.threshold = threshold;
         this.name = name;
         this._warnCountdown = 0;
     }
     dispose() {
-        if (this._stacks) {
-            this._stacks.clear();
-        }
+        var _a;
+        (_a = this._stacks) === null || _a === void 0 ? void 0 : _a.clear();
     }
     check(stack, listenerCount) {
-        let threshold = _globalLeakWarningThreshold;
-        if (typeof this.customThreshold === 'number') {
-            threshold = this.customThreshold;
-        }
+        const threshold = this.threshold;
         if (threshold <= 0 || listenerCount < threshold) {
             return undefined;
         }
@@ -1554,12 +1684,12 @@ class LeakageMonitor {
     }
 }
 class Stacktrace {
-    constructor(value) {
-        this.value = value;
-    }
     static create() {
         var _a;
         return new Stacktrace((_a = new Error().stack) !== null && _a !== void 0 ? _a : '');
+    }
+    constructor(value) {
+        this.value = value;
     }
     print() {
         console.warn(this.value.split('\n').slice(2).join('\n'));
@@ -1599,12 +1729,12 @@ class Listener {
  */
 class Emitter {
     constructor(options) {
-        var _a, _b;
+        var _a, _b, _c, _d, _e;
         this._disposed = false;
         this._options = options;
-        this._leakageMon = _globalLeakWarningThreshold > 0 ? new LeakageMonitor(this._options && this._options.leakWarningThreshold) : undefined;
-        this._perfMon = ((_a = this._options) === null || _a === void 0 ? void 0 : _a._profName) ? new EventProfiling(this._options._profName) : undefined;
-        this._deliveryQueue = (_b = this._options) === null || _b === void 0 ? void 0 : _b.deliveryQueue;
+        this._leakageMon = _globalLeakWarningThreshold > 0 || ((_a = this._options) === null || _a === void 0 ? void 0 : _a.leakWarningThreshold) ? new LeakageMonitor((_c = (_b = this._options) === null || _b === void 0 ? void 0 : _b.leakWarningThreshold) !== null && _c !== void 0 ? _c : _globalLeakWarningThreshold) : undefined;
+        this._perfMon = ((_d = this._options) === null || _d === void 0 ? void 0 : _d._profName) ? new EventProfiling(this._options._profName) : undefined;
+        this._deliveryQueue = (_e = this._options) === null || _e === void 0 ? void 0 : _e.deliveryQueue;
     }
     dispose() {
         var _a, _b, _c, _d;
@@ -1635,7 +1765,7 @@ class Emitter {
                 this._listeners.clear();
             }
             (_a = this._deliveryQueue) === null || _a === void 0 ? void 0 : _a.clear(this);
-            (_c = (_b = this._options) === null || _b === void 0 ? void 0 : _b.onLastListenerRemove) === null || _c === void 0 ? void 0 : _c.call(_b);
+            (_c = (_b = this._options) === null || _b === void 0 ? void 0 : _b.onDidRemoveLastListener) === null || _c === void 0 ? void 0 : _c.call(_b);
             (_d = this._leakageMon) === null || _d === void 0 ? void 0 : _d.dispose();
         }
     }
@@ -1650,13 +1780,17 @@ class Emitter {
                 if (!this._listeners) {
                     this._listeners = new linkedList_LinkedList();
                 }
+                if (this._leakageMon && this._listeners.size > this._leakageMon.threshold * 3) {
+                    console.warn(`[${this._leakageMon.name}] REFUSES to accept new listeners because it exceeded its threshold by far`);
+                    return lifecycle_Disposable.None;
+                }
                 const firstListener = this._listeners.isEmpty();
-                if (firstListener && ((_a = this._options) === null || _a === void 0 ? void 0 : _a.onFirstListenerAdd)) {
-                    this._options.onFirstListenerAdd(this);
+                if (firstListener && ((_a = this._options) === null || _a === void 0 ? void 0 : _a.onWillAddFirstListener)) {
+                    this._options.onWillAddFirstListener(this);
                 }
                 let removeMonitor;
                 let stack;
-                if (this._leakageMon && this._listeners.size >= 30) {
+                if (this._leakageMon && this._listeners.size >= Math.ceil(this._leakageMon.threshold * 0.2)) {
                     // check and record this emitter for potential leakage
                     stack = Stacktrace.create();
                     removeMonitor = this._leakageMon.check(stack, this._listeners.size + 1);
@@ -1666,20 +1800,22 @@ class Emitter {
                 }
                 const listener = new Listener(callback, thisArgs, stack);
                 const removeListener = this._listeners.push(listener);
-                if (firstListener && ((_b = this._options) === null || _b === void 0 ? void 0 : _b.onFirstListenerDidAdd)) {
-                    this._options.onFirstListenerDidAdd(this);
+                if (firstListener && ((_b = this._options) === null || _b === void 0 ? void 0 : _b.onDidAddFirstListener)) {
+                    this._options.onDidAddFirstListener(this);
                 }
-                if ((_c = this._options) === null || _c === void 0 ? void 0 : _c.onListenerDidAdd) {
-                    this._options.onListenerDidAdd(this, callback, thisArgs);
+                if ((_c = this._options) === null || _c === void 0 ? void 0 : _c.onDidAddListener) {
+                    this._options.onDidAddListener(this, callback, thisArgs);
                 }
                 const result = listener.subscription.set(() => {
+                    var _a, _b;
                     removeMonitor === null || removeMonitor === void 0 ? void 0 : removeMonitor();
                     if (!this._disposed) {
+                        (_b = (_a = this._options) === null || _a === void 0 ? void 0 : _a.onWillRemoveListener) === null || _b === void 0 ? void 0 : _b.call(_a, this);
                         removeListener();
-                        if (this._options && this._options.onLastListenerRemove) {
+                        if (this._options && this._options.onDidRemoveLastListener) {
                             const hasListeners = (this._listeners && !this._listeners.isEmpty());
                             if (!hasListeners) {
-                                this._options.onLastListenerRemove(this);
+                                this._options.onDidRemoveLastListener(this);
                             }
                         }
                     }
@@ -1716,6 +1852,12 @@ class Emitter {
             this._deliveryQueue.deliver();
             (_b = this._perfMon) === null || _b === void 0 ? void 0 : _b.stop();
         }
+    }
+    hasListeners() {
+        if (!this._listeners) {
+            return false;
+        }
+        return !this._listeners.isEmpty();
     }
 }
 class EventDeliveryQueue {
@@ -1781,9 +1923,11 @@ class PauseableEmitter extends (/* unused pure expression or super */ null && (E
             if (this._mergeFn) {
                 // use the merge function to create a single composite
                 // event. make a copy in case firing pauses this emitter
-                const events = Array.from(this._eventQueue);
-                this._eventQueue.clear();
-                super.fire(this._mergeFn(events));
+                if (this._eventQueue.size > 0) {
+                    const events = Array.from(this._eventQueue);
+                    this._eventQueue.clear();
+                    super.fire(this._mergeFn(events));
+                }
             }
             else {
                 // no merging, fire each event individually and test
@@ -1820,6 +1964,82 @@ class DebounceEmitter extends (/* unused pure expression or super */ null && (Pa
             }, this._delay);
         }
         super.fire(event);
+    }
+}
+/**
+ * An emitter which queue all events and then process them at the
+ * end of the event loop.
+ */
+class MicrotaskEmitter extends (/* unused pure expression or super */ null && (Emitter)) {
+    constructor(options) {
+        super(options);
+        this._queuedEvents = [];
+        this._mergeFn = options === null || options === void 0 ? void 0 : options.merge;
+    }
+    fire(event) {
+        if (!this.hasListeners()) {
+            return;
+        }
+        this._queuedEvents.push(event);
+        if (this._queuedEvents.length === 1) {
+            queueMicrotask(() => {
+                if (this._mergeFn) {
+                    super.fire(this._mergeFn(this._queuedEvents));
+                }
+                else {
+                    this._queuedEvents.forEach(e => super.fire(e));
+                }
+                this._queuedEvents = [];
+            });
+        }
+    }
+}
+class EventMultiplexer {
+    constructor() {
+        this.hasListeners = false;
+        this.events = [];
+        this.emitter = new Emitter({
+            onWillAddFirstListener: () => this.onFirstListenerAdd(),
+            onDidRemoveLastListener: () => this.onLastListenerRemove()
+        });
+    }
+    get event() {
+        return this.emitter.event;
+    }
+    add(event) {
+        const e = { event: event, listener: null };
+        this.events.push(e);
+        if (this.hasListeners) {
+            this.hook(e);
+        }
+        const dispose = () => {
+            if (this.hasListeners) {
+                this.unhook(e);
+            }
+            const idx = this.events.indexOf(e);
+            this.events.splice(idx, 1);
+        };
+        return toDisposable(onceFn(dispose));
+    }
+    onFirstListenerAdd() {
+        this.hasListeners = true;
+        this.events.forEach(e => this.hook(e));
+    }
+    onLastListenerRemove() {
+        this.hasListeners = false;
+        this.events.forEach(e => this.unhook(e));
+    }
+    hook(e) {
+        e.listener = e.event(r => this.emitter.fire(r));
+    }
+    unhook(e) {
+        if (e.listener) {
+            e.listener.dispose();
+        }
+        e.listener = null;
+    }
+    dispose() {
+        this.emitter.dispose();
     }
 }
 /**
@@ -1880,11 +2100,11 @@ class Relay {
         this.inputEvent = Event.None;
         this.inputEventListener = Disposable.None;
         this.emitter = new Emitter({
-            onFirstListenerDidAdd: () => {
+            onDidAddFirstListener: () => {
                 this.listening = true;
                 this.inputEventListener = this.inputEvent(this.emitter.fire, this.emitter);
             },
-            onLastListenerRemove: () => {
+            onDidRemoveLastListener: () => {
                 this.listening = false;
                 this.inputEventListener.dispose();
             }
@@ -1904,129 +2124,155 @@ class Relay {
     }
 }
 
-;// CONCATENATED MODULE: ../node_modules/monaco-editor/esm/vs/base/common/types.js
-/**
- * @returns whether the provided parameter is a JavaScript Array or not.
- */
-function types_isArray(array) {
-    return Array.isArray(array);
-}
-/**
- * @returns whether the provided parameter is a JavaScript String or not.
- */
-function isString(str) {
-    return (typeof str === 'string');
-}
-/**
- *
- * @returns whether the provided parameter is of type `object` but **not**
- *	`null`, an `array`, a `regexp`, nor a `date`.
- */
-function types_isObject(obj) {
-    // The method can't do a type cast since there are type (like strings) which
-    // are subclasses of any put not positvely matched by the function. Hence type
-    // narrowing results in wrong results.
-    return typeof obj === 'object'
-        && obj !== null
-        && !Array.isArray(obj)
-        && !(obj instanceof RegExp)
-        && !(obj instanceof Date);
-}
-/**
- *
- * @returns whether the provided parameter is of type `Buffer` or Uint8Array dervived type
- */
-function types_isTypedArray(obj) {
-    const TypedArray = Object.getPrototypeOf(Uint8Array);
-    return typeof obj === 'object'
-        && obj instanceof TypedArray;
-}
-/**
- * In **contrast** to just checking `typeof` this will return `false` for `NaN`.
- * @returns whether the provided parameter is a JavaScript Number or not.
- */
-function isNumber(obj) {
-    return (typeof obj === 'number' && !isNaN(obj));
-}
-/**
- * @returns whether the provided parameter is an Iterable, casting to the given generic
- */
-function isIterable(obj) {
-    return !!obj && typeof obj[Symbol.iterator] === 'function';
-}
-/**
- * @returns whether the provided parameter is a JavaScript Boolean or not.
- */
-function isBoolean(obj) {
-    return (obj === true || obj === false);
-}
-/**
- * @returns whether the provided parameter is undefined.
- */
-function isUndefined(obj) {
-    return (typeof obj === 'undefined');
-}
-/**
- * @returns whether the provided parameter is defined.
- */
-function isDefined(arg) {
-    return !types_isUndefinedOrNull(arg);
-}
-/**
- * @returns whether the provided parameter is undefined or null.
- */
-function types_isUndefinedOrNull(obj) {
-    return (isUndefined(obj) || obj === null);
-}
-function assertType(condition, type) {
-    if (!condition) {
-        throw new Error(type ? `Unexpected type, expected '${type}'` : 'Unexpected type');
+;// CONCATENATED MODULE: ../node_modules/monaco-editor/esm/vs/base/common/objects.js
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+function deepClone(obj) {
+    if (!obj || typeof obj !== 'object') {
+        return obj;
     }
-}
-/**
- * Asserts that the argument passed in is neither undefined nor null.
- */
-function assertIsDefined(arg) {
-    if (types_isUndefinedOrNull(arg)) {
-        throw new Error('Assertion Failed: argument is undefined or null');
+    if (obj instanceof RegExp) {
+        return obj;
     }
-    return arg;
+    const result = Array.isArray(obj) ? [] : {};
+    Object.entries(obj).forEach(([key, value]) => {
+        result[key] = value && typeof value === 'object' ? deepClone(value) : value;
+    });
+    return result;
 }
-/**
- * @returns whether the provided parameter is a JavaScript Function or not.
- */
-function isFunction(obj) {
-    return (typeof obj === 'function');
-}
-function validateConstraints(args, constraints) {
-    const len = Math.min(args.length, constraints.length);
-    for (let i = 0; i < len; i++) {
-        validateConstraint(args[i], constraints[i]);
+function deepFreeze(obj) {
+    if (!obj || typeof obj !== 'object') {
+        return obj;
     }
-}
-function validateConstraint(arg, constraint) {
-    if (isString(constraint)) {
-        if (typeof arg !== constraint) {
-            throw new Error(`argument does not match constraint: typeof ${constraint}`);
-        }
-    }
-    else if (isFunction(constraint)) {
-        try {
-            if (arg instanceof constraint) {
-                return;
+    const stack = [obj];
+    while (stack.length > 0) {
+        const obj = stack.shift();
+        Object.freeze(obj);
+        for (const key in obj) {
+            if (_hasOwnProperty.call(obj, key)) {
+                const prop = obj[key];
+                if (typeof prop === 'object' && !Object.isFrozen(prop) && !isTypedArray(prop)) {
+                    stack.push(prop);
+                }
             }
         }
-        catch (_a) {
-            // ignore
-        }
-        if (!types_isUndefinedOrNull(arg) && arg.constructor === constraint) {
-            return;
-        }
-        if (constraint.length === 1 && constraint.call(undefined, arg) === true) {
-            return;
-        }
-        throw new Error(`argument does not match one of these constraints: arg instanceof constraint, arg.constructor === constraint, nor constraint(arg) === true`);
     }
+    return obj;
+}
+const _hasOwnProperty = Object.prototype.hasOwnProperty;
+function cloneAndChange(obj, changer) {
+    return _cloneAndChange(obj, changer, new Set());
+}
+function _cloneAndChange(obj, changer, seen) {
+    if (isUndefinedOrNull(obj)) {
+        return obj;
+    }
+    const changed = changer(obj);
+    if (typeof changed !== 'undefined') {
+        return changed;
+    }
+    if (Array.isArray(obj)) {
+        const r1 = [];
+        for (const e of obj) {
+            r1.push(_cloneAndChange(e, changer, seen));
+        }
+        return r1;
+    }
+    if (isObject(obj)) {
+        if (seen.has(obj)) {
+            throw new Error('Cannot clone recursive data-structure');
+        }
+        seen.add(obj);
+        const r2 = {};
+        for (const i2 in obj) {
+            if (_hasOwnProperty.call(obj, i2)) {
+                r2[i2] = _cloneAndChange(obj[i2], changer, seen);
+            }
+        }
+        seen.delete(obj);
+        return r2;
+    }
+    return obj;
+}
+/**
+ * Copies all properties of source into destination. The optional parameter "overwrite" allows to control
+ * if existing properties on the destination should be overwritten or not. Defaults to true (overwrite).
+ */
+function mixin(destination, source, overwrite = true) {
+    if (!isObject(destination)) {
+        return source;
+    }
+    if (isObject(source)) {
+        Object.keys(source).forEach(key => {
+            if (key in destination) {
+                if (overwrite) {
+                    if (isObject(destination[key]) && isObject(source[key])) {
+                        mixin(destination[key], source[key], overwrite);
+                    }
+                    else {
+                        destination[key] = source[key];
+                    }
+                }
+            }
+            else {
+                destination[key] = source[key];
+            }
+        });
+    }
+    return destination;
+}
+function objects_equals(one, other) {
+    if (one === other) {
+        return true;
+    }
+    if (one === null || one === undefined || other === null || other === undefined) {
+        return false;
+    }
+    if (typeof one !== typeof other) {
+        return false;
+    }
+    if (typeof one !== 'object') {
+        return false;
+    }
+    if ((Array.isArray(one)) !== (Array.isArray(other))) {
+        return false;
+    }
+    let i;
+    let key;
+    if (Array.isArray(one)) {
+        if (one.length !== other.length) {
+            return false;
+        }
+        for (i = 0; i < one.length; i++) {
+            if (!objects_equals(one[i], other[i])) {
+                return false;
+            }
+        }
+    }
+    else {
+        const oneKeys = [];
+        for (key in one) {
+            oneKeys.push(key);
+        }
+        oneKeys.sort();
+        const otherKeys = [];
+        for (key in other) {
+            otherKeys.push(key);
+        }
+        otherKeys.sort();
+        if (!objects_equals(oneKeys, otherKeys)) {
+            return false;
+        }
+        for (i = 0; i < oneKeys.length; i++) {
+            if (!objects_equals(one[oneKeys[i]], other[oneKeys[i]])) {
+                return false;
+            }
+        }
+    }
+    return true;
 }
 function getAllPropertyNames(obj) {
     let res = [];
@@ -2037,7 +2283,7 @@ function getAllPropertyNames(obj) {
     }
     return res;
 }
-function getAllMethodNames(obj) {
+function objects_getAllMethodNames(obj) {
     const methods = [];
     for (const prop of getAllPropertyNames(obj)) {
         if (typeof obj[prop] === 'function') {
@@ -2058,15 +2304,6 @@ function createProxyObject(methodNames, invoke) {
         result[methodName] = createProxyMethod(methodName);
     }
     return result;
-}
-/**
- * Converts null to undefined, passes all other values through.
- */
-function withNullAsUndefined(x) {
-    return x === null ? undefined : x;
-}
-function assertNever(value, message = 'Unreachable') {
-    throw new Error(message);
 }
 
 ;// CONCATENATED MODULE: ../node_modules/monaco-editor/esm/vs/base/common/cache.js
@@ -2094,12 +2331,12 @@ class LRUCachedFunction {
  * Uses an unbounded cache (referential equality) to memoize the results of the given function.
 */
 class CachedFunction {
+    get cachedValues() {
+        return this._map;
+    }
     constructor(fn) {
         this.fn = fn;
         this._map = new Map();
-    }
-    get cachedValues() {
-        return this._map;
     }
     get(arg) {
         if (this._map.has(arg)) {
@@ -2122,16 +2359,12 @@ class Lazy {
         this._didRun = false;
     }
     /**
-     * True if the lazy value has been resolved.
-     */
-    hasValue() { return this._didRun; }
-    /**
      * Get the wrapped value.
      *
      * This will force evaluation of the lazy value if it has not been resolved yet. Lazy values are only
      * resolved once. `getValue` will re-throw exceptions that are hit while resolving the value
      */
-    getValue() {
+    get value() {
         if (!this._didRun) {
             try {
                 this._value = this.executor();
@@ -2519,13 +2752,13 @@ function getPrevCodePoint(str, offset) {
     return charCode;
 }
 class CodePointIterator {
+    get offset() {
+        return this._offset;
+    }
     constructor(str, offset = 0) {
         this._str = str;
         this._len = str.length;
         this._offset = offset;
-    }
-    get offset() {
-        return this._offset;
     }
     setOffset(offset) {
         this._offset = offset;
@@ -2545,11 +2778,11 @@ class CodePointIterator {
     }
 }
 class GraphemeIterator {
-    constructor(str, offset = 0) {
-        this._iterator = new CodePointIterator(str, offset);
-    }
     get offset() {
         return this._iterator.offset;
+    }
+    constructor(str, offset = 0) {
+        this._iterator = new CodePointIterator(str, offset);
     }
     nextGraphemeLength() {
         const graphemeBreakTree = GraphemeBreakTree.getInstance();
@@ -2605,14 +2838,18 @@ function getCharContainingOffset(str, offset) {
     const startOffset = endOffset - prevCharLength(str, endOffset);
     return [startOffset, endOffset];
 }
-/**
- * Generated using https://github.com/alexdima/unicode-utils/blob/main/rtl-test.js
- */
-const CONTAINS_RTL = /(?:[\u05BE\u05C0\u05C3\u05C6\u05D0-\u05F4\u0608\u060B\u060D\u061B-\u064A\u066D-\u066F\u0671-\u06D5\u06E5\u06E6\u06EE\u06EF\u06FA-\u0710\u0712-\u072F\u074D-\u07A5\u07B1-\u07EA\u07F4\u07F5\u07FA\u07FE-\u0815\u081A\u0824\u0828\u0830-\u0858\u085E-\u088E\u08A0-\u08C9\u200F\uFB1D\uFB1F-\uFB28\uFB2A-\uFD3D\uFD50-\uFDC7\uFDF0-\uFDFC\uFE70-\uFEFC]|\uD802[\uDC00-\uDD1B\uDD20-\uDE00\uDE10-\uDE35\uDE40-\uDEE4\uDEEB-\uDF35\uDF40-\uDFFF]|\uD803[\uDC00-\uDD23\uDE80-\uDEA9\uDEAD-\uDF45\uDF51-\uDF81\uDF86-\uDFF6]|\uD83A[\uDC00-\uDCCF\uDD00-\uDD43\uDD4B-\uDFFF]|\uD83B[\uDC00-\uDEBB])/;
+let CONTAINS_RTL = (/* unused pure expression or super */ null && (undefined));
+function makeContainsRtl() {
+    // Generated using https://github.com/alexdima/unicode-utils/blob/main/rtl-test.js
+    return /(?:[\u05BE\u05C0\u05C3\u05C6\u05D0-\u05F4\u0608\u060B\u060D\u061B-\u064A\u066D-\u066F\u0671-\u06D5\u06E5\u06E6\u06EE\u06EF\u06FA-\u0710\u0712-\u072F\u074D-\u07A5\u07B1-\u07EA\u07F4\u07F5\u07FA\u07FE-\u0815\u081A\u0824\u0828\u0830-\u0858\u085E-\u088E\u08A0-\u08C9\u200F\uFB1D\uFB1F-\uFB28\uFB2A-\uFD3D\uFD50-\uFDC7\uFDF0-\uFDFC\uFE70-\uFEFC]|\uD802[\uDC00-\uDD1B\uDD20-\uDE00\uDE10-\uDE35\uDE40-\uDEE4\uDEEB-\uDF35\uDF40-\uDFFF]|\uD803[\uDC00-\uDD23\uDE80-\uDEA9\uDEAD-\uDF45\uDF51-\uDF81\uDF86-\uDFF6]|\uD83A[\uDC00-\uDCCF\uDD00-\uDD43\uDD4B-\uDFFF]|\uD83B[\uDC00-\uDEBB])/;
+}
 /**
  * Returns true if `str` contains any Unicode character that is classified as "R" or "AL".
  */
 function containsRTL(str) {
+    if (!CONTAINS_RTL) {
+        CONTAINS_RTL = makeContainsRtl();
+    }
     return CONTAINS_RTL.test(str);
 }
 const IS_BASIC_ASCII = /^[\t\n\r\x20-\x7E]*$/;
@@ -2780,14 +3017,14 @@ function breakBetweenGraphemeBreakType(breakTypeA, breakTypeB) {
     return true;
 }
 class GraphemeBreakTree {
-    constructor() {
-        this._data = getGraphemeBreakRawData();
-    }
     static getInstance() {
         if (!GraphemeBreakTree._INSTANCE) {
             GraphemeBreakTree._INSTANCE = new GraphemeBreakTree();
         }
         return GraphemeBreakTree._INSTANCE;
+    }
+    constructor() {
+        this._data = getGraphemeBreakRawData();
     }
     getGraphemeBreakType(codePoint) {
         // !!! Let's make 7bit ASCII a bit faster: 0..31
@@ -2883,14 +3120,14 @@ function isEmojiModifier(codePoint) {
 }
 const noBreakWhitespace = '\xa0';
 class AmbiguousCharacters {
-    constructor(confusableDictionary) {
-        this.confusableDictionary = confusableDictionary;
-    }
     static getInstance(locales) {
         return AmbiguousCharacters.cache.get(Array.from(locales));
     }
     static getLocales() {
-        return AmbiguousCharacters._locales.getValue();
+        return AmbiguousCharacters._locales.value;
+    }
+    constructor(confusableDictionary) {
+        this.confusableDictionary = confusableDictionary;
     }
     isAmbiguous(codePoint) {
         return this.confusableDictionary.has(codePoint);
@@ -2939,7 +3176,7 @@ AmbiguousCharacters.cache = new LRUCachedFunction((locales) => {
         }
         return result;
     }
-    const data = strings_a.ambiguousCharacterData.getValue();
+    const data = strings_a.ambiguousCharacterData.value;
     let filteredLocales = locales.filter((l) => !l.startsWith('_') && l in data);
     if (filteredLocales.length === 0) {
         filteredLocales = ['_default'];
@@ -2953,7 +3190,8 @@ AmbiguousCharacters.cache = new LRUCachedFunction((locales) => {
     const map = mergeMaps(commonMap, languageSpecificMap);
     return new AmbiguousCharacters(map);
 });
-AmbiguousCharacters._locales = new Lazy(() => Object.keys(AmbiguousCharacters.ambiguousCharacterData.getValue()).filter((k) => !k.startsWith('_')));
+AmbiguousCharacters._locales = new Lazy(() => Object.keys(AmbiguousCharacters.ambiguousCharacterData.value).filter((k) => !k.startsWith('_')));
+
 class InvisibleCharacters {
     static getRawData() {
         // Generated using https://github.com/hediet/vscode-unicode-data
@@ -2973,6 +3211,7 @@ class InvisibleCharacters {
     }
 }
 InvisibleCharacters._data = undefined;
+
 
 ;// CONCATENATED MODULE: ../node_modules/monaco-editor/esm/vs/base/common/worker/simpleWorker.js
 /*---------------------------------------------------------------------------------------------
@@ -3065,12 +3304,12 @@ class SimpleWorkerProtocol {
     listen(eventName, arg) {
         let req = null;
         const emitter = new Emitter({
-            onFirstListenerAdd: () => {
+            onWillAddFirstListener: () => {
                 req = String(++this._lastSentReq);
                 this._pendingEmitters.set(req, emitter);
                 this._send(new SubscribeEventMessage(this._workerId, req, eventName, arg));
             },
-            onLastListenerRemove: () => {
+            onDidRemoveLastListener: () => {
                 this._pendingEmitters.delete(req);
                 this._send(new UnsubscribeEventMessage(this._workerId, req));
                 req = null;
@@ -3231,7 +3470,7 @@ class SimpleWorkerClient extends (/* unused pure expression or super */ null && 
             // Get the configuration from requirejs
             loaderConfiguration = globals.requirejs.s.contexts._.config;
         }
-        const hostMethods = types.getAllMethodNames(host);
+        const hostMethods = getAllMethodNames(host);
         // Send initialize message
         this._onModuleLoaded = this._protocol.sendMessage(INITIALIZE, [
             this._worker.getId(),
@@ -3369,7 +3608,7 @@ class SimpleWorkerServer {
         if (this._requestHandlerFactory) {
             // static request handler
             this._requestHandler = this._requestHandlerFactory(hostProxy);
-            return Promise.resolve(getAllMethodNames(this._requestHandler));
+            return Promise.resolve(objects_getAllMethodNames(this._requestHandler));
         }
         if (loaderConfig) {
             // Remove 'baseUrl', handling it is beyond scope for now
@@ -3403,7 +3642,7 @@ class SimpleWorkerServer {
                     reject(new Error(`No RequestHandler!`));
                     return;
                 }
-                resolve(getAllMethodNames(this._requestHandler));
+                resolve(objects_getAllMethodNames(this._requestHandler));
             }, reject);
         });
     }
@@ -3708,6 +3947,7 @@ class StringSHA1 {
     }
 }
 StringSHA1._bigBlock32 = new DataView(new ArrayBuffer(320)); // 80 * 4 = 320
+
 
 ;// CONCATENATED MODULE: ../node_modules/monaco-editor/esm/vs/base/common/diff/diff.js
 /*---------------------------------------------------------------------------------------------
@@ -4653,7 +4893,7 @@ else {
  *
  * Note: in web, this property is hardcoded to be `/`.
  */
-const cwd = safeProcess.cwd;
+const process_cwd = safeProcess.cwd;
 /**
  * Provides safe access to the `env` property in node.js, sandboxed or web
  * environments.
@@ -4673,7 +4913,7 @@ const platform = safeProcess.platform;
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 // NOTE: VSCode's copy of nodejs path library to be usable in common (non-node) namespace
-// Copied from: https://github.com/nodejs/node/blob/v14.16.0/lib/path.js
+// Copied from: https://github.com/nodejs/node/blob/v16.14.2/lib/path.js
 /**
  * Copyright Joyent, Inc. and other Node contributors.
  *
@@ -4724,11 +4964,17 @@ class ErrorInvalidArgType extends Error {
         this.code = 'ERR_INVALID_ARG_TYPE';
     }
 }
+function validateObject(pathObject, name) {
+    if (pathObject === null || typeof pathObject !== 'object') {
+        throw new ErrorInvalidArgType(name, 'Object', pathObject);
+    }
+}
 function validateString(value, name) {
     if (typeof value !== 'string') {
         throw new ErrorInvalidArgType(name, 'string', value);
     }
 }
+const platformIsWin32 = (platform === 'win32');
 function isPathSeparator(code) {
     return code === CHAR_FORWARD_SLASH || code === CHAR_BACKWARD_SLASH;
 }
@@ -4813,9 +5059,7 @@ function normalizeString(path, allowAboveRoot, separator, isPathSeparator) {
     return res;
 }
 function path_format(sep, pathObject) {
-    if (pathObject === null || typeof pathObject !== 'object') {
-        throw new ErrorInvalidArgType('pathObject', 'Object', pathObject);
-    }
+    validateObject(pathObject, 'pathObject');
     const dir = pathObject.dir || pathObject.root;
     const base = pathObject.base ||
         `${pathObject.name || ''}${pathObject.ext || ''}`;
@@ -4841,7 +5085,7 @@ const win32 = {
                 }
             }
             else if (resolvedDevice.length === 0) {
-                path = cwd();
+                path = process_cwd();
             }
             else {
                 // Windows has the concept of drive-specific current working
@@ -4849,7 +5093,7 @@ const win32 = {
                 // absolute path, get cwd for that drive, or the process cwd if
                 // the drive cwd is not available. We're sure the device is not
                 // a UNC path at this points, because UNC paths are always absolute.
-                path = env[`=${resolvedDevice}`] || cwd();
+                path = env[`=${resolvedDevice}`] || process_cwd();
                 // Verify that a cwd was found and that it actually points
                 // to our drive. If not, default to the drive's root.
                 if (path === undefined ||
@@ -5238,11 +5482,8 @@ const win32 = {
     },
     toNamespacedPath(path) {
         // Note: this will *probably* throw somewhere.
-        if (typeof path !== 'string') {
+        if (typeof path !== 'string' || path.length === 0) {
             return path;
-        }
-        if (path.length === 0) {
-            return '';
         }
         const resolvedPath = win32.resolve(path);
         if (resolvedPath.length <= 2) {
@@ -5649,13 +5890,26 @@ const win32 = {
     win32: null,
     posix: null
 };
+const posixCwd = (() => {
+    if (platformIsWin32) {
+        // Converts Windows' backslash path separators to POSIX forward slashes
+        // and truncates any drive indicator
+        const regexp = /\\/g;
+        return () => {
+            const cwd = process_cwd().replace(regexp, '/');
+            return cwd.slice(cwd.indexOf('/'));
+        };
+    }
+    // We're already on POSIX, no need for any transformations
+    return () => process_cwd();
+})();
 const posix = {
     // path.resolve([from ...], to)
     resolve(...pathSegments) {
         let resolvedPath = '';
         let resolvedAbsolute = false;
         for (let i = pathSegments.length - 1; i >= -1 && !resolvedAbsolute; i--) {
-            const path = i >= 0 ? pathSegments[i] : cwd();
+            const path = i >= 0 ? pathSegments[i] : posixCwd();
             validateString(path, 'path');
             // Skip empty entries
             if (path.length === 0) {
@@ -6040,13 +6294,13 @@ const posix = {
 };
 posix.win32 = win32.win32 = win32;
 posix.posix = win32.posix = posix;
-const normalize = (platform === 'win32' ? win32.normalize : posix.normalize);
-const resolve = (platform === 'win32' ? win32.resolve : posix.resolve);
-const relative = (platform === 'win32' ? win32.relative : posix.relative);
-const dirname = (platform === 'win32' ? win32.dirname : posix.dirname);
-const basename = (platform === 'win32' ? win32.basename : posix.basename);
-const extname = (platform === 'win32' ? win32.extname : posix.extname);
-const sep = (platform === 'win32' ? win32.sep : posix.sep);
+const normalize = (platformIsWin32 ? win32.normalize : posix.normalize);
+const resolve = (platformIsWin32 ? win32.resolve : posix.resolve);
+const relative = (platformIsWin32 ? win32.relative : posix.relative);
+const dirname = (platformIsWin32 ? win32.dirname : posix.dirname);
+const basename = (platformIsWin32 ? win32.basename : posix.basename);
+const extname = (platformIsWin32 ? win32.extname : posix.extname);
+const sep = (platformIsWin32 ? win32.sep : posix.sep);
 
 ;// CONCATENATED MODULE: ../node_modules/monaco-editor/esm/vs/base/common/uri.js
 /*---------------------------------------------------------------------------------------------
@@ -6136,6 +6390,22 @@ const _regexp = /^(([^:/?#]+?):)?(\/\/([^/?#]*))?([^?#]*)(\?([^#]*))?(#(.*))?/;
  * ```
  */
 class uri_URI {
+    static isUri(thing) {
+        if (thing instanceof uri_URI) {
+            return true;
+        }
+        if (!thing) {
+            return false;
+        }
+        return typeof thing.authority === 'string'
+            && typeof thing.fragment === 'string'
+            && typeof thing.path === 'string'
+            && typeof thing.query === 'string'
+            && typeof thing.scheme === 'string'
+            && typeof thing.fsPath === 'string'
+            && typeof thing.with === 'function'
+            && typeof thing.toString === 'function';
+    }
     /**
      * @internal
      */
@@ -6158,22 +6428,6 @@ class uri_URI {
             this.fragment = fragment || _empty;
             _validateUri(this, _strict);
         }
-    }
-    static isUri(thing) {
-        if (thing instanceof uri_URI) {
-            return true;
-        }
-        if (!thing) {
-            return false;
-        }
-        return typeof thing.authority === 'string'
-            && typeof thing.fragment === 'string'
-            && typeof thing.path === 'string'
-            && typeof thing.query === 'string'
-            && typeof thing.scheme === 'string'
-            && typeof thing.fsPath === 'string'
-            && typeof thing.with === 'function'
-            && typeof thing.toString === 'function';
     }
     // ---- filesystem path -----------------------
     /**
@@ -6446,7 +6700,7 @@ const encodeTable = {
     [61 /* CharCode.Equals */]: '%3D',
     [32 /* CharCode.Space */]: '%20',
 };
-function encodeURIComponentFast(uriComponent, allowSlash) {
+function encodeURIComponentFast(uriComponent, isPath, isAuthority) {
     let res = undefined;
     let nativeEncodePos = -1;
     for (let pos = 0; pos < uriComponent.length; pos++) {
@@ -6459,7 +6713,10 @@ function encodeURIComponentFast(uriComponent, allowSlash) {
             || code === 46 /* CharCode.Period */
             || code === 95 /* CharCode.Underline */
             || code === 126 /* CharCode.Tilde */
-            || (allowSlash && code === 47 /* CharCode.Slash */)) {
+            || (isPath && code === 47 /* CharCode.Slash */)
+            || (isAuthority && code === 91 /* CharCode.OpenSquareBracket */)
+            || (isAuthority && code === 93 /* CharCode.CloseSquareBracket */)
+            || (isAuthority && code === 58 /* CharCode.Colon */)) {
             // check if we are delaying native encode
             if (nativeEncodePos !== -1) {
                 res += encodeURIComponent(uriComponent.substring(nativeEncodePos, pos));
@@ -6567,26 +6824,26 @@ function _asFormatted(uri, skipEncoding) {
             // <user>@<auth>
             const userinfo = authority.substr(0, idx);
             authority = authority.substr(idx + 1);
-            idx = userinfo.indexOf(':');
+            idx = userinfo.lastIndexOf(':');
             if (idx === -1) {
-                res += encoder(userinfo, false);
+                res += encoder(userinfo, false, false);
             }
             else {
                 // <user>:<pass>@<auth>
-                res += encoder(userinfo.substr(0, idx), false);
+                res += encoder(userinfo.substr(0, idx), false, false);
                 res += ':';
-                res += encoder(userinfo.substr(idx + 1), false);
+                res += encoder(userinfo.substr(idx + 1), false, true);
             }
             res += '@';
         }
         authority = authority.toLowerCase();
-        idx = authority.indexOf(':');
+        idx = authority.lastIndexOf(':');
         if (idx === -1) {
-            res += encoder(authority, false);
+            res += encoder(authority, false, true);
         }
         else {
             // <auth>:<port>
-            res += encoder(authority.substr(0, idx), false);
+            res += encoder(authority.substr(0, idx), false, true);
             res += authority.substr(idx);
         }
     }
@@ -6605,15 +6862,15 @@ function _asFormatted(uri, skipEncoding) {
             }
         }
         // encode the rest of the path
-        res += encoder(path, true);
+        res += encoder(path, true, false);
     }
     if (query) {
         res += '?';
-        res += encoder(query, false);
+        res += encoder(query, false, false);
     }
     if (fragment) {
         res += '#';
-        res += !skipEncoding ? encodeURIComponentFast(fragment, false) : fragment;
+        res += !skipEncoding ? encodeURIComponentFast(fragment, false, false) : fragment;
     }
     return res;
 }
@@ -6989,6 +7246,9 @@ class range_Range {
      * Test if range `a` equals `b`.
      */
     static equalsRange(a, b) {
+        if (!a && !b) {
+            return true;
+        }
         return (!!a &&
             !!b &&
             a.startLineNumber === b.startLineNumber &&
@@ -7049,6 +7309,24 @@ class range_Range {
      */
     static collapseToStart(range) {
         return new range_Range(range.startLineNumber, range.startColumn, range.startLineNumber, range.startColumn);
+    }
+    /**
+     * Create a new empty range using this range's end position.
+     */
+    collapseToEnd() {
+        return range_Range.collapseToEnd(this);
+    }
+    /**
+     * Create a new empty range using this range's end position.
+     */
+    static collapseToEnd(range) {
+        return new range_Range(range.endLineNumber, range.endColumn, range.endLineNumber, range.endColumn);
+    }
+    /**
+     * Moves the range by the given amount of lines.
+     */
+    delta(lineCount) {
+        return new range_Range(this.startLineNumber + lineCount, this.startColumn, this.endLineNumber + lineCount, this.endColumn);
     }
     // ---
     static fromPositions(start, end = start) {
@@ -7154,429 +7432,6 @@ class range_Range {
     toJSON() {
         return this;
     }
-}
-
-;// CONCATENATED MODULE: ../node_modules/monaco-editor/esm/vs/editor/common/diff/diffComputer.js
-/*---------------------------------------------------------------------------------------------
- *  Copyright (c) Microsoft Corporation. All rights reserved.
- *  Licensed under the MIT License. See License.txt in the project root for license information.
- *--------------------------------------------------------------------------------------------*/
-
-
-const MINIMUM_MATCHING_CHARACTER_LENGTH = 3;
-function computeDiff(originalSequence, modifiedSequence, continueProcessingPredicate, pretty) {
-    const diffAlgo = new LcsDiff(originalSequence, modifiedSequence, continueProcessingPredicate);
-    return diffAlgo.ComputeDiff(pretty);
-}
-class LineSequence {
-    constructor(lines) {
-        const startColumns = [];
-        const endColumns = [];
-        for (let i = 0, length = lines.length; i < length; i++) {
-            startColumns[i] = getFirstNonBlankColumn(lines[i], 1);
-            endColumns[i] = getLastNonBlankColumn(lines[i], 1);
-        }
-        this.lines = lines;
-        this._startColumns = startColumns;
-        this._endColumns = endColumns;
-    }
-    getElements() {
-        const elements = [];
-        for (let i = 0, len = this.lines.length; i < len; i++) {
-            elements[i] = this.lines[i].substring(this._startColumns[i] - 1, this._endColumns[i] - 1);
-        }
-        return elements;
-    }
-    getStrictElement(index) {
-        return this.lines[index];
-    }
-    getStartLineNumber(i) {
-        return i + 1;
-    }
-    getEndLineNumber(i) {
-        return i + 1;
-    }
-    createCharSequence(shouldIgnoreTrimWhitespace, startIndex, endIndex) {
-        const charCodes = [];
-        const lineNumbers = [];
-        const columns = [];
-        let len = 0;
-        for (let index = startIndex; index <= endIndex; index++) {
-            const lineContent = this.lines[index];
-            const startColumn = (shouldIgnoreTrimWhitespace ? this._startColumns[index] : 1);
-            const endColumn = (shouldIgnoreTrimWhitespace ? this._endColumns[index] : lineContent.length + 1);
-            for (let col = startColumn; col < endColumn; col++) {
-                charCodes[len] = lineContent.charCodeAt(col - 1);
-                lineNumbers[len] = index + 1;
-                columns[len] = col;
-                len++;
-            }
-            if (!shouldIgnoreTrimWhitespace && index < endIndex) {
-                // Add \n if trim whitespace is not ignored
-                charCodes[len] = 10 /* CharCode.LineFeed */;
-                lineNumbers[len] = index + 1;
-                columns[len] = lineContent.length + 1;
-                len++;
-            }
-        }
-        return new CharSequence(charCodes, lineNumbers, columns);
-    }
-}
-class CharSequence {
-    constructor(charCodes, lineNumbers, columns) {
-        this._charCodes = charCodes;
-        this._lineNumbers = lineNumbers;
-        this._columns = columns;
-    }
-    toString() {
-        return ('[' + this._charCodes.map((s, idx) => (s === 10 /* CharCode.LineFeed */ ? '\\n' : String.fromCharCode(s)) + `-(${this._lineNumbers[idx]},${this._columns[idx]})`).join(', ') + ']');
-    }
-    _assertIndex(index, arr) {
-        if (index < 0 || index >= arr.length) {
-            throw new Error(`Illegal index`);
-        }
-    }
-    getElements() {
-        return this._charCodes;
-    }
-    getStartLineNumber(i) {
-        if (i > 0 && i === this._lineNumbers.length) {
-            // the start line number of the element after the last element
-            // is the end line number of the last element
-            return this.getEndLineNumber(i - 1);
-        }
-        this._assertIndex(i, this._lineNumbers);
-        return this._lineNumbers[i];
-    }
-    getEndLineNumber(i) {
-        if (i === -1) {
-            // the end line number of the element before the first element
-            // is the start line number of the first element
-            return this.getStartLineNumber(i + 1);
-        }
-        this._assertIndex(i, this._lineNumbers);
-        if (this._charCodes[i] === 10 /* CharCode.LineFeed */) {
-            return this._lineNumbers[i] + 1;
-        }
-        return this._lineNumbers[i];
-    }
-    getStartColumn(i) {
-        if (i > 0 && i === this._columns.length) {
-            // the start column of the element after the last element
-            // is the end column of the last element
-            return this.getEndColumn(i - 1);
-        }
-        this._assertIndex(i, this._columns);
-        return this._columns[i];
-    }
-    getEndColumn(i) {
-        if (i === -1) {
-            // the end column of the element before the first element
-            // is the start column of the first element
-            return this.getStartColumn(i + 1);
-        }
-        this._assertIndex(i, this._columns);
-        if (this._charCodes[i] === 10 /* CharCode.LineFeed */) {
-            return 1;
-        }
-        return this._columns[i] + 1;
-    }
-}
-class CharChange {
-    constructor(originalStartLineNumber, originalStartColumn, originalEndLineNumber, originalEndColumn, modifiedStartLineNumber, modifiedStartColumn, modifiedEndLineNumber, modifiedEndColumn) {
-        this.originalStartLineNumber = originalStartLineNumber;
-        this.originalStartColumn = originalStartColumn;
-        this.originalEndLineNumber = originalEndLineNumber;
-        this.originalEndColumn = originalEndColumn;
-        this.modifiedStartLineNumber = modifiedStartLineNumber;
-        this.modifiedStartColumn = modifiedStartColumn;
-        this.modifiedEndLineNumber = modifiedEndLineNumber;
-        this.modifiedEndColumn = modifiedEndColumn;
-    }
-    static createFromDiffChange(diffChange, originalCharSequence, modifiedCharSequence) {
-        const originalStartLineNumber = originalCharSequence.getStartLineNumber(diffChange.originalStart);
-        const originalStartColumn = originalCharSequence.getStartColumn(diffChange.originalStart);
-        const originalEndLineNumber = originalCharSequence.getEndLineNumber(diffChange.originalStart + diffChange.originalLength - 1);
-        const originalEndColumn = originalCharSequence.getEndColumn(diffChange.originalStart + diffChange.originalLength - 1);
-        const modifiedStartLineNumber = modifiedCharSequence.getStartLineNumber(diffChange.modifiedStart);
-        const modifiedStartColumn = modifiedCharSequence.getStartColumn(diffChange.modifiedStart);
-        const modifiedEndLineNumber = modifiedCharSequence.getEndLineNumber(diffChange.modifiedStart + diffChange.modifiedLength - 1);
-        const modifiedEndColumn = modifiedCharSequence.getEndColumn(diffChange.modifiedStart + diffChange.modifiedLength - 1);
-        return new CharChange(originalStartLineNumber, originalStartColumn, originalEndLineNumber, originalEndColumn, modifiedStartLineNumber, modifiedStartColumn, modifiedEndLineNumber, modifiedEndColumn);
-    }
-}
-function postProcessCharChanges(rawChanges) {
-    if (rawChanges.length <= 1) {
-        return rawChanges;
-    }
-    const result = [rawChanges[0]];
-    let prevChange = result[0];
-    for (let i = 1, len = rawChanges.length; i < len; i++) {
-        const currChange = rawChanges[i];
-        const originalMatchingLength = currChange.originalStart - (prevChange.originalStart + prevChange.originalLength);
-        const modifiedMatchingLength = currChange.modifiedStart - (prevChange.modifiedStart + prevChange.modifiedLength);
-        // Both of the above should be equal, but the continueProcessingPredicate may prevent this from being true
-        const matchingLength = Math.min(originalMatchingLength, modifiedMatchingLength);
-        if (matchingLength < MINIMUM_MATCHING_CHARACTER_LENGTH) {
-            // Merge the current change into the previous one
-            prevChange.originalLength = (currChange.originalStart + currChange.originalLength) - prevChange.originalStart;
-            prevChange.modifiedLength = (currChange.modifiedStart + currChange.modifiedLength) - prevChange.modifiedStart;
-        }
-        else {
-            // Add the current change
-            result.push(currChange);
-            prevChange = currChange;
-        }
-    }
-    return result;
-}
-class LineChange {
-    constructor(originalStartLineNumber, originalEndLineNumber, modifiedStartLineNumber, modifiedEndLineNumber, charChanges) {
-        this.originalStartLineNumber = originalStartLineNumber;
-        this.originalEndLineNumber = originalEndLineNumber;
-        this.modifiedStartLineNumber = modifiedStartLineNumber;
-        this.modifiedEndLineNumber = modifiedEndLineNumber;
-        this.charChanges = charChanges;
-    }
-    static createFromDiffResult(shouldIgnoreTrimWhitespace, diffChange, originalLineSequence, modifiedLineSequence, continueCharDiff, shouldComputeCharChanges, shouldPostProcessCharChanges) {
-        let originalStartLineNumber;
-        let originalEndLineNumber;
-        let modifiedStartLineNumber;
-        let modifiedEndLineNumber;
-        let charChanges = undefined;
-        if (diffChange.originalLength === 0) {
-            originalStartLineNumber = originalLineSequence.getStartLineNumber(diffChange.originalStart) - 1;
-            originalEndLineNumber = 0;
-        }
-        else {
-            originalStartLineNumber = originalLineSequence.getStartLineNumber(diffChange.originalStart);
-            originalEndLineNumber = originalLineSequence.getEndLineNumber(diffChange.originalStart + diffChange.originalLength - 1);
-        }
-        if (diffChange.modifiedLength === 0) {
-            modifiedStartLineNumber = modifiedLineSequence.getStartLineNumber(diffChange.modifiedStart) - 1;
-            modifiedEndLineNumber = 0;
-        }
-        else {
-            modifiedStartLineNumber = modifiedLineSequence.getStartLineNumber(diffChange.modifiedStart);
-            modifiedEndLineNumber = modifiedLineSequence.getEndLineNumber(diffChange.modifiedStart + diffChange.modifiedLength - 1);
-        }
-        if (shouldComputeCharChanges && diffChange.originalLength > 0 && diffChange.originalLength < 20 && diffChange.modifiedLength > 0 && diffChange.modifiedLength < 20 && continueCharDiff()) {
-            // Compute character changes for diff chunks of at most 20 lines...
-            const originalCharSequence = originalLineSequence.createCharSequence(shouldIgnoreTrimWhitespace, diffChange.originalStart, diffChange.originalStart + diffChange.originalLength - 1);
-            const modifiedCharSequence = modifiedLineSequence.createCharSequence(shouldIgnoreTrimWhitespace, diffChange.modifiedStart, diffChange.modifiedStart + diffChange.modifiedLength - 1);
-            if (originalCharSequence.getElements().length > 0 && modifiedCharSequence.getElements().length > 0) {
-                let rawChanges = computeDiff(originalCharSequence, modifiedCharSequence, continueCharDiff, true).changes;
-                if (shouldPostProcessCharChanges) {
-                    rawChanges = postProcessCharChanges(rawChanges);
-                }
-                charChanges = [];
-                for (let i = 0, length = rawChanges.length; i < length; i++) {
-                    charChanges.push(CharChange.createFromDiffChange(rawChanges[i], originalCharSequence, modifiedCharSequence));
-                }
-            }
-        }
-        return new LineChange(originalStartLineNumber, originalEndLineNumber, modifiedStartLineNumber, modifiedEndLineNumber, charChanges);
-    }
-}
-class DiffComputer {
-    constructor(originalLines, modifiedLines, opts) {
-        this.shouldComputeCharChanges = opts.shouldComputeCharChanges;
-        this.shouldPostProcessCharChanges = opts.shouldPostProcessCharChanges;
-        this.shouldIgnoreTrimWhitespace = opts.shouldIgnoreTrimWhitespace;
-        this.shouldMakePrettyDiff = opts.shouldMakePrettyDiff;
-        this.originalLines = originalLines;
-        this.modifiedLines = modifiedLines;
-        this.original = new LineSequence(originalLines);
-        this.modified = new LineSequence(modifiedLines);
-        this.continueLineDiff = createContinueProcessingPredicate(opts.maxComputationTime);
-        this.continueCharDiff = createContinueProcessingPredicate(opts.maxComputationTime === 0 ? 0 : Math.min(opts.maxComputationTime, 5000)); // never run after 5s for character changes...
-    }
-    computeDiff() {
-        if (this.original.lines.length === 1 && this.original.lines[0].length === 0) {
-            // empty original => fast path
-            if (this.modified.lines.length === 1 && this.modified.lines[0].length === 0) {
-                return {
-                    quitEarly: false,
-                    changes: []
-                };
-            }
-            return {
-                quitEarly: false,
-                changes: [{
-                        originalStartLineNumber: 1,
-                        originalEndLineNumber: 1,
-                        modifiedStartLineNumber: 1,
-                        modifiedEndLineNumber: this.modified.lines.length,
-                        charChanges: [{
-                                modifiedEndColumn: 0,
-                                modifiedEndLineNumber: 0,
-                                modifiedStartColumn: 0,
-                                modifiedStartLineNumber: 0,
-                                originalEndColumn: 0,
-                                originalEndLineNumber: 0,
-                                originalStartColumn: 0,
-                                originalStartLineNumber: 0
-                            }]
-                    }]
-            };
-        }
-        if (this.modified.lines.length === 1 && this.modified.lines[0].length === 0) {
-            // empty modified => fast path
-            return {
-                quitEarly: false,
-                changes: [{
-                        originalStartLineNumber: 1,
-                        originalEndLineNumber: this.original.lines.length,
-                        modifiedStartLineNumber: 1,
-                        modifiedEndLineNumber: 1,
-                        charChanges: [{
-                                modifiedEndColumn: 0,
-                                modifiedEndLineNumber: 0,
-                                modifiedStartColumn: 0,
-                                modifiedStartLineNumber: 0,
-                                originalEndColumn: 0,
-                                originalEndLineNumber: 0,
-                                originalStartColumn: 0,
-                                originalStartLineNumber: 0
-                            }]
-                    }]
-            };
-        }
-        const diffResult = computeDiff(this.original, this.modified, this.continueLineDiff, this.shouldMakePrettyDiff);
-        const rawChanges = diffResult.changes;
-        const quitEarly = diffResult.quitEarly;
-        // The diff is always computed with ignoring trim whitespace
-        // This ensures we get the prettiest diff
-        if (this.shouldIgnoreTrimWhitespace) {
-            const lineChanges = [];
-            for (let i = 0, length = rawChanges.length; i < length; i++) {
-                lineChanges.push(LineChange.createFromDiffResult(this.shouldIgnoreTrimWhitespace, rawChanges[i], this.original, this.modified, this.continueCharDiff, this.shouldComputeCharChanges, this.shouldPostProcessCharChanges));
-            }
-            return {
-                quitEarly: quitEarly,
-                changes: lineChanges
-            };
-        }
-        // Need to post-process and introduce changes where the trim whitespace is different
-        // Note that we are looping starting at -1 to also cover the lines before the first change
-        const result = [];
-        let originalLineIndex = 0;
-        let modifiedLineIndex = 0;
-        for (let i = -1 /* !!!! */, len = rawChanges.length; i < len; i++) {
-            const nextChange = (i + 1 < len ? rawChanges[i + 1] : null);
-            const originalStop = (nextChange ? nextChange.originalStart : this.originalLines.length);
-            const modifiedStop = (nextChange ? nextChange.modifiedStart : this.modifiedLines.length);
-            while (originalLineIndex < originalStop && modifiedLineIndex < modifiedStop) {
-                const originalLine = this.originalLines[originalLineIndex];
-                const modifiedLine = this.modifiedLines[modifiedLineIndex];
-                if (originalLine !== modifiedLine) {
-                    // These lines differ only in trim whitespace
-                    // Check the leading whitespace
-                    {
-                        let originalStartColumn = getFirstNonBlankColumn(originalLine, 1);
-                        let modifiedStartColumn = getFirstNonBlankColumn(modifiedLine, 1);
-                        while (originalStartColumn > 1 && modifiedStartColumn > 1) {
-                            const originalChar = originalLine.charCodeAt(originalStartColumn - 2);
-                            const modifiedChar = modifiedLine.charCodeAt(modifiedStartColumn - 2);
-                            if (originalChar !== modifiedChar) {
-                                break;
-                            }
-                            originalStartColumn--;
-                            modifiedStartColumn--;
-                        }
-                        if (originalStartColumn > 1 || modifiedStartColumn > 1) {
-                            this._pushTrimWhitespaceCharChange(result, originalLineIndex + 1, 1, originalStartColumn, modifiedLineIndex + 1, 1, modifiedStartColumn);
-                        }
-                    }
-                    // Check the trailing whitespace
-                    {
-                        let originalEndColumn = getLastNonBlankColumn(originalLine, 1);
-                        let modifiedEndColumn = getLastNonBlankColumn(modifiedLine, 1);
-                        const originalMaxColumn = originalLine.length + 1;
-                        const modifiedMaxColumn = modifiedLine.length + 1;
-                        while (originalEndColumn < originalMaxColumn && modifiedEndColumn < modifiedMaxColumn) {
-                            const originalChar = originalLine.charCodeAt(originalEndColumn - 1);
-                            const modifiedChar = originalLine.charCodeAt(modifiedEndColumn - 1);
-                            if (originalChar !== modifiedChar) {
-                                break;
-                            }
-                            originalEndColumn++;
-                            modifiedEndColumn++;
-                        }
-                        if (originalEndColumn < originalMaxColumn || modifiedEndColumn < modifiedMaxColumn) {
-                            this._pushTrimWhitespaceCharChange(result, originalLineIndex + 1, originalEndColumn, originalMaxColumn, modifiedLineIndex + 1, modifiedEndColumn, modifiedMaxColumn);
-                        }
-                    }
-                }
-                originalLineIndex++;
-                modifiedLineIndex++;
-            }
-            if (nextChange) {
-                // Emit the actual change
-                result.push(LineChange.createFromDiffResult(this.shouldIgnoreTrimWhitespace, nextChange, this.original, this.modified, this.continueCharDiff, this.shouldComputeCharChanges, this.shouldPostProcessCharChanges));
-                originalLineIndex += nextChange.originalLength;
-                modifiedLineIndex += nextChange.modifiedLength;
-            }
-        }
-        return {
-            quitEarly: quitEarly,
-            changes: result
-        };
-    }
-    _pushTrimWhitespaceCharChange(result, originalLineNumber, originalStartColumn, originalEndColumn, modifiedLineNumber, modifiedStartColumn, modifiedEndColumn) {
-        if (this._mergeTrimWhitespaceCharChange(result, originalLineNumber, originalStartColumn, originalEndColumn, modifiedLineNumber, modifiedStartColumn, modifiedEndColumn)) {
-            // Merged into previous
-            return;
-        }
-        let charChanges = undefined;
-        if (this.shouldComputeCharChanges) {
-            charChanges = [new CharChange(originalLineNumber, originalStartColumn, originalLineNumber, originalEndColumn, modifiedLineNumber, modifiedStartColumn, modifiedLineNumber, modifiedEndColumn)];
-        }
-        result.push(new LineChange(originalLineNumber, originalLineNumber, modifiedLineNumber, modifiedLineNumber, charChanges));
-    }
-    _mergeTrimWhitespaceCharChange(result, originalLineNumber, originalStartColumn, originalEndColumn, modifiedLineNumber, modifiedStartColumn, modifiedEndColumn) {
-        const len = result.length;
-        if (len === 0) {
-            return false;
-        }
-        const prevChange = result[len - 1];
-        if (prevChange.originalEndLineNumber === 0 || prevChange.modifiedEndLineNumber === 0) {
-            // Don't merge with inserts/deletes
-            return false;
-        }
-        if (prevChange.originalEndLineNumber + 1 === originalLineNumber && prevChange.modifiedEndLineNumber + 1 === modifiedLineNumber) {
-            prevChange.originalEndLineNumber = originalLineNumber;
-            prevChange.modifiedEndLineNumber = modifiedLineNumber;
-            if (this.shouldComputeCharChanges && prevChange.charChanges) {
-                prevChange.charChanges.push(new CharChange(originalLineNumber, originalStartColumn, originalLineNumber, originalEndColumn, modifiedLineNumber, modifiedStartColumn, modifiedLineNumber, modifiedEndColumn));
-            }
-            return true;
-        }
-        return false;
-    }
-}
-function getFirstNonBlankColumn(txt, defaultValue) {
-    const r = firstNonWhitespaceIndex(txt);
-    if (r === -1) {
-        return defaultValue;
-    }
-    return r + 1;
-}
-function getLastNonBlankColumn(txt, defaultValue) {
-    const r = lastNonWhitespaceIndex(txt);
-    if (r === -1) {
-        return defaultValue;
-    }
-    return r + 2;
-}
-function createContinueProcessingPredicate(maximumRuntime) {
-    if (maximumRuntime === 0) {
-        return () => true;
-    }
-    const startTime = Date.now();
-    return () => {
-        return Date.now() - startTime < maximumRuntime;
-    };
 }
 
 ;// CONCATENATED MODULE: ../node_modules/monaco-editor/esm/vs/base/common/arrays.js
@@ -7739,6 +7594,19 @@ function groupBy(data, compare) {
  */
 function coalesce(array) {
     return array.filter(e => !!e);
+}
+/**
+ * Remove all falsy values from `array`. The original array IS modified.
+ */
+function coalesceInPlace(array) {
+    let to = 0;
+    for (let i = 0; i < array.length; i++) {
+        if (!!array[i]) {
+            array[to] = array[i];
+            to += 1;
+        }
+    }
+    array.length = to;
 }
 /**
  * @returns false if the provided object is an array and not empty.
@@ -8008,6 +7876,54 @@ class ArrayQueue {
         return result;
     }
 }
+/**
+ * This class is faster than an iterator and array for lazy computed data.
+*/
+class CallbackIterable {
+    constructor(
+    /**
+     * Calls the callback for every item.
+     * Stops when the callback returns false.
+    */
+    iterate) {
+        this.iterate = iterate;
+    }
+    toArray() {
+        const result = [];
+        this.iterate(item => { result.push(item); return true; });
+        return result;
+    }
+    filter(predicate) {
+        return new CallbackIterable(cb => this.iterate(item => predicate(item) ? cb(item) : true));
+    }
+    map(mapFn) {
+        return new CallbackIterable(cb => this.iterate(item => cb(mapFn(item))));
+    }
+    findLast(predicate) {
+        let result;
+        this.iterate(item => {
+            if (predicate(item)) {
+                result = item;
+            }
+            return true;
+        });
+        return result;
+    }
+    findLastMaxBy(comparator) {
+        let result;
+        let first = true;
+        this.iterate(item => {
+            if (first || CompareResult.isGreaterThan(comparator(item, result))) {
+                first = false;
+                result = item;
+            }
+            return true;
+        });
+        return result;
+    }
+}
+CallbackIterable.empty = new CallbackIterable(_callback => { });
+
 
 ;// CONCATENATED MODULE: ../node_modules/monaco-editor/esm/vs/base/common/uint.js
 /*---------------------------------------------------------------------------------------------
@@ -8516,9 +8432,7 @@ class CharacterClassifier {
     }
     static _createAsciiMap(defaultValue) {
         const asciiMap = new Uint8Array(256);
-        for (let i = 0; i < 256; i++) {
-            asciiMap[i] = defaultValue;
-        }
+        asciiMap.fill(defaultValue);
         return asciiMap;
     }
     set(charCode, _value) {
@@ -8538,6 +8452,10 @@ class CharacterClassifier {
             return (this._map.get(charCode) || this._defaultValue);
         }
     }
+    clear() {
+        this._asciiMap.fill(this._defaultValue);
+        this._map.clear();
+    }
 }
 class CharacterSet {
     constructor() {
@@ -8548,6 +8466,9 @@ class CharacterSet {
     }
     has(charCode) {
         return (this._actual.get(charCode) === 1 /* Boolean.True */);
+    }
+    clear() {
+        return this._actual.clear();
     }
 }
 
@@ -8732,15 +8653,20 @@ class LinkComputer {
                         case 125 /* CharCode.CloseCurlyBrace */:
                             chClass = (hasOpenCurlyBracket ? 0 /* CharacterClass.None */ : 1 /* CharacterClass.ForceTermination */);
                             break;
-                        /* The following three rules make it that ' or " or ` are allowed inside links if the link didn't begin with them */
+                        // The following three rules make it that ' or " or ` are allowed inside links
+                        // only if the link is wrapped by some other quote character
                         case 39 /* CharCode.SingleQuote */:
-                            chClass = (linkBeginChCode === 39 /* CharCode.SingleQuote */ ? 1 /* CharacterClass.ForceTermination */ : 0 /* CharacterClass.None */);
-                            break;
                         case 34 /* CharCode.DoubleQuote */:
-                            chClass = (linkBeginChCode === 34 /* CharCode.DoubleQuote */ ? 1 /* CharacterClass.ForceTermination */ : 0 /* CharacterClass.None */);
-                            break;
                         case 96 /* CharCode.BackTick */:
-                            chClass = (linkBeginChCode === 96 /* CharCode.BackTick */ ? 1 /* CharacterClass.ForceTermination */ : 0 /* CharacterClass.None */);
+                            if (linkBeginChCode === chCode) {
+                                chClass = 1 /* CharacterClass.ForceTermination */;
+                            }
+                            else if (linkBeginChCode === 39 /* CharCode.SingleQuote */ || linkBeginChCode === 34 /* CharCode.DoubleQuote */ || linkBeginChCode === 96 /* CharCode.BackTick */) {
+                                chClass = 0 /* CharacterClass.None */;
+                            }
+                            else {
+                                chClass = 1 /* CharacterClass.ForceTermination */;
+                            }
                             break;
                         case 42 /* CharCode.Asterisk */:
                             // `*` terminates a link if the link began with `*`
@@ -8905,6 +8831,7 @@ class BasicInplaceReplace {
 }
 BasicInplaceReplace.INSTANCE = new BasicInplaceReplace();
 
+
 ;// CONCATENATED MODULE: ../node_modules/monaco-editor/esm/vs/base/common/cancellation.js
 /*---------------------------------------------------------------------------------------------
  *  Copyright (c) Microsoft Corporation. All rights reserved.
@@ -9000,12 +8927,11 @@ class CancellationTokenSource {
         }
     }
     dispose(cancel = false) {
+        var _a;
         if (cancel) {
             this.cancel();
         }
-        if (this._parentListener) {
-            this._parentListener.dispose();
-        }
+        (_a = this._parentListener) === null || _a === void 0 ? void 0 : _a.dispose();
         if (!this._token) {
             // ensure to initialize with an empty token if we had none
             this._token = CancellationToken.None;
@@ -9535,14 +9461,152 @@ class Selection extends range_Range {
     }
 }
 
-;// CONCATENATED MODULE: ../node_modules/monaco-editor/esm/vs/base/common/codicons.js
-// Selects all codicon names encapsulated in the `$()` syntax and wraps the
-// results with spaces so that screen readers can read the text better.
-function getCodiconAriaLabel(text) {
-    if (!text) {
-        return '';
+;// CONCATENATED MODULE: ../node_modules/monaco-editor/esm/vs/base/common/types.js
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+/**
+ * @returns whether the provided parameter is a JavaScript String or not.
+ */
+function isString(str) {
+    return (typeof str === 'string');
+}
+/**
+ * @returns whether the provided parameter is of type `object` but **not**
+ *	`null`, an `array`, a `regexp`, nor a `date`.
+ */
+function types_isObject(obj) {
+    // The method can't do a type cast since there are type (like strings) which
+    // are subclasses of any put not positvely matched by the function. Hence type
+    // narrowing results in wrong results.
+    return typeof obj === 'object'
+        && obj !== null
+        && !Array.isArray(obj)
+        && !(obj instanceof RegExp)
+        && !(obj instanceof Date);
+}
+/**
+ * @returns whether the provided parameter is of type `Buffer` or Uint8Array dervived type
+ */
+function types_isTypedArray(obj) {
+    const TypedArray = Object.getPrototypeOf(Uint8Array);
+    return typeof obj === 'object'
+        && obj instanceof TypedArray;
+}
+/**
+ * In **contrast** to just checking `typeof` this will return `false` for `NaN`.
+ * @returns whether the provided parameter is a JavaScript Number or not.
+ */
+function isNumber(obj) {
+    return (typeof obj === 'number' && !isNaN(obj));
+}
+/**
+ * @returns whether the provided parameter is an Iterable, casting to the given generic
+ */
+function isIterable(obj) {
+    return !!obj && typeof obj[Symbol.iterator] === 'function';
+}
+/**
+ * @returns whether the provided parameter is a JavaScript Boolean or not.
+ */
+function isBoolean(obj) {
+    return (obj === true || obj === false);
+}
+/**
+ * @returns whether the provided parameter is undefined.
+ */
+function isUndefined(obj) {
+    return (typeof obj === 'undefined');
+}
+/**
+ * @returns whether the provided parameter is defined.
+ */
+function isDefined(arg) {
+    return !types_isUndefinedOrNull(arg);
+}
+/**
+ * @returns whether the provided parameter is undefined or null.
+ */
+function types_isUndefinedOrNull(obj) {
+    return (isUndefined(obj) || obj === null);
+}
+function assertType(condition, type) {
+    if (!condition) {
+        throw new Error(type ? `Unexpected type, expected '${type}'` : 'Unexpected type');
     }
-    return text.replace(/\$\((.*?)\)/g, (_match, codiconName) => ` ${codiconName} `).trim();
+}
+/**
+ * Asserts that the argument passed in is neither undefined nor null.
+ */
+function assertIsDefined(arg) {
+    if (types_isUndefinedOrNull(arg)) {
+        throw new Error('Assertion Failed: argument is undefined or null');
+    }
+    return arg;
+}
+/**
+ * @returns whether the provided parameter is a JavaScript Function or not.
+ */
+function isFunction(obj) {
+    return (typeof obj === 'function');
+}
+function validateConstraints(args, constraints) {
+    const len = Math.min(args.length, constraints.length);
+    for (let i = 0; i < len; i++) {
+        validateConstraint(args[i], constraints[i]);
+    }
+}
+function validateConstraint(arg, constraint) {
+    if (isString(constraint)) {
+        if (typeof arg !== constraint) {
+            throw new Error(`argument does not match constraint: typeof ${constraint}`);
+        }
+    }
+    else if (isFunction(constraint)) {
+        try {
+            if (arg instanceof constraint) {
+                return;
+            }
+        }
+        catch (_a) {
+            // ignore
+        }
+        if (!types_isUndefinedOrNull(arg) && arg.constructor === constraint) {
+            return;
+        }
+        if (constraint.length === 1 && constraint.call(undefined, arg) === true) {
+            return;
+        }
+        throw new Error(`argument does not match one of these constraints: arg instanceof constraint, arg.constructor === constraint, nor constraint(arg) === true`);
+    }
+}
+/**
+ * Converts null to undefined, passes all other values through.
+ */
+function withNullAsUndefined(x) {
+    return x === null ? undefined : x;
+}
+
+;// CONCATENATED MODULE: ../node_modules/monaco-editor/esm/vs/base/common/codicons.js
+
+const _codiconFontCharacters = Object.create(null);
+function register(id, fontCharacter) {
+    if (isString(fontCharacter)) {
+        const val = _codiconFontCharacters[fontCharacter];
+        if (val === undefined) {
+            throw new Error(`${id} references an unknown codicon: ${fontCharacter}`);
+        }
+        fontCharacter = val;
+    }
+    _codiconFontCharacters[id] = fontCharacter;
+    return { id };
+}
+/**
+ * Only to be used by the iconRegistry.
+ */
+function getCodiconFontCharacters() {
+    return _codiconFontCharacters;
 }
 /**
  * The Codicon library is a set of default icons that are built-in in VS Code.
@@ -9551,591 +9615,545 @@ function getCodiconAriaLabel(text) {
  * themeable, component should define new, UI component specific icons using `iconRegistry.registerIcon`.
  * In that call a Codicon can be named as default.
  */
-class Codicon {
-    constructor(id, definition, description) {
-        this.id = id;
-        this.definition = definition;
-        this.description = description;
-        Codicon._allCodicons.push(this);
-    }
-    get classNames() { return 'codicon codicon-' + this.id; }
-    // classNamesArray is useful for migrating to ES6 classlist
-    get classNamesArray() { return ['codicon', 'codicon-' + this.id]; }
-    get cssSelector() { return '.codicon.codicon-' + this.id; }
-    /**
-     * @returns Returns all default icons covered by the codicon font. Only to be used by the icon registry in platform.
-     */
-    static getAll() {
-        return Codicon._allCodicons;
-    }
-}
-// registry
-Codicon._allCodicons = [];
-// built-in icons, with image name
-Codicon.add = new Codicon('add', { fontCharacter: '\\ea60' });
-Codicon.plus = new Codicon('plus', Codicon.add.definition);
-Codicon.gistNew = new Codicon('gist-new', Codicon.add.definition);
-Codicon.repoCreate = new Codicon('repo-create', Codicon.add.definition);
-Codicon.lightbulb = new Codicon('lightbulb', { fontCharacter: '\\ea61' });
-Codicon.lightBulb = new Codicon('light-bulb', { fontCharacter: '\\ea61' });
-Codicon.repo = new Codicon('repo', { fontCharacter: '\\ea62' });
-Codicon.repoDelete = new Codicon('repo-delete', { fontCharacter: '\\ea62' });
-Codicon.gistFork = new Codicon('gist-fork', { fontCharacter: '\\ea63' });
-Codicon.repoForked = new Codicon('repo-forked', { fontCharacter: '\\ea63' });
-Codicon.gitPullRequest = new Codicon('git-pull-request', { fontCharacter: '\\ea64' });
-Codicon.gitPullRequestAbandoned = new Codicon('git-pull-request-abandoned', { fontCharacter: '\\ea64' });
-Codicon.recordKeys = new Codicon('record-keys', { fontCharacter: '\\ea65' });
-Codicon.keyboard = new Codicon('keyboard', { fontCharacter: '\\ea65' });
-Codicon.tag = new Codicon('tag', { fontCharacter: '\\ea66' });
-Codicon.tagAdd = new Codicon('tag-add', { fontCharacter: '\\ea66' });
-Codicon.tagRemove = new Codicon('tag-remove', { fontCharacter: '\\ea66' });
-Codicon.person = new Codicon('person', { fontCharacter: '\\ea67' });
-Codicon.personFollow = new Codicon('person-follow', { fontCharacter: '\\ea67' });
-Codicon.personOutline = new Codicon('person-outline', { fontCharacter: '\\ea67' });
-Codicon.personFilled = new Codicon('person-filled', { fontCharacter: '\\ea67' });
-Codicon.gitBranch = new Codicon('git-branch', { fontCharacter: '\\ea68' });
-Codicon.gitBranchCreate = new Codicon('git-branch-create', { fontCharacter: '\\ea68' });
-Codicon.gitBranchDelete = new Codicon('git-branch-delete', { fontCharacter: '\\ea68' });
-Codicon.sourceControl = new Codicon('source-control', { fontCharacter: '\\ea68' });
-Codicon.mirror = new Codicon('mirror', { fontCharacter: '\\ea69' });
-Codicon.mirrorPublic = new Codicon('mirror-public', { fontCharacter: '\\ea69' });
-Codicon.star = new Codicon('star', { fontCharacter: '\\ea6a' });
-Codicon.starAdd = new Codicon('star-add', { fontCharacter: '\\ea6a' });
-Codicon.starDelete = new Codicon('star-delete', { fontCharacter: '\\ea6a' });
-Codicon.starEmpty = new Codicon('star-empty', { fontCharacter: '\\ea6a' });
-Codicon.comment = new Codicon('comment', { fontCharacter: '\\ea6b' });
-Codicon.commentAdd = new Codicon('comment-add', { fontCharacter: '\\ea6b' });
-Codicon.alert = new Codicon('alert', { fontCharacter: '\\ea6c' });
-Codicon.warning = new Codicon('warning', { fontCharacter: '\\ea6c' });
-Codicon.search = new Codicon('search', { fontCharacter: '\\ea6d' });
-Codicon.searchSave = new Codicon('search-save', { fontCharacter: '\\ea6d' });
-Codicon.logOut = new Codicon('log-out', { fontCharacter: '\\ea6e' });
-Codicon.signOut = new Codicon('sign-out', { fontCharacter: '\\ea6e' });
-Codicon.logIn = new Codicon('log-in', { fontCharacter: '\\ea6f' });
-Codicon.signIn = new Codicon('sign-in', { fontCharacter: '\\ea6f' });
-Codicon.eye = new Codicon('eye', { fontCharacter: '\\ea70' });
-Codicon.eyeUnwatch = new Codicon('eye-unwatch', { fontCharacter: '\\ea70' });
-Codicon.eyeWatch = new Codicon('eye-watch', { fontCharacter: '\\ea70' });
-Codicon.circleFilled = new Codicon('circle-filled', { fontCharacter: '\\ea71' });
-Codicon.primitiveDot = new Codicon('primitive-dot', { fontCharacter: '\\ea71' });
-Codicon.closeDirty = new Codicon('close-dirty', { fontCharacter: '\\ea71' });
-Codicon.debugBreakpoint = new Codicon('debug-breakpoint', { fontCharacter: '\\ea71' });
-Codicon.debugBreakpointDisabled = new Codicon('debug-breakpoint-disabled', { fontCharacter: '\\ea71' });
-Codicon.debugHint = new Codicon('debug-hint', { fontCharacter: '\\ea71' });
-Codicon.primitiveSquare = new Codicon('primitive-square', { fontCharacter: '\\ea72' });
-Codicon.edit = new Codicon('edit', { fontCharacter: '\\ea73' });
-Codicon.pencil = new Codicon('pencil', { fontCharacter: '\\ea73' });
-Codicon.info = new Codicon('info', { fontCharacter: '\\ea74' });
-Codicon.issueOpened = new Codicon('issue-opened', { fontCharacter: '\\ea74' });
-Codicon.gistPrivate = new Codicon('gist-private', { fontCharacter: '\\ea75' });
-Codicon.gitForkPrivate = new Codicon('git-fork-private', { fontCharacter: '\\ea75' });
-Codicon.lock = new Codicon('lock', { fontCharacter: '\\ea75' });
-Codicon.mirrorPrivate = new Codicon('mirror-private', { fontCharacter: '\\ea75' });
-Codicon.close = new Codicon('close', { fontCharacter: '\\ea76' });
-Codicon.removeClose = new Codicon('remove-close', { fontCharacter: '\\ea76' });
-Codicon.x = new Codicon('x', { fontCharacter: '\\ea76' });
-Codicon.repoSync = new Codicon('repo-sync', { fontCharacter: '\\ea77' });
-Codicon.sync = new Codicon('sync', { fontCharacter: '\\ea77' });
-Codicon.clone = new Codicon('clone', { fontCharacter: '\\ea78' });
-Codicon.desktopDownload = new Codicon('desktop-download', { fontCharacter: '\\ea78' });
-Codicon.beaker = new Codicon('beaker', { fontCharacter: '\\ea79' });
-Codicon.microscope = new Codicon('microscope', { fontCharacter: '\\ea79' });
-Codicon.vm = new Codicon('vm', { fontCharacter: '\\ea7a' });
-Codicon.deviceDesktop = new Codicon('device-desktop', { fontCharacter: '\\ea7a' });
-Codicon.file = new Codicon('file', { fontCharacter: '\\ea7b' });
-Codicon.fileText = new Codicon('file-text', { fontCharacter: '\\ea7b' });
-Codicon.more = new Codicon('more', { fontCharacter: '\\ea7c' });
-Codicon.ellipsis = new Codicon('ellipsis', { fontCharacter: '\\ea7c' });
-Codicon.kebabHorizontal = new Codicon('kebab-horizontal', { fontCharacter: '\\ea7c' });
-Codicon.mailReply = new Codicon('mail-reply', { fontCharacter: '\\ea7d' });
-Codicon.reply = new Codicon('reply', { fontCharacter: '\\ea7d' });
-Codicon.organization = new Codicon('organization', { fontCharacter: '\\ea7e' });
-Codicon.organizationFilled = new Codicon('organization-filled', { fontCharacter: '\\ea7e' });
-Codicon.organizationOutline = new Codicon('organization-outline', { fontCharacter: '\\ea7e' });
-Codicon.newFile = new Codicon('new-file', { fontCharacter: '\\ea7f' });
-Codicon.fileAdd = new Codicon('file-add', { fontCharacter: '\\ea7f' });
-Codicon.newFolder = new Codicon('new-folder', { fontCharacter: '\\ea80' });
-Codicon.fileDirectoryCreate = new Codicon('file-directory-create', { fontCharacter: '\\ea80' });
-Codicon.trash = new Codicon('trash', { fontCharacter: '\\ea81' });
-Codicon.trashcan = new Codicon('trashcan', { fontCharacter: '\\ea81' });
-Codicon.history = new Codicon('history', { fontCharacter: '\\ea82' });
-Codicon.clock = new Codicon('clock', { fontCharacter: '\\ea82' });
-Codicon.folder = new Codicon('folder', { fontCharacter: '\\ea83' });
-Codicon.fileDirectory = new Codicon('file-directory', { fontCharacter: '\\ea83' });
-Codicon.symbolFolder = new Codicon('symbol-folder', { fontCharacter: '\\ea83' });
-Codicon.logoGithub = new Codicon('logo-github', { fontCharacter: '\\ea84' });
-Codicon.markGithub = new Codicon('mark-github', { fontCharacter: '\\ea84' });
-Codicon.github = new Codicon('github', { fontCharacter: '\\ea84' });
-Codicon.terminal = new Codicon('terminal', { fontCharacter: '\\ea85' });
-Codicon.console = new Codicon('console', { fontCharacter: '\\ea85' });
-Codicon.repl = new Codicon('repl', { fontCharacter: '\\ea85' });
-Codicon.zap = new Codicon('zap', { fontCharacter: '\\ea86' });
-Codicon.symbolEvent = new Codicon('symbol-event', { fontCharacter: '\\ea86' });
-Codicon.error = new Codicon('error', { fontCharacter: '\\ea87' });
-Codicon.stop = new Codicon('stop', { fontCharacter: '\\ea87' });
-Codicon.variable = new Codicon('variable', { fontCharacter: '\\ea88' });
-Codicon.symbolVariable = new Codicon('symbol-variable', { fontCharacter: '\\ea88' });
-Codicon.array = new Codicon('array', { fontCharacter: '\\ea8a' });
-Codicon.symbolArray = new Codicon('symbol-array', { fontCharacter: '\\ea8a' });
-Codicon.symbolModule = new Codicon('symbol-module', { fontCharacter: '\\ea8b' });
-Codicon.symbolPackage = new Codicon('symbol-package', { fontCharacter: '\\ea8b' });
-Codicon.symbolNamespace = new Codicon('symbol-namespace', { fontCharacter: '\\ea8b' });
-Codicon.symbolObject = new Codicon('symbol-object', { fontCharacter: '\\ea8b' });
-Codicon.symbolMethod = new Codicon('symbol-method', { fontCharacter: '\\ea8c' });
-Codicon.symbolFunction = new Codicon('symbol-function', { fontCharacter: '\\ea8c' });
-Codicon.symbolConstructor = new Codicon('symbol-constructor', { fontCharacter: '\\ea8c' });
-Codicon.symbolBoolean = new Codicon('symbol-boolean', { fontCharacter: '\\ea8f' });
-Codicon.symbolNull = new Codicon('symbol-null', { fontCharacter: '\\ea8f' });
-Codicon.symbolNumeric = new Codicon('symbol-numeric', { fontCharacter: '\\ea90' });
-Codicon.symbolNumber = new Codicon('symbol-number', { fontCharacter: '\\ea90' });
-Codicon.symbolStructure = new Codicon('symbol-structure', { fontCharacter: '\\ea91' });
-Codicon.symbolStruct = new Codicon('symbol-struct', { fontCharacter: '\\ea91' });
-Codicon.symbolParameter = new Codicon('symbol-parameter', { fontCharacter: '\\ea92' });
-Codicon.symbolTypeParameter = new Codicon('symbol-type-parameter', { fontCharacter: '\\ea92' });
-Codicon.symbolKey = new Codicon('symbol-key', { fontCharacter: '\\ea93' });
-Codicon.symbolText = new Codicon('symbol-text', { fontCharacter: '\\ea93' });
-Codicon.symbolReference = new Codicon('symbol-reference', { fontCharacter: '\\ea94' });
-Codicon.goToFile = new Codicon('go-to-file', { fontCharacter: '\\ea94' });
-Codicon.symbolEnum = new Codicon('symbol-enum', { fontCharacter: '\\ea95' });
-Codicon.symbolValue = new Codicon('symbol-value', { fontCharacter: '\\ea95' });
-Codicon.symbolRuler = new Codicon('symbol-ruler', { fontCharacter: '\\ea96' });
-Codicon.symbolUnit = new Codicon('symbol-unit', { fontCharacter: '\\ea96' });
-Codicon.activateBreakpoints = new Codicon('activate-breakpoints', { fontCharacter: '\\ea97' });
-Codicon.archive = new Codicon('archive', { fontCharacter: '\\ea98' });
-Codicon.arrowBoth = new Codicon('arrow-both', { fontCharacter: '\\ea99' });
-Codicon.arrowDown = new Codicon('arrow-down', { fontCharacter: '\\ea9a' });
-Codicon.arrowLeft = new Codicon('arrow-left', { fontCharacter: '\\ea9b' });
-Codicon.arrowRight = new Codicon('arrow-right', { fontCharacter: '\\ea9c' });
-Codicon.arrowSmallDown = new Codicon('arrow-small-down', { fontCharacter: '\\ea9d' });
-Codicon.arrowSmallLeft = new Codicon('arrow-small-left', { fontCharacter: '\\ea9e' });
-Codicon.arrowSmallRight = new Codicon('arrow-small-right', { fontCharacter: '\\ea9f' });
-Codicon.arrowSmallUp = new Codicon('arrow-small-up', { fontCharacter: '\\eaa0' });
-Codicon.arrowUp = new Codicon('arrow-up', { fontCharacter: '\\eaa1' });
-Codicon.bell = new Codicon('bell', { fontCharacter: '\\eaa2' });
-Codicon.bold = new Codicon('bold', { fontCharacter: '\\eaa3' });
-Codicon.book = new Codicon('book', { fontCharacter: '\\eaa4' });
-Codicon.bookmark = new Codicon('bookmark', { fontCharacter: '\\eaa5' });
-Codicon.debugBreakpointConditionalUnverified = new Codicon('debug-breakpoint-conditional-unverified', { fontCharacter: '\\eaa6' });
-Codicon.debugBreakpointConditional = new Codicon('debug-breakpoint-conditional', { fontCharacter: '\\eaa7' });
-Codicon.debugBreakpointConditionalDisabled = new Codicon('debug-breakpoint-conditional-disabled', { fontCharacter: '\\eaa7' });
-Codicon.debugBreakpointDataUnverified = new Codicon('debug-breakpoint-data-unverified', { fontCharacter: '\\eaa8' });
-Codicon.debugBreakpointData = new Codicon('debug-breakpoint-data', { fontCharacter: '\\eaa9' });
-Codicon.debugBreakpointDataDisabled = new Codicon('debug-breakpoint-data-disabled', { fontCharacter: '\\eaa9' });
-Codicon.debugBreakpointLogUnverified = new Codicon('debug-breakpoint-log-unverified', { fontCharacter: '\\eaaa' });
-Codicon.debugBreakpointLog = new Codicon('debug-breakpoint-log', { fontCharacter: '\\eaab' });
-Codicon.debugBreakpointLogDisabled = new Codicon('debug-breakpoint-log-disabled', { fontCharacter: '\\eaab' });
-Codicon.briefcase = new Codicon('briefcase', { fontCharacter: '\\eaac' });
-Codicon.broadcast = new Codicon('broadcast', { fontCharacter: '\\eaad' });
-Codicon.browser = new Codicon('browser', { fontCharacter: '\\eaae' });
-Codicon.bug = new Codicon('bug', { fontCharacter: '\\eaaf' });
-Codicon.calendar = new Codicon('calendar', { fontCharacter: '\\eab0' });
-Codicon.caseSensitive = new Codicon('case-sensitive', { fontCharacter: '\\eab1' });
-Codicon.check = new Codicon('check', { fontCharacter: '\\eab2' });
-Codicon.checklist = new Codicon('checklist', { fontCharacter: '\\eab3' });
-Codicon.chevronDown = new Codicon('chevron-down', { fontCharacter: '\\eab4' });
-Codicon.dropDownButton = new Codicon('drop-down-button', Codicon.chevronDown.definition);
-Codicon.chevronLeft = new Codicon('chevron-left', { fontCharacter: '\\eab5' });
-Codicon.chevronRight = new Codicon('chevron-right', { fontCharacter: '\\eab6' });
-Codicon.chevronUp = new Codicon('chevron-up', { fontCharacter: '\\eab7' });
-Codicon.chromeClose = new Codicon('chrome-close', { fontCharacter: '\\eab8' });
-Codicon.chromeMaximize = new Codicon('chrome-maximize', { fontCharacter: '\\eab9' });
-Codicon.chromeMinimize = new Codicon('chrome-minimize', { fontCharacter: '\\eaba' });
-Codicon.chromeRestore = new Codicon('chrome-restore', { fontCharacter: '\\eabb' });
-Codicon.circleOutline = new Codicon('circle-outline', { fontCharacter: '\\eabc' });
-Codicon.debugBreakpointUnverified = new Codicon('debug-breakpoint-unverified', { fontCharacter: '\\eabc' });
-Codicon.circleSlash = new Codicon('circle-slash', { fontCharacter: '\\eabd' });
-Codicon.circuitBoard = new Codicon('circuit-board', { fontCharacter: '\\eabe' });
-Codicon.clearAll = new Codicon('clear-all', { fontCharacter: '\\eabf' });
-Codicon.clippy = new Codicon('clippy', { fontCharacter: '\\eac0' });
-Codicon.closeAll = new Codicon('close-all', { fontCharacter: '\\eac1' });
-Codicon.cloudDownload = new Codicon('cloud-download', { fontCharacter: '\\eac2' });
-Codicon.cloudUpload = new Codicon('cloud-upload', { fontCharacter: '\\eac3' });
-Codicon.code = new Codicon('code', { fontCharacter: '\\eac4' });
-Codicon.collapseAll = new Codicon('collapse-all', { fontCharacter: '\\eac5' });
-Codicon.colorMode = new Codicon('color-mode', { fontCharacter: '\\eac6' });
-Codicon.commentDiscussion = new Codicon('comment-discussion', { fontCharacter: '\\eac7' });
-Codicon.compareChanges = new Codicon('compare-changes', { fontCharacter: '\\eafd' });
-Codicon.creditCard = new Codicon('credit-card', { fontCharacter: '\\eac9' });
-Codicon.dash = new Codicon('dash', { fontCharacter: '\\eacc' });
-Codicon.dashboard = new Codicon('dashboard', { fontCharacter: '\\eacd' });
-Codicon.database = new Codicon('database', { fontCharacter: '\\eace' });
-Codicon.debugContinue = new Codicon('debug-continue', { fontCharacter: '\\eacf' });
-Codicon.debugDisconnect = new Codicon('debug-disconnect', { fontCharacter: '\\ead0' });
-Codicon.debugPause = new Codicon('debug-pause', { fontCharacter: '\\ead1' });
-Codicon.debugRestart = new Codicon('debug-restart', { fontCharacter: '\\ead2' });
-Codicon.debugStart = new Codicon('debug-start', { fontCharacter: '\\ead3' });
-Codicon.debugStepInto = new Codicon('debug-step-into', { fontCharacter: '\\ead4' });
-Codicon.debugStepOut = new Codicon('debug-step-out', { fontCharacter: '\\ead5' });
-Codicon.debugStepOver = new Codicon('debug-step-over', { fontCharacter: '\\ead6' });
-Codicon.debugStop = new Codicon('debug-stop', { fontCharacter: '\\ead7' });
-Codicon.debug = new Codicon('debug', { fontCharacter: '\\ead8' });
-Codicon.deviceCameraVideo = new Codicon('device-camera-video', { fontCharacter: '\\ead9' });
-Codicon.deviceCamera = new Codicon('device-camera', { fontCharacter: '\\eada' });
-Codicon.deviceMobile = new Codicon('device-mobile', { fontCharacter: '\\eadb' });
-Codicon.diffAdded = new Codicon('diff-added', { fontCharacter: '\\eadc' });
-Codicon.diffIgnored = new Codicon('diff-ignored', { fontCharacter: '\\eadd' });
-Codicon.diffModified = new Codicon('diff-modified', { fontCharacter: '\\eade' });
-Codicon.diffRemoved = new Codicon('diff-removed', { fontCharacter: '\\eadf' });
-Codicon.diffRenamed = new Codicon('diff-renamed', { fontCharacter: '\\eae0' });
-Codicon.diff = new Codicon('diff', { fontCharacter: '\\eae1' });
-Codicon.discard = new Codicon('discard', { fontCharacter: '\\eae2' });
-Codicon.editorLayout = new Codicon('editor-layout', { fontCharacter: '\\eae3' });
-Codicon.emptyWindow = new Codicon('empty-window', { fontCharacter: '\\eae4' });
-Codicon.exclude = new Codicon('exclude', { fontCharacter: '\\eae5' });
-Codicon.extensions = new Codicon('extensions', { fontCharacter: '\\eae6' });
-Codicon.eyeClosed = new Codicon('eye-closed', { fontCharacter: '\\eae7' });
-Codicon.fileBinary = new Codicon('file-binary', { fontCharacter: '\\eae8' });
-Codicon.fileCode = new Codicon('file-code', { fontCharacter: '\\eae9' });
-Codicon.fileMedia = new Codicon('file-media', { fontCharacter: '\\eaea' });
-Codicon.filePdf = new Codicon('file-pdf', { fontCharacter: '\\eaeb' });
-Codicon.fileSubmodule = new Codicon('file-submodule', { fontCharacter: '\\eaec' });
-Codicon.fileSymlinkDirectory = new Codicon('file-symlink-directory', { fontCharacter: '\\eaed' });
-Codicon.fileSymlinkFile = new Codicon('file-symlink-file', { fontCharacter: '\\eaee' });
-Codicon.fileZip = new Codicon('file-zip', { fontCharacter: '\\eaef' });
-Codicon.files = new Codicon('files', { fontCharacter: '\\eaf0' });
-Codicon.filter = new Codicon('filter', { fontCharacter: '\\eaf1' });
-Codicon.flame = new Codicon('flame', { fontCharacter: '\\eaf2' });
-Codicon.foldDown = new Codicon('fold-down', { fontCharacter: '\\eaf3' });
-Codicon.foldUp = new Codicon('fold-up', { fontCharacter: '\\eaf4' });
-Codicon.fold = new Codicon('fold', { fontCharacter: '\\eaf5' });
-Codicon.folderActive = new Codicon('folder-active', { fontCharacter: '\\eaf6' });
-Codicon.folderOpened = new Codicon('folder-opened', { fontCharacter: '\\eaf7' });
-Codicon.gear = new Codicon('gear', { fontCharacter: '\\eaf8' });
-Codicon.gift = new Codicon('gift', { fontCharacter: '\\eaf9' });
-Codicon.gistSecret = new Codicon('gist-secret', { fontCharacter: '\\eafa' });
-Codicon.gist = new Codicon('gist', { fontCharacter: '\\eafb' });
-Codicon.gitCommit = new Codicon('git-commit', { fontCharacter: '\\eafc' });
-Codicon.gitCompare = new Codicon('git-compare', { fontCharacter: '\\eafd' });
-Codicon.gitMerge = new Codicon('git-merge', { fontCharacter: '\\eafe' });
-Codicon.githubAction = new Codicon('github-action', { fontCharacter: '\\eaff' });
-Codicon.githubAlt = new Codicon('github-alt', { fontCharacter: '\\eb00' });
-Codicon.globe = new Codicon('globe', { fontCharacter: '\\eb01' });
-Codicon.grabber = new Codicon('grabber', { fontCharacter: '\\eb02' });
-Codicon.graph = new Codicon('graph', { fontCharacter: '\\eb03' });
-Codicon.gripper = new Codicon('gripper', { fontCharacter: '\\eb04' });
-Codicon.heart = new Codicon('heart', { fontCharacter: '\\eb05' });
-Codicon.home = new Codicon('home', { fontCharacter: '\\eb06' });
-Codicon.horizontalRule = new Codicon('horizontal-rule', { fontCharacter: '\\eb07' });
-Codicon.hubot = new Codicon('hubot', { fontCharacter: '\\eb08' });
-Codicon.inbox = new Codicon('inbox', { fontCharacter: '\\eb09' });
-Codicon.issueClosed = new Codicon('issue-closed', { fontCharacter: '\\eba4' });
-Codicon.issueReopened = new Codicon('issue-reopened', { fontCharacter: '\\eb0b' });
-Codicon.issues = new Codicon('issues', { fontCharacter: '\\eb0c' });
-Codicon.italic = new Codicon('italic', { fontCharacter: '\\eb0d' });
-Codicon.jersey = new Codicon('jersey', { fontCharacter: '\\eb0e' });
-Codicon.json = new Codicon('json', { fontCharacter: '\\eb0f' });
-Codicon.kebabVertical = new Codicon('kebab-vertical', { fontCharacter: '\\eb10' });
-Codicon.key = new Codicon('key', { fontCharacter: '\\eb11' });
-Codicon.law = new Codicon('law', { fontCharacter: '\\eb12' });
-Codicon.lightbulbAutofix = new Codicon('lightbulb-autofix', { fontCharacter: '\\eb13' });
-Codicon.linkExternal = new Codicon('link-external', { fontCharacter: '\\eb14' });
-Codicon.link = new Codicon('link', { fontCharacter: '\\eb15' });
-Codicon.listOrdered = new Codicon('list-ordered', { fontCharacter: '\\eb16' });
-Codicon.listUnordered = new Codicon('list-unordered', { fontCharacter: '\\eb17' });
-Codicon.liveShare = new Codicon('live-share', { fontCharacter: '\\eb18' });
-Codicon.loading = new Codicon('loading', { fontCharacter: '\\eb19' });
-Codicon.location = new Codicon('location', { fontCharacter: '\\eb1a' });
-Codicon.mailRead = new Codicon('mail-read', { fontCharacter: '\\eb1b' });
-Codicon.mail = new Codicon('mail', { fontCharacter: '\\eb1c' });
-Codicon.markdown = new Codicon('markdown', { fontCharacter: '\\eb1d' });
-Codicon.megaphone = new Codicon('megaphone', { fontCharacter: '\\eb1e' });
-Codicon.mention = new Codicon('mention', { fontCharacter: '\\eb1f' });
-Codicon.milestone = new Codicon('milestone', { fontCharacter: '\\eb20' });
-Codicon.mortarBoard = new Codicon('mortar-board', { fontCharacter: '\\eb21' });
-Codicon.move = new Codicon('move', { fontCharacter: '\\eb22' });
-Codicon.multipleWindows = new Codicon('multiple-windows', { fontCharacter: '\\eb23' });
-Codicon.mute = new Codicon('mute', { fontCharacter: '\\eb24' });
-Codicon.noNewline = new Codicon('no-newline', { fontCharacter: '\\eb25' });
-Codicon.note = new Codicon('note', { fontCharacter: '\\eb26' });
-Codicon.octoface = new Codicon('octoface', { fontCharacter: '\\eb27' });
-Codicon.openPreview = new Codicon('open-preview', { fontCharacter: '\\eb28' });
-Codicon.package_ = new Codicon('package', { fontCharacter: '\\eb29' });
-Codicon.paintcan = new Codicon('paintcan', { fontCharacter: '\\eb2a' });
-Codicon.pin = new Codicon('pin', { fontCharacter: '\\eb2b' });
-Codicon.play = new Codicon('play', { fontCharacter: '\\eb2c' });
-Codicon.run = new Codicon('run', { fontCharacter: '\\eb2c' });
-Codicon.plug = new Codicon('plug', { fontCharacter: '\\eb2d' });
-Codicon.preserveCase = new Codicon('preserve-case', { fontCharacter: '\\eb2e' });
-Codicon.preview = new Codicon('preview', { fontCharacter: '\\eb2f' });
-Codicon.project = new Codicon('project', { fontCharacter: '\\eb30' });
-Codicon.pulse = new Codicon('pulse', { fontCharacter: '\\eb31' });
-Codicon.question = new Codicon('question', { fontCharacter: '\\eb32' });
-Codicon.quote = new Codicon('quote', { fontCharacter: '\\eb33' });
-Codicon.radioTower = new Codicon('radio-tower', { fontCharacter: '\\eb34' });
-Codicon.reactions = new Codicon('reactions', { fontCharacter: '\\eb35' });
-Codicon.references = new Codicon('references', { fontCharacter: '\\eb36' });
-Codicon.refresh = new Codicon('refresh', { fontCharacter: '\\eb37' });
-Codicon.regex = new Codicon('regex', { fontCharacter: '\\eb38' });
-Codicon.remoteExplorer = new Codicon('remote-explorer', { fontCharacter: '\\eb39' });
-Codicon.remote = new Codicon('remote', { fontCharacter: '\\eb3a' });
-Codicon.remove = new Codicon('remove', { fontCharacter: '\\eb3b' });
-Codicon.replaceAll = new Codicon('replace-all', { fontCharacter: '\\eb3c' });
-Codicon.replace = new Codicon('replace', { fontCharacter: '\\eb3d' });
-Codicon.repoClone = new Codicon('repo-clone', { fontCharacter: '\\eb3e' });
-Codicon.repoForcePush = new Codicon('repo-force-push', { fontCharacter: '\\eb3f' });
-Codicon.repoPull = new Codicon('repo-pull', { fontCharacter: '\\eb40' });
-Codicon.repoPush = new Codicon('repo-push', { fontCharacter: '\\eb41' });
-Codicon.report = new Codicon('report', { fontCharacter: '\\eb42' });
-Codicon.requestChanges = new Codicon('request-changes', { fontCharacter: '\\eb43' });
-Codicon.rocket = new Codicon('rocket', { fontCharacter: '\\eb44' });
-Codicon.rootFolderOpened = new Codicon('root-folder-opened', { fontCharacter: '\\eb45' });
-Codicon.rootFolder = new Codicon('root-folder', { fontCharacter: '\\eb46' });
-Codicon.rss = new Codicon('rss', { fontCharacter: '\\eb47' });
-Codicon.ruby = new Codicon('ruby', { fontCharacter: '\\eb48' });
-Codicon.saveAll = new Codicon('save-all', { fontCharacter: '\\eb49' });
-Codicon.saveAs = new Codicon('save-as', { fontCharacter: '\\eb4a' });
-Codicon.save = new Codicon('save', { fontCharacter: '\\eb4b' });
-Codicon.screenFull = new Codicon('screen-full', { fontCharacter: '\\eb4c' });
-Codicon.screenNormal = new Codicon('screen-normal', { fontCharacter: '\\eb4d' });
-Codicon.searchStop = new Codicon('search-stop', { fontCharacter: '\\eb4e' });
-Codicon.server = new Codicon('server', { fontCharacter: '\\eb50' });
-Codicon.settingsGear = new Codicon('settings-gear', { fontCharacter: '\\eb51' });
-Codicon.settings = new Codicon('settings', { fontCharacter: '\\eb52' });
-Codicon.shield = new Codicon('shield', { fontCharacter: '\\eb53' });
-Codicon.smiley = new Codicon('smiley', { fontCharacter: '\\eb54' });
-Codicon.sortPrecedence = new Codicon('sort-precedence', { fontCharacter: '\\eb55' });
-Codicon.splitHorizontal = new Codicon('split-horizontal', { fontCharacter: '\\eb56' });
-Codicon.splitVertical = new Codicon('split-vertical', { fontCharacter: '\\eb57' });
-Codicon.squirrel = new Codicon('squirrel', { fontCharacter: '\\eb58' });
-Codicon.starFull = new Codicon('star-full', { fontCharacter: '\\eb59' });
-Codicon.starHalf = new Codicon('star-half', { fontCharacter: '\\eb5a' });
-Codicon.symbolClass = new Codicon('symbol-class', { fontCharacter: '\\eb5b' });
-Codicon.symbolColor = new Codicon('symbol-color', { fontCharacter: '\\eb5c' });
-Codicon.symbolCustomColor = new Codicon('symbol-customcolor', { fontCharacter: '\\eb5c' });
-Codicon.symbolConstant = new Codicon('symbol-constant', { fontCharacter: '\\eb5d' });
-Codicon.symbolEnumMember = new Codicon('symbol-enum-member', { fontCharacter: '\\eb5e' });
-Codicon.symbolField = new Codicon('symbol-field', { fontCharacter: '\\eb5f' });
-Codicon.symbolFile = new Codicon('symbol-file', { fontCharacter: '\\eb60' });
-Codicon.symbolInterface = new Codicon('symbol-interface', { fontCharacter: '\\eb61' });
-Codicon.symbolKeyword = new Codicon('symbol-keyword', { fontCharacter: '\\eb62' });
-Codicon.symbolMisc = new Codicon('symbol-misc', { fontCharacter: '\\eb63' });
-Codicon.symbolOperator = new Codicon('symbol-operator', { fontCharacter: '\\eb64' });
-Codicon.symbolProperty = new Codicon('symbol-property', { fontCharacter: '\\eb65' });
-Codicon.wrench = new Codicon('wrench', { fontCharacter: '\\eb65' });
-Codicon.wrenchSubaction = new Codicon('wrench-subaction', { fontCharacter: '\\eb65' });
-Codicon.symbolSnippet = new Codicon('symbol-snippet', { fontCharacter: '\\eb66' });
-Codicon.tasklist = new Codicon('tasklist', { fontCharacter: '\\eb67' });
-Codicon.telescope = new Codicon('telescope', { fontCharacter: '\\eb68' });
-Codicon.textSize = new Codicon('text-size', { fontCharacter: '\\eb69' });
-Codicon.threeBars = new Codicon('three-bars', { fontCharacter: '\\eb6a' });
-Codicon.thumbsdown = new Codicon('thumbsdown', { fontCharacter: '\\eb6b' });
-Codicon.thumbsup = new Codicon('thumbsup', { fontCharacter: '\\eb6c' });
-Codicon.tools = new Codicon('tools', { fontCharacter: '\\eb6d' });
-Codicon.triangleDown = new Codicon('triangle-down', { fontCharacter: '\\eb6e' });
-Codicon.triangleLeft = new Codicon('triangle-left', { fontCharacter: '\\eb6f' });
-Codicon.triangleRight = new Codicon('triangle-right', { fontCharacter: '\\eb70' });
-Codicon.triangleUp = new Codicon('triangle-up', { fontCharacter: '\\eb71' });
-Codicon.twitter = new Codicon('twitter', { fontCharacter: '\\eb72' });
-Codicon.unfold = new Codicon('unfold', { fontCharacter: '\\eb73' });
-Codicon.unlock = new Codicon('unlock', { fontCharacter: '\\eb74' });
-Codicon.unmute = new Codicon('unmute', { fontCharacter: '\\eb75' });
-Codicon.unverified = new Codicon('unverified', { fontCharacter: '\\eb76' });
-Codicon.verified = new Codicon('verified', { fontCharacter: '\\eb77' });
-Codicon.versions = new Codicon('versions', { fontCharacter: '\\eb78' });
-Codicon.vmActive = new Codicon('vm-active', { fontCharacter: '\\eb79' });
-Codicon.vmOutline = new Codicon('vm-outline', { fontCharacter: '\\eb7a' });
-Codicon.vmRunning = new Codicon('vm-running', { fontCharacter: '\\eb7b' });
-Codicon.watch = new Codicon('watch', { fontCharacter: '\\eb7c' });
-Codicon.whitespace = new Codicon('whitespace', { fontCharacter: '\\eb7d' });
-Codicon.wholeWord = new Codicon('whole-word', { fontCharacter: '\\eb7e' });
-Codicon.window = new Codicon('window', { fontCharacter: '\\eb7f' });
-Codicon.wordWrap = new Codicon('word-wrap', { fontCharacter: '\\eb80' });
-Codicon.zoomIn = new Codicon('zoom-in', { fontCharacter: '\\eb81' });
-Codicon.zoomOut = new Codicon('zoom-out', { fontCharacter: '\\eb82' });
-Codicon.listFilter = new Codicon('list-filter', { fontCharacter: '\\eb83' });
-Codicon.listFlat = new Codicon('list-flat', { fontCharacter: '\\eb84' });
-Codicon.listSelection = new Codicon('list-selection', { fontCharacter: '\\eb85' });
-Codicon.selection = new Codicon('selection', { fontCharacter: '\\eb85' });
-Codicon.listTree = new Codicon('list-tree', { fontCharacter: '\\eb86' });
-Codicon.debugBreakpointFunctionUnverified = new Codicon('debug-breakpoint-function-unverified', { fontCharacter: '\\eb87' });
-Codicon.debugBreakpointFunction = new Codicon('debug-breakpoint-function', { fontCharacter: '\\eb88' });
-Codicon.debugBreakpointFunctionDisabled = new Codicon('debug-breakpoint-function-disabled', { fontCharacter: '\\eb88' });
-Codicon.debugStackframeActive = new Codicon('debug-stackframe-active', { fontCharacter: '\\eb89' });
-Codicon.circleSmallFilled = new Codicon('circle-small-filled', { fontCharacter: '\\eb8a' });
-Codicon.debugStackframeDot = new Codicon('debug-stackframe-dot', Codicon.circleSmallFilled.definition);
-Codicon.debugStackframe = new Codicon('debug-stackframe', { fontCharacter: '\\eb8b' });
-Codicon.debugStackframeFocused = new Codicon('debug-stackframe-focused', { fontCharacter: '\\eb8b' });
-Codicon.debugBreakpointUnsupported = new Codicon('debug-breakpoint-unsupported', { fontCharacter: '\\eb8c' });
-Codicon.symbolString = new Codicon('symbol-string', { fontCharacter: '\\eb8d' });
-Codicon.debugReverseContinue = new Codicon('debug-reverse-continue', { fontCharacter: '\\eb8e' });
-Codicon.debugStepBack = new Codicon('debug-step-back', { fontCharacter: '\\eb8f' });
-Codicon.debugRestartFrame = new Codicon('debug-restart-frame', { fontCharacter: '\\eb90' });
-Codicon.callIncoming = new Codicon('call-incoming', { fontCharacter: '\\eb92' });
-Codicon.callOutgoing = new Codicon('call-outgoing', { fontCharacter: '\\eb93' });
-Codicon.menu = new Codicon('menu', { fontCharacter: '\\eb94' });
-Codicon.expandAll = new Codicon('expand-all', { fontCharacter: '\\eb95' });
-Codicon.feedback = new Codicon('feedback', { fontCharacter: '\\eb96' });
-Codicon.groupByRefType = new Codicon('group-by-ref-type', { fontCharacter: '\\eb97' });
-Codicon.ungroupByRefType = new Codicon('ungroup-by-ref-type', { fontCharacter: '\\eb98' });
-Codicon.account = new Codicon('account', { fontCharacter: '\\eb99' });
-Codicon.bellDot = new Codicon('bell-dot', { fontCharacter: '\\eb9a' });
-Codicon.debugConsole = new Codicon('debug-console', { fontCharacter: '\\eb9b' });
-Codicon.library = new Codicon('library', { fontCharacter: '\\eb9c' });
-Codicon.output = new Codicon('output', { fontCharacter: '\\eb9d' });
-Codicon.runAll = new Codicon('run-all', { fontCharacter: '\\eb9e' });
-Codicon.syncIgnored = new Codicon('sync-ignored', { fontCharacter: '\\eb9f' });
-Codicon.pinned = new Codicon('pinned', { fontCharacter: '\\eba0' });
-Codicon.githubInverted = new Codicon('github-inverted', { fontCharacter: '\\eba1' });
-Codicon.debugAlt = new Codicon('debug-alt', { fontCharacter: '\\eb91' });
-Codicon.serverProcess = new Codicon('server-process', { fontCharacter: '\\eba2' });
-Codicon.serverEnvironment = new Codicon('server-environment', { fontCharacter: '\\eba3' });
-Codicon.pass = new Codicon('pass', { fontCharacter: '\\eba4' });
-Codicon.stopCircle = new Codicon('stop-circle', { fontCharacter: '\\eba5' });
-Codicon.playCircle = new Codicon('play-circle', { fontCharacter: '\\eba6' });
-Codicon.record = new Codicon('record', { fontCharacter: '\\eba7' });
-Codicon.debugAltSmall = new Codicon('debug-alt-small', { fontCharacter: '\\eba8' });
-Codicon.vmConnect = new Codicon('vm-connect', { fontCharacter: '\\eba9' });
-Codicon.cloud = new Codicon('cloud', { fontCharacter: '\\ebaa' });
-Codicon.merge = new Codicon('merge', { fontCharacter: '\\ebab' });
-Codicon.exportIcon = new Codicon('export', { fontCharacter: '\\ebac' });
-Codicon.graphLeft = new Codicon('graph-left', { fontCharacter: '\\ebad' });
-Codicon.magnet = new Codicon('magnet', { fontCharacter: '\\ebae' });
-Codicon.notebook = new Codicon('notebook', { fontCharacter: '\\ebaf' });
-Codicon.redo = new Codicon('redo', { fontCharacter: '\\ebb0' });
-Codicon.checkAll = new Codicon('check-all', { fontCharacter: '\\ebb1' });
-Codicon.pinnedDirty = new Codicon('pinned-dirty', { fontCharacter: '\\ebb2' });
-Codicon.passFilled = new Codicon('pass-filled', { fontCharacter: '\\ebb3' });
-Codicon.circleLargeFilled = new Codicon('circle-large-filled', { fontCharacter: '\\ebb4' });
-Codicon.circleLargeOutline = new Codicon('circle-large-outline', { fontCharacter: '\\ebb5' });
-Codicon.combine = new Codicon('combine', { fontCharacter: '\\ebb6' });
-Codicon.gather = new Codicon('gather', { fontCharacter: '\\ebb6' });
-Codicon.table = new Codicon('table', { fontCharacter: '\\ebb7' });
-Codicon.variableGroup = new Codicon('variable-group', { fontCharacter: '\\ebb8' });
-Codicon.typeHierarchy = new Codicon('type-hierarchy', { fontCharacter: '\\ebb9' });
-Codicon.typeHierarchySub = new Codicon('type-hierarchy-sub', { fontCharacter: '\\ebba' });
-Codicon.typeHierarchySuper = new Codicon('type-hierarchy-super', { fontCharacter: '\\ebbb' });
-Codicon.gitPullRequestCreate = new Codicon('git-pull-request-create', { fontCharacter: '\\ebbc' });
-Codicon.runAbove = new Codicon('run-above', { fontCharacter: '\\ebbd' });
-Codicon.runBelow = new Codicon('run-below', { fontCharacter: '\\ebbe' });
-Codicon.notebookTemplate = new Codicon('notebook-template', { fontCharacter: '\\ebbf' });
-Codicon.debugRerun = new Codicon('debug-rerun', { fontCharacter: '\\ebc0' });
-Codicon.workspaceTrusted = new Codicon('workspace-trusted', { fontCharacter: '\\ebc1' });
-Codicon.workspaceUntrusted = new Codicon('workspace-untrusted', { fontCharacter: '\\ebc2' });
-Codicon.workspaceUnspecified = new Codicon('workspace-unspecified', { fontCharacter: '\\ebc3' });
-Codicon.terminalCmd = new Codicon('terminal-cmd', { fontCharacter: '\\ebc4' });
-Codicon.terminalDebian = new Codicon('terminal-debian', { fontCharacter: '\\ebc5' });
-Codicon.terminalLinux = new Codicon('terminal-linux', { fontCharacter: '\\ebc6' });
-Codicon.terminalPowershell = new Codicon('terminal-powershell', { fontCharacter: '\\ebc7' });
-Codicon.terminalTmux = new Codicon('terminal-tmux', { fontCharacter: '\\ebc8' });
-Codicon.terminalUbuntu = new Codicon('terminal-ubuntu', { fontCharacter: '\\ebc9' });
-Codicon.terminalBash = new Codicon('terminal-bash', { fontCharacter: '\\ebca' });
-Codicon.arrowSwap = new Codicon('arrow-swap', { fontCharacter: '\\ebcb' });
-Codicon.copy = new Codicon('copy', { fontCharacter: '\\ebcc' });
-Codicon.personAdd = new Codicon('person-add', { fontCharacter: '\\ebcd' });
-Codicon.filterFilled = new Codicon('filter-filled', { fontCharacter: '\\ebce' });
-Codicon.wand = new Codicon('wand', { fontCharacter: '\\ebcf' });
-Codicon.debugLineByLine = new Codicon('debug-line-by-line', { fontCharacter: '\\ebd0' });
-Codicon.inspect = new Codicon('inspect', { fontCharacter: '\\ebd1' });
-Codicon.layers = new Codicon('layers', { fontCharacter: '\\ebd2' });
-Codicon.layersDot = new Codicon('layers-dot', { fontCharacter: '\\ebd3' });
-Codicon.layersActive = new Codicon('layers-active', { fontCharacter: '\\ebd4' });
-Codicon.compass = new Codicon('compass', { fontCharacter: '\\ebd5' });
-Codicon.compassDot = new Codicon('compass-dot', { fontCharacter: '\\ebd6' });
-Codicon.compassActive = new Codicon('compass-active', { fontCharacter: '\\ebd7' });
-Codicon.azure = new Codicon('azure', { fontCharacter: '\\ebd8' });
-Codicon.issueDraft = new Codicon('issue-draft', { fontCharacter: '\\ebd9' });
-Codicon.gitPullRequestClosed = new Codicon('git-pull-request-closed', { fontCharacter: '\\ebda' });
-Codicon.gitPullRequestDraft = new Codicon('git-pull-request-draft', { fontCharacter: '\\ebdb' });
-Codicon.debugAll = new Codicon('debug-all', { fontCharacter: '\\ebdc' });
-Codicon.debugCoverage = new Codicon('debug-coverage', { fontCharacter: '\\ebdd' });
-Codicon.runErrors = new Codicon('run-errors', { fontCharacter: '\\ebde' });
-Codicon.folderLibrary = new Codicon('folder-library', { fontCharacter: '\\ebdf' });
-Codicon.debugContinueSmall = new Codicon('debug-continue-small', { fontCharacter: '\\ebe0' });
-Codicon.beakerStop = new Codicon('beaker-stop', { fontCharacter: '\\ebe1' });
-Codicon.graphLine = new Codicon('graph-line', { fontCharacter: '\\ebe2' });
-Codicon.graphScatter = new Codicon('graph-scatter', { fontCharacter: '\\ebe3' });
-Codicon.pieChart = new Codicon('pie-chart', { fontCharacter: '\\ebe4' });
-Codicon.bracket = new Codicon('bracket', Codicon.json.definition);
-Codicon.bracketDot = new Codicon('bracket-dot', { fontCharacter: '\\ebe5' });
-Codicon.bracketError = new Codicon('bracket-error', { fontCharacter: '\\ebe6' });
-Codicon.lockSmall = new Codicon('lock-small', { fontCharacter: '\\ebe7' });
-Codicon.azureDevops = new Codicon('azure-devops', { fontCharacter: '\\ebe8' });
-Codicon.verifiedFilled = new Codicon('verified-filled', { fontCharacter: '\\ebe9' });
-Codicon.newLine = new Codicon('newline', { fontCharacter: '\\ebea' });
-Codicon.layout = new Codicon('layout', { fontCharacter: '\\ebeb' });
-Codicon.layoutActivitybarLeft = new Codicon('layout-activitybar-left', { fontCharacter: '\\ebec' });
-Codicon.layoutActivitybarRight = new Codicon('layout-activitybar-right', { fontCharacter: '\\ebed' });
-Codicon.layoutPanelLeft = new Codicon('layout-panel-left', { fontCharacter: '\\ebee' });
-Codicon.layoutPanelCenter = new Codicon('layout-panel-center', { fontCharacter: '\\ebef' });
-Codicon.layoutPanelJustify = new Codicon('layout-panel-justify', { fontCharacter: '\\ebf0' });
-Codicon.layoutPanelRight = new Codicon('layout-panel-right', { fontCharacter: '\\ebf1' });
-Codicon.layoutPanel = new Codicon('layout-panel', { fontCharacter: '\\ebf2' });
-Codicon.layoutSidebarLeft = new Codicon('layout-sidebar-left', { fontCharacter: '\\ebf3' });
-Codicon.layoutSidebarRight = new Codicon('layout-sidebar-right', { fontCharacter: '\\ebf4' });
-Codicon.layoutStatusbar = new Codicon('layout-statusbar', { fontCharacter: '\\ebf5' });
-Codicon.layoutMenubar = new Codicon('layout-menubar', { fontCharacter: '\\ebf6' });
-Codicon.layoutCentered = new Codicon('layout-centered', { fontCharacter: '\\ebf7' });
-Codicon.layoutSidebarRightOff = new Codicon('layout-sidebar-right-off', { fontCharacter: '\\ec00' });
-Codicon.layoutPanelOff = new Codicon('layout-panel-off', { fontCharacter: '\\ec01' });
-Codicon.layoutSidebarLeftOff = new Codicon('layout-sidebar-left-off', { fontCharacter: '\\ec02' });
-Codicon.target = new Codicon('target', { fontCharacter: '\\ebf8' });
-Codicon.indent = new Codicon('indent', { fontCharacter: '\\ebf9' });
-Codicon.recordSmall = new Codicon('record-small', { fontCharacter: '\\ebfa' });
-Codicon.errorSmall = new Codicon('error-small', { fontCharacter: '\\ebfb' });
-Codicon.arrowCircleDown = new Codicon('arrow-circle-down', { fontCharacter: '\\ebfc' });
-Codicon.arrowCircleLeft = new Codicon('arrow-circle-left', { fontCharacter: '\\ebfd' });
-Codicon.arrowCircleRight = new Codicon('arrow-circle-right', { fontCharacter: '\\ebfe' });
-Codicon.arrowCircleUp = new Codicon('arrow-circle-up', { fontCharacter: '\\ebff' });
-Codicon.heartFilled = new Codicon('heart-filled', { fontCharacter: '\\ec04' });
-Codicon.map = new Codicon('map', { fontCharacter: '\\ec05' });
-Codicon.mapFilled = new Codicon('map-filled', { fontCharacter: '\\ec06' });
-Codicon.circleSmall = new Codicon('circle-small', { fontCharacter: '\\ec07' });
-Codicon.bellSlash = new Codicon('bell-slash', { fontCharacter: '\\ec08' });
-Codicon.bellSlashDot = new Codicon('bell-slash-dot', { fontCharacter: '\\ec09' });
-Codicon.commentUnresolved = new Codicon('comment-unresolved', { fontCharacter: '\\ec0a' });
-Codicon.gitPullRequestGoToChanges = new Codicon('git-pull-request-go-to-changes', { fontCharacter: '\\ec0b' });
-Codicon.gitPullRequestNewChanges = new Codicon('git-pull-request-new-changes', { fontCharacter: '\\ec0c' });
-// derived icons, that could become separate icons
-Codicon.dialogError = new Codicon('dialog-error', Codicon.error.definition);
-Codicon.dialogWarning = new Codicon('dialog-warning', Codicon.warning.definition);
-Codicon.dialogInfo = new Codicon('dialog-info', Codicon.info.definition);
-Codicon.dialogClose = new Codicon('dialog-close', Codicon.close.definition);
-Codicon.treeItemExpanded = new Codicon('tree-item-expanded', Codicon.chevronDown.definition); // collapsed is done with rotation
-Codicon.treeFilterOnTypeOn = new Codicon('tree-filter-on-type-on', Codicon.listFilter.definition);
-Codicon.treeFilterOnTypeOff = new Codicon('tree-filter-on-type-off', Codicon.listSelection.definition);
-Codicon.treeFilterClear = new Codicon('tree-filter-clear', Codicon.close.definition);
-Codicon.treeItemLoading = new Codicon('tree-item-loading', Codicon.loading.definition);
-Codicon.menuSelection = new Codicon('menu-selection', Codicon.check.definition);
-Codicon.menuSubmenu = new Codicon('menu-submenu', Codicon.chevronRight.definition);
-Codicon.menuBarMore = new Codicon('menubar-more', Codicon.more.definition);
-Codicon.scrollbarButtonLeft = new Codicon('scrollbar-button-left', Codicon.triangleLeft.definition);
-Codicon.scrollbarButtonRight = new Codicon('scrollbar-button-right', Codicon.triangleRight.definition);
-Codicon.scrollbarButtonUp = new Codicon('scrollbar-button-up', Codicon.triangleUp.definition);
-Codicon.scrollbarButtonDown = new Codicon('scrollbar-button-down', Codicon.triangleDown.definition);
-Codicon.toolBarMore = new Codicon('toolbar-more', Codicon.more.definition);
-Codicon.quickInputBack = new Codicon('quick-input-back', Codicon.arrowLeft.definition);
-var CSSIcon;
-(function (CSSIcon) {
-    CSSIcon.iconNameSegment = '[A-Za-z0-9]+';
-    CSSIcon.iconNameExpression = '[A-Za-z0-9-]+';
-    CSSIcon.iconModifierExpression = '~[A-Za-z]+';
-    CSSIcon.iconNameCharacter = '[A-Za-z0-9~-]';
-    const cssIconIdRegex = new RegExp(`^(${CSSIcon.iconNameExpression})(${CSSIcon.iconModifierExpression})?$`);
-    function asClassNameArray(icon) {
-        if (icon instanceof Codicon) {
-            return ['codicon', 'codicon-' + icon.id];
-        }
-        const match = cssIconIdRegex.exec(icon.id);
-        if (!match) {
-            return asClassNameArray(Codicon.error);
-        }
-        const [, id, modifier] = match;
-        const classNames = ['codicon', 'codicon-' + id];
-        if (modifier) {
-            classNames.push('codicon-modifier-' + modifier.substr(1));
-        }
-        return classNames;
-    }
-    CSSIcon.asClassNameArray = asClassNameArray;
-    function asClassName(icon) {
-        return asClassNameArray(icon).join(' ');
-    }
-    CSSIcon.asClassName = asClassName;
-    function asCSSSelector(icon) {
-        return '.' + asClassNameArray(icon).join('.');
-    }
-    CSSIcon.asCSSSelector = asCSSSelector;
-})(CSSIcon || (CSSIcon = {}));
+const Codicon = {
+    // built-in icons, with image name
+    add: register('add', 0xea60),
+    plus: register('plus', 0xea60),
+    gistNew: register('gist-new', 0xea60),
+    repoCreate: register('repo-create', 0xea60),
+    lightbulb: register('lightbulb', 0xea61),
+    lightBulb: register('light-bulb', 0xea61),
+    repo: register('repo', 0xea62),
+    repoDelete: register('repo-delete', 0xea62),
+    gistFork: register('gist-fork', 0xea63),
+    repoForked: register('repo-forked', 0xea63),
+    gitPullRequest: register('git-pull-request', 0xea64),
+    gitPullRequestAbandoned: register('git-pull-request-abandoned', 0xea64),
+    recordKeys: register('record-keys', 0xea65),
+    keyboard: register('keyboard', 0xea65),
+    tag: register('tag', 0xea66),
+    tagAdd: register('tag-add', 0xea66),
+    tagRemove: register('tag-remove', 0xea66),
+    person: register('person', 0xea67),
+    personFollow: register('person-follow', 0xea67),
+    personOutline: register('person-outline', 0xea67),
+    personFilled: register('person-filled', 0xea67),
+    gitBranch: register('git-branch', 0xea68),
+    gitBranchCreate: register('git-branch-create', 0xea68),
+    gitBranchDelete: register('git-branch-delete', 0xea68),
+    sourceControl: register('source-control', 0xea68),
+    mirror: register('mirror', 0xea69),
+    mirrorPublic: register('mirror-public', 0xea69),
+    star: register('star', 0xea6a),
+    starAdd: register('star-add', 0xea6a),
+    starDelete: register('star-delete', 0xea6a),
+    starEmpty: register('star-empty', 0xea6a),
+    comment: register('comment', 0xea6b),
+    commentAdd: register('comment-add', 0xea6b),
+    alert: register('alert', 0xea6c),
+    warning: register('warning', 0xea6c),
+    search: register('search', 0xea6d),
+    searchSave: register('search-save', 0xea6d),
+    logOut: register('log-out', 0xea6e),
+    signOut: register('sign-out', 0xea6e),
+    logIn: register('log-in', 0xea6f),
+    signIn: register('sign-in', 0xea6f),
+    eye: register('eye', 0xea70),
+    eyeUnwatch: register('eye-unwatch', 0xea70),
+    eyeWatch: register('eye-watch', 0xea70),
+    circleFilled: register('circle-filled', 0xea71),
+    primitiveDot: register('primitive-dot', 0xea71),
+    closeDirty: register('close-dirty', 0xea71),
+    debugBreakpoint: register('debug-breakpoint', 0xea71),
+    debugBreakpointDisabled: register('debug-breakpoint-disabled', 0xea71),
+    debugHint: register('debug-hint', 0xea71),
+    primitiveSquare: register('primitive-square', 0xea72),
+    edit: register('edit', 0xea73),
+    pencil: register('pencil', 0xea73),
+    info: register('info', 0xea74),
+    issueOpened: register('issue-opened', 0xea74),
+    gistPrivate: register('gist-private', 0xea75),
+    gitForkPrivate: register('git-fork-private', 0xea75),
+    lock: register('lock', 0xea75),
+    mirrorPrivate: register('mirror-private', 0xea75),
+    close: register('close', 0xea76),
+    removeClose: register('remove-close', 0xea76),
+    x: register('x', 0xea76),
+    repoSync: register('repo-sync', 0xea77),
+    sync: register('sync', 0xea77),
+    clone: register('clone', 0xea78),
+    desktopDownload: register('desktop-download', 0xea78),
+    beaker: register('beaker', 0xea79),
+    microscope: register('microscope', 0xea79),
+    vm: register('vm', 0xea7a),
+    deviceDesktop: register('device-desktop', 0xea7a),
+    file: register('file', 0xea7b),
+    fileText: register('file-text', 0xea7b),
+    more: register('more', 0xea7c),
+    ellipsis: register('ellipsis', 0xea7c),
+    kebabHorizontal: register('kebab-horizontal', 0xea7c),
+    mailReply: register('mail-reply', 0xea7d),
+    reply: register('reply', 0xea7d),
+    organization: register('organization', 0xea7e),
+    organizationFilled: register('organization-filled', 0xea7e),
+    organizationOutline: register('organization-outline', 0xea7e),
+    newFile: register('new-file', 0xea7f),
+    fileAdd: register('file-add', 0xea7f),
+    newFolder: register('new-folder', 0xea80),
+    fileDirectoryCreate: register('file-directory-create', 0xea80),
+    trash: register('trash', 0xea81),
+    trashcan: register('trashcan', 0xea81),
+    history: register('history', 0xea82),
+    clock: register('clock', 0xea82),
+    folder: register('folder', 0xea83),
+    fileDirectory: register('file-directory', 0xea83),
+    symbolFolder: register('symbol-folder', 0xea83),
+    logoGithub: register('logo-github', 0xea84),
+    markGithub: register('mark-github', 0xea84),
+    github: register('github', 0xea84),
+    terminal: register('terminal', 0xea85),
+    console: register('console', 0xea85),
+    repl: register('repl', 0xea85),
+    zap: register('zap', 0xea86),
+    symbolEvent: register('symbol-event', 0xea86),
+    error: register('error', 0xea87),
+    stop: register('stop', 0xea87),
+    variable: register('variable', 0xea88),
+    symbolVariable: register('symbol-variable', 0xea88),
+    array: register('array', 0xea8a),
+    symbolArray: register('symbol-array', 0xea8a),
+    symbolModule: register('symbol-module', 0xea8b),
+    symbolPackage: register('symbol-package', 0xea8b),
+    symbolNamespace: register('symbol-namespace', 0xea8b),
+    symbolObject: register('symbol-object', 0xea8b),
+    symbolMethod: register('symbol-method', 0xea8c),
+    symbolFunction: register('symbol-function', 0xea8c),
+    symbolConstructor: register('symbol-constructor', 0xea8c),
+    symbolBoolean: register('symbol-boolean', 0xea8f),
+    symbolNull: register('symbol-null', 0xea8f),
+    symbolNumeric: register('symbol-numeric', 0xea90),
+    symbolNumber: register('symbol-number', 0xea90),
+    symbolStructure: register('symbol-structure', 0xea91),
+    symbolStruct: register('symbol-struct', 0xea91),
+    symbolParameter: register('symbol-parameter', 0xea92),
+    symbolTypeParameter: register('symbol-type-parameter', 0xea92),
+    symbolKey: register('symbol-key', 0xea93),
+    symbolText: register('symbol-text', 0xea93),
+    symbolReference: register('symbol-reference', 0xea94),
+    goToFile: register('go-to-file', 0xea94),
+    symbolEnum: register('symbol-enum', 0xea95),
+    symbolValue: register('symbol-value', 0xea95),
+    symbolRuler: register('symbol-ruler', 0xea96),
+    symbolUnit: register('symbol-unit', 0xea96),
+    activateBreakpoints: register('activate-breakpoints', 0xea97),
+    archive: register('archive', 0xea98),
+    arrowBoth: register('arrow-both', 0xea99),
+    arrowDown: register('arrow-down', 0xea9a),
+    arrowLeft: register('arrow-left', 0xea9b),
+    arrowRight: register('arrow-right', 0xea9c),
+    arrowSmallDown: register('arrow-small-down', 0xea9d),
+    arrowSmallLeft: register('arrow-small-left', 0xea9e),
+    arrowSmallRight: register('arrow-small-right', 0xea9f),
+    arrowSmallUp: register('arrow-small-up', 0xeaa0),
+    arrowUp: register('arrow-up', 0xeaa1),
+    bell: register('bell', 0xeaa2),
+    bold: register('bold', 0xeaa3),
+    book: register('book', 0xeaa4),
+    bookmark: register('bookmark', 0xeaa5),
+    debugBreakpointConditionalUnverified: register('debug-breakpoint-conditional-unverified', 0xeaa6),
+    debugBreakpointConditional: register('debug-breakpoint-conditional', 0xeaa7),
+    debugBreakpointConditionalDisabled: register('debug-breakpoint-conditional-disabled', 0xeaa7),
+    debugBreakpointDataUnverified: register('debug-breakpoint-data-unverified', 0xeaa8),
+    debugBreakpointData: register('debug-breakpoint-data', 0xeaa9),
+    debugBreakpointDataDisabled: register('debug-breakpoint-data-disabled', 0xeaa9),
+    debugBreakpointLogUnverified: register('debug-breakpoint-log-unverified', 0xeaaa),
+    debugBreakpointLog: register('debug-breakpoint-log', 0xeaab),
+    debugBreakpointLogDisabled: register('debug-breakpoint-log-disabled', 0xeaab),
+    briefcase: register('briefcase', 0xeaac),
+    broadcast: register('broadcast', 0xeaad),
+    browser: register('browser', 0xeaae),
+    bug: register('bug', 0xeaaf),
+    calendar: register('calendar', 0xeab0),
+    caseSensitive: register('case-sensitive', 0xeab1),
+    check: register('check', 0xeab2),
+    checklist: register('checklist', 0xeab3),
+    chevronDown: register('chevron-down', 0xeab4),
+    dropDownButton: register('drop-down-button', 0xeab4),
+    chevronLeft: register('chevron-left', 0xeab5),
+    chevronRight: register('chevron-right', 0xeab6),
+    chevronUp: register('chevron-up', 0xeab7),
+    chromeClose: register('chrome-close', 0xeab8),
+    chromeMaximize: register('chrome-maximize', 0xeab9),
+    chromeMinimize: register('chrome-minimize', 0xeaba),
+    chromeRestore: register('chrome-restore', 0xeabb),
+    circle: register('circle', 0xeabc),
+    circleOutline: register('circle-outline', 0xeabc),
+    debugBreakpointUnverified: register('debug-breakpoint-unverified', 0xeabc),
+    circleSlash: register('circle-slash', 0xeabd),
+    circuitBoard: register('circuit-board', 0xeabe),
+    clearAll: register('clear-all', 0xeabf),
+    clippy: register('clippy', 0xeac0),
+    closeAll: register('close-all', 0xeac1),
+    cloudDownload: register('cloud-download', 0xeac2),
+    cloudUpload: register('cloud-upload', 0xeac3),
+    code: register('code', 0xeac4),
+    collapseAll: register('collapse-all', 0xeac5),
+    colorMode: register('color-mode', 0xeac6),
+    commentDiscussion: register('comment-discussion', 0xeac7),
+    compareChanges: register('compare-changes', 0xeafd),
+    creditCard: register('credit-card', 0xeac9),
+    dash: register('dash', 0xeacc),
+    dashboard: register('dashboard', 0xeacd),
+    database: register('database', 0xeace),
+    debugContinue: register('debug-continue', 0xeacf),
+    debugDisconnect: register('debug-disconnect', 0xead0),
+    debugPause: register('debug-pause', 0xead1),
+    debugRestart: register('debug-restart', 0xead2),
+    debugStart: register('debug-start', 0xead3),
+    debugStepInto: register('debug-step-into', 0xead4),
+    debugStepOut: register('debug-step-out', 0xead5),
+    debugStepOver: register('debug-step-over', 0xead6),
+    debugStop: register('debug-stop', 0xead7),
+    debug: register('debug', 0xead8),
+    deviceCameraVideo: register('device-camera-video', 0xead9),
+    deviceCamera: register('device-camera', 0xeada),
+    deviceMobile: register('device-mobile', 0xeadb),
+    diffAdded: register('diff-added', 0xeadc),
+    diffIgnored: register('diff-ignored', 0xeadd),
+    diffModified: register('diff-modified', 0xeade),
+    diffRemoved: register('diff-removed', 0xeadf),
+    diffRenamed: register('diff-renamed', 0xeae0),
+    diff: register('diff', 0xeae1),
+    discard: register('discard', 0xeae2),
+    editorLayout: register('editor-layout', 0xeae3),
+    emptyWindow: register('empty-window', 0xeae4),
+    exclude: register('exclude', 0xeae5),
+    extensions: register('extensions', 0xeae6),
+    eyeClosed: register('eye-closed', 0xeae7),
+    fileBinary: register('file-binary', 0xeae8),
+    fileCode: register('file-code', 0xeae9),
+    fileMedia: register('file-media', 0xeaea),
+    filePdf: register('file-pdf', 0xeaeb),
+    fileSubmodule: register('file-submodule', 0xeaec),
+    fileSymlinkDirectory: register('file-symlink-directory', 0xeaed),
+    fileSymlinkFile: register('file-symlink-file', 0xeaee),
+    fileZip: register('file-zip', 0xeaef),
+    files: register('files', 0xeaf0),
+    filter: register('filter', 0xeaf1),
+    flame: register('flame', 0xeaf2),
+    foldDown: register('fold-down', 0xeaf3),
+    foldUp: register('fold-up', 0xeaf4),
+    fold: register('fold', 0xeaf5),
+    folderActive: register('folder-active', 0xeaf6),
+    folderOpened: register('folder-opened', 0xeaf7),
+    gear: register('gear', 0xeaf8),
+    gift: register('gift', 0xeaf9),
+    gistSecret: register('gist-secret', 0xeafa),
+    gist: register('gist', 0xeafb),
+    gitCommit: register('git-commit', 0xeafc),
+    gitCompare: register('git-compare', 0xeafd),
+    gitMerge: register('git-merge', 0xeafe),
+    githubAction: register('github-action', 0xeaff),
+    githubAlt: register('github-alt', 0xeb00),
+    globe: register('globe', 0xeb01),
+    grabber: register('grabber', 0xeb02),
+    graph: register('graph', 0xeb03),
+    gripper: register('gripper', 0xeb04),
+    heart: register('heart', 0xeb05),
+    home: register('home', 0xeb06),
+    horizontalRule: register('horizontal-rule', 0xeb07),
+    hubot: register('hubot', 0xeb08),
+    inbox: register('inbox', 0xeb09),
+    issueClosed: register('issue-closed', 0xeba4),
+    issueReopened: register('issue-reopened', 0xeb0b),
+    issues: register('issues', 0xeb0c),
+    italic: register('italic', 0xeb0d),
+    jersey: register('jersey', 0xeb0e),
+    json: register('json', 0xeb0f),
+    bracket: register('bracket', 0xeb0f),
+    kebabVertical: register('kebab-vertical', 0xeb10),
+    key: register('key', 0xeb11),
+    law: register('law', 0xeb12),
+    lightbulbAutofix: register('lightbulb-autofix', 0xeb13),
+    linkExternal: register('link-external', 0xeb14),
+    link: register('link', 0xeb15),
+    listOrdered: register('list-ordered', 0xeb16),
+    listUnordered: register('list-unordered', 0xeb17),
+    liveShare: register('live-share', 0xeb18),
+    loading: register('loading', 0xeb19),
+    location: register('location', 0xeb1a),
+    mailRead: register('mail-read', 0xeb1b),
+    mail: register('mail', 0xeb1c),
+    markdown: register('markdown', 0xeb1d),
+    megaphone: register('megaphone', 0xeb1e),
+    mention: register('mention', 0xeb1f),
+    milestone: register('milestone', 0xeb20),
+    mortarBoard: register('mortar-board', 0xeb21),
+    move: register('move', 0xeb22),
+    multipleWindows: register('multiple-windows', 0xeb23),
+    mute: register('mute', 0xeb24),
+    noNewline: register('no-newline', 0xeb25),
+    note: register('note', 0xeb26),
+    octoface: register('octoface', 0xeb27),
+    openPreview: register('open-preview', 0xeb28),
+    package_: register('package', 0xeb29),
+    paintcan: register('paintcan', 0xeb2a),
+    pin: register('pin', 0xeb2b),
+    play: register('play', 0xeb2c),
+    run: register('run', 0xeb2c),
+    plug: register('plug', 0xeb2d),
+    preserveCase: register('preserve-case', 0xeb2e),
+    preview: register('preview', 0xeb2f),
+    project: register('project', 0xeb30),
+    pulse: register('pulse', 0xeb31),
+    question: register('question', 0xeb32),
+    quote: register('quote', 0xeb33),
+    radioTower: register('radio-tower', 0xeb34),
+    reactions: register('reactions', 0xeb35),
+    references: register('references', 0xeb36),
+    refresh: register('refresh', 0xeb37),
+    regex: register('regex', 0xeb38),
+    remoteExplorer: register('remote-explorer', 0xeb39),
+    remote: register('remote', 0xeb3a),
+    remove: register('remove', 0xeb3b),
+    replaceAll: register('replace-all', 0xeb3c),
+    replace: register('replace', 0xeb3d),
+    repoClone: register('repo-clone', 0xeb3e),
+    repoForcePush: register('repo-force-push', 0xeb3f),
+    repoPull: register('repo-pull', 0xeb40),
+    repoPush: register('repo-push', 0xeb41),
+    report: register('report', 0xeb42),
+    requestChanges: register('request-changes', 0xeb43),
+    rocket: register('rocket', 0xeb44),
+    rootFolderOpened: register('root-folder-opened', 0xeb45),
+    rootFolder: register('root-folder', 0xeb46),
+    rss: register('rss', 0xeb47),
+    ruby: register('ruby', 0xeb48),
+    saveAll: register('save-all', 0xeb49),
+    saveAs: register('save-as', 0xeb4a),
+    save: register('save', 0xeb4b),
+    screenFull: register('screen-full', 0xeb4c),
+    screenNormal: register('screen-normal', 0xeb4d),
+    searchStop: register('search-stop', 0xeb4e),
+    server: register('server', 0xeb50),
+    settingsGear: register('settings-gear', 0xeb51),
+    settings: register('settings', 0xeb52),
+    shield: register('shield', 0xeb53),
+    smiley: register('smiley', 0xeb54),
+    sortPrecedence: register('sort-precedence', 0xeb55),
+    splitHorizontal: register('split-horizontal', 0xeb56),
+    splitVertical: register('split-vertical', 0xeb57),
+    squirrel: register('squirrel', 0xeb58),
+    starFull: register('star-full', 0xeb59),
+    starHalf: register('star-half', 0xeb5a),
+    symbolClass: register('symbol-class', 0xeb5b),
+    symbolColor: register('symbol-color', 0xeb5c),
+    symbolCustomColor: register('symbol-customcolor', 0xeb5c),
+    symbolConstant: register('symbol-constant', 0xeb5d),
+    symbolEnumMember: register('symbol-enum-member', 0xeb5e),
+    symbolField: register('symbol-field', 0xeb5f),
+    symbolFile: register('symbol-file', 0xeb60),
+    symbolInterface: register('symbol-interface', 0xeb61),
+    symbolKeyword: register('symbol-keyword', 0xeb62),
+    symbolMisc: register('symbol-misc', 0xeb63),
+    symbolOperator: register('symbol-operator', 0xeb64),
+    symbolProperty: register('symbol-property', 0xeb65),
+    wrench: register('wrench', 0xeb65),
+    wrenchSubaction: register('wrench-subaction', 0xeb65),
+    symbolSnippet: register('symbol-snippet', 0xeb66),
+    tasklist: register('tasklist', 0xeb67),
+    telescope: register('telescope', 0xeb68),
+    textSize: register('text-size', 0xeb69),
+    threeBars: register('three-bars', 0xeb6a),
+    thumbsdown: register('thumbsdown', 0xeb6b),
+    thumbsup: register('thumbsup', 0xeb6c),
+    tools: register('tools', 0xeb6d),
+    triangleDown: register('triangle-down', 0xeb6e),
+    triangleLeft: register('triangle-left', 0xeb6f),
+    triangleRight: register('triangle-right', 0xeb70),
+    triangleUp: register('triangle-up', 0xeb71),
+    twitter: register('twitter', 0xeb72),
+    unfold: register('unfold', 0xeb73),
+    unlock: register('unlock', 0xeb74),
+    unmute: register('unmute', 0xeb75),
+    unverified: register('unverified', 0xeb76),
+    verified: register('verified', 0xeb77),
+    versions: register('versions', 0xeb78),
+    vmActive: register('vm-active', 0xeb79),
+    vmOutline: register('vm-outline', 0xeb7a),
+    vmRunning: register('vm-running', 0xeb7b),
+    watch: register('watch', 0xeb7c),
+    whitespace: register('whitespace', 0xeb7d),
+    wholeWord: register('whole-word', 0xeb7e),
+    window: register('window', 0xeb7f),
+    wordWrap: register('word-wrap', 0xeb80),
+    zoomIn: register('zoom-in', 0xeb81),
+    zoomOut: register('zoom-out', 0xeb82),
+    listFilter: register('list-filter', 0xeb83),
+    listFlat: register('list-flat', 0xeb84),
+    listSelection: register('list-selection', 0xeb85),
+    selection: register('selection', 0xeb85),
+    listTree: register('list-tree', 0xeb86),
+    debugBreakpointFunctionUnverified: register('debug-breakpoint-function-unverified', 0xeb87),
+    debugBreakpointFunction: register('debug-breakpoint-function', 0xeb88),
+    debugBreakpointFunctionDisabled: register('debug-breakpoint-function-disabled', 0xeb88),
+    debugStackframeActive: register('debug-stackframe-active', 0xeb89),
+    circleSmallFilled: register('circle-small-filled', 0xeb8a),
+    debugStackframeDot: register('debug-stackframe-dot', 0xeb8a),
+    debugStackframe: register('debug-stackframe', 0xeb8b),
+    debugStackframeFocused: register('debug-stackframe-focused', 0xeb8b),
+    debugBreakpointUnsupported: register('debug-breakpoint-unsupported', 0xeb8c),
+    symbolString: register('symbol-string', 0xeb8d),
+    debugReverseContinue: register('debug-reverse-continue', 0xeb8e),
+    debugStepBack: register('debug-step-back', 0xeb8f),
+    debugRestartFrame: register('debug-restart-frame', 0xeb90),
+    callIncoming: register('call-incoming', 0xeb92),
+    callOutgoing: register('call-outgoing', 0xeb93),
+    menu: register('menu', 0xeb94),
+    expandAll: register('expand-all', 0xeb95),
+    feedback: register('feedback', 0xeb96),
+    groupByRefType: register('group-by-ref-type', 0xeb97),
+    ungroupByRefType: register('ungroup-by-ref-type', 0xeb98),
+    account: register('account', 0xeb99),
+    bellDot: register('bell-dot', 0xeb9a),
+    debugConsole: register('debug-console', 0xeb9b),
+    library: register('library', 0xeb9c),
+    output: register('output', 0xeb9d),
+    runAll: register('run-all', 0xeb9e),
+    syncIgnored: register('sync-ignored', 0xeb9f),
+    pinned: register('pinned', 0xeba0),
+    githubInverted: register('github-inverted', 0xeba1),
+    debugAlt: register('debug-alt', 0xeb91),
+    serverProcess: register('server-process', 0xeba2),
+    serverEnvironment: register('server-environment', 0xeba3),
+    pass: register('pass', 0xeba4),
+    stopCircle: register('stop-circle', 0xeba5),
+    playCircle: register('play-circle', 0xeba6),
+    record: register('record', 0xeba7),
+    debugAltSmall: register('debug-alt-small', 0xeba8),
+    vmConnect: register('vm-connect', 0xeba9),
+    cloud: register('cloud', 0xebaa),
+    merge: register('merge', 0xebab),
+    exportIcon: register('export', 0xebac),
+    graphLeft: register('graph-left', 0xebad),
+    magnet: register('magnet', 0xebae),
+    notebook: register('notebook', 0xebaf),
+    redo: register('redo', 0xebb0),
+    checkAll: register('check-all', 0xebb1),
+    pinnedDirty: register('pinned-dirty', 0xebb2),
+    passFilled: register('pass-filled', 0xebb3),
+    circleLargeFilled: register('circle-large-filled', 0xebb4),
+    circleLarge: register('circle-large', 0xebb5),
+    circleLargeOutline: register('circle-large-outline', 0xebb5),
+    combine: register('combine', 0xebb6),
+    gather: register('gather', 0xebb6),
+    table: register('table', 0xebb7),
+    variableGroup: register('variable-group', 0xebb8),
+    typeHierarchy: register('type-hierarchy', 0xebb9),
+    typeHierarchySub: register('type-hierarchy-sub', 0xebba),
+    typeHierarchySuper: register('type-hierarchy-super', 0xebbb),
+    gitPullRequestCreate: register('git-pull-request-create', 0xebbc),
+    runAbove: register('run-above', 0xebbd),
+    runBelow: register('run-below', 0xebbe),
+    notebookTemplate: register('notebook-template', 0xebbf),
+    debugRerun: register('debug-rerun', 0xebc0),
+    workspaceTrusted: register('workspace-trusted', 0xebc1),
+    workspaceUntrusted: register('workspace-untrusted', 0xebc2),
+    workspaceUnspecified: register('workspace-unspecified', 0xebc3),
+    terminalCmd: register('terminal-cmd', 0xebc4),
+    terminalDebian: register('terminal-debian', 0xebc5),
+    terminalLinux: register('terminal-linux', 0xebc6),
+    terminalPowershell: register('terminal-powershell', 0xebc7),
+    terminalTmux: register('terminal-tmux', 0xebc8),
+    terminalUbuntu: register('terminal-ubuntu', 0xebc9),
+    terminalBash: register('terminal-bash', 0xebca),
+    arrowSwap: register('arrow-swap', 0xebcb),
+    copy: register('copy', 0xebcc),
+    personAdd: register('person-add', 0xebcd),
+    filterFilled: register('filter-filled', 0xebce),
+    wand: register('wand', 0xebcf),
+    debugLineByLine: register('debug-line-by-line', 0xebd0),
+    inspect: register('inspect', 0xebd1),
+    layers: register('layers', 0xebd2),
+    layersDot: register('layers-dot', 0xebd3),
+    layersActive: register('layers-active', 0xebd4),
+    compass: register('compass', 0xebd5),
+    compassDot: register('compass-dot', 0xebd6),
+    compassActive: register('compass-active', 0xebd7),
+    azure: register('azure', 0xebd8),
+    issueDraft: register('issue-draft', 0xebd9),
+    gitPullRequestClosed: register('git-pull-request-closed', 0xebda),
+    gitPullRequestDraft: register('git-pull-request-draft', 0xebdb),
+    debugAll: register('debug-all', 0xebdc),
+    debugCoverage: register('debug-coverage', 0xebdd),
+    runErrors: register('run-errors', 0xebde),
+    folderLibrary: register('folder-library', 0xebdf),
+    debugContinueSmall: register('debug-continue-small', 0xebe0),
+    beakerStop: register('beaker-stop', 0xebe1),
+    graphLine: register('graph-line', 0xebe2),
+    graphScatter: register('graph-scatter', 0xebe3),
+    pieChart: register('pie-chart', 0xebe4),
+    bracketDot: register('bracket-dot', 0xebe5),
+    bracketError: register('bracket-error', 0xebe6),
+    lockSmall: register('lock-small', 0xebe7),
+    azureDevops: register('azure-devops', 0xebe8),
+    verifiedFilled: register('verified-filled', 0xebe9),
+    newLine: register('newline', 0xebea),
+    layout: register('layout', 0xebeb),
+    layoutActivitybarLeft: register('layout-activitybar-left', 0xebec),
+    layoutActivitybarRight: register('layout-activitybar-right', 0xebed),
+    layoutPanelLeft: register('layout-panel-left', 0xebee),
+    layoutPanelCenter: register('layout-panel-center', 0xebef),
+    layoutPanelJustify: register('layout-panel-justify', 0xebf0),
+    layoutPanelRight: register('layout-panel-right', 0xebf1),
+    layoutPanel: register('layout-panel', 0xebf2),
+    layoutSidebarLeft: register('layout-sidebar-left', 0xebf3),
+    layoutSidebarRight: register('layout-sidebar-right', 0xebf4),
+    layoutStatusbar: register('layout-statusbar', 0xebf5),
+    layoutMenubar: register('layout-menubar', 0xebf6),
+    layoutCentered: register('layout-centered', 0xebf7),
+    layoutSidebarRightOff: register('layout-sidebar-right-off', 0xec00),
+    layoutPanelOff: register('layout-panel-off', 0xec01),
+    layoutSidebarLeftOff: register('layout-sidebar-left-off', 0xec02),
+    target: register('target', 0xebf8),
+    indent: register('indent', 0xebf9),
+    recordSmall: register('record-small', 0xebfa),
+    errorSmall: register('error-small', 0xebfb),
+    arrowCircleDown: register('arrow-circle-down', 0xebfc),
+    arrowCircleLeft: register('arrow-circle-left', 0xebfd),
+    arrowCircleRight: register('arrow-circle-right', 0xebfe),
+    arrowCircleUp: register('arrow-circle-up', 0xebff),
+    heartFilled: register('heart-filled', 0xec04),
+    map: register('map', 0xec05),
+    mapFilled: register('map-filled', 0xec06),
+    circleSmall: register('circle-small', 0xec07),
+    bellSlash: register('bell-slash', 0xec08),
+    bellSlashDot: register('bell-slash-dot', 0xec09),
+    commentUnresolved: register('comment-unresolved', 0xec0a),
+    gitPullRequestGoToChanges: register('git-pull-request-go-to-changes', 0xec0b),
+    gitPullRequestNewChanges: register('git-pull-request-new-changes', 0xec0c),
+    searchFuzzy: register('search-fuzzy', 0xec0d),
+    commentDraft: register('comment-draft', 0xec0e),
+    // derived icons, that could become separate icons
+    dialogError: register('dialog-error', 'error'),
+    dialogWarning: register('dialog-warning', 'warning'),
+    dialogInfo: register('dialog-info', 'info'),
+    dialogClose: register('dialog-close', 'close'),
+    treeItemExpanded: register('tree-item-expanded', 'chevron-down'),
+    treeFilterOnTypeOn: register('tree-filter-on-type-on', 'list-filter'),
+    treeFilterOnTypeOff: register('tree-filter-on-type-off', 'list-selection'),
+    treeFilterClear: register('tree-filter-clear', 'close'),
+    treeItemLoading: register('tree-item-loading', 'loading'),
+    menuSelection: register('menu-selection', 'check'),
+    menuSubmenu: register('menu-submenu', 'chevron-right'),
+    menuBarMore: register('menubar-more', 'more'),
+    scrollbarButtonLeft: register('scrollbar-button-left', 'triangle-left'),
+    scrollbarButtonRight: register('scrollbar-button-right', 'triangle-right'),
+    scrollbarButtonUp: register('scrollbar-button-up', 'triangle-up'),
+    scrollbarButtonDown: register('scrollbar-button-down', 'triangle-down'),
+    toolBarMore: register('toolbar-more', 'more'),
+    quickInputBack: register('quick-input-back', 'arrow-left')
+};
 
 ;// CONCATENATED MODULE: ../node_modules/monaco-editor/esm/vs/editor/common/tokenizationRegistry.js
 /*---------------------------------------------------------------------------------------------
@@ -10170,7 +10188,7 @@ class TokenizationRegistry {
     register(language, support) {
         this._map.set(language, support);
         this.fire([language]);
-        return toDisposable(() => {
+        return lifecycle_toDisposable(() => {
             if (this._map.get(language) !== support) {
                 return;
             }
@@ -10183,7 +10201,7 @@ class TokenizationRegistry {
         (_a = this._factories.get(languageId)) === null || _a === void 0 ? void 0 : _a.dispose();
         const myData = new TokenizationSupportFactoryData(this, languageId, factory);
         this._factories.set(languageId, myData);
-        return toDisposable(() => {
+        return lifecycle_toDisposable(() => {
             const v = this._factories.get(languageId);
             if (!v || v !== myData) {
                 return;
@@ -10240,6 +10258,9 @@ class TokenizationRegistry {
     }
 }
 class TokenizationSupportFactoryData extends lifecycle_Disposable {
+    get isResolved() {
+        return this._isResolved;
+    }
     constructor(_registry, _languageId, _factory) {
         super();
         this._registry = _registry;
@@ -10248,9 +10269,6 @@ class TokenizationSupportFactoryData extends lifecycle_Disposable {
         this._isDisposed = false;
         this._resolvePromise = null;
         this._isResolved = false;
-    }
-    get isResolved() {
-        return this._isResolved;
     }
     dispose() {
         this._isDisposed = true;
@@ -10286,10 +10304,10 @@ class TokenizationSupportFactoryData extends lifecycle_Disposable {
 
 class Token {
     constructor(offset, type, language) {
-        this._tokenBrand = undefined;
         this.offset = offset;
         this.type = type;
         this.language = language;
+        this._tokenBrand = undefined;
     }
     toString() {
         return '(' + this.offset + ', ' + this.type + ')';
@@ -10300,19 +10318,26 @@ class Token {
  */
 class TokenizationResult {
     constructor(tokens, endState) {
-        this._tokenizationResultBrand = undefined;
         this.tokens = tokens;
         this.endState = endState;
+        this._tokenizationResultBrand = undefined;
     }
 }
 /**
  * @internal
  */
 class EncodedTokenizationResult {
-    constructor(tokens, endState) {
-        this._encodedTokenizationResultBrand = undefined;
+    constructor(
+    /**
+     * The tokens in binary format. Each token occupies two array indices. For token i:
+     *  - at offset 2*i => startIndex
+     *  - at offset 2*i + 1 => metadata
+     *
+     */
+    tokens, endState) {
         this.tokens = tokens;
         this.endState = endState;
+        this._encodedTokenizationResultBrand = undefined;
     }
 }
 /**
@@ -10501,6 +10526,19 @@ var SymbolKinds;
 })(SymbolKinds || (SymbolKinds = {}));
 class FoldingRangeKind {
     /**
+     * Returns a {@link FoldingRangeKind} for the given value.
+     *
+     * @param value of the kind.
+     */
+    static fromValue(value) {
+        switch (value) {
+            case 'comment': return FoldingRangeKind.Comment;
+            case 'imports': return FoldingRangeKind.Imports;
+            case 'region': return FoldingRangeKind.Region;
+        }
+        return new FoldingRangeKind(value);
+    }
+    /**
      * Creates a new {@link FoldingRangeKind}.
      *
      * @param value of the kind.
@@ -10522,6 +10560,7 @@ FoldingRangeKind.Imports = new FoldingRangeKind('imports');
  * The value of the kind is 'region'.
  */
 FoldingRangeKind.Region = new FoldingRangeKind('region');
+
 /**
  * @internal
  */
@@ -10571,6 +10610,7 @@ var CodeActionTriggerType;
 })(CodeActionTriggerType || (CodeActionTriggerType = {}));
 var CompletionItemInsertTextRule;
 (function (CompletionItemInsertTextRule) {
+    CompletionItemInsertTextRule[CompletionItemInsertTextRule["None"] = 0] = "None";
     /**
      * Adjust whitespace/indentation of multiline insert texts to
      * match the current line indentation.
@@ -10740,123 +10780,128 @@ var EditorOption;
     EditorOption[EditorOption["codeLensFontFamily"] = 15] = "codeLensFontFamily";
     EditorOption[EditorOption["codeLensFontSize"] = 16] = "codeLensFontSize";
     EditorOption[EditorOption["colorDecorators"] = 17] = "colorDecorators";
-    EditorOption[EditorOption["columnSelection"] = 18] = "columnSelection";
-    EditorOption[EditorOption["comments"] = 19] = "comments";
-    EditorOption[EditorOption["contextmenu"] = 20] = "contextmenu";
-    EditorOption[EditorOption["copyWithSyntaxHighlighting"] = 21] = "copyWithSyntaxHighlighting";
-    EditorOption[EditorOption["cursorBlinking"] = 22] = "cursorBlinking";
-    EditorOption[EditorOption["cursorSmoothCaretAnimation"] = 23] = "cursorSmoothCaretAnimation";
-    EditorOption[EditorOption["cursorStyle"] = 24] = "cursorStyle";
-    EditorOption[EditorOption["cursorSurroundingLines"] = 25] = "cursorSurroundingLines";
-    EditorOption[EditorOption["cursorSurroundingLinesStyle"] = 26] = "cursorSurroundingLinesStyle";
-    EditorOption[EditorOption["cursorWidth"] = 27] = "cursorWidth";
-    EditorOption[EditorOption["disableLayerHinting"] = 28] = "disableLayerHinting";
-    EditorOption[EditorOption["disableMonospaceOptimizations"] = 29] = "disableMonospaceOptimizations";
-    EditorOption[EditorOption["domReadOnly"] = 30] = "domReadOnly";
-    EditorOption[EditorOption["dragAndDrop"] = 31] = "dragAndDrop";
-    EditorOption[EditorOption["dropIntoEditor"] = 32] = "dropIntoEditor";
-    EditorOption[EditorOption["emptySelectionClipboard"] = 33] = "emptySelectionClipboard";
-    EditorOption[EditorOption["experimental"] = 34] = "experimental";
-    EditorOption[EditorOption["extraEditorClassName"] = 35] = "extraEditorClassName";
-    EditorOption[EditorOption["fastScrollSensitivity"] = 36] = "fastScrollSensitivity";
-    EditorOption[EditorOption["find"] = 37] = "find";
-    EditorOption[EditorOption["fixedOverflowWidgets"] = 38] = "fixedOverflowWidgets";
-    EditorOption[EditorOption["folding"] = 39] = "folding";
-    EditorOption[EditorOption["foldingStrategy"] = 40] = "foldingStrategy";
-    EditorOption[EditorOption["foldingHighlight"] = 41] = "foldingHighlight";
-    EditorOption[EditorOption["foldingImportsByDefault"] = 42] = "foldingImportsByDefault";
-    EditorOption[EditorOption["foldingMaximumRegions"] = 43] = "foldingMaximumRegions";
-    EditorOption[EditorOption["unfoldOnClickAfterEndOfLine"] = 44] = "unfoldOnClickAfterEndOfLine";
-    EditorOption[EditorOption["fontFamily"] = 45] = "fontFamily";
-    EditorOption[EditorOption["fontInfo"] = 46] = "fontInfo";
-    EditorOption[EditorOption["fontLigatures"] = 47] = "fontLigatures";
-    EditorOption[EditorOption["fontSize"] = 48] = "fontSize";
-    EditorOption[EditorOption["fontWeight"] = 49] = "fontWeight";
-    EditorOption[EditorOption["formatOnPaste"] = 50] = "formatOnPaste";
-    EditorOption[EditorOption["formatOnType"] = 51] = "formatOnType";
-    EditorOption[EditorOption["glyphMargin"] = 52] = "glyphMargin";
-    EditorOption[EditorOption["gotoLocation"] = 53] = "gotoLocation";
-    EditorOption[EditorOption["hideCursorInOverviewRuler"] = 54] = "hideCursorInOverviewRuler";
-    EditorOption[EditorOption["hover"] = 55] = "hover";
-    EditorOption[EditorOption["inDiffEditor"] = 56] = "inDiffEditor";
-    EditorOption[EditorOption["inlineSuggest"] = 57] = "inlineSuggest";
-    EditorOption[EditorOption["letterSpacing"] = 58] = "letterSpacing";
-    EditorOption[EditorOption["lightbulb"] = 59] = "lightbulb";
-    EditorOption[EditorOption["lineDecorationsWidth"] = 60] = "lineDecorationsWidth";
-    EditorOption[EditorOption["lineHeight"] = 61] = "lineHeight";
-    EditorOption[EditorOption["lineNumbers"] = 62] = "lineNumbers";
-    EditorOption[EditorOption["lineNumbersMinChars"] = 63] = "lineNumbersMinChars";
-    EditorOption[EditorOption["linkedEditing"] = 64] = "linkedEditing";
-    EditorOption[EditorOption["links"] = 65] = "links";
-    EditorOption[EditorOption["matchBrackets"] = 66] = "matchBrackets";
-    EditorOption[EditorOption["minimap"] = 67] = "minimap";
-    EditorOption[EditorOption["mouseStyle"] = 68] = "mouseStyle";
-    EditorOption[EditorOption["mouseWheelScrollSensitivity"] = 69] = "mouseWheelScrollSensitivity";
-    EditorOption[EditorOption["mouseWheelZoom"] = 70] = "mouseWheelZoom";
-    EditorOption[EditorOption["multiCursorMergeOverlapping"] = 71] = "multiCursorMergeOverlapping";
-    EditorOption[EditorOption["multiCursorModifier"] = 72] = "multiCursorModifier";
-    EditorOption[EditorOption["multiCursorPaste"] = 73] = "multiCursorPaste";
-    EditorOption[EditorOption["occurrencesHighlight"] = 74] = "occurrencesHighlight";
-    EditorOption[EditorOption["overviewRulerBorder"] = 75] = "overviewRulerBorder";
-    EditorOption[EditorOption["overviewRulerLanes"] = 76] = "overviewRulerLanes";
-    EditorOption[EditorOption["padding"] = 77] = "padding";
-    EditorOption[EditorOption["parameterHints"] = 78] = "parameterHints";
-    EditorOption[EditorOption["peekWidgetDefaultFocus"] = 79] = "peekWidgetDefaultFocus";
-    EditorOption[EditorOption["definitionLinkOpensInPeek"] = 80] = "definitionLinkOpensInPeek";
-    EditorOption[EditorOption["quickSuggestions"] = 81] = "quickSuggestions";
-    EditorOption[EditorOption["quickSuggestionsDelay"] = 82] = "quickSuggestionsDelay";
-    EditorOption[EditorOption["readOnly"] = 83] = "readOnly";
-    EditorOption[EditorOption["renameOnType"] = 84] = "renameOnType";
-    EditorOption[EditorOption["renderControlCharacters"] = 85] = "renderControlCharacters";
-    EditorOption[EditorOption["renderFinalNewline"] = 86] = "renderFinalNewline";
-    EditorOption[EditorOption["renderLineHighlight"] = 87] = "renderLineHighlight";
-    EditorOption[EditorOption["renderLineHighlightOnlyWhenFocus"] = 88] = "renderLineHighlightOnlyWhenFocus";
-    EditorOption[EditorOption["renderValidationDecorations"] = 89] = "renderValidationDecorations";
-    EditorOption[EditorOption["renderWhitespace"] = 90] = "renderWhitespace";
-    EditorOption[EditorOption["revealHorizontalRightPadding"] = 91] = "revealHorizontalRightPadding";
-    EditorOption[EditorOption["roundedSelection"] = 92] = "roundedSelection";
-    EditorOption[EditorOption["rulers"] = 93] = "rulers";
-    EditorOption[EditorOption["scrollbar"] = 94] = "scrollbar";
-    EditorOption[EditorOption["scrollBeyondLastColumn"] = 95] = "scrollBeyondLastColumn";
-    EditorOption[EditorOption["scrollBeyondLastLine"] = 96] = "scrollBeyondLastLine";
-    EditorOption[EditorOption["scrollPredominantAxis"] = 97] = "scrollPredominantAxis";
-    EditorOption[EditorOption["selectionClipboard"] = 98] = "selectionClipboard";
-    EditorOption[EditorOption["selectionHighlight"] = 99] = "selectionHighlight";
-    EditorOption[EditorOption["selectOnLineNumbers"] = 100] = "selectOnLineNumbers";
-    EditorOption[EditorOption["showFoldingControls"] = 101] = "showFoldingControls";
-    EditorOption[EditorOption["showUnused"] = 102] = "showUnused";
-    EditorOption[EditorOption["snippetSuggestions"] = 103] = "snippetSuggestions";
-    EditorOption[EditorOption["smartSelect"] = 104] = "smartSelect";
-    EditorOption[EditorOption["smoothScrolling"] = 105] = "smoothScrolling";
-    EditorOption[EditorOption["stickyTabStops"] = 106] = "stickyTabStops";
-    EditorOption[EditorOption["stopRenderingLineAfter"] = 107] = "stopRenderingLineAfter";
-    EditorOption[EditorOption["suggest"] = 108] = "suggest";
-    EditorOption[EditorOption["suggestFontSize"] = 109] = "suggestFontSize";
-    EditorOption[EditorOption["suggestLineHeight"] = 110] = "suggestLineHeight";
-    EditorOption[EditorOption["suggestOnTriggerCharacters"] = 111] = "suggestOnTriggerCharacters";
-    EditorOption[EditorOption["suggestSelection"] = 112] = "suggestSelection";
-    EditorOption[EditorOption["tabCompletion"] = 113] = "tabCompletion";
-    EditorOption[EditorOption["tabIndex"] = 114] = "tabIndex";
-    EditorOption[EditorOption["unicodeHighlighting"] = 115] = "unicodeHighlighting";
-    EditorOption[EditorOption["unusualLineTerminators"] = 116] = "unusualLineTerminators";
-    EditorOption[EditorOption["useShadowDOM"] = 117] = "useShadowDOM";
-    EditorOption[EditorOption["useTabStops"] = 118] = "useTabStops";
-    EditorOption[EditorOption["wordSeparators"] = 119] = "wordSeparators";
-    EditorOption[EditorOption["wordWrap"] = 120] = "wordWrap";
-    EditorOption[EditorOption["wordWrapBreakAfterCharacters"] = 121] = "wordWrapBreakAfterCharacters";
-    EditorOption[EditorOption["wordWrapBreakBeforeCharacters"] = 122] = "wordWrapBreakBeforeCharacters";
-    EditorOption[EditorOption["wordWrapColumn"] = 123] = "wordWrapColumn";
-    EditorOption[EditorOption["wordWrapOverride1"] = 124] = "wordWrapOverride1";
-    EditorOption[EditorOption["wordWrapOverride2"] = 125] = "wordWrapOverride2";
-    EditorOption[EditorOption["wrappingIndent"] = 126] = "wrappingIndent";
-    EditorOption[EditorOption["wrappingStrategy"] = 127] = "wrappingStrategy";
-    EditorOption[EditorOption["showDeprecated"] = 128] = "showDeprecated";
-    EditorOption[EditorOption["inlayHints"] = 129] = "inlayHints";
-    EditorOption[EditorOption["editorClassName"] = 130] = "editorClassName";
-    EditorOption[EditorOption["pixelRatio"] = 131] = "pixelRatio";
-    EditorOption[EditorOption["tabFocusMode"] = 132] = "tabFocusMode";
-    EditorOption[EditorOption["layoutInfo"] = 133] = "layoutInfo";
-    EditorOption[EditorOption["wrappingInfo"] = 134] = "wrappingInfo";
+    EditorOption[EditorOption["colorDecoratorsLimit"] = 18] = "colorDecoratorsLimit";
+    EditorOption[EditorOption["columnSelection"] = 19] = "columnSelection";
+    EditorOption[EditorOption["comments"] = 20] = "comments";
+    EditorOption[EditorOption["contextmenu"] = 21] = "contextmenu";
+    EditorOption[EditorOption["copyWithSyntaxHighlighting"] = 22] = "copyWithSyntaxHighlighting";
+    EditorOption[EditorOption["cursorBlinking"] = 23] = "cursorBlinking";
+    EditorOption[EditorOption["cursorSmoothCaretAnimation"] = 24] = "cursorSmoothCaretAnimation";
+    EditorOption[EditorOption["cursorStyle"] = 25] = "cursorStyle";
+    EditorOption[EditorOption["cursorSurroundingLines"] = 26] = "cursorSurroundingLines";
+    EditorOption[EditorOption["cursorSurroundingLinesStyle"] = 27] = "cursorSurroundingLinesStyle";
+    EditorOption[EditorOption["cursorWidth"] = 28] = "cursorWidth";
+    EditorOption[EditorOption["disableLayerHinting"] = 29] = "disableLayerHinting";
+    EditorOption[EditorOption["disableMonospaceOptimizations"] = 30] = "disableMonospaceOptimizations";
+    EditorOption[EditorOption["domReadOnly"] = 31] = "domReadOnly";
+    EditorOption[EditorOption["dragAndDrop"] = 32] = "dragAndDrop";
+    EditorOption[EditorOption["dropIntoEditor"] = 33] = "dropIntoEditor";
+    EditorOption[EditorOption["emptySelectionClipboard"] = 34] = "emptySelectionClipboard";
+    EditorOption[EditorOption["experimentalWhitespaceRendering"] = 35] = "experimentalWhitespaceRendering";
+    EditorOption[EditorOption["extraEditorClassName"] = 36] = "extraEditorClassName";
+    EditorOption[EditorOption["fastScrollSensitivity"] = 37] = "fastScrollSensitivity";
+    EditorOption[EditorOption["find"] = 38] = "find";
+    EditorOption[EditorOption["fixedOverflowWidgets"] = 39] = "fixedOverflowWidgets";
+    EditorOption[EditorOption["folding"] = 40] = "folding";
+    EditorOption[EditorOption["foldingStrategy"] = 41] = "foldingStrategy";
+    EditorOption[EditorOption["foldingHighlight"] = 42] = "foldingHighlight";
+    EditorOption[EditorOption["foldingImportsByDefault"] = 43] = "foldingImportsByDefault";
+    EditorOption[EditorOption["foldingMaximumRegions"] = 44] = "foldingMaximumRegions";
+    EditorOption[EditorOption["unfoldOnClickAfterEndOfLine"] = 45] = "unfoldOnClickAfterEndOfLine";
+    EditorOption[EditorOption["fontFamily"] = 46] = "fontFamily";
+    EditorOption[EditorOption["fontInfo"] = 47] = "fontInfo";
+    EditorOption[EditorOption["fontLigatures"] = 48] = "fontLigatures";
+    EditorOption[EditorOption["fontSize"] = 49] = "fontSize";
+    EditorOption[EditorOption["fontWeight"] = 50] = "fontWeight";
+    EditorOption[EditorOption["fontVariations"] = 51] = "fontVariations";
+    EditorOption[EditorOption["formatOnPaste"] = 52] = "formatOnPaste";
+    EditorOption[EditorOption["formatOnType"] = 53] = "formatOnType";
+    EditorOption[EditorOption["glyphMargin"] = 54] = "glyphMargin";
+    EditorOption[EditorOption["gotoLocation"] = 55] = "gotoLocation";
+    EditorOption[EditorOption["hideCursorInOverviewRuler"] = 56] = "hideCursorInOverviewRuler";
+    EditorOption[EditorOption["hover"] = 57] = "hover";
+    EditorOption[EditorOption["inDiffEditor"] = 58] = "inDiffEditor";
+    EditorOption[EditorOption["inlineSuggest"] = 59] = "inlineSuggest";
+    EditorOption[EditorOption["letterSpacing"] = 60] = "letterSpacing";
+    EditorOption[EditorOption["lightbulb"] = 61] = "lightbulb";
+    EditorOption[EditorOption["lineDecorationsWidth"] = 62] = "lineDecorationsWidth";
+    EditorOption[EditorOption["lineHeight"] = 63] = "lineHeight";
+    EditorOption[EditorOption["lineNumbers"] = 64] = "lineNumbers";
+    EditorOption[EditorOption["lineNumbersMinChars"] = 65] = "lineNumbersMinChars";
+    EditorOption[EditorOption["linkedEditing"] = 66] = "linkedEditing";
+    EditorOption[EditorOption["links"] = 67] = "links";
+    EditorOption[EditorOption["matchBrackets"] = 68] = "matchBrackets";
+    EditorOption[EditorOption["minimap"] = 69] = "minimap";
+    EditorOption[EditorOption["mouseStyle"] = 70] = "mouseStyle";
+    EditorOption[EditorOption["mouseWheelScrollSensitivity"] = 71] = "mouseWheelScrollSensitivity";
+    EditorOption[EditorOption["mouseWheelZoom"] = 72] = "mouseWheelZoom";
+    EditorOption[EditorOption["multiCursorMergeOverlapping"] = 73] = "multiCursorMergeOverlapping";
+    EditorOption[EditorOption["multiCursorModifier"] = 74] = "multiCursorModifier";
+    EditorOption[EditorOption["multiCursorPaste"] = 75] = "multiCursorPaste";
+    EditorOption[EditorOption["multiCursorLimit"] = 76] = "multiCursorLimit";
+    EditorOption[EditorOption["occurrencesHighlight"] = 77] = "occurrencesHighlight";
+    EditorOption[EditorOption["overviewRulerBorder"] = 78] = "overviewRulerBorder";
+    EditorOption[EditorOption["overviewRulerLanes"] = 79] = "overviewRulerLanes";
+    EditorOption[EditorOption["padding"] = 80] = "padding";
+    EditorOption[EditorOption["parameterHints"] = 81] = "parameterHints";
+    EditorOption[EditorOption["peekWidgetDefaultFocus"] = 82] = "peekWidgetDefaultFocus";
+    EditorOption[EditorOption["definitionLinkOpensInPeek"] = 83] = "definitionLinkOpensInPeek";
+    EditorOption[EditorOption["quickSuggestions"] = 84] = "quickSuggestions";
+    EditorOption[EditorOption["quickSuggestionsDelay"] = 85] = "quickSuggestionsDelay";
+    EditorOption[EditorOption["readOnly"] = 86] = "readOnly";
+    EditorOption[EditorOption["renameOnType"] = 87] = "renameOnType";
+    EditorOption[EditorOption["renderControlCharacters"] = 88] = "renderControlCharacters";
+    EditorOption[EditorOption["renderFinalNewline"] = 89] = "renderFinalNewline";
+    EditorOption[EditorOption["renderLineHighlight"] = 90] = "renderLineHighlight";
+    EditorOption[EditorOption["renderLineHighlightOnlyWhenFocus"] = 91] = "renderLineHighlightOnlyWhenFocus";
+    EditorOption[EditorOption["renderValidationDecorations"] = 92] = "renderValidationDecorations";
+    EditorOption[EditorOption["renderWhitespace"] = 93] = "renderWhitespace";
+    EditorOption[EditorOption["revealHorizontalRightPadding"] = 94] = "revealHorizontalRightPadding";
+    EditorOption[EditorOption["roundedSelection"] = 95] = "roundedSelection";
+    EditorOption[EditorOption["rulers"] = 96] = "rulers";
+    EditorOption[EditorOption["scrollbar"] = 97] = "scrollbar";
+    EditorOption[EditorOption["scrollBeyondLastColumn"] = 98] = "scrollBeyondLastColumn";
+    EditorOption[EditorOption["scrollBeyondLastLine"] = 99] = "scrollBeyondLastLine";
+    EditorOption[EditorOption["scrollPredominantAxis"] = 100] = "scrollPredominantAxis";
+    EditorOption[EditorOption["selectionClipboard"] = 101] = "selectionClipboard";
+    EditorOption[EditorOption["selectionHighlight"] = 102] = "selectionHighlight";
+    EditorOption[EditorOption["selectOnLineNumbers"] = 103] = "selectOnLineNumbers";
+    EditorOption[EditorOption["showFoldingControls"] = 104] = "showFoldingControls";
+    EditorOption[EditorOption["showUnused"] = 105] = "showUnused";
+    EditorOption[EditorOption["snippetSuggestions"] = 106] = "snippetSuggestions";
+    EditorOption[EditorOption["smartSelect"] = 107] = "smartSelect";
+    EditorOption[EditorOption["smoothScrolling"] = 108] = "smoothScrolling";
+    EditorOption[EditorOption["stickyScroll"] = 109] = "stickyScroll";
+    EditorOption[EditorOption["stickyTabStops"] = 110] = "stickyTabStops";
+    EditorOption[EditorOption["stopRenderingLineAfter"] = 111] = "stopRenderingLineAfter";
+    EditorOption[EditorOption["suggest"] = 112] = "suggest";
+    EditorOption[EditorOption["suggestFontSize"] = 113] = "suggestFontSize";
+    EditorOption[EditorOption["suggestLineHeight"] = 114] = "suggestLineHeight";
+    EditorOption[EditorOption["suggestOnTriggerCharacters"] = 115] = "suggestOnTriggerCharacters";
+    EditorOption[EditorOption["suggestSelection"] = 116] = "suggestSelection";
+    EditorOption[EditorOption["tabCompletion"] = 117] = "tabCompletion";
+    EditorOption[EditorOption["tabIndex"] = 118] = "tabIndex";
+    EditorOption[EditorOption["unicodeHighlighting"] = 119] = "unicodeHighlighting";
+    EditorOption[EditorOption["unusualLineTerminators"] = 120] = "unusualLineTerminators";
+    EditorOption[EditorOption["useShadowDOM"] = 121] = "useShadowDOM";
+    EditorOption[EditorOption["useTabStops"] = 122] = "useTabStops";
+    EditorOption[EditorOption["wordBreak"] = 123] = "wordBreak";
+    EditorOption[EditorOption["wordSeparators"] = 124] = "wordSeparators";
+    EditorOption[EditorOption["wordWrap"] = 125] = "wordWrap";
+    EditorOption[EditorOption["wordWrapBreakAfterCharacters"] = 126] = "wordWrapBreakAfterCharacters";
+    EditorOption[EditorOption["wordWrapBreakBeforeCharacters"] = 127] = "wordWrapBreakBeforeCharacters";
+    EditorOption[EditorOption["wordWrapColumn"] = 128] = "wordWrapColumn";
+    EditorOption[EditorOption["wordWrapOverride1"] = 129] = "wordWrapOverride1";
+    EditorOption[EditorOption["wordWrapOverride2"] = 130] = "wordWrapOverride2";
+    EditorOption[EditorOption["wrappingIndent"] = 131] = "wrappingIndent";
+    EditorOption[EditorOption["wrappingStrategy"] = 132] = "wrappingStrategy";
+    EditorOption[EditorOption["showDeprecated"] = 133] = "showDeprecated";
+    EditorOption[EditorOption["inlayHints"] = 134] = "inlayHints";
+    EditorOption[EditorOption["editorClassName"] = 135] = "editorClassName";
+    EditorOption[EditorOption["pixelRatio"] = 136] = "pixelRatio";
+    EditorOption[EditorOption["tabFocusMode"] = 137] = "tabFocusMode";
+    EditorOption[EditorOption["layoutInfo"] = 138] = "layoutInfo";
+    EditorOption[EditorOption["wrappingInfo"] = 139] = "wrappingInfo";
 })(EditorOption || (EditorOption = {}));
 /**
  * End of line character preference.
@@ -11473,6 +11518,7 @@ KeyMod.CtrlCmd = 2048 /* ConstKeyMod.CtrlCmd */;
 KeyMod.Shift = 1024 /* ConstKeyMod.Shift */;
 KeyMod.Alt = 512 /* ConstKeyMod.Alt */;
 KeyMod.WinCtrl = 256 /* ConstKeyMod.WinCtrl */;
+
 function createMonacoBaseAPI() {
     return {
         editor: undefined,
@@ -11519,163 +11565,6 @@ function wordCharacterClassifier_once(computeFn) {
 }
 const wordCharacterClassifier_getMapForWordSeparators = wordCharacterClassifier_once((input) => new WordCharacterClassifier(input));
 
-;// CONCATENATED MODULE: ../node_modules/monaco-editor/esm/vs/base/common/objects.js
-/*---------------------------------------------------------------------------------------------
- *  Copyright (c) Microsoft Corporation. All rights reserved.
- *  Licensed under the MIT License. See License.txt in the project root for license information.
- *--------------------------------------------------------------------------------------------*/
-
-function deepClone(obj) {
-    if (!obj || typeof obj !== 'object') {
-        return obj;
-    }
-    if (obj instanceof RegExp) {
-        // See https://github.com/microsoft/TypeScript/issues/10990
-        return obj;
-    }
-    const result = Array.isArray(obj) ? [] : {};
-    Object.keys(obj).forEach((key) => {
-        if (obj[key] && typeof obj[key] === 'object') {
-            result[key] = deepClone(obj[key]);
-        }
-        else {
-            result[key] = obj[key];
-        }
-    });
-    return result;
-}
-function deepFreeze(obj) {
-    if (!obj || typeof obj !== 'object') {
-        return obj;
-    }
-    const stack = [obj];
-    while (stack.length > 0) {
-        const obj = stack.shift();
-        Object.freeze(obj);
-        for (const key in obj) {
-            if (_hasOwnProperty.call(obj, key)) {
-                const prop = obj[key];
-                if (typeof prop === 'object' && !Object.isFrozen(prop) && !isTypedArray(prop)) {
-                    stack.push(prop);
-                }
-            }
-        }
-    }
-    return obj;
-}
-const _hasOwnProperty = Object.prototype.hasOwnProperty;
-function cloneAndChange(obj, changer) {
-    return _cloneAndChange(obj, changer, new Set());
-}
-function _cloneAndChange(obj, changer, seen) {
-    if (isUndefinedOrNull(obj)) {
-        return obj;
-    }
-    const changed = changer(obj);
-    if (typeof changed !== 'undefined') {
-        return changed;
-    }
-    if (isArray(obj)) {
-        const r1 = [];
-        for (const e of obj) {
-            r1.push(_cloneAndChange(e, changer, seen));
-        }
-        return r1;
-    }
-    if (isObject(obj)) {
-        if (seen.has(obj)) {
-            throw new Error('Cannot clone recursive data-structure');
-        }
-        seen.add(obj);
-        const r2 = {};
-        for (const i2 in obj) {
-            if (_hasOwnProperty.call(obj, i2)) {
-                r2[i2] = _cloneAndChange(obj[i2], changer, seen);
-            }
-        }
-        seen.delete(obj);
-        return r2;
-    }
-    return obj;
-}
-/**
- * Copies all properties of source into destination. The optional parameter "overwrite" allows to control
- * if existing properties on the destination should be overwritten or not. Defaults to true (overwrite).
- */
-function mixin(destination, source, overwrite = true) {
-    if (!isObject(destination)) {
-        return source;
-    }
-    if (isObject(source)) {
-        Object.keys(source).forEach(key => {
-            if (key in destination) {
-                if (overwrite) {
-                    if (isObject(destination[key]) && isObject(source[key])) {
-                        mixin(destination[key], source[key], overwrite);
-                    }
-                    else {
-                        destination[key] = source[key];
-                    }
-                }
-            }
-            else {
-                destination[key] = source[key];
-            }
-        });
-    }
-    return destination;
-}
-function objects_equals(one, other) {
-    if (one === other) {
-        return true;
-    }
-    if (one === null || one === undefined || other === null || other === undefined) {
-        return false;
-    }
-    if (typeof one !== typeof other) {
-        return false;
-    }
-    if (typeof one !== 'object') {
-        return false;
-    }
-    if ((Array.isArray(one)) !== (Array.isArray(other))) {
-        return false;
-    }
-    let i;
-    let key;
-    if (Array.isArray(one)) {
-        if (one.length !== other.length) {
-            return false;
-        }
-        for (i = 0; i < one.length; i++) {
-            if (!objects_equals(one[i], other[i])) {
-                return false;
-            }
-        }
-    }
-    else {
-        const oneKeys = [];
-        for (key in one) {
-            oneKeys.push(key);
-        }
-        oneKeys.sort();
-        const otherKeys = [];
-        for (key in other) {
-            otherKeys.push(key);
-        }
-        otherKeys.sort();
-        if (!objects_equals(oneKeys, otherKeys)) {
-            return false;
-        }
-        for (i = 0; i < oneKeys.length; i++) {
-            if (!objects_equals(one[oneKeys[i]], other[oneKeys[i]])) {
-                return false;
-            }
-        }
-    }
-    return true;
-}
-
 ;// CONCATENATED MODULE: ../node_modules/monaco-editor/esm/vs/editor/common/model.js
 /*---------------------------------------------------------------------------------------------
  *  Copyright (c) Microsoft Corporation. All rights reserved.
@@ -11708,13 +11597,23 @@ var model_InjectedTextCursorStops;
     InjectedTextCursorStops[InjectedTextCursorStops["None"] = 3] = "None";
 })(model_InjectedTextCursorStops || (model_InjectedTextCursorStops = {}));
 class TextModelResolvedOptions {
+    get originalIndentSize() {
+        return this._indentSizeIsTabSize ? 'tabSize' : this.indentSize;
+    }
     /**
      * @internal
      */
     constructor(src) {
         this._textModelResolvedOptionsBrand = undefined;
         this.tabSize = Math.max(1, src.tabSize | 0);
-        this.indentSize = src.tabSize | 0;
+        if (src.indentSize === 'tabSize') {
+            this.indentSize = this.tabSize;
+            this._indentSizeIsTabSize = true;
+        }
+        else {
+            this.indentSize = Math.max(1, src.indentSize | 0);
+            this._indentSizeIsTabSize = false;
+        }
         this.insertSpaces = Boolean(src.insertSpaces);
         this.defaultEOL = src.defaultEOL | 0;
         this.trimAutoWhitespace = Boolean(src.trimAutoWhitespace);
@@ -11725,6 +11624,7 @@ class TextModelResolvedOptions {
      */
     equals(other) {
         return (this.tabSize === other.tabSize
+            && this._indentSizeIsTabSize === other._indentSizeIsTabSize
             && this.indentSize === other.indentSize
             && this.insertSpaces === other.insertSpaces
             && this.defaultEOL === other.defaultEOL
@@ -12253,6 +12153,59 @@ class Searcher {
     }
 }
 
+;// CONCATENATED MODULE: ../node_modules/monaco-editor/esm/vs/base/common/assert.js
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+/**
+ * Throws an error with the provided message if the provided value does not evaluate to a true Javascript value.
+ *
+ * @deprecated Use `assert(...)` instead.
+ * This method is usually used like this:
+ * ```ts
+ * import * as assert from 'vs/base/common/assert';
+ * assert.ok(...);
+ * ```
+ *
+ * However, `assert` in that example is a user chosen name.
+ * There is no tooling for generating such an import statement.
+ * Thus, the `assert(...)` function should be used instead.
+ */
+function ok(value, message) {
+    if (!value) {
+        throw new Error(message ? `Assertion failed (${message})` : 'Assertion Failed');
+    }
+}
+function assertNever(value, message = 'Unreachable') {
+    throw new Error(message);
+}
+/**
+ * condition must be side-effect free!
+ */
+function assertFn(condition) {
+    if (!condition()) {
+        // eslint-disable-next-line no-debugger
+        debugger;
+        // Reevaluate `condition` again to make debugging easier
+        condition();
+        onUnexpectedError(new BugIndicatingError('Assertion Failed'));
+    }
+}
+function checkAdjacentItems(items, predicate) {
+    let i = 0;
+    while (i < items.length - 1) {
+        const a = items[i];
+        const b = items[i + 1];
+        if (!predicate(a, b)) {
+            return false;
+        }
+        i++;
+    }
+    return true;
+}
+
 ;// CONCATENATED MODULE: ../node_modules/monaco-editor/esm/vs/editor/common/services/unicodeTextModelHighlighter.js
 /*---------------------------------------------------------------------------------------------
  *  Copyright (c) Microsoft Corporation. All rights reserved.
@@ -12307,7 +12260,11 @@ class UnicodeTextModelHighlighter {
                         }
                     }
                     const str = lineContent.substring(startIndex, endIndex);
-                    const word = getWordAtText(startIndex + 1, DEFAULT_WORD_REGEXP, lineContent, 0);
+                    let word = getWordAtText(startIndex + 1, DEFAULT_WORD_REGEXP, lineContent, 0);
+                    if (word && word.endColumn <= startIndex + 1) {
+                        // The word does not include the problematic character, ignore the word
+                        word = null;
+                    }
                     const highlightReason = codePointHighlighter.shouldHighlightNonBasicASCII(str, word ? word.word : null);
                     if (highlightReason !== 0 /* SimpleHighlightReason.None */) {
                         if (highlightReason === 3 /* SimpleHighlightReason.Ambiguous */) {
@@ -12435,6 +12392,1258 @@ class CodePointHighlighter {
 function isAllowedInvisibleCharacter(character) {
     return character === ' ' || character === '\n' || character === '\t';
 }
+
+;// CONCATENATED MODULE: ../node_modules/monaco-editor/esm/vs/editor/common/diff/linesDiffComputer.js
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+/**
+ * Maps a line range in the original text model to a line range in the modified text model.
+ */
+class LineRangeMapping {
+    constructor(originalRange, modifiedRange, innerChanges) {
+        this.originalRange = originalRange;
+        this.modifiedRange = modifiedRange;
+        this.innerChanges = innerChanges;
+    }
+    toString() {
+        return `{${this.originalRange.toString()}->${this.modifiedRange.toString()}}`;
+    }
+}
+/**
+ * Maps a range in the original text model to a range in the modified text model.
+ */
+class RangeMapping {
+    constructor(originalRange, modifiedRange) {
+        this.originalRange = originalRange;
+        this.modifiedRange = modifiedRange;
+    }
+    toString() {
+        return `{${this.originalRange.toString()}->${this.modifiedRange.toString()}}`;
+    }
+}
+/**
+ * A range of lines (1-based).
+ */
+class LineRange {
+    constructor(startLineNumber, endLineNumberExclusive) {
+        this.startLineNumber = startLineNumber;
+        this.endLineNumberExclusive = endLineNumberExclusive;
+    }
+    /**
+     * Indicates if this line range is empty.
+     */
+    get isEmpty() {
+        return this.startLineNumber === this.endLineNumberExclusive;
+    }
+    /**
+     * Moves this line range by the given offset of line numbers.
+     */
+    delta(offset) {
+        return new LineRange(this.startLineNumber + offset, this.endLineNumberExclusive + offset);
+    }
+    /**
+     * The number of lines this line range spans.
+     */
+    get length() {
+        return this.endLineNumberExclusive - this.startLineNumber;
+    }
+    /**
+     * Creates a line range that combines this and the given line range.
+     */
+    join(other) {
+        return new LineRange(Math.min(this.startLineNumber, other.startLineNumber), Math.max(this.endLineNumberExclusive, other.endLineNumberExclusive));
+    }
+    toString() {
+        return `[${this.startLineNumber},${this.endLineNumberExclusive})`;
+    }
+}
+
+;// CONCATENATED MODULE: ../node_modules/monaco-editor/esm/vs/editor/common/diff/smartLinesDiffComputer.js
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+
+
+
+
+const MINIMUM_MATCHING_CHARACTER_LENGTH = 3;
+class SmartLinesDiffComputer {
+    computeDiff(originalLines, modifiedLines, options) {
+        var _a;
+        const diffComputer = new DiffComputer(originalLines, modifiedLines, {
+            maxComputationTime: options.maxComputationTimeMs,
+            shouldIgnoreTrimWhitespace: options.ignoreTrimWhitespace,
+            shouldComputeCharChanges: true,
+            shouldMakePrettyDiff: true,
+            shouldPostProcessCharChanges: true,
+        });
+        const result = diffComputer.computeDiff();
+        const changes = [];
+        let lastChange = null;
+        for (const c of result.changes) {
+            let originalRange;
+            if (c.originalEndLineNumber === 0) {
+                // Insertion
+                originalRange = new LineRange(c.originalStartLineNumber + 1, c.originalStartLineNumber + 1);
+            }
+            else {
+                originalRange = new LineRange(c.originalStartLineNumber, c.originalEndLineNumber + 1);
+            }
+            let modifiedRange;
+            if (c.modifiedEndLineNumber === 0) {
+                // Deletion
+                modifiedRange = new LineRange(c.modifiedStartLineNumber + 1, c.modifiedStartLineNumber + 1);
+            }
+            else {
+                modifiedRange = new LineRange(c.modifiedStartLineNumber, c.modifiedEndLineNumber + 1);
+            }
+            let change = new LineRangeMapping(originalRange, modifiedRange, (_a = c.charChanges) === null || _a === void 0 ? void 0 : _a.map(c => new RangeMapping(new range_Range(c.originalStartLineNumber, c.originalStartColumn, c.originalEndLineNumber, c.originalEndColumn), new range_Range(c.modifiedStartLineNumber, c.modifiedStartColumn, c.modifiedEndLineNumber, c.modifiedEndColumn))));
+            if (lastChange) {
+                if (lastChange.modifiedRange.endLineNumberExclusive === change.modifiedRange.startLineNumber
+                    || lastChange.originalRange.endLineNumberExclusive === change.originalRange.startLineNumber) {
+                    // join touching diffs. Probably moving diffs up/down in the algorithm causes touching diffs.
+                    change = new LineRangeMapping(lastChange.originalRange.join(change.originalRange), lastChange.modifiedRange.join(change.modifiedRange), lastChange.innerChanges && change.innerChanges ?
+                        lastChange.innerChanges.concat(change.innerChanges) : undefined);
+                    changes.pop();
+                }
+            }
+            changes.push(change);
+            lastChange = change;
+        }
+        assertFn(() => {
+            return checkAdjacentItems(changes, (m1, m2) => m2.originalRange.startLineNumber - m1.originalRange.endLineNumberExclusive === m2.modifiedRange.startLineNumber - m1.modifiedRange.endLineNumberExclusive &&
+                // There has to be an unchanged line in between (otherwise both diffs should have been joined)
+                m1.originalRange.endLineNumberExclusive < m2.originalRange.startLineNumber &&
+                m1.modifiedRange.endLineNumberExclusive < m2.modifiedRange.startLineNumber);
+        });
+        return {
+            quitEarly: result.quitEarly,
+            changes,
+        };
+    }
+}
+function computeDiff(originalSequence, modifiedSequence, continueProcessingPredicate, pretty) {
+    const diffAlgo = new LcsDiff(originalSequence, modifiedSequence, continueProcessingPredicate);
+    return diffAlgo.ComputeDiff(pretty);
+}
+class LineSequence {
+    constructor(lines) {
+        const startColumns = [];
+        const endColumns = [];
+        for (let i = 0, length = lines.length; i < length; i++) {
+            startColumns[i] = getFirstNonBlankColumn(lines[i], 1);
+            endColumns[i] = getLastNonBlankColumn(lines[i], 1);
+        }
+        this.lines = lines;
+        this._startColumns = startColumns;
+        this._endColumns = endColumns;
+    }
+    getElements() {
+        const elements = [];
+        for (let i = 0, len = this.lines.length; i < len; i++) {
+            elements[i] = this.lines[i].substring(this._startColumns[i] - 1, this._endColumns[i] - 1);
+        }
+        return elements;
+    }
+    getStrictElement(index) {
+        return this.lines[index];
+    }
+    getStartLineNumber(i) {
+        return i + 1;
+    }
+    getEndLineNumber(i) {
+        return i + 1;
+    }
+    createCharSequence(shouldIgnoreTrimWhitespace, startIndex, endIndex) {
+        const charCodes = [];
+        const lineNumbers = [];
+        const columns = [];
+        let len = 0;
+        for (let index = startIndex; index <= endIndex; index++) {
+            const lineContent = this.lines[index];
+            const startColumn = (shouldIgnoreTrimWhitespace ? this._startColumns[index] : 1);
+            const endColumn = (shouldIgnoreTrimWhitespace ? this._endColumns[index] : lineContent.length + 1);
+            for (let col = startColumn; col < endColumn; col++) {
+                charCodes[len] = lineContent.charCodeAt(col - 1);
+                lineNumbers[len] = index + 1;
+                columns[len] = col;
+                len++;
+            }
+            if (!shouldIgnoreTrimWhitespace && index < endIndex) {
+                // Add \n if trim whitespace is not ignored
+                charCodes[len] = 10 /* CharCode.LineFeed */;
+                lineNumbers[len] = index + 1;
+                columns[len] = lineContent.length + 1;
+                len++;
+            }
+        }
+        return new CharSequence(charCodes, lineNumbers, columns);
+    }
+}
+class CharSequence {
+    constructor(charCodes, lineNumbers, columns) {
+        this._charCodes = charCodes;
+        this._lineNumbers = lineNumbers;
+        this._columns = columns;
+    }
+    toString() {
+        return ('[' + this._charCodes.map((s, idx) => (s === 10 /* CharCode.LineFeed */ ? '\\n' : String.fromCharCode(s)) + `-(${this._lineNumbers[idx]},${this._columns[idx]})`).join(', ') + ']');
+    }
+    _assertIndex(index, arr) {
+        if (index < 0 || index >= arr.length) {
+            throw new Error(`Illegal index`);
+        }
+    }
+    getElements() {
+        return this._charCodes;
+    }
+    getStartLineNumber(i) {
+        if (i > 0 && i === this._lineNumbers.length) {
+            // the start line number of the element after the last element
+            // is the end line number of the last element
+            return this.getEndLineNumber(i - 1);
+        }
+        this._assertIndex(i, this._lineNumbers);
+        return this._lineNumbers[i];
+    }
+    getEndLineNumber(i) {
+        if (i === -1) {
+            // the end line number of the element before the first element
+            // is the start line number of the first element
+            return this.getStartLineNumber(i + 1);
+        }
+        this._assertIndex(i, this._lineNumbers);
+        if (this._charCodes[i] === 10 /* CharCode.LineFeed */) {
+            return this._lineNumbers[i] + 1;
+        }
+        return this._lineNumbers[i];
+    }
+    getStartColumn(i) {
+        if (i > 0 && i === this._columns.length) {
+            // the start column of the element after the last element
+            // is the end column of the last element
+            return this.getEndColumn(i - 1);
+        }
+        this._assertIndex(i, this._columns);
+        return this._columns[i];
+    }
+    getEndColumn(i) {
+        if (i === -1) {
+            // the end column of the element before the first element
+            // is the start column of the first element
+            return this.getStartColumn(i + 1);
+        }
+        this._assertIndex(i, this._columns);
+        if (this._charCodes[i] === 10 /* CharCode.LineFeed */) {
+            return 1;
+        }
+        return this._columns[i] + 1;
+    }
+}
+class CharChange {
+    constructor(originalStartLineNumber, originalStartColumn, originalEndLineNumber, originalEndColumn, modifiedStartLineNumber, modifiedStartColumn, modifiedEndLineNumber, modifiedEndColumn) {
+        this.originalStartLineNumber = originalStartLineNumber;
+        this.originalStartColumn = originalStartColumn;
+        this.originalEndLineNumber = originalEndLineNumber;
+        this.originalEndColumn = originalEndColumn;
+        this.modifiedStartLineNumber = modifiedStartLineNumber;
+        this.modifiedStartColumn = modifiedStartColumn;
+        this.modifiedEndLineNumber = modifiedEndLineNumber;
+        this.modifiedEndColumn = modifiedEndColumn;
+    }
+    static createFromDiffChange(diffChange, originalCharSequence, modifiedCharSequence) {
+        const originalStartLineNumber = originalCharSequence.getStartLineNumber(diffChange.originalStart);
+        const originalStartColumn = originalCharSequence.getStartColumn(diffChange.originalStart);
+        const originalEndLineNumber = originalCharSequence.getEndLineNumber(diffChange.originalStart + diffChange.originalLength - 1);
+        const originalEndColumn = originalCharSequence.getEndColumn(diffChange.originalStart + diffChange.originalLength - 1);
+        const modifiedStartLineNumber = modifiedCharSequence.getStartLineNumber(diffChange.modifiedStart);
+        const modifiedStartColumn = modifiedCharSequence.getStartColumn(diffChange.modifiedStart);
+        const modifiedEndLineNumber = modifiedCharSequence.getEndLineNumber(diffChange.modifiedStart + diffChange.modifiedLength - 1);
+        const modifiedEndColumn = modifiedCharSequence.getEndColumn(diffChange.modifiedStart + diffChange.modifiedLength - 1);
+        return new CharChange(originalStartLineNumber, originalStartColumn, originalEndLineNumber, originalEndColumn, modifiedStartLineNumber, modifiedStartColumn, modifiedEndLineNumber, modifiedEndColumn);
+    }
+}
+function postProcessCharChanges(rawChanges) {
+    if (rawChanges.length <= 1) {
+        return rawChanges;
+    }
+    const result = [rawChanges[0]];
+    let prevChange = result[0];
+    for (let i = 1, len = rawChanges.length; i < len; i++) {
+        const currChange = rawChanges[i];
+        const originalMatchingLength = currChange.originalStart - (prevChange.originalStart + prevChange.originalLength);
+        const modifiedMatchingLength = currChange.modifiedStart - (prevChange.modifiedStart + prevChange.modifiedLength);
+        // Both of the above should be equal, but the continueProcessingPredicate may prevent this from being true
+        const matchingLength = Math.min(originalMatchingLength, modifiedMatchingLength);
+        if (matchingLength < MINIMUM_MATCHING_CHARACTER_LENGTH) {
+            // Merge the current change into the previous one
+            prevChange.originalLength = (currChange.originalStart + currChange.originalLength) - prevChange.originalStart;
+            prevChange.modifiedLength = (currChange.modifiedStart + currChange.modifiedLength) - prevChange.modifiedStart;
+        }
+        else {
+            // Add the current change
+            result.push(currChange);
+            prevChange = currChange;
+        }
+    }
+    return result;
+}
+class LineChange {
+    constructor(originalStartLineNumber, originalEndLineNumber, modifiedStartLineNumber, modifiedEndLineNumber, charChanges) {
+        this.originalStartLineNumber = originalStartLineNumber;
+        this.originalEndLineNumber = originalEndLineNumber;
+        this.modifiedStartLineNumber = modifiedStartLineNumber;
+        this.modifiedEndLineNumber = modifiedEndLineNumber;
+        this.charChanges = charChanges;
+    }
+    static createFromDiffResult(shouldIgnoreTrimWhitespace, diffChange, originalLineSequence, modifiedLineSequence, continueCharDiff, shouldComputeCharChanges, shouldPostProcessCharChanges) {
+        let originalStartLineNumber;
+        let originalEndLineNumber;
+        let modifiedStartLineNumber;
+        let modifiedEndLineNumber;
+        let charChanges = undefined;
+        if (diffChange.originalLength === 0) {
+            originalStartLineNumber = originalLineSequence.getStartLineNumber(diffChange.originalStart) - 1;
+            originalEndLineNumber = 0;
+        }
+        else {
+            originalStartLineNumber = originalLineSequence.getStartLineNumber(diffChange.originalStart);
+            originalEndLineNumber = originalLineSequence.getEndLineNumber(diffChange.originalStart + diffChange.originalLength - 1);
+        }
+        if (diffChange.modifiedLength === 0) {
+            modifiedStartLineNumber = modifiedLineSequence.getStartLineNumber(diffChange.modifiedStart) - 1;
+            modifiedEndLineNumber = 0;
+        }
+        else {
+            modifiedStartLineNumber = modifiedLineSequence.getStartLineNumber(diffChange.modifiedStart);
+            modifiedEndLineNumber = modifiedLineSequence.getEndLineNumber(diffChange.modifiedStart + diffChange.modifiedLength - 1);
+        }
+        if (shouldComputeCharChanges && diffChange.originalLength > 0 && diffChange.originalLength < 20 && diffChange.modifiedLength > 0 && diffChange.modifiedLength < 20 && continueCharDiff()) {
+            // Compute character changes for diff chunks of at most 20 lines...
+            const originalCharSequence = originalLineSequence.createCharSequence(shouldIgnoreTrimWhitespace, diffChange.originalStart, diffChange.originalStart + diffChange.originalLength - 1);
+            const modifiedCharSequence = modifiedLineSequence.createCharSequence(shouldIgnoreTrimWhitespace, diffChange.modifiedStart, diffChange.modifiedStart + diffChange.modifiedLength - 1);
+            if (originalCharSequence.getElements().length > 0 && modifiedCharSequence.getElements().length > 0) {
+                let rawChanges = computeDiff(originalCharSequence, modifiedCharSequence, continueCharDiff, true).changes;
+                if (shouldPostProcessCharChanges) {
+                    rawChanges = postProcessCharChanges(rawChanges);
+                }
+                charChanges = [];
+                for (let i = 0, length = rawChanges.length; i < length; i++) {
+                    charChanges.push(CharChange.createFromDiffChange(rawChanges[i], originalCharSequence, modifiedCharSequence));
+                }
+            }
+        }
+        return new LineChange(originalStartLineNumber, originalEndLineNumber, modifiedStartLineNumber, modifiedEndLineNumber, charChanges);
+    }
+}
+class DiffComputer {
+    constructor(originalLines, modifiedLines, opts) {
+        this.shouldComputeCharChanges = opts.shouldComputeCharChanges;
+        this.shouldPostProcessCharChanges = opts.shouldPostProcessCharChanges;
+        this.shouldIgnoreTrimWhitespace = opts.shouldIgnoreTrimWhitespace;
+        this.shouldMakePrettyDiff = opts.shouldMakePrettyDiff;
+        this.originalLines = originalLines;
+        this.modifiedLines = modifiedLines;
+        this.original = new LineSequence(originalLines);
+        this.modified = new LineSequence(modifiedLines);
+        this.continueLineDiff = createContinueProcessingPredicate(opts.maxComputationTime);
+        this.continueCharDiff = createContinueProcessingPredicate(opts.maxComputationTime === 0 ? 0 : Math.min(opts.maxComputationTime, 5000)); // never run after 5s for character changes...
+    }
+    computeDiff() {
+        if (this.original.lines.length === 1 && this.original.lines[0].length === 0) {
+            // empty original => fast path
+            if (this.modified.lines.length === 1 && this.modified.lines[0].length === 0) {
+                return {
+                    quitEarly: false,
+                    changes: []
+                };
+            }
+            return {
+                quitEarly: false,
+                changes: [{
+                        originalStartLineNumber: 1,
+                        originalEndLineNumber: 1,
+                        modifiedStartLineNumber: 1,
+                        modifiedEndLineNumber: this.modified.lines.length,
+                        charChanges: undefined
+                    }]
+            };
+        }
+        if (this.modified.lines.length === 1 && this.modified.lines[0].length === 0) {
+            // empty modified => fast path
+            return {
+                quitEarly: false,
+                changes: [{
+                        originalStartLineNumber: 1,
+                        originalEndLineNumber: this.original.lines.length,
+                        modifiedStartLineNumber: 1,
+                        modifiedEndLineNumber: 1,
+                        charChanges: undefined
+                    }]
+            };
+        }
+        const diffResult = computeDiff(this.original, this.modified, this.continueLineDiff, this.shouldMakePrettyDiff);
+        const rawChanges = diffResult.changes;
+        const quitEarly = diffResult.quitEarly;
+        // The diff is always computed with ignoring trim whitespace
+        // This ensures we get the prettiest diff
+        if (this.shouldIgnoreTrimWhitespace) {
+            const lineChanges = [];
+            for (let i = 0, length = rawChanges.length; i < length; i++) {
+                lineChanges.push(LineChange.createFromDiffResult(this.shouldIgnoreTrimWhitespace, rawChanges[i], this.original, this.modified, this.continueCharDiff, this.shouldComputeCharChanges, this.shouldPostProcessCharChanges));
+            }
+            return {
+                quitEarly: quitEarly,
+                changes: lineChanges
+            };
+        }
+        // Need to post-process and introduce changes where the trim whitespace is different
+        // Note that we are looping starting at -1 to also cover the lines before the first change
+        const result = [];
+        let originalLineIndex = 0;
+        let modifiedLineIndex = 0;
+        for (let i = -1 /* !!!! */, len = rawChanges.length; i < len; i++) {
+            const nextChange = (i + 1 < len ? rawChanges[i + 1] : null);
+            const originalStop = (nextChange ? nextChange.originalStart : this.originalLines.length);
+            const modifiedStop = (nextChange ? nextChange.modifiedStart : this.modifiedLines.length);
+            while (originalLineIndex < originalStop && modifiedLineIndex < modifiedStop) {
+                const originalLine = this.originalLines[originalLineIndex];
+                const modifiedLine = this.modifiedLines[modifiedLineIndex];
+                if (originalLine !== modifiedLine) {
+                    // These lines differ only in trim whitespace
+                    // Check the leading whitespace
+                    {
+                        let originalStartColumn = getFirstNonBlankColumn(originalLine, 1);
+                        let modifiedStartColumn = getFirstNonBlankColumn(modifiedLine, 1);
+                        while (originalStartColumn > 1 && modifiedStartColumn > 1) {
+                            const originalChar = originalLine.charCodeAt(originalStartColumn - 2);
+                            const modifiedChar = modifiedLine.charCodeAt(modifiedStartColumn - 2);
+                            if (originalChar !== modifiedChar) {
+                                break;
+                            }
+                            originalStartColumn--;
+                            modifiedStartColumn--;
+                        }
+                        if (originalStartColumn > 1 || modifiedStartColumn > 1) {
+                            this._pushTrimWhitespaceCharChange(result, originalLineIndex + 1, 1, originalStartColumn, modifiedLineIndex + 1, 1, modifiedStartColumn);
+                        }
+                    }
+                    // Check the trailing whitespace
+                    {
+                        let originalEndColumn = getLastNonBlankColumn(originalLine, 1);
+                        let modifiedEndColumn = getLastNonBlankColumn(modifiedLine, 1);
+                        const originalMaxColumn = originalLine.length + 1;
+                        const modifiedMaxColumn = modifiedLine.length + 1;
+                        while (originalEndColumn < originalMaxColumn && modifiedEndColumn < modifiedMaxColumn) {
+                            const originalChar = originalLine.charCodeAt(originalEndColumn - 1);
+                            const modifiedChar = originalLine.charCodeAt(modifiedEndColumn - 1);
+                            if (originalChar !== modifiedChar) {
+                                break;
+                            }
+                            originalEndColumn++;
+                            modifiedEndColumn++;
+                        }
+                        if (originalEndColumn < originalMaxColumn || modifiedEndColumn < modifiedMaxColumn) {
+                            this._pushTrimWhitespaceCharChange(result, originalLineIndex + 1, originalEndColumn, originalMaxColumn, modifiedLineIndex + 1, modifiedEndColumn, modifiedMaxColumn);
+                        }
+                    }
+                }
+                originalLineIndex++;
+                modifiedLineIndex++;
+            }
+            if (nextChange) {
+                // Emit the actual change
+                result.push(LineChange.createFromDiffResult(this.shouldIgnoreTrimWhitespace, nextChange, this.original, this.modified, this.continueCharDiff, this.shouldComputeCharChanges, this.shouldPostProcessCharChanges));
+                originalLineIndex += nextChange.originalLength;
+                modifiedLineIndex += nextChange.modifiedLength;
+            }
+        }
+        return {
+            quitEarly: quitEarly,
+            changes: result
+        };
+    }
+    _pushTrimWhitespaceCharChange(result, originalLineNumber, originalStartColumn, originalEndColumn, modifiedLineNumber, modifiedStartColumn, modifiedEndColumn) {
+        if (this._mergeTrimWhitespaceCharChange(result, originalLineNumber, originalStartColumn, originalEndColumn, modifiedLineNumber, modifiedStartColumn, modifiedEndColumn)) {
+            // Merged into previous
+            return;
+        }
+        let charChanges = undefined;
+        if (this.shouldComputeCharChanges) {
+            charChanges = [new CharChange(originalLineNumber, originalStartColumn, originalLineNumber, originalEndColumn, modifiedLineNumber, modifiedStartColumn, modifiedLineNumber, modifiedEndColumn)];
+        }
+        result.push(new LineChange(originalLineNumber, originalLineNumber, modifiedLineNumber, modifiedLineNumber, charChanges));
+    }
+    _mergeTrimWhitespaceCharChange(result, originalLineNumber, originalStartColumn, originalEndColumn, modifiedLineNumber, modifiedStartColumn, modifiedEndColumn) {
+        const len = result.length;
+        if (len === 0) {
+            return false;
+        }
+        const prevChange = result[len - 1];
+        if (prevChange.originalEndLineNumber === 0 || prevChange.modifiedEndLineNumber === 0) {
+            // Don't merge with inserts/deletes
+            return false;
+        }
+        if (prevChange.originalEndLineNumber === originalLineNumber && prevChange.modifiedEndLineNumber === modifiedLineNumber) {
+            if (this.shouldComputeCharChanges && prevChange.charChanges) {
+                prevChange.charChanges.push(new CharChange(originalLineNumber, originalStartColumn, originalLineNumber, originalEndColumn, modifiedLineNumber, modifiedStartColumn, modifiedLineNumber, modifiedEndColumn));
+            }
+            return true;
+        }
+        if (prevChange.originalEndLineNumber + 1 === originalLineNumber && prevChange.modifiedEndLineNumber + 1 === modifiedLineNumber) {
+            prevChange.originalEndLineNumber = originalLineNumber;
+            prevChange.modifiedEndLineNumber = modifiedLineNumber;
+            if (this.shouldComputeCharChanges && prevChange.charChanges) {
+                prevChange.charChanges.push(new CharChange(originalLineNumber, originalStartColumn, originalLineNumber, originalEndColumn, modifiedLineNumber, modifiedStartColumn, modifiedLineNumber, modifiedEndColumn));
+            }
+            return true;
+        }
+        return false;
+    }
+}
+function getFirstNonBlankColumn(txt, defaultValue) {
+    const r = firstNonWhitespaceIndex(txt);
+    if (r === -1) {
+        return defaultValue;
+    }
+    return r + 1;
+}
+function getLastNonBlankColumn(txt, defaultValue) {
+    const r = lastNonWhitespaceIndex(txt);
+    if (r === -1) {
+        return defaultValue;
+    }
+    return r + 2;
+}
+function createContinueProcessingPredicate(maximumRuntime) {
+    if (maximumRuntime === 0) {
+        return () => true;
+    }
+    const startTime = Date.now();
+    return () => {
+        return Date.now() - startTime < maximumRuntime;
+    };
+}
+
+;// CONCATENATED MODULE: ../node_modules/monaco-editor/esm/vs/editor/common/diff/algorithms/diffAlgorithm.js
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+class SequenceDiff {
+    constructor(seq1Range, seq2Range) {
+        this.seq1Range = seq1Range;
+        this.seq2Range = seq2Range;
+    }
+    reverse() {
+        return new SequenceDiff(this.seq2Range, this.seq1Range);
+    }
+    toString() {
+        return `${this.seq1Range} <-> ${this.seq2Range}`;
+    }
+}
+/**
+ * Todo move this class to some top level utils.
+*/
+class OffsetRange {
+    constructor(start, endExclusive) {
+        this.start = start;
+        this.endExclusive = endExclusive;
+    }
+    get isEmpty() {
+        return this.start === this.endExclusive;
+    }
+    delta(offset) {
+        return new OffsetRange(this.start + offset, this.endExclusive + offset);
+    }
+    get length() {
+        return this.endExclusive - this.start;
+    }
+    toString() {
+        return `[${this.start}, ${this.endExclusive})`;
+    }
+    join(other) {
+        return new OffsetRange(Math.min(this.start, other.start), Math.max(this.endExclusive, other.endExclusive));
+    }
+}
+
+;// CONCATENATED MODULE: ../node_modules/monaco-editor/esm/vs/editor/common/diff/algorithms/utils.js
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+class Array2D {
+    constructor(width, height) {
+        this.width = width;
+        this.height = height;
+        this.array = [];
+        this.array = new Array(width * height);
+    }
+    get(x, y) {
+        return this.array[x + y * this.width];
+    }
+    set(x, y, value) {
+        this.array[x + y * this.width] = value;
+    }
+}
+
+;// CONCATENATED MODULE: ../node_modules/monaco-editor/esm/vs/editor/common/diff/algorithms/dynamicProgrammingDiffing.js
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+
+/**
+ * A O(MN) diffing algorithm that supports a score function.
+ * The algorithm can be improved by processing the 2d array diagonally.
+*/
+class DynamicProgrammingDiffing {
+    compute(sequence1, sequence2, equalityScore) {
+        /**
+         * lcsLengths.get(i, j): Length of the longest common subsequence of sequence1.substring(0, i + 1) and sequence2.substring(0, j + 1).
+         */
+        const lcsLengths = new Array2D(sequence1.length, sequence2.length);
+        const directions = new Array2D(sequence1.length, sequence2.length);
+        const lengths = new Array2D(sequence1.length, sequence2.length);
+        // ==== Initializing lcsLengths ====
+        for (let s1 = 0; s1 < sequence1.length; s1++) {
+            for (let s2 = 0; s2 < sequence2.length; s2++) {
+                const horizontalLen = s1 === 0 ? 0 : lcsLengths.get(s1 - 1, s2);
+                const verticalLen = s2 === 0 ? 0 : lcsLengths.get(s1, s2 - 1);
+                let extendedSeqScore;
+                if (sequence1.getElement(s1) === sequence2.getElement(s2)) {
+                    if (s1 === 0 || s2 === 0) {
+                        extendedSeqScore = 0;
+                    }
+                    else {
+                        extendedSeqScore = lcsLengths.get(s1 - 1, s2 - 1);
+                    }
+                    if (s1 > 0 && s2 > 0 && directions.get(s1 - 1, s2 - 1) === 3) {
+                        // Prefer consecutive diagonals
+                        extendedSeqScore += lengths.get(s1 - 1, s2 - 1);
+                    }
+                    extendedSeqScore += (equalityScore ? equalityScore(s1, s2) : 1);
+                }
+                else {
+                    extendedSeqScore = -1;
+                }
+                const newValue = Math.max(horizontalLen, verticalLen, extendedSeqScore);
+                if (newValue === extendedSeqScore) {
+                    // Prefer diagonals
+                    const prevLen = s1 > 0 && s2 > 0 ? lengths.get(s1 - 1, s2 - 1) : 0;
+                    lengths.set(s1, s2, prevLen + 1);
+                    directions.set(s1, s2, 3);
+                }
+                else if (newValue === horizontalLen) {
+                    lengths.set(s1, s2, 0);
+                    directions.set(s1, s2, 1);
+                }
+                else if (newValue === verticalLen) {
+                    lengths.set(s1, s2, 0);
+                    directions.set(s1, s2, 2);
+                }
+                lcsLengths.set(s1, s2, newValue);
+            }
+        }
+        // ==== Backtracking ====
+        const result = [];
+        let lastAligningPosS1 = sequence1.length;
+        let lastAligningPosS2 = sequence2.length;
+        function reportDecreasingAligningPositions(s1, s2) {
+            if (s1 + 1 !== lastAligningPosS1 || s2 + 1 !== lastAligningPosS2) {
+                result.push(new SequenceDiff(new OffsetRange(s1 + 1, lastAligningPosS1), new OffsetRange(s2 + 1, lastAligningPosS2)));
+            }
+            lastAligningPosS1 = s1;
+            lastAligningPosS2 = s2;
+        }
+        let s1 = sequence1.length - 1;
+        let s2 = sequence2.length - 1;
+        while (s1 >= 0 && s2 >= 0) {
+            if (directions.get(s1, s2) === 3) {
+                reportDecreasingAligningPositions(s1, s2);
+                s1--;
+                s2--;
+            }
+            else {
+                if (directions.get(s1, s2) === 1) {
+                    s1--;
+                }
+                else {
+                    s2--;
+                }
+            }
+        }
+        reportDecreasingAligningPositions(-1, -1);
+        result.reverse();
+        return result;
+    }
+}
+
+;// CONCATENATED MODULE: ../node_modules/monaco-editor/esm/vs/editor/common/diff/algorithms/joinSequenceDiffs.js
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+function optimizeSequenceDiffs(sequence1, sequence2, sequenceDiffs) {
+    let result = sequenceDiffs;
+    result = joinSequenceDiffs(sequence1, sequence2, result);
+    result = shiftSequenceDiffs(sequence1, sequence2, result);
+    return result;
+}
+function smoothenSequenceDiffs(sequence1, sequence2, sequenceDiffs) {
+    const result = [];
+    for (const s of sequenceDiffs) {
+        const last = result[result.length - 1];
+        if (!last) {
+            result.push(s);
+            continue;
+        }
+        if (s.seq1Range.start - last.seq1Range.endExclusive <= 2 || s.seq2Range.start - last.seq2Range.endExclusive <= 2) {
+            result[result.length - 1] = new SequenceDiff(last.seq1Range.join(s.seq1Range), last.seq2Range.join(s.seq2Range));
+        }
+        else {
+            result.push(s);
+        }
+    }
+    return result;
+}
+/**
+ * This function fixes issues like this:
+ * ```
+ * import { Baz, Bar } from "foo";
+ * ```
+ * <->
+ * ```
+ * import { Baz, Bar, Foo } from "foo";
+ * ```
+ * Computed diff: [ {Add "," after Bar}, {Add "Foo " after space} }
+ * Improved diff: [{Add ", Foo" after Bar}]
+ */
+function joinSequenceDiffs(sequence1, sequence2, sequenceDiffs) {
+    const result = [];
+    if (sequenceDiffs.length > 0) {
+        result.push(sequenceDiffs[0]);
+    }
+    for (let i = 1; i < sequenceDiffs.length; i++) {
+        const lastResult = result[result.length - 1];
+        const cur = sequenceDiffs[i];
+        if (cur.seq1Range.isEmpty) {
+            let all = true;
+            const length = cur.seq1Range.start - lastResult.seq1Range.endExclusive;
+            for (let i = 1; i <= length; i++) {
+                if (sequence2.getElement(cur.seq2Range.start - i) !== sequence2.getElement(cur.seq2Range.endExclusive - i)) {
+                    all = false;
+                    break;
+                }
+            }
+            if (all) {
+                // Merge previous and current diff
+                result[result.length - 1] = new SequenceDiff(lastResult.seq1Range, new OffsetRange(lastResult.seq2Range.start, cur.seq2Range.endExclusive - length));
+                continue;
+            }
+        }
+        result.push(cur);
+    }
+    return result;
+}
+// align character level diffs at whitespace characters
+// import { IBar } from "foo";
+// import { I[Arr, I]Bar } from "foo";
+// ->
+// import { [IArr, ]IBar } from "foo";
+// import { ITransaction, observableValue, transaction } from 'vs/base/common/observable';
+// import { ITransaction, observable[FromEvent, observable]Value, transaction } from 'vs/base/common/observable';
+// ->
+// import { ITransaction, [observableFromEvent, ]observableValue, transaction } from 'vs/base/common/observable';
+// collectBrackets(level + 1, levelPerBracketType);
+// collectBrackets(level + 1, levelPerBracket[ + 1, levelPerBracket]Type);
+// ->
+// collectBrackets(level + 1, [levelPerBracket + 1, ]levelPerBracketType);
+function shiftSequenceDiffs(sequence1, sequence2, sequenceDiffs) {
+    if (!sequence1.getBoundaryScore || !sequence2.getBoundaryScore) {
+        return sequenceDiffs;
+    }
+    for (let i = 0; i < sequenceDiffs.length; i++) {
+        const diff = sequenceDiffs[i];
+        if (diff.seq1Range.isEmpty) {
+            const seq2PrevEndExclusive = (i > 0 ? sequenceDiffs[i - 1].seq2Range.endExclusive : -1);
+            const seq2NextStart = (i + 1 < sequenceDiffs.length ? sequenceDiffs[i + 1].seq2Range.start : sequence2.length);
+            sequenceDiffs[i] = shiftDiffToBetterPosition(diff, sequence1, sequence2, seq2NextStart, seq2PrevEndExclusive);
+        }
+        else if (diff.seq2Range.isEmpty) {
+            const seq1PrevEndExclusive = (i > 0 ? sequenceDiffs[i - 1].seq1Range.endExclusive : -1);
+            const seq1NextStart = (i + 1 < sequenceDiffs.length ? sequenceDiffs[i + 1].seq1Range.start : sequence1.length);
+            sequenceDiffs[i] = shiftDiffToBetterPosition(diff.reverse(), sequence2, sequence1, seq1NextStart, seq1PrevEndExclusive).reverse();
+        }
+    }
+    return sequenceDiffs;
+}
+function shiftDiffToBetterPosition(diff, sequence1, sequence2, seq2NextStart, seq2PrevEndExclusive) {
+    const maxShiftLimit = 20; // To prevent performance issues
+    // don't touch previous or next!
+    let deltaBefore = 1;
+    while (diff.seq2Range.start - deltaBefore > seq2PrevEndExclusive &&
+        sequence2.getElement(diff.seq2Range.start - deltaBefore) ===
+            sequence2.getElement(diff.seq2Range.endExclusive - deltaBefore) && deltaBefore < maxShiftLimit) {
+        deltaBefore++;
+    }
+    deltaBefore--;
+    let deltaAfter = 0;
+    while (diff.seq2Range.start + deltaAfter < seq2NextStart &&
+        sequence2.getElement(diff.seq2Range.start + deltaAfter) ===
+            sequence2.getElement(diff.seq2Range.endExclusive + deltaAfter) && deltaAfter < maxShiftLimit) {
+        deltaAfter++;
+    }
+    if (deltaBefore === 0 && deltaAfter === 0) {
+        return diff;
+    }
+    // Visualize `[sequence1.text, diff.seq1Range.start + deltaAfter]`
+    // and `[sequence2.text, diff.seq2Range.start + deltaAfter, diff.seq2Range.endExclusive + deltaAfter]`
+    let bestDelta = 0;
+    let bestScore = -1;
+    // find best scored delta
+    for (let delta = -deltaBefore; delta <= deltaAfter; delta++) {
+        const seq2OffsetStart = diff.seq2Range.start + delta;
+        const seq2OffsetEndExclusive = diff.seq2Range.endExclusive + delta;
+        const seq1Offset = diff.seq1Range.start + delta;
+        const score = sequence1.getBoundaryScore(seq1Offset) + sequence2.getBoundaryScore(seq2OffsetStart) + sequence2.getBoundaryScore(seq2OffsetEndExclusive);
+        if (score > bestScore) {
+            bestScore = score;
+            bestDelta = delta;
+        }
+    }
+    if (bestDelta !== 0) {
+        return new SequenceDiff(diff.seq1Range.delta(bestDelta), diff.seq2Range.delta(bestDelta));
+    }
+    return diff;
+}
+
+;// CONCATENATED MODULE: ../node_modules/monaco-editor/esm/vs/editor/common/diff/algorithms/myersDiffAlgorithm.js
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+/**
+ * An O(ND) diff algorithm that has a quadratic space worst-case complexity.
+*/
+class MyersDiffAlgorithm {
+    compute(seq1, seq2) {
+        // These are common special cases.
+        // The early return improves performance dramatically.
+        if (seq1.length === 0) {
+            return [new SequenceDiff(new OffsetRange(0, 0), new OffsetRange(0, seq2.length))];
+        }
+        else if (seq2.length === 0) {
+            return [new SequenceDiff(new OffsetRange(0, seq1.length), new OffsetRange(0, 0))];
+        }
+        function getXAfterSnake(x, y) {
+            while (x < seq1.length && y < seq2.length && seq1.getElement(x) === seq2.getElement(y)) {
+                x++;
+                y++;
+            }
+            return x;
+        }
+        let d = 0;
+        // V[k]: X value of longest d-line that ends in diagonal k.
+        // d-line: path from (0,0) to (x,y) that uses exactly d non-diagonals.
+        // diagonal k: Set of points (x,y) with x-y = k.
+        const V = new FastInt32Array();
+        V.set(0, getXAfterSnake(0, 0));
+        const paths = new FastArrayNegativeIndices();
+        paths.set(0, V.get(0) === 0 ? null : new SnakePath(null, 0, 0, V.get(0)));
+        let k = 0;
+        loop: while (true) {
+            d++;
+            for (k = -d; k <= d; k += 2) {
+                const maxXofDLineTop = k === d ? -1 : V.get(k + 1); // We take a vertical non-diagonal
+                const maxXofDLineLeft = k === -d ? -1 : V.get(k - 1) + 1; // We take a horizontal non-diagonal (+1 x)
+                const x = Math.min(Math.max(maxXofDLineTop, maxXofDLineLeft), seq1.length);
+                const y = x - k;
+                const newMaxX = getXAfterSnake(x, y);
+                V.set(k, newMaxX);
+                const lastPath = x === maxXofDLineTop ? paths.get(k + 1) : paths.get(k - 1);
+                paths.set(k, newMaxX !== x ? new SnakePath(lastPath, x, y, newMaxX - x) : lastPath);
+                if (V.get(k) === seq1.length && V.get(k) - k === seq2.length) {
+                    break loop;
+                }
+            }
+        }
+        let path = paths.get(k);
+        const result = [];
+        let lastAligningPosS1 = seq1.length;
+        let lastAligningPosS2 = seq2.length;
+        while (true) {
+            const endX = path ? path.x + path.length : 0;
+            const endY = path ? path.y + path.length : 0;
+            if (endX !== lastAligningPosS1 || endY !== lastAligningPosS2) {
+                result.push(new SequenceDiff(new OffsetRange(endX, lastAligningPosS1), new OffsetRange(endY, lastAligningPosS2)));
+            }
+            if (!path) {
+                break;
+            }
+            lastAligningPosS1 = path.x;
+            lastAligningPosS2 = path.y;
+            path = path.prev;
+        }
+        result.reverse();
+        return result;
+    }
+}
+class SnakePath {
+    constructor(prev, x, y, length) {
+        this.prev = prev;
+        this.x = x;
+        this.y = y;
+        this.length = length;
+    }
+}
+/**
+ * An array that supports fast negative indices.
+*/
+class FastInt32Array {
+    constructor() {
+        this.positiveArr = new Int32Array(10);
+        this.negativeArr = new Int32Array(10);
+    }
+    get(idx) {
+        if (idx < 0) {
+            idx = -idx - 1;
+            return this.negativeArr[idx];
+        }
+        else {
+            return this.positiveArr[idx];
+        }
+    }
+    set(idx, value) {
+        if (idx < 0) {
+            idx = -idx - 1;
+            if (idx >= this.negativeArr.length) {
+                const arr = this.negativeArr;
+                this.negativeArr = new Int32Array(arr.length * 2);
+                this.negativeArr.set(arr);
+            }
+            this.negativeArr[idx] = value;
+        }
+        else {
+            if (idx >= this.positiveArr.length) {
+                const arr = this.positiveArr;
+                this.positiveArr = new Int32Array(arr.length * 2);
+                this.positiveArr.set(arr);
+            }
+            this.positiveArr[idx] = value;
+        }
+    }
+}
+/**
+ * An array that supports fast negative indices.
+*/
+class FastArrayNegativeIndices {
+    constructor() {
+        this.positiveArr = [];
+        this.negativeArr = [];
+    }
+    get(idx) {
+        if (idx < 0) {
+            idx = -idx - 1;
+            return this.negativeArr[idx];
+        }
+        else {
+            return this.positiveArr[idx];
+        }
+    }
+    set(idx, value) {
+        if (idx < 0) {
+            idx = -idx - 1;
+            this.negativeArr[idx] = value;
+        }
+        else {
+            this.positiveArr[idx] = value;
+        }
+    }
+}
+
+;// CONCATENATED MODULE: ../node_modules/monaco-editor/esm/vs/editor/common/diff/standardLinesDiffComputer.js
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+
+
+
+
+
+
+
+class StandardLinesDiffComputer {
+    constructor() {
+        this.dynamicProgrammingDiffing = new DynamicProgrammingDiffing();
+        this.myersDiffingAlgorithm = new MyersDiffAlgorithm();
+    }
+    computeDiff(originalLines, modifiedLines, options) {
+        const perfectHashes = new Map();
+        function getOrCreateHash(text) {
+            let hash = perfectHashes.get(text);
+            if (hash === undefined) {
+                hash = perfectHashes.size;
+                perfectHashes.set(text, hash);
+            }
+            return hash;
+        }
+        const srcDocLines = originalLines.map((l) => getOrCreateHash(l.trim()));
+        const tgtDocLines = modifiedLines.map((l) => getOrCreateHash(l.trim()));
+        const sequence1 = new standardLinesDiffComputer_LineSequence(srcDocLines, originalLines);
+        const sequence2 = new standardLinesDiffComputer_LineSequence(tgtDocLines, modifiedLines);
+        let lineAlignments = (() => {
+            if (sequence1.length + sequence2.length < 1500) {
+                // Use the improved algorithm for small files
+                return this.dynamicProgrammingDiffing.compute(sequence1, sequence2, (offset1, offset2) => originalLines[offset1] === modifiedLines[offset2]
+                    ? modifiedLines[offset2].length === 0
+                        ? 0.1
+                        : 1 + Math.log(1 + modifiedLines[offset2].length)
+                    : 0.99);
+            }
+            return this.myersDiffingAlgorithm.compute(sequence1, sequence2);
+        })();
+        lineAlignments = optimizeSequenceDiffs(sequence1, sequence2, lineAlignments);
+        const alignments = [];
+        const scanForWhitespaceChanges = (equalLinesCount) => {
+            for (let i = 0; i < equalLinesCount; i++) {
+                const seq1Offset = seq1LastStart + i;
+                const seq2Offset = seq2LastStart + i;
+                if (originalLines[seq1Offset] !== modifiedLines[seq2Offset]) {
+                    // This is because of whitespace changes, diff these lines
+                    const characterDiffs = this.refineDiff(originalLines, modifiedLines, new SequenceDiff(new OffsetRange(seq1Offset, seq1Offset + 1), new OffsetRange(seq2Offset, seq2Offset + 1)));
+                    for (const a of characterDiffs) {
+                        alignments.push(a);
+                    }
+                }
+            }
+        };
+        let seq1LastStart = 0;
+        let seq2LastStart = 0;
+        for (const diff of lineAlignments) {
+            assertFn(() => diff.seq1Range.start - seq1LastStart === diff.seq2Range.start - seq2LastStart);
+            const equalLinesCount = diff.seq1Range.start - seq1LastStart;
+            scanForWhitespaceChanges(equalLinesCount);
+            seq1LastStart = diff.seq1Range.endExclusive;
+            seq2LastStart = diff.seq2Range.endExclusive;
+            const characterDiffs = this.refineDiff(originalLines, modifiedLines, diff);
+            for (const a of characterDiffs) {
+                alignments.push(a);
+            }
+        }
+        scanForWhitespaceChanges(originalLines.length - seq1LastStart);
+        const changes = lineRangeMappingFromRangeMappings(alignments);
+        return {
+            quitEarly: false,
+            changes: changes,
+        };
+    }
+    refineDiff(originalLines, modifiedLines, diff) {
+        const sourceSlice = new Slice(originalLines, diff.seq1Range);
+        const targetSlice = new Slice(modifiedLines, diff.seq2Range);
+        const originalDiffs = sourceSlice.length + targetSlice.length < 500
+            ? this.dynamicProgrammingDiffing.compute(sourceSlice, targetSlice)
+            : this.myersDiffingAlgorithm.compute(sourceSlice, targetSlice);
+        let diffs = optimizeSequenceDiffs(sourceSlice, targetSlice, originalDiffs);
+        diffs = smoothenSequenceDiffs(sourceSlice, targetSlice, diffs);
+        const result = diffs.map((d) => new RangeMapping(sourceSlice.translateRange(d.seq1Range).delta(diff.seq1Range.start), targetSlice.translateRange(d.seq2Range).delta(diff.seq2Range.start)));
+        return result;
+    }
+}
+function lineRangeMappingFromRangeMappings(alignments) {
+    const changes = [];
+    for (const g of group(alignments, (a1, a2) => (a2.originalRange.startLineNumber - (a1.originalRange.endLineNumber - (a1.originalRange.endColumn > 1 ? 0 : 1)) <= 1)
+        || (a2.modifiedRange.startLineNumber - (a1.modifiedRange.endLineNumber - (a1.modifiedRange.endColumn > 1 ? 0 : 1)) <= 1))) {
+        const first = g[0];
+        const last = g[g.length - 1];
+        changes.push(new LineRangeMapping(new LineRange(first.originalRange.startLineNumber, last.originalRange.endLineNumber + (last.originalRange.endColumn > 1 || last.modifiedRange.endColumn > 1 ? 1 : 0)), new LineRange(first.modifiedRange.startLineNumber, last.modifiedRange.endLineNumber + (last.originalRange.endColumn > 1 || last.modifiedRange.endColumn > 1 ? 1 : 0)), g));
+    }
+    assertFn(() => {
+        return checkAdjacentItems(changes, (m1, m2) => m2.originalRange.startLineNumber - m1.originalRange.endLineNumberExclusive === m2.modifiedRange.startLineNumber - m1.modifiedRange.endLineNumberExclusive &&
+            // There has to be an unchanged line in between (otherwise both diffs should have been joined)
+            m1.originalRange.endLineNumberExclusive < m2.originalRange.startLineNumber &&
+            m1.modifiedRange.endLineNumberExclusive < m2.modifiedRange.startLineNumber);
+    });
+    return changes;
+}
+function* group(items, shouldBeGrouped) {
+    let currentGroup;
+    let last;
+    for (const item of items) {
+        if (last !== undefined && shouldBeGrouped(last, item)) {
+            currentGroup.push(item);
+        }
+        else {
+            if (currentGroup) {
+                yield currentGroup;
+            }
+            currentGroup = [item];
+        }
+        last = item;
+    }
+    if (currentGroup) {
+        yield currentGroup;
+    }
+}
+class standardLinesDiffComputer_LineSequence {
+    constructor(trimmedHash, lines) {
+        this.trimmedHash = trimmedHash;
+        this.lines = lines;
+    }
+    getElement(offset) {
+        return this.trimmedHash[offset];
+    }
+    get length() {
+        return this.trimmedHash.length;
+    }
+    getBoundaryScore(length) {
+        const indentationBefore = length === 0 ? 0 : getIndentation(this.lines[length - 1]);
+        const indentationAfter = length === this.lines.length ? 0 : getIndentation(this.lines[length]);
+        return 1000 - (indentationBefore + indentationAfter);
+    }
+}
+function getIndentation(str) {
+    let i = 0;
+    while (i < str.length && (str.charCodeAt(i) === 32 /* CharCode.Space */ || str.charCodeAt(i) === 9 /* CharCode.Tab */)) {
+        i++;
+    }
+    return i;
+}
+class Slice {
+    constructor(lines, lineRange) {
+        this.lines = lines;
+        this.lineRange = lineRange;
+        let chars = 0;
+        this.firstCharOnLineOffsets = new Int32Array(lineRange.length);
+        for (let i = lineRange.start; i < lineRange.endExclusive; i++) {
+            const line = lines[i];
+            chars += line.length;
+            this.firstCharOnLineOffsets[i - lineRange.start] = chars + 1;
+            chars++;
+        }
+        this.elements = new Int32Array(chars);
+        let offset = 0;
+        for (let i = lineRange.start; i < lineRange.endExclusive; i++) {
+            const line = lines[i];
+            for (let i = 0; i < line.length; i++) {
+                this.elements[offset + i] = line.charCodeAt(i);
+            }
+            offset += line.length;
+            if (i < lines.length - 1) {
+                this.elements[offset] = '\n'.charCodeAt(0);
+                offset += 1;
+            }
+        }
+    }
+    getElement(offset) {
+        return this.elements[offset];
+    }
+    get length() {
+        return this.elements.length;
+    }
+    getBoundaryScore(length) {
+        //   a   b   c   ,           d   e   f
+        // 11  0   0   12  15  6   13  0   0   11
+        const prevCategory = getCategory(length > 0 ? this.elements[length - 1] : -1);
+        const nextCategory = getCategory(length < this.elements.length ? this.elements[length] : -1);
+        if (prevCategory === 6 /* CharBoundaryCategory.LineBreakCR */ && nextCategory === 7 /* CharBoundaryCategory.LineBreakLF */) {
+            // don't break between \r and \n
+            return 0;
+        }
+        let score = 0;
+        if (prevCategory !== nextCategory) {
+            score += 10;
+            if (nextCategory === 1 /* CharBoundaryCategory.WordUpper */) {
+                score += 1;
+            }
+        }
+        score += getCategoryBoundaryScore(prevCategory);
+        score += getCategoryBoundaryScore(nextCategory);
+        return score;
+    }
+    translateOffset(offset) {
+        // find smallest i, so that lineBreakOffsets[i] > offset using binary search
+        let i = 0;
+        let j = this.firstCharOnLineOffsets.length;
+        while (i < j) {
+            const k = Math.floor((i + j) / 2);
+            if (this.firstCharOnLineOffsets[k] > offset) {
+                j = k;
+            }
+            else {
+                i = k + 1;
+            }
+        }
+        const offsetOfPrevLineBreak = i === 0 ? 0 : this.firstCharOnLineOffsets[i - 1];
+        return new position_Position(i + 1, offset - offsetOfPrevLineBreak + 1);
+    }
+    translateRange(range) {
+        return range_Range.fromPositions(this.translateOffset(range.start), this.translateOffset(range.endExclusive));
+    }
+}
+const score = {
+    [0 /* CharBoundaryCategory.WordLower */]: 0,
+    [1 /* CharBoundaryCategory.WordUpper */]: 0,
+    [2 /* CharBoundaryCategory.WordNumber */]: 0,
+    [3 /* CharBoundaryCategory.End */]: 10,
+    [4 /* CharBoundaryCategory.Other */]: 2,
+    [5 /* CharBoundaryCategory.Space */]: 3,
+    [6 /* CharBoundaryCategory.LineBreakCR */]: 10,
+    [7 /* CharBoundaryCategory.LineBreakLF */]: 10,
+};
+function getCategoryBoundaryScore(category) {
+    return score[category];
+}
+function getCategory(charCode) {
+    if (charCode === 10 /* CharCode.LineFeed */) {
+        return 7 /* CharBoundaryCategory.LineBreakLF */;
+    }
+    else if (charCode === 13 /* CharCode.CarriageReturn */) {
+        return 6 /* CharBoundaryCategory.LineBreakCR */;
+    }
+    else if (isSpace(charCode)) {
+        return 5 /* CharBoundaryCategory.Space */;
+    }
+    else if (charCode >= 97 /* CharCode.a */ && charCode <= 122 /* CharCode.z */) {
+        return 0 /* CharBoundaryCategory.WordLower */;
+    }
+    else if (charCode >= 65 /* CharCode.A */ && charCode <= 90 /* CharCode.Z */) {
+        return 1 /* CharBoundaryCategory.WordUpper */;
+    }
+    else if (charCode >= 48 /* CharCode.Digit0 */ && charCode <= 57 /* CharCode.Digit9 */) {
+        return 2 /* CharBoundaryCategory.WordNumber */;
+    }
+    else if (charCode === -1) {
+        return 3 /* CharBoundaryCategory.End */;
+    }
+    else {
+        return 4 /* CharBoundaryCategory.Other */;
+    }
+}
+function isSpace(charCode) {
+    return charCode === 32 /* CharCode.Space */ || charCode === 9 /* CharCode.Tab */;
+}
+
+;// CONCATENATED MODULE: ../node_modules/monaco-editor/esm/vs/editor/common/diff/linesDiffComputers.js
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+
+const linesDiffComputers = {
+    smart: new SmartLinesDiffComputer(),
+    experimental: new StandardLinesDiffComputer(),
+};
 
 ;// CONCATENATED MODULE: ../node_modules/monaco-editor/esm/vs/editor/common/services/editorSimpleWorker.js
 /*---------------------------------------------------------------------------------------------
@@ -12680,32 +13889,38 @@ class EditorSimpleWorker {
         });
     }
     // ---- BEGIN diff --------------------------------------------------------------------------
-    computeDiff(originalUrl, modifiedUrl, ignoreTrimWhitespace, maxComputationTime) {
+    computeDiff(originalUrl, modifiedUrl, options, algorithm) {
         return editorSimpleWorker_awaiter(this, void 0, void 0, function* () {
             const original = this._getModel(originalUrl);
             const modified = this._getModel(modifiedUrl);
             if (!original || !modified) {
                 return null;
             }
-            return EditorSimpleWorker.computeDiff(original, modified, ignoreTrimWhitespace, maxComputationTime);
+            return EditorSimpleWorker.computeDiff(original, modified, options, algorithm);
         });
     }
-    static computeDiff(originalTextModel, modifiedTextModel, ignoreTrimWhitespace, maxComputationTime) {
+    static computeDiff(originalTextModel, modifiedTextModel, options, algorithm) {
+        const diffAlgorithm = algorithm === 'experimental' ? linesDiffComputers.experimental : linesDiffComputers.smart;
         const originalLines = originalTextModel.getLinesContent();
         const modifiedLines = modifiedTextModel.getLinesContent();
-        const diffComputer = new DiffComputer(originalLines, modifiedLines, {
-            shouldComputeCharChanges: true,
-            shouldPostProcessCharChanges: true,
-            shouldIgnoreTrimWhitespace: ignoreTrimWhitespace,
-            shouldMakePrettyDiff: true,
-            maxComputationTime: maxComputationTime
-        });
-        const diffResult = diffComputer.computeDiff();
-        const identical = (diffResult.changes.length > 0 ? false : this._modelsAreIdentical(originalTextModel, modifiedTextModel));
+        const result = diffAlgorithm.computeDiff(originalLines, modifiedLines, options);
+        const identical = (result.changes.length > 0 ? false : this._modelsAreIdentical(originalTextModel, modifiedTextModel));
         return {
-            quitEarly: diffResult.quitEarly,
-            identical: identical,
-            changes: diffResult.changes
+            identical,
+            quitEarly: result.quitEarly,
+            changes: result.changes.map(m => {
+                var _a;
+                return ([m.originalRange.startLineNumber, m.originalRange.endLineNumberExclusive, m.modifiedRange.startLineNumber, m.modifiedRange.endLineNumberExclusive, (_a = m.innerChanges) === null || _a === void 0 ? void 0 : _a.map(m => [
+                        m.originalRange.startLineNumber,
+                        m.originalRange.startColumn,
+                        m.originalRange.endLineNumber,
+                        m.originalRange.endColumn,
+                        m.modifiedRange.startLineNumber,
+                        m.modifiedRange.startColumn,
+                        m.modifiedRange.endLineNumber,
+                        m.modifiedRange.endColumn,
+                    ])]);
+            })
         };
     }
     static _modelsAreIdentical(original, modified) {
@@ -12886,14 +14101,14 @@ class EditorSimpleWorker {
         if (this._foreignModuleFactory) {
             this._foreignModule = this._foreignModuleFactory(ctx, createData);
             // static foreing module
-            return Promise.resolve(getAllMethodNames(this._foreignModule));
+            return Promise.resolve(objects_getAllMethodNames(this._foreignModule));
         }
         // ESM-comment-begin
         // 		return new Promise<any>((resolve, reject) => {
         // 			require([moduleId], (foreignModule: { create: IForeignModuleFactory }) => {
         // 				this._foreignModule = foreignModule.create(ctx, createData);
         // 
-        // 				resolve(types.getAllMethodNames(this._foreignModule));
+        // 				resolve(getAllMethodNames(this._foreignModule));
         // 
         // 			}, reject);
         // 		});
@@ -12920,6 +14135,7 @@ class EditorSimpleWorker {
 EditorSimpleWorker._diffLimit = 100000;
 // ---- BEGIN suggest --------------------------------------------------------------------------
 EditorSimpleWorker._suggestionsLimit = 10000;
+
 /**
  * Called on the worker side
  * @internal
