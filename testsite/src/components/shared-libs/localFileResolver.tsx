@@ -5,9 +5,11 @@ export default function LocalFileResolver(basePath: string = "") {
   return {
     resolve: (ref: string) => {
       return new Promise((resolve, reject) => {
-        const temp_url = generatePath(ref, basePath)
+        const url = generatePath(ref, basePath)
+        // To help webpack consider only json files & from my folder
+        const filepath = url.substring(1, url.lastIndexOf('.'));
         //import("@site/static/schemas/examples/array/additionalItems1.json")
-        import(`@site/static/${temp_url.substring(1)}`)
+        import(`@site/static/${filepath}.json`)
           .then((result) => resolve(result.default))
           .catch((err) => reject(err))
       })
