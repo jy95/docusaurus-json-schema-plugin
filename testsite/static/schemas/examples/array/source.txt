@@ -1,1 +1,0 @@
-https://json-schema.org/understanding-json-schema/reference/array.html
