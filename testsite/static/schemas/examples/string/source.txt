@@ -1,3 +1,0 @@
-https://json-schema.org/understanding-json-schema/reference/string.html
-
-All except the format that is homemade
