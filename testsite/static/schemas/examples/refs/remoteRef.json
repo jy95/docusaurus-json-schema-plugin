@@ -1,0 +1,8 @@
+{
+  "type": "object",
+  "properties": {
+    "externalProp": {
+      "$ref": "https://raw.githubusercontent.com/jy95/docusaurus-json-schema-plugin/main/testsite/static/schemas/examples/array/tuples.json"
+    }
+  }
+}
