@@ -1,0 +1,30 @@
+---
+description: References local file $ref showcase
+title: 📁$ref (as local file)
+---
+
+import CodeBlock from '@theme/CodeBlock';
+import Schema from "@site/static/schemas/examples/refs/localFile.json";
+import JSONSchemaViewer from "@theme/JSONSchemaViewer";
+import LocalFileResolver from "@site/src/components/shared-libs/localFileResolver"
+import StringifyObject from "@site/src/components/shared-libs/stringifyObject"
+
+export const resolverOptions = {
+    resolvers: {
+        file: LocalFileResolver("/schemas/examples/refs")
+    }
+}
+
+# $ref (as local file)
+
+JSON Schema :
+
+<CodeBlock language="json">{JSON.stringify(Schema, null, 2)}</CodeBlock>
+
+resolverOptions : 
+
+<CodeBlock language="js">{`${StringifyObject(resolverOptions)}`}</CodeBlock>
+
+Viewer :
+
+<JSONSchemaViewer schema={ Schema } resolverOptions={resolverOptions} />
