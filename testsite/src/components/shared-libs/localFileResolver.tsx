@@ -7,7 +7,11 @@ export default function LocalFileResolver(basePath: string = "") {
       return new Promise((resolve, reject) => {
         const temp_url = generatePath(ref, basePath)
         //import("@site/static/schemas/examples/array/additionalItems1.json")
-        import(/* webpackChunkName: "[request]" */`@site/static/${temp_url.substring(1)}`)
+        import(
+          /* webpackChunkName: "[request]" */ `@site/static/${temp_url.substring(
+            1
+          )}`
+        )
           .then((result) => resolve(result.default))
           .catch((err) => reject(err))
       })
