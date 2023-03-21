@@ -1,6 +1,6 @@
 // Example of basePath = '/schemas/examples/refs'
 export default function generatePath(path: string, basePath: string = "") {
-    const parts = path.split('/');
+    const parts = path.toString().split('/');
     let finalPath = basePath;
   
     for (let i = 0; i < parts.length; i++) {
