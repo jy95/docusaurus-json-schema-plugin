@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunktestsite=self.webpackChunktestsite||[]).push([[8280],{78280:e=>{e.exports=JSON.parse('{"type":"object","properties":{"number":{"type":"number"},"street_name":{"type":"string"},"street_type":{"enum":["Street","Avenue","Boulevard"]}},"unevaluatedProperties":{"type":"boolean"}}')}}]);
