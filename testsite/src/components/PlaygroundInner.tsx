@@ -45,11 +45,21 @@ function PlaygroundInner(): JSX.Element {
   }
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", overflowY: "hidden" }}>
-      <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-between" }}>
+    <div
+      style={{ display: "flex", flexDirection: "column", overflowY: "hidden" }}
+    >
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "space-between",
+        }}
+      >
         <JSONSchemaCreator />
         <div style={{ boxSizing: "border-box", width: "50%" }}>
-          <h1 style={{ fontSize: "1.5rem", marginBottom: "1rem" }}>JSON Schema Editor</h1>
+          <h1 style={{ fontSize: "1.5rem", marginBottom: "1rem" }}>
+            JSON Schema Editor
+          </h1>
           <div>
             <button
               style={{
@@ -70,7 +80,7 @@ function PlaygroundInner(): JSX.Element {
             schema={userSchema}
             theme={colorMode === "dark" ? "vs-dark" : "vs"}
             editorDidMount={(editor) => {
-              editorRef.current = editor;
+              editorRef.current = editor
             }}
             height={"70vh"}
             key={STRINGIFY_JSON(userSchema)}
@@ -78,12 +88,16 @@ function PlaygroundInner(): JSX.Element {
         </div>
       </div>
       <div style={{ marginTop: "0.5rem" }}>
-        <h1 style={{ fontSize: "1.5rem", marginBottom: "1rem" }}>JSON Schema Viewer</h1>
-        <JSONSchemaViewer schema={userSchema} key={STRINGIFY_JSON(userSchema)} />
+        <h1 style={{ fontSize: "1.5rem", marginBottom: "1rem" }}>
+          JSON Schema Viewer
+        </h1>
+        <JSONSchemaViewer
+          schema={userSchema}
+          key={STRINGIFY_JSON(userSchema)}
+        />
       </div>
     </div>
-  );
-  
+  )
 }
 
 function StateProvider(): JSX.Element {
