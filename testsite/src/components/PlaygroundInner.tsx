@@ -26,7 +26,7 @@ function PlaygroundInner(): JSX.Element {
 
   return (
     <div
-      style={{ display: "flex", flexDirection: "column", overflowY: "hidden" }}
+      style={{ display: "flex", flexDirection: "column", overflowY: "hidden", overflowX: "hidden" }}
     >
       <div
         style={{

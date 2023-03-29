@@ -216,7 +216,7 @@ function JSONSchemaCreatorInner(): JSX.Element {
 
   return (
     <div style={{ boxSizing: "border-box", width: "50%" }}>
-      <h1>Schema</h1>
+      <h1 style={{ fontSize: "1.5rem", marginBottom: "1rem" }}>Schema</h1>
       <div>
         <button onClick={() => updateView()}>Update Editor / Viewer</button>
         &nbsp;
