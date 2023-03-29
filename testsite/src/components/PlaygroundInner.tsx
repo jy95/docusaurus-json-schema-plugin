@@ -45,35 +45,45 @@ function PlaygroundInner(): JSX.Element {
   }
 
   return (
-    <>
-      <div style={{ display: "flex", flexWrap: "wrap" }}>
+    <div style={{ display: "flex", flexDirection: "column", overflowY: "hidden" }}>
+      <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-between" }}>
         <JSONSchemaCreator />
         <div style={{ boxSizing: "border-box", width: "50%" }}>
-          <h1>JSON Schema Editor</h1>
+          <h1 style={{ fontSize: "1.5rem", marginBottom: "1rem" }}>JSON Schema Editor</h1>
           <div>
-            <button onClick={() => generateFakeData()}>
-              Generate fake data
+            <button
+              style={{
+                padding: "0.5rem 1rem",
+                backgroundColor: "#4caf50",
+                border: "none",
+                color: "#ffffff",
+                fontSize: "1rem",
+                cursor: "pointer",
+                transition: "all 0.3s ease-in-out",
+              }}
+              onClick={() => generateFakeData()}
+            >
+              Generate Fake Data
             </button>
           </div>
           <JSONSchemaEditor
             schema={userSchema}
             theme={colorMode === "dark" ? "vs-dark" : "vs"}
             editorDidMount={(editor) => {
-              editorRef.current = editor
+              editorRef.current = editor;
             }}
+            height={"70vh"}
             key={STRINGIFY_JSON(userSchema)}
           />
         </div>
       </div>
-      <div>
-        <h1>JSON Schema Viewer</h1>
-        <JSONSchemaViewer
-          schema={userSchema}
-          key={STRINGIFY_JSON(userSchema)}
-        />
+      <div style={{ marginTop: "0.5rem" }}>
+        <h1 style={{ fontSize: "1.5rem", marginBottom: "1rem" }}>JSON Schema Viewer</h1>
+        <JSONSchemaViewer schema={userSchema} key={STRINGIFY_JSON(userSchema)} />
       </div>
-    </>
-  )
+    </div>
+  );
+  
 }
 
 function StateProvider(): JSX.Element {

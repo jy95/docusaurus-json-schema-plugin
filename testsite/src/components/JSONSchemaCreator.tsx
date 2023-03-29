@@ -239,6 +239,7 @@ function JSONSchemaCreatorInner(): JSX.Element {
         value={STRINGIFY_JSON(fullSchema)}
         theme={colorMode === "dark" ? "vs-dark" : "vs"}
         language="json"
+        height={"70vh"}
         editorDidMount={(editor) => {
           sourceRef.current = editor
         }}
