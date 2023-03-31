@@ -7,6 +7,7 @@ import { JSONSchemaFaker } from "json-schema-faker"
 
 // Context
 import { usePlaygroundContext } from "@site/src/contexts/PlaygroundContext"
+import Toolbar from "@site/src/components/DataToolbar"
 
 // Type I need for useRef
 import type { MonacoEditorTypes } from "@theme/MonacoEditor"
@@ -25,7 +26,8 @@ function JSONSchemaDataInner(): JSX.Element {
   const editorRef =
     React.useRef<null | MonacoEditorTypes.IStandaloneCodeEditor>(null)
 
-  function generateFakeData() {
+  // To regenerate data
+  const generateFakeData = () => {
     const editor = editorRef.current
     if (editor) {
       JSONSchemaFaker.resolve(userSchema)
@@ -36,27 +38,57 @@ function JSONSchemaDataInner(): JSX.Element {
     }
   }
 
+  // For copy 
+  const handleCopy = async () => {
+    // Get the text to copy
+    const editor = editorRef.current;
+    if (editor) {
+      // Get the text to copy
+      const textToCopy : string = editor.getModel().getValue() || "" as string;
+
+      // Copy the text to the clipboard using the Clipboard API
+      await navigator.clipboard.writeText(textToCopy);
+    }
+  }
+
+  // For export
+  const handleExport = () => {
+    const editor = editorRef.current;
+
+    if (editor) {
+
+      // Get the text to export
+      const textToCopy : string = editor.getModel().getValue() || "" as string;
+
+      // Create a new Blob object containing the data
+      const dataBlob = new Blob([textToCopy], { type: 'application/json' });
+
+      // Create a URL for the blob using URL.createObjectURL()
+      const url = URL.createObjectURL(dataBlob);
+
+      // Create a new <a> element and set its href attribute to the URL
+      const a = document.createElement('a');
+      a.href = url;
+
+      // Set the download attribute of the <a> element to the desired filename
+      a.download = 'data.json';
+
+      // Add the <a> element to the DOM and trigger a click event to download the file
+      document.body.appendChild(a);
+      a.click();
+
+      // Remove the <a> element from the DOM
+      document.body.removeChild(a);
+
+      // Revoke the URL using URL.revokeObjectURL() to free up memory
+      URL.revokeObjectURL(url);
+
+    }
+  }
+
   return (
     <div style={{ boxSizing: "border-box", width: "50%" }}>
-      <h1 style={{ fontSize: "1.5rem", marginBottom: "1rem" }}>
-        JSON Schema Editor
-      </h1>
-      <div>
-        <button
-          style={{
-            padding: "0.5rem 1rem",
-            backgroundColor: "#4caf50",
-            border: "none",
-            color: "#ffffff",
-            fontSize: "1rem",
-            cursor: "pointer",
-            transition: "all 0.3s ease-in-out",
-          }}
-          onClick={() => generateFakeData()}
-        >
-          Generate Fake Data
-        </button>
-      </div>
+      <Toolbar onGenerate={generateFakeData} onCopy={handleCopy} onExport={handleExport} />
       <JSONSchemaEditor
         schema={userSchema}
         theme={colorMode === "dark" ? "vs-dark" : "vs"}
