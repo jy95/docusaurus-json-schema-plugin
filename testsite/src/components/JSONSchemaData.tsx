@@ -15,7 +15,7 @@ const STRINGIFY_JSON = (json: unknown) => JSON.stringify(json, null, "\t")
 
 function JSONSchemaDataInner(): JSX.Element {
   const {
-    state: { userSchema, editorRef },
+    state: { userSchema, editorRef, data : value },
     updateState,
   } = usePlaygroundContext()
 
@@ -56,7 +56,7 @@ function JSONSchemaDataInner(): JSX.Element {
         }}
       />
       <JSONSchemaEditor
-        value={"{}"}
+        value={value}
         schema={userSchema}
         theme={colorMode === "dark" ? "vs-dark" : "vs"}
         editorDidMount={(editor) => {

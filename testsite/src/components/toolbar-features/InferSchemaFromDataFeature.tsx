@@ -41,6 +41,7 @@ export default function InferSchemaFromData(): JSX.Element {
       // Update state according to that
       updateState({
         jsonPointer: "",
+        data: jsonString,
         userSchema: schema,
         fullSchema: schema,
       })
