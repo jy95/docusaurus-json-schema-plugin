@@ -74,8 +74,7 @@ function JSONSchemaDataInner(): JSX.Element {
         onImport={(jsonData) => {
           const editor = editorRef.current
           if (editor) {
-            console.log("HERE")
-            editor.getModel().setValue(JSON.stringify(jsonData, null, "\t"))
+            editor.setValue(JSON.stringify(jsonData, null, "\t"))
           }
         }}
       />
