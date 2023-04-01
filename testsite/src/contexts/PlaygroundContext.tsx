@@ -15,6 +15,9 @@ export type State = {
   schemaRef: undefined | MonacoEditorTypes.IStandaloneCodeEditor
   // Data editor ref
   editorRef: undefined | MonacoEditorTypes.IStandaloneCodeEditor
+  // Data on the data editor
+  // When using "Infer schema from data", it would be annoying to lose our written
+  data: string
 }
 
 export type Playground = {
@@ -29,6 +32,7 @@ export const PlaygroundContext = createContext<Playground>({
     fullSchema: {},
     userSchema: {},
     jsonPointer: "",
+    data: "{}",
     schemaRef: undefined,
     editorRef: undefined,
   },
