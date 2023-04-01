@@ -1,11 +1,9 @@
 import React from "react"
-import { useColorMode } from "@docusaurus/theme-common"
 import BrowserOnly from "@docusaurus/BrowserOnly"
 
-import JSONSchemaEditor from "@theme/JSONSchemaEditor"
 import JSONSchemaViewer from "@theme/JSONSchemaViewer"
 import JSONSchemaCreator from "@site/src/components/JSONSchemaCreator"
-import { JSONSchemaFaker } from "json-schema-faker"
+import JSONSchemaData from "@site/src/components/JSONSchemaData"
 
 import {
   PlaygroundContextProvider,
@@ -16,8 +14,6 @@ import {
 import DefaultSchema from "@site/static/schemas/examples/object/additionalProperties.json"
 
 // Type I need for useRef
-import type { MonacoEditorTypes } from "@theme/MonacoEditor"
-
 import type { State as PlaygroundState } from "@site/src/contexts/PlaygroundContext"
 
 // Common stringify of the JSON
@@ -27,52 +23,36 @@ function PlaygroundInner(): JSX.Element {
   const {
     state: { userSchema },
   } = usePlaygroundContext()
-  const { colorMode } = useColorMode()
-
-  // Reference for example editor
-  const editorRef =
-    React.useRef<null | MonacoEditorTypes.IStandaloneCodeEditor>(null)
-
-  function generateFakeData() {
-    const editor = editorRef.current
-    if (editor) {
-      JSONSchemaFaker.resolve(userSchema)
-        .then((sample) => {
-          editor.setValue(STRINGIFY_JSON(sample))
-        })
-        .catch((err) => alert(err))
-    }
-  }
 
   return (
-    <>
-      <div style={{ display: "flex", flexWrap: "wrap" }}>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        overflowY: "hidden",
+        overflowX: "hidden",
+      }}
+    >
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "space-between",
+        }}
+      >
         <JSONSchemaCreator />
-        <div style={{ boxSizing: "border-box", width: "50%" }}>
-          <h1>JSON Schema Editor</h1>
-          <div>
-            <button onClick={() => generateFakeData()}>
-              Generate fake data
-            </button>
-          </div>
-          <JSONSchemaEditor
-            schema={userSchema}
-            theme={colorMode === "dark" ? "vs-dark" : "vs"}
-            editorDidMount={(editor) => {
-              editorRef.current = editor
-            }}
-            key={STRINGIFY_JSON(userSchema)}
-          />
-        </div>
+        <JSONSchemaData key={STRINGIFY_JSON(userSchema)} />
       </div>
-      <div>
-        <h1>JSON Schema Viewer</h1>
+      <div style={{ marginTop: "0.5rem" }}>
+        <h1 style={{ fontSize: "1.5rem", marginBottom: "1rem" }}>
+          JSON Schema Viewer
+        </h1>
         <JSONSchemaViewer
           schema={userSchema}
           key={STRINGIFY_JSON(userSchema)}
         />
       </div>
-    </>
+    </div>
   )
 }
 

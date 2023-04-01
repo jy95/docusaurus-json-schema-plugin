@@ -15,6 +15,8 @@ import { jsonpos } from "jsonpos"
 // Context
 import { usePlaygroundContext } from "@site/src/contexts/PlaygroundContext"
 
+import { toast } from "react-toastify"
+
 // Type I need for useRef
 import type { MonacoEditorTypes } from "@theme/MonacoEditor"
 
@@ -111,7 +113,7 @@ function JSONSchemaCreatorInner(): JSX.Element {
         updateState({ userSchema: resolvedSchema.result })
       } catch (error) {
         // KIS strategy
-        alert(error)
+        toast.error((error as Error).message, { autoClose: 5000 })
       }
     }
   }
@@ -216,7 +218,7 @@ function JSONSchemaCreatorInner(): JSX.Element {
 
   return (
     <div style={{ boxSizing: "border-box", width: "50%" }}>
-      <h1>Schema</h1>
+      <h1 style={{ fontSize: "1.5rem", marginBottom: "1rem" }}>Schema</h1>
       <div>
         <button onClick={() => updateView()}>Update Editor / Viewer</button>
         &nbsp;
@@ -239,6 +241,7 @@ function JSONSchemaCreatorInner(): JSX.Element {
         value={STRINGIFY_JSON(fullSchema)}
         theme={colorMode === "dark" ? "vs-dark" : "vs"}
         language="json"
+        height={"70vh"}
         editorDidMount={(editor) => {
           sourceRef.current = editor
         }}
