@@ -113,7 +113,7 @@ function JSONSchemaCreatorInner(): JSX.Element {
         updateState({ userSchema: resolvedSchema.result })
       } catch (error) {
         // KIS strategy
-        toast.error((error as Error).message)
+        toast.error((error as Error).message, { autoClose: 5000 })
       }
     }
   }

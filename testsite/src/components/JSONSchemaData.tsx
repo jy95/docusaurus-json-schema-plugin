@@ -31,12 +31,14 @@ function JSONSchemaDataInner(): JSX.Element {
   const generateFakeData = () => {
     const editor = editorRef.current
     if (editor) {
-      toast.info("Generating data ...")
+      //toast.info("Generating data ...")
       JSONSchemaFaker.resolve(userSchema)
         .then((sample) => {
           editor.setValue(STRINGIFY_JSON(sample))
         })
-        .catch((err) => toast.error((err as Error).message))
+        .catch((err) =>
+          toast.error((err as Error).message, { autoClose: 5000 })
+        )
     }
   }
 
@@ -55,47 +57,27 @@ function JSONSchemaDataInner(): JSX.Element {
     }
   }
 
-  // For export
-  const handleExport = () => {
-    const editor = editorRef.current
-
-    if (editor) {
-      toast.info("Exporting data ...")
-
-      // Get the text to export
-      const textToCopy: string = editor.getModel().getValue() || ("" as string)
-
-      // Create a new Blob object containing the data
-      const dataBlob = new Blob([textToCopy], { type: "application/json" })
-
-      // Create a URL for the blob using URL.createObjectURL()
-      const url = URL.createObjectURL(dataBlob)
-
-      // Create a new <a> element and set its href attribute to the URL
-      const a = document.createElement("a")
-      a.href = url
-
-      // Set the download attribute of the <a> element to the desired filename
-      a.download = "data.json"
-
-      // Add the <a> element to the DOM and trigger a click event to download the file
-      document.body.appendChild(a)
-      a.click()
-
-      // Remove the <a> element from the DOM
-      document.body.removeChild(a)
-
-      // Revoke the URL using URL.revokeObjectURL() to free up memory
-      URL.revokeObjectURL(url)
-    }
-  }
-
   return (
     <div style={{ boxSizing: "border-box", width: "50%" }}>
       <Toolbar
         onGenerate={generateFakeData}
         onCopy={handleCopy}
-        onExport={handleExport}
+        onExport={() => {
+          toast.info("Exporting data ...")
+          const editor = editorRef.current
+          if (editor) {
+            return editor.getModel().getValue() || ("" as string)
+          }
+          // Nothing to export
+          return ""
+        }}
+        onImport={(jsonData) => {
+          const editor = editorRef.current
+          if (editor) {
+            console.log("HERE")
+            editor.getModel().setValue(JSON.stringify(jsonData, null, "\t"))
+          }
+        }}
       />
       <JSONSchemaEditor
         value={"{}"}
