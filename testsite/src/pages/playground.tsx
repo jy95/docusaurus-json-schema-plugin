@@ -3,7 +3,8 @@ import Layout from "@theme/Layout"
 import BrowserOnly from "@docusaurus/BrowserOnly"
 import ErrorBoundary from "@docusaurus/ErrorBoundary"
 
-// Monaco isn't SSR friendly
+import { ToastContainer, toast } from "react-toastify"
+import "react-toastify/dist/ReactToastify.min.css"
 
 function PlaygroundComponent(): JSX.Element {
   // No SSR for the live preview
@@ -35,6 +36,7 @@ export default function Playground(): JSX.Element {
       description="Playground of docusaurus-json-schema-plugin"
     >
       <PlaygroundComponent />
+      <ToastContainer position={toast.POSITION.BOTTOM_RIGHT} />
     </Layout>
   )
 }

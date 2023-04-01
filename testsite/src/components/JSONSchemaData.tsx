@@ -8,6 +8,7 @@ import { JSONSchemaFaker } from "json-schema-faker"
 // Context
 import { usePlaygroundContext } from "@site/src/contexts/PlaygroundContext"
 import Toolbar from "@site/src/components/DataToolbar"
+import { toast } from "react-toastify"
 
 // Type I need for useRef
 import type { MonacoEditorTypes } from "@theme/MonacoEditor"
@@ -30,66 +31,74 @@ function JSONSchemaDataInner(): JSX.Element {
   const generateFakeData = () => {
     const editor = editorRef.current
     if (editor) {
+      toast.info("Generating data ...")
       JSONSchemaFaker.resolve(userSchema)
         .then((sample) => {
           editor.setValue(STRINGIFY_JSON(sample))
         })
-        .catch((err) => alert(err))
+        .catch((err) => toast.error((err as Error).message))
     }
   }
 
-  // For copy 
+  // For copy
   const handleCopy = async () => {
     // Get the text to copy
-    const editor = editorRef.current;
+    const editor = editorRef.current
     if (editor) {
       // Get the text to copy
-      const textToCopy : string = editor.getModel().getValue() || "" as string;
+      const textToCopy: string = editor.getModel().getValue() || ("" as string)
 
       // Copy the text to the clipboard using the Clipboard API
-      await navigator.clipboard.writeText(textToCopy);
+      await navigator.clipboard.writeText(textToCopy)
+
+      toast.success("Data copied")
     }
   }
 
   // For export
   const handleExport = () => {
-    const editor = editorRef.current;
+    const editor = editorRef.current
 
     if (editor) {
+      toast.info("Exporting data ...")
 
       // Get the text to export
-      const textToCopy : string = editor.getModel().getValue() || "" as string;
+      const textToCopy: string = editor.getModel().getValue() || ("" as string)
 
       // Create a new Blob object containing the data
-      const dataBlob = new Blob([textToCopy], { type: 'application/json' });
+      const dataBlob = new Blob([textToCopy], { type: "application/json" })
 
       // Create a URL for the blob using URL.createObjectURL()
-      const url = URL.createObjectURL(dataBlob);
+      const url = URL.createObjectURL(dataBlob)
 
       // Create a new <a> element and set its href attribute to the URL
-      const a = document.createElement('a');
-      a.href = url;
+      const a = document.createElement("a")
+      a.href = url
 
       // Set the download attribute of the <a> element to the desired filename
-      a.download = 'data.json';
+      a.download = "data.json"
 
       // Add the <a> element to the DOM and trigger a click event to download the file
-      document.body.appendChild(a);
-      a.click();
+      document.body.appendChild(a)
+      a.click()
 
       // Remove the <a> element from the DOM
-      document.body.removeChild(a);
+      document.body.removeChild(a)
 
       // Revoke the URL using URL.revokeObjectURL() to free up memory
-      URL.revokeObjectURL(url);
-
+      URL.revokeObjectURL(url)
     }
   }
 
   return (
     <div style={{ boxSizing: "border-box", width: "50%" }}>
-      <Toolbar onGenerate={generateFakeData} onCopy={handleCopy} onExport={handleExport} />
+      <Toolbar
+        onGenerate={generateFakeData}
+        onCopy={handleCopy}
+        onExport={handleExport}
+      />
       <JSONSchemaEditor
+        value={"{}"}
         schema={userSchema}
         theme={colorMode === "dark" ? "vs-dark" : "vs"}
         editorDidMount={(editor) => {
