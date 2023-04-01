@@ -2,6 +2,7 @@ import React from "react"
 
 import ImportFeature from "@site/src/components/toolbar-features/ImportFeature"
 import ExportFeature from "@site/src/components/toolbar-features/ExportFeature"
+import InferSchemaFromData from "@site/src/components/toolbar-features/InferSchemaFromDataFeature"
 
 type Params = {
   onGenerate: () => void
@@ -41,6 +42,7 @@ const Toolbar = ({ onGenerate, onCopy, onExport, onImport }: Params) => {
       <button style={styles.icon} onClick={onGenerate} title="Generate Data">
         🔄
       </button>
+      <InferSchemaFromData />
       <button
         style={styles.icon}
         onClick={onCopy}

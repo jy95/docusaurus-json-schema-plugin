@@ -59,15 +59,11 @@ function getSeverity(error: DefinedError): ReturnedSeverity {
 
 function JSONSchemaCreatorInner(): JSX.Element {
   const {
-    state: { jsonPointer, fullSchema },
+    state: { jsonPointer, fullSchema, schemaRef },
     updateState,
   } = usePlaygroundContext()
   const inputRef = React.useRef<HTMLInputElement>(null)
   const { colorMode } = useColorMode()
-
-  // Reference for source editor
-  const sourceRef =
-    React.useRef<null | MonacoEditorTypes.IStandaloneCodeEditor>(null)
 
   // Properly handle pointer change
   async function handlePointerChange(newSchema: any) {
@@ -121,13 +117,8 @@ function JSONSchemaCreatorInner(): JSX.Element {
   // Turn user schema to other components
   async function updateView() {
     try {
-      const editor = sourceRef.current
-      if (!editor) {
-        return
-      }
-
       // What the user puts
-      let customSchemaString = editor.getModel().getValue()
+      let customSchemaString = schemaRef?.getModel().getValue()
       let newSchema = JSON.parse(customSchemaString)
 
       // Update full schema
@@ -146,12 +137,6 @@ function JSONSchemaCreatorInner(): JSX.Element {
 
   // Apply validation of AJV
   async function validateJSONSchema(newSchema: unknown) {
-    const editor = sourceRef.current
-
-    if (!editor) {
-      return
-    }
-
     const ajv = new Ajv({
       allErrors: true,
       // I don't care if people add extra stuff in their schema
@@ -210,7 +195,7 @@ function JSONSchemaCreatorInner(): JSX.Element {
 
     // Set up validation error, if any
     monaco.editor.setModelMarkers(
-      editor.getModel(),
+      schemaRef?.getModel(),
       "schema-validation",
       markers
     )
@@ -243,7 +228,7 @@ function JSONSchemaCreatorInner(): JSX.Element {
         language="json"
         height={"70vh"}
         editorDidMount={(editor) => {
-          sourceRef.current = editor
+          updateState({ schemaRef: editor })
         }}
       />
     </div>
