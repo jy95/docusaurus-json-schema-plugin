@@ -15,7 +15,7 @@ const STRINGIFY_JSON = (json: unknown) => JSON.stringify(json, null, "\t")
 
 function JSONSchemaDataInner(): JSX.Element {
   const {
-    state: { userSchema, editorRef, data : value },
+    state: { userSchema, editorRef, data: value },
     updateState,
   } = usePlaygroundContext()
 
