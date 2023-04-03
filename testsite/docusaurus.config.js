@@ -1,6 +1,6 @@
 const path = require("path")
 
-const isDeployPreview = !!process.env.NETLIFY 
+const isDeployPreview = !!process.env.NETLIFY
 const baseUrl = isDeployPreview ? "/" : "/docusaurus-json-schema-plugin/"
 
 // With JSDoc @type annotations, IDEs can provide config autocompletion
