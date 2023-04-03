@@ -5,5 +5,5 @@
 
 [[context.deploy-preview]]
   command = "npm install && npm run build && npm link && cd testsite && npm link docusaurus-json-schema-plugin --save && npm install --prefer-dedupe && npm run build && netlify deploy --prod --auth $NETLIFY_AUTH_TOKEN"
-  environment = { NETLIFY_SITE_ID = "<your-netlify-site-id>" }
+  environment = { NETLIFY_SITE_ID = "b99768d3-7f47-4cc9-9ff1-ad23a359dadc" }
   publish = "testsite/build"
