@@ -1,12 +1,15 @@
 const path = require("path")
 
+const isDeployPreview = !!process.env.NETLIFY 
+const baseUrl = isDeployPreview ? "/" : "/docusaurus-json-schema-plugin/"
+
 // With JSDoc @type annotations, IDEs can provide config autocompletion
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
   title: "Docusaurus JSON Schema Plugin",
   tagline: "JSON Schema plugin viewer / editor in Docusaurus",
-  url: process.env.DEPLOY_PRIME_URL || "https://jy95.github.io",
-  baseUrl: "/docusaurus-json-schema-plugin/",
+  url: "https://jy95.github.io",
+  baseUrl: baseUrl,
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
   favicon: "img/favicon.ico",
