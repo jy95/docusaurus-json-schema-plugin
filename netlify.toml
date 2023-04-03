@@ -1,0 +1,9 @@
+# netlify.toml
+
+[[plugins]]
+  package = "netlify-plugin-run-build"
+
+[[context.deploy-preview]]
+  command = "npm install && npm run build && npm link && cd testsite && npm link docusaurus-json-schema-plugin --save && npm install --prefer-dedupe && npm run build && netlify deploy --prod --auth $NETLIFY_AUTH_TOKEN"
+  environment = { NETLIFY_SITE_ID = "<your-netlify-site-id>" }
+  publish = "testsite/build"
