@@ -5,7 +5,7 @@ const path = require("path")
 module.exports = {
   title: "Docusaurus JSON Schema Plugin",
   tagline: "JSON Schema plugin viewer / editor in Docusaurus",
-  url: "https://jy95.github.io",
+  url: process.env.DEPLOY_PRIME_URL || "https://jy95.github.io",
   baseUrl: "/docusaurus-json-schema-plugin/",
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
