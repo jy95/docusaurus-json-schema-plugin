@@ -19,7 +19,7 @@ export type State = {
   // When using "Infer schema from data", it would be annoying to lose our written
   data: string
   // Errors in schema
-  schemaErrors: MonacoEditorTypes.IMarkerData[],
+  schemaErrors: MonacoEditorTypes.IMarkerData[]
   // Errors in data
   dataErrors: MonacoEditorTypes.IMarkerData[]
 }
