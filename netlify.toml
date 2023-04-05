@@ -4,5 +4,6 @@
   NODE_VERSION = "18"
 
 [context.deploy-preview]
-  command = "npm install netlify-cli@13.2.2 -g && npm install && npm run build && npm link && cd testsite && npm link docusaurus-json-schema-plugin --save && npm install --prefer-dedupe && npm run build && netlify deploy --prod --dir build --auth $NETLIFY_AUTH_TOKEN"
+  command = "npm install && npm run build && npm link && cd testsite && npm link docusaurus-json-schema-plugin --save && npm install --prefer-dedupe && npm run build"
   environment = { NETLIFY_SITE_ID = "b99768d3-7f47-4cc9-9ff1-ad23a359dadc" }
+  publish = "testsite/build"
