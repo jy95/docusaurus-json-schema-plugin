@@ -18,6 +18,10 @@ export type State = {
   // Data on the data editor
   // When using "Infer schema from data", it would be annoying to lose our written
   data: string
+  // Errors in schema
+  schemaErrors: MonacoEditorTypes.IMarkerData[],
+  // Errors in data
+  dataErrors: MonacoEditorTypes.IMarkerData[]
 }
 
 export type Playground = {
@@ -35,6 +39,8 @@ export const PlaygroundContext = createContext<Playground>({
     data: "{}",
     schemaRef: undefined,
     editorRef: undefined,
+    schemaErrors: [],
+    dataErrors: [],
   },
   updateState: () => {},
 })
