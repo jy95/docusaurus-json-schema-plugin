@@ -2,16 +2,15 @@ import React from "react"
 
 import ImportFeature from "@site/src/components/toolbar-features/ImportFeature"
 import ExportFeature from "@site/src/components/toolbar-features/ExportFeature"
-import InferSchemaFromData from "@site/src/components/toolbar-features/InferSchemaFromDataFeature"
 
 type Params = {
-  onGenerate: () => void
+  onRefresh: () => void
   onCopy: () => void
   onExport: () => string
   onImport: (jsonData: any) => void
 }
 
-const Toolbar = ({ onGenerate, onCopy, onExport, onImport }: Params) => {
+const Toolbar = ({ onRefresh, onCopy, onExport, onImport }: Params) => {
   const styles = {
     toolbar: {
       display: "flex",
@@ -36,23 +35,26 @@ const Toolbar = ({ onGenerate, onCopy, onExport, onImport }: Params) => {
 
   return (
     <div style={styles.toolbar}>
-      <h1>Data</h1>
+      <h1>Schema</h1>
       &nbsp;
       <div style={{ flex: 1 }} />
-      <button style={styles.icon} onClick={onGenerate} title="Generate Data">
-        🔄
+      <button
+        style={styles.icon}
+        onClick={onRefresh}
+        title="Update Data Editor / Schema Viewer"
+      >
+        🌀
       </button>
-      <InferSchemaFromData />
       <button
         style={styles.icon}
         onClick={onCopy}
-        title="Copy Data to clipboard"
+        title="Copy Schema to clipboard"
       >
         📋
       </button>
-      <ImportFeature label="Import Data from file" onImport={onImport} />
+      <ImportFeature label="Import Schema from file" onImport={onImport} />
       <ExportFeature
-        filename="data.json"
+        filename="schema.json"
         label="Export to JSON File"
         getValue={onExport}
       />

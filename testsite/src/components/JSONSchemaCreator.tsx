@@ -15,6 +15,9 @@ import { jsonpos } from "jsonpos"
 // Context
 import { usePlaygroundContext } from "@site/src/contexts/PlaygroundContext"
 
+// Toolbar
+import Toolbar from "@site/src/components/SchemaToolbar"
+
 import { toast } from "react-toastify"
 
 // Type I need for useRef
@@ -59,46 +62,24 @@ function getSeverity(error: DefinedError): ReturnedSeverity {
 
 function JSONSchemaCreatorInner(): JSX.Element {
   const {
-    state: { jsonPointer, fullSchema },
+    state: { fullSchema, schemaRef },
     updateState,
   } = usePlaygroundContext()
-  const inputRef = React.useRef<HTMLInputElement>(null)
   const { colorMode } = useColorMode()
-
-  // Reference for source editor
-  const sourceRef =
-    React.useRef<null | MonacoEditorTypes.IStandaloneCodeEditor>(null)
 
   // Properly handle pointer change
   async function handlePointerChange(newSchema: any) {
-    // What is currently on input field
-    const currentPointer = inputRef.current.value
-
-    // Next pointer value
+    // Next pointer value (by default, reset it)
     let nextPointer = ""
 
-    // If input field is empty but "$ref" is found at the root level, consider it first
-    if (currentPointer.length === 0 && newSchema["$ref"] !== undefined) {
+    // If "$ref" is found at the root level, consider it first
+    if (newSchema["$ref"] !== undefined) {
       nextPointer = newSchema["$ref"]
     }
 
-    // If input is not empty, let's take it
-    if (currentPointer.length > 0) {
-      nextPointer = currentPointer
-    }
-
-    // Otherwise, if user wants to remove it, respect the choice
-    if (currentPointer.length === 0 && jsonPointer.length > 0) {
-      nextPointer = ""
-    }
-
-    // At the end, update ref
-    inputRef.current.value = nextPointer
-    updateState({ jsonPointer: nextPointer })
-
     // Update the user schema according to the modification
     if (nextPointer.length === 0) {
-      updateState({ userSchema: newSchema })
+      updateState({ userSchema: newSchema, jsonPointer: nextPointer })
     } else {
       try {
         const resolvedSchema = await new Resolver().resolve(newSchema, {
@@ -110,7 +91,10 @@ function JSONSchemaCreatorInner(): JSX.Element {
               ? nextPointer
               : undefined,
         })
-        updateState({ userSchema: resolvedSchema.result })
+        updateState({
+          userSchema: resolvedSchema.result,
+          jsonPointer: nextPointer,
+        })
       } catch (error) {
         // KIS strategy
         toast.error((error as Error).message, { autoClose: 5000 })
@@ -121,13 +105,8 @@ function JSONSchemaCreatorInner(): JSX.Element {
   // Turn user schema to other components
   async function updateView() {
     try {
-      const editor = sourceRef.current
-      if (!editor) {
-        return
-      }
-
       // What the user puts
-      let customSchemaString = editor.getModel().getValue()
+      let customSchemaString = schemaRef?.getModel().getValue()
       let newSchema = JSON.parse(customSchemaString)
 
       // Update full schema
@@ -146,12 +125,6 @@ function JSONSchemaCreatorInner(): JSX.Element {
 
   // Apply validation of AJV
   async function validateJSONSchema(newSchema: unknown) {
-    const editor = sourceRef.current
-
-    if (!editor) {
-      return
-    }
-
     const ajv = new Ajv({
       allErrors: true,
       // I don't care if people add extra stuff in their schema
@@ -210,40 +183,46 @@ function JSONSchemaCreatorInner(): JSX.Element {
 
     // Set up validation error, if any
     monaco.editor.setModelMarkers(
-      editor.getModel(),
+      schemaRef?.getModel(),
       "schema-validation",
       markers
     )
   }
 
+  // For copy
+  const handleCopy = async () => {
+    // Get the text to copy
+    const textToCopy: string = schemaRef.getModel().getValue() || ("" as string)
+
+    // Copy the text to the clipboard using the Clipboard API
+    await navigator.clipboard.writeText(textToCopy)
+
+    toast.success("Schema copied")
+  }
+
   return (
     <div style={{ boxSizing: "border-box", width: "50%" }}>
-      <h1 style={{ fontSize: "1.5rem", marginBottom: "1rem" }}>Schema</h1>
-      <div>
-        <button onClick={() => updateView()}>Update Editor / Viewer</button>
-        &nbsp;
-        <label
-          htmlFor="jsonPointer"
-          title="If you want to cover only a specific path of your specs, such as '#/definitions/*'"
-        >
-          JSON Pointer :
-        </label>
-        &nbsp;
-        <input
-          type="text"
-          id="jsonPointer"
-          name="jsonPointer"
-          ref={inputRef}
-          defaultValue={jsonPointer}
-        />
-      </div>
+      <Toolbar
+        onRefresh={async () => {
+          await updateView()
+        }}
+        onCopy={handleCopy}
+        onExport={() => {
+          toast.info("Exporting Schema ...")
+          return schemaRef.getModel().getValue() || ("" as string)
+        }}
+        onImport={async (jsonData) => {
+          schemaRef.setValue(JSON.stringify(jsonData, null, "\t"))
+          await updateView()
+        }}
+      />
       <MonacoEditor
         value={STRINGIFY_JSON(fullSchema)}
         theme={colorMode === "dark" ? "vs-dark" : "vs"}
         language="json"
         height={"70vh"}
         editorDidMount={(editor) => {
-          sourceRef.current = editor
+          updateState({ schemaRef: editor })
         }}
       />
     </div>
