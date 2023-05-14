@@ -1,7 +1,7 @@
 import React from "react"
 import Translate from "@docusaurus/Translate"
 
-import { TypeLabel, FalseLabel } from "@theme/JSONSchemaViewer/labels/index"
+import { TypeLabel, FalseLabel } from "@theme/JSONSchemaViewer/labels"
 
 // When schema has the value "true", it means that it is ALWAYS valid
 export default function CreateAlwaysValid(): JSX.Element {

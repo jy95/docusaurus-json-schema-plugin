@@ -3,7 +3,7 @@ import React from "react"
 import {
   DependentRequired,
   DependentSchemas,
-} from "@theme/JSONSchemaViewer/JSONSchemaElements/SchemaConditional/index"
+} from "@theme/JSONSchemaViewer/JSONSchemaElements/SchemaConditional"
 
 import type { JSONSchema } from "@theme/JSONSchemaViewer/types"
 

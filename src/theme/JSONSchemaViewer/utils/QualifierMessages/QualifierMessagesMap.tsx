@@ -1,9 +1,9 @@
 import React from "react"
 
-import * as QMS from "@theme/JSONSchemaViewer/utils/QualifierMessages/index"
+import * as QMS from "@theme/JSONSchemaViewer/utils/QualifierMessages"
 
 import type { JSONSchema, JSONSchemaNS } from "@theme/JSONSchemaViewer/types"
-import type { JSVOptions } from "@theme/JSONSchemaViewer/contexts/index"
+import type { JSVOptions } from "@theme/JSONSchemaViewer/contexts"
 
 type Props = {
   schema: Exclude<JSONSchema, true | false>

@@ -3,7 +3,7 @@ import React from "react"
 import {
   CreateAlwaysInvalid,
   CreateAlwaysValid,
-} from "@theme/JSONSchemaViewer/JSONSchemaElements/index"
+} from "@theme/JSONSchemaViewer/JSONSchemaElements"
 
 import type { JSONSchema } from "@theme/JSONSchemaViewer/types"
 

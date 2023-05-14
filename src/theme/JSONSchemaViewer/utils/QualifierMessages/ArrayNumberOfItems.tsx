@@ -2,7 +2,7 @@ import React from "react"
 
 import Translate from "@docusaurus/Translate"
 
-import { AndLabel } from "@theme/JSONSchemaViewer/labels/index"
+import { AndLabel } from "@theme/JSONSchemaViewer/labels"
 
 import type { JSONSchema } from "@theme/JSONSchemaViewer/types"
 

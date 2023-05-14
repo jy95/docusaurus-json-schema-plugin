@@ -1,6 +1,6 @@
 import React, { ReactNode } from "react"
 
-import { SchemaItem } from "@theme/JSONSchemaViewer/components/index"
+import { SchemaItem } from "@theme/JSONSchemaViewer/components"
 
 import type { JSONSchema } from "@theme/JSONSchemaViewer/types"
 

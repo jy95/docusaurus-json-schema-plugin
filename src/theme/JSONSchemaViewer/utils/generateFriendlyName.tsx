@@ -1,16 +1,16 @@
 import React from "react"
 
 // Utility functions to know which case we have
-import { detectedTypes } from "@theme/JSONSchemaViewer/utils/index"
+import { detectedTypes } from "@theme/JSONSchemaViewer/utils"
 
-import { TypeLabelSwitch } from "@theme/JSONSchemaViewer/components/index"
+import { TypeLabelSwitch } from "@theme/JSONSchemaViewer/components"
 
 import {
   AndLabel,
   NotLabel,
   OrLabel,
   XorLabel,
-} from "@theme/JSONSchemaViewer/labels/index"
+} from "@theme/JSONSchemaViewer/labels"
 
 import type {
   JSONSchema,

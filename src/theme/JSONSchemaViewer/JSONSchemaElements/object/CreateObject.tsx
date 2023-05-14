@@ -7,12 +7,12 @@ import PropertyNames from "@theme/JSONSchemaViewer/JSONSchemaElements/object/Pro
 import UnlistedProperties from "@theme/JSONSchemaViewer/JSONSchemaElements/object/UnlistedRequiredProperties"
 import UnevaluatedProperties from "@theme/JSONSchemaViewer/JSONSchemaElements/object/UnevaluatedProperties"
 
-import { QualifierMessages } from "@theme/JSONSchemaViewer/utils/index"
-import { useJSVOptionsContext } from "@theme/JSONSchemaViewer/contexts/index"
+import { QualifierMessages } from "@theme/JSONSchemaViewer/utils"
+import { useJSVOptionsContext } from "@theme/JSONSchemaViewer/contexts"
 
-import { ObjectLabel, TypeLabel } from "@theme/JSONSchemaViewer/labels/index"
+import { ObjectLabel, TypeLabel } from "@theme/JSONSchemaViewer/labels"
 
-import { CreateDescription } from "@theme/JSONSchemaViewer/JSONSchemaElements/index"
+import { CreateDescription } from "@theme/JSONSchemaViewer/JSONSchemaElements"
 
 import type { JSONSchemaNS } from "@theme/JSONSchemaViewer/types"
 

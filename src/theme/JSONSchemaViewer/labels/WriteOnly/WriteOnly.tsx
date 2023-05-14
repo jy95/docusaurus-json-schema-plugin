@@ -1,7 +1,7 @@
 import React from "react"
 import Translate from "@docusaurus/Translate"
 
-import styles from "@theme/JSONSchemaViewer/labels/WriteOnly/styles.module.css"
+import styles from "./styles.module.css"
 
 export default function WriteOnlyLabel(): JSX.Element {
   return (

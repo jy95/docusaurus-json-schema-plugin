@@ -7,12 +7,12 @@ import {
   TypeLabelSwitch,
   RenderProvidedType,
   CreateValidOrInvalid,
-} from "@theme/JSONSchemaViewer/components/index"
+} from "@theme/JSONSchemaViewer/components"
 
 import {
   isSchemaComposition,
   detectedTypes,
-} from "@theme/JSONSchemaViewer/utils/index"
+} from "@theme/JSONSchemaViewer/utils"
 
 import type { JSONSchema, TypeValues } from "@theme/JSONSchemaViewer/types"
 

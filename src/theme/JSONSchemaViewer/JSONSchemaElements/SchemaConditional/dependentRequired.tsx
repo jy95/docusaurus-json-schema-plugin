@@ -1,6 +1,6 @@
 import React from "react"
 
-import { AllOfSchema } from "@theme/JSONSchemaViewer/JSONSchemaElements/schemaComposition/index"
+import { AllOfSchema } from "@theme/JSONSchemaViewer/JSONSchemaElements/schemaComposition"
 
 import type { JSONSchema, JSONSchemaNS } from "@theme/JSONSchemaViewer/types"
 

@@ -5,7 +5,7 @@ import {
   AnyOfSchema,
   NotSchema,
   OneOfSchema,
-} from "@theme/JSONSchemaViewer/JSONSchemaElements/schemaComposition/index"
+} from "@theme/JSONSchemaViewer/JSONSchemaElements/schemaComposition"
 
 import type { JSONSchema } from "@theme/JSONSchemaViewer/types"
 

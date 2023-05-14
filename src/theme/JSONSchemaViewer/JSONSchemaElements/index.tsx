@@ -1,14 +1,14 @@
 // Component to deal with oneOf / anyOf / allOf / not
-export { SchemaComposition } from "@theme/JSONSchemaViewer/JSONSchemaElements/schemaComposition/index"
+export { SchemaComposition } from "@theme/JSONSchemaViewer/JSONSchemaElements/schemaComposition"
 
 // Component to deal with if-then-else , dependentRequired , dependentSchemas , dependencies
-export { SchemaConditional } from "@theme/JSONSchemaViewer/JSONSchemaElements/SchemaConditional/index"
+export { SchemaConditional } from "@theme/JSONSchemaViewer/JSONSchemaElements/SchemaConditional"
 
 // Component to deal with Object
-export { CreateObject } from "@theme/JSONSchemaViewer/JSONSchemaElements/object/index"
+export { CreateObject } from "@theme/JSONSchemaViewer/JSONSchemaElements/object"
 
 // Component to deal with Array
-export { CreateArray } from "@theme/JSONSchemaViewer/JSONSchemaElements/array/index"
+export { CreateArray } from "@theme/JSONSchemaViewer/JSONSchemaElements/array"
 
 // Component to deal with String
 export { default as CreateString } from "@theme/JSONSchemaViewer/JSONSchemaElements/CreateString"

@@ -1,7 +1,7 @@
 import React from "react"
 import Translate from "@docusaurus/Translate"
 
-import { CreateEdge } from "@theme/JSONSchemaViewer/components/index"
+import { CreateEdge } from "@theme/JSONSchemaViewer/components"
 
 import type { JSONSchema, JSONSchemaNS } from "@theme/JSONSchemaViewer/types"
 

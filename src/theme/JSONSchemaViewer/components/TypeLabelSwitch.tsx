@@ -10,7 +10,7 @@ import {
   NullLabel,
   TrueLabel,
   FalseLabel,
-} from "@theme/JSONSchemaViewer/labels/index"
+} from "@theme/JSONSchemaViewer/labels"
 
 import type { TypeValues } from "@theme/JSONSchemaViewer/types"
 

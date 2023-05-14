@@ -1,10 +1,10 @@
 import React from "react"
 import Translate from "@docusaurus/Translate"
 
-import { TypeLabel, TrueLabel } from "@theme/JSONSchemaViewer/labels/index"
-import { useJSVOptionsContext } from "@theme/JSONSchemaViewer/contexts/index"
-import { QualifierMessages } from "@theme/JSONSchemaViewer/utils/index"
-import { CreateDescription } from "@theme/JSONSchemaViewer/JSONSchemaElements/index"
+import { TypeLabel, TrueLabel } from "@theme/JSONSchemaViewer/labels"
+import { useJSVOptionsContext } from "@theme/JSONSchemaViewer/contexts"
+import { QualifierMessages } from "@theme/JSONSchemaViewer/utils"
+import { CreateDescription } from "@theme/JSONSchemaViewer/JSONSchemaElements"
 
 import type { JSONSchema } from "@theme/JSONSchemaViewer/types"
 

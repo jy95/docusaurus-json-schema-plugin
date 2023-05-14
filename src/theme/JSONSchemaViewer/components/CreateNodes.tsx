@@ -1,18 +1,18 @@
 import React from "react"
 
-import { CreateTypes } from "@theme/JSONSchemaViewer/components/index"
+import { CreateTypes } from "@theme/JSONSchemaViewer/components"
 
 import {
   SchemaComposition,
   SchemaConditional,
-} from "@theme/JSONSchemaViewer/JSONSchemaElements/index"
+} from "@theme/JSONSchemaViewer/JSONSchemaElements"
 
-import { CreateValidOrInvalid } from "@theme/JSONSchemaViewer/components/index"
+import { CreateValidOrInvalid } from "@theme/JSONSchemaViewer/components"
 
 import {
   isSchemaComposition,
   isSchemaConditional,
-} from "@theme/JSONSchemaViewer/utils/index"
+} from "@theme/JSONSchemaViewer/utils"
 
 import type { JSONSchema } from "@theme/JSONSchemaViewer/types"
 

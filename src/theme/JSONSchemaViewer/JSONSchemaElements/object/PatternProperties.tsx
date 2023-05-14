@@ -1,6 +1,6 @@
 import React from "react"
 
-import { CreateEdge } from "@theme/JSONSchemaViewer/components/index"
+import { CreateEdge } from "@theme/JSONSchemaViewer/components"
 
 import type { JSONSchemaNS } from "@theme/JSONSchemaViewer/types"
 

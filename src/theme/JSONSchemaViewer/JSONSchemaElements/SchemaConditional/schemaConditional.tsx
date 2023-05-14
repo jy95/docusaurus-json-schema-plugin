@@ -7,8 +7,8 @@ import {
   DependentRequired,
   DependentSchemas,
   Dependencies,
-} from "@theme/JSONSchemaViewer/JSONSchemaElements/SchemaConditional/index"
-import { Collapsible } from "@theme/JSONSchemaViewer/components/index"
+} from "@theme/JSONSchemaViewer/JSONSchemaElements/SchemaConditional"
+import { Collapsible } from "@theme/JSONSchemaViewer/components"
 
 import type { JSONSchema, JSONSchemaNS } from "@theme/JSONSchemaViewer/types"
 

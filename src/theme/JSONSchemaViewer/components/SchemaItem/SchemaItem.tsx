@@ -1,20 +1,17 @@
 import React, { ReactNode } from "react"
 
-import {
-  Collapsible,
-  CreateNodes,
-} from "@theme/JSONSchemaViewer/components/index"
+import { Collapsible, CreateNodes } from "@theme/JSONSchemaViewer/components"
 
 import {
   RequiredLabel,
   DeprecatedLabel,
   WriteOnlyLabel,
   ReadOnlyLabel,
-} from "@theme/JSONSchemaViewer/labels/index"
+} from "@theme/JSONSchemaViewer/labels"
 
-import { GenerateFriendlyName } from "@theme/JSONSchemaViewer/utils/index"
+import { GenerateFriendlyName } from "@theme/JSONSchemaViewer/utils"
 
-import styles from "@theme/JSONSchemaViewer/components/SchemaItem/styles.module.css"
+import styles from "./styles.module.css"
 
 import type {
   JSONSchema,

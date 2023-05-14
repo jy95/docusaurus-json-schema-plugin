@@ -3,10 +3,10 @@ import React from "react"
 import {
   QUALIFIERS_MAP,
   QUALIFIERS_DEFAULT_ORDER,
-} from "@theme/JSONSchemaViewer/utils/QualifierMessages/index"
+} from "@theme/JSONSchemaViewer/utils/QualifierMessages"
 
 import type { JSONSchema } from "@theme/JSONSchemaViewer/types"
-import type { JSVOptions } from "@theme/JSONSchemaViewer/contexts/index"
+import type { JSVOptions } from "@theme/JSONSchemaViewer/contexts"
 
 type Props = {
   schema: Exclude<JSONSchema, true | false>

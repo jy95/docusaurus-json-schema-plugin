@@ -4,9 +4,9 @@ import React from "react"
 import TabItem from "@theme-original/TabItem"
 import Tabs from "@theme-original/Tabs"
 
-import { CreateNodes } from "@theme/JSONSchemaViewer/components/index"
+import { CreateNodes } from "@theme/JSONSchemaViewer/components"
 
-import { GenerateFriendlyName } from "@theme/JSONSchemaViewer/utils/index"
+import { GenerateFriendlyName } from "@theme/JSONSchemaViewer/utils"
 
 import type { JSONSchema } from "@theme/JSONSchemaViewer/types"
 

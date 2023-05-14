@@ -2,7 +2,7 @@ import React from "react"
 
 import Translate from "@docusaurus/Translate"
 
-import { printSchemaType } from "@theme/JSONSchemaViewer/utils/QualifierMessages/index"
+import { printSchemaType } from "@theme/JSONSchemaViewer/utils/QualifierMessages"
 
 import type { JSONSchema } from "@theme/JSONSchemaViewer/types"
 

@@ -8,7 +8,7 @@ import {
   CreateNumber,
   CreateInteger,
   CreateNull,
-} from "@theme/JSONSchemaViewer/JSONSchemaElements/index"
+} from "@theme/JSONSchemaViewer/JSONSchemaElements"
 
 import type {
   JSONSchema,

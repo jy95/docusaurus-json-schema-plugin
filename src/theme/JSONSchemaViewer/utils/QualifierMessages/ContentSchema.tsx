@@ -2,10 +2,7 @@ import React from "react"
 
 import Translate from "@docusaurus/Translate"
 
-import {
-  Collapsible,
-  CreateNodes,
-} from "@theme/JSONSchemaViewer/components/index"
+import { Collapsible, CreateNodes } from "@theme/JSONSchemaViewer/components"
 
 import type { JSONSchemaNS } from "@theme/JSONSchemaViewer/types"
 

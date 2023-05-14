@@ -6,13 +6,13 @@ import PrefixItems from "@theme/JSONSchemaViewer/JSONSchemaElements/array/Prefix
 import AdditionalItems from "@theme/JSONSchemaViewer/JSONSchemaElements/array/AdditionalItems"
 import UnevaluatedItems from "@theme/JSONSchemaViewer/JSONSchemaElements/array/UnevaluatedItems"
 
-import { QualifierMessages } from "@theme/JSONSchemaViewer/utils/index"
+import { QualifierMessages } from "@theme/JSONSchemaViewer/utils"
 
-import { useJSVOptionsContext } from "@theme/JSONSchemaViewer/contexts/index"
+import { useJSVOptionsContext } from "@theme/JSONSchemaViewer/contexts"
 
-import { ArrayLabel, TypeLabel } from "@theme/JSONSchemaViewer/labels/index"
+import { ArrayLabel, TypeLabel } from "@theme/JSONSchemaViewer/labels"
 
-import { CreateDescription } from "@theme/JSONSchemaViewer/JSONSchemaElements/index"
+import { CreateDescription } from "@theme/JSONSchemaViewer/JSONSchemaElements"
 
 import type { JSONSchemaNS } from "@theme/JSONSchemaViewer/types"
 

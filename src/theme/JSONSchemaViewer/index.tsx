@@ -1,18 +1,15 @@
 import React, { useState, useEffect } from "react"
 import { Resolver } from "@stoplight/json-ref-resolver"
 
-import {
-  CreateNodes,
-  Collapsible,
-} from "@theme/JSONSchemaViewer/components/index"
-import { JSVOptionsContextProvider } from "@theme/JSONSchemaViewer/contexts/index"
+import { CreateNodes, Collapsible } from "@theme/JSONSchemaViewer/components"
+import { JSVOptionsContextProvider } from "@theme/JSONSchemaViewer/contexts"
 
 import type { JSONSchema } from "@theme/JSONSchemaViewer/types"
-import type { JSVOptions } from "@theme/JSONSchemaViewer/contexts/index"
+import type { JSVOptions } from "@theme/JSONSchemaViewer/contexts"
 import {
   LoadingLabel,
   ErrorOccurredLabel,
-} from "@theme/JSONSchemaViewer/labels/index"
+} from "@theme/JSONSchemaViewer/labels"
 import type { IResolveOpts } from "@stoplight/json-ref-resolver/types"
 
 export type Props = {
