@@ -1,7 +1,7 @@
 import React from "react"
 import Translate from "@docusaurus/Translate"
 
-import styles from "./styles.module.css"
+import styles from "@theme/JSONSchemaViewer/labels/Required/styles.module.css"
 
 export default function RequiredLabel(): JSX.Element {
   return (

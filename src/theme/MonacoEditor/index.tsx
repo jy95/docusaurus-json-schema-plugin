@@ -7,7 +7,7 @@ import ErrorBoundary from "@docusaurus/ErrorBoundary"
 import {
   LoadingLabel,
   ErrorOccurredLabel,
-} from "../JSONSchemaViewer/labels/index"
+} from "@theme/JSONSchemaViewer/labels/index"
 
 import type { Props as ErrorProps } from "@theme/Error"
 import type { MonacoEditorProps } from "react-monaco-editor"

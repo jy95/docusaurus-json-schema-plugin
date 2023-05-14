@@ -2,9 +2,12 @@ import React from "react"
 
 import Translate from "@docusaurus/Translate"
 
-import { Collapsible, CreateNodes } from "../../components/index"
+import {
+  Collapsible,
+  CreateNodes,
+} from "@theme/JSONSchemaViewer/components/index"
 
-import type { JSONSchemaNS } from "../../types"
+import type { JSONSchemaNS } from "@theme/JSONSchemaViewer/types"
 
 type Props = {
   schema: JSONSchemaNS.String

@@ -55,6 +55,10 @@
       "docusaurus-json-schema-plugin/*": [
         "./*",
         "node_modules/docusaurus-json-schema-plugin/*"
+      ],
+      "@theme/*": [
+        "./src/theme/*",
+        "node_modules/docusaurus-json-schema-plugin/src/theme/*"
       ]
     },
     // "rootDirs": [],                        /* List of root folders whose combined content represents the structure of the project at runtime. */

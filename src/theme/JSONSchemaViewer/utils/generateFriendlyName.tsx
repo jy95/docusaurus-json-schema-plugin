@@ -1,13 +1,22 @@
 import React from "react"
 
 // Utility functions to know which case we have
-import { detectedTypes } from "./index"
+import { detectedTypes } from "@theme/JSONSchemaViewer/utils/index"
 
-import { TypeLabelSwitch } from "../components/index"
+import { TypeLabelSwitch } from "@theme/JSONSchemaViewer/components/index"
 
-import { AndLabel, NotLabel, OrLabel, XorLabel } from "../labels/index"
+import {
+  AndLabel,
+  NotLabel,
+  OrLabel,
+  XorLabel,
+} from "@theme/JSONSchemaViewer/labels/index"
 
-import type { JSONSchema, JSONSchemaNS, TypeValues } from "../types"
+import type {
+  JSONSchema,
+  JSONSchemaNS,
+  TypeValues,
+} from "@theme/JSONSchemaViewer/types"
 
 // common function I need below
 function shouldAddSeparator(idx: number, length: number): boolean {

@@ -1,9 +1,9 @@
 import React from "react"
 import Translate from "@docusaurus/Translate"
 
-import { CreateEdge } from "../../components/index"
+import { CreateEdge } from "@theme/JSONSchemaViewer/components/index"
 
-import type { JSONSchema, JSONSchemaNS } from "../../types"
+import type { JSONSchema, JSONSchemaNS } from "@theme/JSONSchemaViewer/types"
 
 type Props = {
   [x: string]: any

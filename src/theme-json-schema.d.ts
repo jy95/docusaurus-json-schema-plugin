@@ -10,28 +10,25 @@ declare module "docusaurus-json-schema-plugin" {
 
 // Viewer component
 declare module "@theme/JSONSchemaViewer" {
-  import type { Props } from "docusaurus-json-schema-plugin/src/theme/JSONSchemaViewer/index"
+  import type { Props } from "@theme/JSONSchemaViewer/index"
 
   export default function JSONSchemaViewer(props: Props): JSX.Element
 }
 
 // Editor component
 declare module "@theme/JSONSchemaEditor" {
-  import type { Props } from "docusaurus-json-schema-plugin/src/theme/JSONSchemaEditor/index"
+  import type { Props } from "@theme/JSONSchemaEditor/index"
 
   export default function JSONSchemaEditor(props: Props): JSX.Element
 }
 
 // MonacoEditor component
 declare module "@theme/MonacoEditor" {
-  import type { Props } from "docusaurus-json-schema-plugin/src/theme/MonacoEditor/index"
+  import type { Props } from "@theme/MonacoEditor/index"
 
   export default function MonacoEditor(props: Props): JSX.Element
 
-  export type {
-    MonacoEditorTypes,
-    Props,
-  } from "docusaurus-json-schema-plugin/src/theme/MonacoEditor/index"
+  export type { MonacoEditorTypes, Props } from "@theme/MonacoEditor/index"
 
   // Re-export Monaco own interface, in case people want to add custom validation, ...
   export * as monaco from "monaco-editor/esm/vs/editor/editor.api"

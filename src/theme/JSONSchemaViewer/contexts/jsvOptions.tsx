@@ -1,7 +1,7 @@
 import { useContext, createContext } from "react"
 
-import type { JSONSchema } from "../types"
-import type { CheckKey } from "../utils/QualifierMessages/index"
+import type { JSONSchema } from "@theme/JSONSchemaViewer/types"
+import type { CheckKey } from "@theme/JSONSchemaViewer/utils/QualifierMessages/index"
 
 export type JSVOptions = {
   // Full schema, useful for some specifics $ref cases (recursive / anchors / ...)

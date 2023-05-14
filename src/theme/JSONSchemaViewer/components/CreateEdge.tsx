@@ -1,8 +1,8 @@
 import React, { ReactNode } from "react"
 
-import { SchemaItem } from "./index"
+import { SchemaItem } from "@theme/JSONSchemaViewer/components/index"
 
-import type { JSONSchema } from "../types"
+import type { JSONSchema } from "@theme/JSONSchemaViewer/types"
 
 // Creates the edge or "leave" of a schema tree. Edge can branch into sub-nodes.
 type EdgeProps = {

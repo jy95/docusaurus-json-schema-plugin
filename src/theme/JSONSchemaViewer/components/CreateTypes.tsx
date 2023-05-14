@@ -7,11 +7,14 @@ import {
   TypeLabelSwitch,
   RenderProvidedType,
   CreateValidOrInvalid,
-} from "./index"
+} from "@theme/JSONSchemaViewer/components/index"
 
-import { isSchemaComposition, detectedTypes } from "../utils/index"
+import {
+  isSchemaComposition,
+  detectedTypes,
+} from "@theme/JSONSchemaViewer/utils/index"
 
-import type { JSONSchema, TypeValues } from "../types"
+import type { JSONSchema, TypeValues } from "@theme/JSONSchemaViewer/types"
 
 // Render a single type
 type SingleTypeProps = {

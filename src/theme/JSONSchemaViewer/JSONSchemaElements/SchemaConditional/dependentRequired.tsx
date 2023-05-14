@@ -1,8 +1,8 @@
 import React from "react"
 
-import { AllOfSchema } from "../schemaComposition/index"
+import { AllOfSchema } from "@theme/JSONSchemaViewer/JSONSchemaElements/schemaComposition/index"
 
-import type { JSONSchema, JSONSchemaNS } from "../../types"
+import type { JSONSchema, JSONSchemaNS } from "@theme/JSONSchemaViewer/types"
 
 type Props = {
   schema: Exclude<JSONSchema, true | false>

@@ -4,11 +4,11 @@ import React from "react"
 import TabItem from "@theme-original/TabItem"
 import Tabs from "@theme-original/Tabs"
 
-import { CreateNodes } from "../../components/index"
+import { CreateNodes } from "@theme/JSONSchemaViewer/components/index"
 
-import { GenerateFriendlyName } from "../../utils/index"
+import { GenerateFriendlyName } from "@theme/JSONSchemaViewer/utils/index"
 
-import type { JSONSchema } from "../../types"
+import type { JSONSchema } from "@theme/JSONSchemaViewer/types"
 
 type Props = {
   schema: Exclude<JSONSchema, true | false>

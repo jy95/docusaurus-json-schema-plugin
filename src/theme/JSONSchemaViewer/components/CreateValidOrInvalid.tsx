@@ -3,9 +3,9 @@ import React from "react"
 import {
   CreateAlwaysInvalid,
   CreateAlwaysValid,
-} from "../JSONSchemaElements/index"
+} from "@theme/JSONSchemaViewer/JSONSchemaElements/index"
 
-import type { JSONSchema } from "../types"
+import type { JSONSchema } from "@theme/JSONSchemaViewer/types"
 
 type Props = {
   [x: string]: any
