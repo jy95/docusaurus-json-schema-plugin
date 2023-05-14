@@ -1,4 +1,8 @@
-import type { JSONSchema, JSONSchemaNS, TypeValues } from "../types"
+import type {
+  JSONSchema,
+  JSONSchemaNS,
+  TypeValues,
+} from "@theme/JSONSchemaViewer/types"
 
 // Utility functions to know which case we have
 export const isObjectType = (schema: JSONSchema) =>

@@ -6,7 +6,7 @@ import ErrorBoundary from "@docusaurus/ErrorBoundary"
 import {
   LoadingLabel,
   ErrorOccurredLabel,
-} from "../JSONSchemaViewer/labels/index"
+} from "@theme/JSONSchemaViewer/labels"
 
 import type { JSONSchema as Draft_07 } from "json-schema-typed/draft-07"
 import type { EditorWillMount, MonacoEditorProps } from "react-monaco-editor"

@@ -7,10 +7,10 @@ import {
   DependentRequired,
   DependentSchemas,
   Dependencies,
-} from "./index"
-import { Collapsible } from "../../components/index"
+} from "@theme/JSONSchemaViewer/JSONSchemaElements/SchemaConditional"
+import { Collapsible } from "@theme/JSONSchemaViewer/components"
 
-import type { JSONSchema, JSONSchemaNS } from "../../types"
+import type { JSONSchema, JSONSchemaNS } from "@theme/JSONSchemaViewer/types"
 
 type Props = {
   schema: Exclude<JSONSchema, true | false>

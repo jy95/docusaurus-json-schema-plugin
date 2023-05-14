@@ -8,9 +8,13 @@ import {
   CreateNumber,
   CreateInteger,
   CreateNull,
-} from "../JSONSchemaElements/index"
+} from "@theme/JSONSchemaViewer/JSONSchemaElements"
 
-import type { JSONSchema, JSONSchemaNS, TypeValues } from "../types"
+import type {
+  JSONSchema,
+  JSONSchemaNS,
+  TypeValues,
+} from "@theme/JSONSchemaViewer/types"
 
 // Utily function to render a specific type
 type RenderProvidedTypeProps = {

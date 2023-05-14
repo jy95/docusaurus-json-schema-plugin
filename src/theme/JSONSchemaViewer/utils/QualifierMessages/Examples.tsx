@@ -5,8 +5,9 @@ import Translate from "@docusaurus/Translate"
 import TabItem from "@theme-original/TabItem"
 import Tabs from "@theme-original/Tabs"
 
-import type { JSONSchema } from "../../types"
-import { printSchemaType } from "./index"
+import { printSchemaType } from "@theme/JSONSchemaViewer/utils/QualifierMessages"
+
+import type { JSONSchema } from "@theme/JSONSchemaViewer/types"
 
 type Props = {
   schema: Exclude<JSONSchema, true | false>

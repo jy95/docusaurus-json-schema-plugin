@@ -1,14 +1,14 @@
 import React from "react"
 
-import { QualifierMessages } from "../utils/index"
+import { QualifierMessages } from "@theme/JSONSchemaViewer/utils"
 
-import { useJSVOptionsContext } from "../contexts/index"
+import { useJSVOptionsContext } from "@theme/JSONSchemaViewer/contexts"
 
-import { TypeLabel, IntegerLabel } from "../labels/index"
+import { TypeLabel, IntegerLabel } from "@theme/JSONSchemaViewer/labels"
 
-import { CreateDescription } from "./index"
+import { CreateDescription } from "@theme/JSONSchemaViewer/JSONSchemaElements"
 
-import type { JSONSchemaNS } from "../types"
+import type { JSONSchemaNS } from "@theme/JSONSchemaViewer/types"
 
 type Props = {
   [x: string]: any

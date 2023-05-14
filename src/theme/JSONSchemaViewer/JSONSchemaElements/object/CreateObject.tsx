@@ -1,20 +1,20 @@
 import React from "react"
 
-import AdditionalProperties from "./AdditionalProperties"
-import Properties from "./Properties"
-import PatternProperties from "./PatternProperties"
-import PropertyNames from "./PropertyNames"
-import UnlistedProperties from "./UnlistedRequiredProperties"
-import UnevaluatedProperties from "./UnevaluatedProperties"
+import AdditionalProperties from "@theme/JSONSchemaViewer/JSONSchemaElements/object/AdditionalProperties"
+import Properties from "@theme/JSONSchemaViewer/JSONSchemaElements/object/Properties"
+import PatternProperties from "@theme/JSONSchemaViewer/JSONSchemaElements/object/PatternProperties"
+import PropertyNames from "@theme/JSONSchemaViewer/JSONSchemaElements/object/PropertyNames"
+import UnlistedProperties from "@theme/JSONSchemaViewer/JSONSchemaElements/object/UnlistedRequiredProperties"
+import UnevaluatedProperties from "@theme/JSONSchemaViewer/JSONSchemaElements/object/UnevaluatedProperties"
 
-import { QualifierMessages } from "../../utils/index"
-import { useJSVOptionsContext } from "../../contexts/index"
+import { QualifierMessages } from "@theme/JSONSchemaViewer/utils"
+import { useJSVOptionsContext } from "@theme/JSONSchemaViewer/contexts"
 
-import { ObjectLabel, TypeLabel } from "../../labels/index"
+import { ObjectLabel, TypeLabel } from "@theme/JSONSchemaViewer/labels"
 
-import { CreateDescription } from "../index"
+import { CreateDescription } from "@theme/JSONSchemaViewer/JSONSchemaElements"
 
-import type { JSONSchemaNS } from "../../types"
+import type { JSONSchemaNS } from "@theme/JSONSchemaViewer/types"
 
 type Props = {
   schema: JSONSchemaNS.Object

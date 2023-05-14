@@ -10,9 +10,9 @@ import {
   NullLabel,
   TrueLabel,
   FalseLabel,
-} from "../labels/index"
+} from "@theme/JSONSchemaViewer/labels"
 
-import type { TypeValues } from "../types"
+import type { TypeValues } from "@theme/JSONSchemaViewer/types"
 
 type Props = {
   // To cover unknown types, as well "any" or "none"

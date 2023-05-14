@@ -95,6 +95,9 @@ Suppose you have the following asset defined :
 
 Which you can use in your MDX pages as :
 
+<Tabs>
+<TabItem value="docusaurus-ts" label="Docusaurus Typescript" default>
+
 ```tsx title="/docs/example.mdx"
 import CodeBlock from '@theme/CodeBlock';
 import Schema from "@site/static/schemas/mySuperSchema.json";
@@ -111,9 +114,35 @@ import JSONSchemaViewer from "@theme/JSONSchemaViewer";
 
 </TabItem>
 
+<TabItem value="docusaurus-js" label="Docusaurus JavaScript">
+
+```jsx title="/docs/example.mdx"
+import CodeBlock from '@theme/CodeBlock';
+import Schema from "@site/static/schemas/mySuperSchema.json";
+// In JS only projects, you can't enjoy nice imports for 3rd libs without @docusaurus/module-type-aliases
+import JSONSchemaViewer from "docusaurus-json-schema-plugin/lib/theme/JSONSchemaViewer"
+
+# My super Schema 
+
+<JSONSchemaViewer schema={ Schema } />
+
+# Source :
+
+<CodeBlock language="json">{JSON.stringify(Schema, null, 2)}</CodeBlock>
+```
+
+</TabItem>
+
+</Tabs>
+
+</TabItem>
+
 <TabItem value="fetch" label="From the web">
 
 Suppose your specifications are available somewhere ( [Github Gists](https://gist.github.com/) / [Bitbucket Snippets](https://bitbucket.org/snippets/new) / ... )  
+
+<Tabs>
+<TabItem value="tsx" label="TSX" default>
 
 ```tsx title="/src/pages/API.tsx"
 import React from "react"
@@ -150,6 +179,50 @@ export default function ExamplePage(): JSX.Element {
     )
 }
 ```
+
+</TabItem>
+
+<TabItem value="jsx" label="JSX">
+
+```jsx title="/src/pages/API.jsx"
+import React from "react"
+import Layout from "@theme/Layout"
+// In JS only projects, you can't enjoy nice imports for 3rd libs without @docusaurus/module-type-aliases
+import JSONSchemaViewer from "docusaurus-json-schema-plugin/lib/theme/JSONSchemaViewer"
+
+export default function ExamplePage() {
+    const [schema, setSchema] = React.useState(undefined);
+
+    React.useEffect( () => {
+        fetch(
+            // TODO Your link here
+            "https://gist.githubusercontent.com/jy95/...",
+            {
+                headers: {
+                    'Accept': 'application/json',
+                }
+            }
+        )
+            .then((response) => response.json())
+            .then((data) => setSchema(data))
+            .catch( (err) => setSchema(err) )
+    }, [schema])
+
+    return (
+        <Layout
+            title={`My super JSON Schema`}
+            description="Description will go into a meta tag in <head />"
+        >
+            {schema === undefined && <div>Loading ...</div>}
+            {schema !== undefined && schema instanceof Error && <div>Houston we have a problem : {schema.message}</div>}
+            {schema !== undefined && !(schema instanceof Error) && <JSONSchemaViewer schema={schema} />}
+        </Layout>
+    )
+}
+```
+
+</TabItem>
+</Tabs>
 
 Which you can see by access related page (e.g. `/API` in that case )
 

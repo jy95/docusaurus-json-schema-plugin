@@ -1,8 +1,11 @@
 import React from "react"
 
-import { DependentRequired, DependentSchemas } from "./index"
+import {
+  DependentRequired,
+  DependentSchemas,
+} from "@theme/JSONSchemaViewer/JSONSchemaElements/SchemaConditional"
 
-import type { JSONSchema } from "../../types"
+import type { JSONSchema } from "@theme/JSONSchemaViewer/types"
 
 type Props = {
   schema: Exclude<JSONSchema, true | false>
