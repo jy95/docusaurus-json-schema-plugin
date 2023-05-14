@@ -1,10 +1,10 @@
-export { default as IfElseThen } from "./if-else-then"
+export { default as IfElseThen } from "@theme/JSONSchemaViewer/JSONSchemaElements/SchemaConditional/if-else-then"
 
-export { default as DependentRequired } from "./dependentRequired"
+export { default as DependentRequired } from "@theme/JSONSchemaViewer/JSONSchemaElements/SchemaConditional/dependentRequired"
 
-export { default as DependentSchemas } from "./dependentSchemas"
+export { default as DependentSchemas } from "@theme/JSONSchemaViewer/JSONSchemaElements/SchemaConditional/dependentSchemas"
 
-export { default as Dependencies } from "./dependencies"
+export { default as Dependencies } from "@theme/JSONSchemaViewer/JSONSchemaElements/SchemaConditional/dependencies"
 
 // main entry point
-export { default as SchemaConditional } from "./schemaConditional"
+export { default as SchemaConditional } from "@theme/JSONSchemaViewer/JSONSchemaElements/SchemaConditional/schemaConditional"

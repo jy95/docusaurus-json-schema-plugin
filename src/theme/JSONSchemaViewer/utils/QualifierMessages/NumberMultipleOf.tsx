@@ -2,7 +2,7 @@ import React from "react"
 
 import Translate from "@docusaurus/Translate"
 
-import type { JSONSchema } from "../../types"
+import type { JSONSchema } from "@theme/JSONSchemaViewer/types"
 
 type Props = {
   schema: Exclude<JSONSchema, true | false>

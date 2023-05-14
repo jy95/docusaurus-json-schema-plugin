@@ -1,1 +1,1 @@
-export * from "./jsvOptions"
+export * from "@theme/JSONSchemaViewer/contexts/jsvOptions"

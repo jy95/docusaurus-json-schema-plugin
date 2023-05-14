@@ -1,8 +1,8 @@
 import React from "react"
 
-import { CreateNodes } from "../../components/index"
+import { CreateNodes } from "@theme/JSONSchemaViewer/components"
 
-import type { JSONSchema } from "../../types"
+import type { JSONSchema } from "@theme/JSONSchemaViewer/types"
 
 type Props = {
   schema: Exclude<JSONSchema, true | false>

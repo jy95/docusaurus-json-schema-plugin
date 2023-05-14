@@ -1,17 +1,20 @@
 import React from "react"
 
-import { CreateTypes } from "./index"
+import { CreateTypes } from "@theme/JSONSchemaViewer/components"
 
 import {
   SchemaComposition,
   SchemaConditional,
-} from "../JSONSchemaElements/index"
+} from "@theme/JSONSchemaViewer/JSONSchemaElements"
 
-import { CreateValidOrInvalid } from "./index"
+import { CreateValidOrInvalid } from "@theme/JSONSchemaViewer/components"
 
-import { isSchemaComposition, isSchemaConditional } from "../utils/index"
+import {
+  isSchemaComposition,
+  isSchemaConditional,
+} from "@theme/JSONSchemaViewer/utils"
 
-import type { JSONSchema } from "../types"
+import type { JSONSchema } from "@theme/JSONSchemaViewer/types"
 
 type Props = {
   [x: string]: any

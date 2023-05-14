@@ -1,12 +1,12 @@
 import React from "react"
 import Translate from "@docusaurus/Translate"
 
-import { TypeLabel, TrueLabel } from "../labels/index"
-import { useJSVOptionsContext } from "../contexts/index"
-import { QualifierMessages } from "../utils/index"
-import { CreateDescription } from "./index"
+import { TypeLabel, TrueLabel } from "@theme/JSONSchemaViewer/labels"
+import { useJSVOptionsContext } from "@theme/JSONSchemaViewer/contexts"
+import { QualifierMessages } from "@theme/JSONSchemaViewer/utils"
+import { CreateDescription } from "@theme/JSONSchemaViewer/JSONSchemaElements"
 
-import type { JSONSchema } from "../types"
+import type { JSONSchema } from "@theme/JSONSchemaViewer/types"
 
 type Props = {
   [x: string]: any

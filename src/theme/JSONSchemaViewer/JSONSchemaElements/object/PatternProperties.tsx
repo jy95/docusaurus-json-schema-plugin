@@ -1,8 +1,8 @@
 import React from "react"
 
-import { CreateEdge } from "../../components/index"
+import { CreateEdge } from "@theme/JSONSchemaViewer/components"
 
-import type { JSONSchemaNS } from "../../types"
+import type { JSONSchemaNS } from "@theme/JSONSchemaViewer/types"
 
 type Props = {
   schema: JSONSchemaNS.Object
