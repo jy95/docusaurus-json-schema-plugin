@@ -12,7 +12,7 @@
     "clear": "docusaurus clear"
   },
   "dependencies": {
-    "@docusaurus/core": "^2.3.1",
+    "@docusaurus/core": "^2.4.1",
     "@docusaurus/preset-classic": "^2.3.1",
     "@docusaurus/remark-plugin-npm2yarn": "^2.4.1",
     "@mdx-js/react": "^1.6.21",
