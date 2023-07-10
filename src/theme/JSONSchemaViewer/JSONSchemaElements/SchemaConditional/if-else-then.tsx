@@ -43,7 +43,7 @@ export default function IfElseThen(props: Props): JSX.Element {
   // Render appropriate case
   function renderSwitch(
     value: "schema_if" | "schema_then" | "schema_else",
-    schema: Exclude<JSONSchema, true | false>
+    schema: Exclude<JSONSchema, true | false>,
   ) {
     switch (value) {
       case "schema_if":

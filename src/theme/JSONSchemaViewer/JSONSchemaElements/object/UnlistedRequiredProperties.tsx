@@ -18,7 +18,7 @@ export default function CreateUnlistedProperties(props: Props): JSX.Element {
 
   // find out why properties are in fact "unlisted"
   const unlistedProperties = required.filter(
-    (r) => !listedProperties.includes(r)
+    (r) => !listedProperties.includes(r),
   )
 
   // If nothing (what SHOULD be the case in a clear spec), we don't display anything

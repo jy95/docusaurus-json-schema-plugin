@@ -23,7 +23,7 @@ export default function ImportFeature({ label, onImport }: Params) {
 
   // Handle change
   const handleFileInputChange = (
-    event: React.ChangeEvent<HTMLInputElement>
+    event: React.ChangeEvent<HTMLInputElement>,
   ) => {
     // get the selected file
     const file = event.target.files[0]

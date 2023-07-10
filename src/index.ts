@@ -66,7 +66,7 @@ export type MyPluginLoadableContent = never
 
 export default function myPlugin(
   context: LoadContext,
-  options: PluginOptions
+  options: PluginOptions,
 ): Plugin<MyPluginLoadableContent | PluginOptions> {
   return {
     // change this to something unique, or caches may conflict!
@@ -80,7 +80,7 @@ export default function myPlugin(
             options?.monacoConfig || {
               // By default, json is enough for most use case but customers have the final words ...
               languages: ["json"],
-            }
+            },
           ),
         ],
       }

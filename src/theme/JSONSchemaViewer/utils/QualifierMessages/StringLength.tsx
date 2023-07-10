@@ -44,7 +44,7 @@ function MaxLength({ value }: { value: number }): JSX.Element {
 
 // for minLength / maxLength
 export default function StringLengthQualifierMessage(
-  props: Props
+  props: Props,
 ): JSX.Element {
   const { schema } = props
 

@@ -167,7 +167,7 @@ function CustomizeArray({
     elements.push(
       ...schema.prefixItems.map((subSchema, idx) => (
         <GenerateFriendlyName schema={subSchema} key={`prefixItems_${idx}`} />
-      ))
+      )),
     )
   }
 
@@ -180,7 +180,7 @@ function CustomizeArray({
     elements.push(
       ...items.map((subSchema, idx) => (
         <GenerateFriendlyName schema={subSchema} key={`items_${idx}`} />
-      ))
+      )),
     )
   }
 
@@ -194,7 +194,7 @@ function CustomizeArray({
       <GenerateFriendlyName
         schema={schema.additionalItems}
         key={"additionalItems"}
-      />
+      />,
     )
   }
 
@@ -208,7 +208,7 @@ function CustomizeArray({
       <GenerateFriendlyName
         schema={schema.unevaluatedItems}
         key={"unevaluatedItems"}
-      />
+      />,
     )
   }
 
@@ -219,7 +219,7 @@ function CustomizeArray({
       ...[
         <React.Fragment key={"before_contains"}>{"..."}</React.Fragment>,
         <GenerateFriendlyName schema={schema.contains} key={"contains"} />,
-      ]
+      ],
     )
   }
 
@@ -233,7 +233,7 @@ function CustomizeArray({
   ) {
     // notify the user
     elements.push(
-      ...[<React.Fragment key={"open_tuple"}>{"..."}</React.Fragment>]
+      ...[<React.Fragment key={"open_tuple"}>{"..."}</React.Fragment>],
     )
   }
 

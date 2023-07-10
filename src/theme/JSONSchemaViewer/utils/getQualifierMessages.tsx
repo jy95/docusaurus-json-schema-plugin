@@ -25,7 +25,7 @@ export default function QualifierMessages(props: Props): null | JSX.Element {
   return (
     <>
       {QUALIFIER_ORDER.filter((item) => QUALIFIERS_MAP[item].match(props)).map(
-        (item) => QUALIFIERS_MAP[item].Component(props)
+        (item) => QUALIFIERS_MAP[item].Component(props),
       )}
     </>
   )
