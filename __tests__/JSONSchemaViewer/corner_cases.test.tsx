@@ -28,7 +28,7 @@ import { detectedTypes } from "../../src/theme/JSONSchemaViewer/utils/index"
 const testcases: [
   string,
   (props: { schema: any; [x: string]: any }) => JSX.Element,
-  JSONSchema
+  JSONSchema,
 ][] = [
   ["CreateNodes - boolean schema (false)", CreateNodes, false],
   ["CreateNodes - boolean schema (true)", CreateNodes, true],

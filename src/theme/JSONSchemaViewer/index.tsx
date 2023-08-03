@@ -84,7 +84,7 @@ export default function JSONSchemaViewer(props: Props): JSX.Element {
 
   const [error, setError] = useState(undefined as undefined | Error)
   const [resolvedSchema, setResolvedSchema] = useState(
-    undefined as undefined | JSONSchema
+    undefined as undefined | JSONSchema,
   )
 
   useEffect(() => {

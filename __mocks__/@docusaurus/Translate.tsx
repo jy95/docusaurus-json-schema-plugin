@@ -17,7 +17,7 @@ export default function Translate(props: Props): JSX.Element {
       // Well enough for the tests context
       replacedString = replacedString.replace(
         new RegExp(`{${key}}`),
-        value as string
+        value as string,
       )
     })
   }

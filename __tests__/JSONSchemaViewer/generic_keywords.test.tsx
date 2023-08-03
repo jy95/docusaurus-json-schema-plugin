@@ -55,7 +55,7 @@ describe("JSONSchemaViewer - Generic keywords", () => {
         <JSONSchemaViewer
           schema={fakeSchema}
           viewerOptions={{ showExamples: true }}
-        />
+        />,
       )
     })
 

@@ -185,7 +185,7 @@ function JSONSchemaCreatorInner(): JSX.Element {
     monaco.editor.setModelMarkers(
       schemaRef?.getModel(),
       "schema-validation",
-      markers
+      markers,
     )
   }
 

@@ -34,7 +34,7 @@ export default function Dependencies(props: Props): JSX.Element {
     {
       dependentRequired: {} as Record<string, string[] | readonly string[]>,
       dependentSchemas: {} as Record<string, JSONSchema>,
-    }
+    },
   )
 
   return (

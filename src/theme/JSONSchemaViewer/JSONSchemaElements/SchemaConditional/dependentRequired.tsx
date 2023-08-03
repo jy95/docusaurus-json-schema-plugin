@@ -26,7 +26,7 @@ export default function DependentRequired(props: Props): JSX.Element {
           type: "object",
           required: requiredProperties,
         },
-      })
+      }),
     ),
   }
 

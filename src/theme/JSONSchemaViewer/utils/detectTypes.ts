@@ -89,7 +89,7 @@ export const isNull = (schema: JSONSchema) =>
 // Detect types in schema
 // Zero, One or multiple types can match
 function* foundUndeclaredTypes(
-  schema: Exclude<JSONSchema, true | false>
+  schema: Exclude<JSONSchema, true | false>,
 ): Generator<TypeValues, void> {
   if (isNull(schema)) {
     yield "null"
@@ -125,7 +125,7 @@ function* foundUndeclaredTypes(
 
 // Return unique types provided by user or detected by this library
 export function detectedTypes(
-  schema: Exclude<JSONSchema, true | false>
+  schema: Exclude<JSONSchema, true | false>,
 ): TypeValues[] {
   // Find declarated type(s) provided by user
   const declaredTypes: TypeValues[] = Array.isArray(schema.type)
