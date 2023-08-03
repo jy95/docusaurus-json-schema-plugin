@@ -12,7 +12,7 @@ export default function stringifyObject(obj: unknown, indent = 2): string {
             .join(", ")
         : ""
       return `${" ".repeat(
-        indent
+        indent,
       )}${key}: function ${name}(${params}) { /* function body */ },`
     } else if (
       typeof value === "object" &&
@@ -21,7 +21,7 @@ export default function stringifyObject(obj: unknown, indent = 2): string {
     ) {
       return `${" ".repeat(indent)}${key}: ${stringifyObject(
         value,
-        indent + 2
+        indent + 2,
       )},`
     } else {
       return `${" ".repeat(indent)}${key}: ${JSON.stringify(value)},`

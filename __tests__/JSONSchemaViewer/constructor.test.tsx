@@ -27,7 +27,7 @@ describe("JSONSchemaViewer - constructor", () => {
         <JSONSchemaViewer
           schema={fakeSchema}
           viewerOptions={{ qualifierMessagesOrder: ["objectProperties"] }}
-        />
+        />,
       )
     })
 
@@ -59,7 +59,7 @@ describe("JSONSchemaViewer - constructor", () => {
               </h1>
             ),
           }}
-        />
+        />,
       )
     })
 

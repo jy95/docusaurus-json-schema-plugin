@@ -51,7 +51,7 @@ export default function Tabs({
         ]
 
   const [selectedTab, setSelectedTab] = React.useState(
-    defaultValue || items[0].value
+    defaultValue || items[0].value,
   )
   const childrenAsArray: ReactElement<TabItemProps>[] = Array.isArray(children)
     ? children

@@ -4,7 +4,7 @@ declare module "docusaurus-json-schema-plugin" {
   import type { PluginOptions } from "docusaurus-json-schema-plugin/src"
 
   export default function themeJSONSchema(
-    options: PluginOptions
+    options: PluginOptions,
   ): Plugin<undefined>
 }
 
