@@ -1,9 +1,14 @@
 import React from "react"
 import BrowserOnly from "@docusaurus/BrowserOnly"
+import Admonition from '@theme/Admonition';
+import Link from '@docusaurus/Link';
 
 import JSONSchemaViewer from "@theme/JSONSchemaViewer"
 import JSONSchemaCreator from "@site/src/components/JSONSchemaCreator"
 import JSONSchemaData from "@site/src/components/JSONSchemaData"
+
+import {useLocation} from '@docusaurus/router';
+import { Base64 } from 'js-base64';
 
 import {
   PlaygroundContextProvider,
@@ -18,6 +23,13 @@ import type { State as PlaygroundState } from "@site/src/contexts/PlaygroundCont
 
 // Common stringify of the JSON
 const STRINGIFY_JSON = (json: unknown) => JSON.stringify(json, null, "\t")
+
+// A custom hook that builds on useLocation to parse
+// the query string for you.
+function useQuery() {
+  const { search } = useLocation();
+  return React.useMemo(() => new URLSearchParams(search), [search]);
+}
 
 function PlaygroundInner(): JSX.Element {
   const {
@@ -52,6 +64,15 @@ function PlaygroundInner(): JSX.Element {
           key={STRINGIFY_JSON(userSchema)}
         />
       </div>
+      <Admonition type="tip">
+        <p>
+          You can use &nbsp;
+          <Link to={`/playground?b64Schema=${
+            Base64.encode(STRINGIFY_JSON(userSchema)).replace('+', '-').replace('/', '_').replace('=', '')}`
+          }>b64Schema query parameter</Link> 
+          &nbsp;with a JSON Schema in Base64URL format so that you can bookmark this page with wanted schema
+        </p>
+      </Admonition>
     </div>
   )
 }
@@ -73,6 +94,29 @@ function StateProvider(): JSX.Element {
   function updateState(newState: Partial<PlaygroundState>) {
     setState((prevState) => ({ ...prevState, ...newState }))
   }
+
+  // Query parameter
+  const query = useQuery();
+
+  // Base64 schema, in case that some people would like to use the viewer that way
+  React.useEffect(() => {
+    if (query.has("b64Schema")) {
+      let b64Schema = query.get("b64Schema");
+      try {
+        let newSchemaString = Base64.decode(b64Schema);
+        let newSchema = JSON.parse(newSchemaString);
+        updateState({
+          fullSchema: newSchema,
+          userSchema: newSchema,
+          jsonPointer: ""
+        })
+      } catch (error) {
+        console.error("Invalid JSON in b64Schema parameter");
+        console.error(b64Schema);
+      }
+    }
+  }, [query]);
+
 
   return (
     <PlaygroundContextProvider value={{ state, updateState }}>
