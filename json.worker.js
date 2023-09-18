@@ -109,7 +109,7 @@ function illegalState(name) {
         return new Error('Illegal state');
     }
 }
-class NotSupportedError extends Error {
+class NotSupportedError extends (/* unused pure expression or super */ null && (Error)) {
     constructor(message) {
         super('NotSupported');
         if (message) {
@@ -1129,7 +1129,7 @@ const setTimeout0 = (() => {
     }
     return (callback) => setTimeout(callback);
 })();
-const OS = (_isMacintosh || _isIOS ? 2 /* OperatingSystem.Macintosh */ : (_isWindows ? 1 /* OperatingSystem.Windows */ : 3 /* OperatingSystem.Linux */));
+const OS = ((/* unused pure expression or super */ null && (_isMacintosh || _isIOS ? 2 /* OperatingSystem.Macintosh */ : (_isWindows ? 1 /* OperatingSystem.Windows */ : 3 /* OperatingSystem.Linux */))));
 let _isLittleEndian = true;
 let _isLittleEndianComputed = false;
 function isLittleEndian() {
