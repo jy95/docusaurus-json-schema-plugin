@@ -52,7 +52,7 @@
   },
   "peerDependencies": {
     "@docusaurus/core": "3.0.0-alpha.0",
-    "@docusaurus/theme-classic": "^3.0.0-alpha.0",
+    "@docusaurus/theme-classic": "^3.0.0-beta.0",
     "react": ">=17 <= 18"
   },
   "dependencies": {
