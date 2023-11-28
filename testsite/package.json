@@ -21,7 +21,7 @@
     "clsx": "^2.0.0",
     "docusaurus-json-schema-plugin": "file:..",
     "js-base64": "^3.7.5",
-    "json-schema-faker": "^0.5.3",
+    "json-schema-faker": "^0.5.4",
     "jsonpos": "^4.1.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
