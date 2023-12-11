@@ -70,8 +70,8 @@ export default function StringLengthQualifierMessage(
         minAndMaxLength
           ? "minLengthAndmaxLength"
           : schema.minLength !== undefined
-          ? "minLength"
-          : "maxLength"
+            ? "minLength"
+            : "maxLength"
       }
     >
       {lengthLabel}

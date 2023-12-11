@@ -131,8 +131,8 @@ export function detectedTypes(
   const declaredTypes: TypeValues[] = Array.isArray(schema.type)
     ? schema.type
     : schema.type !== undefined
-    ? [schema.type]
-    : []
+      ? [schema.type]
+      : []
 
   // If not empty, return it as it
   if (declaredTypes.length !== 0) {

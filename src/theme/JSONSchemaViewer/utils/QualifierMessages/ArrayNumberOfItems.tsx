@@ -67,8 +67,8 @@ export default function ArrayNumberOfItems(props: Props): JSX.Element {
         minAndMax
           ? "minItemsAndmaxItems"
           : schema.minItems !== undefined
-          ? "minItems"
-          : "maxItems"
+            ? "minItems"
+            : "maxItems"
       }
     >
       {lengthLabel}
