@@ -12,7 +12,7 @@ updates:
       prefix: chore
       include: "scope"
     schedule:
-      interval: "weekly"
+      interval: "daily"
 # Files stored in repository testsite
   - package-ecosystem: "npm"
     directory: "/testsite"
@@ -20,7 +20,7 @@ updates:
       prefix: chore
       include: "scope"
     schedule:
-      interval: "weekly"
+      interval: "daily"
 # Workflow files stored in the default location of `.github/workflows`
   - package-ecosystem: "github-actions"
     directory: "/"
@@ -28,4 +28,4 @@ updates:
       prefix: ci
       include: "scope"
     schedule:
-      interval: "weekly"
+      interval: "daily"
