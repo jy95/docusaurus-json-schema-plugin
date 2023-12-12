@@ -39,16 +39,16 @@ export default function Tabs({
     values !== undefined
       ? values
       : Array.isArray(children)
-      ? (children as ReactElement<TabItemProps>[]).map((c) => ({
-          label: c.props.label,
-          value: c.props.value,
-        }))
-      : [
-          {
-            label: (children as ReactElement<TabItemProps>).props.label,
-            value: (children as ReactElement<TabItemProps>).props.value,
-          },
-        ]
+        ? (children as ReactElement<TabItemProps>[]).map((c) => ({
+            label: c.props.label,
+            value: c.props.value,
+          }))
+        : [
+            {
+              label: (children as ReactElement<TabItemProps>).props.label,
+              value: (children as ReactElement<TabItemProps>).props.value,
+            },
+          ]
 
   const [selectedTab, setSelectedTab] = React.useState(
     defaultValue || items[0].value,

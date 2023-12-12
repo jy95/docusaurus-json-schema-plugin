@@ -67,8 +67,8 @@ export default function ObjectProperties(props: Props): JSX.Element {
         minAndMax
           ? "minPropertiesAndMaxProperties"
           : schema.minProperties !== undefined
-          ? "minProperties"
-          : "maxProperties"
+            ? "minProperties"
+            : "maxProperties"
       }
     >
       {propertiesLabel}

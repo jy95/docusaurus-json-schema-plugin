@@ -71,8 +71,8 @@ export default function ArrayContainsNumber(props: Props): JSX.Element {
         minAndMax
           ? "minContainsAndmaxContains"
           : typedArraySchema.minContains !== undefined
-          ? "minContains"
-          : "maxContains"
+            ? "minContains"
+            : "maxContains"
       }
     >
       {containsLabel}
