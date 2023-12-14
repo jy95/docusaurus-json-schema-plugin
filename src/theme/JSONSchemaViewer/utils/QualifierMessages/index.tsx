@@ -3,14 +3,22 @@ import React from "react"
 import CodeBlock from "@theme-original/CodeBlock"
 
 // To print all JSONS / value / string
-export function printSchemaType(obj: unknown): JSX.Element {
+export function printSchemaType(obj: unknown, options: {
+  multiline?: boolean
+} = {}): JSX.Element {
   // deal with simple types first
   if (["string", "number", "bigint", "boolean"].includes(typeof obj)) {
     return <code>{(obj as string | number | bigint | boolean).toString()}</code>
   }
 
+  const { multiline = false } = options
+
   // if it is a object / array, it is likely to be complex so time for my ace card
-  return <CodeBlock language="json">{`${JSON.stringify(obj)}`}</CodeBlock>
+  return <CodeBlock language="json">{`${
+    multiline
+      ? JSON.stringify(obj, null, 2)
+      : JSON.stringify(obj)
+  }`}</CodeBlock>
 }
 
 // Inner functions

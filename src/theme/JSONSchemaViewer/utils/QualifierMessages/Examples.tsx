@@ -10,12 +10,13 @@ import { printSchemaType } from "@theme/JSONSchemaViewer/utils/QualifierMessages
 import type { JSONSchema } from "@theme/JSONSchemaViewer/types"
 
 type Props = {
-  schema: Exclude<JSONSchema, true | false>
+  schema: Exclude<JSONSchema, true | false>,
+  multiline?: boolean;
 }
 
 // For "examples" property
 export default function ExamplesQualifierMessage(props: Props): JSX.Element {
-  const { schema } = props
+  const { schema, multiline = false} = props
 
   const examplesLabel = (
     <strong>
@@ -50,7 +51,7 @@ export default function ExamplesQualifierMessage(props: Props): JSX.Element {
       <Tabs>
         {items.map((item) => (
           <TabItem key={item.id} value={item.id.toString()} label={item.label}>
-            {printSchemaType(item.value)}
+            {printSchemaType(item.value, { multiline })}
           </TabItem>
         ))}
       </Tabs>

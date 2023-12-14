@@ -11,6 +11,13 @@ export type JSVOptions = {
    * @default false
    */
   showExamples?: boolean
+
+  /**
+   * Should we display "examples" with string formatting over multiple lines?
+   * Overrides behavior of `showExamples` if both are specified.
+   * @default false
+   */
+  showMultilineExamples?: boolean;
   /**
    * To overwrite the order to display qualifier messages
    * @default ["nullable","deprecated","readOnly","writeOnly","enum","stringLength","objectProperties","no-extra-properties","arrayItems","arrayContains","no-extra-items","number-range","pattern","multipleOf","uniqueItems","contentEncoding","contentMediaType","contentSchema","default","const","examples"]

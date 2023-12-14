@@ -146,9 +146,13 @@ const CHECKS_MAP: Record<CheckKey, CheckInfo> = {
   },
   examples: {
     match: ({ schema, options }) =>
-      options.showExamples === true && schema.examples !== undefined,
-    Component: ({ schema }) => (
-      <QMS.ExamplesQM key={"examples"} schema={schema} />
+      (options.showExamples === true || options.showMultilineExamples === true) && schema.examples !== undefined,
+    Component: ({
+      schema, options: {
+        showMultilineExamples: multiline = false
+      }
+    }) => (
+      <QMS.ExamplesQM key={"examples"} schema={schema} multiline={multiline} />
     ),
   },
   contentMediaType: {
