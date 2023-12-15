@@ -1,6 +1,7 @@
 name: Can build
 on:
   push:
+  pull_request:
 jobs:
   canBuild:
     runs-on: ubuntu-latest
