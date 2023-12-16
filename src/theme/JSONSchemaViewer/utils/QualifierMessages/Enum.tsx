@@ -2,7 +2,7 @@ import React from "react"
 
 import Translate from "@docusaurus/Translate"
 
-import { printSchemaType } from "@theme/JSONSchemaViewer/utils/QualifierMessages"
+import { CreateValue } from "@theme/JSONSchemaViewer/JSONSchemaElements"
 
 import type { JSONSchema } from "@theme/JSONSchemaViewer/types"
 
@@ -29,7 +29,7 @@ export default function EnumQualifierMessage(props: Props): JSX.Element {
   return (
     <div key={"enum"}>
       {enumLabel}&nbsp;
-      {printSchemaType(schema.enum!)}
+      <CreateValue value={schema.enum!} />
     </div>
   )
 }

@@ -5,18 +5,17 @@ import Translate from "@docusaurus/Translate"
 import TabItem from "@theme-original/TabItem"
 import Tabs from "@theme-original/Tabs"
 
-import { printSchemaType } from "@theme/JSONSchemaViewer/utils/QualifierMessages"
+import { CreateValue } from "@theme/JSONSchemaViewer/JSONSchemaElements"
 
 import type { JSONSchema } from "@theme/JSONSchemaViewer/types"
 
 type Props = {
-  schema: Exclude<JSONSchema, true | false>,
-  multiline?: boolean;
+  schema: Exclude<JSONSchema, true | false>
 }
 
 // For "examples" property
 export default function ExamplesQualifierMessage(props: Props): JSX.Element {
-  const { schema, multiline = false} = props
+  const { schema } = props
 
   const examplesLabel = (
     <strong>
@@ -51,7 +50,7 @@ export default function ExamplesQualifierMessage(props: Props): JSX.Element {
       <Tabs>
         {items.map((item) => (
           <TabItem key={item.id} value={item.id.toString()} label={item.label}>
-            {printSchemaType(item.value, { multiline })}
+            <CreateValue value={item.value} />
           </TabItem>
         ))}
       </Tabs>
