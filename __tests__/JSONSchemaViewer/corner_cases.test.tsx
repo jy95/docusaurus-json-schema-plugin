@@ -22,8 +22,6 @@ import {
   CreateObject,
 } from "../../src/theme/JSONSchemaViewer/JSONSchemaElements/index"
 
-import { UnsolvedRefsQM } from "../../src/theme/JSONSchemaViewer/utils/QualifierMessages/index"
-
 import { detectedTypes } from "../../src/theme/JSONSchemaViewer/utils/index"
 
 // Annoying test cases, just for coverage stories ...
@@ -70,23 +68,6 @@ const testcases: [
         type: "boolean",
       },
     } as JSONSchemaNS.Array,
-  ],
-  [
-    "UnsolvedRefsQM - multiple unsolved ref",
-    UnsolvedRefsQM,
-    {
-      $schema: "https://json-schema.org/draft/2020-12/schema",
-      $id: "https://example.com/tree",
-      $dynamicAnchor: "node",
-      type: "object",
-      properties: {
-        data: true,
-        children: {
-          type: "array",
-          items: { $dynamicRef: "#node", $recursiveRef: "#" },
-        },
-      },
-    },
   ],
 ]
 

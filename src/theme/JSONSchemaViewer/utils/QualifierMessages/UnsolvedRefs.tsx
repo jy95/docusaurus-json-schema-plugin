@@ -24,7 +24,7 @@ export default function UnsolvedRefsQM(props: Props): JSX.Element {
           id: "json-schema.labels.unsolvedRefs",
         }}
       >
-        {"Unsolved ref :"}
+        {"Unsolved ref(s) :"}
       </Translate>
     </strong>
   )
