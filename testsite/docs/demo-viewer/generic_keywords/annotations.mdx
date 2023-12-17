@@ -7,28 +7,30 @@ import CodeBlock from '@theme/CodeBlock';
 import Schema from "@site/static/schemas/examples/generic_keywords/annotations.json";
 import JSONSchemaViewer from "@theme/JSONSchemaViewer";
 import ReactMarkdown from 'react-markdown'
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 # Annotations
 
-JSON Schema :
-
-<CodeBlock language="json">{JSON.stringify(Schema, null, 2)}</CodeBlock>
-
-viewerOptions :
-
-```js
-{
-    showExamples: true,
-    DescriptionComponent: ({description}) => <ReactMarkdown children={description} />
-}
-```
-
-Viewer :
-
-<JSONSchemaViewer 
-    schema={ Schema } 
-    viewerOptions={{ 
-        showExamples: true,
-        DescriptionComponent: ({description}) => <ReactMarkdown children={description} /> 
-    }}
-/>
+<Tabs>
+    <TabItem value="Viewer" label="Viewer" default>
+        <JSONSchemaViewer 
+            schema={ Schema } 
+            viewerOptions={{ 
+                showExamples: true,
+                DescriptionComponent: ({description}) => <ReactMarkdown children={description} /> 
+            }}
+        />
+    </TabItem>
+    <TabItem value="viewerOptions" label='viewerOptions'>
+        ```js
+        {
+            showExamples: true,
+            DescriptionComponent: ({description}) => <ReactMarkdown children={description} />
+        }
+        ```
+    </TabItem>
+    <TabItem value="JSON Schema" label='JSON Schema'>
+        <CodeBlock language="json">{JSON.stringify(Schema, null, 2)}</CodeBlock>
+    </TabItem>
+</Tabs>
