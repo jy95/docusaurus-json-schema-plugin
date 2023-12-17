@@ -6,13 +6,16 @@ title: 🍱 Contains
 import CodeBlock from '@theme/CodeBlock';
 import Schema from "@site/static/schemas/examples/array/contains.json";
 import JSONSchemaViewer from "@theme/JSONSchemaViewer";
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 # Contains
 
-JSON Schema :
-
-<CodeBlock language="json">{JSON.stringify(Schema, null, 2)}</CodeBlock>
-
-Viewer :
-
-<JSONSchemaViewer schema={ Schema  } />
+<Tabs>
+    <TabItem value="Viewer" label="Viewer" default>
+        <JSONSchemaViewer schema={Schema} />
+    </TabItem>
+    <TabItem value="JSON Schema" label='JSON Schema'>
+        <CodeBlock language="json">{JSON.stringify(Schema, null, 2)}</CodeBlock>
+    </TabItem>
+</Tabs>
