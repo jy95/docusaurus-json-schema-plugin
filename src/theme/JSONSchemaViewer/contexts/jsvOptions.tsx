@@ -28,6 +28,12 @@ export type JSVOptions = {
    * @default undefined
    */
   ValueComponent?: (params: { value: unknown }) => JSX.Element
+  /**
+   * To overwrite the default handling of unresolved $refs
+   * By default, print out as provided
+   * @default undefined
+   */
+  UnresolvedRefsComponent?: (params: { schema: JSONSchema }) => JSX.Element
 }
 
 export const JSVOptionsContext = createContext<JSVOptions>({
@@ -35,6 +41,7 @@ export const JSVOptionsContext = createContext<JSVOptions>({
   showExamples: false,
   qualifierMessagesOrder: undefined,
   DescriptionComponent: undefined,
+  UnresolvedRefsComponent: undefined,
 })
 
 export const useJSVOptionsContext = () => useContext(JSVOptionsContext)

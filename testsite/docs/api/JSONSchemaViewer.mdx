@@ -53,6 +53,12 @@ type JSVOptions = {
      * @default undefined
      */
     ValueComponent?: (params: { value: unknown }) => JSX.Element
+    /**
+     * To overwrite the default handling of unresolved $refs
+     * By default, print out as provided
+     * @default undefined
+     */
+    UnresolvedRefsComponent?: (params: { schema: JSONSchema }) => JSX.Element
 }
 ```
 
@@ -84,6 +90,8 @@ type CheckKey =
   | "contentMediaType"
   | "contentEncoding"
   | "contentSchema"
+// For unsolved recursive refs ($ref, $dynamicRef, ...)
+  | "unsolvedRefs"
 ```
 
 ## Examples
