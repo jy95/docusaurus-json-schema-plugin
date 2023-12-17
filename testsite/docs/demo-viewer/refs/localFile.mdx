@@ -8,17 +8,22 @@ import Schema from "@site/static/schemas/examples/refs/localFile.json";
 import JSONSchemaViewer from "@theme/JSONSchemaViewer";
 import generateResolverOptions from "@site/src/components/shared-libs/generateResolverOptions"
 import StringifyObject from "@site/src/components/shared-libs/stringifyObject"
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 # $ref (as local file)
 
-JSON Schema :
-
-<CodeBlock language="json">{JSON.stringify(Schema, null, 2)}</CodeBlock>
-
-resolverOptions : 
-
-<CodeBlock language="js">{`${StringifyObject(generateResolverOptions({"basePath": "/schemas/examples/refs"}))}`}</CodeBlock>
-
-Viewer :
-
-<JSONSchemaViewer schema={ Schema } resolverOptions={generateResolverOptions({"basePath": "/schemas/examples/refs"})} />
+<Tabs>
+    <TabItem value="Viewer" label="Viewer" default>
+        <JSONSchemaViewer 
+            schema={ Schema } 
+            resolverOptions={generateResolverOptions({"basePath": "/schemas/examples/refs"})} 
+        />
+    </TabItem>
+    <TabItem value="resolverOptions" label='resolverOptions'>
+        <CodeBlock language="js">{`${StringifyObject(generateResolverOptions({"basePath": "/schemas/examples/refs"}))}`}</CodeBlock>
+    </TabItem>
+    <TabItem value="JSON Schema" label='JSON Schema'>
+        <CodeBlock language="json">{JSON.stringify(Schema, null, 2)}</CodeBlock>
+    </TabItem>
+</Tabs>

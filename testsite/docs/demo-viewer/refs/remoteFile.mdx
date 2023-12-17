@@ -8,17 +8,19 @@ import Schema from "@site/static/schemas/examples/refs/remoteRef.json";
 import JSONSchemaViewer from "@theme/JSONSchemaViewer";
 import generateResolverOptions from "@site/src/components/shared-libs/generateResolverOptions"
 import StringifyObject from "@site/src/components/shared-libs/stringifyObject"
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 # $ref (as local file)
 
-JSON Schema :
-
-<CodeBlock language="json">{JSON.stringify(Schema, null, 2)}</CodeBlock>
-
-resolverOptions : 
-
-<CodeBlock language="js">{`${StringifyObject(generateResolverOptions({"remote": true}))}`}</CodeBlock>
-
-Viewer :
-
-<JSONSchemaViewer schema={ Schema } resolverOptions={generateResolverOptions({"remote": true})} />
+<Tabs>
+    <TabItem value="Viewer" label="Viewer" default>
+        <JSONSchemaViewer schema={ Schema } resolverOptions={generateResolverOptions({"remote": true})} />
+    </TabItem>
+    <TabItem value="resolverOptions" label='resolverOptions'>
+        <CodeBlock language="js">{`${StringifyObject(generateResolverOptions({"remote": true}))}`}</CodeBlock>
+    </TabItem>
+    <TabItem value="JSON Schema" label='JSON Schema'>
+        <CodeBlock language="json">{JSON.stringify(Schema, null, 2)}</CodeBlock>
+    </TabItem>
+</Tabs>
