@@ -47,6 +47,12 @@ type JSVOptions = {
      * @default undefined
      */
     DescriptionComponent?: (params: { description: string }) => JSX.Element
+    /**
+     * To overwrite the default handling of unresolved $refs
+     * By default, print out as provided
+     * @default undefined
+     */
+    UnresolvedRefsComponent?: (params: { schema: JSONSchema }) => JSX.Element
 }
 ```
 
