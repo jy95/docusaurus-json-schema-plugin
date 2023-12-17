@@ -14,8 +14,8 @@ import type { JSONSchema } from "../../src/theme/JSONSchemaViewer/types"
 import type { ReactTestRenderer } from "react-test-renderer"
 
 const testcases: JSONSchema[] = [
-// Test scenario that combines both Draft 2019-09 / Draft 2020-12
-// https://json-schema.org/draft/2020-12/release-notes#dynamicref-and-dynamicanchor
+  // Test scenario that combines both Draft 2019-09 / Draft 2020-12
+  // https://json-schema.org/draft/2020-12/release-notes#dynamicref-and-dynamicanchor
   {
     $schema: "https://json-schema.org/draft/2020-12/schema",
     $id: "https://example.com/tree",
