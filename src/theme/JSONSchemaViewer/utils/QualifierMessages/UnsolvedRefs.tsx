@@ -30,9 +30,13 @@ export default function UnsolvedRefsQM(props: Props): JSX.Element {
   )
 
   // Unsolved ref(s)
-  // Technically speak, nothing prevents people to combine $ref / $dynamicRef / ..
+  // Technically speak, nothing prevents people to combine $ref / $dynamicRef / $recursiveRef / ..
   // So generic approach instead
-  let unsolvedRefValue: string = [schema.$ref, schema.$dynamicRef]
+  let unsolvedRefValue: string = [
+    schema.$ref,
+    schema.$dynamicRef,
+    (schema as any).$recursiveRef,
+  ]
     .filter((s) => s !== undefined)
     .join(" ")
 

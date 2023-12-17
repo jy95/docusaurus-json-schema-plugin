@@ -2,7 +2,6 @@ import type {
   JSONSchema,
   JSONSchemaNS,
   TypeValues,
-  JSONSchema_Draft_2019_09,
 } from "@theme/JSONSchemaViewer/types"
 
 // Utility functions to know which case we have
@@ -90,7 +89,8 @@ export const isNull = (schema: JSONSchema) =>
 export const hasUnresolvedRefs = (schema: JSONSchema) =>
   typeof schema !== "boolean" &&
   (schema.$ref !== undefined ||
-    (schema as JSONSchemaNS.Object).$dynamicRef !== undefined)
+    (schema as JSONSchemaNS.Object).$dynamicRef !== undefined ||
+    (schema as any).$recursiveRef !== undefined)
 
 // Detect types in schema
 // Zero, One or multiple types can match

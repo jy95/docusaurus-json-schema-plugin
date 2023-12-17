@@ -66,4 +66,39 @@ describe("JSONSchemaViewer - constructor", () => {
     // make assertions on root
     expect(root?.toJSON()).toMatchSnapshot()
   })
+
+  test("Overwrite default DescriptionComponent value", async () => {
+    // tree schema, extensible
+    // https://json-schema.org/draft/2020-12/release-notes#dynamicref-and-dynamicanchor
+    const fakeSchema: JSONSchema = {
+      $schema: "https://json-schema.org/draft/2020-12/schema",
+      $id: "https://example.com/tree",
+      $dynamicAnchor: "node",
+      type: "object",
+      properties: {
+        data: true,
+        children: {
+          type: "array",
+          items: { $dynamicRef: "#node" },
+        },
+      },
+    }
+
+    // render the component
+    let root: ReactTestRenderer | undefined
+    await act(async () => {
+      root = create(
+        <JSONSchemaViewer
+          schema={fakeSchema}
+          viewerOptions={{
+            // To simulate custom handling of unsolved $ref
+            UnresolvedRefsComponent: () => <>#node was not resolved</>,
+          }}
+        />,
+      )
+    })
+
+    // make assertions on root
+    expect(root?.toJSON()).toMatchSnapshot()
+  })
 })
