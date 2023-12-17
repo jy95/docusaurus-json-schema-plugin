@@ -86,6 +86,12 @@ export const isNull = (schema: JSONSchema) =>
     schema.enum?.some((val) => val === null) ||
     schema.const === null)
 
+export const hasUnresolvedRefs = (schema: JSONSchema) =>
+  typeof schema !== "boolean" &&
+  (schema.$ref !== undefined ||
+    (schema as JSONSchemaNS.Object).$dynamicRef !== undefined ||
+    (schema as any).$recursiveRef !== undefined)
+
 // Detect types in schema
 // Zero, One or multiple types can match
 function* foundUndeclaredTypes(
