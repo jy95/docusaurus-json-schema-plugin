@@ -4,6 +4,7 @@ import * as QMS from "@theme/JSONSchemaViewer/utils/QualifierMessages"
 
 import type { JSONSchema, JSONSchemaNS } from "@theme/JSONSchemaViewer/types"
 import type { JSVOptions } from "@theme/JSONSchemaViewer/contexts"
+import { hasUnresolvedRefs } from "../detectTypes"
 
 type Props = {
   schema: Exclude<JSONSchema, true | false>
@@ -42,6 +43,7 @@ export type CheckKey =
   | "contentMediaType"
   | "contentEncoding"
   | "contentSchema"
+  | "unsolvedRefs"
 
 // Available qualifier message
 const CHECKS_MAP: Record<CheckKey, CheckInfo> = {
@@ -173,6 +175,15 @@ const CHECKS_MAP: Record<CheckKey, CheckInfo> = {
       />
     ),
   },
+  unsolvedRefs: {
+    match: ({ schema }) => hasUnresolvedRefs(schema),
+    Component: (props) => (
+      <QMS.UnsolvedRefsQM
+        key={"unsolvedRefs"}
+        {...(props as any)}
+      ></QMS.UnsolvedRefsQM>
+    ),
+  },
 }
 
 // Default order I assume
@@ -198,6 +209,7 @@ const DEFAULT_ORDER: CheckKey[] = [
   "default",
   "const",
   "examples",
+  "unsolvedRefs",
 ]
 
 export { CHECKS_MAP, DEFAULT_ORDER }

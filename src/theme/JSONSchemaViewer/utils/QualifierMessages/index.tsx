@@ -35,6 +35,7 @@ export { default as NullableQM } from "@theme/JSONSchemaViewer/utils/QualifierMe
 export { default as ContentMediaTypeQM } from "@theme/JSONSchemaViewer/utils/QualifierMessages/ContentMediaType"
 export { default as ContentEncodingQM } from "@theme/JSONSchemaViewer/utils/QualifierMessages/ContentEncoding"
 export { default as ContentSchemaQM } from "@theme/JSONSchemaViewer/utils/QualifierMessages/ContentSchema"
+export { default as UnsolvedRefsQM } from "@theme/JSONSchemaViewer/utils/QualifierMessages/UnsolvedRefs"
 export {
   CHECKS_MAP as QUALIFIERS_MAP,
   DEFAULT_ORDER as QUALIFIERS_DEFAULT_ORDER,
