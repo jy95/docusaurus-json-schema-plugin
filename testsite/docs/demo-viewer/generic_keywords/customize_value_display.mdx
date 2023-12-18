@@ -1,0 +1,59 @@
+---
+description: customize display of values
+title: "⚙️  Custom value component"
+---
+
+import CodeBlock from "@theme/CodeBlock"
+import Schema from "@site/static/schemas/examples/generic_keywords/annotations.json"
+import JSONSchemaViewer from "@theme/JSONSchemaViewer"
+import ReactMarkdown from "react-markdown"
+
+# Custom value component
+
+Pass a `ValueComponent` to `viewerOptions` to customize how JSON values are
+rendered by JSONSchemaViewer. Any custom `ValueComponent` will be used when
+displaying: - `enum` values - `const` values - `examples` - `default` value
+
+JSON Schema :
+
+<CodeBlock language="json">{JSON.stringify(Schema, null, 2)}</CodeBlock>
+
+viewerOptions :
+
+```js
+{
+    showExamples: true,
+    ValueComponent: ({value, schema}) => {
+        // inline rendering for elementary values
+        if (["number", "string", "undefined"].includes(typeof value)) {
+            return <code>{value}</code>;
+        }
+
+        // multiline rendering with 2-space indentation otherwise
+        return <CodeBlock language="json">{
+            JSON.stringify(value, null, 2)
+        }</CodeBlock>;
+    }
+}
+```
+
+Viewer :
+
+<JSONSchemaViewer
+    schema={ Schema }
+    viewerOptions={{
+        showExamples: true,
+        ValueComponent: ({value}) => {
+            // inline rendering for elementary values
+            if (["number", "string", "undefined"].includes(typeof value)) {
+                return <code>{value}</code>;
+            }
+
+            // multiline rendering with 2-space indentation otherwise
+            return <CodeBlock language="json">{
+                JSON.stringify(value, null, 2)
+            }</CodeBlock>;
+        }
+    }}
+
+/>
