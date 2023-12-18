@@ -1,0 +1,37 @@
+---
+description: To overwrite the default handling of unresolved $refs (recursive schemas, partial schemas, ...)
+title: "⚠️ Custom Unresolved Refs Component"
+---
+
+import CodeBlock from '@theme/CodeBlock';
+import Schema from "@site/static/schemas/examples/custom/unresolved_refs.json";
+import JSONSchemaViewer from "@theme/JSONSchemaViewer";
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Custom Unresolved Refs Component
+
+<Tabs>
+    <TabItem value="Viewer" label="Viewer" default>
+        <JSONSchemaViewer 
+            schema={ Schema } 
+            viewerOptions={{ 
+                UnresolvedRefsComponent: ({schema}) => (
+                    `${schema.$ref || schema.$dynamicRef || schema.$recursiveRef || ""} was not resolved`
+                )
+            }}
+        />
+    </TabItem>
+    <TabItem value="viewerOptions" label='viewerOptions'>
+        ```js
+        {
+            UnresolvedRefsComponent: ({schema}) => (
+                `${schema.$ref || schema.$dynamicRef || schema.$recursiveRef || ""} was not resolved`
+            )
+        }
+        ```
+    </TabItem>
+    <TabItem value="JSON Schema" label='JSON Schema'>
+        <CodeBlock language="json">{JSON.stringify(Schema, null, 2)}</CodeBlock>
+    </TabItem>
+</Tabs>
