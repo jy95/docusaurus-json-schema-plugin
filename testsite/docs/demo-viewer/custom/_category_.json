@@ -1,8 +1,7 @@
 {
-    "label": "🛠️ Customizations",
-    "link": {
-      "type": "generated-index",
-      "title": "🛠️ How to customize Viewer showcases"
-    }
+  "label": "🛠️ Customizations",
+  "link": {
+    "type": "generated-index",
+    "title": "🛠️ How to customize Viewer showcases"
   }
-  
+}
