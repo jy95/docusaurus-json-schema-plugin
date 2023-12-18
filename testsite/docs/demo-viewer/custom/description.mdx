@@ -1,0 +1,35 @@
+---
+description: When your descriptions are written not in plain text (such as Markdown, reStructuredText, ...)
+title: "📋 Custom description Component"
+---
+
+import CodeBlock from '@theme/CodeBlock';
+import Schema from "@site/static/schemas/examples/custom/description.json";
+import JSONSchemaViewer from "@theme/JSONSchemaViewer";
+import ReactMarkdown from 'react-markdown'
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Custom description Component
+
+<Tabs>
+    <TabItem value="Viewer" label="Viewer" default>
+        <JSONSchemaViewer 
+            schema={ Schema } 
+            viewerOptions={{ 
+                DescriptionComponent: ({description}) => <ReactMarkdown children={description} /> 
+            }}
+        />
+    </TabItem>
+    <TabItem value="viewerOptions" label='viewerOptions'>
+        ```js
+        // import ReactMarkdown from 'react-markdown'
+        {
+            DescriptionComponent: ({description}) => <ReactMarkdown children={description} />
+        }
+        ```
+    </TabItem>
+    <TabItem value="JSON Schema" label='JSON Schema'>
+        <CodeBlock language="json">{JSON.stringify(Schema, null, 2)}</CodeBlock>
+    </TabItem>
+</Tabs>
