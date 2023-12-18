@@ -38,7 +38,7 @@ export default function EnumQualifierMessage(props: Props): JSX.Element {
     ? printSchemaType(schema.enum!)
     : <ul>
         {schema.enum!.map((value, index) => <li key={index}>
-          <CreateValue value={value} />
+          <CreateValue value={value} schema={schema} />
         </li>)}
       </ul>
 

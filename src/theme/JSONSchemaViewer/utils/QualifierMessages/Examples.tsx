@@ -50,7 +50,7 @@ export default function ExamplesQualifierMessage(props: Props): JSX.Element {
       <Tabs>
         {items.map((item) => (
           <TabItem key={item.id} value={item.id.toString()} label={item.label}>
-            <CreateValue value={item.value} />
+            <CreateValue value={item.value} schema={schema} />
           </TabItem>
         ))}
       </Tabs>

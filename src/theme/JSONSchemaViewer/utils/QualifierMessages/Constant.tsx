@@ -30,7 +30,7 @@ export default function Constant(props: Props): JSX.Element {
     <div key={"const"}>
       {constantLabel}
       &nbsp;
-      <CreateValue value={schema.const!} />
+      <CreateValue value={schema.const!} schema={schema} />
     </div>
   )
 }

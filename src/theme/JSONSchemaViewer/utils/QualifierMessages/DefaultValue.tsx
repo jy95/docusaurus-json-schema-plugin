@@ -31,7 +31,7 @@ export default function DefaultValue(props: Props): JSX.Element {
     <div key={"default"}>
       {defaultLabel}
       &nbsp;
-      <CreateValue value={schema.default!} />
+      <CreateValue value={schema.default!} schema={schema} />
     </div>
   )
 }
