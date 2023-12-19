@@ -27,7 +27,10 @@ export type JSVOptions = {
    * By default, print out as provided
    * @default undefined
    */
-  ValueComponent?: (params: { value: unknown, schema: JSONSchema }) => JSX.Element
+  ValueComponent?: (params: {
+    value: unknown
+    schema: JSONSchema
+  }) => JSX.Element
   /**
    * To overwrite the default handling of unresolved $refs
    * By default, print out as provided

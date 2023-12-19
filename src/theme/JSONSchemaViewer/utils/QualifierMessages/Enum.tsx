@@ -29,9 +29,11 @@ export default function EnumQualifierMessage(props: Props): JSX.Element {
     <div key={"enum"}>
       {enumLabel}&nbsp;
       <ul>
-        {schema.enum!.map((value, index) => <li key={index}>
-          <CreateValue value={value} schema={schema} />
-        </li>)}
+        {schema.enum!.map((value, index) => (
+          <li key={index}>
+            <CreateValue value={value} schema={schema} />
+          </li>
+        ))}
       </ul>
     </div>
   )
