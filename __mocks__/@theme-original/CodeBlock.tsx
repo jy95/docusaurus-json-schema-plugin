@@ -2,6 +2,7 @@ import React, { ReactNode } from "react"
 
 type Props = {
   children: ReactNode
+  language?: string
 }
 
 export default function CodeBlock({ children }: Props): JSX.Element {
