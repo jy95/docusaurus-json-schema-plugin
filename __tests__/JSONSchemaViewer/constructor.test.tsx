@@ -165,7 +165,11 @@ describe("JSONSchemaViewer - constructor", () => {
 
               // if schema defines a default value, ensure it is bold wherever it
               // appears (e.g. in an enum)
-              if (typeof schema !== "boolean" && schema.default && value === schema.default) {
+              if (
+                typeof schema !== "boolean" &&
+                schema.default &&
+                value === schema.default
+              ) {
                 return <strong>{component}</strong>
               }
 
