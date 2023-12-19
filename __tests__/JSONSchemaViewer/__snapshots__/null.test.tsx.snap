@@ -85,9 +85,18 @@ exports[`JSONSchemaViewer - null type test 1 1`] = `
             Possible values :
           </strong>
            
-          <code>
-            [null,"Some constant here ..."]
-          </code>
+          <ul>
+            <li>
+              <code>
+                null
+              </code>
+            </li>
+            <li>
+              <code>
+                Some constant here ...
+              </code>
+            </li>
+          </ul>
         </div>
       </div>
     </div>

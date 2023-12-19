@@ -5,7 +5,7 @@ import Translate from "@docusaurus/Translate"
 import TabItem from "@theme-original/TabItem"
 import Tabs from "@theme-original/Tabs"
 
-import { printSchemaType } from "@theme/JSONSchemaViewer/utils/QualifierMessages"
+import { CreateValue } from "@theme/JSONSchemaViewer/JSONSchemaElements"
 
 import type { JSONSchema } from "@theme/JSONSchemaViewer/types"
 
@@ -50,7 +50,7 @@ export default function ExamplesQualifierMessage(props: Props): JSX.Element {
       <Tabs>
         {items.map((item) => (
           <TabItem key={item.id} value={item.id.toString()} label={item.label}>
-            {printSchemaType(item.value)}
+            <CreateValue value={item.value} schema={schema} />
           </TabItem>
         ))}
       </Tabs>

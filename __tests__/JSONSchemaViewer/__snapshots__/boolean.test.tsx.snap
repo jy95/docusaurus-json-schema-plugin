@@ -72,9 +72,18 @@ exports[`JSONSchemaViewer - Boolean type test 1 1`] = `
             Possible values :
           </strong>
            
-          <code>
-            [true,false]
-          </code>
+          <ul>
+            <li>
+              <code>
+                true
+              </code>
+            </li>
+            <li>
+              <code>
+                false
+              </code>
+            </li>
+          </ul>
         </div>
         <div>
           <strong>

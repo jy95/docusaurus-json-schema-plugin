@@ -2,7 +2,7 @@ import React from "react"
 
 import Translate from "@docusaurus/Translate"
 
-import { printSchemaType } from "@theme/JSONSchemaViewer/utils/QualifierMessages"
+import { CreateValue } from "@theme/JSONSchemaViewer/JSONSchemaElements"
 
 import type { JSONSchema } from "@theme/JSONSchemaViewer/types"
 
@@ -30,7 +30,7 @@ export default function Constant(props: Props): JSX.Element {
     <div key={"const"}>
       {constantLabel}
       &nbsp;
-      {printSchemaType(schema.const!)}
+      <CreateValue value={schema.const!} schema={schema} />
     </div>
   )
 }

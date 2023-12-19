@@ -33,3 +33,6 @@ export { default as CreateAlwaysInvalid } from "@theme/JSONSchemaViewer/JSONSche
 
 // Component to deal with description
 export { default as CreateDescription } from "@theme/JSONSchemaViewer/JSONSchemaElements/CreateDescription"
+
+// Component to deal with values (for examples, enums, default, const, etc.)
+export { default as CreateValue } from "@theme/JSONSchemaViewer/JSONSchemaElements/CreateValue"

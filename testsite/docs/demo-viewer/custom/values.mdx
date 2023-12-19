@@ -1,0 +1,72 @@
+---
+description: customize display of values
+title: "🎨 Custom value Component"
+---
+
+import CodeBlock from "@theme/CodeBlock"
+import Schema from "@site/static/schemas/examples/custom/values.json"
+import JSONSchemaViewer from "@theme/JSONSchemaViewer"
+import ReactMarkdown from "react-markdown"
+import Tabs from "@theme/Tabs"
+import TabItem from "@theme/TabItem"
+
+# Custom value component
+
+<Tabs>
+  <TabItem value="Viewer" label="Viewer" default>
+    <JSONSchemaViewer
+      schema={Schema}
+      viewerOptions={{
+        ValueComponent: ({ value, schema }) => {
+            // render complex values as multiline JSON with 2 space indentation
+            if (!(["string", "number", "undefined"].includes(typeof value))) {
+                return <CodeBlock language="json">{`${
+                    JSON.stringify(value, null, 2)
+                }`}</CodeBlock>;
+            }
+
+            // display elementary values inline.
+            const component = <code>{`${value}`}</code>;
+
+            // if schema defines a default value, ensure it is bold wherever it
+            // appears (e.g. in an enum)
+            if (value === schema.default) {
+                return <strong>{component}</strong>
+            }
+
+            return component;
+        },
+      }}
+    />
+
+  </TabItem>
+  <TabItem value="viewerOptions" label="viewerOptions">
+        ```js
+        {
+            ValueComponent: ({ value, schema }) => {
+                // render complex values as multiline JSON with 2 space indentation
+                if (!(["string", "number", "undefined"].includes(typeof value))) {
+                    return <CodeBlock language="json">{`${
+                        JSON.stringify(value, null, 2)
+                    }`}</CodeBlock>;
+                }
+
+                // display elementary values inline.
+                const component = <code>{`${value}`}</code>;
+
+                // if schema defines a default value, ensure it is bold wherever it
+                // appears (e.g. in an enum)
+                if (value === schema.default) {
+                    return <strong>{component}</strong>
+                }
+
+                return component;
+            }
+        }
+        ```
+
+  </TabItem>
+  <TabItem value="JSON Schema" label="JSON Schema">
+        <CodeBlock language="json">{JSON.stringify(Schema, null, 2)}</CodeBlock>
+  </TabItem>
+</Tabs>

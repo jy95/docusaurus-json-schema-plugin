@@ -116,9 +116,23 @@ exports[`JSONSchemaViewer - schema conditionally test If Then Else (multiple) 1`
                       Possible values :
                     </strong>
                      
-                    <code>
-                      ["United States of America","Canada","Netherlands"]
-                    </code>
+                    <ul>
+                      <li>
+                        <code>
+                          United States of America
+                        </code>
+                      </li>
+                      <li>
+                        <code>
+                          Canada
+                        </code>
+                      </li>
+                      <li>
+                        <code>
+                          Netherlands
+                        </code>
+                      </li>
+                    </ul>
                   </div>
                   <div>
                     <strong>
@@ -1094,9 +1108,18 @@ exports[`JSONSchemaViewer - schema conditionally test If Then Else 1`] = `
                       Possible values :
                     </strong>
                      
-                    <code>
-                      ["United States of America","Canada"]
-                    </code>
+                    <ul>
+                      <li>
+                        <code>
+                          United States of America
+                        </code>
+                      </li>
+                      <li>
+                        <code>
+                          Canada
+                        </code>
+                      </li>
+                    </ul>
                   </div>
                   <div>
                     <strong>
