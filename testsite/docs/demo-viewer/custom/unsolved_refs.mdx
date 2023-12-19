@@ -1,32 +1,33 @@
 ---
-description: annotations showcase
-title: "📌 Annotations"
+description: To overwrite the default handling of unresolved $refs (recursive schemas, partial schemas, ...)
+title: "⚠️ Custom Unresolved Refs Component"
 ---
 
 import CodeBlock from '@theme/CodeBlock';
-import Schema from "@site/static/schemas/examples/generic_keywords/annotations.json";
+import Schema from "@site/static/schemas/examples/custom/unresolved_refs.json";
 import JSONSchemaViewer from "@theme/JSONSchemaViewer";
-import ReactMarkdown from 'react-markdown'
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Annotations
+# Custom Unresolved Refs Component
 
 <Tabs>
     <TabItem value="Viewer" label="Viewer" default>
         <JSONSchemaViewer 
             schema={ Schema } 
             viewerOptions={{ 
-                showExamples: true,
-                DescriptionComponent: ({description}) => <ReactMarkdown children={description} /> 
+                UnresolvedRefsComponent: ({schema}) => (
+                    `${schema.$ref || schema.$dynamicRef || schema.$recursiveRef || ""} was not resolved`
+                )
             }}
         />
     </TabItem>
     <TabItem value="viewerOptions" label='viewerOptions'>
         ```js
         {
-            showExamples: true,
-            DescriptionComponent: ({description}) => <ReactMarkdown children={description} />
+            UnresolvedRefsComponent: ({schema}) => (
+                `${schema.$ref || schema.$dynamicRef || schema.$recursiveRef || ""} was not resolved`
+            )
         }
         ```
     </TabItem>
