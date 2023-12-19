@@ -7,7 +7,18 @@
     "customField": {
       "type": "string",
       "description": "A customized or personalized field",
-      "enum": ["palette", "teddyBear", "tools", "laptop", "thread", "phone", "puzzle", "scissors", "hammer", "note"],
+      "enum": [
+        "palette",
+        "teddyBear",
+        "tools",
+        "laptop",
+        "thread",
+        "phone",
+        "puzzle",
+        "scissors",
+        "hammer",
+        "note"
+      ],
       "default": "palette",
       "examples": ["tools", "note"]
     },
