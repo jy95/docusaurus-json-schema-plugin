@@ -347,9 +347,23 @@ exports[`JSONSchemaViewer - object test additionalProperties (JSON Schema) 1`] =
                       Possible values :
                     </strong>
                      
-                    <code>
-                      ["Street","Avenue","Boulevard"]
-                    </code>
+                    <ul>
+                      <li>
+                        <code>
+                          Street
+                        </code>
+                      </li>
+                      <li>
+                        <code>
+                          Avenue
+                        </code>
+                      </li>
+                      <li>
+                        <code>
+                          Boulevard
+                        </code>
+                      </li>
+                    </ul>
                   </div>
                 </div>
               </div>
@@ -577,9 +591,23 @@ exports[`JSONSchemaViewer - object test additionalProperties (false) 1`] = `
                       Possible values :
                     </strong>
                      
-                    <code>
-                      ["Street","Avenue","Boulevard"]
-                    </code>
+                    <ul>
+                      <li>
+                        <code>
+                          Street
+                        </code>
+                      </li>
+                      <li>
+                        <code>
+                          Avenue
+                        </code>
+                      </li>
+                      <li>
+                        <code>
+                          Boulevard
+                        </code>
+                      </li>
+                    </ul>
                   </div>
                 </div>
               </div>
@@ -1261,9 +1289,23 @@ exports[`JSONSchemaViewer - object test properties 1`] = `
                       Possible values :
                     </strong>
                      
-                    <code>
-                      ["Street","Avenue","Boulevard"]
-                    </code>
+                    <ul>
+                      <li>
+                        <code>
+                          Street
+                        </code>
+                      </li>
+                      <li>
+                        <code>
+                          Avenue
+                        </code>
+                      </li>
+                      <li>
+                        <code>
+                          Boulevard
+                        </code>
+                      </li>
+                    </ul>
                   </div>
                 </div>
               </div>

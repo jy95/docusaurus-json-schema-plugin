@@ -257,9 +257,23 @@ exports[`JSONSchemaViewer - Generic keywords test enum 1`] = `
             Possible values :
           </strong>
            
-          <code>
-            ["red","amber","green"]
-          </code>
+          <ul>
+            <li>
+              <code>
+                red
+              </code>
+            </li>
+            <li>
+              <code>
+                amber
+              </code>
+            </li>
+            <li>
+              <code>
+                green
+              </code>
+            </li>
+          </ul>
         </div>
         <div>
           <strong>
