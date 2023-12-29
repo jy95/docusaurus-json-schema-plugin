@@ -18,7 +18,7 @@
     "@mdx-js/react": "^3.0.0",
     "@stoplight/json-ref-resolver": "^3.1.6",
     "ajv": "^8.12.0",
-    "clsx": "^2.0.0",
+    "clsx": "^2.1.0",
     "docusaurus-json-schema-plugin": "file:..",
     "js-base64": "^3.7.5",
     "json-schema-faker": "^0.5.4",
