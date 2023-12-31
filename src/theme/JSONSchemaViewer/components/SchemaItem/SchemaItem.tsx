@@ -1,6 +1,7 @@
 import React, { ReactNode } from "react"
 
 import { Collapsible, CreateNodes } from "@theme/JSONSchemaViewer/components"
+import { useSchemaHierarchyContext } from "@theme/JSONSchemaViewer/contexts"
 
 import {
   RequiredLabel,
@@ -32,6 +33,8 @@ export default function SchemaItem({
   name,
   required,
 }: SchemaItemProps): JSX.Element {
+  const { jsonPointer, level } = useSchemaHierarchyContext()
+
   // Notice : "deprecated" started at 2019-09
   let typedSchema = schema as JSONSchema_Draft_2019_09
   let isDeprecated =
@@ -59,7 +62,7 @@ export default function SchemaItem({
   )
 
   return (
-    <li className={styles.schemaItem}>
+    <li className={styles.schemaItem} id={jsonPointer} data-level={level}>
       <Collapsible
         summary={summary}
         detailsProps={{

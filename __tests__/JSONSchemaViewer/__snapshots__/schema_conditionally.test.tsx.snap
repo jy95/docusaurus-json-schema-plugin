@@ -25,7 +25,10 @@ exports[`JSONSchemaViewer - schema conditionally test If Then Else (multiple) 1`
         object
       </span>
       <ul>
-        <li>
+        <li
+          data-level={1}
+          id="/properties/street_address"
+        >
           <details
             open={false}
           >
@@ -70,7 +73,10 @@ exports[`JSONSchemaViewer - schema conditionally test If Then Else (multiple) 1`
             </div>
           </details>
         </li>
-        <li>
+        <li
+          data-level={1}
+          id="/properties/country"
+        >
           <details
             open={false}
           >
@@ -312,7 +318,10 @@ exports[`JSONSchemaViewer - schema conditionally test If Then Else (multiple) 1`
                                 object
                               </span>
                               <ul>
-                                <li>
+                                <li
+                                  data-level={3}
+                                  id="/allOf/0/if/properties/country"
+                                >
                                   <details
                                     open={false}
                                   >
@@ -398,7 +407,10 @@ exports[`JSONSchemaViewer - schema conditionally test If Then Else (multiple) 1`
                                 object
                               </span>
                               <ul>
-                                <li>
+                                <li
+                                  data-level={3}
+                                  id="/allOf/0/then/properties/postal_code"
+                                >
                                   <details
                                     open={false}
                                   >
@@ -565,7 +577,10 @@ exports[`JSONSchemaViewer - schema conditionally test If Then Else (multiple) 1`
                                 object
                               </span>
                               <ul>
-                                <li>
+                                <li
+                                  data-level={3}
+                                  id="/allOf/1/if/properties/country"
+                                >
                                   <details
                                     open={false}
                                   >
@@ -655,7 +670,10 @@ exports[`JSONSchemaViewer - schema conditionally test If Then Else (multiple) 1`
                                 object
                               </span>
                               <ul>
-                                <li>
+                                <li
+                                  data-level={3}
+                                  id="/allOf/1/then/properties/postal_code"
+                                >
                                   <details
                                     open={false}
                                   >
@@ -822,7 +840,10 @@ exports[`JSONSchemaViewer - schema conditionally test If Then Else (multiple) 1`
                                 object
                               </span>
                               <ul>
-                                <li>
+                                <li
+                                  data-level={3}
+                                  id="/allOf/2/if/properties/country"
+                                >
                                   <details
                                     open={false}
                                   >
@@ -912,7 +933,10 @@ exports[`JSONSchemaViewer - schema conditionally test If Then Else (multiple) 1`
                                 object
                               </span>
                               <ul>
-                                <li>
+                                <li
+                                  data-level={3}
+                                  id="/allOf/2/then/properties/postal_code"
+                                >
                                   <details
                                     open={false}
                                   >
@@ -1017,7 +1041,10 @@ exports[`JSONSchemaViewer - schema conditionally test If Then Else 1`] = `
         object
       </span>
       <ul>
-        <li>
+        <li
+          data-level={1}
+          id="/properties/street_address"
+        >
           <details
             open={false}
           >
@@ -1062,7 +1089,10 @@ exports[`JSONSchemaViewer - schema conditionally test If Then Else 1`] = `
             </div>
           </details>
         </li>
-        <li>
+        <li
+          data-level={1}
+          id="/properties/country"
+        >
           <details
             open={false}
           >
@@ -1211,7 +1241,10 @@ exports[`JSONSchemaViewer - schema conditionally test If Then Else 1`] = `
                       object
                     </span>
                     <ul>
-                      <li>
+                      <li
+                        data-level={2}
+                        id="/if/properties/country"
+                      >
                         <details
                           open={false}
                         >
@@ -1297,7 +1330,10 @@ exports[`JSONSchemaViewer - schema conditionally test If Then Else 1`] = `
                       object
                     </span>
                     <ul>
-                      <li>
+                      <li
+                        data-level={2}
+                        id="/then/properties/postal_code"
+                      >
                         <details
                           open={false}
                         >
@@ -1383,7 +1419,10 @@ exports[`JSONSchemaViewer - schema conditionally test If Then Else 1`] = `
                       object
                     </span>
                     <ul>
-                      <li>
+                      <li
+                        data-level={2}
+                        id="/else/properties/postal_code"
+                      >
                         <details
                           open={false}
                         >
@@ -1483,7 +1522,10 @@ exports[`JSONSchemaViewer - schema conditionally test dependencies (dependentReq
         object
       </span>
       <ul>
-        <li>
+        <li
+          data-level={1}
+          id="/properties/name"
+        >
           <details
             open={false}
           >
@@ -1532,7 +1574,10 @@ exports[`JSONSchemaViewer - schema conditionally test dependencies (dependentReq
             </div>
           </details>
         </li>
-        <li>
+        <li
+          data-level={1}
+          id="/properties/credit_card"
+        >
           <details
             open={false}
           >
@@ -1577,7 +1622,10 @@ exports[`JSONSchemaViewer - schema conditionally test dependencies (dependentReq
             </div>
           </details>
         </li>
-        <li>
+        <li
+          data-level={1}
+          id="/properties/billing_address"
+        >
           <details
             open={false}
           >
@@ -1766,7 +1814,10 @@ exports[`JSONSchemaViewer - schema conditionally test dependencies (dependentReq
                                       object
                                     </span>
                                     <ul>
-                                      <li>
+                                      <li
+                                        data-level={3}
+                                        id="/allOf/0/if/properties/credit_card"
+                                      >
                                         <details
                                           open={false}
                                         >
@@ -1848,7 +1899,10 @@ exports[`JSONSchemaViewer - schema conditionally test dependencies (dependentReq
                                       object
                                     </span>
                                     <ul>
-                                      <li>
+                                      <li
+                                        data-level={3}
+                                        id="/allOf/0/then/properties/billing_address"
+                                      >
                                         <details
                                           open={false}
                                         >
@@ -1952,7 +2006,10 @@ exports[`JSONSchemaViewer - schema conditionally test dependencies (dependentSch
         object
       </span>
       <ul>
-        <li>
+        <li
+          data-level={1}
+          id="/properties/name"
+        >
           <details
             open={false}
           >
@@ -2001,7 +2058,10 @@ exports[`JSONSchemaViewer - schema conditionally test dependencies (dependentSch
             </div>
           </details>
         </li>
-        <li>
+        <li
+          data-level={1}
+          id="/properties/credit_card"
+        >
           <details
             open={false}
           >
@@ -2190,7 +2250,10 @@ exports[`JSONSchemaViewer - schema conditionally test dependencies (dependentSch
                                       object
                                     </span>
                                     <ul>
-                                      <li>
+                                      <li
+                                        data-level={3}
+                                        id="/allOf/0/if/properties/credit_card"
+                                      >
                                         <details
                                           open={false}
                                         >
@@ -2272,7 +2335,10 @@ exports[`JSONSchemaViewer - schema conditionally test dependencies (dependentSch
                                       object
                                     </span>
                                     <ul>
-                                      <li>
+                                      <li
+                                        data-level={3}
+                                        id="/allOf/0/then/properties/billing_address"
+                                      >
                                         <details
                                           open={false}
                                         >
@@ -2374,7 +2440,10 @@ exports[`JSONSchemaViewer - schema conditionally test dependentRequired (bidirec
         object
       </span>
       <ul>
-        <li>
+        <li
+          data-level={1}
+          id="/properties/name"
+        >
           <details
             open={false}
           >
@@ -2423,7 +2492,10 @@ exports[`JSONSchemaViewer - schema conditionally test dependentRequired (bidirec
             </div>
           </details>
         </li>
-        <li>
+        <li
+          data-level={1}
+          id="/properties/credit_card"
+        >
           <details
             open={false}
           >
@@ -2468,7 +2540,10 @@ exports[`JSONSchemaViewer - schema conditionally test dependentRequired (bidirec
             </div>
           </details>
         </li>
-        <li>
+        <li
+          data-level={1}
+          id="/properties/billing_address"
+        >
           <details
             open={false}
           >
@@ -2672,7 +2747,10 @@ exports[`JSONSchemaViewer - schema conditionally test dependentRequired (bidirec
                                       object
                                     </span>
                                     <ul>
-                                      <li>
+                                      <li
+                                        data-level={3}
+                                        id="/allOf/0/if/properties/credit_card"
+                                      >
                                         <details
                                           open={false}
                                         >
@@ -2754,7 +2832,10 @@ exports[`JSONSchemaViewer - schema conditionally test dependentRequired (bidirec
                                       object
                                     </span>
                                     <ul>
-                                      <li>
+                                      <li
+                                        data-level={3}
+                                        id="/allOf/0/then/properties/billing_address"
+                                      >
                                         <details
                                           open={false}
                                         >
@@ -2917,7 +2998,10 @@ exports[`JSONSchemaViewer - schema conditionally test dependentRequired (bidirec
                                       object
                                     </span>
                                     <ul>
-                                      <li>
+                                      <li
+                                        data-level={3}
+                                        id="/allOf/1/if/properties/billing_address"
+                                      >
                                         <details
                                           open={false}
                                         >
@@ -2999,7 +3083,10 @@ exports[`JSONSchemaViewer - schema conditionally test dependentRequired (bidirec
                                       object
                                     </span>
                                     <ul>
-                                      <li>
+                                      <li
+                                        data-level={3}
+                                        id="/allOf/1/then/properties/credit_card"
+                                      >
                                         <details
                                           open={false}
                                         >
@@ -3103,7 +3190,10 @@ exports[`JSONSchemaViewer - schema conditionally test dependentRequired 1`] = `
         object
       </span>
       <ul>
-        <li>
+        <li
+          data-level={1}
+          id="/properties/name"
+        >
           <details
             open={false}
           >
@@ -3152,7 +3242,10 @@ exports[`JSONSchemaViewer - schema conditionally test dependentRequired 1`] = `
             </div>
           </details>
         </li>
-        <li>
+        <li
+          data-level={1}
+          id="/properties/credit_card"
+        >
           <details
             open={false}
           >
@@ -3197,7 +3290,10 @@ exports[`JSONSchemaViewer - schema conditionally test dependentRequired 1`] = `
             </div>
           </details>
         </li>
-        <li>
+        <li
+          data-level={1}
+          id="/properties/billing_address"
+        >
           <details
             open={false}
           >
@@ -3386,7 +3482,10 @@ exports[`JSONSchemaViewer - schema conditionally test dependentRequired 1`] = `
                                       object
                                     </span>
                                     <ul>
-                                      <li>
+                                      <li
+                                        data-level={3}
+                                        id="/allOf/0/if/properties/credit_card"
+                                      >
                                         <details
                                           open={false}
                                         >
@@ -3468,7 +3567,10 @@ exports[`JSONSchemaViewer - schema conditionally test dependentRequired 1`] = `
                                       object
                                     </span>
                                     <ul>
-                                      <li>
+                                      <li
+                                        data-level={3}
+                                        id="/allOf/0/then/properties/billing_address"
+                                      >
                                         <details
                                           open={false}
                                         >
@@ -3714,7 +3816,10 @@ exports[`JSONSchemaViewer - schema conditionally test dependentSchemas 1`] = `
                                       object
                                     </span>
                                     <ul>
-                                      <li>
+                                      <li
+                                        data-level={3}
+                                        id="/allOf/0/if/properties/c"
+                                      >
                                         <details
                                           open={false}
                                         >
@@ -3796,7 +3901,10 @@ exports[`JSONSchemaViewer - schema conditionally test dependentSchemas 1`] = `
                                       object
                                     </span>
                                     <ul>
-                                      <li>
+                                      <li
+                                        data-level={3}
+                                        id="/allOf/0/then/properties/b"
+                                      >
                                         <details
                                           open={false}
                                         >

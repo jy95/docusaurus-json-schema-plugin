@@ -153,7 +153,10 @@ exports[`JSONSchemaViewer - Generic keywords test const 1`] = `
         object
       </span>
       <ul>
-        <li>
+        <li
+          data-level={1}
+          id="/properties/country"
+        >
           <details
             open={false}
           >
