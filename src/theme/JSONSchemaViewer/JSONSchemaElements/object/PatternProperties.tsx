@@ -4,7 +4,7 @@ import { CreateEdge } from "@theme/JSONSchemaViewer/components"
 import {
   SchemaHierarchyContextProvider,
   useSchemaHierarchyContext,
-} from "@theme/JSONSchemaViewer/contexts/schemaHierarchy"
+} from "@theme/JSONSchemaViewer/contexts"
 import { encodeStringForJSONPointer } from "@theme/JSONSchemaViewer/utils/index"
 
 import type { JSONSchemaNS } from "@theme/JSONSchemaViewer/types"
