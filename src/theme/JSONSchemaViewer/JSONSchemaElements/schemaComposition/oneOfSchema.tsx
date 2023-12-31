@@ -5,6 +5,10 @@ import TabItem from "@theme-original/TabItem"
 import Tabs from "@theme-original/Tabs"
 
 import { CreateNodes } from "@theme/JSONSchemaViewer/components"
+import {
+  SchemaHierarchyContextProvider,
+  useSchemaHierarchyContext,
+} from "@theme/JSONSchemaViewer/contexts"
 
 import { GenerateFriendlyName } from "@theme/JSONSchemaViewer/utils"
 
@@ -16,6 +20,8 @@ type Props = {
 }
 
 export default function OneOfSchema(props: Props): JSX.Element {
+  const { jsonPointer: currentJsonPointer, level: currentLevel } =
+    useSchemaHierarchyContext()
   const { schema } = props
 
   let typedSchema = schema.oneOf!
@@ -32,7 +38,14 @@ export default function OneOfSchema(props: Props): JSX.Element {
               value={`schema_${typeOf}_${index}`}
               label={<GenerateFriendlyName schema={compositeSchema} />}
             >
-              <CreateNodes schema={compositeSchema} />
+              <SchemaHierarchyContextProvider
+                value={{
+                  level: currentLevel + 1,
+                  jsonPointer: `${currentJsonPointer}/oneOf/${index}`,
+                }}
+              >
+                <CreateNodes schema={compositeSchema} />
+              </SchemaHierarchyContextProvider>
             </TabItem>
           )
         })}

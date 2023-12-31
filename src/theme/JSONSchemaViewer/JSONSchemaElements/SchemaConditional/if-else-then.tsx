@@ -4,6 +4,10 @@ import TabItem from "@theme-original/TabItem"
 import Tabs from "@theme-original/Tabs"
 
 import { CreateNodes } from "@theme/JSONSchemaViewer/components"
+import {
+  SchemaHierarchyContextProvider,
+  useSchemaHierarchyContext,
+} from "@theme/JSONSchemaViewer/contexts"
 
 import { IfLabel, ThenLabel, ElseLabel } from "@theme/JSONSchemaViewer/labels"
 
@@ -16,6 +20,8 @@ type Props = {
 
 // Handle if else then
 export default function IfElseThen(props: Props): JSX.Element {
+  const { jsonPointer: currentJsonPointer, level: currentLevel } =
+    useSchemaHierarchyContext()
   const { schema } = props
 
   const hasThen = schema.then !== undefined
@@ -47,11 +53,38 @@ export default function IfElseThen(props: Props): JSX.Element {
   ) {
     switch (value) {
       case "schema_if":
-        return <CreateNodes schema={schema.if!} />
+        return (
+          <SchemaHierarchyContextProvider
+            value={{
+              level: currentLevel + 1,
+              jsonPointer: `${currentJsonPointer}/if`,
+            }}
+          >
+            <CreateNodes schema={schema.if!} />
+          </SchemaHierarchyContextProvider>
+        )
       case "schema_then":
-        return <CreateNodes schema={schema.then!} />
+        return (
+          <SchemaHierarchyContextProvider
+            value={{
+              level: currentLevel + 1,
+              jsonPointer: `${currentJsonPointer}/then`,
+            }}
+          >
+            <CreateNodes schema={schema.then!} />
+          </SchemaHierarchyContextProvider>
+        )
       case "schema_else":
-        return <CreateNodes schema={schema.else!} />
+        return (
+          <SchemaHierarchyContextProvider
+            value={{
+              level: currentLevel + 1,
+              jsonPointer: `${currentJsonPointer}/else`,
+            }}
+          >
+            <CreateNodes schema={schema.else!} />
+          </SchemaHierarchyContextProvider>
+        )
     }
   }
 
