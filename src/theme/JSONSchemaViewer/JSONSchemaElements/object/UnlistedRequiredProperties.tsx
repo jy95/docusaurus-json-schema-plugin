@@ -38,6 +38,7 @@ export default function CreateUnlistedProperties(props: Props): JSX.Element {
     <ul>
       {unlistedProperties.map((prop, idx) => (
         <SchemaHierarchyContextProvider
+          key={`object_unlisted_properties_${idx}`}
           value={{
             level: currentLevel + 1,
             jsonPointer: `${currentJsonPointer}/properties/${encodeStringForJSONPointer(
@@ -46,7 +47,6 @@ export default function CreateUnlistedProperties(props: Props): JSX.Element {
           }}
         >
           <CreateEdge
-            key={`object_unlisted_properties_${idx}`}
             name={<strong>{prop}</strong>}
             schema={true}
             required={true}

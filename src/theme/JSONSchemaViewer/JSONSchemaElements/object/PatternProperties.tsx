@@ -31,6 +31,7 @@ export default function CreatePatternProperties(props: Props): JSX.Element {
     <ul>
       {Object.entries(patternProperties).map(([key, value]) => (
         <SchemaHierarchyContextProvider
+          key={`object_patternProperties_${key}`}
           value={{
             level: currentLevel + 1,
             jsonPointer: `${currentJsonPointer}/patternProperties/${encodeStringForJSONPointer(
@@ -39,7 +40,6 @@ export default function CreatePatternProperties(props: Props): JSX.Element {
           }}
         >
           <CreateEdge
-            key={`object_patternProperties_${key}`}
             name={<code>{key}</code>}
             schema={value}
             required={false}

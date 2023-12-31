@@ -32,6 +32,7 @@ export default function CreateProperties(props: Props): JSX.Element {
       {Object.entries(properties).map(([key, value]) => {
         return (
           <SchemaHierarchyContextProvider
+            key={`object_properties_${key}`}
             value={{
               level: currentLevel + 1,
               jsonPointer: `${currentJsonPointer}/properties/${encodeStringForJSONPointer(
@@ -40,7 +41,6 @@ export default function CreateProperties(props: Props): JSX.Element {
             }}
           >
             <CreateEdge
-              key={`object_properties_${key}`}
               name={<strong>{key}</strong>}
               schema={value}
               required={

@@ -64,6 +64,7 @@ export default function CreateItems(props: Props): JSX.Element {
     <ul>
       {itemsAsArray.map((item, idx) => (
         <SchemaHierarchyContextProvider
+          key={`array_items_${idx}`}
           value={{
             level: currentLevel + 1,
             jsonPointer: `${currentJsonPointer}/items${
@@ -72,7 +73,6 @@ export default function CreateItems(props: Props): JSX.Element {
           }}
         >
           <CreateEdge
-            key={`array_items_${idx}`}
             name={<ItemsLabel index={startingIndex + idx} isArray={isArray} />}
             schema={item}
             required={
