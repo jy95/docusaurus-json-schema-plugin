@@ -2,6 +2,10 @@ import React from "react"
 import Translate from "@docusaurus/Translate"
 
 import { CreateEdge } from "@theme/JSONSchemaViewer/components"
+import {
+  SchemaHierarchyContextProvider,
+  useSchemaHierarchyContext,
+} from "@theme/JSONSchemaViewer/contexts/schemaHierarchy"
 
 import type { JSONSchemaNS } from "@theme/JSONSchemaViewer/types"
 
@@ -35,6 +39,8 @@ function ItemsLabel({
 }
 
 export default function CreateItems(props: Props): JSX.Element {
+  const { jsonPointer: currentJsonPointer, level: currentLevel } =
+    useSchemaHierarchyContext()
   const { schema } = props
 
   let items = schema.items
@@ -57,12 +63,23 @@ export default function CreateItems(props: Props): JSX.Element {
   return (
     <ul>
       {itemsAsArray.map((item, idx) => (
-        <CreateEdge
-          key={`array_items_${idx}`}
-          name={<ItemsLabel index={startingIndex + idx} isArray={isArray} />}
-          schema={item}
-          required={schema.minItems !== undefined && schema.minItems >= minimal}
-        />
+        <SchemaHierarchyContextProvider
+          value={{
+            level: currentLevel + 1,
+            jsonPointer: `${currentJsonPointer}/items${
+              isArray ? `/${idx}` : ""
+            }`,
+          }}
+        >
+          <CreateEdge
+            key={`array_items_${idx}`}
+            name={<ItemsLabel index={startingIndex + idx} isArray={isArray} />}
+            schema={item}
+            required={
+              schema.minItems !== undefined && schema.minItems >= minimal
+            }
+          />
+        </SchemaHierarchyContextProvider>
       ))}
     </ul>
   )

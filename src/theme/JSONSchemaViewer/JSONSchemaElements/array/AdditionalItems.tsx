@@ -2,6 +2,10 @@ import React from "react"
 import Translate from "@docusaurus/Translate"
 
 import { CreateEdge } from "@theme/JSONSchemaViewer/components"
+import {
+  SchemaHierarchyContextProvider,
+  useSchemaHierarchyContext,
+} from "@theme/JSONSchemaViewer/contexts/schemaHierarchy"
 
 import type { JSONSchemaNS } from "@theme/JSONSchemaViewer/types"
 
@@ -28,6 +32,8 @@ function AdditionalItemsLabel({ count }: { count: number }): JSX.Element {
 
 // To support that scenario not possible anymore in draft-2020-12
 export default function CreateAdditionalItems(props: Props): JSX.Element {
+  const { jsonPointer: currentJsonPointer, level: currentLevel } =
+    useSchemaHierarchyContext()
   const { schema } = props
 
   let items = schema.additionalItems
@@ -42,14 +48,22 @@ export default function CreateAdditionalItems(props: Props): JSX.Element {
 
   return (
     <ul>
-      <CreateEdge
-        key={`array_additionalItems`}
-        name={<AdditionalItemsLabel count={startingIndex} />}
-        schema={items}
-        required={
-          schema.minItems !== undefined && startingIndex >= schema.minItems - 1
-        }
-      />
+      <SchemaHierarchyContextProvider
+        value={{
+          level: currentLevel + 1,
+          jsonPointer: `${currentJsonPointer}/additionalItems`,
+        }}
+      >
+        <CreateEdge
+          key={`array_additionalItems`}
+          name={<AdditionalItemsLabel count={startingIndex} />}
+          schema={items}
+          required={
+            schema.minItems !== undefined &&
+            startingIndex >= schema.minItems - 1
+          }
+        />
+      </SchemaHierarchyContextProvider>
     </ul>
   )
 }

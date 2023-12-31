@@ -2,6 +2,10 @@ import React from "react"
 import Translate from "@docusaurus/Translate"
 
 import { CreateEdge } from "@theme/JSONSchemaViewer/components"
+import {
+  SchemaHierarchyContextProvider,
+  useSchemaHierarchyContext,
+} from "@theme/JSONSchemaViewer/contexts/schemaHierarchy"
 
 import type { JSONSchema, JSONSchemaNS } from "@theme/JSONSchemaViewer/types"
 
@@ -27,6 +31,8 @@ function PrefixItemsLabel({ count }: { count: number }): JSX.Element {
 }
 
 export default function CreatePrefixItems(props: Props): JSX.Element {
+  const { jsonPointer: currentJsonPointer, level: currentLevel } =
+    useSchemaHierarchyContext()
   const { schema } = props
 
   let items = schema.prefixItems
@@ -36,6 +42,7 @@ export default function CreatePrefixItems(props: Props): JSX.Element {
     return <></>
   }
 
+  let isArray = Array.isArray(items)
   let minimal = Array.isArray(items) ? items.length : 1
   let array = (Array.isArray(items) ? items : [items]) as JSONSchema[]
 
@@ -44,14 +51,24 @@ export default function CreatePrefixItems(props: Props): JSX.Element {
     <ul>
       {array.map((val, idx) => {
         return (
-          <CreateEdge
-            key={`array_prefixItems_${idx}`}
-            name={<PrefixItemsLabel count={idx} />}
-            schema={val}
-            required={
-              schema.minItems !== undefined && schema.minItems >= minimal
-            }
-          />
+          <SchemaHierarchyContextProvider
+            key={`schema_hierarchy_${idx}`}
+            value={{
+              level: currentLevel + 1,
+              jsonPointer: `${currentJsonPointer}/prefixItems${
+                isArray ? `/${idx}` : ""
+              }`,
+            }}
+          >
+            <CreateEdge
+              key={`array_prefixItems_${idx}`}
+              name={<PrefixItemsLabel count={idx} />}
+              schema={val}
+              required={
+                schema.minItems !== undefined && schema.minItems >= minimal
+              }
+            />
+          </SchemaHierarchyContextProvider>
         )
       })}
     </ul>

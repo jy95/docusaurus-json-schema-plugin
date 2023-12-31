@@ -2,6 +2,10 @@ import React from "react"
 import Translate from "@docusaurus/Translate"
 
 import { CreateEdge } from "@theme/JSONSchemaViewer/components"
+import {
+  SchemaHierarchyContextProvider,
+  useSchemaHierarchyContext,
+} from "@theme/JSONSchemaViewer/contexts/schemaHierarchy"
 
 import type { JSONSchemaNS } from "@theme/JSONSchemaViewer/types"
 
@@ -26,6 +30,8 @@ function AdditionalPropertiesLabel(): JSX.Element {
 }
 
 export default function CreateAdditionalProperties(props: Props): JSX.Element {
+  const { jsonPointer: currentJsonPointer, level: currentLevel } =
+    useSchemaHierarchyContext()
   const { schema } = props
 
   let additionalProperties = schema.additionalProperties
@@ -40,12 +46,19 @@ export default function CreateAdditionalProperties(props: Props): JSX.Element {
 
   return (
     <ul>
-      <CreateEdge
-        key={"object_additionalProperties"}
-        name={<AdditionalPropertiesLabel />}
-        schema={additionalProperties}
-        required={false}
-      />
+      <SchemaHierarchyContextProvider
+        value={{
+          level: currentLevel + 1,
+          jsonPointer: `${currentJsonPointer}/additionalProperties`,
+        }}
+      >
+        <CreateEdge
+          key={"object_additionalProperties"}
+          name={<AdditionalPropertiesLabel />}
+          schema={additionalProperties}
+          required={false}
+        />
+      </SchemaHierarchyContextProvider>
     </ul>
   )
 }

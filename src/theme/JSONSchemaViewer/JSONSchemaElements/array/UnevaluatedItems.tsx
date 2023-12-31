@@ -2,6 +2,10 @@ import React from "react"
 import Translate from "@docusaurus/Translate"
 
 import { CreateEdge } from "@theme/JSONSchemaViewer/components"
+import {
+  SchemaHierarchyContextProvider,
+  useSchemaHierarchyContext,
+} from "@theme/JSONSchemaViewer/contexts/schemaHierarchy"
 
 import type { JSONSchemaNS } from "@theme/JSONSchemaViewer/types"
 
@@ -27,6 +31,8 @@ function UnevaluatedItemsLabel(): JSX.Element {
 
 // To support unevaluatedItems scenario
 export default function CreateUnevaluatedItems(props: Props): JSX.Element {
+  const { jsonPointer: currentJsonPointer, level: currentLevel } =
+    useSchemaHierarchyContext()
   const { schema } = props
 
   let items = schema.unevaluatedItems
@@ -38,13 +44,20 @@ export default function CreateUnevaluatedItems(props: Props): JSX.Element {
 
   return (
     <ul>
-      <CreateEdge
-        key={`array_unevaluatedItems`}
-        name={<UnevaluatedItemsLabel />}
-        schema={items}
-        // By design, it isn't mandatory most of the time
-        required={false}
-      />
+      <SchemaHierarchyContextProvider
+        value={{
+          level: currentLevel + 1,
+          jsonPointer: `${currentJsonPointer}/unevaluatedItems`,
+        }}
+      >
+        <CreateEdge
+          key={`array_unevaluatedItems`}
+          name={<UnevaluatedItemsLabel />}
+          schema={items}
+          // By design, it isn't mandatory most of the time
+          required={false}
+        />
+      </SchemaHierarchyContextProvider>
     </ul>
   )
 }

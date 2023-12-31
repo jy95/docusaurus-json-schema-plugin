@@ -1,6 +1,11 @@
 import React from "react"
 
 import { CreateEdge } from "@theme/JSONSchemaViewer/components"
+import {
+  SchemaHierarchyContextProvider,
+  useSchemaHierarchyContext,
+} from "@theme/JSONSchemaViewer/contexts/schemaHierarchy"
+import { encodeStringForJSONPointer } from "@theme/JSONSchemaViewer/utils/index"
 
 import type { JSONSchemaNS } from "@theme/JSONSchemaViewer/types"
 
@@ -11,6 +16,8 @@ type Props = {
 
 // Generate properties listed as "required" but that couldn't be found in "properties", ...
 export default function CreateUnlistedProperties(props: Props): JSX.Element {
+  const { jsonPointer: currentJsonPointer, level: currentLevel } =
+    useSchemaHierarchyContext()
   const { schema } = props
 
   const required: readonly string[] = schema.required || []
@@ -30,12 +37,21 @@ export default function CreateUnlistedProperties(props: Props): JSX.Element {
   return (
     <ul>
       {unlistedProperties.map((prop, idx) => (
-        <CreateEdge
-          key={`object_unlisted_properties_${idx}`}
-          name={<strong>{prop}</strong>}
-          schema={true}
-          required={true}
-        />
+        <SchemaHierarchyContextProvider
+          value={{
+            level: currentLevel + 1,
+            jsonPointer: `${currentJsonPointer}/properties/${encodeStringForJSONPointer(
+              prop,
+            )}`,
+          }}
+        >
+          <CreateEdge
+            key={`object_unlisted_properties_${idx}`}
+            name={<strong>{prop}</strong>}
+            schema={true}
+            required={true}
+          />
+        </SchemaHierarchyContextProvider>
       ))}
     </ul>
   )

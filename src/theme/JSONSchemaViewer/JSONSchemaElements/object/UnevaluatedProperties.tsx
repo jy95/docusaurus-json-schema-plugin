@@ -2,6 +2,10 @@ import React from "react"
 import Translate from "@docusaurus/Translate"
 
 import { CreateEdge } from "@theme/JSONSchemaViewer/components"
+import {
+  SchemaHierarchyContextProvider,
+  useSchemaHierarchyContext,
+} from "@theme/JSONSchemaViewer/contexts/schemaHierarchy"
 
 import type { JSONSchemaNS } from "@theme/JSONSchemaViewer/types"
 
@@ -26,6 +30,8 @@ function UnevaluatedPropertiesLabel(): JSX.Element {
 }
 
 export default function CreateUnevaluatedProperties(props: Props): JSX.Element {
+  const { jsonPointer: currentJsonPointer, level: currentLevel } =
+    useSchemaHierarchyContext()
   const { schema } = props
 
   let unevaluatedProperties = schema.unevaluatedProperties
@@ -40,12 +46,19 @@ export default function CreateUnevaluatedProperties(props: Props): JSX.Element {
 
   return (
     <ul>
-      <CreateEdge
-        key={"object_unevaluatedProperties"}
-        name={<UnevaluatedPropertiesLabel />}
-        schema={unevaluatedProperties}
-        required={false}
-      />
+      <SchemaHierarchyContextProvider
+        value={{
+          level: currentLevel + 1,
+          jsonPointer: `${currentJsonPointer}/unevaluatedProperties`,
+        }}
+      >
+        <CreateEdge
+          key={"object_unevaluatedProperties"}
+          name={<UnevaluatedPropertiesLabel />}
+          schema={unevaluatedProperties}
+          required={false}
+        />
+      </SchemaHierarchyContextProvider>
     </ul>
   )
 }
