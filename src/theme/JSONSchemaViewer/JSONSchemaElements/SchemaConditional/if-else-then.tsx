@@ -4,10 +4,7 @@ import TabItem from "@theme-original/TabItem"
 import Tabs from "@theme-original/Tabs"
 
 import { CreateNodes } from "@theme/JSONSchemaViewer/components"
-import {
-  SchemaHierarchyContextProvider,
-  useSchemaHierarchyContext,
-} from "@theme/JSONSchemaViewer/contexts"
+import { SchemaHierarchyComponent } from "@theme/JSONSchemaViewer/contexts"
 
 import { IfLabel, ThenLabel, ElseLabel } from "@theme/JSONSchemaViewer/labels"
 
@@ -20,8 +17,6 @@ type Props = {
 
 // Handle if else then
 export default function IfElseThen(props: Props): JSX.Element {
-  const { jsonPointer: currentJsonPointer, level: currentLevel } =
-    useSchemaHierarchyContext()
   const { schema } = props
 
   const hasThen = schema.then !== undefined
@@ -54,36 +49,21 @@ export default function IfElseThen(props: Props): JSX.Element {
     switch (value) {
       case "schema_if":
         return (
-          <SchemaHierarchyContextProvider
-            value={{
-              level: currentLevel + 1,
-              jsonPointer: `${currentJsonPointer}/if`,
-            }}
-          >
+          <SchemaHierarchyComponent innerJsonPointer="/if">
             <CreateNodes schema={schema.if!} />
-          </SchemaHierarchyContextProvider>
+          </SchemaHierarchyComponent>
         )
       case "schema_then":
         return (
-          <SchemaHierarchyContextProvider
-            value={{
-              level: currentLevel + 1,
-              jsonPointer: `${currentJsonPointer}/then`,
-            }}
-          >
+          <SchemaHierarchyComponent innerJsonPointer="/then">
             <CreateNodes schema={schema.then!} />
-          </SchemaHierarchyContextProvider>
+          </SchemaHierarchyComponent>
         )
       case "schema_else":
         return (
-          <SchemaHierarchyContextProvider
-            value={{
-              level: currentLevel + 1,
-              jsonPointer: `${currentJsonPointer}/else`,
-            }}
-          >
+          <SchemaHierarchyComponent innerJsonPointer="/else">
             <CreateNodes schema={schema.else!} />
-          </SchemaHierarchyContextProvider>
+          </SchemaHierarchyComponent>
         )
     }
   }

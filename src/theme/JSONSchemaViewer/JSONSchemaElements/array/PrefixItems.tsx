@@ -2,10 +2,7 @@ import React from "react"
 import Translate from "@docusaurus/Translate"
 
 import { CreateEdge } from "@theme/JSONSchemaViewer/components"
-import {
-  SchemaHierarchyContextProvider,
-  useSchemaHierarchyContext,
-} from "@theme/JSONSchemaViewer/contexts"
+import { SchemaHierarchyComponent } from "@theme/JSONSchemaViewer/contexts"
 
 import type { JSONSchema, JSONSchemaNS } from "@theme/JSONSchemaViewer/types"
 
@@ -31,8 +28,6 @@ function PrefixItemsLabel({ count }: { count: number }): JSX.Element {
 }
 
 export default function CreatePrefixItems(props: Props): JSX.Element {
-  const { jsonPointer: currentJsonPointer, level: currentLevel } =
-    useSchemaHierarchyContext()
   const { schema } = props
 
   let items = schema.prefixItems
@@ -51,14 +46,9 @@ export default function CreatePrefixItems(props: Props): JSX.Element {
     <ul>
       {array.map((val, idx) => {
         return (
-          <SchemaHierarchyContextProvider
+          <SchemaHierarchyComponent
             key={`schema_hierarchy_${idx}`}
-            value={{
-              level: currentLevel + 1,
-              jsonPointer: `${currentJsonPointer}/prefixItems${
-                isArray ? `/${idx}` : ""
-              }`,
-            }}
+            innerJsonPointer={`/prefixItems${isArray ? `/${idx}` : ""}`}
           >
             <CreateEdge
               key={`array_prefixItems_${idx}`}
@@ -68,7 +58,7 @@ export default function CreatePrefixItems(props: Props): JSX.Element {
                 schema.minItems !== undefined && schema.minItems >= minimal
               }
             />
-          </SchemaHierarchyContextProvider>
+          </SchemaHierarchyComponent>
         )
       })}
     </ul>

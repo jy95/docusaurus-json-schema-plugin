@@ -1,10 +1,7 @@
 import React from "react"
 
 import { CreateEdge } from "@theme/JSONSchemaViewer/components"
-import {
-  SchemaHierarchyContextProvider,
-  useSchemaHierarchyContext,
-} from "@theme/JSONSchemaViewer/contexts"
+import { SchemaHierarchyComponent } from "@theme/JSONSchemaViewer/contexts"
 import { encodeStringForJSONPointer } from "@theme/JSONSchemaViewer/utils"
 
 import type { JSONSchemaNS } from "@theme/JSONSchemaViewer/types"
@@ -16,8 +13,6 @@ type Props = {
 
 // Generate properties
 export default function CreateProperties(props: Props): JSX.Element {
-  const { jsonPointer: currentJsonPointer, level: currentLevel } =
-    useSchemaHierarchyContext()
   const { schema } = props
 
   const properties = schema.properties
@@ -31,14 +26,9 @@ export default function CreateProperties(props: Props): JSX.Element {
     <ul>
       {Object.entries(properties).map(([key, value]) => {
         return (
-          <SchemaHierarchyContextProvider
+          <SchemaHierarchyComponent
             key={`object_properties_${key}`}
-            value={{
-              level: currentLevel + 1,
-              jsonPointer: `${currentJsonPointer}/properties/${encodeStringForJSONPointer(
-                key,
-              )}`,
-            }}
+            innerJsonPointer={`/properties/${encodeStringForJSONPointer(key)}`}
           >
             <CreateEdge
               name={<strong>{key}</strong>}
@@ -49,7 +39,7 @@ export default function CreateProperties(props: Props): JSX.Element {
                   : false
               }
             />
-          </SchemaHierarchyContextProvider>
+          </SchemaHierarchyComponent>
         )
       })}
     </ul>

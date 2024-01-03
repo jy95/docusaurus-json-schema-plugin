@@ -1,4 +1,4 @@
-import { useContext, createContext } from "react"
+import React, { useContext, createContext } from "react"
 
 export type SchemaHierarchy = {
   /**
@@ -22,3 +22,26 @@ export const useSchemaHierarchyContext = () =>
   useContext(SchemaHierarchyContext)
 
 export const SchemaHierarchyContextProvider = SchemaHierarchyContext.Provider
+
+export type SchemaHierarchyComponentProps = {
+  innerJsonPointer: `/${string}`
+  children: JSX.Element
+}
+
+export function SchemaHierarchyComponent({
+  innerJsonPointer,
+  children,
+}: SchemaHierarchyComponentProps): JSX.Element {
+  const { jsonPointer, level } = useSchemaHierarchyContext()
+
+  return (
+    <SchemaHierarchyContextProvider
+      value={{
+        jsonPointer: `${jsonPointer}${innerJsonPointer}`,
+        level: level + 1,
+      }}
+    >
+      {children}
+    </SchemaHierarchyContextProvider>
+  )
+}
