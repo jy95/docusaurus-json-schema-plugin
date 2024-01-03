@@ -29,10 +29,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   toRange: () => (/* binding */ toRange),
 /* harmony export */   toTextEdit: () => (/* binding */ toTextEdit)
 /* harmony export */ });
-/* harmony import */ var _editor_editor_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(60445);
+/* harmony import */ var _editor_editor_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(17912);
 /*!-----------------------------------------------------------------------------
  * Copyright (c) Microsoft Corporation. All rights reserved.
- * Version: 0.39.0(ff3621a3fa6389873be5412d17554294ea1b0941)
+ * Version: 0.44.0(3e047efd345ff102c8c61b5398fb30845aaac166)
  * Released under the MIT license
  * https://github.com/microsoft/monaco-editor/blob/main/LICENSE.txt
  *-----------------------------------------------------------------------------*/
