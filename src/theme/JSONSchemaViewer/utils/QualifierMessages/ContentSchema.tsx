@@ -3,6 +3,7 @@ import React from "react"
 import Translate from "@docusaurus/Translate"
 
 import { Collapsible, CreateNodes } from "@theme/JSONSchemaViewer/components"
+import { SchemaHierarchyComponent } from "@theme/JSONSchemaViewer/contexts"
 
 import type { JSONSchemaNS } from "@theme/JSONSchemaViewer/types"
 
@@ -39,7 +40,9 @@ export default function ContentSchema(props: Props): JSX.Element {
           open: true,
         }}
       >
-        <CreateNodes schema={schema.contentSchema!} />
+        <SchemaHierarchyComponent innerJsonPointer="/contentSchema">
+          <CreateNodes schema={schema.contentSchema!} />
+        </SchemaHierarchyComponent>
       </Collapsible>
     </div>
   )

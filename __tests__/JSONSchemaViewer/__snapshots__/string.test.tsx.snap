@@ -244,8 +244,8 @@ exports[`JSONSchemaViewer - string test contentSchema 1`] = `
                 </span>
                 <ul>
                   <li
-                    data-level={1}
-                    id="/properties/name"
+                    data-level={2}
+                    id="/contentSchema/properties/name"
                   >
                     <details
                       open={false}
@@ -298,8 +298,8 @@ exports[`JSONSchemaViewer - string test contentSchema 1`] = `
                     </details>
                   </li>
                   <li
-                    data-level={1}
-                    id="/properties/age"
+                    data-level={2}
+                    id="/contentSchema/properties/age"
                   >
                     <details
                       open={false}
