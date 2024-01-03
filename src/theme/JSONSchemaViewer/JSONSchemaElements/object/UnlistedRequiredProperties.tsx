@@ -1,6 +1,8 @@
 import React from "react"
 
 import { CreateEdge } from "@theme/JSONSchemaViewer/components"
+import { SchemaHierarchyComponent } from "@theme/JSONSchemaViewer/contexts"
+import { encodeStringForJSONPointer } from "@theme/JSONSchemaViewer/utils"
 
 import type { JSONSchemaNS } from "@theme/JSONSchemaViewer/types"
 
@@ -30,12 +32,16 @@ export default function CreateUnlistedProperties(props: Props): JSX.Element {
   return (
     <ul>
       {unlistedProperties.map((prop, idx) => (
-        <CreateEdge
+        <SchemaHierarchyComponent
           key={`object_unlisted_properties_${idx}`}
-          name={<strong>{prop}</strong>}
-          schema={true}
-          required={true}
-        />
+          innerJsonPointer={`/properties/${encodeStringForJSONPointer(prop)}`}
+        >
+          <CreateEdge
+            name={<strong>{prop}</strong>}
+            schema={true}
+            required={true}
+          />
+        </SchemaHierarchyComponent>
       ))}
     </ul>
   )

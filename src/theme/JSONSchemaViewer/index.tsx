@@ -2,7 +2,10 @@ import React, { useState, useEffect } from "react"
 import { Resolver } from "@stoplight/json-ref-resolver"
 
 import { CreateNodes, Collapsible } from "@theme/JSONSchemaViewer/components"
-import { JSVOptionsContextProvider } from "@theme/JSONSchemaViewer/contexts"
+import {
+  JSVOptionsContextProvider,
+  SchemaHierarchyContextProvider,
+} from "@theme/JSONSchemaViewer/contexts"
 
 import type { JSONSchema } from "@theme/JSONSchemaViewer/types"
 import type { JSVOptions } from "@theme/JSONSchemaViewer/contexts"
@@ -65,16 +68,23 @@ function JSONSchemaInnerViewer(props: InnerViewerProperties): JSX.Element {
   }
 
   return (
-    <JSVOptionsContextProvider value={startingState}>
-      <Collapsible
-        summary={<strong>{title}</strong>}
-        detailsProps={{
-          open: true,
-        }}
-      >
-        <CreateNodes schema={schema} />
-      </Collapsible>
-    </JSVOptionsContextProvider>
+    <SchemaHierarchyContextProvider
+      value={{
+        jsonPointer: "",
+        level: 0,
+      }}
+    >
+      <JSVOptionsContextProvider value={startingState}>
+        <Collapsible
+          summary={<strong>{title}</strong>}
+          detailsProps={{
+            open: true,
+          }}
+        >
+          <CreateNodes schema={schema} />
+        </Collapsible>
+      </JSVOptionsContextProvider>
+    </SchemaHierarchyContextProvider>
   )
 }
 

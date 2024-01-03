@@ -25,7 +25,10 @@ exports[`JSONSchemaViewer - References cases test 0 1`] = `
         object
       </span>
       <ul>
-        <li>
+        <li
+          data-level={1}
+          id="/properties/data"
+        >
           <details
             open={false}
           >
@@ -72,7 +75,10 @@ exports[`JSONSchemaViewer - References cases test 0 1`] = `
             </div>
           </details>
         </li>
-        <li>
+        <li
+          data-level={1}
+          id="/properties/children"
+        >
           <details
             open={false}
           >
@@ -111,7 +117,10 @@ exports[`JSONSchemaViewer - References cases test 0 1`] = `
                   array
                 </span>
                 <ul>
-                  <li>
+                  <li
+                    data-level={2}
+                    id="/properties/children/items"
+                  >
                     <details
                       open={false}
                     >

@@ -4,6 +4,7 @@ import TabItem from "@theme-original/TabItem"
 import Tabs from "@theme-original/Tabs"
 
 import { CreateNodes } from "@theme/JSONSchemaViewer/components"
+import { SchemaHierarchyComponent } from "@theme/JSONSchemaViewer/contexts"
 
 import { IfLabel, ThenLabel, ElseLabel } from "@theme/JSONSchemaViewer/labels"
 
@@ -47,11 +48,23 @@ export default function IfElseThen(props: Props): JSX.Element {
   ) {
     switch (value) {
       case "schema_if":
-        return <CreateNodes schema={schema.if!} />
+        return (
+          <SchemaHierarchyComponent innerJsonPointer="/if">
+            <CreateNodes schema={schema.if!} />
+          </SchemaHierarchyComponent>
+        )
       case "schema_then":
-        return <CreateNodes schema={schema.then!} />
+        return (
+          <SchemaHierarchyComponent innerJsonPointer="/then">
+            <CreateNodes schema={schema.then!} />
+          </SchemaHierarchyComponent>
+        )
       case "schema_else":
-        return <CreateNodes schema={schema.else!} />
+        return (
+          <SchemaHierarchyComponent innerJsonPointer="/else">
+            <CreateNodes schema={schema.else!} />
+          </SchemaHierarchyComponent>
+        )
     }
   }
 

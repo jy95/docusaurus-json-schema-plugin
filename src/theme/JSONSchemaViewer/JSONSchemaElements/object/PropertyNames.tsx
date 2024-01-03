@@ -1,6 +1,7 @@
 import React from "react"
 
 import { CreateEdge } from "@theme/JSONSchemaViewer/components"
+import { SchemaHierarchyComponent } from "@theme/JSONSchemaViewer/contexts"
 
 import type { JSONSchemaNS } from "@theme/JSONSchemaViewer/types"
 
@@ -32,12 +33,14 @@ export default function PropertyNames(props: Props): JSX.Element {
 
   return (
     <ul>
-      <CreateEdge
-        key={"propertyNames"}
-        name={<code>{pattern}</code>}
-        schema={newSchema}
-        required={false}
-      />
+      <SchemaHierarchyComponent innerJsonPointer="/propertyNames">
+        <CreateEdge
+          key={"propertyNames"}
+          name={<code>{pattern}</code>}
+          schema={newSchema}
+          required={false}
+        />
+      </SchemaHierarchyComponent>
     </ul>
   )
 }

@@ -2,6 +2,7 @@ import React from "react"
 import Translate from "@docusaurus/Translate"
 
 import { CreateEdge } from "@theme/JSONSchemaViewer/components"
+import { SchemaHierarchyComponent } from "@theme/JSONSchemaViewer/contexts"
 
 import type { JSONSchemaNS } from "@theme/JSONSchemaViewer/types"
 
@@ -57,12 +58,18 @@ export default function CreateItems(props: Props): JSX.Element {
   return (
     <ul>
       {itemsAsArray.map((item, idx) => (
-        <CreateEdge
+        <SchemaHierarchyComponent
           key={`array_items_${idx}`}
-          name={<ItemsLabel index={startingIndex + idx} isArray={isArray} />}
-          schema={item}
-          required={schema.minItems !== undefined && schema.minItems >= minimal}
-        />
+          innerJsonPointer={`/items${isArray ? `/${idx}` : ""}`}
+        >
+          <CreateEdge
+            name={<ItemsLabel index={startingIndex + idx} isArray={isArray} />}
+            schema={item}
+            required={
+              schema.minItems !== undefined && schema.minItems >= minimal
+            }
+          />
+        </SchemaHierarchyComponent>
       ))}
     </ul>
   )

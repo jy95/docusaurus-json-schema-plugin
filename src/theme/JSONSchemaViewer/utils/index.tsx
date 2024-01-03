@@ -8,3 +8,6 @@ export { default as QualifierMessages } from "@theme/JSONSchemaViewer/utils/getQ
 
 // Re export detectTypes functions
 export * from "@theme/JSONSchemaViewer/utils/detectTypes"
+
+// Re export encodeStringForJSONPointer function
+export * from "@theme/JSONSchemaViewer/utils/formatJSONPointer"

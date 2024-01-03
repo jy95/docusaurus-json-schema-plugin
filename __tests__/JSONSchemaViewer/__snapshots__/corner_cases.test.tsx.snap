@@ -16,7 +16,10 @@ exports[`JSONSchemaViewer - corner cases CreateArray - invalid usage of Addition
     array
   </span>,
   <ul>
-    <li>
+    <li
+      data-level={1}
+      id="/items"
+    >
       <details
         open={false}
       >
@@ -63,7 +66,10 @@ exports[`JSONSchemaViewer - corner cases CreateArray - invalid usage of Addition
     </li>
   </ul>,
   <ul>
-    <li>
+    <li
+      data-level={1}
+      id="/additionalItems"
+    >
       <details
         open={false}
       >
@@ -135,7 +141,10 @@ exports[`JSONSchemaViewer - corner cases CreateArray - sub properties as boolean
     array
   </span>,
   <ul>
-    <li>
+    <li
+      data-level={1}
+      id="/prefixItems"
+    >
       <details
         open={false}
       >
@@ -184,7 +193,10 @@ exports[`JSONSchemaViewer - corner cases CreateArray - sub properties as boolean
     </li>
   </ul>,
   <ul>
-    <li>
+    <li
+      data-level={1}
+      id="/items"
+    >
       <details
         open={false}
       >
@@ -233,7 +245,10 @@ exports[`JSONSchemaViewer - corner cases CreateArray - sub properties as boolean
     </li>
   </ul>,
   <ul>
-    <li>
+    <li
+      data-level={1}
+      id="/contains"
+    >
       <details
         open={false}
       >

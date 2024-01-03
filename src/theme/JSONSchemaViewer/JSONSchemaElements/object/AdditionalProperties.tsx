@@ -2,6 +2,7 @@ import React from "react"
 import Translate from "@docusaurus/Translate"
 
 import { CreateEdge } from "@theme/JSONSchemaViewer/components"
+import { SchemaHierarchyComponent } from "@theme/JSONSchemaViewer/contexts"
 
 import type { JSONSchemaNS } from "@theme/JSONSchemaViewer/types"
 
@@ -40,12 +41,14 @@ export default function CreateAdditionalProperties(props: Props): JSX.Element {
 
   return (
     <ul>
-      <CreateEdge
-        key={"object_additionalProperties"}
-        name={<AdditionalPropertiesLabel />}
-        schema={additionalProperties}
-        required={false}
-      />
+      <SchemaHierarchyComponent innerJsonPointer="/additionalProperties">
+        <CreateEdge
+          key={"object_additionalProperties"}
+          name={<AdditionalPropertiesLabel />}
+          schema={additionalProperties}
+          required={false}
+        />
+      </SchemaHierarchyComponent>
     </ul>
   )
 }

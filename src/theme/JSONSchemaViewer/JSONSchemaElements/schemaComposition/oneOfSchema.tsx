@@ -5,6 +5,7 @@ import TabItem from "@theme-original/TabItem"
 import Tabs from "@theme-original/Tabs"
 
 import { CreateNodes } from "@theme/JSONSchemaViewer/components"
+import { SchemaHierarchyComponent } from "@theme/JSONSchemaViewer/contexts"
 
 import { GenerateFriendlyName } from "@theme/JSONSchemaViewer/utils"
 
@@ -32,7 +33,9 @@ export default function OneOfSchema(props: Props): JSX.Element {
               value={`schema_${typeOf}_${index}`}
               label={<GenerateFriendlyName schema={compositeSchema} />}
             >
-              <CreateNodes schema={compositeSchema} />
+              <SchemaHierarchyComponent innerJsonPointer={`/oneOf/${index}`}>
+                <CreateNodes schema={compositeSchema} />
+              </SchemaHierarchyComponent>
             </TabItem>
           )
         })}

@@ -1,6 +1,8 @@
 import React from "react"
 
 import { CreateEdge } from "@theme/JSONSchemaViewer/components"
+import { SchemaHierarchyComponent } from "@theme/JSONSchemaViewer/contexts"
+import { encodeStringForJSONPointer } from "@theme/JSONSchemaViewer/utils"
 
 import type { JSONSchemaNS } from "@theme/JSONSchemaViewer/types"
 
@@ -23,12 +25,18 @@ export default function CreatePatternProperties(props: Props): JSX.Element {
   return (
     <ul>
       {Object.entries(patternProperties).map(([key, value]) => (
-        <CreateEdge
+        <SchemaHierarchyComponent
           key={`object_patternProperties_${key}`}
-          name={<code>{key}</code>}
-          schema={value}
-          required={false}
-        />
+          innerJsonPointer={`/patternProperties/${encodeStringForJSONPointer(
+            key,
+          )}`}
+        >
+          <CreateEdge
+            name={<code>{key}</code>}
+            schema={value}
+            required={false}
+          />
+        </SchemaHierarchyComponent>
       ))}
     </ul>
   )

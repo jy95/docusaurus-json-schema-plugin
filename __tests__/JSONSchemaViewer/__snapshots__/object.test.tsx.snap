@@ -25,7 +25,10 @@ exports[`JSONSchemaViewer - object test Unspecified required properties 1`] = `
         object
       </span>
       <ul>
-        <li>
+        <li
+          data-level={1}
+          id="/properties/prop1"
+        >
           <details
             open={false}
           >
@@ -76,7 +79,10 @@ exports[`JSONSchemaViewer - object test Unspecified required properties 1`] = `
             </div>
           </details>
         </li>
-        <li>
+        <li
+          data-level={1}
+          id="/properties/prop2"
+        >
           <details
             open={false}
           >
@@ -211,7 +217,10 @@ exports[`JSONSchemaViewer - object test additionalProperties (JSON Schema) 1`] =
         object
       </span>
       <ul>
-        <li>
+        <li
+          data-level={1}
+          id="/properties/number"
+        >
           <details
             open={false}
           >
@@ -256,7 +265,10 @@ exports[`JSONSchemaViewer - object test additionalProperties (JSON Schema) 1`] =
             </div>
           </details>
         </li>
-        <li>
+        <li
+          data-level={1}
+          id="/properties/street_name"
+        >
           <details
             open={false}
           >
@@ -301,7 +313,10 @@ exports[`JSONSchemaViewer - object test additionalProperties (JSON Schema) 1`] =
             </div>
           </details>
         </li>
-        <li>
+        <li
+          data-level={1}
+          id="/properties/street_type"
+        >
           <details
             open={false}
           >
@@ -372,7 +387,10 @@ exports[`JSONSchemaViewer - object test additionalProperties (JSON Schema) 1`] =
         </li>
       </ul>
       <ul>
-        <li>
+        <li
+          data-level={1}
+          id="/additionalProperties"
+        >
           <details
             open={false}
           >
@@ -455,7 +473,10 @@ exports[`JSONSchemaViewer - object test additionalProperties (false) 1`] = `
         object
       </span>
       <ul>
-        <li>
+        <li
+          data-level={1}
+          id="/properties/number"
+        >
           <details
             open={false}
           >
@@ -500,7 +521,10 @@ exports[`JSONSchemaViewer - object test additionalProperties (false) 1`] = `
             </div>
           </details>
         </li>
-        <li>
+        <li
+          data-level={1}
+          id="/properties/street_name"
+        >
           <details
             open={false}
           >
@@ -545,7 +569,10 @@ exports[`JSONSchemaViewer - object test additionalProperties (false) 1`] = `
             </div>
           </details>
         </li>
-        <li>
+        <li
+          data-level={1}
+          id="/properties/street_type"
+        >
           <details
             open={false}
           >
@@ -657,7 +684,10 @@ exports[`JSONSchemaViewer - object test additionalProperties with patternPropert
         object
       </span>
       <ul>
-        <li>
+        <li
+          data-level={1}
+          id="/properties/builtin"
+        >
           <details
             open={false}
           >
@@ -704,7 +734,10 @@ exports[`JSONSchemaViewer - object test additionalProperties with patternPropert
         </li>
       </ul>
       <ul>
-        <li>
+        <li
+          data-level={1}
+          id="/patternProperties/^S_"
+        >
           <details
             open={false}
           >
@@ -749,7 +782,10 @@ exports[`JSONSchemaViewer - object test additionalProperties with patternPropert
             </div>
           </details>
         </li>
-        <li>
+        <li
+          data-level={1}
+          id="/patternProperties/^I_"
+        >
           <details
             open={false}
           >
@@ -796,7 +832,10 @@ exports[`JSONSchemaViewer - object test additionalProperties with patternPropert
         </li>
       </ul>
       <ul>
-        <li>
+        <li
+          data-level={1}
+          id="/additionalProperties"
+        >
           <details
             open={false}
           >
@@ -1025,7 +1064,10 @@ exports[`JSONSchemaViewer - object test patternProperties 1`] = `
         object
       </span>
       <ul>
-        <li>
+        <li
+          data-level={1}
+          id="/patternProperties/^S_"
+        >
           <details
             open={false}
           >
@@ -1070,7 +1112,10 @@ exports[`JSONSchemaViewer - object test patternProperties 1`] = `
             </div>
           </details>
         </li>
-        <li>
+        <li
+          data-level={1}
+          id="/patternProperties/^I_"
+        >
           <details
             open={false}
           >
@@ -1153,7 +1198,10 @@ exports[`JSONSchemaViewer - object test properties 1`] = `
         object
       </span>
       <ul>
-        <li>
+        <li
+          data-level={1}
+          id="/properties/number"
+        >
           <details
             open={false}
           >
@@ -1198,7 +1246,10 @@ exports[`JSONSchemaViewer - object test properties 1`] = `
             </div>
           </details>
         </li>
-        <li>
+        <li
+          data-level={1}
+          id="/properties/street_name"
+        >
           <details
             open={false}
           >
@@ -1243,7 +1294,10 @@ exports[`JSONSchemaViewer - object test properties 1`] = `
             </div>
           </details>
         </li>
-        <li>
+        <li
+          data-level={1}
+          id="/properties/street_type"
+        >
           <details
             open={false}
           >
@@ -1350,7 +1404,10 @@ exports[`JSONSchemaViewer - object test propertyNames 1`] = `
         object
       </span>
       <ul>
-        <li>
+        <li
+          data-level={1}
+          id="/propertyNames"
+        >
           <details
             open={false}
           >
@@ -1442,7 +1499,10 @@ exports[`JSONSchemaViewer - object test required 1`] = `
         object
       </span>
       <ul>
-        <li>
+        <li
+          data-level={1}
+          id="/properties/id"
+        >
           <details
             open={false}
           >
@@ -1496,7 +1556,10 @@ exports[`JSONSchemaViewer - object test required 1`] = `
             </div>
           </details>
         </li>
-        <li>
+        <li
+          data-level={1}
+          id="/properties/name"
+        >
           <details
             open={false}
           >
@@ -1545,7 +1608,10 @@ exports[`JSONSchemaViewer - object test required 1`] = `
             </div>
           </details>
         </li>
-        <li>
+        <li
+          data-level={1}
+          id="/properties/email"
+        >
           <details
             open={false}
           >
@@ -1594,7 +1660,10 @@ exports[`JSONSchemaViewer - object test required 1`] = `
             </div>
           </details>
         </li>
-        <li>
+        <li
+          data-level={1}
+          id="/properties/address"
+        >
           <details
             open={false}
           >
@@ -1639,7 +1708,10 @@ exports[`JSONSchemaViewer - object test required 1`] = `
             </div>
           </details>
         </li>
-        <li>
+        <li
+          data-level={1}
+          id="/properties/telephone"
+        >
           <details
             open={false}
           >
@@ -1693,7 +1765,10 @@ exports[`JSONSchemaViewer - object test required 1`] = `
             </div>
           </details>
         </li>
-        <li>
+        <li
+          data-level={1}
+          id="/properties/pin_code"
+        >
           <details
             open={false}
           >
@@ -1871,7 +1946,10 @@ exports[`JSONSchemaViewer - object test unevaluatedProperties as not a boolean 1
         object
       </span>
       <ul>
-        <li>
+        <li
+          data-level={1}
+          id="/unevaluatedProperties"
+        >
           <details
             open={false}
           >

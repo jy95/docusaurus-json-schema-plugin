@@ -2,6 +2,7 @@ import React from "react"
 import Translate from "@docusaurus/Translate"
 
 import { CreateEdge } from "@theme/JSONSchemaViewer/components"
+import { SchemaHierarchyComponent } from "@theme/JSONSchemaViewer/contexts"
 
 import type { JSONSchemaNS } from "@theme/JSONSchemaViewer/types"
 
@@ -42,14 +43,17 @@ export default function CreateAdditionalItems(props: Props): JSX.Element {
 
   return (
     <ul>
-      <CreateEdge
-        key={`array_additionalItems`}
-        name={<AdditionalItemsLabel count={startingIndex} />}
-        schema={items}
-        required={
-          schema.minItems !== undefined && startingIndex >= schema.minItems - 1
-        }
-      />
+      <SchemaHierarchyComponent innerJsonPointer="/additionalItems">
+        <CreateEdge
+          key={`array_additionalItems`}
+          name={<AdditionalItemsLabel count={startingIndex} />}
+          schema={items}
+          required={
+            schema.minItems !== undefined &&
+            startingIndex >= schema.minItems - 1
+          }
+        />
+      </SchemaHierarchyComponent>
     </ul>
   )
 }

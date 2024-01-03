@@ -25,7 +25,10 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Array specified only
         array
       </span>
       <ul>
-        <li>
+        <li
+          data-level={1}
+          id="/prefixItems/0"
+        >
           <details
             open={false}
           >
@@ -76,7 +79,10 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Array specified only
                   array
                 </span>
                 <ul>
-                  <li>
+                  <li
+                    data-level={2}
+                    id="/prefixItems/0/items"
+                  >
                     <details
                       open={false}
                     >
@@ -270,7 +276,10 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Array specified only
         array
       </span>
       <ul>
-        <li>
+        <li
+          data-level={1}
+          id="/prefixItems/0"
+        >
           <details
             open={false}
           >
@@ -317,7 +326,10 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Array specified only
                   array
                 </span>
                 <ul>
-                  <li>
+                  <li
+                    data-level={2}
+                    id="/prefixItems/0/prefixItems/0"
+                  >
                     <details
                       open={false}
                     >
@@ -362,7 +374,10 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Array specified only
                       </div>
                     </details>
                   </li>
-                  <li>
+                  <li
+                    data-level={2}
+                    id="/prefixItems/0/prefixItems/1"
+                  >
                     <details
                       open={false}
                     >
@@ -409,7 +424,10 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Array specified only
                   </li>
                 </ul>
                 <ul>
-                  <li>
+                  <li
+                    data-level={2}
+                    id="/prefixItems/0/items"
+                  >
                     <details
                       open={false}
                     >
@@ -511,7 +529,10 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Array specified with
         array
       </span>
       <ul>
-        <li>
+        <li
+          data-level={1}
+          id="/items"
+        >
           <details
             open={false}
           >
@@ -570,7 +591,10 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Array specified with
                   array
                 </span>
                 <ul>
-                  <li>
+                  <li
+                    data-level={2}
+                    id="/items/items/0"
+                  >
                     <details
                       open={false}
                     >
@@ -615,7 +639,10 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Array specified with
                       </div>
                     </details>
                   </li>
-                  <li>
+                  <li
+                    data-level={2}
+                    id="/items/items/1"
+                  >
                     <details
                       open={false}
                     >
@@ -662,7 +689,10 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Array specified with
                   </li>
                 </ul>
                 <ul>
-                  <li>
+                  <li
+                    data-level={2}
+                    id="/items/additionalItems"
+                  >
                     <details
                       open={false}
                     >
@@ -757,7 +787,10 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Array specified with
         array
       </span>
       <ul>
-        <li>
+        <li
+          data-level={1}
+          id="/prefixItems/0"
+        >
           <details
             open={false}
           >
@@ -808,7 +841,10 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Array specified with
                   array
                 </span>
                 <ul>
-                  <li>
+                  <li
+                    data-level={2}
+                    id="/prefixItems/0/items/0"
+                  >
                     <details
                       open={false}
                     >
@@ -855,7 +891,10 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Array specified with
                   </li>
                 </ul>
                 <ul>
-                  <li>
+                  <li
+                    data-level={2}
+                    id="/prefixItems/0/contains"
+                  >
                     <details
                       open={false}
                     >
@@ -950,7 +989,10 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Array specified with
         array
       </span>
       <ul>
-        <li>
+        <li
+          data-level={1}
+          id="/items"
+        >
           <details
             open={false}
           >
@@ -1009,7 +1051,10 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Array specified with
                   array
                 </span>
                 <ul>
-                  <li>
+                  <li
+                    data-level={2}
+                    id="/items/prefixItems/0"
+                  >
                     <details
                       open={false}
                     >
@@ -1054,7 +1099,10 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Array specified with
                       </div>
                     </details>
                   </li>
-                  <li>
+                  <li
+                    data-level={2}
+                    id="/items/prefixItems/1"
+                  >
                     <details
                       open={false}
                     >
@@ -1101,7 +1149,10 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Array specified with
                   </li>
                 </ul>
                 <ul>
-                  <li>
+                  <li
+                    data-level={2}
+                    id="/items/unevaluatedItems"
+                  >
                     <details
                       open={false}
                     >
@@ -1196,7 +1247,10 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Multiple types 1`] =
         array
       </span>
       <ul>
-        <li>
+        <li
+          data-level={1}
+          id="/prefixItems/0"
+        >
           <details
             open={false}
           >
@@ -1298,7 +1352,10 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Not (integer) 1`] = 
         array
       </span>
       <ul>
-        <li>
+        <li
+          data-level={1}
+          id="/prefixItems/0"
+        >
           <details
             open={false}
           >
@@ -1394,7 +1451,10 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Number without expli
         array
       </span>
       <ul>
-        <li>
+        <li
+          data-level={1}
+          id="/prefixItems/0"
+        >
           <details
             open={false}
           >
@@ -1487,7 +1547,10 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test OR / XOR / AND 1`] =
         array
       </span>
       <ul>
-        <li>
+        <li
+          data-level={1}
+          id="/prefixItems/0"
+        >
           <details
             open={false}
           >
@@ -1653,7 +1716,10 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test OR / XOR / AND 1`] =
             </div>
           </details>
         </li>
-        <li>
+        <li
+          data-level={1}
+          id="/prefixItems/1"
+        >
           <details
             open={false}
           >
@@ -1819,7 +1885,10 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test OR / XOR / AND 1`] =
             </div>
           </details>
         </li>
-        <li>
+        <li
+          data-level={1}
+          id="/prefixItems/2"
+        >
           <details
             open={false}
           >
@@ -2013,7 +2082,10 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Object without expli
         array
       </span>
       <ul>
-        <li>
+        <li
+          data-level={1}
+          id="/prefixItems/0"
+        >
           <details
             open={false}
           >
@@ -2106,7 +2178,10 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Prefer title 1`] = `
         array
       </span>
       <ul>
-        <li>
+        <li
+          data-level={1}
+          id="/prefixItems/0"
+        >
           <details
             open={false}
           >
@@ -2133,7 +2208,10 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Prefer title 1`] = `
                   object
                 </span>
                 <ul>
-                  <li>
+                  <li
+                    data-level={2}
+                    id="/prefixItems/0/properties/text"
+                  >
                     <details
                       open={false}
                     >
@@ -2238,7 +2316,10 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Simple array 1`] = `
         array
       </span>
       <ul>
-        <li>
+        <li
+          data-level={1}
+          id="/prefixItems/0"
+        >
           <details
             open={false}
           >

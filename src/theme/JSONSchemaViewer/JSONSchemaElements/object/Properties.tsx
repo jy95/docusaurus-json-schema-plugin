@@ -1,6 +1,8 @@
 import React from "react"
 
 import { CreateEdge } from "@theme/JSONSchemaViewer/components"
+import { SchemaHierarchyComponent } from "@theme/JSONSchemaViewer/contexts"
+import { encodeStringForJSONPointer } from "@theme/JSONSchemaViewer/utils"
 
 import type { JSONSchemaNS } from "@theme/JSONSchemaViewer/types"
 
@@ -24,16 +26,20 @@ export default function CreateProperties(props: Props): JSX.Element {
     <ul>
       {Object.entries(properties).map(([key, value]) => {
         return (
-          <CreateEdge
+          <SchemaHierarchyComponent
             key={`object_properties_${key}`}
-            name={<strong>{key}</strong>}
-            schema={value}
-            required={
-              Array.isArray(schema.required)
-                ? schema.required.includes(key)
-                : false
-            }
-          />
+            innerJsonPointer={`/properties/${encodeStringForJSONPointer(key)}`}
+          >
+            <CreateEdge
+              name={<strong>{key}</strong>}
+              schema={value}
+              required={
+                Array.isArray(schema.required)
+                  ? schema.required.includes(key)
+                  : false
+              }
+            />
+          </SchemaHierarchyComponent>
         )
       })}
     </ul>

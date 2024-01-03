@@ -2,6 +2,7 @@ import React from "react"
 import Translate from "@docusaurus/Translate"
 
 import { CreateEdge } from "@theme/JSONSchemaViewer/components"
+import { SchemaHierarchyComponent } from "@theme/JSONSchemaViewer/contexts"
 
 import type { JSONSchemaNS } from "@theme/JSONSchemaViewer/types"
 
@@ -33,12 +34,14 @@ export default function CreateContains(props: Props): JSX.Element {
 
   return (
     <ul>
-      <CreateEdge
-        key={"contains"}
-        name={containsLabel}
-        schema={item}
-        required={schema.minContains !== undefined && schema.minContains > 0}
-      />
+      <SchemaHierarchyComponent innerJsonPointer="/contains">
+        <CreateEdge
+          key={"contains"}
+          name={containsLabel}
+          schema={item}
+          required={schema.minContains !== undefined && schema.minContains > 0}
+        />
+      </SchemaHierarchyComponent>
     </ul>
   )
 }

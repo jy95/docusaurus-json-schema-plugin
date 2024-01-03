@@ -1,6 +1,7 @@
 import React from "react"
 
 import { CreateNodes } from "@theme/JSONSchemaViewer/components"
+import { SchemaHierarchyComponent } from "@theme/JSONSchemaViewer/contexts"
 
 import type { JSONSchema } from "@theme/JSONSchemaViewer/types"
 
@@ -19,7 +20,9 @@ export default function NotSchema(props: Props): JSX.Element {
     <div>
       <span className="badge badge--danger">{typeOf}</span>
       <br />
-      <CreateNodes schema={typedSchema} />
+      <SchemaHierarchyComponent innerJsonPointer="/not">
+        <CreateNodes schema={typedSchema} />
+      </SchemaHierarchyComponent>
     </div>
   )
 }

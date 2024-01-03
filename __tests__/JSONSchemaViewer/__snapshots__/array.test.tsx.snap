@@ -61,7 +61,10 @@ exports[`JSONSchemaViewer - Array type test 1 1`] = `
         array
       </span>
       <ul>
-        <li>
+        <li
+          data-level={1}
+          id="/contains"
+        >
           <details
             open={false}
           >
@@ -144,7 +147,10 @@ exports[`JSONSchemaViewer - Array type test 2 1`] = `
         array
       </span>
       <ul>
-        <li>
+        <li
+          data-level={1}
+          id="/items"
+        >
           <details
             open={false}
           >
@@ -281,7 +287,10 @@ exports[`JSONSchemaViewer - Array type test 4 1`] = `
         array
       </span>
       <ul>
-        <li>
+        <li
+          data-level={1}
+          id="/contains"
+        >
           <details
             open={false}
           >
@@ -386,7 +395,10 @@ exports[`JSONSchemaViewer - Array type test 5 1`] = `
         array
       </span>
       <ul>
-        <li>
+        <li
+          data-level={1}
+          id="/prefixItems/0"
+        >
           <details
             open={false}
           >
@@ -440,7 +452,10 @@ exports[`JSONSchemaViewer - Array type test 5 1`] = `
             </div>
           </details>
         </li>
-        <li>
+        <li
+          data-level={1}
+          id="/prefixItems/1"
+        >
           <details
             open={false}
           >
@@ -494,7 +509,10 @@ exports[`JSONSchemaViewer - Array type test 5 1`] = `
             </div>
           </details>
         </li>
-        <li>
+        <li
+          data-level={1}
+          id="/prefixItems/2"
+        >
           <details
             open={false}
           >
@@ -572,7 +590,10 @@ exports[`JSONSchemaViewer - Array type test 5 1`] = `
             </div>
           </details>
         </li>
-        <li>
+        <li
+          data-level={1}
+          id="/prefixItems/3"
+        >
           <details
             open={false}
           >
@@ -657,7 +678,10 @@ exports[`JSONSchemaViewer - Array type test 5 1`] = `
         </li>
       </ul>
       <ul>
-        <li>
+        <li
+          data-level={1}
+          id="/items"
+        >
           <details
             open={false}
           >
@@ -986,7 +1010,10 @@ exports[`JSONSchemaViewer - Array type test 11 1`] = `
         array
       </span>
       <ul>
-        <li>
+        <li
+          data-level={1}
+          id="/items/0"
+        >
           <details
             open={false}
           >
@@ -1031,7 +1058,10 @@ exports[`JSONSchemaViewer - Array type test 11 1`] = `
             </div>
           </details>
         </li>
-        <li>
+        <li
+          data-level={1}
+          id="/items/1"
+        >
           <details
             open={false}
           >
@@ -1124,7 +1154,10 @@ exports[`JSONSchemaViewer - Array type test 12 1`] = `
         array
       </span>
       <ul>
-        <li>
+        <li
+          data-level={1}
+          id="/prefixItems/0"
+        >
           <details
             open={false}
           >
@@ -1173,7 +1206,10 @@ exports[`JSONSchemaViewer - Array type test 12 1`] = `
             </div>
           </details>
         </li>
-        <li>
+        <li
+          data-level={1}
+          id="/prefixItems/1"
+        >
           <details
             open={false}
           >
@@ -1270,7 +1306,10 @@ exports[`JSONSchemaViewer - Array type test 13 1`] = `
         array
       </span>
       <ul>
-        <li>
+        <li
+          data-level={1}
+          id="/items"
+        >
           <details
             open={false}
           >
@@ -1408,7 +1447,10 @@ exports[`JSONSchemaViewer - Array type test 15 1`] = `
         array
       </span>
       <ul>
-        <li>
+        <li
+          data-level={1}
+          id="/items/0"
+        >
           <details
             open={false}
           >
@@ -1457,7 +1499,10 @@ exports[`JSONSchemaViewer - Array type test 15 1`] = `
             </div>
           </details>
         </li>
-        <li>
+        <li
+          data-level={1}
+          id="/items/1"
+        >
           <details
             open={false}
           >
@@ -1508,7 +1553,10 @@ exports[`JSONSchemaViewer - Array type test 15 1`] = `
         </li>
       </ul>
       <ul>
-        <li>
+        <li
+          data-level={1}
+          id="/additionalItems"
+        >
           <details
             open={false}
           >
@@ -1605,7 +1653,10 @@ exports[`JSONSchemaViewer - Array type test 16 1`] = `
         array
       </span>
       <ul>
-        <li>
+        <li
+          data-level={1}
+          id="/prefixItems/0"
+        >
           <details
             open={false}
           >
@@ -1652,7 +1703,10 @@ exports[`JSONSchemaViewer - Array type test 16 1`] = `
         </li>
       </ul>
       <ul>
-        <li>
+        <li
+          data-level={1}
+          id="/unevaluatedItems"
+        >
           <details
             open={false}
           >
