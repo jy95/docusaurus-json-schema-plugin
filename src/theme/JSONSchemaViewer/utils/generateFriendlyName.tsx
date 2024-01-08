@@ -1,5 +1,7 @@
 import React from "react"
 
+import CodeBlock from "@theme-original/CodeBlock"
+
 // Utility functions to know which case we have
 import { detectedTypes } from "@theme/JSONSchemaViewer/utils"
 
@@ -17,7 +19,6 @@ import type {
   JSONSchemaNS,
   TypeValues,
 } from "@theme/JSONSchemaViewer/types"
-import { printSchemaType } from "@theme/JSONSchemaViewer/utils/QualifierMessages"
 
 // common function I need below
 function shouldAddSeparator(idx: number, length: number): boolean {
@@ -139,12 +140,21 @@ function CustomizeType({ schema, type }: CustomizeProps): JSX.Element {
   }
 
   // For constant values
+  // I used Docusaurus Codeblock (instead of printSchemaType) as they put quotes whereas normal <code> don't
   if (!["array", "object"].includes(type)) {
     if (schema.const !== undefined) {
-      return printSchemaType(schema.const)
+      return (
+        <CodeBlock language="json">{`${JSON.stringify(
+          schema.const,
+        )}`}</CodeBlock>
+      )
     }
     if (schema.enum !== undefined && schema.enum.length === 1) {
-      return printSchemaType(schema.enum[0])
+      return (
+        <CodeBlock language="json">{`${JSON.stringify(
+          schema.enum[0],
+        )}`}</CodeBlock>
+      )
     }
   }
 

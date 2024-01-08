@@ -2221,7 +2221,7 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Prefer title 1`] = `
                         </strong>
                          
                         <code>
-                          Hello World
+                          "Hello World"
                         </code>
                          
                         <strong>
