@@ -43,6 +43,17 @@ const testcases: [string, JSONSchema][] = [
       examples: ["red"],
     },
   ],
+  [
+    "const (as single enum value)",
+    {
+      properties: {
+        country: {
+          enum: ["US"],
+          description: "const (as single enum value)",
+        },
+      },
+    },
+  ],
 ]
 
 describe("JSONSchemaViewer - Generic keywords", () => {
