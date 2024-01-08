@@ -435,6 +435,10 @@ exports[`JSONSchemaViewer - constructor Overwrite default ValueComponent value 1
               >
                 object
               </span>
+               
+              <strong>
+                constant
+              </strong>
             </summary>
             <div>
               <div>

@@ -137,6 +137,16 @@ function CustomizeType({ schema, type }: CustomizeProps): JSX.Element {
     return <CustomizeArray schema={schema as JSONSchemaNS.Array} />
   }
 
+  // For constant values
+  if (!["array", "object"].includes(type)) {
+    if (schema.const !== undefined) {
+      return <code>{`${JSON.stringify(schema.const)}`}</code>
+    }
+    if (schema.enum !== undefined && schema.enum.length === 1) {
+      return <code>{`${JSON.stringify(schema.enum[0])}`}</code>
+    }
+  }
+
   // By default, render the type as it
   return <TypeLabelSwitch type={type} />
 }

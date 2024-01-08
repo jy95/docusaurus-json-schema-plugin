@@ -1,0 +1,4 @@
+.constant {
+    font-size: var(--ifm-code-font-size);
+    color: var(--ifm-color-secondary-darkest);
+}

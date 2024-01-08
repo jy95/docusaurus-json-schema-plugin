@@ -330,15 +330,13 @@ exports[`JSONSchemaViewer - schema conditionally test If Then Else (multiple) 1`
                                         country
                                       </strong>
                                        
-                                      <span
-                                        style={
-                                          {
-                                            "opacity": "0.6",
-                                          }
-                                        }
-                                      >
-                                        string
-                                      </span>
+                                      <code>
+                                        "United States of America"
+                                      </code>
+                                       
+                                      <strong>
+                                        constant
+                                      </strong>
                                     </summary>
                                     <div>
                                       <div>
@@ -589,18 +587,16 @@ exports[`JSONSchemaViewer - schema conditionally test If Then Else (multiple) 1`
                                         country
                                       </strong>
                                        
-                                      <span
-                                        style={
-                                          {
-                                            "opacity": "0.6",
-                                          }
-                                        }
-                                      >
-                                        string
-                                      </span>
+                                      <code>
+                                        "Canada"
+                                      </code>
                                        
                                       <strong>
                                         required
+                                      </strong>
+                                       
+                                      <strong>
+                                        constant
                                       </strong>
                                     </summary>
                                     <div>
@@ -852,18 +848,16 @@ exports[`JSONSchemaViewer - schema conditionally test If Then Else (multiple) 1`
                                         country
                                       </strong>
                                        
-                                      <span
-                                        style={
-                                          {
-                                            "opacity": "0.6",
-                                          }
-                                        }
-                                      >
-                                        string
-                                      </span>
+                                      <code>
+                                        "Netherlands"
+                                      </code>
                                        
                                       <strong>
                                         required
+                                      </strong>
+                                       
+                                      <strong>
+                                        constant
                                       </strong>
                                     </summary>
                                     <div>
@@ -1253,15 +1247,13 @@ exports[`JSONSchemaViewer - schema conditionally test If Then Else 1`] = `
                               country
                             </strong>
                              
-                            <span
-                              style={
-                                {
-                                  "opacity": "0.6",
-                                }
-                              }
-                            >
-                              string
-                            </span>
+                            <code>
+                              "United States of America"
+                            </code>
+                             
+                            <strong>
+                              constant
+                            </strong>
                           </summary>
                           <div>
                             <div>
