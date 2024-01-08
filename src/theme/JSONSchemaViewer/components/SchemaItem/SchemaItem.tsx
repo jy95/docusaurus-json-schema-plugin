@@ -8,7 +8,7 @@ import {
   DeprecatedLabel,
   WriteOnlyLabel,
   ReadOnlyLabel,
-  ConstantLabel
+  ConstantLabel,
 } from "@theme/JSONSchemaViewer/labels"
 
 import { GenerateFriendlyName } from "@theme/JSONSchemaViewer/utils"
