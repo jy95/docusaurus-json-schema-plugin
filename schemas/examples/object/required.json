@@ -6,7 +6,8 @@
     "email": { "type": "string" },
     "address": { "type": "string" },
     "telephone": { "type": "string", "deprecated": true },
-    "password": { "type": "string", "writeOnly": true }
+    "password": { "type": "string", "writeOnly": true },
+    "kind": { "type": "string", "const": "USER" }
   },
   "required": ["name", "email"]
 }
