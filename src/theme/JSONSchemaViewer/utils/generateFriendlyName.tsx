@@ -1,7 +1,5 @@
 import React from "react"
 
-import CodeBlock from "@theme-original/CodeBlock"
-
 // Utility functions to know which case we have
 import { detectedTypes } from "@theme/JSONSchemaViewer/utils"
 
@@ -140,21 +138,12 @@ function CustomizeType({ schema, type }: CustomizeProps): JSX.Element {
   }
 
   // For constant values
-  // I used Docusaurus Codeblock (instead of printSchemaType) as they put quotes whereas normal <code> don't
   if (!["array", "object"].includes(type)) {
     if (schema.const !== undefined) {
-      return (
-        <CodeBlock language="json">{`${JSON.stringify(
-          schema.const,
-        )}`}</CodeBlock>
-      )
+      return <code>{`${JSON.stringify(schema.const)}`}</code>
     }
     if (schema.enum !== undefined && schema.enum.length === 1) {
-      return (
-        <CodeBlock language="json">{`${JSON.stringify(
-          schema.enum[0],
-        )}`}</CodeBlock>
-      )
+      return <code>{`${JSON.stringify(schema.enum[0])}`}</code>
     }
   }
 
