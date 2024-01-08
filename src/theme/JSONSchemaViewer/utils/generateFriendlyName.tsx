@@ -17,6 +17,7 @@ import type {
   JSONSchemaNS,
   TypeValues,
 } from "@theme/JSONSchemaViewer/types"
+import { printSchemaType } from "@theme/JSONSchemaViewer/utils/QualifierMessages"
 
 // common function I need below
 function shouldAddSeparator(idx: number, length: number): boolean {
@@ -135,6 +136,16 @@ function CustomizeType({ schema, type }: CustomizeProps): JSX.Element {
   // For "array"
   if (type === "array") {
     return <CustomizeArray schema={schema as JSONSchemaNS.Array} />
+  }
+
+  // For constant values
+  if (!["array", "object"].includes(type)) {
+    if (schema.const !== undefined) {
+      return printSchemaType(schema.const)
+    }
+    if (schema.enum !== undefined && schema.enum.length === 1) {
+      return printSchemaType(schema.enum[0])
+    }
   }
 
   // By default, render the type as it

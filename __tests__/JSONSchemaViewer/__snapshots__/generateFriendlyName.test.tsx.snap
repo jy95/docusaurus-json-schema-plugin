@@ -2220,15 +2220,9 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Prefer title 1`] = `
                           text
                         </strong>
                          
-                        <span
-                          style={
-                            {
-                              "opacity": "0.6",
-                            }
-                          }
-                        >
-                          string
-                        </span>
+                        <code>
+                          Hello World
+                        </code>
                          
                         <strong>
                           constant

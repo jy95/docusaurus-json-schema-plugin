@@ -330,15 +330,9 @@ exports[`JSONSchemaViewer - schema conditionally test If Then Else (multiple) 1`
                                         country
                                       </strong>
                                        
-                                      <span
-                                        style={
-                                          {
-                                            "opacity": "0.6",
-                                          }
-                                        }
-                                      >
-                                        string
-                                      </span>
+                                      <code>
+                                        United States of America
+                                      </code>
                                        
                                       <strong>
                                         constant
@@ -593,15 +587,9 @@ exports[`JSONSchemaViewer - schema conditionally test If Then Else (multiple) 1`
                                         country
                                       </strong>
                                        
-                                      <span
-                                        style={
-                                          {
-                                            "opacity": "0.6",
-                                          }
-                                        }
-                                      >
-                                        string
-                                      </span>
+                                      <code>
+                                        Canada
+                                      </code>
                                        
                                       <strong>
                                         required
@@ -860,15 +848,9 @@ exports[`JSONSchemaViewer - schema conditionally test If Then Else (multiple) 1`
                                         country
                                       </strong>
                                        
-                                      <span
-                                        style={
-                                          {
-                                            "opacity": "0.6",
-                                          }
-                                        }
-                                      >
-                                        string
-                                      </span>
+                                      <code>
+                                        Netherlands
+                                      </code>
                                        
                                       <strong>
                                         required
@@ -1265,15 +1247,9 @@ exports[`JSONSchemaViewer - schema conditionally test If Then Else 1`] = `
                               country
                             </strong>
                              
-                            <span
-                              style={
-                                {
-                                  "opacity": "0.6",
-                                }
-                              }
-                            >
-                              string
-                            </span>
+                            <code>
+                              United States of America
+                            </code>
                              
                             <strong>
                               constant
