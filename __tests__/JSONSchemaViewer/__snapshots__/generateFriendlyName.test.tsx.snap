@@ -2229,6 +2229,10 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Prefer title 1`] = `
                         >
                           string
                         </span>
+                         
+                        <strong>
+                          constant
+                        </strong>
                       </summary>
                       <div>
                         <div>

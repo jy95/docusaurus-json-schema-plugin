@@ -8,6 +8,7 @@ import {
   DeprecatedLabel,
   WriteOnlyLabel,
   ReadOnlyLabel,
+  ConstantLabel
 } from "@theme/JSONSchemaViewer/labels"
 
 import { GenerateFriendlyName } from "@theme/JSONSchemaViewer/utils"
@@ -43,6 +44,10 @@ export default function SchemaItem({
     typeof typedSchema !== "boolean" && typedSchema.readOnly === true
   let isWriteOnly =
     typeof typedSchema !== "boolean" && typedSchema.writeOnly === true
+  let isConstant =
+    typeof typedSchema !== "boolean" &&
+    (typedSchema.const !== undefined ||
+      (Array.isArray(typedSchema.enum) && typedSchema.enum.length === 1))
   let isRequired = !isDeprecated && required
 
   // Header
@@ -58,6 +63,8 @@ export default function SchemaItem({
       {isReadOnly && <ReadOnlyLabel />}
       {isWriteOnly && <>&nbsp;</>}
       {isWriteOnly && <WriteOnlyLabel />}
+      {isConstant && <>&nbsp;</>}
+      {isConstant && <ConstantLabel />}
     </>
   )
 
