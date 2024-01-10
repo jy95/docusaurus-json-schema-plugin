@@ -110,6 +110,8 @@
     "$dynamicAnchor",
   ]
 
+  //console.log(createJsonSchemaRegex(keywords));
+
   Prism.languages["json-schema"] = Prism.languages.extend("json5", {
     keyword: [
       {

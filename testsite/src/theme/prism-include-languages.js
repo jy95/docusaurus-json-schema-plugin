@@ -20,6 +20,6 @@ export default function prismIncludeLanguages(PrismObject) {
     require(`prismjs/components/prism-${lang}`)
   })
   // eslint-disable-next-line global-require
-  require("@theme/prism-json-schema.js")
+  require("./prism-json-schema.js")
   delete globalThis.Prism
 }
