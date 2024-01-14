@@ -113,10 +113,12 @@
   //console.log(createJsonSchemaRegex(keywords));
 
   Prism.languages["json-schema"] = Prism.languages.extend("json5", {
+    // Explanations 
+    // https://prismjs.com/faq.html#how-do-i-know-which-tokens-i-can-style-for
+    // https://prismjs.com/tokens.html
     keyword: [
       {
         pattern: createJsonSchemaRegex(keywords),
-        lookbehind: true,
       },
     ],
   })
