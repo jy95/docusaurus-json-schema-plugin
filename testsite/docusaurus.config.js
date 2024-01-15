@@ -47,6 +47,9 @@ module.exports = {
       links: [],
       copyright: `Copyright © ${new Date().getFullYear()}. Built with Docusaurus.`,
     },
+    prism: {
+      additionalLanguages: ["json", "json5"],
+    },
   },
   presets: [
     [
