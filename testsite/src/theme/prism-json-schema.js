@@ -1,6 +1,6 @@
 ;(function (Prism) {
   function createJsonSchemaRegex(keywords) {
-    const keywordPattern = keywords.map((keyword) => `${keyword}`).join("|")
+    const keywordPattern = keywords.map((keyword) => `${keyword.replace(/\$/g, '\\$')}`).join("|")
     return new RegExp(`\\b(${keywordPattern})\\b`)
   }
 
