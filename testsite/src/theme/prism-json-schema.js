@@ -1,11 +1,12 @@
 ;(function (Prism) {
-
   function escapeRegExp(input) {
-    return input.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    return input.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")
   }
-  
+
   function createJsonSchemaRegex(keywords) {
-    const keywordPattern = keywords.map((keyword) => `${escapeRegExp(keyword)}`).join("|")
+    const keywordPattern = keywords
+      .map((keyword) => `${escapeRegExp(keyword)}`)
+      .join("|")
     return new RegExp(`\\b(${keywordPattern})\\b`)
   }
 
