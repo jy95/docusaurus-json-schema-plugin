@@ -121,10 +121,11 @@
     // Explanations
     // https://prismjs.com/faq.html#how-do-i-know-which-tokens-i-can-style-for
     // https://prismjs.com/tokens.html
-    keyword: [
+    "spec-keywords": [
       {
         pattern: createJsonSchemaRegex(keywords),
-        greedy: true,
+        // https://prismjs.com/extending.html
+        alias: "keyword",
       },
     ],
   })
