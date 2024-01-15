@@ -89,7 +89,6 @@
     "patternProperties",
     "additionalProperties",
     "dependencies",
-    "propertyNames",
     "if",
     "then",
     "else",
@@ -125,6 +124,7 @@
     keyword: [
       {
         pattern: createJsonSchemaRegex(keywords),
+        greedy: true,
       },
     ],
   })
