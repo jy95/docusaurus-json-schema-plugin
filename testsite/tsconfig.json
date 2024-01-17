@@ -8,7 +8,7 @@
       "node",
       "@docusaurus/module-type-aliases",
       "@docusaurus/theme-classic",
-      "docusaurus-json-schema-plugin"
-    ]
-  }
+      "docusaurus-json-schema-plugin",
+    ],
+  },
 }
