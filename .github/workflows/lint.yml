@@ -22,6 +22,7 @@ jobs:
       - name: 🛂 Enforce linting
         run: npm run prettier
       - uses: EndBug/add-and-commit@v9.1.3
+        if: success() && github.ref != 'refs/heads/master
         with:
           author_name: "Prettier Bot"
           author_email: "actions@github.com"
