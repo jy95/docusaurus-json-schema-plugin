@@ -7,125 +7,127 @@
     const keywordPattern = keywords
       .map((keyword) => `${escapeRegExp(keyword)}`)
       .join("|")
-    return new RegExp(`\\b(${keywordPattern})\\b`)
+    return new RegExp(`\\b(?:${keywordPattern})\\b`)
   }
 
-  var keywords = [
-    // Keywords related to Draft-07
-    "$id",
-    "$schema",
-    "$ref",
-    "$comment",
-    "$defs",
-    "title",
-    "description",
-    "default",
-    "readOnly",
-    "writeOnly",
-    "examples",
-    "multipleOf",
-    "maximum",
-    "exclusiveMaximum",
-    "minimum",
-    "exclusiveMinimum",
-    "maxLength",
-    "minLength",
-    "pattern",
-    "additionalItems",
-    "items",
-    "maxItems",
-    "minItems",
-    "uniqueItems",
-    "contains",
-    "maxProperties",
-    "minProperties",
-    "required",
-    "additionalProperties",
-    "properties",
-    "patternProperties",
-    "dependencies",
-    "propertyNames",
-    "const",
-    "enum",
-    "type",
-    "format",
-    "contentMediaType",
-    "contentEncoding",
-    "if",
-    "then",
-    "else",
-    "allOf",
-    "anyOf",
-    "oneOf",
-    "not",
-    "definitions",
-    "title",
-    "description",
-    "default",
-    "format",
-    "examples",
-    "const",
-    "contains",
-    "propertyNames",
-    "const",
-    "enum",
-    "type",
-    "items",
-    "additionalItems",
-    "minItems",
-    "maxItems",
-    "uniqueItems",
-    "contains",
-    "minLength",
-    "maxLength",
-    "pattern",
-    "items",
-    "additionalItems",
-    "minItems",
-    "maxItems",
-    "uniqueItems",
-    "contains",
-    "properties",
-    "patternProperties",
-    "additionalProperties",
-    "dependencies",
-    "if",
-    "then",
-    "else",
-    "allOf",
-    "anyOf",
-    "oneOf",
-    "not",
-    // Keywords related to Draft 2019-09
-    "$anchor",
-    "$defs",
-    "dependentSchemas",
-    "dependentRequired",
-    "$recursiveAnchor",
-    "$recursiveRef",
-    "$vocabulary",
-    "unevaluatedItems",
-    "unevaluatedProperties",
-    "maxContains",
-    "minContains",
-    "deprecated",
-    // Keywords related to Draft 2020-12
-    "prefixItems",
-    "$dynamicRef",
-    "$dynamicAnchor",
-  ]
-
-  //console.log(createJsonSchemaRegex(keywords));
+  //console.log(createJsonSchemaRegex([]));
 
   Prism.languages["json-schema"] = Prism.languages.extend("json5", {
     // Explanations
     // https://prismjs.com/faq.html#how-do-i-know-which-tokens-i-can-style-for
     // https://prismjs.com/tokens.html
-    "spec-keywords": [
+    keyword: [
+      // 'control-flow'
       {
-        pattern: createJsonSchemaRegex(keywords),
-        // https://prismjs.com/extending.html
-        alias: "keyword",
+        pattern: createJsonSchemaRegex(["if", "then", "else"]),
+        alias: ["control-flow", "schema-conditionally"],
+      },
+      // "schema-composition"
+      {
+        pattern: createJsonSchemaRegex(["allOf", "anyOf", "oneOf", "not"]),
+        alias: "schema-composition",
+      },
+      // "refs"
+      {
+        pattern: createJsonSchemaRegex([
+          "$ref",
+          "$defs",
+          "$anchor",
+          "$defs",
+          "$dynamicRef",
+          "$dynamicAnchor",
+          "$recursiveAnchor",
+          "$recursiveRef",
+        ]),
+        alias: "refs",
+      },
+      // schema-conditionally
+      {
+        pattern: createJsonSchemaRegex([
+          "dependencies",
+          "dependentSchemas",
+          "dependentRequired",
+          "dependentSchemas",
+        ]),
+        alias: "schema-conditionally",
+      },
+      // array
+      {
+        pattern: createJsonSchemaRegex([
+          "additionalItems",
+          "contains",
+          "items",
+          "minItems",
+          "maxItems",
+          "minContains",
+          "maxContains",
+          "prefixItems",
+          "unevaluatedItems",
+          "uniqueItems",
+        ]),
+        alias: "array",
+      },
+      // Annotations
+      {
+        pattern: createJsonSchemaRegex([
+          "title",
+          "description",
+          "default",
+          "examples",
+          "deprecated",
+          "readOnly",
+          "writeOnly",
+          "$comment",
+        ]),
+        alias: "annotations",
+      },
+      // enums
+      {
+        pattern: createJsonSchemaRegex(["enum"]),
+        alias: "enum",
+      },
+      // Constant values
+      {
+        pattern: createJsonSchemaRegex(["const"]),
+        alias: "const",
+      },
+      // string
+      {
+        pattern: createJsonSchemaRegex([
+          "contentEncoding",
+          "contentMediaType",
+          "contentSchema",
+          "format",
+          "minLength",
+          "maxLength",
+          "pattern",
+        ]),
+        alias: "string",
+      },
+      // number
+      {
+        pattern: createJsonSchemaRegex([
+          "multipleOf",
+          "minimum",
+          "exclusiveMinimum",
+          "maximum",
+          "exclusiveMaximum",
+        ]),
+        alias: "number",
+      },
+      // object
+      {
+        pattern: createJsonSchemaRegex([
+          "additionalProperties",
+          "patternProperties",
+          "properties",
+          "propertyNames",
+          "required",
+          "minProperties",
+          "maxProperties",
+          "unevaluatedProperties",
+        ]),
+        alias: "object",
       },
     ],
   })
