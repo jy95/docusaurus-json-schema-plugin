@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunktestsite=self.webpackChunktestsite||[]).push([[8180],{8180:e=>{e.exports=JSON.parse('{"type":"object","properties":{"externalProp":{"$ref":"../array/tuples.json"}}}')}}]);
