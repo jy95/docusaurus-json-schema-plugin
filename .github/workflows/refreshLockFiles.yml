@@ -1,0 +1,34 @@
+name: Refresh Package Lock Files
+
+on:
+  workflow_dispatch:
+
+jobs:
+  update_packages:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🛎️ Checkout
+        uses: actions/checkout@v4
+      - name: 🤖 Remove package-lock.json files
+        run: |
+          find . -name "package-lock.json" -delete
+      - name: 💻 Install npm packages
+        run: npm install
+      - name: Build lib 🤖
+        run: |
+          npm run build
+      - name: Link lib 🔗
+        run: |
+          npm link
+      - name: Install website 💻
+        run: |
+          cd testsite   
+          npm link docusaurus-json-schema-plugin --save     
+          npm install --prefer-dedupe  
+          npm dedupe  
+      - name: Create Pull Request 🤖
+        uses: peter-evans/create-pull-request@v6
+        with:
+          title: Update npm packages
+          body: |
+            This PR updates npm packages by removing package-lock.json files and reinstalling dependencies.
