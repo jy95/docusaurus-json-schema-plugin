@@ -20,6 +20,7 @@ module.exports = {
     algolia: {
       appId: 'IQ028YCDJT',
       apiKey: '07dbd1af64b0ddac807b4601c87901c1',
+      indexName: "jy95io"
     },
     navbar: {
       title: "JSON Schema viewer / editor",
