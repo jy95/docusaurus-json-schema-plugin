@@ -17,6 +17,10 @@ module.exports = {
   organizationName: "jy95", // Usually your GitHub org/user name.
   projectName: "docusaurus-json-schema-plugin", // Usually your repo name.
   themeConfig: {
+    algolia: {
+      appId: 'IQ028YCDJT',
+      apiKey: '07dbd1af64b0ddac807b4601c87901c1',
+    },
     navbar: {
       title: "JSON Schema viewer / editor",
       logo: {
