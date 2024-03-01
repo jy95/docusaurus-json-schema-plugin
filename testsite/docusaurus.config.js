@@ -20,7 +20,7 @@ module.exports = {
     algolia: {
       appId: 'IQ028YCDJT',
       apiKey: '07dbd1af64b0ddac807b4601c87901c1',
-      indexName: "jy95io"
+      indexName: "docusaurus-json-schema-plugin"
     },
     navbar: {
       title: "JSON Schema viewer / editor",
