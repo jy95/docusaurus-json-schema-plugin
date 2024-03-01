@@ -19,7 +19,7 @@ module.exports = {
   themeConfig: {
     algolia: {
       appId: 'IQ028YCDJT',
-      apiKey: '07dbd1af64b0ddac807b4601c87901c1',
+      apiKey: '8bd1d98fae984449f5cc44eed58ddb2d',
       indexName: "jy95io"
     },
     navbar: {
