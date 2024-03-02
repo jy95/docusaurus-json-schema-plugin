@@ -36,6 +36,15 @@ If none of these helped you, consider to have a reproducible example before aski
 </details>
 
 <details>
+<summary>I have multiple definitions in my JSON Schema file. How can I select only one for `JSONSchemaViewer` ?</summary>
+
+Specify `jsonPointer` option with a <u>valid JSON Pointer</u> (e.g. `#/definitions/user`).   
+[An example is available in the documentation](demo-viewer/refs/ref).    
+The mechanism is domain agnostic and will work regardless of your cases (OpenAPI, ...)
+
+</details>
+
+<details>
 <summary>How to translate labels into my own language ?</summary>
 
 Please refer for extra information to :
