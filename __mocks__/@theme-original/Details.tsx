@@ -15,7 +15,7 @@ export default function Details({
   ...props
 }: DetailsProps): JSX.Element {
   return (
-    <details open={props.open}>
+    <details {...props}>
       {summary !== undefined && summary}
       {summary === undefined && <strong>Fallback</strong>}
       <Collapsible>

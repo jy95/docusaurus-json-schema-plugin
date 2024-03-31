@@ -2,6 +2,7 @@
 
 exports[`JSONSchemaViewer - JSON Pointer test Array Properties - like /prefixItems/3 1`] = `
 <details
+  className="json-schema-viewer"
   open={true}
 >
   <summary>
@@ -285,6 +286,7 @@ exports[`JSONSchemaViewer - JSON Pointer test Array Properties - like /prefixIte
 
 exports[`JSONSchemaViewer - JSON Pointer test Escaped attribute - like country/state should give /properties/country~1state 1`] = `
 <details
+  className="json-schema-viewer"
   open={true}
 >
   <summary>
@@ -531,6 +533,7 @@ exports[`JSONSchemaViewer - JSON Pointer test Escaped attribute - like country/s
 
 exports[`JSONSchemaViewer - JSON Pointer test Object properties - like street_address 1`] = `
 <details
+  className="json-schema-viewer"
   open={true}
 >
   <summary>

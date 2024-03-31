@@ -2,6 +2,7 @@
 
 exports[`JSONSchemaViewer - Generic keywords test annotations 1`] = `
 <details
+  className="json-schema-viewer"
   open={true}
 >
   <summary>
@@ -130,6 +131,7 @@ exports[`JSONSchemaViewer - Generic keywords test annotations 1`] = `
 
 exports[`JSONSchemaViewer - Generic keywords test const (as single enum value) 1`] = `
 <details
+  className="json-schema-viewer"
   open={true}
 >
   <summary>
@@ -237,6 +239,7 @@ exports[`JSONSchemaViewer - Generic keywords test const (as single enum value) 1
 
 exports[`JSONSchemaViewer - Generic keywords test const 1`] = `
 <details
+  className="json-schema-viewer"
   open={true}
 >
   <summary>
@@ -331,6 +334,7 @@ exports[`JSONSchemaViewer - Generic keywords test const 1`] = `
 
 exports[`JSONSchemaViewer - Generic keywords test enum 1`] = `
 <details
+  className="json-schema-viewer"
   open={true}
 >
   <summary>

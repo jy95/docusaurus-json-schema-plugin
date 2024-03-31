@@ -2,6 +2,7 @@
 
 exports[`JSONSchemaViewer - References cases test 0 1`] = `
 <details
+  className="json-schema-viewer"
   open={true}
 >
   <summary>

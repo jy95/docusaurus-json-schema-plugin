@@ -2,6 +2,7 @@
 
 exports[`JSONSchemaViewer - schema conditionally test If Then Else (multiple) 1`] = `
 <details
+  className="json-schema-viewer"
   open={true}
 >
   <summary>
@@ -1012,6 +1013,7 @@ exports[`JSONSchemaViewer - schema conditionally test If Then Else (multiple) 1`
 
 exports[`JSONSchemaViewer - schema conditionally test If Then Else 1`] = `
 <details
+  className="json-schema-viewer"
   open={true}
 >
   <summary>
@@ -1491,6 +1493,7 @@ exports[`JSONSchemaViewer - schema conditionally test If Then Else 1`] = `
 
 exports[`JSONSchemaViewer - schema conditionally test dependencies (dependentRequired format) 1`] = `
 <details
+  className="json-schema-viewer"
   open={true}
 >
   <summary>
@@ -1975,6 +1978,7 @@ exports[`JSONSchemaViewer - schema conditionally test dependencies (dependentReq
 
 exports[`JSONSchemaViewer - schema conditionally test dependencies (dependentSchemas format) 1`] = `
 <details
+  className="json-schema-viewer"
   open={true}
 >
   <summary>
@@ -2409,6 +2413,7 @@ exports[`JSONSchemaViewer - schema conditionally test dependencies (dependentSch
 
 exports[`JSONSchemaViewer - schema conditionally test dependentRequired (bidirectional) 1`] = `
 <details
+  className="json-schema-viewer"
   open={true}
 >
   <summary>
@@ -3159,6 +3164,7 @@ exports[`JSONSchemaViewer - schema conditionally test dependentRequired (bidirec
 
 exports[`JSONSchemaViewer - schema conditionally test dependentRequired 1`] = `
 <details
+  className="json-schema-viewer"
   open={true}
 >
   <summary>
@@ -3643,6 +3649,7 @@ exports[`JSONSchemaViewer - schema conditionally test dependentRequired 1`] = `
 
 exports[`JSONSchemaViewer - schema conditionally test dependentSchemas 1`] = `
 <details
+  className="json-schema-viewer"
   open={true}
 >
   <summary>

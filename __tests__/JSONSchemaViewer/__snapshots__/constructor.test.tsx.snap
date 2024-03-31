@@ -2,6 +2,7 @@
 
 exports[`JSONSchemaViewer - constructor Overwrite default DescriptionComponent value 1`] = `
 <details
+  className="json-schema-viewer"
   open={true}
 >
   <summary>
@@ -55,6 +56,7 @@ exports[`JSONSchemaViewer - constructor Overwrite default DescriptionComponent v
 
 exports[`JSONSchemaViewer - constructor Overwrite default UnresolvedRefsComponent value 1`] = `
 <details
+  className="json-schema-viewer"
   open={true}
 >
   <summary>
@@ -258,6 +260,7 @@ exports[`JSONSchemaViewer - constructor Overwrite default UnresolvedRefsComponen
 
 exports[`JSONSchemaViewer - constructor Overwrite default ValueComponent value 1`] = `
 <details
+  className="json-schema-viewer"
   open={true}
 >
   <summary>
@@ -505,8 +508,56 @@ exports[`JSONSchemaViewer - constructor Overwrite default ValueComponent value 1
 </details>
 `;
 
+exports[`JSONSchemaViewer - constructor Overwrite default className value 1`] = `
+<details
+  className="jsv-custom"
+  open={true}
+>
+  <summary>
+    <strong>
+      Schema
+    </strong>
+  </summary>
+  <div>
+    <div>
+      <strong>
+        type
+      </strong>
+       : 
+      <span
+        style={
+          {
+            "opacity": "0.6",
+          }
+        }
+      >
+        object
+      </span>
+      <div
+        style={
+          {
+            "marginTop": "var(--ifm-table-cell-padding)",
+          }
+        }
+      >
+        <div>
+          <strong>
+            Length :
+          </strong>
+           
+          <code>
+            &gt;= 1 propertie(s)
+          </code>
+        </div>
+      </div>
+    </div>
+  </div>
+</details>
+`;
+
 exports[`JSONSchemaViewer - constructor Overwrite default qualifierMessagesOrder value 1`] = `
 <details
+  className="json-schema-viewer"
   open={true}
 >
   <summary>

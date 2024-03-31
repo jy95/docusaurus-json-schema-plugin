@@ -2,6 +2,7 @@
 
 exports[`JSONSchemaViewer - Array type test 0 1`] = `
 <details
+  className="json-schema-viewer"
   open={true}
 >
   <summary>
@@ -38,6 +39,7 @@ exports[`JSONSchemaViewer - Array type test 0 1`] = `
 
 exports[`JSONSchemaViewer - Array type test 1 1`] = `
 <details
+  className="json-schema-viewer"
   open={true}
 >
   <summary>
@@ -124,6 +126,7 @@ exports[`JSONSchemaViewer - Array type test 1 1`] = `
 
 exports[`JSONSchemaViewer - Array type test 2 1`] = `
 <details
+  className="json-schema-viewer"
   open={true}
 >
   <summary>
@@ -210,6 +213,7 @@ exports[`JSONSchemaViewer - Array type test 2 1`] = `
 
 exports[`JSONSchemaViewer - Array type test 3 1`] = `
 <details
+  className="json-schema-viewer"
   open={true}
 >
   <summary>
@@ -264,6 +268,7 @@ exports[`JSONSchemaViewer - Array type test 3 1`] = `
 
 exports[`JSONSchemaViewer - Array type test 4 1`] = `
 <details
+  className="json-schema-viewer"
   open={true}
 >
   <summary>
@@ -372,6 +377,7 @@ exports[`JSONSchemaViewer - Array type test 4 1`] = `
 
 exports[`JSONSchemaViewer - Array type test 5 1`] = `
 <details
+  className="json-schema-viewer"
   open={true}
 >
   <summary>
@@ -757,6 +763,7 @@ exports[`JSONSchemaViewer - Array type test 5 1`] = `
 
 exports[`JSONSchemaViewer - Array type test 6 1`] = `
 <details
+  className="json-schema-viewer"
   open={true}
 >
   <summary>
@@ -803,6 +810,7 @@ exports[`JSONSchemaViewer - Array type test 6 1`] = `
 
 exports[`JSONSchemaViewer - Array type test 7 1`] = `
 <details
+  className="json-schema-viewer"
   open={true}
 >
   <summary>
@@ -849,6 +857,7 @@ exports[`JSONSchemaViewer - Array type test 7 1`] = `
 
 exports[`JSONSchemaViewer - Array type test 8 1`] = `
 <details
+  className="json-schema-viewer"
   open={true}
 >
   <summary>
@@ -895,6 +904,7 @@ exports[`JSONSchemaViewer - Array type test 8 1`] = `
 
 exports[`JSONSchemaViewer - Array type test 9 1`] = `
 <details
+  className="json-schema-viewer"
   open={true}
 >
   <summary>
@@ -941,6 +951,7 @@ exports[`JSONSchemaViewer - Array type test 9 1`] = `
 
 exports[`JSONSchemaViewer - Array type test 10 1`] = `
 <details
+  className="json-schema-viewer"
   open={true}
 >
   <summary>
@@ -987,6 +998,7 @@ exports[`JSONSchemaViewer - Array type test 10 1`] = `
 
 exports[`JSONSchemaViewer - Array type test 11 1`] = `
 <details
+  className="json-schema-viewer"
   open={true}
 >
   <summary>
@@ -1131,6 +1143,7 @@ exports[`JSONSchemaViewer - Array type test 11 1`] = `
 
 exports[`JSONSchemaViewer - Array type test 12 1`] = `
 <details
+  className="json-schema-viewer"
   open={true}
 >
   <summary>
@@ -1283,6 +1296,7 @@ exports[`JSONSchemaViewer - Array type test 12 1`] = `
 
 exports[`JSONSchemaViewer - Array type test 13 1`] = `
 <details
+  className="json-schema-viewer"
   open={true}
 >
   <summary>
@@ -1383,6 +1397,7 @@ exports[`JSONSchemaViewer - Array type test 13 1`] = `
 
 exports[`JSONSchemaViewer - Array type test 14 1`] = `
 <details
+  className="json-schema-viewer"
   open={true}
 >
   <summary>
@@ -1424,6 +1439,7 @@ exports[`JSONSchemaViewer - Array type test 14 1`] = `
 
 exports[`JSONSchemaViewer - Array type test 15 1`] = `
 <details
+  className="json-schema-viewer"
   open={true}
 >
   <summary>
@@ -1630,6 +1646,7 @@ exports[`JSONSchemaViewer - Array type test 15 1`] = `
 
 exports[`JSONSchemaViewer - Array type test 16 1`] = `
 <details
+  className="json-schema-viewer"
   open={true}
 >
   <summary>

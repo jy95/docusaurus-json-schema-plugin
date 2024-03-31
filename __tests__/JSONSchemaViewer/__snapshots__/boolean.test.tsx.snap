@@ -2,6 +2,7 @@
 
 exports[`JSONSchemaViewer - Boolean type test 0 1`] = `
 <details
+  className="json-schema-viewer"
   open={true}
 >
   <summary>
@@ -38,6 +39,7 @@ exports[`JSONSchemaViewer - Boolean type test 0 1`] = `
 
 exports[`JSONSchemaViewer - Boolean type test 1 1`] = `
 <details
+  className="json-schema-viewer"
   open={true}
 >
   <summary>
