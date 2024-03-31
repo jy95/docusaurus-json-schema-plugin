@@ -2,6 +2,7 @@
 
 exports[`JSONSchemaViewer - schema composition test allOf 1`] = `
 <details
+  className="json-schema-viewer"
   open={true}
 >
   <summary>
@@ -135,6 +136,7 @@ exports[`JSONSchemaViewer - schema composition test allOf 1`] = `
 
 exports[`JSONSchemaViewer - schema composition test anyOf 1`] = `
 <details
+  className="json-schema-viewer"
   open={true}
 >
   <summary>
@@ -278,6 +280,7 @@ exports[`JSONSchemaViewer - schema composition test anyOf 1`] = `
 
 exports[`JSONSchemaViewer - schema composition test not 1`] = `
 <details
+  className="json-schema-viewer"
   open={true}
 >
   <summary>
@@ -322,6 +325,7 @@ exports[`JSONSchemaViewer - schema composition test not 1`] = `
 
 exports[`JSONSchemaViewer - schema composition test oneOf 1`] = `
 <details
+  className="json-schema-viewer"
   open={true}
 >
   <summary>

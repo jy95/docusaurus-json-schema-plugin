@@ -183,4 +183,25 @@ describe("JSONSchemaViewer - constructor", () => {
     // make assertions on root
     expect(root?.toJSON()).toMatchSnapshot()
   })
+
+  test("Overwrite default className value", async () => {
+    const fakeSchema: JSONSchema = {
+      type: "object",
+      minProperties: 1,
+    }
+
+    // render the component
+    let root: ReactTestRenderer | undefined
+    await act(async () => {
+      root = create(
+        <JSONSchemaViewer
+          schema={fakeSchema}
+          className="jsv-custom"
+        />,
+      )
+    })
+
+    // make assertions on root
+    expect(root?.toJSON()).toMatchSnapshot()
+  })
 })

@@ -2,6 +2,7 @@
 
 exports[`JSONSchemaViewer - generateFriendlyName cases test Array specified only with items 1`] = `
 <details
+  className="json-schema-viewer"
   open={true}
 >
   <summary>
@@ -253,6 +254,7 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Array specified only
 
 exports[`JSONSchemaViewer - generateFriendlyName cases test Array specified only with prefixItems 1`] = `
 <details
+  className="json-schema-viewer"
   open={true}
 >
   <summary>
@@ -506,6 +508,7 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Array specified only
 
 exports[`JSONSchemaViewer - generateFriendlyName cases test Array specified with items & additionalItems 1`] = `
 <details
+  className="json-schema-viewer"
   open={true}
 >
   <summary>
@@ -764,6 +767,7 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Array specified with
 
 exports[`JSONSchemaViewer - generateFriendlyName cases test Array specified with items and contains 1`] = `
 <details
+  className="json-schema-viewer"
   open={true}
 >
   <summary>
@@ -966,6 +970,7 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Array specified with
 
 exports[`JSONSchemaViewer - generateFriendlyName cases test Array specified with unevaluatedItems 1`] = `
 <details
+  className="json-schema-viewer"
   open={true}
 >
   <summary>
@@ -1224,6 +1229,7 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Array specified with
 
 exports[`JSONSchemaViewer - generateFriendlyName cases test Multiple types 1`] = `
 <details
+  className="json-schema-viewer"
   open={true}
 >
   <summary>
@@ -1329,6 +1335,7 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Multiple types 1`] =
 
 exports[`JSONSchemaViewer - generateFriendlyName cases test Not (integer) 1`] = `
 <details
+  className="json-schema-viewer"
   open={true}
 >
   <summary>
@@ -1428,6 +1435,7 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Not (integer) 1`] = 
 
 exports[`JSONSchemaViewer - generateFriendlyName cases test Number without explicit type 1`] = `
 <details
+  className="json-schema-viewer"
   open={true}
 >
   <summary>
@@ -1524,6 +1532,7 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Number without expli
 
 exports[`JSONSchemaViewer - generateFriendlyName cases test OR / XOR / AND 1`] = `
 <details
+  className="json-schema-viewer"
   open={true}
 >
   <summary>
@@ -2059,6 +2068,7 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test OR / XOR / AND 1`] =
 
 exports[`JSONSchemaViewer - generateFriendlyName cases test Object without explicit type 1`] = `
 <details
+  className="json-schema-viewer"
   open={true}
 >
   <summary>
@@ -2155,6 +2165,7 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Object without expli
 
 exports[`JSONSchemaViewer - generateFriendlyName cases test Prefer title 1`] = `
 <details
+  className="json-schema-viewer"
   open={true}
 >
   <summary>
@@ -2291,6 +2302,7 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Prefer title 1`] = `
 
 exports[`JSONSchemaViewer - generateFriendlyName cases test Simple array 1`] = `
 <details
+  className="json-schema-viewer"
   open={true}
 >
   <summary>

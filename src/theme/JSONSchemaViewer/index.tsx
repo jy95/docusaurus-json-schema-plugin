@@ -29,6 +29,10 @@ export type Props = {
    * To customize the viewer itself
    */
   viewerOptions?: Omit<JSVOptions, "fullSchema">
+  /**
+   * To customize the styles of the viewer, to override docusaurus styles on a specific page
+   */
+  className?: string;
 }
 
 type InnerViewerProperties = {
@@ -38,6 +42,8 @@ type InnerViewerProperties = {
   schema: JSONSchema
   // Options for viewer
   viewerOptions?: Omit<JSVOptions, "fullSchema">
+  // To customize the styles of the viewer, to override docusaurus styles on a specific page
+  className?: string;
 }
 
 // Translated labels
@@ -79,6 +85,7 @@ function JSONSchemaInnerViewer(props: InnerViewerProperties): JSX.Element {
           summary={<strong>{title}</strong>}
           detailsProps={{
             open: true,
+            className: props.className || "json-schema-viewer"
           }}
         >
           <CreateNodes schema={schema} />
@@ -118,6 +125,7 @@ export default function JSONSchemaViewer(props: Props): JSX.Element {
       <JSONSchemaInnerViewer
         schema={resolvedSchema}
         viewerOptions={viewerOptions}
+        className={props.className}
       />
     )
   }

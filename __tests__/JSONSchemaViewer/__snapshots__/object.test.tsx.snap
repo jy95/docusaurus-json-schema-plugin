@@ -2,6 +2,7 @@
 
 exports[`JSONSchemaViewer - object test Unspecified required properties 1`] = `
 <details
+  className="json-schema-viewer"
   open={true}
 >
   <summary>
@@ -148,6 +149,7 @@ exports[`JSONSchemaViewer - object test Unspecified required properties 1`] = `
 
 exports[`JSONSchemaViewer - object test Unspecified type (object) 1`] = `
 <details
+  className="json-schema-viewer"
   open={true}
 >
   <summary>
@@ -194,6 +196,7 @@ exports[`JSONSchemaViewer - object test Unspecified type (object) 1`] = `
 
 exports[`JSONSchemaViewer - object test additionalProperties (JSON Schema) 1`] = `
 <details
+  className="json-schema-viewer"
   open={true}
 >
   <summary>
@@ -450,6 +453,7 @@ exports[`JSONSchemaViewer - object test additionalProperties (JSON Schema) 1`] =
 
 exports[`JSONSchemaViewer - object test additionalProperties (false) 1`] = `
 <details
+  className="json-schema-viewer"
   open={true}
 >
   <summary>
@@ -661,6 +665,7 @@ exports[`JSONSchemaViewer - object test additionalProperties (false) 1`] = `
 
 exports[`JSONSchemaViewer - object test additionalProperties with patternProperties 1`] = `
 <details
+  className="json-schema-viewer"
   open={true}
 >
   <summary>
@@ -895,6 +900,7 @@ exports[`JSONSchemaViewer - object test additionalProperties with patternPropert
 
 exports[`JSONSchemaViewer - object test maxProperties 1`] = `
 <details
+  className="json-schema-viewer"
   open={true}
 >
   <summary>
@@ -941,6 +947,7 @@ exports[`JSONSchemaViewer - object test maxProperties 1`] = `
 
 exports[`JSONSchemaViewer - object test minProperties & maxProperties 1`] = `
 <details
+  className="json-schema-viewer"
   open={true}
 >
   <summary>
@@ -995,6 +1002,7 @@ exports[`JSONSchemaViewer - object test minProperties & maxProperties 1`] = `
 
 exports[`JSONSchemaViewer - object test minProperties 1`] = `
 <details
+  className="json-schema-viewer"
   open={true}
 >
   <summary>
@@ -1041,6 +1049,7 @@ exports[`JSONSchemaViewer - object test minProperties 1`] = `
 
 exports[`JSONSchemaViewer - object test patternProperties 1`] = `
 <details
+  className="json-schema-viewer"
   open={true}
 >
   <summary>
@@ -1175,6 +1184,7 @@ exports[`JSONSchemaViewer - object test patternProperties 1`] = `
 
 exports[`JSONSchemaViewer - object test properties 1`] = `
 <details
+  className="json-schema-viewer"
   open={true}
 >
   <summary>
@@ -1381,6 +1391,7 @@ exports[`JSONSchemaViewer - object test properties 1`] = `
 
 exports[`JSONSchemaViewer - object test propertyNames 1`] = `
 <details
+  className="json-schema-viewer"
   open={true}
 >
   <summary>
@@ -1476,6 +1487,7 @@ exports[`JSONSchemaViewer - object test propertyNames 1`] = `
 
 exports[`JSONSchemaViewer - object test required 1`] = `
 <details
+  className="json-schema-viewer"
   open={true}
 >
   <summary>
@@ -1837,6 +1849,7 @@ exports[`JSONSchemaViewer - object test required 1`] = `
 
 exports[`JSONSchemaViewer - object test simple 1`] = `
 <details
+  className="json-schema-viewer"
   open={true}
 >
   <summary>
@@ -1882,6 +1895,7 @@ exports[`JSONSchemaViewer - object test simple 1`] = `
 
 exports[`JSONSchemaViewer - object test unevaluatedProperties = false 1`] = `
 <details
+  className="json-schema-viewer"
   open={true}
 >
   <summary>
@@ -1923,6 +1937,7 @@ exports[`JSONSchemaViewer - object test unevaluatedProperties = false 1`] = `
 
 exports[`JSONSchemaViewer - object test unevaluatedProperties as not a boolean 1`] = `
 <details
+  className="json-schema-viewer"
   open={true}
 >
   <summary>
