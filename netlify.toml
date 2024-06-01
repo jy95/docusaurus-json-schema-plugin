@@ -1,7 +1,7 @@
 # netlify.toml
 
 [build.environment]
-  NODE_VERSION = "18"
+  NODE_VERSION = "20"
 
 [context.deploy-preview]
   command = "npm install && npm run build && npm link && cd testsite && npm link docusaurus-json-schema-plugin --save && npm install --prefer-dedupe && npm run build"
