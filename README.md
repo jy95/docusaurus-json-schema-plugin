@@ -39,3 +39,7 @@ Special thanks to @PaloAltoNetworks (Palo Alto Networks), the author of [docusau
 <a href="https://github.com/jy95/docusaurus-json-schema-plugin/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=jy95/docusaurus-json-schema-plugin" />
 </a>
+
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=jy95/docusaurus-json-schema-plugin&type=Date)](https://star-history.com/#jy95/docusaurus-json-schema-plugin&Date)
