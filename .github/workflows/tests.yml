@@ -11,7 +11,7 @@ jobs:
       - name: Set up Node.js ✨
         uses: actions/setup-node@v4.0.2
         with:
-          node-version: '18.x'
+          node-version: "lts/*"
       - name: Install 💻
         run: |
           npm install
