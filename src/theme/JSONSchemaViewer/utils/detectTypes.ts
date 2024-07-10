@@ -149,3 +149,7 @@ export function detectedTypes(
   // If array is empty, it could mean that it is either "any" or "nothing"
   return [...foundUndeclaredTypes(schema)]
 }
+
+// Not empty array ?
+export const isArrayNotEmpty = (arr: any[] | readonly any[] | undefined) =>
+  arr !== undefined && arr.length > 0
