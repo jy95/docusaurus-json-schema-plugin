@@ -1,10 +1,10 @@
 import React from "react"
 
 import * as QMS from "@theme/JSONSchemaViewer/utils/QualifierMessages"
+import { hasUnresolvedRefs, isArrayNotEmpty } from "../detectTypes"
 
 import type { JSONSchema, JSONSchemaNS } from "@theme/JSONSchemaViewer/types"
 import type { JSVOptions } from "@theme/JSONSchemaViewer/contexts"
-import { hasUnresolvedRefs } from "../detectTypes"
 
 type Props = {
   schema: Exclude<JSONSchema, true | false>
@@ -64,7 +64,7 @@ const CHECKS_MAP: Record<CheckKey, CheckInfo> = {
     Component: () => <QMS.WriteOnlyQM key={"writeOnly"} />,
   },
   enum: {
-    match: ({ schema }) => schema.enum !== undefined,
+    match: ({ schema }) => isArrayNotEmpty(schema.enum),
     Component: ({ schema }) => <QMS.EnumQM key={"enum"} schema={schema} />,
   },
   stringLength: {
@@ -148,7 +148,7 @@ const CHECKS_MAP: Record<CheckKey, CheckInfo> = {
   },
   examples: {
     match: ({ schema, options }) =>
-      options.showExamples === true && schema.examples !== undefined,
+      options.showExamples === true && isArrayNotEmpty(schema.examples),
     Component: ({ schema }) => (
       <QMS.ExamplesQM key={"examples"} schema={schema} />
     ),

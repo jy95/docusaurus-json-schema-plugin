@@ -194,10 +194,7 @@ describe("JSONSchemaViewer - constructor", () => {
     let root: ReactTestRenderer | undefined
     await act(async () => {
       root = create(
-        <JSONSchemaViewer
-          schema={fakeSchema}
-          className="jsv-custom"
-        />,
+        <JSONSchemaViewer schema={fakeSchema} className="jsv-custom" />,
       )
     })
 
