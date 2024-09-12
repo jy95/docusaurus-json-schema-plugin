@@ -13,10 +13,6 @@ updates:
       include: "scope"
     schedule:
       interval: "daily"
-    # Add specific commit message format for security updates
-    security-updates:
-      commit-message:
-        prefix: "fix"
 # Files stored in repository testsite
   - package-ecosystem: "npm"
     directory: "/testsite"
