@@ -57,8 +57,8 @@
   },
   "dependencies": {
     "@stoplight/json-ref-resolver": "^3.1.5",
-    "monaco-editor": "^0.44.0",
-    "monaco-editor-webpack-plugin": "^7.0.1",
-    "react-monaco-editor": "^0.55.0"
+    "monaco-editor": "^0.52.0",
+    "monaco-editor-webpack-plugin": "^7.1.0",
+    "react-monaco-editor": "^0.56.2"
   }
 }
