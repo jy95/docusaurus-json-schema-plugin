@@ -19,7 +19,7 @@ jobs:
         run: |
           find . -name "package-lock.json" -delete
       - name: 💻 Install npm packages
-        run: npm install --legacy-peer-deps
+        run: npm install
       - name: Build lib 🤖
         run: |
           npm run build
@@ -30,7 +30,7 @@ jobs:
         run: |
           cd testsite   
           npm link docusaurus-json-schema-plugin --save     
-          npm install --prefer-dedupe --legacy-peer-deps   
+          npm install --prefer-dedupe    
           npm dedupe  
       - name: Create Pull Request 🤖
         uses: peter-evans/create-pull-request@v7
