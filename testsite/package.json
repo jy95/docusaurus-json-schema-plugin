@@ -12,9 +12,9 @@
     "clear": "docusaurus clear"
   },
   "dependencies": {
-    "@docusaurus/core": "^3.7.0",
-    "@docusaurus/preset-classic": "^3.7.0",
-    "@docusaurus/remark-plugin-npm2yarn": "^3.7.0",
+    "@docusaurus/core": "3.7.0",
+    "@docusaurus/preset-classic": "3.7.0",
+    "@docusaurus/remark-plugin-npm2yarn": "3.7.0",
     "@mdx-js/react": "^3.1.0",
     "@stoplight/json-ref-resolver": "^3.1.6",
     "ajv": "^8.17.1",
@@ -23,14 +23,14 @@
     "js-base64": "^3.7.7",
     "json-schema-faker": "^0.5.8",
     "jsonpos": "^4.1.2",
-    "react": "^18.2.0",
+    "react": "^18.3.0",
     "react-dom": "^18.3.1",
     "react-markdown": "^9.0.1",
     "react-toastify": "^11.0.3"
   },
   "devDependencies": {
-    "@docusaurus/module-type-aliases": "^3.7.0",
-    "@docusaurus/tsconfig": "^3.7.0",
+    "@docusaurus/module-type-aliases": "3.7.0",
+    "@docusaurus/tsconfig": "3.7.0",
     "@types/react": "^18.2.28",
     "@types/react-dom": "^18.3.1",
     "typescript": "^5.6.2"
