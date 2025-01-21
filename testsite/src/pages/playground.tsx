@@ -4,7 +4,7 @@ import BrowserOnly from "@docusaurus/BrowserOnly"
 import ErrorBoundary from "@docusaurus/ErrorBoundary"
 
 import { ToastContainer, toast } from "react-toastify"
-import "react-toastify/dist/ReactToastify.min.css"
+//import "react-toastify/dist/ReactToastify.min.css"
 
 function PlaygroundComponent(): JSX.Element {
   // No SSR for the live preview
