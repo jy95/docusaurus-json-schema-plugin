@@ -10,6 +10,7 @@ import {
 } from "@theme/JSONSchemaViewer/JSONSchemaElements/SchemaConditional"
 import { Collapsible } from "@theme/JSONSchemaViewer/components"
 
+import type { JSX } from "react"
 import type { JSONSchema, JSONSchemaNS } from "@theme/JSONSchemaViewer/types"
 
 type Props = {

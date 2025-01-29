@@ -2,6 +2,8 @@ import React from "react"
 
 import Translate from "@docusaurus/Translate"
 
+import type { JSX } from "react"
+
 export default function NoExtraItems(): JSX.Element {
   const noExtraItemsLabel = (
     <Translate

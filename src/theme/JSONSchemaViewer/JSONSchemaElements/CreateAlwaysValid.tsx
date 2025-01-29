@@ -6,6 +6,7 @@ import { useJSVOptionsContext } from "@theme/JSONSchemaViewer/contexts"
 import { QualifierMessages } from "@theme/JSONSchemaViewer/utils"
 import { CreateDescription } from "@theme/JSONSchemaViewer/JSONSchemaElements"
 
+import type { JSX } from "react"
 import type { JSONSchema } from "@theme/JSONSchemaViewer/types"
 
 type Props = {

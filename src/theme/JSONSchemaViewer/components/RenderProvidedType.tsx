@@ -10,6 +10,7 @@ import {
   CreateNull,
 } from "@theme/JSONSchemaViewer/JSONSchemaElements"
 
+import type { JSX } from "react"
 import type {
   JSONSchema,
   JSONSchemaNS,

@@ -4,6 +4,7 @@ import { CreateEdge } from "@theme/JSONSchemaViewer/components"
 import { SchemaHierarchyComponent } from "@theme/JSONSchemaViewer/contexts"
 import { encodeStringForJSONPointer } from "@theme/JSONSchemaViewer/utils"
 
+import type { JSX } from "react"
 import type { JSONSchemaNS } from "@theme/JSONSchemaViewer/types"
 
 type Props = {

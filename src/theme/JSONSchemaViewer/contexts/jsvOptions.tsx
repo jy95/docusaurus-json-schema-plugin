@@ -1,5 +1,6 @@
 import { useContext, createContext } from "react"
 
+import type { JSX } from "react"
 import type { JSONSchema } from "@theme/JSONSchemaViewer/types"
 import type { CheckKey } from "@theme/JSONSchemaViewer/utils/QualifierMessages"
 

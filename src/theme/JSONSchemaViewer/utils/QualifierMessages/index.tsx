@@ -2,6 +2,8 @@ import React from "react"
 
 import CodeBlock from "@theme-original/CodeBlock"
 
+import type { JSX } from "react"
+
 // To print all JSONS / value / string
 export function printSchemaType(obj: unknown): JSX.Element {
   // deal with simple types first

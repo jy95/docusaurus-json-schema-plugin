@@ -2,6 +2,8 @@ import React from "react"
 
 import { useJSVOptionsContext } from "@theme/JSONSchemaViewer/contexts"
 
+import type { JSX } from "react"
+
 type Props = {
   description: string
 }

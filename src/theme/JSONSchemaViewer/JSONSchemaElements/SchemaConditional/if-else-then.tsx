@@ -8,6 +8,7 @@ import { SchemaHierarchyComponent } from "@theme/JSONSchemaViewer/contexts"
 
 import { IfLabel, ThenLabel, ElseLabel } from "@theme/JSONSchemaViewer/labels"
 
+import type { JSX } from "react"
 import type { JSONSchema } from "@theme/JSONSchemaViewer/types"
 
 type Props = {

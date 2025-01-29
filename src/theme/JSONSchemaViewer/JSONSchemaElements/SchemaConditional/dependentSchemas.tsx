@@ -2,6 +2,7 @@ import React from "react"
 
 import { AllOfSchema } from "@theme/JSONSchemaViewer/JSONSchemaElements/schemaComposition"
 
+import type { JSX } from "react"
 import type { JSONSchema, JSONSchemaNS } from "@theme/JSONSchemaViewer/types"
 
 type Props = {

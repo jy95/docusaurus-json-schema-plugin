@@ -7,6 +7,8 @@ import React, {
 // import Details from "@theme-original/Details"
 import Details from "@theme-original/Details"
 
+import type { JSX } from "react"
+
 // For collapse component
 export default function Collapsible(props: {
   summary: ReactNode

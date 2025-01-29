@@ -12,6 +12,7 @@ import {
   FalseLabel,
 } from "@theme/JSONSchemaViewer/labels"
 
+import type { JSX } from "react"
 import type { TypeValues } from "@theme/JSONSchemaViewer/types"
 
 type Props = {

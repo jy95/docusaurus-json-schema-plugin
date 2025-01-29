@@ -1,3 +1,5 @@
+import type { JSX } from "react"
+
 // Plugin config
 declare module "docusaurus-json-schema-plugin" {
   import type { Plugin } from "@docusaurus/types"

@@ -14,6 +14,7 @@ import {
   detectedTypes,
 } from "@theme/JSONSchemaViewer/utils"
 
+import type { JSX } from "react"
 import type { JSONSchema, TypeValues } from "@theme/JSONSchemaViewer/types"
 
 // Render a single type

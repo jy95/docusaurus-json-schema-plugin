@@ -4,6 +4,8 @@ import { JSONSchema } from "json-schema-typed"
 import { JSVOptions } from "../../contexts"
 import Translate from "@docusaurus/Translate"
 
+import type { JSX } from "react"
+
 type Props = {
   schema: Exclude<JSONSchema, true | false>
   options: JSVOptions

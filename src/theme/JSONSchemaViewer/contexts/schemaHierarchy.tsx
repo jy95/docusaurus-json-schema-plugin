@@ -1,5 +1,6 @@
 import React, { useContext, createContext } from "react"
 
+import type { JSX } from "react"
 export type SchemaHierarchy = {
   /**
    * JSON Pointer of the current element

@@ -18,6 +18,8 @@ import type {
   TypeValues,
 } from "@theme/JSONSchemaViewer/types"
 
+import type { JSX } from "react"
+
 // common function I need below
 function shouldAddSeparator(idx: number, length: number): boolean {
   // Not useful to add an separator for [], [item] situations

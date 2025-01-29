@@ -4,6 +4,7 @@ import Translate from "@docusaurus/Translate"
 
 import { AndLabel } from "@theme/JSONSchemaViewer/labels"
 
+import type { JSX } from "react"
 import type { JSONSchema, JSONSchemaNS } from "@theme/JSONSchemaViewer/types"
 
 type Props = {

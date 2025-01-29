@@ -4,6 +4,7 @@ import Translate from "@docusaurus/Translate"
 
 import { printSchemaType } from "@theme/JSONSchemaViewer/utils/QualifierMessages"
 
+import type { JSX } from "react"
 import type { JSONSchema } from "@theme/JSONSchemaViewer/types"
 
 type Props = {

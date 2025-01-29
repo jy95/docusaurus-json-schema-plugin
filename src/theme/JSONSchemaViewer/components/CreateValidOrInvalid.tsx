@@ -5,6 +5,7 @@ import {
   CreateAlwaysValid,
 } from "@theme/JSONSchemaViewer/JSONSchemaElements"
 
+import type { JSX } from "react"
 import type { JSONSchema } from "@theme/JSONSchemaViewer/types"
 
 type Props = {

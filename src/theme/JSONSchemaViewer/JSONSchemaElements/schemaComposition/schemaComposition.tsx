@@ -7,6 +7,7 @@ import {
   OneOfSchema,
 } from "@theme/JSONSchemaViewer/JSONSchemaElements/schemaComposition"
 
+import type { JSX } from "react"
 import type { JSONSchema } from "@theme/JSONSchemaViewer/types"
 
 type Props = {

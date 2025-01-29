@@ -2,6 +2,8 @@ import React from "react"
 
 import Translate from "@docusaurus/Translate"
 
+import type { JSX } from "react"
+
 // Label for "object"
 export default function ObjectLabel(): JSX.Element {
   return (

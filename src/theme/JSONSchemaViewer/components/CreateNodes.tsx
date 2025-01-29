@@ -15,6 +15,7 @@ import {
 } from "@theme/JSONSchemaViewer/utils"
 
 import type { JSONSchema } from "@theme/JSONSchemaViewer/types"
+import type { JSX } from "react"
 
 type Props = {
   [x: string]: any

@@ -3,6 +3,7 @@ import React from "react"
 import * as QMS from "@theme/JSONSchemaViewer/utils/QualifierMessages"
 import { hasUnresolvedRefs, isArrayNotEmpty } from "../detectTypes"
 
+import type { JSX } from "react"
 import type { JSONSchema, JSONSchemaNS } from "@theme/JSONSchemaViewer/types"
 import type { JSVOptions } from "@theme/JSONSchemaViewer/contexts"
 

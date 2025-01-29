@@ -9,6 +9,7 @@ import { SchemaHierarchyComponent } from "@theme/JSONSchemaViewer/contexts"
 
 import { GenerateFriendlyName } from "@theme/JSONSchemaViewer/utils"
 
+import type { JSX } from "react"
 import type { JSONSchema } from "@theme/JSONSchemaViewer/types"
 
 type Props = {

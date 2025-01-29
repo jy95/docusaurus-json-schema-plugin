@@ -5,6 +5,7 @@ import Translate from "@docusaurus/Translate"
 import { Collapsible, CreateNodes } from "@theme/JSONSchemaViewer/components"
 import { SchemaHierarchyComponent } from "@theme/JSONSchemaViewer/contexts"
 
+import type { JSX } from "react"
 import type { JSONSchemaNS } from "@theme/JSONSchemaViewer/types"
 
 type Props = {

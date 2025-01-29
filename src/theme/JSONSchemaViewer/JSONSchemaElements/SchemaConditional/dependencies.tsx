@@ -5,6 +5,7 @@ import {
   DependentSchemas,
 } from "@theme/JSONSchemaViewer/JSONSchemaElements/SchemaConditional"
 
+import type { JSX } from "react"
 import type { JSONSchema } from "@theme/JSONSchemaViewer/types"
 
 type Props = {

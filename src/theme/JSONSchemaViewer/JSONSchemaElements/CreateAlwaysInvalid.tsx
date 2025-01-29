@@ -3,6 +3,8 @@ import Translate from "@docusaurus/Translate"
 
 import { TypeLabel, FalseLabel } from "@theme/JSONSchemaViewer/labels"
 
+import type { JSX } from "react"
+
 // When schema has the value "true", it means that it is ALWAYS valid
 export default function CreateAlwaysValid(): JSX.Element {
   return (

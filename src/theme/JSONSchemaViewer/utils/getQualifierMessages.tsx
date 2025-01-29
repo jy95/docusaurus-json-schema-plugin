@@ -5,6 +5,7 @@ import {
   QUALIFIERS_DEFAULT_ORDER,
 } from "@theme/JSONSchemaViewer/utils/QualifierMessages"
 
+import type { JSX } from "react"
 import type { JSONSchema } from "@theme/JSONSchemaViewer/types"
 import type { JSVOptions } from "@theme/JSONSchemaViewer/contexts"
 

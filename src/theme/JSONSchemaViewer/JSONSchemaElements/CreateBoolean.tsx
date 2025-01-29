@@ -8,6 +8,7 @@ import { TypeLabel, BooleanLabel } from "@theme/JSONSchemaViewer/labels"
 
 import { CreateDescription } from "@theme/JSONSchemaViewer/JSONSchemaElements"
 
+import type { JSX } from "react"
 import type { JSONSchemaNS } from "@theme/JSONSchemaViewer/types"
 
 type Props = {
