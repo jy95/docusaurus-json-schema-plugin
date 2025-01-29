@@ -15,6 +15,8 @@ import { GenerateFriendlyName } from "@theme/JSONSchemaViewer/utils"
 
 import styles from "./styles.module.css"
 
+import type { JSX } from "react"
+
 import type {
   JSONSchema,
   JSONSchema_Draft_2019_09,

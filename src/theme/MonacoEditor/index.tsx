@@ -9,6 +9,7 @@ import {
   ErrorOccurredLabel,
 } from "@theme/JSONSchemaViewer/labels"
 
+import type { JSX } from "react"
 import type { Props as ErrorProps } from "@theme/Error"
 import type { MonacoEditorProps } from "react-monaco-editor"
 
