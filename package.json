@@ -59,6 +59,6 @@
     "@stoplight/json-ref-resolver": "^3.1.5",
     "monaco-editor": "^0.52.2",
     "monaco-editor-webpack-plugin": "^7.1.0",
-    "react-monaco-editor": "^0.56.2"
+    "react-monaco-editor": "^0.58.0"
   }
 }
