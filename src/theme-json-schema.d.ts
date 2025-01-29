@@ -29,9 +29,4 @@ declare module "@theme/MonacoEditor" {
   import type { Props } from "@theme/MonacoEditor"
 
   export default function MonacoEditor(props: Props): JSX.Element
-
-  export type { MonacoEditorTypes, Props } from "@theme/MonacoEditor"
-
-  // Re-export Monaco own interface, in case people want to add custom validation, ...
-  export * as monaco from "monaco-editor/esm/vs/editor/editor.api"
 }
