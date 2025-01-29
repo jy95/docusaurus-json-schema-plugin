@@ -1,6 +1,8 @@
 // Dummy mock for the sake Jest doesn't wire internal Docusaurus packages
 import React, { ReactElement, ReactNode } from "react"
 
+import type { JSX } from "react"
+
 interface TabItemProps {
   readonly children: ReactNode
   readonly value: string

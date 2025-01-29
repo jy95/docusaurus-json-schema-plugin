@@ -1,5 +1,7 @@
 import React, { ReactNode } from "react"
 
+import type { JSX } from "react"
+
 type Props = {
   children: ReactNode
   language?: string

@@ -1,5 +1,7 @@
 import React, { ReactNode } from "react"
 
+import type { JSX } from "react"
+
 export type Props = {
   readonly children: ReactNode
   readonly hidden?: boolean

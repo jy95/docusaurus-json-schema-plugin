@@ -1,6 +1,8 @@
 import React, { type ComponentProps, type ReactElement } from "react"
 import { Collapsible } from "./Collapsible"
 
+import type { JSX } from "react"
+
 type DetailsProps = {
   /**
    * Summary is provided as props, optionally including the wrapping
