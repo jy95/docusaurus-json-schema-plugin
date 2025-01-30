@@ -1,17 +1,10 @@
-import React from "react"
-
-// For typings autocomplete whatever your IDE
-import { expect, test, describe } from "@jest/globals"
-
-import { create, act } from "react-test-renderer"
-
-import JSONSchemaViewer from "../../src/theme/JSONSchemaViewer/index"
+import React from "react";
+import { expect, test, describe } from "@jest/globals";
+import { render } from "@testing-library/react";
+import JSONSchemaViewer from "../../src/theme/JSONSchemaViewer/index";
 
 // Type to prevent creating invalid mocks
-import type { JSONSchema } from "../../src/theme/JSONSchemaViewer/types"
-
-// Type for react-test-renderer
-import type { ReactTestRenderer } from "react-test-renderer"
+import type { JSONSchema } from "../../src/theme/JSONSchemaViewer/types";
 
 const testcases: [string, JSONSchema][] = [
   [
@@ -52,23 +45,16 @@ const testcases: [string, JSONSchema][] = [
       required: ["street_address", "city", "state"],
     },
   ],
-]
+];
 
 describe("JSONSchemaViewer - JSON Pointer", () => {
-  test.each(testcases)("test %s", async (_title, fakeSchema) => {
-    // render the component
-    let root: ReactTestRenderer | undefined
+  test.each(testcases)("test %s", (_title, fakeSchema) => {
+    // Render the component
+    const { asFragment } = render(
+      <JSONSchemaViewer schema={fakeSchema} viewerOptions={{ showExamples: true }} />
+    );
 
-    await act(async () => {
-      root = create(
-        <JSONSchemaViewer
-          schema={fakeSchema}
-          viewerOptions={{ showExamples: true }}
-        />,
-      )
-    })
-
-    // make assertions on root
-    expect(root?.toJSON()).toMatchSnapshot()
-  })
-})
+    // Capture the snapshot
+    expect(asFragment()).toMatchSnapshot();
+  });
+});

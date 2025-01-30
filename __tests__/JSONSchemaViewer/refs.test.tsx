@@ -1,17 +1,10 @@
 import React from "react"
-
-// For typings autocomplete whatever your IDE
+import { render } from "@testing-library/react"
 import { expect, test, describe } from "@jest/globals"
-
-import { create, act } from "react-test-renderer"
-
 import JSONSchemaViewer from "../../src/theme/JSONSchemaViewer/index"
 
 // Type to prevent creating invalid mocks
 import type { JSONSchema } from "../../src/theme/JSONSchemaViewer/types"
-
-// Type for react-test-renderer
-import type { ReactTestRenderer } from "react-test-renderer"
 
 const testcases: JSONSchema[] = [
   // Test scenario that combines both Draft 2019-09 / Draft 2020-12
@@ -33,15 +26,11 @@ const testcases: JSONSchema[] = [
 ]
 
 describe("JSONSchemaViewer - References cases", () => {
-  test.each(testcases)("test %#", async (fakeSchema) => {
-    // render the component
-    let root: ReactTestRenderer | undefined
+  test.each(testcases)("test %#", (fakeSchema) => {
+    // Render the component
+    const { asFragment } = render(<JSONSchemaViewer schema={fakeSchema} />)
 
-    await act(async () => {
-      root = create(<JSONSchemaViewer schema={fakeSchema} />)
-    })
-
-    // make assertions on root
-    expect(root?.toJSON()).toMatchSnapshot()
+    // Capture the snapshot
+    expect(asFragment()).toMatchSnapshot()
   })
 })
