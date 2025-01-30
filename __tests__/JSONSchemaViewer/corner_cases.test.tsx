@@ -1,7 +1,8 @@
 import React from "react";
 import { expect, test, describe } from "@jest/globals";
-import { render, screen } from "@testing-library/react";
+import { render, act } from "@testing-library/react";
 
+import type { RenderResult } from "@testing-library/react";
 import type { JSX } from "react";
 
 // Type to prevent creating invalid mocks
@@ -66,10 +67,16 @@ const testcases: [
 
 describe("JSONSchemaViewer - corner cases", () => {
   test.each(testcases)("%s", async (_title, Component, fakeSchema) => {
-    render(<Component schema={fakeSchema} />);
+// Render the component
+    let rendered: RenderResult | null = null;
+    
+    // Use act to ensure all updates are processed
+    await act(async () => {
+      rendered = render(<Component schema={fakeSchema} />);
+    });
 
-    // Make assertions on the rendered output
-    expect(screen.getByTestId("json-schema-viewer")).toBeInTheDocument();
+    // Capture the snapshot
+    expect(rendered!.asFragment()).toMatchSnapshot();
   });
 
   test("Correctly infers integer when not explicitly expressed", () => {
