@@ -1,335 +1,273 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`JSONSchemaViewer - numeric test integer 1`] = `
-<details
-  className="json-schema-viewer"
-  open={true}
->
-  <summary>
-    <strong>
-      Schema
-    </strong>
-  </summary>
-  <div>
-    <div>
+<DocumentFragment>
+  <details
+    class="json-schema-viewer"
+    open=""
+  >
+    <summary>
       <strong>
-        type
+        Schema
       </strong>
-       : 
-      <span
-        style={
-          {
-            "opacity": "0.6",
-          }
-        }
-      >
-        integer
-      </span>
-      <div
-        style={
-          {
-            "marginTop": "var(--ifm-table-cell-padding)",
-          }
-        }
-      />
-      <div
-        style={
-          {
-            "marginTop": "var(--ifm-table-cell-padding)",
-          }
-        }
-      >
-        A simple integer
+    </summary>
+    <div>
+      <div>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style="opacity: 0.6;"
+        >
+          integer
+        </span>
+        <div />
+        <div>
+          A simple integer
+        </div>
       </div>
     </div>
-  </div>
-</details>
+  </details>
+</DocumentFragment>
 `;
 
 exports[`JSONSchemaViewer - numeric test multipleOf 1`] = `
-<details
-  className="json-schema-viewer"
-  open={true}
->
-  <summary>
-    <strong>
-      Schema
-    </strong>
-  </summary>
-  <div>
-    <div>
+<DocumentFragment>
+  <details
+    class="json-schema-viewer"
+    open=""
+  >
+    <summary>
       <strong>
-        type
+        Schema
       </strong>
-       : 
-      <span
-        style={
-          {
-            "opacity": "0.6",
-          }
-        }
-      >
-        integer
-      </span>
-      <div
-        style={
-          {
-            "marginTop": "var(--ifm-table-cell-padding)",
-          }
-        }
-      >
+    </summary>
+    <div>
+      <div>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style="opacity: 0.6;"
+        >
+          integer
+        </span>
         <div>
-          <strong>
-            Possible values :
-          </strong>
-           
-          <code>
-            multiple of 10
-          </code>
+          <div>
+            <strong>
+              Possible values :
+            </strong>
+             
+            <code>
+              multiple of 10
+            </code>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</details>
+  </details>
+</DocumentFragment>
 `;
 
 exports[`JSONSchemaViewer - numeric test number 1`] = `
-<details
-  className="json-schema-viewer"
-  open={true}
->
-  <summary>
-    <strong>
-      Schema
-    </strong>
-  </summary>
-  <div>
-    <div>
+<DocumentFragment>
+  <details
+    class="json-schema-viewer"
+    open=""
+  >
+    <summary>
       <strong>
-        type
+        Schema
       </strong>
-       : 
-      <span
-        style={
-          {
-            "opacity": "0.6",
-          }
-        }
-      >
-        number
-      </span>
-      <div
-        style={
-          {
-            "marginTop": "var(--ifm-table-cell-padding)",
-          }
-        }
-      />
+    </summary>
+    <div>
+      <div>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style="opacity: 0.6;"
+        >
+          number
+        </span>
+        <div />
+      </div>
     </div>
-  </div>
-</details>
+  </details>
+</DocumentFragment>
 `;
 
 exports[`JSONSchemaViewer - numeric test ranges (1) 1`] = `
-<details
-  className="json-schema-viewer"
-  open={true}
->
-  <summary>
-    <strong>
-      Schema
-    </strong>
-  </summary>
-  <div>
-    <div>
+<DocumentFragment>
+  <details
+    class="json-schema-viewer"
+    open=""
+  >
+    <summary>
       <strong>
-        type
+        Schema
       </strong>
-       : 
-      <span
-        style={
-          {
-            "opacity": "0.6",
-          }
-        }
-      >
-        number
-      </span>
-      <div
-        style={
-          {
-            "marginTop": "var(--ifm-table-cell-padding)",
-          }
-        }
-      >
+    </summary>
+    <div>
+      <div>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style="opacity: 0.6;"
+        >
+          number
+        </span>
         <div>
-          <strong>
-            Possible values :
-          </strong>
-           
-          <code>
-            &gt;= 0
-          </code>
-           
-          <strong>
-            AND
-          </strong>
-           
-          <code>
-            &lt; 100
-          </code>
+          <div>
+            <strong>
+              Possible values :
+            </strong>
+             
+            <code>
+              &gt;= 0
+            </code>
+             
+            <strong>
+              AND
+            </strong>
+             
+            <code>
+              &lt; 100
+            </code>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</details>
+  </details>
+</DocumentFragment>
 `;
 
 exports[`JSONSchemaViewer - numeric test ranges (2) 1`] = `
-<details
-  className="json-schema-viewer"
-  open={true}
->
-  <summary>
-    <strong>
-      Schema
-    </strong>
-  </summary>
-  <div>
-    <div>
+<DocumentFragment>
+  <details
+    class="json-schema-viewer"
+    open=""
+  >
+    <summary>
       <strong>
-        type
+        Schema
       </strong>
-       : 
-      <span
-        style={
-          {
-            "opacity": "0.6",
-          }
-        }
-      >
-        number
-      </span>
-      <div
-        style={
-          {
-            "marginTop": "var(--ifm-table-cell-padding)",
-          }
-        }
-      >
+    </summary>
+    <div>
+      <div>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style="opacity: 0.6;"
+        >
+          number
+        </span>
         <div>
-          <strong>
-            Possible values :
-          </strong>
-           
-          <code>
-            &gt; 1
-          </code>
-           
-          <strong>
-            AND
-          </strong>
-           
-          <code>
-            &lt;= 100
-          </code>
+          <div>
+            <strong>
+              Possible values :
+            </strong>
+             
+            <code>
+              &gt; 1
+            </code>
+             
+            <strong>
+              AND
+            </strong>
+             
+            <code>
+              &lt;= 100
+            </code>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</details>
+  </details>
+</DocumentFragment>
 `;
 
 exports[`JSONSchemaViewer - numeric test ranges (3) 1`] = `
-<details
-  className="json-schema-viewer"
-  open={true}
->
-  <summary>
-    <strong>
-      Schema
-    </strong>
-  </summary>
-  <div>
-    <div>
+<DocumentFragment>
+  <details
+    class="json-schema-viewer"
+    open=""
+  >
+    <summary>
       <strong>
-        type
+        Schema
       </strong>
-       : 
-      <span
-        style={
-          {
-            "opacity": "0.6",
-          }
-        }
-      >
-        number
-      </span>
-      <div
-        style={
-          {
-            "marginTop": "var(--ifm-table-cell-padding)",
-          }
-        }
-      >
+    </summary>
+    <div>
+      <div>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style="opacity: 0.6;"
+        >
+          number
+        </span>
         <div>
-          <strong>
-            Possible values :
-          </strong>
-           
-          <code>
-            &gt; 1
-          </code>
+          <div>
+            <strong>
+              Possible values :
+            </strong>
+             
+            <code>
+              &gt; 1
+            </code>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</details>
+  </details>
+</DocumentFragment>
 `;
 
 exports[`JSONSchemaViewer - numeric test ranges (4) 1`] = `
-<details
-  className="json-schema-viewer"
-  open={true}
->
-  <summary>
-    <strong>
-      Schema
-    </strong>
-  </summary>
-  <div>
-    <div>
+<DocumentFragment>
+  <details
+    class="json-schema-viewer"
+    open=""
+  >
+    <summary>
       <strong>
-        type
+        Schema
       </strong>
-       : 
-      <span
-        style={
-          {
-            "opacity": "0.6",
-          }
-        }
-      >
-        number
-      </span>
-      <div
-        style={
-          {
-            "marginTop": "var(--ifm-table-cell-padding)",
-          }
-        }
-      >
+    </summary>
+    <div>
+      <div>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style="opacity: 0.6;"
+        >
+          number
+        </span>
         <div>
-          <strong>
-            Possible values :
-          </strong>
-           
-          <code>
-            &lt; 1
-          </code>
+          <div>
+            <strong>
+              Possible values :
+            </strong>
+             
+            <code>
+              &lt; 1
+            </code>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</details>
+  </details>
+</DocumentFragment>
 `;

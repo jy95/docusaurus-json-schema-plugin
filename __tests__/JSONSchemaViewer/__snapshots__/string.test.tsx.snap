@@ -1,1560 +1,1096 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`JSONSchemaViewer - string test basic 1`] = `
-<details
-  className="json-schema-viewer"
-  open={true}
->
-  <summary>
-    <strong>
-      Schema
-    </strong>
-  </summary>
-  <div>
-    <div>
+<DocumentFragment>
+  <details
+    class="json-schema-viewer"
+    open=""
+  >
+    <summary>
       <strong>
-        type
+        Schema
       </strong>
-       : 
-      <span
-        style={
-          {
-            "opacity": "0.6",
-          }
-        }
-      >
-        string
-      </span>
-      <div
-        style={
-          {
-            "marginTop": "var(--ifm-table-cell-padding)",
-          }
-        }
-      />
+    </summary>
+    <div>
+      <div>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style="opacity: 0.6;"
+        >
+          string
+        </span>
+        <div />
+      </div>
     </div>
-  </div>
-</details>
+  </details>
+</DocumentFragment>
 `;
 
 exports[`JSONSchemaViewer - string test contentEncoding 1`] = `
-<details
-  className="json-schema-viewer"
-  open={true}
->
-  <summary>
-    <strong>
-      Schema
-    </strong>
-  </summary>
-  <div>
-    <div>
+<DocumentFragment>
+  <details
+    class="json-schema-viewer"
+    open=""
+  >
+    <summary>
       <strong>
-        type
+        Schema
       </strong>
-       : 
-      <span
-        style={
-          {
-            "opacity": "0.6",
-          }
-        }
-      >
-        string
-      </span>
-      <div
-        style={
-          {
-            "marginTop": "var(--ifm-table-cell-padding)",
-          }
-        }
-      >
+    </summary>
+    <div>
+      <div>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style="opacity: 0.6;"
+        >
+          string
+        </span>
         <div>
-          <strong>
-            Encoding :
-          </strong>
-           
-          <code>
-            base64
-          </code>
+          <div>
+            <strong>
+              Encoding :
+            </strong>
+             
+            <code>
+              base64
+            </code>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</details>
+  </details>
+</DocumentFragment>
 `;
 
 exports[`JSONSchemaViewer - string test contentEncoding with contentMediaType 1`] = `
-<details
-  className="json-schema-viewer"
-  open={true}
->
-  <summary>
-    <strong>
-      Schema
-    </strong>
-  </summary>
-  <div>
-    <div>
+<DocumentFragment>
+  <details
+    class="json-schema-viewer"
+    open=""
+  >
+    <summary>
       <strong>
-        type
+        Schema
       </strong>
-       : 
-      <span
-        style={
-          {
-            "opacity": "0.6",
-          }
-        }
-      >
-        string
-      </span>
-      <div
-        style={
-          {
-            "marginTop": "var(--ifm-table-cell-padding)",
-          }
-        }
-      >
+    </summary>
+    <div>
+      <div>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style="opacity: 0.6;"
+        >
+          string
+        </span>
         <div>
-          <strong>
-            Encoding :
-          </strong>
-           
-          <code>
-            base64
-          </code>
-        </div>
-        <div>
-          <strong>
-            Media type :
-          </strong>
-           
-          <code>
-            application/json
-          </code>
+          <div>
+            <strong>
+              Encoding :
+            </strong>
+             
+            <code>
+              base64
+            </code>
+          </div>
+          <div>
+            <strong>
+              Media type :
+            </strong>
+             
+            <code>
+              application/json
+            </code>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</details>
+  </details>
+</DocumentFragment>
 `;
 
 exports[`JSONSchemaViewer - string test contentMediaType 1`] = `
-<details
-  className="json-schema-viewer"
-  open={true}
->
-  <summary>
-    <strong>
-      Schema
-    </strong>
-  </summary>
-  <div>
-    <div>
+<DocumentFragment>
+  <details
+    class="json-schema-viewer"
+    open=""
+  >
+    <summary>
       <strong>
-        type
+        Schema
       </strong>
-       : 
-      <span
-        style={
-          {
-            "opacity": "0.6",
-          }
-        }
-      >
-        string
-      </span>
-      <div
-        style={
-          {
-            "marginTop": "var(--ifm-table-cell-padding)",
-          }
-        }
-      >
+    </summary>
+    <div>
+      <div>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style="opacity: 0.6;"
+        >
+          string
+        </span>
         <div>
-          <strong>
-            Media type :
-          </strong>
-           
-          <code>
-            application/json
-          </code>
+          <div>
+            <strong>
+              Media type :
+            </strong>
+             
+            <code>
+              application/json
+            </code>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</details>
+  </details>
+</DocumentFragment>
 `;
 
 exports[`JSONSchemaViewer - string test contentSchema 1`] = `
-<details
-  className="json-schema-viewer"
-  open={true}
->
-  <summary>
-    <strong>
-      Schema
-    </strong>
-  </summary>
-  <div>
-    <div>
+<DocumentFragment>
+  <details
+    class="json-schema-viewer"
+    open=""
+  >
+    <summary>
       <strong>
-        type
+        Schema
       </strong>
-       : 
-      <span
-        style={
-          {
-            "opacity": "0.6",
-          }
-        }
-      >
-        string
-      </span>
-      <div
-        style={
-          {
-            "marginTop": "var(--ifm-table-cell-padding)",
-          }
-        }
-      >
+    </summary>
+    <div>
+      <div>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style="opacity: 0.6;"
+        >
+          string
+        </span>
         <div>
-          <strong>
-            Decoded content must be validated against this schema :
-          </strong>
-           
-          <details
-            open={true}
-          >
-            <summary>
-              <strong>
-                Schema
-              </strong>
-            </summary>
-            <div>
-              <div>
+          <div>
+            <strong>
+              Decoded content must be validated against this schema :
+            </strong>
+             
+            <details
+              open=""
+            >
+              <summary>
                 <strong>
-                  type
+                  Schema
                 </strong>
-                 : 
-                <span
-                  style={
-                    {
-                      "opacity": "0.6",
-                    }
-                  }
-                >
-                  object
-                </span>
-                <ul>
-                  <li
-                    data-level={2}
-                    id="/contentSchema/properties/name"
+              </summary>
+              <div>
+                <div>
+                  <strong>
+                    type
+                  </strong>
+                   : 
+                  <span
+                    style="opacity: 0.6;"
                   >
-                    <details
-                      open={false}
+                    object
+                  </span>
+                  <ul>
+                    <li
+                      data-level="2"
+                      id="/contentSchema/properties/name"
                     >
-                      <summary>
-                        <strong>
-                          name
-                        </strong>
-                         
-                        <span
-                          style={
-                            {
-                              "opacity": "0.6",
-                            }
-                          }
-                        >
-                          any
-                        </span>
-                         
-                        <strong>
-                          required
-                        </strong>
-                      </summary>
-                      <div>
-                        <div>
+                      <details>
+                        <summary>
                           <strong>
-                            type
+                            name
                           </strong>
-                           : 
+                           
                           <span
-                            style={
-                              {
-                                "opacity": "0.6",
-                              }
-                            }
+                            style="opacity: 0.6;"
                           >
                             any
                           </span>
-                          <div
-                            style={
-                              {
-                                "marginTop": "var(--ifm-table-cell-padding)",
-                              }
-                            }
-                          >
-                            Always valid
+                           
+                          <strong>
+                            required
+                          </strong>
+                        </summary>
+                        <div>
+                          <div>
+                            <strong>
+                              type
+                            </strong>
+                             : 
+                            <span
+                              style="opacity: 0.6;"
+                            >
+                              any
+                            </span>
+                            <div>
+                              Always valid
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    </details>
-                  </li>
-                  <li
-                    data-level={2}
-                    id="/contentSchema/properties/age"
-                  >
-                    <details
-                      open={false}
+                      </details>
+                    </li>
+                    <li
+                      data-level="2"
+                      id="/contentSchema/properties/age"
                     >
-                      <summary>
-                        <strong>
-                          age
-                        </strong>
-                         
-                        <span
-                          style={
-                            {
-                              "opacity": "0.6",
-                            }
-                          }
-                        >
-                          any
-                        </span>
-                         
-                        <strong>
-                          required
-                        </strong>
-                      </summary>
-                      <div>
-                        <div>
+                      <details>
+                        <summary>
                           <strong>
-                            type
+                            age
                           </strong>
-                           : 
+                           
                           <span
-                            style={
-                              {
-                                "opacity": "0.6",
-                              }
-                            }
+                            style="opacity: 0.6;"
                           >
                             any
                           </span>
-                          <div
-                            style={
-                              {
-                                "marginTop": "var(--ifm-table-cell-padding)",
-                              }
-                            }
-                          >
-                            Always valid
+                           
+                          <strong>
+                            required
+                          </strong>
+                        </summary>
+                        <div>
+                          <div>
+                            <strong>
+                              type
+                            </strong>
+                             : 
+                            <span
+                              style="opacity: 0.6;"
+                            >
+                              any
+                            </span>
+                            <div>
+                              Always valid
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    </details>
-                  </li>
-                </ul>
-                <div
-                  style={
-                    {
-                      "marginTop": "var(--ifm-table-cell-padding)",
-                    }
-                  }
-                />
+                      </details>
+                    </li>
+                  </ul>
+                  <div />
+                </div>
               </div>
-            </div>
-          </details>
+            </details>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</details>
+  </details>
+</DocumentFragment>
 `;
 
 exports[`JSONSchemaViewer - string test format 1`] = `
-<details
-  className="json-schema-viewer"
-  open={true}
->
-  <summary>
-    <strong>
-      Schema
-    </strong>
-  </summary>
-  <div>
-    <div>
+<DocumentFragment>
+  <details
+    class="json-schema-viewer"
+    open=""
+  >
+    <summary>
       <strong>
-        type
+        Schema
       </strong>
-       : 
-      <span
-        style={
-          {
-            "opacity": "0.6",
-          }
-        }
-      >
-        object
-      </span>
-      <ul>
-        <li
-          data-level={1}
-          id="/properties/prop1"
+    </summary>
+    <div>
+      <div>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style="opacity: 0.6;"
         >
-          <details
-            open={false}
+          object
+        </span>
+        <ul>
+          <li
+            data-level="1"
+            id="/properties/prop1"
           >
-            <summary>
-              <strong>
-                prop1
-              </strong>
-               
-              <span
-                style={
-                  {
-                    "opacity": "0.6",
-                  }
-                }
-              >
-                date-time
-              </span>
-            </summary>
-            <div>
-              <div>
+            <details>
+              <summary>
                 <strong>
-                  type
+                  prop1
                 </strong>
-                 : 
+                 
                 <span
-                  style={
-                    {
-                      "opacity": "0.6",
-                    }
-                  }
+                  style="opacity: 0.6;"
                 >
-                  string
-                   
-                  (date-time)
+                  date-time
                 </span>
-                <div
-                  style={
-                    {
-                      "marginTop": "var(--ifm-table-cell-padding)",
-                    }
-                  }
-                />
+              </summary>
+              <div>
+                <div>
+                  <strong>
+                    type
+                  </strong>
+                   : 
+                  <span
+                    style="opacity: 0.6;"
+                  >
+                    string (date-time)
+                  </span>
+                  <div />
+                </div>
               </div>
-            </div>
-          </details>
-        </li>
-        <li
-          data-level={1}
-          id="/properties/prop2"
-        >
-          <details
-            open={false}
+            </details>
+          </li>
+          <li
+            data-level="1"
+            id="/properties/prop2"
           >
-            <summary>
-              <strong>
-                prop2
-              </strong>
-               
-              <span
-                style={
-                  {
-                    "opacity": "0.6",
-                  }
-                }
-              >
-                time
-              </span>
-            </summary>
-            <div>
-              <div>
+            <details>
+              <summary>
                 <strong>
-                  type
+                  prop2
                 </strong>
-                 : 
+                 
                 <span
-                  style={
-                    {
-                      "opacity": "0.6",
-                    }
-                  }
+                  style="opacity: 0.6;"
                 >
-                  string
-                   
-                  (time)
+                  time
                 </span>
-                <div
-                  style={
-                    {
-                      "marginTop": "var(--ifm-table-cell-padding)",
-                    }
-                  }
-                />
+              </summary>
+              <div>
+                <div>
+                  <strong>
+                    type
+                  </strong>
+                   : 
+                  <span
+                    style="opacity: 0.6;"
+                  >
+                    string (time)
+                  </span>
+                  <div />
+                </div>
               </div>
-            </div>
-          </details>
-        </li>
-        <li
-          data-level={1}
-          id="/properties/prop3"
-        >
-          <details
-            open={false}
+            </details>
+          </li>
+          <li
+            data-level="1"
+            id="/properties/prop3"
           >
-            <summary>
-              <strong>
-                prop3
-              </strong>
-               
-              <span
-                style={
-                  {
-                    "opacity": "0.6",
-                  }
-                }
-              >
-                date
-              </span>
-            </summary>
-            <div>
-              <div>
+            <details>
+              <summary>
                 <strong>
-                  type
+                  prop3
                 </strong>
-                 : 
+                 
                 <span
-                  style={
-                    {
-                      "opacity": "0.6",
-                    }
-                  }
+                  style="opacity: 0.6;"
                 >
-                  string
-                   
-                  (date)
+                  date
                 </span>
-                <div
-                  style={
-                    {
-                      "marginTop": "var(--ifm-table-cell-padding)",
-                    }
-                  }
-                />
+              </summary>
+              <div>
+                <div>
+                  <strong>
+                    type
+                  </strong>
+                   : 
+                  <span
+                    style="opacity: 0.6;"
+                  >
+                    string (date)
+                  </span>
+                  <div />
+                </div>
               </div>
-            </div>
-          </details>
-        </li>
-        <li
-          data-level={1}
-          id="/properties/prop4"
-        >
-          <details
-            open={false}
+            </details>
+          </li>
+          <li
+            data-level="1"
+            id="/properties/prop4"
           >
-            <summary>
-              <strong>
-                prop4
-              </strong>
-               
-              <span
-                style={
-                  {
-                    "opacity": "0.6",
-                  }
-                }
-              >
-                duration
-              </span>
-            </summary>
-            <div>
-              <div>
+            <details>
+              <summary>
                 <strong>
-                  type
+                  prop4
                 </strong>
-                 : 
+                 
                 <span
-                  style={
-                    {
-                      "opacity": "0.6",
-                    }
-                  }
+                  style="opacity: 0.6;"
                 >
-                  string
-                   
-                  (duration)
+                  duration
                 </span>
-                <div
-                  style={
-                    {
-                      "marginTop": "var(--ifm-table-cell-padding)",
-                    }
-                  }
-                />
+              </summary>
+              <div>
+                <div>
+                  <strong>
+                    type
+                  </strong>
+                   : 
+                  <span
+                    style="opacity: 0.6;"
+                  >
+                    string (duration)
+                  </span>
+                  <div />
+                </div>
               </div>
-            </div>
-          </details>
-        </li>
-        <li
-          data-level={1}
-          id="/properties/prop5"
-        >
-          <details
-            open={false}
+            </details>
+          </li>
+          <li
+            data-level="1"
+            id="/properties/prop5"
           >
-            <summary>
-              <strong>
-                prop5
-              </strong>
-               
-              <span
-                style={
-                  {
-                    "opacity": "0.6",
-                  }
-                }
-              >
-                email
-              </span>
-            </summary>
-            <div>
-              <div>
+            <details>
+              <summary>
                 <strong>
-                  type
+                  prop5
                 </strong>
-                 : 
+                 
                 <span
-                  style={
-                    {
-                      "opacity": "0.6",
-                    }
-                  }
+                  style="opacity: 0.6;"
                 >
-                  string
-                   
-                  (email)
+                  email
                 </span>
-                <div
-                  style={
-                    {
-                      "marginTop": "var(--ifm-table-cell-padding)",
-                    }
-                  }
-                />
+              </summary>
+              <div>
+                <div>
+                  <strong>
+                    type
+                  </strong>
+                   : 
+                  <span
+                    style="opacity: 0.6;"
+                  >
+                    string (email)
+                  </span>
+                  <div />
+                </div>
               </div>
-            </div>
-          </details>
-        </li>
-        <li
-          data-level={1}
-          id="/properties/prop6"
-        >
-          <details
-            open={false}
+            </details>
+          </li>
+          <li
+            data-level="1"
+            id="/properties/prop6"
           >
-            <summary>
-              <strong>
-                prop6
-              </strong>
-               
-              <span
-                style={
-                  {
-                    "opacity": "0.6",
-                  }
-                }
-              >
-                idn-email
-              </span>
-            </summary>
-            <div>
-              <div>
+            <details>
+              <summary>
                 <strong>
-                  type
+                  prop6
                 </strong>
-                 : 
+                 
                 <span
-                  style={
-                    {
-                      "opacity": "0.6",
-                    }
-                  }
+                  style="opacity: 0.6;"
                 >
-                  string
-                   
-                  (idn-email)
+                  idn-email
                 </span>
-                <div
-                  style={
-                    {
-                      "marginTop": "var(--ifm-table-cell-padding)",
-                    }
-                  }
-                />
+              </summary>
+              <div>
+                <div>
+                  <strong>
+                    type
+                  </strong>
+                   : 
+                  <span
+                    style="opacity: 0.6;"
+                  >
+                    string (idn-email)
+                  </span>
+                  <div />
+                </div>
               </div>
-            </div>
-          </details>
-        </li>
-        <li
-          data-level={1}
-          id="/properties/prop7"
-        >
-          <details
-            open={false}
+            </details>
+          </li>
+          <li
+            data-level="1"
+            id="/properties/prop7"
           >
-            <summary>
-              <strong>
-                prop7
-              </strong>
-               
-              <span
-                style={
-                  {
-                    "opacity": "0.6",
-                  }
-                }
-              >
-                hostname
-              </span>
-            </summary>
-            <div>
-              <div>
+            <details>
+              <summary>
                 <strong>
-                  type
+                  prop7
                 </strong>
-                 : 
+                 
                 <span
-                  style={
-                    {
-                      "opacity": "0.6",
-                    }
-                  }
+                  style="opacity: 0.6;"
                 >
-                  string
-                   
-                  (hostname)
+                  hostname
                 </span>
-                <div
-                  style={
-                    {
-                      "marginTop": "var(--ifm-table-cell-padding)",
-                    }
-                  }
-                />
+              </summary>
+              <div>
+                <div>
+                  <strong>
+                    type
+                  </strong>
+                   : 
+                  <span
+                    style="opacity: 0.6;"
+                  >
+                    string (hostname)
+                  </span>
+                  <div />
+                </div>
               </div>
-            </div>
-          </details>
-        </li>
-        <li
-          data-level={1}
-          id="/properties/prop8"
-        >
-          <details
-            open={false}
+            </details>
+          </li>
+          <li
+            data-level="1"
+            id="/properties/prop8"
           >
-            <summary>
-              <strong>
-                prop8
-              </strong>
-               
-              <span
-                style={
-                  {
-                    "opacity": "0.6",
-                  }
-                }
-              >
-                idn-hostname
-              </span>
-            </summary>
-            <div>
-              <div>
+            <details>
+              <summary>
                 <strong>
-                  type
+                  prop8
                 </strong>
-                 : 
+                 
                 <span
-                  style={
-                    {
-                      "opacity": "0.6",
-                    }
-                  }
+                  style="opacity: 0.6;"
                 >
-                  string
-                   
-                  (idn-hostname)
+                  idn-hostname
                 </span>
-                <div
-                  style={
-                    {
-                      "marginTop": "var(--ifm-table-cell-padding)",
-                    }
-                  }
-                />
+              </summary>
+              <div>
+                <div>
+                  <strong>
+                    type
+                  </strong>
+                   : 
+                  <span
+                    style="opacity: 0.6;"
+                  >
+                    string (idn-hostname)
+                  </span>
+                  <div />
+                </div>
               </div>
-            </div>
-          </details>
-        </li>
-        <li
-          data-level={1}
-          id="/properties/prop9"
-        >
-          <details
-            open={false}
+            </details>
+          </li>
+          <li
+            data-level="1"
+            id="/properties/prop9"
           >
-            <summary>
-              <strong>
-                prop9
-              </strong>
-               
-              <span
-                style={
-                  {
-                    "opacity": "0.6",
-                  }
-                }
-              >
-                ipv4
-              </span>
-            </summary>
-            <div>
-              <div>
+            <details>
+              <summary>
                 <strong>
-                  type
+                  prop9
                 </strong>
-                 : 
+                 
                 <span
-                  style={
-                    {
-                      "opacity": "0.6",
-                    }
-                  }
+                  style="opacity: 0.6;"
                 >
-                  string
-                   
-                  (ipv4)
+                  ipv4
                 </span>
-                <div
-                  style={
-                    {
-                      "marginTop": "var(--ifm-table-cell-padding)",
-                    }
-                  }
-                />
+              </summary>
+              <div>
+                <div>
+                  <strong>
+                    type
+                  </strong>
+                   : 
+                  <span
+                    style="opacity: 0.6;"
+                  >
+                    string (ipv4)
+                  </span>
+                  <div />
+                </div>
               </div>
-            </div>
-          </details>
-        </li>
-        <li
-          data-level={1}
-          id="/properties/prop10"
-        >
-          <details
-            open={false}
+            </details>
+          </li>
+          <li
+            data-level="1"
+            id="/properties/prop10"
           >
-            <summary>
-              <strong>
-                prop10
-              </strong>
-               
-              <span
-                style={
-                  {
-                    "opacity": "0.6",
-                  }
-                }
-              >
-                ipv6
-              </span>
-            </summary>
-            <div>
-              <div>
+            <details>
+              <summary>
                 <strong>
-                  type
+                  prop10
                 </strong>
-                 : 
+                 
                 <span
-                  style={
-                    {
-                      "opacity": "0.6",
-                    }
-                  }
+                  style="opacity: 0.6;"
                 >
-                  string
-                   
-                  (ipv6)
+                  ipv6
                 </span>
-                <div
-                  style={
-                    {
-                      "marginTop": "var(--ifm-table-cell-padding)",
-                    }
-                  }
-                />
+              </summary>
+              <div>
+                <div>
+                  <strong>
+                    type
+                  </strong>
+                   : 
+                  <span
+                    style="opacity: 0.6;"
+                  >
+                    string (ipv6)
+                  </span>
+                  <div />
+                </div>
               </div>
-            </div>
-          </details>
-        </li>
-        <li
-          data-level={1}
-          id="/properties/prop11"
-        >
-          <details
-            open={false}
+            </details>
+          </li>
+          <li
+            data-level="1"
+            id="/properties/prop11"
           >
-            <summary>
-              <strong>
-                prop11
-              </strong>
-               
-              <span
-                style={
-                  {
-                    "opacity": "0.6",
-                  }
-                }
-              >
-                uuid
-              </span>
-            </summary>
-            <div>
-              <div>
+            <details>
+              <summary>
                 <strong>
-                  type
+                  prop11
                 </strong>
-                 : 
+                 
                 <span
-                  style={
-                    {
-                      "opacity": "0.6",
-                    }
-                  }
+                  style="opacity: 0.6;"
                 >
-                  string
-                   
-                  (uuid)
+                  uuid
                 </span>
-                <div
-                  style={
-                    {
-                      "marginTop": "var(--ifm-table-cell-padding)",
-                    }
-                  }
-                />
+              </summary>
+              <div>
+                <div>
+                  <strong>
+                    type
+                  </strong>
+                   : 
+                  <span
+                    style="opacity: 0.6;"
+                  >
+                    string (uuid)
+                  </span>
+                  <div />
+                </div>
               </div>
-            </div>
-          </details>
-        </li>
-        <li
-          data-level={1}
-          id="/properties/prop12"
-        >
-          <details
-            open={false}
+            </details>
+          </li>
+          <li
+            data-level="1"
+            id="/properties/prop12"
           >
-            <summary>
-              <strong>
-                prop12
-              </strong>
-               
-              <span
-                style={
-                  {
-                    "opacity": "0.6",
-                  }
-                }
-              >
-                uri
-              </span>
-            </summary>
-            <div>
-              <div>
+            <details>
+              <summary>
                 <strong>
-                  type
+                  prop12
                 </strong>
-                 : 
+                 
                 <span
-                  style={
-                    {
-                      "opacity": "0.6",
-                    }
-                  }
+                  style="opacity: 0.6;"
                 >
-                  string
-                   
-                  (uri)
+                  uri
                 </span>
-                <div
-                  style={
-                    {
-                      "marginTop": "var(--ifm-table-cell-padding)",
-                    }
-                  }
-                />
+              </summary>
+              <div>
+                <div>
+                  <strong>
+                    type
+                  </strong>
+                   : 
+                  <span
+                    style="opacity: 0.6;"
+                  >
+                    string (uri)
+                  </span>
+                  <div />
+                </div>
               </div>
-            </div>
-          </details>
-        </li>
-        <li
-          data-level={1}
-          id="/properties/prop12B"
-        >
-          <details
-            open={false}
+            </details>
+          </li>
+          <li
+            data-level="1"
+            id="/properties/prop12B"
           >
-            <summary>
-              <strong>
-                prop12B
-              </strong>
-               
-              <span
-                style={
-                  {
-                    "opacity": "0.6",
-                  }
-                }
-              >
-                uri-reference
-              </span>
-            </summary>
-            <div>
-              <div>
+            <details>
+              <summary>
                 <strong>
-                  type
+                  prop12B
                 </strong>
-                 : 
+                 
                 <span
-                  style={
-                    {
-                      "opacity": "0.6",
-                    }
-                  }
+                  style="opacity: 0.6;"
                 >
-                  string
-                   
-                  (uri-reference)
+                  uri-reference
                 </span>
-                <div
-                  style={
-                    {
-                      "marginTop": "var(--ifm-table-cell-padding)",
-                    }
-                  }
-                />
+              </summary>
+              <div>
+                <div>
+                  <strong>
+                    type
+                  </strong>
+                   : 
+                  <span
+                    style="opacity: 0.6;"
+                  >
+                    string (uri-reference)
+                  </span>
+                  <div />
+                </div>
               </div>
-            </div>
-          </details>
-        </li>
-        <li
-          data-level={1}
-          id="/properties/prop13"
-        >
-          <details
-            open={false}
+            </details>
+          </li>
+          <li
+            data-level="1"
+            id="/properties/prop13"
           >
-            <summary>
-              <strong>
-                prop13
-              </strong>
-               
-              <span
-                style={
-                  {
-                    "opacity": "0.6",
-                  }
-                }
-              >
-                iri
-              </span>
-            </summary>
-            <div>
-              <div>
+            <details>
+              <summary>
                 <strong>
-                  type
+                  prop13
                 </strong>
-                 : 
+                 
                 <span
-                  style={
-                    {
-                      "opacity": "0.6",
-                    }
-                  }
+                  style="opacity: 0.6;"
                 >
-                  string
-                   
-                  (iri)
+                  iri
                 </span>
-                <div
-                  style={
-                    {
-                      "marginTop": "var(--ifm-table-cell-padding)",
-                    }
-                  }
-                />
+              </summary>
+              <div>
+                <div>
+                  <strong>
+                    type
+                  </strong>
+                   : 
+                  <span
+                    style="opacity: 0.6;"
+                  >
+                    string (iri)
+                  </span>
+                  <div />
+                </div>
               </div>
-            </div>
-          </details>
-        </li>
-        <li
-          data-level={1}
-          id="/properties/prop13B"
-        >
-          <details
-            open={false}
+            </details>
+          </li>
+          <li
+            data-level="1"
+            id="/properties/prop13B"
           >
-            <summary>
-              <strong>
-                prop13B
-              </strong>
-               
-              <span
-                style={
-                  {
-                    "opacity": "0.6",
-                  }
-                }
-              >
-                iri-reference
-              </span>
-            </summary>
-            <div>
-              <div>
+            <details>
+              <summary>
                 <strong>
-                  type
+                  prop13B
                 </strong>
-                 : 
+                 
                 <span
-                  style={
-                    {
-                      "opacity": "0.6",
-                    }
-                  }
+                  style="opacity: 0.6;"
                 >
-                  string
-                   
-                  (iri-reference)
+                  iri-reference
                 </span>
-                <div
-                  style={
-                    {
-                      "marginTop": "var(--ifm-table-cell-padding)",
-                    }
-                  }
-                />
+              </summary>
+              <div>
+                <div>
+                  <strong>
+                    type
+                  </strong>
+                   : 
+                  <span
+                    style="opacity: 0.6;"
+                  >
+                    string (iri-reference)
+                  </span>
+                  <div />
+                </div>
               </div>
-            </div>
-          </details>
-        </li>
-        <li
-          data-level={1}
-          id="/properties/prop14"
-        >
-          <details
-            open={false}
+            </details>
+          </li>
+          <li
+            data-level="1"
+            id="/properties/prop14"
           >
-            <summary>
-              <strong>
-                prop14
-              </strong>
-               
-              <span
-                style={
-                  {
-                    "opacity": "0.6",
-                  }
-                }
-              >
-                uri-template
-              </span>
-            </summary>
-            <div>
-              <div>
+            <details>
+              <summary>
                 <strong>
-                  type
+                  prop14
                 </strong>
-                 : 
+                 
                 <span
-                  style={
-                    {
-                      "opacity": "0.6",
-                    }
-                  }
+                  style="opacity: 0.6;"
                 >
-                  string
-                   
-                  (uri-template)
+                  uri-template
                 </span>
-                <div
-                  style={
-                    {
-                      "marginTop": "var(--ifm-table-cell-padding)",
-                    }
-                  }
-                />
+              </summary>
+              <div>
+                <div>
+                  <strong>
+                    type
+                  </strong>
+                   : 
+                  <span
+                    style="opacity: 0.6;"
+                  >
+                    string (uri-template)
+                  </span>
+                  <div />
+                </div>
               </div>
-            </div>
-          </details>
-        </li>
-        <li
-          data-level={1}
-          id="/properties/prop15"
-        >
-          <details
-            open={false}
+            </details>
+          </li>
+          <li
+            data-level="1"
+            id="/properties/prop15"
           >
-            <summary>
-              <strong>
-                prop15
-              </strong>
-               
-              <span
-                style={
-                  {
-                    "opacity": "0.6",
-                  }
-                }
-              >
-                json-pointer
-              </span>
-            </summary>
-            <div>
-              <div>
+            <details>
+              <summary>
                 <strong>
-                  type
+                  prop15
                 </strong>
-                 : 
+                 
                 <span
-                  style={
-                    {
-                      "opacity": "0.6",
-                    }
-                  }
+                  style="opacity: 0.6;"
                 >
-                  string
-                   
-                  (json-pointer)
+                  json-pointer
                 </span>
-                <div
-                  style={
-                    {
-                      "marginTop": "var(--ifm-table-cell-padding)",
-                    }
-                  }
-                />
+              </summary>
+              <div>
+                <div>
+                  <strong>
+                    type
+                  </strong>
+                   : 
+                  <span
+                    style="opacity: 0.6;"
+                  >
+                    string (json-pointer)
+                  </span>
+                  <div />
+                </div>
               </div>
-            </div>
-          </details>
-        </li>
-        <li
-          data-level={1}
-          id="/properties/prop16"
-        >
-          <details
-            open={false}
+            </details>
+          </li>
+          <li
+            data-level="1"
+            id="/properties/prop16"
           >
-            <summary>
-              <strong>
-                prop16
-              </strong>
-               
-              <span
-                style={
-                  {
-                    "opacity": "0.6",
-                  }
-                }
-              >
-                relative-json-pointer
-              </span>
-            </summary>
-            <div>
-              <div>
+            <details>
+              <summary>
                 <strong>
-                  type
+                  prop16
                 </strong>
-                 : 
+                 
                 <span
-                  style={
-                    {
-                      "opacity": "0.6",
-                    }
-                  }
+                  style="opacity: 0.6;"
                 >
-                  string
-                   
-                  (relative-json-pointer)
+                  relative-json-pointer
                 </span>
-                <div
-                  style={
-                    {
-                      "marginTop": "var(--ifm-table-cell-padding)",
-                    }
-                  }
-                />
+              </summary>
+              <div>
+                <div>
+                  <strong>
+                    type
+                  </strong>
+                   : 
+                  <span
+                    style="opacity: 0.6;"
+                  >
+                    string (relative-json-pointer)
+                  </span>
+                  <div />
+                </div>
               </div>
-            </div>
-          </details>
-        </li>
-        <li
-          data-level={1}
-          id="/properties/prop17"
-        >
-          <details
-            open={false}
+            </details>
+          </li>
+          <li
+            data-level="1"
+            id="/properties/prop17"
           >
-            <summary>
-              <strong>
-                prop17
-              </strong>
-               
-              <span
-                style={
-                  {
-                    "opacity": "0.6",
-                  }
-                }
-              >
-                regex
-              </span>
-            </summary>
-            <div>
-              <div>
+            <details>
+              <summary>
                 <strong>
-                  type
+                  prop17
                 </strong>
-                 : 
+                 
                 <span
-                  style={
-                    {
-                      "opacity": "0.6",
-                    }
-                  }
+                  style="opacity: 0.6;"
                 >
-                  string
-                   
-                  (regex)
+                  regex
                 </span>
-                <div
-                  style={
-                    {
-                      "marginTop": "var(--ifm-table-cell-padding)",
-                    }
-                  }
-                />
+              </summary>
+              <div>
+                <div>
+                  <strong>
+                    type
+                  </strong>
+                   : 
+                  <span
+                    style="opacity: 0.6;"
+                  >
+                    string (regex)
+                  </span>
+                  <div />
+                </div>
               </div>
-            </div>
-          </details>
-        </li>
-      </ul>
-      <div
-        style={
-          {
-            "marginTop": "var(--ifm-table-cell-padding)",
-          }
-        }
-      />
+            </details>
+          </li>
+        </ul>
+        <div />
+      </div>
     </div>
-  </div>
-</details>
+  </details>
+</DocumentFragment>
 `;
 
 exports[`JSONSchemaViewer - string test maxLength 1`] = `
-<details
-  className="json-schema-viewer"
-  open={true}
->
-  <summary>
-    <strong>
-      Schema
-    </strong>
-  </summary>
-  <div>
-    <div>
+<DocumentFragment>
+  <details
+    class="json-schema-viewer"
+    open=""
+  >
+    <summary>
       <strong>
-        type
+        Schema
       </strong>
-       : 
-      <span
-        style={
-          {
-            "opacity": "0.6",
-          }
-        }
-      >
-        string
-      </span>
-      <div
-        style={
-          {
-            "marginTop": "var(--ifm-table-cell-padding)",
-          }
-        }
-      >
+    </summary>
+    <div>
+      <div>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style="opacity: 0.6;"
+        >
+          string
+        </span>
         <div>
-          <strong>
-            Length :
-          </strong>
-           
-          <code>
-            &lt;= 3 character(s)
-          </code>
+          <div>
+            <strong>
+              Length :
+            </strong>
+             
+            <code>
+              &lt;= 3 character(s)
+            </code>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</details>
+  </details>
+</DocumentFragment>
 `;
 
 exports[`JSONSchemaViewer - string test minLength & maxLength 1`] = `
-<details
-  className="json-schema-viewer"
-  open={true}
->
-  <summary>
-    <strong>
-      Schema
-    </strong>
-  </summary>
-  <div>
-    <div>
+<DocumentFragment>
+  <details
+    class="json-schema-viewer"
+    open=""
+  >
+    <summary>
       <strong>
-        type
+        Schema
       </strong>
-       : 
-      <span
-        style={
-          {
-            "opacity": "0.6",
-          }
-        }
-      >
-        string
-      </span>
-      <div
-        style={
-          {
-            "marginTop": "var(--ifm-table-cell-padding)",
-          }
-        }
-      >
+    </summary>
+    <div>
+      <div>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style="opacity: 0.6;"
+        >
+          string
+        </span>
         <div>
-          <strong>
-            Length :
-          </strong>
-           
-          <code>
-            &gt;= 2 character(s)
-          </code>
-           
-          <strong>
-            AND
-          </strong>
-           
-          <code>
-            &lt;= 3 character(s)
-          </code>
+          <div>
+            <strong>
+              Length :
+            </strong>
+             
+            <code>
+              &gt;= 2 character(s)
+            </code>
+             
+            <strong>
+              AND
+            </strong>
+             
+            <code>
+              &lt;= 3 character(s)
+            </code>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</details>
+  </details>
+</DocumentFragment>
 `;
 
 exports[`JSONSchemaViewer - string test minLength 1`] = `
-<details
-  className="json-schema-viewer"
-  open={true}
->
-  <summary>
-    <strong>
-      Schema
-    </strong>
-  </summary>
-  <div>
-    <div>
+<DocumentFragment>
+  <details
+    class="json-schema-viewer"
+    open=""
+  >
+    <summary>
       <strong>
-        type
+        Schema
       </strong>
-       : 
-      <span
-        style={
-          {
-            "opacity": "0.6",
-          }
-        }
-      >
-        string
-      </span>
-      <div
-        style={
-          {
-            "marginTop": "var(--ifm-table-cell-padding)",
-          }
-        }
-      >
+    </summary>
+    <div>
+      <div>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style="opacity: 0.6;"
+        >
+          string
+        </span>
         <div>
-          <strong>
-            Length :
-          </strong>
-           
-          <code>
-            &gt;= 2 character(s)
-          </code>
+          <div>
+            <strong>
+              Length :
+            </strong>
+             
+            <code>
+              &gt;= 2 character(s)
+            </code>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</details>
+  </details>
+</DocumentFragment>
 `;
 
 exports[`JSONSchemaViewer - string test pattern 1`] = `
-<details
-  className="json-schema-viewer"
-  open={true}
->
-  <summary>
-    <strong>
-      Schema
-    </strong>
-  </summary>
-  <div>
-    <div>
+<DocumentFragment>
+  <details
+    class="json-schema-viewer"
+    open=""
+  >
+    <summary>
       <strong>
-        type
+        Schema
       </strong>
-       : 
-      <span
-        style={
-          {
-            "opacity": "0.6",
-          }
-        }
-      >
-        string
-      </span>
-      <div
-        style={
-          {
-            "marginTop": "var(--ifm-table-cell-padding)",
-          }
-        }
-      >
+    </summary>
+    <div>
+      <div>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style="opacity: 0.6;"
+        >
+          string
+        </span>
         <div>
-          <strong>
-            Pattern :
-          </strong>
-           
-          <code>
-            ^(\\([0-9]{3}\\))?[0-9]{3}-[0-9]{4}$
-          </code>
+          <div>
+            <strong>
+              Pattern :
+            </strong>
+             
+            <code>
+              ^(\\([0-9]{3}\\))?[0-9]{3}-[0-9]{4}$
+            </code>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</details>
+  </details>
+</DocumentFragment>
 `;

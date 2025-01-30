@@ -1,17 +1,11 @@
 import React from "react"
-
-// For typings autocomplete whatever your IDE
 import { expect, test, describe } from "@jest/globals"
-
-import { create, act } from "react-test-renderer"
-
+import { render, act } from "@testing-library/react"
+import type { RenderResult } from "@testing-library/react"
 import JSONSchemaViewer from "../../src/theme/JSONSchemaViewer/index"
 
 // Type to prevent creating invalid mocks
 import type { JSONSchema } from "../../src/theme/JSONSchemaViewer/types"
-
-// Type for react-test-renderer
-import type { ReactTestRenderer } from "react-test-renderer"
 
 const testcases: [string, JSONSchema][] = [
   [
@@ -68,14 +62,14 @@ const testcases: [string, JSONSchema][] = [
 
 describe("JSONSchemaViewer - numeric", () => {
   test.each(testcases)("test %s", async (_title, fakeSchema) => {
-    // render the component
-    let root: ReactTestRenderer | undefined
+    let result: RenderResult | null = null
 
+    // Render the component within act
     await act(async () => {
-      root = create(<JSONSchemaViewer schema={fakeSchema} />)
+      result = render(<JSONSchemaViewer schema={fakeSchema} />)
     })
 
-    // make assertions on root
-    expect(root?.toJSON()).toMatchSnapshot()
+    // Capture the snapshot
+    expect(result!.asFragment()).toMatchSnapshot()
   })
 })

@@ -1,22 +1,13 @@
 import React from "react"
-
-// For typings autocomplete whatever your IDE
 import { expect, test, describe, jest } from "@jest/globals"
-
-import { create, act } from "react-test-renderer"
-
+import { render, act } from "@testing-library/react"
 import JSONSchemaViewer from "../../src/theme/JSONSchemaViewer/index"
 
-// Type to prevent creating invalid mocks
+import type { RenderResult } from "@testing-library/react"
 import type { JSONSchema } from "../../src/theme/JSONSchemaViewer/types"
 
-// Type for react-test-renderer
-import type { ReactTestRenderer } from "react-test-renderer"
-
 jest.mock("@stoplight/json-ref-resolver", () => {
-  const resolve = jest
-    .fn<() => Promise<JSONSchema>>()
-    .mockRejectedValue(new Error("Resolver error"))
+  const resolve = jest.fn(() => Promise.reject(new Error("Resolver error")))
   return {
     Resolver: jest.fn(() => ({ resolve })),
   }
@@ -24,15 +15,15 @@ jest.mock("@stoplight/json-ref-resolver", () => {
 
 describe("JSONSchemaViewer states", () => {
   test("Can render error when something bad happens", async () => {
-    const fakeSchema3: JSONSchema = { type: "object" }
+    const fakeSchema: JSONSchema = { type: "object" }
+    let result: RenderResult | null = null
 
-    // render the component
-    let root: ReactTestRenderer | undefined
+    // Render the component within act
     await act(async () => {
-      root = create(<JSONSchemaViewer schema={fakeSchema3} />)
+      result = render(<JSONSchemaViewer schema={fakeSchema} />)
     })
 
-    // make assertions on root
-    expect(root?.toJSON()).toMatchSnapshot()
+    // Capture the snapshot
+    expect(result!.asFragment()).toMatchSnapshot()
   })
 })

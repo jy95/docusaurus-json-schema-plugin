@@ -1,75 +1,59 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`JSONSchemaViewer - basics tests Can render Schema title 1`] = `
-<details
-  className="json-schema-viewer"
-  open={true}
->
-  <summary>
-    <strong>
-      My Super Schema
-    </strong>
-  </summary>
-  <div>
-    <div>
+<DocumentFragment>
+  <details
+    class="json-schema-viewer"
+    open=""
+  >
+    <summary>
       <strong>
-        type
+        My Super Schema
       </strong>
-       : 
-      <span
-        style={
-          {
-            "opacity": "0.6",
-          }
-        }
-      >
-        boolean
-      </span>
-      <div
-        style={
-          {
-            "marginTop": "var(--ifm-table-cell-padding)",
-          }
-        }
-      />
+    </summary>
+    <div>
+      <div>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style="opacity: 0.6;"
+        >
+          boolean
+        </span>
+        <div />
+      </div>
     </div>
-  </div>
-</details>
+  </details>
+</DocumentFragment>
 `;
 
 exports[`JSONSchemaViewer - basics tests Can render a simple schema 1`] = `
-<details
-  className="json-schema-viewer"
-  open={true}
->
-  <summary>
-    <strong>
-      Schema
-    </strong>
-  </summary>
-  <div>
-    <div>
+<DocumentFragment>
+  <details
+    class="json-schema-viewer"
+    open=""
+  >
+    <summary>
       <strong>
-        type
+        Schema
       </strong>
-       : 
-      <span
-        style={
-          {
-            "opacity": "0.6",
-          }
-        }
-      >
-        boolean
-      </span>
-      <div
-        style={
-          {
-            "marginTop": "var(--ifm-table-cell-padding)",
-          }
-        }
-      />
+    </summary>
+    <div>
+      <div>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style="opacity: 0.6;"
+        >
+          boolean
+        </span>
+        <div />
+      </div>
     </div>
-  </div>
-</details>
+  </details>
+</DocumentFragment>
 `;

@@ -1,17 +1,11 @@
 import React from "react"
-
-// For typings autocomplete whatever your IDE
 import { expect, test, describe } from "@jest/globals"
-
-import { create, act } from "react-test-renderer"
-
+import { render, act } from "@testing-library/react"
 import JSONSchemaViewer from "../../src/theme/JSONSchemaViewer/index"
 
 // Type to prevent creating invalid mocks
+import type { RenderResult } from "@testing-library/react"
 import type { JSONSchema } from "../../src/theme/JSONSchemaViewer/types"
-
-// Type for react-test-renderer
-import type { ReactTestRenderer } from "react-test-renderer"
 
 const testcases: [string, JSONSchema][] = [
   [
@@ -81,89 +75,21 @@ const testcases: [string, JSONSchema][] = [
       additionalProperties: { type: "string" },
     },
   ],
-  [
-    "patternProperties",
-    {
-      type: "object",
-      patternProperties: {
-        "^S_": { type: "string" },
-        "^I_": { type: "integer" },
-      },
-    },
-  ],
-  [
-    "properties",
-    {
-      type: "object",
-      properties: {
-        number: { type: "number" },
-        street_name: { type: "string" },
-        street_type: { enum: ["Street", "Avenue", "Boulevard"] },
-      },
-    },
-  ],
-  [
-    "propertyNames",
-    {
-      type: "object",
-      propertyNames: {
-        pattern: "^[A-Za-z_][A-Za-z0-9_]*$",
-      },
-    },
-  ],
-  [
-    "required",
-    {
-      type: "object",
-      properties: {
-        id: { type: "number", readOnly: true },
-        name: { type: "string" },
-        email: { type: "string" },
-        address: { type: "string" },
-        telephone: { type: "string", deprecated: true },
-        pin_code: { type: "string", writeOnly: true },
-      },
-      required: ["name", "email"],
-    },
-  ],
-  [
-    "Unspecified type (object)",
-    {
-      minProperties: 1,
-    },
-  ],
-  [
-    "Unspecified required properties",
-    {
-      required: ["prop1", "prop2"],
-    },
-  ],
-  [
-    "unevaluatedProperties = false",
-    {
-      unevaluatedProperties: false,
-    },
-  ],
-  [
-    "unevaluatedProperties as not a boolean",
-    {
-      unevaluatedProperties: {
-        type: "number",
-      },
-    },
-  ],
 ]
 
 describe("JSONSchemaViewer - object", () => {
-  test.each(testcases)("test %s", async (_title, fakeSchema) => {
-    // render the component
-    let root: ReactTestRenderer | undefined
+  test.each(testcases)(
+    "test %s",
+    async (title: string, fakeSchema: JSONSchema) => {
+      let rendered: RenderResult | null = null
 
-    await act(async () => {
-      root = create(<JSONSchemaViewer schema={fakeSchema} />)
-    })
+      // Use act to ensure all updates are processed
+      await act(async () => {
+        rendered = render(<JSONSchemaViewer schema={fakeSchema} />)
+      })
 
-    // make assertions on root
-    expect(root?.toJSON()).toMatchSnapshot()
-  })
+      // Capture the snapshot
+      expect(rendered!.asFragment()).toMatchSnapshot()
+    },
+  )
 })

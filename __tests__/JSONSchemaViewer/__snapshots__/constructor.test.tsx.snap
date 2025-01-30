@@ -1,603 +1,453 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`JSONSchemaViewer - constructor Overwrite default DescriptionComponent value 1`] = `
-<details
-  className="json-schema-viewer"
-  open={true}
->
-  <summary>
-    <strong>
-      Schema
-    </strong>
-  </summary>
-  <div>
-    <div>
+<DocumentFragment>
+  <details
+    class="json-schema-viewer"
+    open=""
+  >
+    <summary>
       <strong>
-        type
+        Schema
       </strong>
-       : 
-      <span
-        style={
-          {
-            "opacity": "0.6",
-          }
-        }
-      >
-        object
-      </span>
-      <div
-        style={
-          {
-            "marginTop": "var(--ifm-table-cell-padding)",
-          }
-        }
-      />
-      <div
-        style={
-          {
-            "marginTop": "var(--ifm-table-cell-padding)",
-          }
-        }
-      >
-        <h1>
-           
-          Hello, 
-          <em>
-            world
-          </em>
-          !
-           
-        </h1>
+    </summary>
+    <div>
+      <div>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style="opacity: 0.6;"
+        >
+          object
+        </span>
+        <div />
+        <div>
+          <h1>
+            Hello, 
+            <em>
+              world
+            </em>
+            !
+          </h1>
+        </div>
       </div>
     </div>
-  </div>
-</details>
+  </details>
+</DocumentFragment>
 `;
 
 exports[`JSONSchemaViewer - constructor Overwrite default UnresolvedRefsComponent value 1`] = `
-<details
-  className="json-schema-viewer"
-  open={true}
->
-  <summary>
-    <strong>
-      Schema
-    </strong>
-  </summary>
-  <div>
-    <div>
+<DocumentFragment>
+  <details
+    class="json-schema-viewer"
+    open=""
+  >
+    <summary>
       <strong>
-        type
+        Schema
       </strong>
-       : 
-      <span
-        style={
-          {
-            "opacity": "0.6",
-          }
-        }
-      >
-        object
-      </span>
-      <ul>
-        <li
-          data-level={1}
-          id="/properties/data"
+    </summary>
+    <div>
+      <div>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style="opacity: 0.6;"
         >
-          <details
-            open={false}
+          object
+        </span>
+        <ul>
+          <li
+            data-level="1"
+            id="/properties/data"
           >
-            <summary>
-              <strong>
-                data
-              </strong>
-               
-              <span
-                style={
-                  {
-                    "opacity": "0.6",
-                  }
-                }
-              >
-                any
-              </span>
-            </summary>
-            <div>
-              <div>
+            <details>
+              <summary>
                 <strong>
-                  type
+                  data
                 </strong>
-                 : 
+                 
                 <span
-                  style={
-                    {
-                      "opacity": "0.6",
-                    }
-                  }
+                  style="opacity: 0.6;"
                 >
                   any
                 </span>
-                <div
-                  style={
-                    {
-                      "marginTop": "var(--ifm-table-cell-padding)",
-                    }
-                  }
-                >
-                  Always valid
+              </summary>
+              <div>
+                <div>
+                  <strong>
+                    type
+                  </strong>
+                   : 
+                  <span
+                    style="opacity: 0.6;"
+                  >
+                    any
+                  </span>
+                  <div>
+                    Always valid
+                  </div>
                 </div>
               </div>
-            </div>
-          </details>
-        </li>
-        <li
-          data-level={1}
-          id="/properties/children"
-        >
-          <details
-            open={false}
+            </details>
+          </li>
+          <li
+            data-level="1"
+            id="/properties/children"
           >
-            <summary>
-              <strong>
-                children
-              </strong>
-               
-              (
-              <span
-                style={
-                  {
-                    "opacity": "0.6",
-                  }
-                }
-              >
-                any
-              </span>
-              ,
-              ...
-              )[]
-            </summary>
-            <div>
-              <div>
+            <details>
+              <summary>
                 <strong>
-                  type
+                  children
                 </strong>
-                 : 
+                 (
                 <span
-                  style={
-                    {
-                      "opacity": "0.6",
-                    }
-                  }
+                  style="opacity: 0.6;"
                 >
-                  array
+                  any
                 </span>
-                <ul>
-                  <li
-                    data-level={2}
-                    id="/properties/children/items"
+                ,...)[]
+              </summary>
+              <div>
+                <div>
+                  <strong>
+                    type
+                  </strong>
+                   : 
+                  <span
+                    style="opacity: 0.6;"
                   >
-                    <details
-                      open={false}
+                    array
+                  </span>
+                  <ul>
+                    <li
+                      data-level="2"
+                      id="/properties/children/items"
                     >
-                      <summary>
-                        <code>
-                          items[x]
-                        </code>
-                         
-                        <span
-                          style={
-                            {
-                              "opacity": "0.6",
-                            }
-                          }
-                        >
-                          any
-                        </span>
-                      </summary>
-                      <div>
-                        <div>
-                          <strong>
-                            type
-                          </strong>
-                           : 
+                      <details>
+                        <summary>
+                          <code>
+                            items[x]
+                          </code>
+                           
                           <span
-                            style={
-                              {
-                                "opacity": "0.6",
-                              }
-                            }
+                            style="opacity: 0.6;"
                           >
                             any
                           </span>
-                          <div
-                            style={
-                              {
-                                "marginTop": "var(--ifm-table-cell-padding)",
-                              }
-                            }
-                          >
-                            Always valid
-                          </div>
-                          <div
-                            style={
-                              {
-                                "marginTop": "var(--ifm-table-cell-padding)",
-                              }
-                            }
-                          >
+                        </summary>
+                        <div>
+                          <div>
+                            <strong>
+                              type
+                            </strong>
+                             : 
+                            <span
+                              style="opacity: 0.6;"
+                            >
+                              any
+                            </span>
                             <div>
-                              #node was not resolved
+                              Always valid
+                            </div>
+                            <div>
+                              <div>
+                                #node was not resolved
+                              </div>
                             </div>
                           </div>
                         </div>
-                      </div>
-                    </details>
-                  </li>
-                </ul>
-                <div
-                  style={
-                    {
-                      "marginTop": "var(--ifm-table-cell-padding)",
-                    }
-                  }
-                />
+                      </details>
+                    </li>
+                  </ul>
+                  <div />
+                </div>
               </div>
-            </div>
-          </details>
-        </li>
-      </ul>
-      <div
-        style={
-          {
-            "marginTop": "var(--ifm-table-cell-padding)",
-          }
-        }
-      />
+            </details>
+          </li>
+        </ul>
+        <div />
+      </div>
     </div>
-  </div>
-</details>
+  </details>
+</DocumentFragment>
 `;
 
 exports[`JSONSchemaViewer - constructor Overwrite default ValueComponent value 1`] = `
-<details
-  className="json-schema-viewer"
-  open={true}
->
-  <summary>
-    <strong>
-      CustomizationOptions
-    </strong>
-  </summary>
-  <div>
-    <div>
+<DocumentFragment>
+  <details
+    class="json-schema-viewer"
+    open=""
+  >
+    <summary>
       <strong>
-        type
+        CustomizationOptions
       </strong>
-       : 
-      <span
-        style={
-          {
-            "opacity": "0.6",
-          }
-        }
-      >
-        object
-      </span>
-      <ul>
-        <li
-          data-level={1}
-          id="/properties/customField"
+    </summary>
+    <div>
+      <div>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style="opacity: 0.6;"
         >
-          <details
-            open={false}
+          object
+        </span>
+        <ul>
+          <li
+            data-level="1"
+            id="/properties/customField"
           >
-            <summary>
-              <strong>
-                customField
-              </strong>
-               
-              <span
-                style={
-                  {
-                    "opacity": "0.6",
-                  }
-                }
-              >
-                string
-              </span>
-               
-              <strong>
-                required
-              </strong>
-            </summary>
-            <div>
-              <div>
+            <details>
+              <summary>
                 <strong>
-                  type
+                  customField
                 </strong>
-                 : 
+                 
                 <span
-                  style={
-                    {
-                      "opacity": "0.6",
-                    }
-                  }
+                  style="opacity: 0.6;"
                 >
                   string
                 </span>
-                <div
-                  style={
-                    {
-                      "marginTop": "var(--ifm-table-cell-padding)",
-                    }
-                  }
-                >
+                 
+                <strong>
+                  required
+                </strong>
+              </summary>
+              <div>
+                <div>
+                  <strong>
+                    type
+                  </strong>
+                   : 
+                  <span
+                    style="opacity: 0.6;"
+                  >
+                    string
+                  </span>
                   <div>
-                    <strong>
-                      Possible values :
-                    </strong>
-                     
-                    <ul>
-                      <li>
-                        <strong>
+                    <div>
+                      <strong>
+                        Possible values :
+                      </strong>
+                       
+                      <ul>
+                        <li>
+                          <strong>
+                            <code>
+                              palette
+                            </code>
+                          </strong>
+                        </li>
+                        <li>
                           <code>
-                            palette
+                            teddyBear
                           </code>
-                        </strong>
-                      </li>
-                      <li>
+                        </li>
+                        <li>
+                          <code>
+                            tools
+                          </code>
+                        </li>
+                        <li>
+                          <code>
+                            laptop
+                          </code>
+                        </li>
+                        <li>
+                          <code>
+                            thread
+                          </code>
+                        </li>
+                        <li>
+                          <code>
+                            phone
+                          </code>
+                        </li>
+                        <li>
+                          <code>
+                            puzzle
+                          </code>
+                        </li>
+                        <li>
+                          <code>
+                            scissors
+                          </code>
+                        </li>
+                        <li>
+                          <code>
+                            hammer
+                          </code>
+                        </li>
+                        <li>
+                          <code>
+                            note
+                          </code>
+                        </li>
+                      </ul>
+                    </div>
+                    <div>
+                      <strong>
+                        Default value :
+                      </strong>
+                       
+                      <strong>
                         <code>
-                          teddyBear
+                          palette
                         </code>
-                      </li>
-                      <li>
-                        <code>
-                          tools
-                        </code>
-                      </li>
-                      <li>
-                        <code>
-                          laptop
-                        </code>
-                      </li>
-                      <li>
-                        <code>
-                          thread
-                        </code>
-                      </li>
-                      <li>
-                        <code>
-                          phone
-                        </code>
-                      </li>
-                      <li>
-                        <code>
-                          puzzle
-                        </code>
-                      </li>
-                      <li>
-                        <code>
-                          scissors
-                        </code>
-                      </li>
-                      <li>
-                        <code>
-                          hammer
-                        </code>
-                      </li>
-                      <li>
-                        <code>
-                          note
-                        </code>
-                      </li>
-                    </ul>
+                      </strong>
+                    </div>
                   </div>
                   <div>
-                    <strong>
-                      Default value :
-                    </strong>
-                     
-                    <strong>
-                      <code>
-                        palette
-                      </code>
-                    </strong>
+                    A customized or personalized field
                   </div>
-                </div>
-                <div
-                  style={
-                    {
-                      "marginTop": "var(--ifm-table-cell-padding)",
-                    }
-                  }
-                >
-                  A customized or personalized field
                 </div>
               </div>
-            </div>
-          </details>
-        </li>
-        <li
-          data-level={1}
-          id="/properties/customConstObject"
-        >
-          <details
-            open={false}
+            </details>
+          </li>
+          <li
+            data-level="1"
+            id="/properties/customConstObject"
           >
-            <summary>
-              <strong>
-                customConstObject
-              </strong>
-               
-              <span
-                style={
-                  {
-                    "opacity": "0.6",
-                  }
-                }
-              >
-                object
-              </span>
-               
-              <strong>
-                constant
-              </strong>
-            </summary>
-            <div>
-              <div>
+            <details>
+              <summary>
                 <strong>
-                  type
+                  customConstObject
                 </strong>
-                 : 
+                 
                 <span
-                  style={
-                    {
-                      "opacity": "0.6",
-                    }
-                  }
+                  style="opacity: 0.6;"
                 >
                   object
                 </span>
-                <div
-                  style={
-                    {
-                      "marginTop": "var(--ifm-table-cell-padding)",
-                    }
-                  }
-                >
+                 
+                <strong>
+                  constant
+                </strong>
+              </summary>
+              <div>
+                <div>
+                  <strong>
+                    type
+                  </strong>
+                   : 
+                  <span
+                    style="opacity: 0.6;"
+                  >
+                    object
+                  </span>
                   <div>
-                    <strong>
-                      Constant value :
-                    </strong>
-                     
-                    <code>
-                      {
+                    <div>
+                      <strong>
+                        Constant value :
+                      </strong>
+                       
+                      <code>
+                        {
   "version": 5
 }
-                    </code>
+                      </code>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </details>
-        </li>
-      </ul>
-      <div
-        style={
-          {
-            "marginTop": "var(--ifm-table-cell-padding)",
-          }
-        }
-      >
+            </details>
+          </li>
+        </ul>
         <div>
-          🚨 
-          No extra propertie(s) are authorized in this object
+          <div>
+            🚨 No extra propertie(s) are authorized in this object
+          </div>
+        </div>
+        <div>
+          JSON schema for customized options
         </div>
       </div>
-      <div
-        style={
-          {
-            "marginTop": "var(--ifm-table-cell-padding)",
-          }
-        }
-      >
-        JSON schema for customized options
-      </div>
     </div>
-  </div>
-</details>
+  </details>
+</DocumentFragment>
 `;
 
 exports[`JSONSchemaViewer - constructor Overwrite default className value 1`] = `
-<details
-  className="jsv-custom"
-  open={true}
->
-  <summary>
-    <strong>
-      Schema
-    </strong>
-  </summary>
-  <div>
-    <div>
+<DocumentFragment>
+  <details
+    class="jsv-custom"
+    open=""
+  >
+    <summary>
       <strong>
-        type
+        Schema
       </strong>
-       : 
-      <span
-        style={
-          {
-            "opacity": "0.6",
-          }
-        }
-      >
-        object
-      </span>
-      <div
-        style={
-          {
-            "marginTop": "var(--ifm-table-cell-padding)",
-          }
-        }
-      >
+    </summary>
+    <div>
+      <div>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style="opacity: 0.6;"
+        >
+          object
+        </span>
         <div>
-          <strong>
-            Length :
-          </strong>
-           
-          <code>
-            &gt;= 1 propertie(s)
-          </code>
+          <div>
+            <strong>
+              Length :
+            </strong>
+             
+            <code>
+              &gt;= 1 propertie(s)
+            </code>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</details>
+  </details>
+</DocumentFragment>
 `;
 
 exports[`JSONSchemaViewer - constructor Overwrite default qualifierMessagesOrder value 1`] = `
-<details
-  className="json-schema-viewer"
-  open={true}
->
-  <summary>
-    <strong>
-      Schema
-    </strong>
-  </summary>
-  <div>
-    <div>
+<DocumentFragment>
+  <details
+    class="json-schema-viewer"
+    open=""
+  >
+    <summary>
       <strong>
-        type
+        Schema
       </strong>
-       : 
-      <span
-        style={
-          {
-            "opacity": "0.6",
-          }
-        }
-      >
-        object
-      </span>
-      <div
-        style={
-          {
-            "marginTop": "var(--ifm-table-cell-padding)",
-          }
-        }
-      >
+    </summary>
+    <div>
+      <div>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style="opacity: 0.6;"
+        >
+          object
+        </span>
         <div>
-          <strong>
-            Length :
-          </strong>
-           
-          <code>
-            &gt;= 1 propertie(s)
-          </code>
+          <div>
+            <strong>
+              Length :
+            </strong>
+             
+            <code>
+              &gt;= 1 propertie(s)
+            </code>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</details>
+  </details>
+</DocumentFragment>
 `;

@@ -1,7 +1,7 @@
 /** @type {import('ts-jest').JestConfigWithTsJest} */
 module.exports = {
   preset: "ts-jest",
-  testEnvironment: "node",
+  testEnvironment: "jsdom",
   moduleNameMapper: {
     // To deal with annoying css imports that breaks tests
     "\\.(css|less)$": "<rootDir>/__mocks__/styleMock.js",
@@ -13,4 +13,5 @@ module.exports = {
   },
   collectCoverageFrom: ["src/theme/JSONSchemaViewer/**/*.{js,ts,jsx,tsx}"],
   coveragePathIgnorePatterns: ["!*.d.ts"],
+  setupFilesAfterEnv: ["@testing-library/jest-dom"],
 }

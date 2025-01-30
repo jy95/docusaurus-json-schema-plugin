@@ -1,9 +1,9 @@
 import React from "react"
-
-// For typings autocomplete whatever your IDE
 import { expect, test, describe } from "@jest/globals"
+import { render, act } from "@testing-library/react"
 
-import { create, act } from "react-test-renderer"
+import type { RenderResult } from "@testing-library/react"
+import type { JSX } from "react"
 
 // Type to prevent creating invalid mocks
 import type {
@@ -11,20 +11,14 @@ import type {
   JSONSchemaNS,
 } from "../../src/theme/JSONSchemaViewer/types"
 
-// Type for react-test-renderer
-import type { ReactTestRenderer } from "react-test-renderer"
-
 // Components
 import { CreateNodes } from "../../src/theme/JSONSchemaViewer/components/index"
-
 import {
   CreateArray,
   CreateObject,
 } from "../../src/theme/JSONSchemaViewer/JSONSchemaElements/index"
-
 import { detectedTypes } from "../../src/theme/JSONSchemaViewer/utils/index"
 
-// Annoying test cases, just for coverage stories ...
 const testcases: [
   string,
   (props: { schema: any; [x: string]: any }) => JSX.Element,
@@ -73,18 +67,19 @@ const testcases: [
 
 describe("JSONSchemaViewer - corner cases", () => {
   test.each(testcases)("%s", async (_title, Component, fakeSchema) => {
-    // render the component
-    let root: ReactTestRenderer | undefined
+    // Render the component
+    let rendered: RenderResult | null = null
 
+    // Use act to ensure all updates are processed
     await act(async () => {
-      root = create(<Component schema={fakeSchema} />)
+      rendered = render(<Component schema={fakeSchema} />)
     })
 
-    // make assertions on root
-    expect(root?.toJSON()).toMatchSnapshot()
+    // Capture the snapshot
+    expect(rendered!.asFragment()).toMatchSnapshot()
   })
 
-  test("Correctly infer integer when not explictly expressed", async () => {
+  test("Correctly infers integer when not explicitly expressed", () => {
     const foundTypes = detectedTypes({
       multipleOf: 1,
     })

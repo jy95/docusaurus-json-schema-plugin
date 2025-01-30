@@ -1,39 +1,29 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`JSONSchemaViewer - corner cases CreateArray - invalid usage of Additional Items 1`] = `
-[
+<DocumentFragment>
   <strong>
     type
-  </strong>,
-  " : ",
+  </strong>
+   : 
   <span
-    style={
-      {
-        "opacity": "0.6",
-      }
-    }
+    style="opacity: 0.6;"
   >
     array
-  </span>,
+  </span>
   <ul>
     <li
-      data-level={1}
+      data-level="1"
       id="/items"
     >
-      <details
-        open={false}
-      >
+      <details>
         <summary>
           <code>
             items[x]
           </code>
            
           <span
-            style={
-              {
-                "opacity": "0.6",
-              }
-            }
+            style="opacity: 0.6;"
           >
             string
           </span>
@@ -45,45 +35,29 @@ exports[`JSONSchemaViewer - corner cases CreateArray - invalid usage of Addition
             </strong>
              : 
             <span
-              style={
-                {
-                  "opacity": "0.6",
-                }
-              }
+              style="opacity: 0.6;"
             >
               string
             </span>
-            <div
-              style={
-                {
-                  "marginTop": "var(--ifm-table-cell-padding)",
-                }
-              }
-            />
+            <div />
           </div>
         </div>
       </details>
     </li>
-  </ul>,
+  </ul>
   <ul>
     <li
-      data-level={1}
+      data-level="1"
       id="/additionalItems"
     >
-      <details
-        open={false}
-      >
+      <details>
         <summary>
           <code>
             items[1,...]
           </code>
            
           <span
-            style={
-              {
-                "opacity": "0.6",
-              }
-            }
+            style="opacity: 0.6;"
           >
             boolean
           </span>
@@ -95,70 +69,44 @@ exports[`JSONSchemaViewer - corner cases CreateArray - invalid usage of Addition
             </strong>
              : 
             <span
-              style={
-                {
-                  "opacity": "0.6",
-                }
-              }
+              style="opacity: 0.6;"
             >
               boolean
             </span>
-            <div
-              style={
-                {
-                  "marginTop": "var(--ifm-table-cell-padding)",
-                }
-              }
-            />
+            <div />
           </div>
         </div>
       </details>
     </li>
-  </ul>,
-  <div
-    style={
-      {
-        "marginTop": "var(--ifm-table-cell-padding)",
-      }
-    }
-  />,
-]
+  </ul>
+  <div />
+</DocumentFragment>
 `;
 
 exports[`JSONSchemaViewer - corner cases CreateArray - sub properties as boolean schema 1`] = `
-[
+<DocumentFragment>
   <strong>
     type
-  </strong>,
-  " : ",
+  </strong>
+   : 
   <span
-    style={
-      {
-        "opacity": "0.6",
-      }
-    }
+    style="opacity: 0.6;"
   >
     array
-  </span>,
+  </span>
   <ul>
     <li
-      data-level={1}
+      data-level="1"
       id="/prefixItems"
     >
-      <details
-        open={false}
-      >
+      <details>
         <summary>
           <code>
             items[0]
           </code>
            
           <span
-            style={
-              {
-                "opacity": "0.6",
-              }
-            }
+            style="opacity: 0.6;"
           >
             none
           </span>
@@ -170,47 +118,31 @@ exports[`JSONSchemaViewer - corner cases CreateArray - sub properties as boolean
             </strong>
              : 
             <span
-              style={
-                {
-                  "opacity": "0.6",
-                }
-              }
+              style="opacity: 0.6;"
             >
               none
             </span>
-            <div
-              style={
-                {
-                  "marginTop": "var(--ifm-table-cell-padding)",
-                }
-              }
-            >
+            <div>
               Always invalid
             </div>
           </div>
         </div>
       </details>
     </li>
-  </ul>,
+  </ul>
   <ul>
     <li
-      data-level={1}
+      data-level="1"
       id="/items"
     >
-      <details
-        open={false}
-      >
+      <details>
         <summary>
           <code>
             items[x]
           </code>
            
           <span
-            style={
-              {
-                "opacity": "0.6",
-              }
-            }
+            style="opacity: 0.6;"
           >
             none
           </span>
@@ -222,47 +154,31 @@ exports[`JSONSchemaViewer - corner cases CreateArray - sub properties as boolean
             </strong>
              : 
             <span
-              style={
-                {
-                  "opacity": "0.6",
-                }
-              }
+              style="opacity: 0.6;"
             >
               none
             </span>
-            <div
-              style={
-                {
-                  "marginTop": "var(--ifm-table-cell-padding)",
-                }
-              }
-            >
+            <div>
               Always invalid
             </div>
           </div>
         </div>
       </details>
     </li>
-  </ul>,
+  </ul>
   <ul>
     <li
-      data-level={1}
+      data-level="1"
       id="/contains"
     >
-      <details
-        open={false}
-      >
+      <details>
         <summary>
           <code>
             items[..., x, ...]
           </code>
            
           <span
-            style={
-              {
-                "opacity": "0.6",
-              }
-            }
+            style="opacity: 0.6;"
           >
             none
           </span>
@@ -274,148 +190,90 @@ exports[`JSONSchemaViewer - corner cases CreateArray - sub properties as boolean
             </strong>
              : 
             <span
-              style={
-                {
-                  "opacity": "0.6",
-                }
-              }
+              style="opacity: 0.6;"
             >
               none
             </span>
-            <div
-              style={
-                {
-                  "marginTop": "var(--ifm-table-cell-padding)",
-                }
-              }
-            >
+            <div>
               Always invalid
             </div>
           </div>
         </div>
       </details>
     </li>
-  </ul>,
-  <div
-    style={
-      {
-        "marginTop": "var(--ifm-table-cell-padding)",
-      }
-    }
-  >
+  </ul>
+  <div>
     <div>
-      🚨 
-      No extra item(s) are authorized in this array
+      🚨 No extra item(s) are authorized in this array
     </div>
-  </div>,
-]
+  </div>
+</DocumentFragment>
 `;
 
 exports[`JSONSchemaViewer - corner cases CreateNodes - boolean schema (false) 1`] = `
-[
+<DocumentFragment>
   <strong>
     type
-  </strong>,
-  " : ",
+  </strong>
+   : 
   <span
-    style={
-      {
-        "opacity": "0.6",
-      }
-    }
+    style="opacity: 0.6;"
   >
     none
-  </span>,
-  <div
-    style={
-      {
-        "marginTop": "var(--ifm-table-cell-padding)",
-      }
-    }
-  >
+  </span>
+  <div>
     Always invalid
-  </div>,
-]
+  </div>
+</DocumentFragment>
 `;
 
 exports[`JSONSchemaViewer - corner cases CreateNodes - boolean schema (true) 1`] = `
-[
+<DocumentFragment>
   <strong>
     type
-  </strong>,
-  " : ",
+  </strong>
+   : 
   <span
-    style={
-      {
-        "opacity": "0.6",
-      }
-    }
+    style="opacity: 0.6;"
   >
     any
-  </span>,
-  <div
-    style={
-      {
-        "marginTop": "var(--ifm-table-cell-padding)",
-      }
-    }
-  >
+  </span>
+  <div>
     Always valid
-  </div>,
-]
+  </div>
+</DocumentFragment>
 `;
 
 exports[`JSONSchemaViewer - corner cases CreateObject - missing pattern in propertyNames 1`] = `
-[
+<DocumentFragment>
   <strong>
     type
-  </strong>,
-  " : ",
+  </strong>
+   : 
   <span
-    style={
-      {
-        "opacity": "0.6",
-      }
-    }
+    style="opacity: 0.6;"
   >
     object
-  </span>,
-  <div
-    style={
-      {
-        "marginTop": "var(--ifm-table-cell-padding)",
-      }
-    }
-  />,
-]
+  </span>
+  <div />
+</DocumentFragment>
 `;
 
 exports[`JSONSchemaViewer - corner cases CreateObject - sub properties as boolean schema 1`] = `
-[
+<DocumentFragment>
   <strong>
     type
-  </strong>,
-  " : ",
+  </strong>
+   : 
   <span
-    style={
-      {
-        "opacity": "0.6",
-      }
-    }
+    style="opacity: 0.6;"
   >
     object
-  </span>,
-  <div
-    style={
-      {
-        "marginTop": "var(--ifm-table-cell-padding)",
-      }
-    }
-  >
+  </span>
+  <div>
     <div>
-      🚨 
-      No extra propertie(s) are authorized in this object
+      🚨 No extra propertie(s) are authorized in this object
     </div>
-  </div>,
-]
+  </div>
+</DocumentFragment>
 `;

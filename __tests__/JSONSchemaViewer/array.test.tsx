@@ -1,44 +1,19 @@
 import React from "react"
-
-// For typings autocomplete whatever your IDE
 import { expect, test, describe } from "@jest/globals"
-
-import { create, act } from "react-test-renderer"
-
+import { render, act } from "@testing-library/react"
 import JSONSchemaViewer from "../../src/theme/JSONSchemaViewer/index"
 
-// Type to prevent creating invalid mocks
 import type { JSONSchema } from "../../src/theme/JSONSchemaViewer/types"
-
-// Type for react-test-renderer
-import type { ReactTestRenderer } from "react-test-renderer"
+import type { RenderResult } from "@testing-library/react"
 
 const testcases: JSONSchema[] = [
+  { type: "array" },
+  { type: "array", contains: { type: "number" } },
+  { type: "array", items: { type: "number" } },
+  { type: "array", minItems: 2, maxItems: 3 },
   {
     type: "array",
-  },
-  {
-    type: "array",
-    contains: {
-      type: "number",
-    },
-  },
-  {
-    type: "array",
-    items: {
-      type: "number",
-    },
-  },
-  {
-    type: "array",
-    minItems: 2,
-    maxItems: 3,
-  },
-  {
-    type: "array",
-    contains: {
-      type: "integer",
-    },
+    contains: { type: "integer" },
     minContains: 2,
     maxContains: 3,
   },
@@ -48,14 +23,8 @@ const testcases: JSONSchema[] = [
       "Represent a street address such as ['1600','Pennsylvania','Avenue','NW']",
     items: false,
     prefixItems: [
-      {
-        type: "number",
-        description: "The address number",
-      },
-      {
-        type: "string",
-        description: "The name of the street",
-      },
+      { type: "number", description: "The address number" },
+      { type: "string", description: "The name of the street" },
       {
         enum: ["Street", "Avenue", "Boulevard"],
         description: "The type of street",
@@ -66,22 +35,11 @@ const testcases: JSONSchema[] = [
       },
     ],
   },
-  {
-    type: "array",
-    uniqueItems: true,
-  },
-  {
-    minItems: 1,
-  },
-  {
-    maxItems: 5,
-  },
-  {
-    maxContains: 3,
-  },
-  {
-    minContains: 2,
-  },
+  { type: "array", uniqueItems: true },
+  { minItems: 1 },
+  { maxItems: 5 },
+  { maxContains: 3 },
+  { minContains: 2 },
   {
     type: "array",
     items: [{ type: "integer" }, { type: "string" }],
@@ -92,43 +50,29 @@ const testcases: JSONSchema[] = [
     prefixItems: [{ type: "number" }, { type: "string" }],
     minItems: 3,
   },
-  {
-    type: "array",
-    items: {
-      type: "string",
-    },
-    minItems: 1,
-  },
-  {
-    unevaluatedItems: false,
-  },
+  { type: "array", items: { type: "string" }, minItems: 1 },
+  { unevaluatedItems: false },
   {
     type: "array",
     items: [{ type: "integer" }, { type: "string" }],
-    additionalItems: {
-      type: "boolean",
-    },
+    additionalItems: { type: "boolean" },
     minItems: 2,
   },
   {
     type: "array",
     prefixItems: [{ type: "string" }],
-    unevaluatedItems: {
-      type: "number",
-    },
+    unevaluatedItems: { type: "number" },
   },
 ]
 
 describe("JSONSchemaViewer - Array type", () => {
   test.each(testcases)("test %#", async (fakeSchema) => {
-    // render the component
-    let root: ReactTestRenderer | undefined
+    let result: RenderResult | null = null
 
     await act(async () => {
-      root = create(<JSONSchemaViewer schema={fakeSchema} />)
+      result = render(<JSONSchemaViewer schema={fakeSchema} />)
     })
 
-    // make assertions on root
-    expect(root?.toJSON()).toMatchSnapshot()
+    expect(result!.asFragment()).toMatchSnapshot()
   })
 })

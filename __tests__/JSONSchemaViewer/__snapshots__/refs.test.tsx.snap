@@ -1,209 +1,143 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`JSONSchemaViewer - References cases test 0 1`] = `
-<details
-  className="json-schema-viewer"
-  open={true}
->
-  <summary>
-    <strong>
-      Schema
-    </strong>
-  </summary>
-  <div>
-    <div>
+<DocumentFragment>
+  <details
+    class="json-schema-viewer"
+    open=""
+  >
+    <summary>
       <strong>
-        type
+        Schema
       </strong>
-       : 
-      <span
-        style={
-          {
-            "opacity": "0.6",
-          }
-        }
-      >
-        object
-      </span>
-      <ul>
-        <li
-          data-level={1}
-          id="/properties/data"
+    </summary>
+    <div>
+      <div>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style="opacity: 0.6;"
         >
-          <details
-            open={false}
+          object
+        </span>
+        <ul>
+          <li
+            data-level="1"
+            id="/properties/data"
           >
-            <summary>
-              <strong>
-                data
-              </strong>
-               
-              <span
-                style={
-                  {
-                    "opacity": "0.6",
-                  }
-                }
-              >
-                any
-              </span>
-            </summary>
-            <div>
-              <div>
+            <details>
+              <summary>
                 <strong>
-                  type
+                  data
                 </strong>
-                 : 
+                 
                 <span
-                  style={
-                    {
-                      "opacity": "0.6",
-                    }
-                  }
+                  style="opacity: 0.6;"
                 >
                   any
                 </span>
-                <div
-                  style={
-                    {
-                      "marginTop": "var(--ifm-table-cell-padding)",
-                    }
-                  }
-                >
-                  Always valid
+              </summary>
+              <div>
+                <div>
+                  <strong>
+                    type
+                  </strong>
+                   : 
+                  <span
+                    style="opacity: 0.6;"
+                  >
+                    any
+                  </span>
+                  <div>
+                    Always valid
+                  </div>
                 </div>
               </div>
-            </div>
-          </details>
-        </li>
-        <li
-          data-level={1}
-          id="/properties/children"
-        >
-          <details
-            open={false}
+            </details>
+          </li>
+          <li
+            data-level="1"
+            id="/properties/children"
           >
-            <summary>
-              <strong>
-                children
-              </strong>
-               
-              (
-              <span
-                style={
-                  {
-                    "opacity": "0.6",
-                  }
-                }
-              >
-                any
-              </span>
-              ,
-              ...
-              )[]
-            </summary>
-            <div>
-              <div>
+            <details>
+              <summary>
                 <strong>
-                  type
+                  children
                 </strong>
-                 : 
+                 (
                 <span
-                  style={
-                    {
-                      "opacity": "0.6",
-                    }
-                  }
+                  style="opacity: 0.6;"
                 >
-                  array
+                  any
                 </span>
-                <ul>
-                  <li
-                    data-level={2}
-                    id="/properties/children/items"
+                ,...)[]
+              </summary>
+              <div>
+                <div>
+                  <strong>
+                    type
+                  </strong>
+                   : 
+                  <span
+                    style="opacity: 0.6;"
                   >
-                    <details
-                      open={false}
+                    array
+                  </span>
+                  <ul>
+                    <li
+                      data-level="2"
+                      id="/properties/children/items"
                     >
-                      <summary>
-                        <code>
-                          items[x]
-                        </code>
-                         
-                        <span
-                          style={
-                            {
-                              "opacity": "0.6",
-                            }
-                          }
-                        >
-                          any
-                        </span>
-                      </summary>
-                      <div>
-                        <div>
-                          <strong>
-                            type
-                          </strong>
-                           : 
+                      <details>
+                        <summary>
+                          <code>
+                            items[x]
+                          </code>
+                           
                           <span
-                            style={
-                              {
-                                "opacity": "0.6",
-                              }
-                            }
+                            style="opacity: 0.6;"
                           >
                             any
                           </span>
-                          <div
-                            style={
-                              {
-                                "marginTop": "var(--ifm-table-cell-padding)",
-                              }
-                            }
-                          >
-                            Always valid
-                          </div>
-                          <div
-                            style={
-                              {
-                                "marginTop": "var(--ifm-table-cell-padding)",
-                              }
-                            }
-                          >
+                        </summary>
+                        <div>
+                          <div>
+                            <strong>
+                              type
+                            </strong>
+                             : 
+                            <span
+                              style="opacity: 0.6;"
+                            >
+                              any
+                            </span>
                             <div>
-                              <strong>
-                                Unsolved ref(s) :
-                              </strong>
-                               
-                              #node #
+                              Always valid
+                            </div>
+                            <div>
+                              <div>
+                                <strong>
+                                  Unsolved ref(s) :
+                                </strong>
+                                 #node #
+                              </div>
                             </div>
                           </div>
                         </div>
-                      </div>
-                    </details>
-                  </li>
-                </ul>
-                <div
-                  style={
-                    {
-                      "marginTop": "var(--ifm-table-cell-padding)",
-                    }
-                  }
-                />
+                      </details>
+                    </li>
+                  </ul>
+                  <div />
+                </div>
               </div>
-            </div>
-          </details>
-        </li>
-      </ul>
-      <div
-        style={
-          {
-            "marginTop": "var(--ifm-table-cell-padding)",
-          }
-        }
-      />
+            </details>
+          </li>
+        </ul>
+        <div />
+      </div>
     </div>
-  </div>
-</details>
+  </details>
+</DocumentFragment>
 `;
