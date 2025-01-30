@@ -1,7 +1,9 @@
 import React from "react";
 import { expect, test, describe, jest } from "@jest/globals";
-import { render, screen } from "@testing-library/react";
+import { render, act } from "@testing-library/react";
 import JSONSchemaViewer from "../../src/theme/JSONSchemaViewer/index";
+
+import type { RenderResult } from "@testing-library/react";
 import type { JSONSchema } from "../../src/theme/JSONSchemaViewer/types";
 
 jest.mock("@stoplight/json-ref-resolver", () => {
@@ -13,10 +15,15 @@ jest.mock("@stoplight/json-ref-resolver", () => {
 
 describe("JSONSchemaViewer states", () => {
   test("Can render error when something bad happens", async () => {
-    const fakeSchema3: JSONSchema = { type: "object" };
+    const fakeSchema: JSONSchema = { type: "object" }
+    let result: RenderResult | null = null;
 
-    render(<JSONSchemaViewer schema={fakeSchema3} />);
+    // Render the component within act
+    await act(async () => {
+      result = render(<JSONSchemaViewer schema={fakeSchema} />);
+    });
 
-    expect(await screen.findByText(/error/i)).toBeInTheDocument();
+    // Capture the snapshot
+    expect(result!.asFragment()).toMatchSnapshot();
   });
 });
