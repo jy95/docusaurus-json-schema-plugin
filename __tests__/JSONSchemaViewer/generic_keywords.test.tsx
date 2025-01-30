@@ -1,6 +1,7 @@
 import React from "react";
 import { expect, test, describe } from "@jest/globals";
-import { render } from "@testing-library/react";
+import { render, act } from "@testing-library/react";
+import type { RenderResult } from "@testing-library/react";
 import JSONSchemaViewer from "../../src/theme/JSONSchemaViewer/index";
 
 // Type to prevent creating invalid mocks
@@ -50,13 +51,17 @@ const testcases: [string, JSONSchema][] = [
 ];
 
 describe("JSONSchemaViewer - Generic keywords", () => {
-  test.each(testcases)("test %s", (_title, fakeSchema) => {
-    // Render the component
-    const { asFragment } = render(
-      <JSONSchemaViewer schema={fakeSchema} viewerOptions={{ showExamples: true }} />
-    );
+  test.each(testcases)("test %s", async (_title, fakeSchema) => {
+    let result: RenderResult | null = null;
+
+    // Render the component within act
+    await act(async () => {
+      result = render(
+        <JSONSchemaViewer schema={fakeSchema} viewerOptions={{ showExamples: true }} />
+      );
+    });
 
     // Capture the snapshot
-    expect(asFragment()).toMatchSnapshot();
+    expect(result!.asFragment()).toMatchSnapshot();
   });
 });

@@ -1,47 +1,48 @@
 import React from "react"
 import { expect, test, describe } from "@jest/globals"
-import { render } from "@testing-library/react"
+import { render, act } from "@testing-library/react"
+import type { RenderResult } from "@testing-library/react"
 import JSONSchemaViewer from "../../src/theme/JSONSchemaViewer/index"
 import type { JSONSchema } from "../../src/theme/JSONSchemaViewer/types"
 import CodeBlock from "../../__mocks__/@theme-original/CodeBlock"
 
 describe("JSONSchemaViewer - constructor", () => {
   test("Overwrite default qualifierMessagesOrder value", async () => {
-    const fakeSchema: JSONSchema = {
-      type: "object",
-      minProperties: 1,
-    }
+    const fakeSchema: JSONSchema = { type: "object", minProperties: 1 }
+    let result: RenderResult | null = null
 
-    const { asFragment } = render(
-      <JSONSchemaViewer
-        schema={fakeSchema}
-        viewerOptions={{ qualifierMessagesOrder: ["objectProperties"] }}
-      />,
-    )
+    await act(async () => {
+      result = render(
+        <JSONSchemaViewer
+          schema={fakeSchema}
+          viewerOptions={{ qualifierMessagesOrder: ["objectProperties"] }}
+        />
+      )
+    })
 
-    expect(asFragment()).toMatchSnapshot()
+    expect(result!.asFragment()).toMatchSnapshot()
   })
 
   test("Overwrite default DescriptionComponent value", async () => {
-    const fakeSchema2: JSONSchema = {
-      type: "object",
-      description: "# Hello, *world*!",
-    }
+    const fakeSchema2: JSONSchema = { type: "object", description: "# Hello, *world*!" }
+    let result: RenderResult | null = null
 
-    const { asFragment } = render(
-      <JSONSchemaViewer
-        schema={fakeSchema2}
-        viewerOptions={{
-          DescriptionComponent: () => (
-            <h1>
-              Hello, <em>world</em>!
-            </h1>
-          ),
-        }}
-      />,
-    )
+    await act(async () => {
+      result = render(
+        <JSONSchemaViewer
+          schema={fakeSchema2}
+          viewerOptions={{
+            DescriptionComponent: () => (
+              <h1>
+                Hello, <em>world</em>!
+              </h1>
+            ),
+          }}
+        />
+      )
+    })
 
-    expect(asFragment()).toMatchSnapshot()
+    expect(result!.asFragment()).toMatchSnapshot()
   })
 
   test("Overwrite default UnresolvedRefsComponent value", async () => {
@@ -52,23 +53,23 @@ describe("JSONSchemaViewer - constructor", () => {
       type: "object",
       properties: {
         data: true,
-        children: {
-          type: "array",
-          items: { $dynamicRef: "#node" },
-        },
+        children: { type: "array", items: { $dynamicRef: "#node" } },
       },
     }
+    let result: RenderResult | null = null
 
-    const { asFragment } = render(
-      <JSONSchemaViewer
-        schema={fakeSchema}
-        viewerOptions={{
-          UnresolvedRefsComponent: () => <>#node was not resolved</>,
-        }}
-      />,
-    )
+    await act(async () => {
+      result = render(
+        <JSONSchemaViewer
+          schema={fakeSchema}
+          viewerOptions={{
+            UnresolvedRefsComponent: () => <>#node was not resolved</>,
+          }}
+        />
+      )
+    })
 
-    expect(asFragment()).toMatchSnapshot()
+    expect(result!.asFragment()).toMatchSnapshot()
   })
 
   test("Overwrite default ValueComponent value", async () => {
@@ -82,75 +83,55 @@ describe("JSONSchemaViewer - constructor", () => {
           type: "string",
           description: "A customized or personalized field",
           enum: [
-            "palette",
-            "teddyBear",
-            "tools",
-            "laptop",
-            "thread",
-            "phone",
-            "puzzle",
-            "scissors",
-            "hammer",
-            "note",
+            "palette", "teddyBear", "tools", "laptop", "thread",
+            "phone", "puzzle", "scissors", "hammer", "note",
           ],
           default: "palette",
           examples: ["tools", "note"],
         },
-        customConstObject: {
-          type: "object",
-          const: {
-            version: 5,
-          },
-        },
+        customConstObject: { type: "object", const: { version: 5 } },
       },
       required: ["customField"],
       additionalProperties: false,
     }
+    let result: RenderResult | null = null
 
-    const { asFragment } = render(
-      <JSONSchemaViewer
-        schema={fakeSchema}
-        viewerOptions={{
-          ValueComponent: ({ value, schema }) => {
-            if (!["string", "number", "undefined"].includes(typeof value)) {
-              return (
-                <CodeBlock language="json">{`${JSON.stringify(
-                  value,
-                  null,
-                  2,
-                )}`}</CodeBlock>
-              )
-            }
+    await act(async () => {
+      result = render(
+        <JSONSchemaViewer
+          schema={fakeSchema}
+          viewerOptions={{
+            ValueComponent: ({ value, schema }) => {
+              if (!["string", "number", "undefined"].includes(typeof value)) {
+                return (
+                  <CodeBlock language="json">{`${JSON.stringify(value, null, 2)}`}</CodeBlock>
+                )
+              }
 
-            const component = <code>{`${value}`}</code>
+              const component = <code>{`${value}`}</code>
 
-            if (
-              typeof schema !== "boolean" &&
-              schema.default &&
-              value === schema.default
-            ) {
-              return <strong>{component}</strong>
-            }
+              if (typeof schema !== "boolean" && schema.default && value === schema.default) {
+                return <strong>{component}</strong>
+              }
 
-            return component
-          },
-        }}
-      />,
-    )
+              return component
+            },
+          }}
+        />
+      )
+    })
 
-    expect(asFragment()).toMatchSnapshot()
+    expect(result!.asFragment()).toMatchSnapshot()
   })
 
   test("Overwrite default className value", async () => {
-    const fakeSchema: JSONSchema = {
-      type: "object",
-      minProperties: 1,
-    }
+    const fakeSchema: JSONSchema = { type: "object", minProperties: 1 }
+    let result: RenderResult | null = null
 
-    const { asFragment } = render(
-      <JSONSchemaViewer schema={fakeSchema} className="jsv-custom" />,
-    )
+    await act(async () => {
+      result = render(<JSONSchemaViewer schema={fakeSchema} className="jsv-custom" />)
+    })
 
-    expect(asFragment()).toMatchSnapshot()
+    expect(result!.asFragment()).toMatchSnapshot()
   })
 })

@@ -1,9 +1,10 @@
 import React from "react"
-import { render } from "@testing-library/react"
+import { render, act } from "@testing-library/react"
 import { expect, test, describe } from "@jest/globals"
 import JSONSchemaViewer from "../../src/theme/JSONSchemaViewer/index"
 
 // Type to prevent creating invalid mocks
+import type { RenderResult } from "@testing-library/react";
 import type { JSONSchema } from "../../src/theme/JSONSchemaViewer/types"
 
 const testcases: [string, JSONSchema][] = [
@@ -175,11 +176,16 @@ const testcases: [string, JSONSchema][] = [
 ]
 
 describe("JSONSchemaViewer - string", () => {
-  test.each(testcases)("test %s", (title, fakeSchema) => {
+  test.each(testcases)("test %s", async(title, fakeSchema) => {
     // Render the component
-    const { asFragment } = render(<JSONSchemaViewer schema={fakeSchema} />)
+    let rendered: RenderResult | null = null;
+    
+    // Use act to ensure all updates are processed
+    await act(async () => {
+      rendered = render(<JSONSchemaViewer schema={fakeSchema} />);
+    });
 
     // Capture the snapshot
-    expect(asFragment()).toMatchSnapshot()
+    expect(rendered!.asFragment()).toMatchSnapshot();
   })
 })
