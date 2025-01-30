@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`JSONSchemaViewer - basics tests Can render Schema title 1`] = `
+<DocumentFragment>
+  <details
+    class="json-schema-viewer"
+    open=""
+  >
+    <summary>
+      <strong>
+        My Super Schema
+      </strong>
+    </summary>
+    <div>
+      <div>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style="opacity: 0.6;"
+        >
+          boolean
+        </span>
+        <div />
+      </div>
+    </div>
+  </details>
+</DocumentFragment>
+`;
+
+exports[`JSONSchemaViewer - basics tests Can render a simple schema 1`] = `
+<DocumentFragment>
+  <details
+    class="json-schema-viewer"
+    open=""
+  >
+    <summary>
+      <strong>
+        Schema
+      </strong>
+    </summary>
+    <div>
+      <div>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style="opacity: 0.6;"
+        >
+          boolean
+        </span>
+        <div />
+      </div>
+    </div>
+  </details>
+</DocumentFragment>
+`;

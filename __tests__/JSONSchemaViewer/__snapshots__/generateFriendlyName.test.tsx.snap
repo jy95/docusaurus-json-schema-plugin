@@ -1,0 +1,316 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`JSONSchemaViewer - generateFriendlyName cases test Array specified with items and contains 1`] = `
+<DocumentFragment>
+  <details
+    class="json-schema-viewer"
+    open=""
+  >
+    <summary>
+      <strong>
+        Schema
+      </strong>
+    </summary>
+    <div>
+      <div>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style="opacity: 0.6;"
+        >
+          array
+        </span>
+        <ul>
+          <li
+            data-level="1"
+            id="/prefixItems/0"
+          >
+            <details>
+              <summary>
+                <code>
+                  items[0]
+                </code>
+                 (
+                <span
+                  style="opacity: 0.6;"
+                >
+                  number
+                </span>
+                ,...,
+                <span
+                  style="opacity: 0.6;"
+                >
+                  string
+                </span>
+                ,...)[]
+              </summary>
+              <div>
+                <div>
+                  <strong>
+                    type
+                  </strong>
+                   : 
+                  <span
+                    style="opacity: 0.6;"
+                  >
+                    array
+                  </span>
+                  <ul>
+                    <li
+                      data-level="2"
+                      id="/prefixItems/0/items/0"
+                    >
+                      <details>
+                        <summary>
+                          <code>
+                            items[0]
+                          </code>
+                           
+                          <span
+                            style="opacity: 0.6;"
+                          >
+                            number
+                          </span>
+                        </summary>
+                        <div>
+                          <div>
+                            <strong>
+                              type
+                            </strong>
+                             : 
+                            <span
+                              style="opacity: 0.6;"
+                            >
+                              number
+                            </span>
+                            <div />
+                          </div>
+                        </div>
+                      </details>
+                    </li>
+                  </ul>
+                  <ul>
+                    <li
+                      data-level="2"
+                      id="/prefixItems/0/contains"
+                    >
+                      <details>
+                        <summary>
+                          <code>
+                            items[..., x, ...]
+                          </code>
+                           
+                          <span
+                            style="opacity: 0.6;"
+                          >
+                            string
+                          </span>
+                        </summary>
+                        <div>
+                          <div>
+                            <strong>
+                              type
+                            </strong>
+                             : 
+                            <span
+                              style="opacity: 0.6;"
+                            >
+                              string
+                            </span>
+                            <div />
+                          </div>
+                        </div>
+                      </details>
+                    </li>
+                  </ul>
+                  <div />
+                </div>
+              </div>
+            </details>
+          </li>
+        </ul>
+        <div />
+      </div>
+    </div>
+  </details>
+</DocumentFragment>
+`;
+
+exports[`JSONSchemaViewer - generateFriendlyName cases test Number without explicit type 1`] = `
+<DocumentFragment>
+  <details
+    class="json-schema-viewer"
+    open=""
+  >
+    <summary>
+      <strong>
+        Schema
+      </strong>
+    </summary>
+    <div>
+      <div>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style="opacity: 0.6;"
+        >
+          array
+        </span>
+        <ul>
+          <li
+            data-level="1"
+            id="/prefixItems/0"
+          >
+            <details>
+              <summary>
+                <code>
+                  items[0]
+                </code>
+                 
+                <span
+                  style="opacity: 0.6;"
+                >
+                  number
+                </span>
+              </summary>
+              <div>
+                <div>
+                  <strong>
+                    type
+                  </strong>
+                   : 
+                  <span
+                    style="opacity: 0.6;"
+                  >
+                    number
+                  </span>
+                  <div>
+                    <div>
+                      <strong>
+                        Possible values :
+                      </strong>
+                       
+                      <code>
+                        multiple of 10
+                      </code>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </details>
+          </li>
+        </ul>
+        <div />
+      </div>
+    </div>
+  </details>
+</DocumentFragment>
+`;
+
+exports[`JSONSchemaViewer - generateFriendlyName cases test Prefer title 1`] = `
+<DocumentFragment>
+  <details
+    class="json-schema-viewer"
+    open=""
+  >
+    <summary>
+      <strong>
+        Schema
+      </strong>
+    </summary>
+    <div>
+      <div>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style="opacity: 0.6;"
+        >
+          array
+        </span>
+        <ul>
+          <li
+            data-level="1"
+            id="/prefixItems/0"
+          >
+            <details>
+              <summary>
+                <code>
+                  items[0]
+                </code>
+                 My custom title
+              </summary>
+              <div>
+                <div>
+                  <strong>
+                    type
+                  </strong>
+                   : 
+                  <span
+                    style="opacity: 0.6;"
+                  >
+                    object
+                  </span>
+                  <ul>
+                    <li
+                      data-level="2"
+                      id="/prefixItems/0/properties/text"
+                    >
+                      <details>
+                        <summary>
+                          <strong>
+                            text
+                          </strong>
+                           
+                          <code>
+                            "Hello World"
+                          </code>
+                           
+                          <strong>
+                            constant
+                          </strong>
+                        </summary>
+                        <div>
+                          <div>
+                            <strong>
+                              type
+                            </strong>
+                             : 
+                            <span
+                              style="opacity: 0.6;"
+                            >
+                              string
+                            </span>
+                            <div>
+                              <div>
+                                <strong>
+                                  Constant value :
+                                </strong>
+                                 
+                                <code>
+                                  Hello World
+                                </code>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </details>
+                    </li>
+                  </ul>
+                  <div />
+                </div>
+              </div>
+            </details>
+          </li>
+        </ul>
+        <div />
+      </div>
+    </div>
+  </details>
+</DocumentFragment>
+`;

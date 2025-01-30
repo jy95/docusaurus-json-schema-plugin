@@ -1,0 +1,468 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`JSONSchemaViewer - type test 2 types 1`] = `
+<DocumentFragment>
+  <details
+    class="json-schema-viewer"
+    open=""
+  >
+    <summary>
+      <strong>
+        Schema
+      </strong>
+    </summary>
+    <div>
+      <div>
+        <div
+          class="tabs-container"
+        >
+          <ul
+            aria-orientation="horizontal"
+            class="tabs"
+            role="tablist"
+          >
+            <li
+              aria-selected="true"
+              tabindex="0"
+            >
+              <span
+                style="opacity: 0.6;"
+              >
+                number
+              </span>
+            </li>
+            <li
+              aria-selected="false"
+              tabindex="-1"
+            >
+              <span
+                style="opacity: 0.6;"
+              >
+                string
+              </span>
+            </li>
+          </ul>
+          <div>
+            <div
+              role="tabpanel"
+            >
+              <div
+                role="tabpanel"
+              >
+                <strong>
+                  type
+                </strong>
+                 : 
+                <span
+                  style="opacity: 0.6;"
+                >
+                  number
+                </span>
+                <div />
+              </div>
+            </div>
+            <div
+              hidden=""
+              role="tabpanel"
+            >
+              <div
+                role="tabpanel"
+              >
+                <strong>
+                  type
+                </strong>
+                 : 
+                <span
+                  style="opacity: 0.6;"
+                >
+                  string
+                </span>
+                <div />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </details>
+</DocumentFragment>
+`;
+
+exports[`JSONSchemaViewer - type test 4 types 1`] = `
+<DocumentFragment>
+  <details
+    class="json-schema-viewer"
+    open=""
+  >
+    <summary>
+      <strong>
+        Schema
+      </strong>
+    </summary>
+    <div>
+      <div>
+        <div
+          class="tabs-container"
+        >
+          <ul
+            aria-orientation="horizontal"
+            class="tabs"
+            role="tablist"
+          >
+            <li
+              aria-selected="true"
+              tabindex="0"
+            >
+              <span
+                style="opacity: 0.6;"
+              >
+                string
+              </span>
+            </li>
+            <li
+              aria-selected="false"
+              tabindex="-1"
+            >
+              <span
+                style="opacity: 0.6;"
+              >
+                integer
+              </span>
+            </li>
+            <li
+              aria-selected="false"
+              tabindex="-1"
+            >
+              <span
+                style="opacity: 0.6;"
+              >
+                boolean
+              </span>
+            </li>
+          </ul>
+          <div>
+            <div
+              role="tabpanel"
+            >
+              <div
+                role="tabpanel"
+              >
+                <strong>
+                  type
+                </strong>
+                 : 
+                <span
+                  style="opacity: 0.6;"
+                >
+                  string
+                </span>
+                <div>
+                  <div>
+                    ❓ Nullable
+                  </div>
+                </div>
+                <div>
+                  null | string | integer | boolean
+                </div>
+              </div>
+            </div>
+            <div
+              hidden=""
+              role="tabpanel"
+            >
+              <div
+                role="tabpanel"
+              >
+                <strong>
+                  type
+                </strong>
+                 : 
+                <span
+                  style="opacity: 0.6;"
+                >
+                  integer
+                </span>
+                <div>
+                  <div>
+                    ❓ Nullable
+                  </div>
+                </div>
+                <div>
+                  null | string | integer | boolean
+                </div>
+              </div>
+            </div>
+            <div
+              hidden=""
+              role="tabpanel"
+            >
+              <div
+                role="tabpanel"
+              >
+                <strong>
+                  type
+                </strong>
+                 : 
+                <span
+                  style="opacity: 0.6;"
+                >
+                  boolean
+                </span>
+                <div>
+                  <div>
+                    ❓ Nullable
+                  </div>
+                </div>
+                <div>
+                  null | string | integer | boolean
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </details>
+</DocumentFragment>
+`;
+
+exports[`JSONSchemaViewer - type test Unspecified multiple types 1`] = `
+<DocumentFragment>
+  <details
+    class="json-schema-viewer"
+    open=""
+  >
+    <summary>
+      <strong>
+        Schema
+      </strong>
+    </summary>
+    <div>
+      <div>
+        <div
+          class="tabs-container"
+        >
+          <ul
+            aria-orientation="horizontal"
+            class="tabs"
+            role="tablist"
+          >
+            <li
+              aria-selected="true"
+              tabindex="0"
+            >
+              <span
+                style="opacity: 0.6;"
+              >
+                string
+              </span>
+            </li>
+            <li
+              aria-selected="false"
+              tabindex="-1"
+            >
+              <span
+                style="opacity: 0.6;"
+              >
+                number
+              </span>
+            </li>
+          </ul>
+          <div>
+            <div
+              role="tabpanel"
+            >
+              <div
+                role="tabpanel"
+              >
+                <strong>
+                  type
+                </strong>
+                 : 
+                <span
+                  style="opacity: 0.6;"
+                >
+                  string
+                </span>
+                <div>
+                  <div>
+                    <strong>
+                      Length :
+                    </strong>
+                     
+                    <code>
+                      &gt;= 5 character(s)
+                    </code>
+                     
+                    <strong>
+                      AND
+                    </strong>
+                     
+                    <code>
+                      &lt;= 3 character(s)
+                    </code>
+                  </div>
+                  <div>
+                    <strong>
+                      Possible values :
+                    </strong>
+                     
+                    <code>
+                      &gt;= 42
+                    </code>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              hidden=""
+              role="tabpanel"
+            >
+              <div
+                role="tabpanel"
+              >
+                <strong>
+                  type
+                </strong>
+                 : 
+                <span
+                  style="opacity: 0.6;"
+                >
+                  number
+                </span>
+                <div>
+                  <div>
+                    <strong>
+                      Length :
+                    </strong>
+                     
+                    <code>
+                      &gt;= 5 character(s)
+                    </code>
+                     
+                    <strong>
+                      AND
+                    </strong>
+                     
+                    <code>
+                      &lt;= 3 character(s)
+                    </code>
+                  </div>
+                  <div>
+                    <strong>
+                      Possible values :
+                    </strong>
+                     
+                    <code>
+                      &gt;= 42
+                    </code>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </details>
+</DocumentFragment>
+`;
+
+exports[`JSONSchemaViewer - type test Unspecified type (boolean) 1`] = `
+<DocumentFragment>
+  <details
+    class="json-schema-viewer"
+    open=""
+  >
+    <summary>
+      <strong>
+        Schema
+      </strong>
+    </summary>
+    <div>
+      <div>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style="opacity: 0.6;"
+        >
+          any
+        </span>
+        <div>
+          Always valid
+        </div>
+      </div>
+    </div>
+  </details>
+</DocumentFragment>
+`;
+
+exports[`JSONSchemaViewer - type test Unspecified type (numeric) 1`] = `
+<DocumentFragment>
+  <details
+    class="json-schema-viewer"
+    open=""
+  >
+    <summary>
+      <strong>
+        Schema
+      </strong>
+    </summary>
+    <div>
+      <div>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style="opacity: 0.6;"
+        >
+          number
+        </span>
+        <div>
+          <div>
+            <strong>
+              Possible values :
+            </strong>
+             
+            <code>
+              multiple of 10
+            </code>
+          </div>
+        </div>
+      </div>
+    </div>
+  </details>
+</DocumentFragment>
+`;
+
+exports[`JSONSchemaViewer - type test single type 1`] = `
+<DocumentFragment>
+  <details
+    class="json-schema-viewer"
+    open=""
+  >
+    <summary>
+      <strong>
+        Schema
+      </strong>
+    </summary>
+    <div>
+      <div>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style="opacity: 0.6;"
+        >
+          number
+        </span>
+        <div />
+      </div>
+    </div>
+  </details>
+</DocumentFragment>
+`;

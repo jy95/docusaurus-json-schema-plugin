@@ -1,0 +1,350 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`JSONSchemaViewer - Generic keywords test annotations 1`] = `
+<DocumentFragment>
+  <details
+    class="json-schema-viewer"
+    open=""
+  >
+    <summary>
+      <strong>
+        Match anything
+      </strong>
+    </summary>
+    <div>
+      <div>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style="opacity: 0.6;"
+        >
+          any
+        </span>
+        <div>
+          Always valid
+        </div>
+        <div>
+          <div>
+            🚨 Deprecated
+          </div>
+          <div>
+            🚨 read only
+          </div>
+          <div>
+            <strong>
+              Default value :
+            </strong>
+             
+            <code>
+              Default value
+            </code>
+          </div>
+          <div>
+            <strong>
+              Example values :
+            </strong>
+             
+            <div
+              class="tabs-container"
+            >
+              <ul
+                aria-orientation="horizontal"
+                class="tabs"
+                role="tablist"
+              >
+                <li
+                  aria-selected="true"
+                  tabindex="0"
+                >
+                  Example 0
+                </li>
+                <li
+                  aria-selected="false"
+                  tabindex="-1"
+                >
+                  Example 1
+                </li>
+              </ul>
+              <div>
+                <div
+                  role="tabpanel"
+                >
+                  <div
+                    role="tabpanel"
+                  >
+                    <code>
+                      Anything
+                    </code>
+                  </div>
+                </div>
+                <div
+                  hidden=""
+                  role="tabpanel"
+                >
+                  <div
+                    role="tabpanel"
+                  >
+                    <code>
+                      4035
+                    </code>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          This is a schema that matches anything.
+        </div>
+      </div>
+    </div>
+  </details>
+</DocumentFragment>
+`;
+
+exports[`JSONSchemaViewer - Generic keywords test const (as single enum value) 1`] = `
+<DocumentFragment>
+  <details
+    class="json-schema-viewer"
+    open=""
+  >
+    <summary>
+      <strong>
+        Schema
+      </strong>
+    </summary>
+    <div>
+      <div>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style="opacity: 0.6;"
+        >
+          object
+        </span>
+        <ul>
+          <li
+            data-level="1"
+            id="/properties/country"
+          >
+            <details>
+              <summary>
+                <strong>
+                  country
+                </strong>
+                 
+                <code>
+                  "US"
+                </code>
+                 
+                <strong>
+                  constant
+                </strong>
+              </summary>
+              <div>
+                <div>
+                  <strong>
+                    type
+                  </strong>
+                   : 
+                  <span
+                    style="opacity: 0.6;"
+                  >
+                    string
+                  </span>
+                  <div>
+                    <div>
+                      <strong>
+                        Possible values :
+                      </strong>
+                       
+                      <ul>
+                        <li>
+                          <code>
+                            US
+                          </code>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div>
+                    const (as single enum value)
+                  </div>
+                </div>
+              </div>
+            </details>
+          </li>
+        </ul>
+        <div />
+      </div>
+    </div>
+  </details>
+</DocumentFragment>
+`;
+
+exports[`JSONSchemaViewer - Generic keywords test const 1`] = `
+<DocumentFragment>
+  <details
+    class="json-schema-viewer"
+    open=""
+  >
+    <summary>
+      <strong>
+        Schema
+      </strong>
+    </summary>
+    <div>
+      <div>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style="opacity: 0.6;"
+        >
+          object
+        </span>
+        <ul>
+          <li
+            data-level="1"
+            id="/properties/country"
+          >
+            <details>
+              <summary>
+                <strong>
+                  country
+                </strong>
+                 
+                <code>
+                  "United States of America"
+                </code>
+                 
+                <strong>
+                  constant
+                </strong>
+              </summary>
+              <div>
+                <div>
+                  <strong>
+                    type
+                  </strong>
+                   : 
+                  <span
+                    style="opacity: 0.6;"
+                  >
+                    string
+                  </span>
+                  <div>
+                    <div>
+                      <strong>
+                        Constant value :
+                      </strong>
+                       
+                      <code>
+                        United States of America
+                      </code>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </details>
+          </li>
+        </ul>
+        <div />
+      </div>
+    </div>
+  </details>
+</DocumentFragment>
+`;
+
+exports[`JSONSchemaViewer - Generic keywords test enum 1`] = `
+<DocumentFragment>
+  <details
+    class="json-schema-viewer"
+    open=""
+  >
+    <summary>
+      <strong>
+        Schema
+      </strong>
+    </summary>
+    <div>
+      <div>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style="opacity: 0.6;"
+        >
+          string
+        </span>
+        <div>
+          <div>
+            <strong>
+              Possible values :
+            </strong>
+             
+            <ul>
+              <li>
+                <code>
+                  red
+                </code>
+              </li>
+              <li>
+                <code>
+                  amber
+                </code>
+              </li>
+              <li>
+                <code>
+                  green
+                </code>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <strong>
+              Example values :
+            </strong>
+             
+            <div
+              class="tabs-container"
+            >
+              <ul
+                aria-orientation="horizontal"
+                class="tabs"
+                role="tablist"
+              >
+                <li
+                  aria-selected="true"
+                  tabindex="0"
+                >
+                  Example 0
+                </li>
+              </ul>
+              <div>
+                <div
+                  role="tabpanel"
+                >
+                  <div
+                    role="tabpanel"
+                  >
+                    <code>
+                      red
+                    </code>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </details>
+</DocumentFragment>
+`;

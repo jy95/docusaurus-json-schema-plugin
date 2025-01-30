@@ -1,0 +1,1096 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`JSONSchemaViewer - string test basic 1`] = `
+<DocumentFragment>
+  <details
+    class="json-schema-viewer"
+    open=""
+  >
+    <summary>
+      <strong>
+        Schema
+      </strong>
+    </summary>
+    <div>
+      <div>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style="opacity: 0.6;"
+        >
+          string
+        </span>
+        <div />
+      </div>
+    </div>
+  </details>
+</DocumentFragment>
+`;
+
+exports[`JSONSchemaViewer - string test contentEncoding 1`] = `
+<DocumentFragment>
+  <details
+    class="json-schema-viewer"
+    open=""
+  >
+    <summary>
+      <strong>
+        Schema
+      </strong>
+    </summary>
+    <div>
+      <div>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style="opacity: 0.6;"
+        >
+          string
+        </span>
+        <div>
+          <div>
+            <strong>
+              Encoding :
+            </strong>
+             
+            <code>
+              base64
+            </code>
+          </div>
+        </div>
+      </div>
+    </div>
+  </details>
+</DocumentFragment>
+`;
+
+exports[`JSONSchemaViewer - string test contentEncoding with contentMediaType 1`] = `
+<DocumentFragment>
+  <details
+    class="json-schema-viewer"
+    open=""
+  >
+    <summary>
+      <strong>
+        Schema
+      </strong>
+    </summary>
+    <div>
+      <div>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style="opacity: 0.6;"
+        >
+          string
+        </span>
+        <div>
+          <div>
+            <strong>
+              Encoding :
+            </strong>
+             
+            <code>
+              base64
+            </code>
+          </div>
+          <div>
+            <strong>
+              Media type :
+            </strong>
+             
+            <code>
+              application/json
+            </code>
+          </div>
+        </div>
+      </div>
+    </div>
+  </details>
+</DocumentFragment>
+`;
+
+exports[`JSONSchemaViewer - string test contentMediaType 1`] = `
+<DocumentFragment>
+  <details
+    class="json-schema-viewer"
+    open=""
+  >
+    <summary>
+      <strong>
+        Schema
+      </strong>
+    </summary>
+    <div>
+      <div>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style="opacity: 0.6;"
+        >
+          string
+        </span>
+        <div>
+          <div>
+            <strong>
+              Media type :
+            </strong>
+             
+            <code>
+              application/json
+            </code>
+          </div>
+        </div>
+      </div>
+    </div>
+  </details>
+</DocumentFragment>
+`;
+
+exports[`JSONSchemaViewer - string test contentSchema 1`] = `
+<DocumentFragment>
+  <details
+    class="json-schema-viewer"
+    open=""
+  >
+    <summary>
+      <strong>
+        Schema
+      </strong>
+    </summary>
+    <div>
+      <div>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style="opacity: 0.6;"
+        >
+          string
+        </span>
+        <div>
+          <div>
+            <strong>
+              Decoded content must be validated against this schema :
+            </strong>
+             
+            <details
+              open=""
+            >
+              <summary>
+                <strong>
+                  Schema
+                </strong>
+              </summary>
+              <div>
+                <div>
+                  <strong>
+                    type
+                  </strong>
+                   : 
+                  <span
+                    style="opacity: 0.6;"
+                  >
+                    object
+                  </span>
+                  <ul>
+                    <li
+                      data-level="2"
+                      id="/contentSchema/properties/name"
+                    >
+                      <details>
+                        <summary>
+                          <strong>
+                            name
+                          </strong>
+                           
+                          <span
+                            style="opacity: 0.6;"
+                          >
+                            any
+                          </span>
+                           
+                          <strong>
+                            required
+                          </strong>
+                        </summary>
+                        <div>
+                          <div>
+                            <strong>
+                              type
+                            </strong>
+                             : 
+                            <span
+                              style="opacity: 0.6;"
+                            >
+                              any
+                            </span>
+                            <div>
+                              Always valid
+                            </div>
+                          </div>
+                        </div>
+                      </details>
+                    </li>
+                    <li
+                      data-level="2"
+                      id="/contentSchema/properties/age"
+                    >
+                      <details>
+                        <summary>
+                          <strong>
+                            age
+                          </strong>
+                           
+                          <span
+                            style="opacity: 0.6;"
+                          >
+                            any
+                          </span>
+                           
+                          <strong>
+                            required
+                          </strong>
+                        </summary>
+                        <div>
+                          <div>
+                            <strong>
+                              type
+                            </strong>
+                             : 
+                            <span
+                              style="opacity: 0.6;"
+                            >
+                              any
+                            </span>
+                            <div>
+                              Always valid
+                            </div>
+                          </div>
+                        </div>
+                      </details>
+                    </li>
+                  </ul>
+                  <div />
+                </div>
+              </div>
+            </details>
+          </div>
+        </div>
+      </div>
+    </div>
+  </details>
+</DocumentFragment>
+`;
+
+exports[`JSONSchemaViewer - string test format 1`] = `
+<DocumentFragment>
+  <details
+    class="json-schema-viewer"
+    open=""
+  >
+    <summary>
+      <strong>
+        Schema
+      </strong>
+    </summary>
+    <div>
+      <div>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style="opacity: 0.6;"
+        >
+          object
+        </span>
+        <ul>
+          <li
+            data-level="1"
+            id="/properties/prop1"
+          >
+            <details>
+              <summary>
+                <strong>
+                  prop1
+                </strong>
+                 
+                <span
+                  style="opacity: 0.6;"
+                >
+                  date-time
+                </span>
+              </summary>
+              <div>
+                <div>
+                  <strong>
+                    type
+                  </strong>
+                   : 
+                  <span
+                    style="opacity: 0.6;"
+                  >
+                    string (date-time)
+                  </span>
+                  <div />
+                </div>
+              </div>
+            </details>
+          </li>
+          <li
+            data-level="1"
+            id="/properties/prop2"
+          >
+            <details>
+              <summary>
+                <strong>
+                  prop2
+                </strong>
+                 
+                <span
+                  style="opacity: 0.6;"
+                >
+                  time
+                </span>
+              </summary>
+              <div>
+                <div>
+                  <strong>
+                    type
+                  </strong>
+                   : 
+                  <span
+                    style="opacity: 0.6;"
+                  >
+                    string (time)
+                  </span>
+                  <div />
+                </div>
+              </div>
+            </details>
+          </li>
+          <li
+            data-level="1"
+            id="/properties/prop3"
+          >
+            <details>
+              <summary>
+                <strong>
+                  prop3
+                </strong>
+                 
+                <span
+                  style="opacity: 0.6;"
+                >
+                  date
+                </span>
+              </summary>
+              <div>
+                <div>
+                  <strong>
+                    type
+                  </strong>
+                   : 
+                  <span
+                    style="opacity: 0.6;"
+                  >
+                    string (date)
+                  </span>
+                  <div />
+                </div>
+              </div>
+            </details>
+          </li>
+          <li
+            data-level="1"
+            id="/properties/prop4"
+          >
+            <details>
+              <summary>
+                <strong>
+                  prop4
+                </strong>
+                 
+                <span
+                  style="opacity: 0.6;"
+                >
+                  duration
+                </span>
+              </summary>
+              <div>
+                <div>
+                  <strong>
+                    type
+                  </strong>
+                   : 
+                  <span
+                    style="opacity: 0.6;"
+                  >
+                    string (duration)
+                  </span>
+                  <div />
+                </div>
+              </div>
+            </details>
+          </li>
+          <li
+            data-level="1"
+            id="/properties/prop5"
+          >
+            <details>
+              <summary>
+                <strong>
+                  prop5
+                </strong>
+                 
+                <span
+                  style="opacity: 0.6;"
+                >
+                  email
+                </span>
+              </summary>
+              <div>
+                <div>
+                  <strong>
+                    type
+                  </strong>
+                   : 
+                  <span
+                    style="opacity: 0.6;"
+                  >
+                    string (email)
+                  </span>
+                  <div />
+                </div>
+              </div>
+            </details>
+          </li>
+          <li
+            data-level="1"
+            id="/properties/prop6"
+          >
+            <details>
+              <summary>
+                <strong>
+                  prop6
+                </strong>
+                 
+                <span
+                  style="opacity: 0.6;"
+                >
+                  idn-email
+                </span>
+              </summary>
+              <div>
+                <div>
+                  <strong>
+                    type
+                  </strong>
+                   : 
+                  <span
+                    style="opacity: 0.6;"
+                  >
+                    string (idn-email)
+                  </span>
+                  <div />
+                </div>
+              </div>
+            </details>
+          </li>
+          <li
+            data-level="1"
+            id="/properties/prop7"
+          >
+            <details>
+              <summary>
+                <strong>
+                  prop7
+                </strong>
+                 
+                <span
+                  style="opacity: 0.6;"
+                >
+                  hostname
+                </span>
+              </summary>
+              <div>
+                <div>
+                  <strong>
+                    type
+                  </strong>
+                   : 
+                  <span
+                    style="opacity: 0.6;"
+                  >
+                    string (hostname)
+                  </span>
+                  <div />
+                </div>
+              </div>
+            </details>
+          </li>
+          <li
+            data-level="1"
+            id="/properties/prop8"
+          >
+            <details>
+              <summary>
+                <strong>
+                  prop8
+                </strong>
+                 
+                <span
+                  style="opacity: 0.6;"
+                >
+                  idn-hostname
+                </span>
+              </summary>
+              <div>
+                <div>
+                  <strong>
+                    type
+                  </strong>
+                   : 
+                  <span
+                    style="opacity: 0.6;"
+                  >
+                    string (idn-hostname)
+                  </span>
+                  <div />
+                </div>
+              </div>
+            </details>
+          </li>
+          <li
+            data-level="1"
+            id="/properties/prop9"
+          >
+            <details>
+              <summary>
+                <strong>
+                  prop9
+                </strong>
+                 
+                <span
+                  style="opacity: 0.6;"
+                >
+                  ipv4
+                </span>
+              </summary>
+              <div>
+                <div>
+                  <strong>
+                    type
+                  </strong>
+                   : 
+                  <span
+                    style="opacity: 0.6;"
+                  >
+                    string (ipv4)
+                  </span>
+                  <div />
+                </div>
+              </div>
+            </details>
+          </li>
+          <li
+            data-level="1"
+            id="/properties/prop10"
+          >
+            <details>
+              <summary>
+                <strong>
+                  prop10
+                </strong>
+                 
+                <span
+                  style="opacity: 0.6;"
+                >
+                  ipv6
+                </span>
+              </summary>
+              <div>
+                <div>
+                  <strong>
+                    type
+                  </strong>
+                   : 
+                  <span
+                    style="opacity: 0.6;"
+                  >
+                    string (ipv6)
+                  </span>
+                  <div />
+                </div>
+              </div>
+            </details>
+          </li>
+          <li
+            data-level="1"
+            id="/properties/prop11"
+          >
+            <details>
+              <summary>
+                <strong>
+                  prop11
+                </strong>
+                 
+                <span
+                  style="opacity: 0.6;"
+                >
+                  uuid
+                </span>
+              </summary>
+              <div>
+                <div>
+                  <strong>
+                    type
+                  </strong>
+                   : 
+                  <span
+                    style="opacity: 0.6;"
+                  >
+                    string (uuid)
+                  </span>
+                  <div />
+                </div>
+              </div>
+            </details>
+          </li>
+          <li
+            data-level="1"
+            id="/properties/prop12"
+          >
+            <details>
+              <summary>
+                <strong>
+                  prop12
+                </strong>
+                 
+                <span
+                  style="opacity: 0.6;"
+                >
+                  uri
+                </span>
+              </summary>
+              <div>
+                <div>
+                  <strong>
+                    type
+                  </strong>
+                   : 
+                  <span
+                    style="opacity: 0.6;"
+                  >
+                    string (uri)
+                  </span>
+                  <div />
+                </div>
+              </div>
+            </details>
+          </li>
+          <li
+            data-level="1"
+            id="/properties/prop12B"
+          >
+            <details>
+              <summary>
+                <strong>
+                  prop12B
+                </strong>
+                 
+                <span
+                  style="opacity: 0.6;"
+                >
+                  uri-reference
+                </span>
+              </summary>
+              <div>
+                <div>
+                  <strong>
+                    type
+                  </strong>
+                   : 
+                  <span
+                    style="opacity: 0.6;"
+                  >
+                    string (uri-reference)
+                  </span>
+                  <div />
+                </div>
+              </div>
+            </details>
+          </li>
+          <li
+            data-level="1"
+            id="/properties/prop13"
+          >
+            <details>
+              <summary>
+                <strong>
+                  prop13
+                </strong>
+                 
+                <span
+                  style="opacity: 0.6;"
+                >
+                  iri
+                </span>
+              </summary>
+              <div>
+                <div>
+                  <strong>
+                    type
+                  </strong>
+                   : 
+                  <span
+                    style="opacity: 0.6;"
+                  >
+                    string (iri)
+                  </span>
+                  <div />
+                </div>
+              </div>
+            </details>
+          </li>
+          <li
+            data-level="1"
+            id="/properties/prop13B"
+          >
+            <details>
+              <summary>
+                <strong>
+                  prop13B
+                </strong>
+                 
+                <span
+                  style="opacity: 0.6;"
+                >
+                  iri-reference
+                </span>
+              </summary>
+              <div>
+                <div>
+                  <strong>
+                    type
+                  </strong>
+                   : 
+                  <span
+                    style="opacity: 0.6;"
+                  >
+                    string (iri-reference)
+                  </span>
+                  <div />
+                </div>
+              </div>
+            </details>
+          </li>
+          <li
+            data-level="1"
+            id="/properties/prop14"
+          >
+            <details>
+              <summary>
+                <strong>
+                  prop14
+                </strong>
+                 
+                <span
+                  style="opacity: 0.6;"
+                >
+                  uri-template
+                </span>
+              </summary>
+              <div>
+                <div>
+                  <strong>
+                    type
+                  </strong>
+                   : 
+                  <span
+                    style="opacity: 0.6;"
+                  >
+                    string (uri-template)
+                  </span>
+                  <div />
+                </div>
+              </div>
+            </details>
+          </li>
+          <li
+            data-level="1"
+            id="/properties/prop15"
+          >
+            <details>
+              <summary>
+                <strong>
+                  prop15
+                </strong>
+                 
+                <span
+                  style="opacity: 0.6;"
+                >
+                  json-pointer
+                </span>
+              </summary>
+              <div>
+                <div>
+                  <strong>
+                    type
+                  </strong>
+                   : 
+                  <span
+                    style="opacity: 0.6;"
+                  >
+                    string (json-pointer)
+                  </span>
+                  <div />
+                </div>
+              </div>
+            </details>
+          </li>
+          <li
+            data-level="1"
+            id="/properties/prop16"
+          >
+            <details>
+              <summary>
+                <strong>
+                  prop16
+                </strong>
+                 
+                <span
+                  style="opacity: 0.6;"
+                >
+                  relative-json-pointer
+                </span>
+              </summary>
+              <div>
+                <div>
+                  <strong>
+                    type
+                  </strong>
+                   : 
+                  <span
+                    style="opacity: 0.6;"
+                  >
+                    string (relative-json-pointer)
+                  </span>
+                  <div />
+                </div>
+              </div>
+            </details>
+          </li>
+          <li
+            data-level="1"
+            id="/properties/prop17"
+          >
+            <details>
+              <summary>
+                <strong>
+                  prop17
+                </strong>
+                 
+                <span
+                  style="opacity: 0.6;"
+                >
+                  regex
+                </span>
+              </summary>
+              <div>
+                <div>
+                  <strong>
+                    type
+                  </strong>
+                   : 
+                  <span
+                    style="opacity: 0.6;"
+                  >
+                    string (regex)
+                  </span>
+                  <div />
+                </div>
+              </div>
+            </details>
+          </li>
+        </ul>
+        <div />
+      </div>
+    </div>
+  </details>
+</DocumentFragment>
+`;
+
+exports[`JSONSchemaViewer - string test maxLength 1`] = `
+<DocumentFragment>
+  <details
+    class="json-schema-viewer"
+    open=""
+  >
+    <summary>
+      <strong>
+        Schema
+      </strong>
+    </summary>
+    <div>
+      <div>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style="opacity: 0.6;"
+        >
+          string
+        </span>
+        <div>
+          <div>
+            <strong>
+              Length :
+            </strong>
+             
+            <code>
+              &lt;= 3 character(s)
+            </code>
+          </div>
+        </div>
+      </div>
+    </div>
+  </details>
+</DocumentFragment>
+`;
+
+exports[`JSONSchemaViewer - string test minLength & maxLength 1`] = `
+<DocumentFragment>
+  <details
+    class="json-schema-viewer"
+    open=""
+  >
+    <summary>
+      <strong>
+        Schema
+      </strong>
+    </summary>
+    <div>
+      <div>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style="opacity: 0.6;"
+        >
+          string
+        </span>
+        <div>
+          <div>
+            <strong>
+              Length :
+            </strong>
+             
+            <code>
+              &gt;= 2 character(s)
+            </code>
+             
+            <strong>
+              AND
+            </strong>
+             
+            <code>
+              &lt;= 3 character(s)
+            </code>
+          </div>
+        </div>
+      </div>
+    </div>
+  </details>
+</DocumentFragment>
+`;
+
+exports[`JSONSchemaViewer - string test minLength 1`] = `
+<DocumentFragment>
+  <details
+    class="json-schema-viewer"
+    open=""
+  >
+    <summary>
+      <strong>
+        Schema
+      </strong>
+    </summary>
+    <div>
+      <div>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style="opacity: 0.6;"
+        >
+          string
+        </span>
+        <div>
+          <div>
+            <strong>
+              Length :
+            </strong>
+             
+            <code>
+              &gt;= 2 character(s)
+            </code>
+          </div>
+        </div>
+      </div>
+    </div>
+  </details>
+</DocumentFragment>
+`;
+
+exports[`JSONSchemaViewer - string test pattern 1`] = `
+<DocumentFragment>
+  <details
+    class="json-schema-viewer"
+    open=""
+  >
+    <summary>
+      <strong>
+        Schema
+      </strong>
+    </summary>
+    <div>
+      <div>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style="opacity: 0.6;"
+        >
+          string
+        </span>
+        <div>
+          <div>
+            <strong>
+              Pattern :
+            </strong>
+             
+            <code>
+              ^(\\([0-9]{3}\\))?[0-9]{3}-[0-9]{4}$
+            </code>
+          </div>
+        </div>
+      </div>
+    </div>
+  </details>
+</DocumentFragment>
+`;

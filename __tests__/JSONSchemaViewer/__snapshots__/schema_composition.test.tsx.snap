@@ -1,0 +1,373 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`JSONSchemaViewer - schema composition test allOf 1`] = `
+<DocumentFragment>
+  <details
+    class="json-schema-viewer"
+    open=""
+  >
+    <summary>
+      <strong>
+        Schema
+      </strong>
+    </summary>
+    <div>
+      <div>
+        <div>
+          <span
+            class="badge badge--info"
+          >
+            allOf
+          </span>
+          <div
+            class="tabs-container"
+          >
+            <ul
+              aria-orientation="horizontal"
+              class="tabs"
+              role="tablist"
+            >
+              <li
+                aria-selected="true"
+                tabindex="0"
+              >
+                <span
+                  style="opacity: 0.6;"
+                >
+                  string
+                </span>
+              </li>
+              <li
+                aria-selected="false"
+                tabindex="-1"
+              >
+                <span
+                  style="opacity: 0.6;"
+                >
+                  string
+                </span>
+              </li>
+            </ul>
+            <div>
+              <div
+                role="tabpanel"
+              >
+                <div
+                  role="tabpanel"
+                >
+                  <strong>
+                    type
+                  </strong>
+                   : 
+                  <span
+                    style="opacity: 0.6;"
+                  >
+                    string
+                  </span>
+                  <div />
+                </div>
+              </div>
+              <div
+                hidden=""
+                role="tabpanel"
+              >
+                <div
+                  role="tabpanel"
+                >
+                  <strong>
+                    type
+                  </strong>
+                   : 
+                  <span
+                    style="opacity: 0.6;"
+                  >
+                    string
+                  </span>
+                  <div>
+                    <div>
+                      <strong>
+                        Length :
+                      </strong>
+                       
+                      <code>
+                        &lt;= 5 character(s)
+                      </code>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </details>
+</DocumentFragment>
+`;
+
+exports[`JSONSchemaViewer - schema composition test anyOf 1`] = `
+<DocumentFragment>
+  <details
+    class="json-schema-viewer"
+    open=""
+  >
+    <summary>
+      <strong>
+        Schema
+      </strong>
+    </summary>
+    <div>
+      <div>
+        <div>
+          <span
+            class="badge badge--info"
+          >
+            anyOf
+          </span>
+          <div
+            class="tabs-container"
+          >
+            <ul
+              aria-orientation="horizontal"
+              class="tabs"
+              role="tablist"
+            >
+              <li
+                aria-selected="true"
+                tabindex="0"
+              >
+                <span
+                  style="opacity: 0.6;"
+                >
+                  string
+                </span>
+              </li>
+              <li
+                aria-selected="false"
+                tabindex="-1"
+              >
+                <span
+                  style="opacity: 0.6;"
+                >
+                  number
+                </span>
+              </li>
+            </ul>
+            <div>
+              <div
+                role="tabpanel"
+              >
+                <div
+                  role="tabpanel"
+                >
+                  <strong>
+                    type
+                  </strong>
+                   : 
+                  <span
+                    style="opacity: 0.6;"
+                  >
+                    string
+                  </span>
+                  <div>
+                    <div>
+                      <strong>
+                        Length :
+                      </strong>
+                       
+                      <code>
+                        &lt;= 5 character(s)
+                      </code>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                hidden=""
+                role="tabpanel"
+              >
+                <div
+                  role="tabpanel"
+                >
+                  <strong>
+                    type
+                  </strong>
+                   : 
+                  <span
+                    style="opacity: 0.6;"
+                  >
+                    number
+                  </span>
+                  <div>
+                    <div>
+                      <strong>
+                        Possible values :
+                      </strong>
+                       
+                      <code>
+                        &gt;= 0
+                      </code>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </details>
+</DocumentFragment>
+`;
+
+exports[`JSONSchemaViewer - schema composition test not 1`] = `
+<DocumentFragment>
+  <details
+    class="json-schema-viewer"
+    open=""
+  >
+    <summary>
+      <strong>
+        Schema
+      </strong>
+    </summary>
+    <div>
+      <div>
+        <div>
+          <span
+            class="badge badge--danger"
+          >
+            not
+          </span>
+          <br />
+          <strong>
+            type
+          </strong>
+           : 
+          <span
+            style="opacity: 0.6;"
+          >
+            string
+          </span>
+          <div />
+        </div>
+      </div>
+    </div>
+  </details>
+</DocumentFragment>
+`;
+
+exports[`JSONSchemaViewer - schema composition test oneOf 1`] = `
+<DocumentFragment>
+  <details
+    class="json-schema-viewer"
+    open=""
+  >
+    <summary>
+      <strong>
+        Schema
+      </strong>
+    </summary>
+    <div>
+      <div>
+        <div>
+          <span
+            class="badge badge--info"
+          >
+            oneOf
+          </span>
+          <div
+            class="tabs-container"
+          >
+            <ul
+              aria-orientation="horizontal"
+              class="tabs"
+              role="tablist"
+            >
+              <li
+                aria-selected="true"
+                tabindex="0"
+              >
+                <span
+                  style="opacity: 0.6;"
+                >
+                  number
+                </span>
+              </li>
+              <li
+                aria-selected="false"
+                tabindex="-1"
+              >
+                <span
+                  style="opacity: 0.6;"
+                >
+                  number
+                </span>
+              </li>
+            </ul>
+            <div>
+              <div
+                role="tabpanel"
+              >
+                <div
+                  role="tabpanel"
+                >
+                  <strong>
+                    type
+                  </strong>
+                   : 
+                  <span
+                    style="opacity: 0.6;"
+                  >
+                    number
+                  </span>
+                  <div>
+                    <div>
+                      <strong>
+                        Possible values :
+                      </strong>
+                       
+                      <code>
+                        multiple of 5
+                      </code>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                hidden=""
+                role="tabpanel"
+              >
+                <div
+                  role="tabpanel"
+                >
+                  <strong>
+                    type
+                  </strong>
+                   : 
+                  <span
+                    style="opacity: 0.6;"
+                  >
+                    number
+                  </span>
+                  <div>
+                    <div>
+                      <strong>
+                        Possible values :
+                      </strong>
+                       
+                      <code>
+                        multiple of 3
+                      </code>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </details>
+</DocumentFragment>
+`;
