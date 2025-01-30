@@ -1,11 +1,14 @@
-import React from "react";
-import { expect, test, describe } from "@jest/globals";
-import { render, act } from "@testing-library/react";
-import type { RenderResult } from "@testing-library/react";
-import JSONSchemaViewer from "../../src/theme/JSONSchemaViewer/index";
+import React from "react"
+import { expect, test, describe } from "@jest/globals"
+import { render, act } from "@testing-library/react"
+import type { RenderResult } from "@testing-library/react"
+import JSONSchemaViewer from "../../src/theme/JSONSchemaViewer/index"
 
 // Type to prevent creating invalid mocks
-import type { JSONSchema, JSONSchemaNS } from "../../src/theme/JSONSchemaViewer/types";
+import type {
+  JSONSchema,
+  JSONSchemaNS,
+} from "../../src/theme/JSONSchemaViewer/types"
 
 const testcases: [string, JSONSchema][] = [
   [
@@ -54,18 +57,18 @@ const testcases: [string, JSONSchema][] = [
       ],
     } as JSONSchemaNS.Array,
   ],
-];
+]
 
 describe("JSONSchemaViewer - generateFriendlyName cases", () => {
   test.each(testcases)("test %s", async (_title, fakeSchema) => {
-    let result: RenderResult | null = null;
+    let result: RenderResult | null = null
 
     // Render the component within act
     await act(async () => {
-      result = render(<JSONSchemaViewer schema={fakeSchema} />);
-    });
+      result = render(<JSONSchemaViewer schema={fakeSchema} />)
+    })
 
     // Capture the snapshot
-    expect(result!.asFragment()).toMatchSnapshot();
-  });
-});
+    expect(result!.asFragment()).toMatchSnapshot()
+  })
+})

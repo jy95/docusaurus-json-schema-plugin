@@ -7,7 +7,11 @@ import type { JSONSchema } from "../../src/theme/JSONSchemaViewer/types"
 
 const testcases: JSONSchema[] = [
   { type: "boolean" },
-  { enum: [true, false], default: false, description: "Boolean without the explicit type" },
+  {
+    enum: [true, false],
+    default: false,
+    description: "Boolean without the explicit type",
+  },
 ]
 
 describe("JSONSchemaViewer - Boolean type", () => {

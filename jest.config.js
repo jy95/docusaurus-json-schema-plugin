@@ -13,5 +13,5 @@ module.exports = {
   },
   collectCoverageFrom: ["src/theme/JSONSchemaViewer/**/*.{js,ts,jsx,tsx}"],
   coveragePathIgnorePatterns: ["!*.d.ts"],
-  setupFilesAfterEnv: ['@testing-library/jest-dom'],
+  setupFilesAfterEnv: ["@testing-library/jest-dom"],
 }

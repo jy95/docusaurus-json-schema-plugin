@@ -18,7 +18,10 @@ describe("JSONSchemaViewer - basics tests", () => {
   })
 
   test("Can render Schema title", async () => {
-    const fakeSchema2: JSONSchema = { type: "boolean", title: "My Super Schema" }
+    const fakeSchema2: JSONSchema = {
+      type: "boolean",
+      title: "My Super Schema",
+    }
     let result: RenderResult | null = null
 
     await act(async () => {

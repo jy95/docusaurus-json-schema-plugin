@@ -4,7 +4,7 @@ import { expect, test, describe } from "@jest/globals"
 import JSONSchemaViewer from "../../src/theme/JSONSchemaViewer/index"
 
 // Type to prevent creating invalid mocks
-import type { RenderResult } from "@testing-library/react";
+import type { RenderResult } from "@testing-library/react"
 import type { JSONSchema } from "../../src/theme/JSONSchemaViewer/types"
 
 const testcases: [string, JSONSchema][] = [
@@ -176,16 +176,16 @@ const testcases: [string, JSONSchema][] = [
 ]
 
 describe("JSONSchemaViewer - string", () => {
-  test.each(testcases)("test %s", async(title, fakeSchema) => {
+  test.each(testcases)("test %s", async (title, fakeSchema) => {
     // Render the component
-    let rendered: RenderResult | null = null;
-    
+    let rendered: RenderResult | null = null
+
     // Use act to ensure all updates are processed
     await act(async () => {
-      rendered = render(<JSONSchemaViewer schema={fakeSchema} />);
-    });
+      rendered = render(<JSONSchemaViewer schema={fakeSchema} />)
+    })
 
     // Capture the snapshot
-    expect(rendered!.asFragment()).toMatchSnapshot();
+    expect(rendered!.asFragment()).toMatchSnapshot()
   })
 })

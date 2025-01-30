@@ -16,7 +16,7 @@ describe("JSONSchemaViewer - constructor", () => {
         <JSONSchemaViewer
           schema={fakeSchema}
           viewerOptions={{ qualifierMessagesOrder: ["objectProperties"] }}
-        />
+        />,
       )
     })
 
@@ -24,7 +24,10 @@ describe("JSONSchemaViewer - constructor", () => {
   })
 
   test("Overwrite default DescriptionComponent value", async () => {
-    const fakeSchema2: JSONSchema = { type: "object", description: "# Hello, *world*!" }
+    const fakeSchema2: JSONSchema = {
+      type: "object",
+      description: "# Hello, *world*!",
+    }
     let result: RenderResult | null = null
 
     await act(async () => {
@@ -38,7 +41,7 @@ describe("JSONSchemaViewer - constructor", () => {
               </h1>
             ),
           }}
-        />
+        />,
       )
     })
 
@@ -65,7 +68,7 @@ describe("JSONSchemaViewer - constructor", () => {
           viewerOptions={{
             UnresolvedRefsComponent: () => <>#node was not resolved</>,
           }}
-        />
+        />,
       )
     })
 
@@ -83,8 +86,16 @@ describe("JSONSchemaViewer - constructor", () => {
           type: "string",
           description: "A customized or personalized field",
           enum: [
-            "palette", "teddyBear", "tools", "laptop", "thread",
-            "phone", "puzzle", "scissors", "hammer", "note",
+            "palette",
+            "teddyBear",
+            "tools",
+            "laptop",
+            "thread",
+            "phone",
+            "puzzle",
+            "scissors",
+            "hammer",
+            "note",
           ],
           default: "palette",
           examples: ["tools", "note"],
@@ -110,14 +121,18 @@ describe("JSONSchemaViewer - constructor", () => {
 
               const component = <code>{`${value}`}</code>
 
-              if (typeof schema !== "boolean" && schema.default && value === schema.default) {
+              if (
+                typeof schema !== "boolean" &&
+                schema.default &&
+                value === schema.default
+              ) {
                 return <strong>{component}</strong>
               }
 
               return component
             },
           }}
-        />
+        />,
       )
     })
 
@@ -129,7 +144,9 @@ describe("JSONSchemaViewer - constructor", () => {
     let result: RenderResult | null = null
 
     await act(async () => {
-      result = render(<JSONSchemaViewer schema={fakeSchema} className="jsv-custom" />)
+      result = render(
+        <JSONSchemaViewer schema={fakeSchema} className="jsv-custom" />,
+      )
     })
 
     expect(result!.asFragment()).toMatchSnapshot()
