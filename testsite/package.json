@@ -23,8 +23,8 @@
     "js-base64": "^3.7.7",
     "json-schema-faker": "^0.5.8",
     "jsonpos": "^4.1.2",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
     "react-markdown": "^10.0.0",
     "react-toastify": "^11.0.3"
   },
