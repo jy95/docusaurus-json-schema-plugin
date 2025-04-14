@@ -12,7 +12,7 @@ jobs:
       - name: 🛎️ Checkout
         uses: actions/checkout@v4
       - name: Setup Node.js ✨
-        uses: actions/setup-node@v4.3.0
+        uses: actions/setup-node@v4.4.0
         with:
           node-version: "lts/*"
       - name: 🤖 Remove package-lock.json files
