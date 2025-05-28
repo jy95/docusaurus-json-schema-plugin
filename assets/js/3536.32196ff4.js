@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunktestsite=self.webpackChunktestsite||[]).push([[3536],{33536:e=>{e.exports=JSON.parse('{"oneOf":[{"type":"number","multipleOf":5},{"type":"number","multipleOf":3}]}')}}]);
