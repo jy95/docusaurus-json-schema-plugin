@@ -1,0 +1,289 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`JSONSchemaViewer - numeric test integer 1`] = `
+<DocumentFragment>
+  <details
+    class="json-schema-viewer"
+    open=""
+  >
+    <summary>
+      <strong>
+        Schema
+      </strong>
+    </summary>
+    <div>
+      <div>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style="opacity: 0.6;"
+        >
+          integer
+        </span>
+        <div
+          style="margin-top: var(--ifm-table-cell-padding);"
+        />
+        <div
+          style="margin-top: var(--ifm-table-cell-padding);"
+        >
+          A simple integer
+        </div>
+      </div>
+    </div>
+  </details>
+</DocumentFragment>
+`;
+
+exports[`JSONSchemaViewer - numeric test multipleOf 1`] = `
+<DocumentFragment>
+  <details
+    class="json-schema-viewer"
+    open=""
+  >
+    <summary>
+      <strong>
+        Schema
+      </strong>
+    </summary>
+    <div>
+      <div>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style="opacity: 0.6;"
+        >
+          integer
+        </span>
+        <div
+          style="margin-top: var(--ifm-table-cell-padding);"
+        >
+          <div>
+            <strong>
+              Possible values :
+            </strong>
+             
+            <code>
+              multiple of 10
+            </code>
+          </div>
+        </div>
+      </div>
+    </div>
+  </details>
+</DocumentFragment>
+`;
+
+exports[`JSONSchemaViewer - numeric test number 1`] = `
+<DocumentFragment>
+  <details
+    class="json-schema-viewer"
+    open=""
+  >
+    <summary>
+      <strong>
+        Schema
+      </strong>
+    </summary>
+    <div>
+      <div>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style="opacity: 0.6;"
+        >
+          number
+        </span>
+        <div
+          style="margin-top: var(--ifm-table-cell-padding);"
+        />
+      </div>
+    </div>
+  </details>
+</DocumentFragment>
+`;
+
+exports[`JSONSchemaViewer - numeric test ranges (1) 1`] = `
+<DocumentFragment>
+  <details
+    class="json-schema-viewer"
+    open=""
+  >
+    <summary>
+      <strong>
+        Schema
+      </strong>
+    </summary>
+    <div>
+      <div>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style="opacity: 0.6;"
+        >
+          number
+        </span>
+        <div
+          style="margin-top: var(--ifm-table-cell-padding);"
+        >
+          <div>
+            <strong>
+              Possible values :
+            </strong>
+             
+            <code>
+              &gt;= 0
+            </code>
+             
+            <strong>
+              AND
+            </strong>
+             
+            <code>
+              &lt; 100
+            </code>
+          </div>
+        </div>
+      </div>
+    </div>
+  </details>
+</DocumentFragment>
+`;
+
+exports[`JSONSchemaViewer - numeric test ranges (2) 1`] = `
+<DocumentFragment>
+  <details
+    class="json-schema-viewer"
+    open=""
+  >
+    <summary>
+      <strong>
+        Schema
+      </strong>
+    </summary>
+    <div>
+      <div>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style="opacity: 0.6;"
+        >
+          number
+        </span>
+        <div
+          style="margin-top: var(--ifm-table-cell-padding);"
+        >
+          <div>
+            <strong>
+              Possible values :
+            </strong>
+             
+            <code>
+              &gt; 1
+            </code>
+             
+            <strong>
+              AND
+            </strong>
+             
+            <code>
+              &lt;= 100
+            </code>
+          </div>
+        </div>
+      </div>
+    </div>
+  </details>
+</DocumentFragment>
+`;
+
+exports[`JSONSchemaViewer - numeric test ranges (3) 1`] = `
+<DocumentFragment>
+  <details
+    class="json-schema-viewer"
+    open=""
+  >
+    <summary>
+      <strong>
+        Schema
+      </strong>
+    </summary>
+    <div>
+      <div>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style="opacity: 0.6;"
+        >
+          number
+        </span>
+        <div
+          style="margin-top: var(--ifm-table-cell-padding);"
+        >
+          <div>
+            <strong>
+              Possible values :
+            </strong>
+             
+            <code>
+              &gt; 1
+            </code>
+          </div>
+        </div>
+      </div>
+    </div>
+  </details>
+</DocumentFragment>
+`;
+
+exports[`JSONSchemaViewer - numeric test ranges (4) 1`] = `
+<DocumentFragment>
+  <details
+    class="json-schema-viewer"
+    open=""
+  >
+    <summary>
+      <strong>
+        Schema
+      </strong>
+    </summary>
+    <div>
+      <div>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style="opacity: 0.6;"
+        >
+          number
+        </span>
+        <div
+          style="margin-top: var(--ifm-table-cell-padding);"
+        >
+          <div>
+            <strong>
+              Possible values :
+            </strong>
+             
+            <code>
+              &lt; 1
+            </code>
+          </div>
+        </div>
+      </div>
+    </div>
+  </details>
+</DocumentFragment>
+`;

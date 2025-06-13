@@ -1,0 +1,699 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`JSONSchemaViewer - object test additionalProperties (JSON Schema) 1`] = `
+<DocumentFragment>
+  <details
+    class="json-schema-viewer"
+    open=""
+  >
+    <summary>
+      <strong>
+        Schema
+      </strong>
+    </summary>
+    <div>
+      <div>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style="opacity: 0.6;"
+        >
+          object
+        </span>
+        <ul>
+          <li
+            data-level="1"
+            id="/properties/number"
+          >
+            <details>
+              <summary>
+                <strong>
+                  number
+                </strong>
+                 
+                <span
+                  style="opacity: 0.6;"
+                >
+                  number
+                </span>
+              </summary>
+              <div>
+                <div>
+                  <strong>
+                    type
+                  </strong>
+                   : 
+                  <span
+                    style="opacity: 0.6;"
+                  >
+                    number
+                  </span>
+                  <div
+                    style="margin-top: var(--ifm-table-cell-padding);"
+                  />
+                </div>
+              </div>
+            </details>
+          </li>
+          <li
+            data-level="1"
+            id="/properties/street_name"
+          >
+            <details>
+              <summary>
+                <strong>
+                  street_name
+                </strong>
+                 
+                <span
+                  style="opacity: 0.6;"
+                >
+                  string
+                </span>
+              </summary>
+              <div>
+                <div>
+                  <strong>
+                    type
+                  </strong>
+                   : 
+                  <span
+                    style="opacity: 0.6;"
+                  >
+                    string
+                  </span>
+                  <div
+                    style="margin-top: var(--ifm-table-cell-padding);"
+                  />
+                </div>
+              </div>
+            </details>
+          </li>
+          <li
+            data-level="1"
+            id="/properties/street_type"
+          >
+            <details>
+              <summary>
+                <strong>
+                  street_type
+                </strong>
+                 
+                <span
+                  style="opacity: 0.6;"
+                >
+                  string
+                </span>
+              </summary>
+              <div>
+                <div>
+                  <strong>
+                    type
+                  </strong>
+                   : 
+                  <span
+                    style="opacity: 0.6;"
+                  >
+                    string
+                  </span>
+                  <div
+                    style="margin-top: var(--ifm-table-cell-padding);"
+                  >
+                    <div>
+                      <strong>
+                        Possible values :
+                      </strong>
+                       
+                      <ul>
+                        <li>
+                          <code>
+                            Street
+                          </code>
+                        </li>
+                        <li>
+                          <code>
+                            Avenue
+                          </code>
+                        </li>
+                        <li>
+                          <code>
+                            Boulevard
+                          </code>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </details>
+          </li>
+        </ul>
+        <ul>
+          <li
+            data-level="1"
+            id="/additionalProperties"
+          >
+            <details>
+              <summary>
+                <code>
+                  property name*
+                </code>
+                 
+                <span
+                  style="opacity: 0.6;"
+                >
+                  string
+                </span>
+              </summary>
+              <div>
+                <div>
+                  <strong>
+                    type
+                  </strong>
+                   : 
+                  <span
+                    style="opacity: 0.6;"
+                  >
+                    string
+                  </span>
+                  <div
+                    style="margin-top: var(--ifm-table-cell-padding);"
+                  />
+                </div>
+              </div>
+            </details>
+          </li>
+        </ul>
+        <div
+          style="margin-top: var(--ifm-table-cell-padding);"
+        />
+      </div>
+    </div>
+  </details>
+</DocumentFragment>
+`;
+
+exports[`JSONSchemaViewer - object test additionalProperties (false) 1`] = `
+<DocumentFragment>
+  <details
+    class="json-schema-viewer"
+    open=""
+  >
+    <summary>
+      <strong>
+        Schema
+      </strong>
+    </summary>
+    <div>
+      <div>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style="opacity: 0.6;"
+        >
+          object
+        </span>
+        <ul>
+          <li
+            data-level="1"
+            id="/properties/number"
+          >
+            <details>
+              <summary>
+                <strong>
+                  number
+                </strong>
+                 
+                <span
+                  style="opacity: 0.6;"
+                >
+                  number
+                </span>
+              </summary>
+              <div>
+                <div>
+                  <strong>
+                    type
+                  </strong>
+                   : 
+                  <span
+                    style="opacity: 0.6;"
+                  >
+                    number
+                  </span>
+                  <div
+                    style="margin-top: var(--ifm-table-cell-padding);"
+                  />
+                </div>
+              </div>
+            </details>
+          </li>
+          <li
+            data-level="1"
+            id="/properties/street_name"
+          >
+            <details>
+              <summary>
+                <strong>
+                  street_name
+                </strong>
+                 
+                <span
+                  style="opacity: 0.6;"
+                >
+                  string
+                </span>
+              </summary>
+              <div>
+                <div>
+                  <strong>
+                    type
+                  </strong>
+                   : 
+                  <span
+                    style="opacity: 0.6;"
+                  >
+                    string
+                  </span>
+                  <div
+                    style="margin-top: var(--ifm-table-cell-padding);"
+                  />
+                </div>
+              </div>
+            </details>
+          </li>
+          <li
+            data-level="1"
+            id="/properties/street_type"
+          >
+            <details>
+              <summary>
+                <strong>
+                  street_type
+                </strong>
+                 
+                <span
+                  style="opacity: 0.6;"
+                >
+                  string
+                </span>
+              </summary>
+              <div>
+                <div>
+                  <strong>
+                    type
+                  </strong>
+                   : 
+                  <span
+                    style="opacity: 0.6;"
+                  >
+                    string
+                  </span>
+                  <div
+                    style="margin-top: var(--ifm-table-cell-padding);"
+                  >
+                    <div>
+                      <strong>
+                        Possible values :
+                      </strong>
+                       
+                      <ul>
+                        <li>
+                          <code>
+                            Street
+                          </code>
+                        </li>
+                        <li>
+                          <code>
+                            Avenue
+                          </code>
+                        </li>
+                        <li>
+                          <code>
+                            Boulevard
+                          </code>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </details>
+          </li>
+        </ul>
+        <div
+          style="margin-top: var(--ifm-table-cell-padding);"
+        >
+          <div>
+            🚨 No extra propertie(s) are authorized in this object
+          </div>
+        </div>
+      </div>
+    </div>
+  </details>
+</DocumentFragment>
+`;
+
+exports[`JSONSchemaViewer - object test additionalProperties with patternProperties 1`] = `
+<DocumentFragment>
+  <details
+    class="json-schema-viewer"
+    open=""
+  >
+    <summary>
+      <strong>
+        Schema
+      </strong>
+    </summary>
+    <div>
+      <div>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style="opacity: 0.6;"
+        >
+          object
+        </span>
+        <ul>
+          <li
+            data-level="1"
+            id="/properties/builtin"
+          >
+            <details>
+              <summary>
+                <strong>
+                  builtin
+                </strong>
+                 
+                <span
+                  style="opacity: 0.6;"
+                >
+                  number
+                </span>
+              </summary>
+              <div>
+                <div>
+                  <strong>
+                    type
+                  </strong>
+                   : 
+                  <span
+                    style="opacity: 0.6;"
+                  >
+                    number
+                  </span>
+                  <div
+                    style="margin-top: var(--ifm-table-cell-padding);"
+                  />
+                </div>
+              </div>
+            </details>
+          </li>
+        </ul>
+        <ul>
+          <li
+            data-level="1"
+            id="/patternProperties/^S_"
+          >
+            <details>
+              <summary>
+                <code>
+                  ^S_
+                </code>
+                 
+                <span
+                  style="opacity: 0.6;"
+                >
+                  string
+                </span>
+              </summary>
+              <div>
+                <div>
+                  <strong>
+                    type
+                  </strong>
+                   : 
+                  <span
+                    style="opacity: 0.6;"
+                  >
+                    string
+                  </span>
+                  <div
+                    style="margin-top: var(--ifm-table-cell-padding);"
+                  />
+                </div>
+              </div>
+            </details>
+          </li>
+          <li
+            data-level="1"
+            id="/patternProperties/^I_"
+          >
+            <details>
+              <summary>
+                <code>
+                  ^I_
+                </code>
+                 
+                <span
+                  style="opacity: 0.6;"
+                >
+                  integer
+                </span>
+              </summary>
+              <div>
+                <div>
+                  <strong>
+                    type
+                  </strong>
+                   : 
+                  <span
+                    style="opacity: 0.6;"
+                  >
+                    integer
+                  </span>
+                  <div
+                    style="margin-top: var(--ifm-table-cell-padding);"
+                  />
+                </div>
+              </div>
+            </details>
+          </li>
+        </ul>
+        <ul>
+          <li
+            data-level="1"
+            id="/additionalProperties"
+          >
+            <details>
+              <summary>
+                <code>
+                  property name*
+                </code>
+                 
+                <span
+                  style="opacity: 0.6;"
+                >
+                  string
+                </span>
+              </summary>
+              <div>
+                <div>
+                  <strong>
+                    type
+                  </strong>
+                   : 
+                  <span
+                    style="opacity: 0.6;"
+                  >
+                    string
+                  </span>
+                  <div
+                    style="margin-top: var(--ifm-table-cell-padding);"
+                  />
+                </div>
+              </div>
+            </details>
+          </li>
+        </ul>
+        <div
+          style="margin-top: var(--ifm-table-cell-padding);"
+        />
+      </div>
+    </div>
+  </details>
+</DocumentFragment>
+`;
+
+exports[`JSONSchemaViewer - object test maxProperties 1`] = `
+<DocumentFragment>
+  <details
+    class="json-schema-viewer"
+    open=""
+  >
+    <summary>
+      <strong>
+        Schema
+      </strong>
+    </summary>
+    <div>
+      <div>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style="opacity: 0.6;"
+        >
+          object
+        </span>
+        <div
+          style="margin-top: var(--ifm-table-cell-padding);"
+        >
+          <div>
+            <strong>
+              Length :
+            </strong>
+             
+            <code>
+              &lt;= 3 propertie(s)
+            </code>
+          </div>
+        </div>
+      </div>
+    </div>
+  </details>
+</DocumentFragment>
+`;
+
+exports[`JSONSchemaViewer - object test minProperties & maxProperties 1`] = `
+<DocumentFragment>
+  <details
+    class="json-schema-viewer"
+    open=""
+  >
+    <summary>
+      <strong>
+        Schema
+      </strong>
+    </summary>
+    <div>
+      <div>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style="opacity: 0.6;"
+        >
+          object
+        </span>
+        <div
+          style="margin-top: var(--ifm-table-cell-padding);"
+        >
+          <div>
+            <strong>
+              Length :
+            </strong>
+             
+            <code>
+              &gt;= 2 propertie(s)
+            </code>
+             
+            <strong>
+              AND
+            </strong>
+             
+            <code>
+              &lt;= 3 propertie(s)
+            </code>
+          </div>
+        </div>
+      </div>
+    </div>
+  </details>
+</DocumentFragment>
+`;
+
+exports[`JSONSchemaViewer - object test minProperties 1`] = `
+<DocumentFragment>
+  <details
+    class="json-schema-viewer"
+    open=""
+  >
+    <summary>
+      <strong>
+        Schema
+      </strong>
+    </summary>
+    <div>
+      <div>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style="opacity: 0.6;"
+        >
+          object
+        </span>
+        <div
+          style="margin-top: var(--ifm-table-cell-padding);"
+        >
+          <div>
+            <strong>
+              Length :
+            </strong>
+             
+            <code>
+              &gt;= 2 propertie(s)
+            </code>
+          </div>
+        </div>
+      </div>
+    </div>
+  </details>
+</DocumentFragment>
+`;
+
+exports[`JSONSchemaViewer - object test simple 1`] = `
+<DocumentFragment>
+  <details
+    class="json-schema-viewer"
+    open=""
+  >
+    <summary>
+      <strong>
+        Schema
+      </strong>
+    </summary>
+    <div>
+      <div>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style="opacity: 0.6;"
+        >
+          object
+        </span>
+        <div
+          style="margin-top: var(--ifm-table-cell-padding);"
+        />
+        <div
+          style="margin-top: var(--ifm-table-cell-padding);"
+        >
+          A simple object
+        </div>
+      </div>
+    </div>
+  </details>
+</DocumentFragment>
+`;

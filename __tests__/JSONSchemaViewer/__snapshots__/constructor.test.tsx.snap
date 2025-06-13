@@ -1,0 +1,481 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`JSONSchemaViewer - constructor Overwrite default DescriptionComponent value 1`] = `
+<DocumentFragment>
+  <details
+    class="json-schema-viewer"
+    open=""
+  >
+    <summary>
+      <strong>
+        Schema
+      </strong>
+    </summary>
+    <div>
+      <div>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style="opacity: 0.6;"
+        >
+          object
+        </span>
+        <div
+          style="margin-top: var(--ifm-table-cell-padding);"
+        />
+        <div
+          style="margin-top: var(--ifm-table-cell-padding);"
+        >
+          <h1>
+            Hello, 
+            <em>
+              world
+            </em>
+            !
+          </h1>
+        </div>
+      </div>
+    </div>
+  </details>
+</DocumentFragment>
+`;
+
+exports[`JSONSchemaViewer - constructor Overwrite default UnresolvedRefsComponent value 1`] = `
+<DocumentFragment>
+  <details
+    class="json-schema-viewer"
+    open=""
+  >
+    <summary>
+      <strong>
+        Schema
+      </strong>
+    </summary>
+    <div>
+      <div>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style="opacity: 0.6;"
+        >
+          object
+        </span>
+        <ul>
+          <li
+            data-level="1"
+            id="/properties/data"
+          >
+            <details>
+              <summary>
+                <strong>
+                  data
+                </strong>
+                 
+                <span
+                  style="opacity: 0.6;"
+                >
+                  any
+                </span>
+              </summary>
+              <div>
+                <div>
+                  <strong>
+                    type
+                  </strong>
+                   : 
+                  <span
+                    style="opacity: 0.6;"
+                  >
+                    any
+                  </span>
+                  <div
+                    style="margin-top: var(--ifm-table-cell-padding);"
+                  >
+                    Always valid
+                  </div>
+                </div>
+              </div>
+            </details>
+          </li>
+          <li
+            data-level="1"
+            id="/properties/children"
+          >
+            <details>
+              <summary>
+                <strong>
+                  children
+                </strong>
+                 (
+                <span
+                  style="opacity: 0.6;"
+                >
+                  any
+                </span>
+                ,...)[]
+              </summary>
+              <div>
+                <div>
+                  <strong>
+                    type
+                  </strong>
+                   : 
+                  <span
+                    style="opacity: 0.6;"
+                  >
+                    array
+                  </span>
+                  <ul>
+                    <li
+                      data-level="2"
+                      id="/properties/children/items"
+                    >
+                      <details>
+                        <summary>
+                          <code>
+                            items[x]
+                          </code>
+                           
+                          <span
+                            style="opacity: 0.6;"
+                          >
+                            any
+                          </span>
+                        </summary>
+                        <div>
+                          <div>
+                            <strong>
+                              type
+                            </strong>
+                             : 
+                            <span
+                              style="opacity: 0.6;"
+                            >
+                              any
+                            </span>
+                            <div
+                              style="margin-top: var(--ifm-table-cell-padding);"
+                            >
+                              Always valid
+                            </div>
+                            <div
+                              style="margin-top: var(--ifm-table-cell-padding);"
+                            >
+                              <div>
+                                #node was not resolved
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </details>
+                    </li>
+                  </ul>
+                  <div
+                    style="margin-top: var(--ifm-table-cell-padding);"
+                  />
+                </div>
+              </div>
+            </details>
+          </li>
+        </ul>
+        <div
+          style="margin-top: var(--ifm-table-cell-padding);"
+        />
+      </div>
+    </div>
+  </details>
+</DocumentFragment>
+`;
+
+exports[`JSONSchemaViewer - constructor Overwrite default ValueComponent value 1`] = `
+<DocumentFragment>
+  <details
+    class="json-schema-viewer"
+    open=""
+  >
+    <summary>
+      <strong>
+        CustomizationOptions
+      </strong>
+    </summary>
+    <div>
+      <div>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style="opacity: 0.6;"
+        >
+          object
+        </span>
+        <ul>
+          <li
+            data-level="1"
+            id="/properties/customField"
+          >
+            <details>
+              <summary>
+                <strong>
+                  customField
+                </strong>
+                 
+                <span
+                  style="opacity: 0.6;"
+                >
+                  string
+                </span>
+                 
+                <strong>
+                  required
+                </strong>
+              </summary>
+              <div>
+                <div>
+                  <strong>
+                    type
+                  </strong>
+                   : 
+                  <span
+                    style="opacity: 0.6;"
+                  >
+                    string
+                  </span>
+                  <div
+                    style="margin-top: var(--ifm-table-cell-padding);"
+                  >
+                    <div>
+                      <strong>
+                        Possible values :
+                      </strong>
+                       
+                      <ul>
+                        <li>
+                          <strong>
+                            <code>
+                              palette
+                            </code>
+                          </strong>
+                        </li>
+                        <li>
+                          <code>
+                            teddyBear
+                          </code>
+                        </li>
+                        <li>
+                          <code>
+                            tools
+                          </code>
+                        </li>
+                        <li>
+                          <code>
+                            laptop
+                          </code>
+                        </li>
+                        <li>
+                          <code>
+                            thread
+                          </code>
+                        </li>
+                        <li>
+                          <code>
+                            phone
+                          </code>
+                        </li>
+                        <li>
+                          <code>
+                            puzzle
+                          </code>
+                        </li>
+                        <li>
+                          <code>
+                            scissors
+                          </code>
+                        </li>
+                        <li>
+                          <code>
+                            hammer
+                          </code>
+                        </li>
+                        <li>
+                          <code>
+                            note
+                          </code>
+                        </li>
+                      </ul>
+                    </div>
+                    <div>
+                      <strong>
+                        Default value :
+                      </strong>
+                       
+                      <strong>
+                        <code>
+                          palette
+                        </code>
+                      </strong>
+                    </div>
+                  </div>
+                  <div
+                    style="margin-top: var(--ifm-table-cell-padding);"
+                  >
+                    A customized or personalized field
+                  </div>
+                </div>
+              </div>
+            </details>
+          </li>
+          <li
+            data-level="1"
+            id="/properties/customConstObject"
+          >
+            <details>
+              <summary>
+                <strong>
+                  customConstObject
+                </strong>
+                 
+                <span
+                  style="opacity: 0.6;"
+                >
+                  object
+                </span>
+                 
+                <strong>
+                  constant
+                </strong>
+              </summary>
+              <div>
+                <div>
+                  <strong>
+                    type
+                  </strong>
+                   : 
+                  <span
+                    style="opacity: 0.6;"
+                  >
+                    object
+                  </span>
+                  <div
+                    style="margin-top: var(--ifm-table-cell-padding);"
+                  >
+                    <div>
+                      <strong>
+                        Constant value :
+                      </strong>
+                       
+                      <code>
+                        {
+  "version": 5
+}
+                      </code>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </details>
+          </li>
+        </ul>
+        <div
+          style="margin-top: var(--ifm-table-cell-padding);"
+        >
+          <div>
+            🚨 No extra propertie(s) are authorized in this object
+          </div>
+        </div>
+        <div
+          style="margin-top: var(--ifm-table-cell-padding);"
+        >
+          JSON schema for customized options
+        </div>
+      </div>
+    </div>
+  </details>
+</DocumentFragment>
+`;
+
+exports[`JSONSchemaViewer - constructor Overwrite default className value 1`] = `
+<DocumentFragment>
+  <details
+    class="jsv-custom"
+    open=""
+  >
+    <summary>
+      <strong>
+        Schema
+      </strong>
+    </summary>
+    <div>
+      <div>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style="opacity: 0.6;"
+        >
+          object
+        </span>
+        <div
+          style="margin-top: var(--ifm-table-cell-padding);"
+        >
+          <div>
+            <strong>
+              Length :
+            </strong>
+             
+            <code>
+              &gt;= 1 propertie(s)
+            </code>
+          </div>
+        </div>
+      </div>
+    </div>
+  </details>
+</DocumentFragment>
+`;
+
+exports[`JSONSchemaViewer - constructor Overwrite default qualifierMessagesOrder value 1`] = `
+<DocumentFragment>
+  <details
+    class="json-schema-viewer"
+    open=""
+  >
+    <summary>
+      <strong>
+        Schema
+      </strong>
+    </summary>
+    <div>
+      <div>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style="opacity: 0.6;"
+        >
+          object
+        </span>
+        <div
+          style="margin-top: var(--ifm-table-cell-padding);"
+        >
+          <div>
+            <strong>
+              Length :
+            </strong>
+             
+            <code>
+              &gt;= 1 propertie(s)
+            </code>
+          </div>
+        </div>
+      </div>
+    </div>
+  </details>
+</DocumentFragment>
+`;

@@ -1,0 +1,153 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`JSONSchemaViewer - References cases test 0 1`] = `
+<DocumentFragment>
+  <details
+    class="json-schema-viewer"
+    open=""
+  >
+    <summary>
+      <strong>
+        Schema
+      </strong>
+    </summary>
+    <div>
+      <div>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style="opacity: 0.6;"
+        >
+          object
+        </span>
+        <ul>
+          <li
+            data-level="1"
+            id="/properties/data"
+          >
+            <details>
+              <summary>
+                <strong>
+                  data
+                </strong>
+                 
+                <span
+                  style="opacity: 0.6;"
+                >
+                  any
+                </span>
+              </summary>
+              <div>
+                <div>
+                  <strong>
+                    type
+                  </strong>
+                   : 
+                  <span
+                    style="opacity: 0.6;"
+                  >
+                    any
+                  </span>
+                  <div
+                    style="margin-top: var(--ifm-table-cell-padding);"
+                  >
+                    Always valid
+                  </div>
+                </div>
+              </div>
+            </details>
+          </li>
+          <li
+            data-level="1"
+            id="/properties/children"
+          >
+            <details>
+              <summary>
+                <strong>
+                  children
+                </strong>
+                 (
+                <span
+                  style="opacity: 0.6;"
+                >
+                  any
+                </span>
+                ,...)[]
+              </summary>
+              <div>
+                <div>
+                  <strong>
+                    type
+                  </strong>
+                   : 
+                  <span
+                    style="opacity: 0.6;"
+                  >
+                    array
+                  </span>
+                  <ul>
+                    <li
+                      data-level="2"
+                      id="/properties/children/items"
+                    >
+                      <details>
+                        <summary>
+                          <code>
+                            items[x]
+                          </code>
+                           
+                          <span
+                            style="opacity: 0.6;"
+                          >
+                            any
+                          </span>
+                        </summary>
+                        <div>
+                          <div>
+                            <strong>
+                              type
+                            </strong>
+                             : 
+                            <span
+                              style="opacity: 0.6;"
+                            >
+                              any
+                            </span>
+                            <div
+                              style="margin-top: var(--ifm-table-cell-padding);"
+                            >
+                              Always valid
+                            </div>
+                            <div
+                              style="margin-top: var(--ifm-table-cell-padding);"
+                            >
+                              <div>
+                                <strong>
+                                  Unsolved ref(s) :
+                                </strong>
+                                 #node #
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </details>
+                    </li>
+                  </ul>
+                  <div
+                    style="margin-top: var(--ifm-table-cell-padding);"
+                  />
+                </div>
+              </div>
+            </details>
+          </li>
+        </ul>
+        <div
+          style="margin-top: var(--ifm-table-cell-padding);"
+        />
+      </div>
+    </div>
+  </details>
+</DocumentFragment>
+`;
