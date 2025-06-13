@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`JSONSchemaViewer - string test basic 1`] = `
 <DocumentFragment>
@@ -22,7 +22,9 @@ exports[`JSONSchemaViewer - string test basic 1`] = `
         >
           string
         </span>
-        <div />
+        <div
+          style="margin-top: var(--ifm-table-cell-padding);"
+        />
       </div>
     </div>
   </details>
@@ -51,7 +53,9 @@ exports[`JSONSchemaViewer - string test contentEncoding 1`] = `
         >
           string
         </span>
-        <div>
+        <div
+          style="margin-top: var(--ifm-table-cell-padding);"
+        >
           <div>
             <strong>
               Encoding :
@@ -90,7 +94,9 @@ exports[`JSONSchemaViewer - string test contentEncoding with contentMediaType 1`
         >
           string
         </span>
-        <div>
+        <div
+          style="margin-top: var(--ifm-table-cell-padding);"
+        >
           <div>
             <strong>
               Encoding :
@@ -138,7 +144,9 @@ exports[`JSONSchemaViewer - string test contentMediaType 1`] = `
         >
           string
         </span>
-        <div>
+        <div
+          style="margin-top: var(--ifm-table-cell-padding);"
+        >
           <div>
             <strong>
               Media type :
@@ -177,7 +185,9 @@ exports[`JSONSchemaViewer - string test contentSchema 1`] = `
         >
           string
         </span>
-        <div>
+        <div
+          style="margin-top: var(--ifm-table-cell-padding);"
+        >
           <div>
             <strong>
               Decoded content must be validated against this schema :
@@ -234,7 +244,9 @@ exports[`JSONSchemaViewer - string test contentSchema 1`] = `
                             >
                               any
                             </span>
-                            <div>
+                            <div
+                              style="margin-top: var(--ifm-table-cell-padding);"
+                            >
                               Always valid
                             </div>
                           </div>
@@ -272,7 +284,9 @@ exports[`JSONSchemaViewer - string test contentSchema 1`] = `
                             >
                               any
                             </span>
-                            <div>
+                            <div
+                              style="margin-top: var(--ifm-table-cell-padding);"
+                            >
                               Always valid
                             </div>
                           </div>
@@ -280,7 +294,9 @@ exports[`JSONSchemaViewer - string test contentSchema 1`] = `
                       </details>
                     </li>
                   </ul>
-                  <div />
+                  <div
+                    style="margin-top: var(--ifm-table-cell-padding);"
+                  />
                 </div>
               </div>
             </details>
@@ -342,7 +358,9 @@ exports[`JSONSchemaViewer - string test format 1`] = `
                   >
                     string (date-time)
                   </span>
-                  <div />
+                  <div
+                    style="margin-top: var(--ifm-table-cell-padding);"
+                  />
                 </div>
               </div>
             </details>
@@ -374,7 +392,9 @@ exports[`JSONSchemaViewer - string test format 1`] = `
                   >
                     string (time)
                   </span>
-                  <div />
+                  <div
+                    style="margin-top: var(--ifm-table-cell-padding);"
+                  />
                 </div>
               </div>
             </details>
@@ -406,7 +426,9 @@ exports[`JSONSchemaViewer - string test format 1`] = `
                   >
                     string (date)
                   </span>
-                  <div />
+                  <div
+                    style="margin-top: var(--ifm-table-cell-padding);"
+                  />
                 </div>
               </div>
             </details>
@@ -438,7 +460,9 @@ exports[`JSONSchemaViewer - string test format 1`] = `
                   >
                     string (duration)
                   </span>
-                  <div />
+                  <div
+                    style="margin-top: var(--ifm-table-cell-padding);"
+                  />
                 </div>
               </div>
             </details>
@@ -470,7 +494,9 @@ exports[`JSONSchemaViewer - string test format 1`] = `
                   >
                     string (email)
                   </span>
-                  <div />
+                  <div
+                    style="margin-top: var(--ifm-table-cell-padding);"
+                  />
                 </div>
               </div>
             </details>
@@ -502,7 +528,9 @@ exports[`JSONSchemaViewer - string test format 1`] = `
                   >
                     string (idn-email)
                   </span>
-                  <div />
+                  <div
+                    style="margin-top: var(--ifm-table-cell-padding);"
+                  />
                 </div>
               </div>
             </details>
@@ -534,7 +562,9 @@ exports[`JSONSchemaViewer - string test format 1`] = `
                   >
                     string (hostname)
                   </span>
-                  <div />
+                  <div
+                    style="margin-top: var(--ifm-table-cell-padding);"
+                  />
                 </div>
               </div>
             </details>
@@ -566,7 +596,9 @@ exports[`JSONSchemaViewer - string test format 1`] = `
                   >
                     string (idn-hostname)
                   </span>
-                  <div />
+                  <div
+                    style="margin-top: var(--ifm-table-cell-padding);"
+                  />
                 </div>
               </div>
             </details>
@@ -598,7 +630,9 @@ exports[`JSONSchemaViewer - string test format 1`] = `
                   >
                     string (ipv4)
                   </span>
-                  <div />
+                  <div
+                    style="margin-top: var(--ifm-table-cell-padding);"
+                  />
                 </div>
               </div>
             </details>
@@ -630,7 +664,9 @@ exports[`JSONSchemaViewer - string test format 1`] = `
                   >
                     string (ipv6)
                   </span>
-                  <div />
+                  <div
+                    style="margin-top: var(--ifm-table-cell-padding);"
+                  />
                 </div>
               </div>
             </details>
@@ -662,7 +698,9 @@ exports[`JSONSchemaViewer - string test format 1`] = `
                   >
                     string (uuid)
                   </span>
-                  <div />
+                  <div
+                    style="margin-top: var(--ifm-table-cell-padding);"
+                  />
                 </div>
               </div>
             </details>
@@ -694,7 +732,9 @@ exports[`JSONSchemaViewer - string test format 1`] = `
                   >
                     string (uri)
                   </span>
-                  <div />
+                  <div
+                    style="margin-top: var(--ifm-table-cell-padding);"
+                  />
                 </div>
               </div>
             </details>
@@ -726,7 +766,9 @@ exports[`JSONSchemaViewer - string test format 1`] = `
                   >
                     string (uri-reference)
                   </span>
-                  <div />
+                  <div
+                    style="margin-top: var(--ifm-table-cell-padding);"
+                  />
                 </div>
               </div>
             </details>
@@ -758,7 +800,9 @@ exports[`JSONSchemaViewer - string test format 1`] = `
                   >
                     string (iri)
                   </span>
-                  <div />
+                  <div
+                    style="margin-top: var(--ifm-table-cell-padding);"
+                  />
                 </div>
               </div>
             </details>
@@ -790,7 +834,9 @@ exports[`JSONSchemaViewer - string test format 1`] = `
                   >
                     string (iri-reference)
                   </span>
-                  <div />
+                  <div
+                    style="margin-top: var(--ifm-table-cell-padding);"
+                  />
                 </div>
               </div>
             </details>
@@ -822,7 +868,9 @@ exports[`JSONSchemaViewer - string test format 1`] = `
                   >
                     string (uri-template)
                   </span>
-                  <div />
+                  <div
+                    style="margin-top: var(--ifm-table-cell-padding);"
+                  />
                 </div>
               </div>
             </details>
@@ -854,7 +902,9 @@ exports[`JSONSchemaViewer - string test format 1`] = `
                   >
                     string (json-pointer)
                   </span>
-                  <div />
+                  <div
+                    style="margin-top: var(--ifm-table-cell-padding);"
+                  />
                 </div>
               </div>
             </details>
@@ -886,7 +936,9 @@ exports[`JSONSchemaViewer - string test format 1`] = `
                   >
                     string (relative-json-pointer)
                   </span>
-                  <div />
+                  <div
+                    style="margin-top: var(--ifm-table-cell-padding);"
+                  />
                 </div>
               </div>
             </details>
@@ -918,13 +970,17 @@ exports[`JSONSchemaViewer - string test format 1`] = `
                   >
                     string (regex)
                   </span>
-                  <div />
+                  <div
+                    style="margin-top: var(--ifm-table-cell-padding);"
+                  />
                 </div>
               </div>
             </details>
           </li>
         </ul>
-        <div />
+        <div
+          style="margin-top: var(--ifm-table-cell-padding);"
+        />
       </div>
     </div>
   </details>
@@ -953,7 +1009,9 @@ exports[`JSONSchemaViewer - string test maxLength 1`] = `
         >
           string
         </span>
-        <div>
+        <div
+          style="margin-top: var(--ifm-table-cell-padding);"
+        >
           <div>
             <strong>
               Length :
@@ -992,7 +1050,9 @@ exports[`JSONSchemaViewer - string test minLength & maxLength 1`] = `
         >
           string
         </span>
-        <div>
+        <div
+          style="margin-top: var(--ifm-table-cell-padding);"
+        >
           <div>
             <strong>
               Length :
@@ -1039,7 +1099,9 @@ exports[`JSONSchemaViewer - string test minLength 1`] = `
         >
           string
         </span>
-        <div>
+        <div
+          style="margin-top: var(--ifm-table-cell-padding);"
+        >
           <div>
             <strong>
               Length :
@@ -1078,7 +1140,9 @@ exports[`JSONSchemaViewer - string test pattern 1`] = `
         >
           string
         </span>
-        <div>
+        <div
+          style="margin-top: var(--ifm-table-cell-padding);"
+        >
           <div>
             <strong>
               Pattern :

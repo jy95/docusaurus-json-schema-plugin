@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`JSONSchemaViewer - generateFriendlyName cases test Array specified with items and contains 1`] = `
 <DocumentFragment>
@@ -85,7 +85,9 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Array specified with
                             >
                               number
                             </span>
-                            <div />
+                            <div
+                              style="margin-top: var(--ifm-table-cell-padding);"
+                            />
                           </div>
                         </div>
                       </details>
@@ -119,19 +121,25 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Array specified with
                             >
                               string
                             </span>
-                            <div />
+                            <div
+                              style="margin-top: var(--ifm-table-cell-padding);"
+                            />
                           </div>
                         </div>
                       </details>
                     </li>
                   </ul>
-                  <div />
+                  <div
+                    style="margin-top: var(--ifm-table-cell-padding);"
+                  />
                 </div>
               </div>
             </details>
           </li>
         </ul>
-        <div />
+        <div
+          style="margin-top: var(--ifm-table-cell-padding);"
+        />
       </div>
     </div>
   </details>
@@ -188,7 +196,9 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Number without expli
                   >
                     number
                   </span>
-                  <div>
+                  <div
+                    style="margin-top: var(--ifm-table-cell-padding);"
+                  >
                     <div>
                       <strong>
                         Possible values :
@@ -204,7 +214,9 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Number without expli
             </details>
           </li>
         </ul>
-        <div />
+        <div
+          style="margin-top: var(--ifm-table-cell-padding);"
+        />
       </div>
     </div>
   </details>
@@ -286,7 +298,9 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Prefer title 1`] = `
                             >
                               string
                             </span>
-                            <div>
+                            <div
+                              style="margin-top: var(--ifm-table-cell-padding);"
+                            >
                               <div>
                                 <strong>
                                   Constant value :
@@ -302,13 +316,17 @@ exports[`JSONSchemaViewer - generateFriendlyName cases test Prefer title 1`] = `
                       </details>
                     </li>
                   </ul>
-                  <div />
+                  <div
+                    style="margin-top: var(--ifm-table-cell-padding);"
+                  />
                 </div>
               </div>
             </details>
           </li>
         </ul>
-        <div />
+        <div
+          style="margin-top: var(--ifm-table-cell-padding);"
+        />
       </div>
     </div>
   </details>

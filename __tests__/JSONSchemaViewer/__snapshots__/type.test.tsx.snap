@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`JSONSchemaViewer - type test 2 types 1`] = `
 <DocumentFragment>
@@ -58,7 +58,9 @@ exports[`JSONSchemaViewer - type test 2 types 1`] = `
                 >
                   number
                 </span>
-                <div />
+                <div
+                  style="margin-top: var(--ifm-table-cell-padding);"
+                />
               </div>
             </div>
             <div
@@ -77,7 +79,9 @@ exports[`JSONSchemaViewer - type test 2 types 1`] = `
                 >
                   string
                 </span>
-                <div />
+                <div
+                  style="margin-top: var(--ifm-table-cell-padding);"
+                />
               </div>
             </div>
           </div>
@@ -156,12 +160,16 @@ exports[`JSONSchemaViewer - type test 4 types 1`] = `
                 >
                   string
                 </span>
-                <div>
+                <div
+                  style="margin-top: var(--ifm-table-cell-padding);"
+                >
                   <div>
                     ❓ Nullable
                   </div>
                 </div>
-                <div>
+                <div
+                  style="margin-top: var(--ifm-table-cell-padding);"
+                >
                   null | string | integer | boolean
                 </div>
               </div>
@@ -182,12 +190,16 @@ exports[`JSONSchemaViewer - type test 4 types 1`] = `
                 >
                   integer
                 </span>
-                <div>
+                <div
+                  style="margin-top: var(--ifm-table-cell-padding);"
+                >
                   <div>
                     ❓ Nullable
                   </div>
                 </div>
-                <div>
+                <div
+                  style="margin-top: var(--ifm-table-cell-padding);"
+                >
                   null | string | integer | boolean
                 </div>
               </div>
@@ -208,12 +220,16 @@ exports[`JSONSchemaViewer - type test 4 types 1`] = `
                 >
                   boolean
                 </span>
-                <div>
+                <div
+                  style="margin-top: var(--ifm-table-cell-padding);"
+                >
                   <div>
                     ❓ Nullable
                   </div>
                 </div>
-                <div>
+                <div
+                  style="margin-top: var(--ifm-table-cell-padding);"
+                >
                   null | string | integer | boolean
                 </div>
               </div>
@@ -284,7 +300,9 @@ exports[`JSONSchemaViewer - type test Unspecified multiple types 1`] = `
                 >
                   string
                 </span>
-                <div>
+                <div
+                  style="margin-top: var(--ifm-table-cell-padding);"
+                >
                   <div>
                     <strong>
                       Length :
@@ -330,7 +348,9 @@ exports[`JSONSchemaViewer - type test Unspecified multiple types 1`] = `
                 >
                   number
                 </span>
-                <div>
+                <div
+                  style="margin-top: var(--ifm-table-cell-padding);"
+                >
                   <div>
                     <strong>
                       Length :
@@ -390,7 +410,9 @@ exports[`JSONSchemaViewer - type test Unspecified type (boolean) 1`] = `
         >
           any
         </span>
-        <div>
+        <div
+          style="margin-top: var(--ifm-table-cell-padding);"
+        >
           Always valid
         </div>
       </div>
@@ -421,7 +443,9 @@ exports[`JSONSchemaViewer - type test Unspecified type (numeric) 1`] = `
         >
           number
         </span>
-        <div>
+        <div
+          style="margin-top: var(--ifm-table-cell-padding);"
+        >
           <div>
             <strong>
               Possible values :
@@ -460,7 +484,9 @@ exports[`JSONSchemaViewer - type test single type 1`] = `
         >
           number
         </span>
-        <div />
+        <div
+          style="margin-top: var(--ifm-table-cell-padding);"
+        />
       </div>
     </div>
   </details>

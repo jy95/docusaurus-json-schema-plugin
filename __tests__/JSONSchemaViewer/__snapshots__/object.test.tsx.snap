@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`JSONSchemaViewer - object test additionalProperties (JSON Schema) 1`] = `
 <DocumentFragment>
@@ -50,7 +50,9 @@ exports[`JSONSchemaViewer - object test additionalProperties (JSON Schema) 1`] =
                   >
                     number
                   </span>
-                  <div />
+                  <div
+                    style="margin-top: var(--ifm-table-cell-padding);"
+                  />
                 </div>
               </div>
             </details>
@@ -82,7 +84,9 @@ exports[`JSONSchemaViewer - object test additionalProperties (JSON Schema) 1`] =
                   >
                     string
                   </span>
-                  <div />
+                  <div
+                    style="margin-top: var(--ifm-table-cell-padding);"
+                  />
                 </div>
               </div>
             </details>
@@ -114,7 +118,9 @@ exports[`JSONSchemaViewer - object test additionalProperties (JSON Schema) 1`] =
                   >
                     string
                   </span>
-                  <div>
+                  <div
+                    style="margin-top: var(--ifm-table-cell-padding);"
+                  >
                     <div>
                       <strong>
                         Possible values :
@@ -172,13 +178,17 @@ exports[`JSONSchemaViewer - object test additionalProperties (JSON Schema) 1`] =
                   >
                     string
                   </span>
-                  <div />
+                  <div
+                    style="margin-top: var(--ifm-table-cell-padding);"
+                  />
                 </div>
               </div>
             </details>
           </li>
         </ul>
-        <div />
+        <div
+          style="margin-top: var(--ifm-table-cell-padding);"
+        />
       </div>
     </div>
   </details>
@@ -235,7 +245,9 @@ exports[`JSONSchemaViewer - object test additionalProperties (false) 1`] = `
                   >
                     number
                   </span>
-                  <div />
+                  <div
+                    style="margin-top: var(--ifm-table-cell-padding);"
+                  />
                 </div>
               </div>
             </details>
@@ -267,7 +279,9 @@ exports[`JSONSchemaViewer - object test additionalProperties (false) 1`] = `
                   >
                     string
                   </span>
-                  <div />
+                  <div
+                    style="margin-top: var(--ifm-table-cell-padding);"
+                  />
                 </div>
               </div>
             </details>
@@ -299,7 +313,9 @@ exports[`JSONSchemaViewer - object test additionalProperties (false) 1`] = `
                   >
                     string
                   </span>
-                  <div>
+                  <div
+                    style="margin-top: var(--ifm-table-cell-padding);"
+                  >
                     <div>
                       <strong>
                         Possible values :
@@ -329,7 +345,9 @@ exports[`JSONSchemaViewer - object test additionalProperties (false) 1`] = `
             </details>
           </li>
         </ul>
-        <div>
+        <div
+          style="margin-top: var(--ifm-table-cell-padding);"
+        >
           <div>
             🚨 No extra propertie(s) are authorized in this object
           </div>
@@ -390,7 +408,9 @@ exports[`JSONSchemaViewer - object test additionalProperties with patternPropert
                   >
                     number
                   </span>
-                  <div />
+                  <div
+                    style="margin-top: var(--ifm-table-cell-padding);"
+                  />
                 </div>
               </div>
             </details>
@@ -424,7 +444,9 @@ exports[`JSONSchemaViewer - object test additionalProperties with patternPropert
                   >
                     string
                   </span>
-                  <div />
+                  <div
+                    style="margin-top: var(--ifm-table-cell-padding);"
+                  />
                 </div>
               </div>
             </details>
@@ -456,7 +478,9 @@ exports[`JSONSchemaViewer - object test additionalProperties with patternPropert
                   >
                     integer
                   </span>
-                  <div />
+                  <div
+                    style="margin-top: var(--ifm-table-cell-padding);"
+                  />
                 </div>
               </div>
             </details>
@@ -490,13 +514,17 @@ exports[`JSONSchemaViewer - object test additionalProperties with patternPropert
                   >
                     string
                   </span>
-                  <div />
+                  <div
+                    style="margin-top: var(--ifm-table-cell-padding);"
+                  />
                 </div>
               </div>
             </details>
           </li>
         </ul>
-        <div />
+        <div
+          style="margin-top: var(--ifm-table-cell-padding);"
+        />
       </div>
     </div>
   </details>
@@ -525,7 +553,9 @@ exports[`JSONSchemaViewer - object test maxProperties 1`] = `
         >
           object
         </span>
-        <div>
+        <div
+          style="margin-top: var(--ifm-table-cell-padding);"
+        >
           <div>
             <strong>
               Length :
@@ -564,7 +594,9 @@ exports[`JSONSchemaViewer - object test minProperties & maxProperties 1`] = `
         >
           object
         </span>
-        <div>
+        <div
+          style="margin-top: var(--ifm-table-cell-padding);"
+        >
           <div>
             <strong>
               Length :
@@ -611,7 +643,9 @@ exports[`JSONSchemaViewer - object test minProperties 1`] = `
         >
           object
         </span>
-        <div>
+        <div
+          style="margin-top: var(--ifm-table-cell-padding);"
+        >
           <div>
             <strong>
               Length :
@@ -650,8 +684,12 @@ exports[`JSONSchemaViewer - object test simple 1`] = `
         >
           object
         </span>
-        <div />
-        <div>
+        <div
+          style="margin-top: var(--ifm-table-cell-padding);"
+        />
+        <div
+          style="margin-top: var(--ifm-table-cell-padding);"
+        >
           A simple object
         </div>
       </div>

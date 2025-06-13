@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`JSONSchemaViewer - null type test 0 1`] = `
 <DocumentFragment>
@@ -22,8 +22,12 @@ exports[`JSONSchemaViewer - null type test 0 1`] = `
         >
           null
         </span>
-        <div />
-        <div>
+        <div
+          style="margin-top: var(--ifm-table-cell-padding);"
+        />
+        <div
+          style="margin-top: var(--ifm-table-cell-padding);"
+        >
           A simple null example
         </div>
       </div>
@@ -54,7 +58,9 @@ exports[`JSONSchemaViewer - null type test 1 1`] = `
         >
           string
         </span>
-        <div>
+        <div
+          style="margin-top: var(--ifm-table-cell-padding);"
+        >
           <div>
             ❓ Nullable
           </div>

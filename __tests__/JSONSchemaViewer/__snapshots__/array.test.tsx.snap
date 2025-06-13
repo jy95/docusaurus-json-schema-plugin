@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`JSONSchemaViewer - Array type test 0 1`] = `
 <DocumentFragment>
@@ -22,7 +22,9 @@ exports[`JSONSchemaViewer - Array type test 0 1`] = `
         >
           array
         </span>
-        <div />
+        <div
+          style="margin-top: var(--ifm-table-cell-padding);"
+        />
       </div>
     </div>
   </details>
@@ -79,13 +81,17 @@ exports[`JSONSchemaViewer - Array type test 1 1`] = `
                   >
                     number
                   </span>
-                  <div />
+                  <div
+                    style="margin-top: var(--ifm-table-cell-padding);"
+                  />
                 </div>
               </div>
             </details>
           </li>
         </ul>
-        <div />
+        <div
+          style="margin-top: var(--ifm-table-cell-padding);"
+        />
       </div>
     </div>
   </details>
@@ -142,13 +148,17 @@ exports[`JSONSchemaViewer - Array type test 2 1`] = `
                   >
                     number
                   </span>
-                  <div />
+                  <div
+                    style="margin-top: var(--ifm-table-cell-padding);"
+                  />
                 </div>
               </div>
             </details>
           </li>
         </ul>
-        <div />
+        <div
+          style="margin-top: var(--ifm-table-cell-padding);"
+        />
       </div>
     </div>
   </details>
@@ -177,7 +187,9 @@ exports[`JSONSchemaViewer - Array type test 3 1`] = `
         >
           array
         </span>
-        <div>
+        <div
+          style="margin-top: var(--ifm-table-cell-padding);"
+        >
           <div>
             <strong>
               Length :
@@ -256,13 +268,17 @@ exports[`JSONSchemaViewer - Array type test 4 1`] = `
                   >
                     integer
                   </span>
-                  <div />
+                  <div
+                    style="margin-top: var(--ifm-table-cell-padding);"
+                  />
                 </div>
               </div>
             </details>
           </li>
         </ul>
-        <div>
+        <div
+          style="margin-top: var(--ifm-table-cell-padding);"
+        >
           <div>
             <strong>
               Must contain : 
@@ -337,8 +353,12 @@ exports[`JSONSchemaViewer - Array type test 5 1`] = `
                   >
                     number
                   </span>
-                  <div />
-                  <div>
+                  <div
+                    style="margin-top: var(--ifm-table-cell-padding);"
+                  />
+                  <div
+                    style="margin-top: var(--ifm-table-cell-padding);"
+                  >
                     The address number
                   </div>
                 </div>
@@ -372,8 +392,12 @@ exports[`JSONSchemaViewer - Array type test 5 1`] = `
                   >
                     string
                   </span>
-                  <div />
-                  <div>
+                  <div
+                    style="margin-top: var(--ifm-table-cell-padding);"
+                  />
+                  <div
+                    style="margin-top: var(--ifm-table-cell-padding);"
+                  >
                     The name of the street
                   </div>
                 </div>
@@ -407,7 +431,9 @@ exports[`JSONSchemaViewer - Array type test 5 1`] = `
                   >
                     string
                   </span>
-                  <div>
+                  <div
+                    style="margin-top: var(--ifm-table-cell-padding);"
+                  >
                     <div>
                       <strong>
                         Possible values :
@@ -432,7 +458,9 @@ exports[`JSONSchemaViewer - Array type test 5 1`] = `
                       </ul>
                     </div>
                   </div>
-                  <div>
+                  <div
+                    style="margin-top: var(--ifm-table-cell-padding);"
+                  >
                     The type of street
                   </div>
                 </div>
@@ -466,7 +494,9 @@ exports[`JSONSchemaViewer - Array type test 5 1`] = `
                   >
                     string
                   </span>
-                  <div>
+                  <div
+                    style="margin-top: var(--ifm-table-cell-padding);"
+                  >
                     <div>
                       <strong>
                         Possible values :
@@ -496,7 +526,9 @@ exports[`JSONSchemaViewer - Array type test 5 1`] = `
                       </ul>
                     </div>
                   </div>
-                  <div>
+                  <div
+                    style="margin-top: var(--ifm-table-cell-padding);"
+                  >
                     The city quadrant of the address
                   </div>
                 </div>
@@ -532,7 +564,9 @@ exports[`JSONSchemaViewer - Array type test 5 1`] = `
                   >
                     none
                   </span>
-                  <div>
+                  <div
+                    style="margin-top: var(--ifm-table-cell-padding);"
+                  >
                     Always invalid
                   </div>
                 </div>
@@ -540,12 +574,16 @@ exports[`JSONSchemaViewer - Array type test 5 1`] = `
             </details>
           </li>
         </ul>
-        <div>
+        <div
+          style="margin-top: var(--ifm-table-cell-padding);"
+        >
           <div>
             🚨 No extra item(s) are authorized in this array
           </div>
         </div>
-        <div>
+        <div
+          style="margin-top: var(--ifm-table-cell-padding);"
+        >
           Represent a street address such as ['1600','Pennsylvania','Avenue','NW']
         </div>
       </div>
@@ -576,7 +614,9 @@ exports[`JSONSchemaViewer - Array type test 6 1`] = `
         >
           array
         </span>
-        <div>
+        <div
+          style="margin-top: var(--ifm-table-cell-padding);"
+        >
           <div>
             <strong>
               Unique items :
@@ -615,7 +655,9 @@ exports[`JSONSchemaViewer - Array type test 7 1`] = `
         >
           array
         </span>
-        <div>
+        <div
+          style="margin-top: var(--ifm-table-cell-padding);"
+        >
           <div>
             <strong>
               Length :
@@ -654,7 +696,9 @@ exports[`JSONSchemaViewer - Array type test 8 1`] = `
         >
           array
         </span>
-        <div>
+        <div
+          style="margin-top: var(--ifm-table-cell-padding);"
+        >
           <div>
             <strong>
               Length :
@@ -693,7 +737,9 @@ exports[`JSONSchemaViewer - Array type test 9 1`] = `
         >
           array
         </span>
-        <div>
+        <div
+          style="margin-top: var(--ifm-table-cell-padding);"
+        >
           <div>
             <strong>
               Must contain : 
@@ -732,7 +778,9 @@ exports[`JSONSchemaViewer - Array type test 10 1`] = `
         >
           array
         </span>
-        <div>
+        <div
+          style="margin-top: var(--ifm-table-cell-padding);"
+        >
           <div>
             <strong>
               Must contain : 
@@ -799,7 +847,9 @@ exports[`JSONSchemaViewer - Array type test 11 1`] = `
                   >
                     integer
                   </span>
-                  <div />
+                  <div
+                    style="margin-top: var(--ifm-table-cell-padding);"
+                  />
                 </div>
               </div>
             </details>
@@ -831,13 +881,17 @@ exports[`JSONSchemaViewer - Array type test 11 1`] = `
                   >
                     string
                   </span>
-                  <div />
+                  <div
+                    style="margin-top: var(--ifm-table-cell-padding);"
+                  />
                 </div>
               </div>
             </details>
           </li>
         </ul>
-        <div>
+        <div
+          style="margin-top: var(--ifm-table-cell-padding);"
+        >
           <div>
             <strong>
               Length :
@@ -908,7 +962,9 @@ exports[`JSONSchemaViewer - Array type test 12 1`] = `
                   >
                     number
                   </span>
-                  <div />
+                  <div
+                    style="margin-top: var(--ifm-table-cell-padding);"
+                  />
                 </div>
               </div>
             </details>
@@ -944,13 +1000,17 @@ exports[`JSONSchemaViewer - Array type test 12 1`] = `
                   >
                     string
                   </span>
-                  <div />
+                  <div
+                    style="margin-top: var(--ifm-table-cell-padding);"
+                  />
                 </div>
               </div>
             </details>
           </li>
         </ul>
-        <div>
+        <div
+          style="margin-top: var(--ifm-table-cell-padding);"
+        >
           <div>
             <strong>
               Length :
@@ -1021,13 +1081,17 @@ exports[`JSONSchemaViewer - Array type test 13 1`] = `
                   >
                     string
                   </span>
-                  <div />
+                  <div
+                    style="margin-top: var(--ifm-table-cell-padding);"
+                  />
                 </div>
               </div>
             </details>
           </li>
         </ul>
-        <div>
+        <div
+          style="margin-top: var(--ifm-table-cell-padding);"
+        >
           <div>
             <strong>
               Length :
@@ -1066,7 +1130,9 @@ exports[`JSONSchemaViewer - Array type test 14 1`] = `
         >
           array
         </span>
-        <div>
+        <div
+          style="margin-top: var(--ifm-table-cell-padding);"
+        >
           <div>
             🚨 No extra item(s) are authorized in this array
           </div>
@@ -1131,7 +1197,9 @@ exports[`JSONSchemaViewer - Array type test 15 1`] = `
                   >
                     integer
                   </span>
-                  <div />
+                  <div
+                    style="margin-top: var(--ifm-table-cell-padding);"
+                  />
                 </div>
               </div>
             </details>
@@ -1167,7 +1235,9 @@ exports[`JSONSchemaViewer - Array type test 15 1`] = `
                   >
                     string
                   </span>
-                  <div />
+                  <div
+                    style="margin-top: var(--ifm-table-cell-padding);"
+                  />
                 </div>
               </div>
             </details>
@@ -1205,13 +1275,17 @@ exports[`JSONSchemaViewer - Array type test 15 1`] = `
                   >
                     boolean
                   </span>
-                  <div />
+                  <div
+                    style="margin-top: var(--ifm-table-cell-padding);"
+                  />
                 </div>
               </div>
             </details>
           </li>
         </ul>
-        <div>
+        <div
+          style="margin-top: var(--ifm-table-cell-padding);"
+        >
           <div>
             <strong>
               Length :
@@ -1278,7 +1352,9 @@ exports[`JSONSchemaViewer - Array type test 16 1`] = `
                   >
                     string
                   </span>
-                  <div />
+                  <div
+                    style="margin-top: var(--ifm-table-cell-padding);"
+                  />
                 </div>
               </div>
             </details>
@@ -1312,13 +1388,17 @@ exports[`JSONSchemaViewer - Array type test 16 1`] = `
                   >
                     number
                   </span>
-                  <div />
+                  <div
+                    style="margin-top: var(--ifm-table-cell-padding);"
+                  />
                 </div>
               </div>
             </details>
           </li>
         </ul>
-        <div />
+        <div
+          style="margin-top: var(--ifm-table-cell-padding);"
+        />
       </div>
     </div>
   </details>

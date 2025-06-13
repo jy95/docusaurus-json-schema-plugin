@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`JSONSchemaViewer - basics tests Can render Schema title 1`] = `
 <DocumentFragment>
@@ -22,7 +22,9 @@ exports[`JSONSchemaViewer - basics tests Can render Schema title 1`] = `
         >
           boolean
         </span>
-        <div />
+        <div
+          style="margin-top: var(--ifm-table-cell-padding);"
+        />
       </div>
     </div>
   </details>
@@ -51,7 +53,9 @@ exports[`JSONSchemaViewer - basics tests Can render a simple schema 1`] = `
         >
           boolean
         </span>
-        <div />
+        <div
+          style="margin-top: var(--ifm-table-cell-padding);"
+        />
       </div>
     </div>
   </details>

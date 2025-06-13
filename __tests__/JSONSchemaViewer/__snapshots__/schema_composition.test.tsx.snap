@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`JSONSchemaViewer - schema composition test allOf 1`] = `
 <DocumentFragment>
@@ -64,7 +64,9 @@ exports[`JSONSchemaViewer - schema composition test allOf 1`] = `
                   >
                     string
                   </span>
-                  <div />
+                  <div
+                    style="margin-top: var(--ifm-table-cell-padding);"
+                  />
                 </div>
               </div>
               <div
@@ -83,7 +85,9 @@ exports[`JSONSchemaViewer - schema composition test allOf 1`] = `
                   >
                     string
                   </span>
-                  <div>
+                  <div
+                    style="margin-top: var(--ifm-table-cell-padding);"
+                  >
                     <div>
                       <strong>
                         Length :
@@ -169,7 +173,9 @@ exports[`JSONSchemaViewer - schema composition test anyOf 1`] = `
                   >
                     string
                   </span>
-                  <div>
+                  <div
+                    style="margin-top: var(--ifm-table-cell-padding);"
+                  >
                     <div>
                       <strong>
                         Length :
@@ -198,7 +204,9 @@ exports[`JSONSchemaViewer - schema composition test anyOf 1`] = `
                   >
                     number
                   </span>
-                  <div>
+                  <div
+                    style="margin-top: var(--ifm-table-cell-padding);"
+                  >
                     <div>
                       <strong>
                         Possible values :
@@ -249,7 +257,9 @@ exports[`JSONSchemaViewer - schema composition test not 1`] = `
           >
             string
           </span>
-          <div />
+          <div
+            style="margin-top: var(--ifm-table-cell-padding);"
+          />
         </div>
       </div>
     </div>
@@ -321,7 +331,9 @@ exports[`JSONSchemaViewer - schema composition test oneOf 1`] = `
                   >
                     number
                   </span>
-                  <div>
+                  <div
+                    style="margin-top: var(--ifm-table-cell-padding);"
+                  >
                     <div>
                       <strong>
                         Possible values :
@@ -350,7 +362,9 @@ exports[`JSONSchemaViewer - schema composition test oneOf 1`] = `
                   >
                     number
                   </span>
-                  <div>
+                  <div
+                    style="margin-top: var(--ifm-table-cell-padding);"
+                  >
                     <div>
                       <strong>
                         Possible values :

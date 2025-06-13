@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`JSONSchemaViewer - Boolean type test 0 1`] = `
 <DocumentFragment>
@@ -22,7 +22,9 @@ exports[`JSONSchemaViewer - Boolean type test 0 1`] = `
         >
           boolean
         </span>
-        <div />
+        <div
+          style="margin-top: var(--ifm-table-cell-padding);"
+        />
       </div>
     </div>
   </details>
@@ -51,7 +53,9 @@ exports[`JSONSchemaViewer - Boolean type test 1 1`] = `
         >
           boolean
         </span>
-        <div>
+        <div
+          style="margin-top: var(--ifm-table-cell-padding);"
+        >
           <div>
             <strong>
               Possible values :
@@ -80,7 +84,9 @@ exports[`JSONSchemaViewer - Boolean type test 1 1`] = `
             </code>
           </div>
         </div>
-        <div>
+        <div
+          style="margin-top: var(--ifm-table-cell-padding);"
+        >
           Boolean without the explicit type
         </div>
       </div>

@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`JSONSchemaViewer - numeric test integer 1`] = `
 <DocumentFragment>
@@ -22,8 +22,12 @@ exports[`JSONSchemaViewer - numeric test integer 1`] = `
         >
           integer
         </span>
-        <div />
-        <div>
+        <div
+          style="margin-top: var(--ifm-table-cell-padding);"
+        />
+        <div
+          style="margin-top: var(--ifm-table-cell-padding);"
+        >
           A simple integer
         </div>
       </div>
@@ -54,7 +58,9 @@ exports[`JSONSchemaViewer - numeric test multipleOf 1`] = `
         >
           integer
         </span>
-        <div>
+        <div
+          style="margin-top: var(--ifm-table-cell-padding);"
+        >
           <div>
             <strong>
               Possible values :
@@ -93,7 +99,9 @@ exports[`JSONSchemaViewer - numeric test number 1`] = `
         >
           number
         </span>
-        <div />
+        <div
+          style="margin-top: var(--ifm-table-cell-padding);"
+        />
       </div>
     </div>
   </details>
@@ -122,7 +130,9 @@ exports[`JSONSchemaViewer - numeric test ranges (1) 1`] = `
         >
           number
         </span>
-        <div>
+        <div
+          style="margin-top: var(--ifm-table-cell-padding);"
+        >
           <div>
             <strong>
               Possible values :
@@ -169,7 +179,9 @@ exports[`JSONSchemaViewer - numeric test ranges (2) 1`] = `
         >
           number
         </span>
-        <div>
+        <div
+          style="margin-top: var(--ifm-table-cell-padding);"
+        >
           <div>
             <strong>
               Possible values :
@@ -216,7 +228,9 @@ exports[`JSONSchemaViewer - numeric test ranges (3) 1`] = `
         >
           number
         </span>
-        <div>
+        <div
+          style="margin-top: var(--ifm-table-cell-padding);"
+        >
           <div>
             <strong>
               Possible values :
@@ -255,7 +269,9 @@ exports[`JSONSchemaViewer - numeric test ranges (4) 1`] = `
         >
           number
         </span>
-        <div>
+        <div
+          style="margin-top: var(--ifm-table-cell-padding);"
+        >
           <div>
             <strong>
               Possible values :

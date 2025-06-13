@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`JSONSchemaViewer - corner cases CreateArray - invalid usage of Additional Items 1`] = `
 <DocumentFragment>
@@ -39,7 +39,9 @@ exports[`JSONSchemaViewer - corner cases CreateArray - invalid usage of Addition
             >
               string
             </span>
-            <div />
+            <div
+              style="margin-top: var(--ifm-table-cell-padding);"
+            />
           </div>
         </div>
       </details>
@@ -73,13 +75,17 @@ exports[`JSONSchemaViewer - corner cases CreateArray - invalid usage of Addition
             >
               boolean
             </span>
-            <div />
+            <div
+              style="margin-top: var(--ifm-table-cell-padding);"
+            />
           </div>
         </div>
       </details>
     </li>
   </ul>
-  <div />
+  <div
+    style="margin-top: var(--ifm-table-cell-padding);"
+  />
 </DocumentFragment>
 `;
 
@@ -122,7 +128,9 @@ exports[`JSONSchemaViewer - corner cases CreateArray - sub properties as boolean
             >
               none
             </span>
-            <div>
+            <div
+              style="margin-top: var(--ifm-table-cell-padding);"
+            >
               Always invalid
             </div>
           </div>
@@ -158,7 +166,9 @@ exports[`JSONSchemaViewer - corner cases CreateArray - sub properties as boolean
             >
               none
             </span>
-            <div>
+            <div
+              style="margin-top: var(--ifm-table-cell-padding);"
+            >
               Always invalid
             </div>
           </div>
@@ -194,7 +204,9 @@ exports[`JSONSchemaViewer - corner cases CreateArray - sub properties as boolean
             >
               none
             </span>
-            <div>
+            <div
+              style="margin-top: var(--ifm-table-cell-padding);"
+            >
               Always invalid
             </div>
           </div>
@@ -202,7 +214,9 @@ exports[`JSONSchemaViewer - corner cases CreateArray - sub properties as boolean
       </details>
     </li>
   </ul>
-  <div>
+  <div
+    style="margin-top: var(--ifm-table-cell-padding);"
+  >
     <div>
       🚨 No extra item(s) are authorized in this array
     </div>
@@ -221,7 +235,9 @@ exports[`JSONSchemaViewer - corner cases CreateNodes - boolean schema (false) 1`
   >
     none
   </span>
-  <div>
+  <div
+    style="margin-top: var(--ifm-table-cell-padding);"
+  >
     Always invalid
   </div>
 </DocumentFragment>
@@ -238,7 +254,9 @@ exports[`JSONSchemaViewer - corner cases CreateNodes - boolean schema (true) 1`]
   >
     any
   </span>
-  <div>
+  <div
+    style="margin-top: var(--ifm-table-cell-padding);"
+  >
     Always valid
   </div>
 </DocumentFragment>
@@ -255,7 +273,9 @@ exports[`JSONSchemaViewer - corner cases CreateObject - missing pattern in prope
   >
     object
   </span>
-  <div />
+  <div
+    style="margin-top: var(--ifm-table-cell-padding);"
+  />
 </DocumentFragment>
 `;
 
@@ -270,7 +290,9 @@ exports[`JSONSchemaViewer - corner cases CreateObject - sub properties as boolea
   >
     object
   </span>
-  <div>
+  <div
+    style="margin-top: var(--ifm-table-cell-padding);"
+  >
     <div>
       🚨 No extra propertie(s) are authorized in this object
     </div>

@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`JSONSchemaViewer - JSON Pointer test Array Properties - like /prefixItems/3 1`] = `
 <DocumentFragment>
@@ -50,7 +50,9 @@ exports[`JSONSchemaViewer - JSON Pointer test Array Properties - like /prefixIte
                   >
                     number
                   </span>
-                  <div />
+                  <div
+                    style="margin-top: var(--ifm-table-cell-padding);"
+                  />
                 </div>
               </div>
             </details>
@@ -82,7 +84,9 @@ exports[`JSONSchemaViewer - JSON Pointer test Array Properties - like /prefixIte
                   >
                     string
                   </span>
-                  <div />
+                  <div
+                    style="margin-top: var(--ifm-table-cell-padding);"
+                  />
                 </div>
               </div>
             </details>
@@ -114,7 +118,9 @@ exports[`JSONSchemaViewer - JSON Pointer test Array Properties - like /prefixIte
                   >
                     string
                   </span>
-                  <div>
+                  <div
+                    style="margin-top: var(--ifm-table-cell-padding);"
+                  >
                     <div>
                       <strong>
                         Possible values :
@@ -170,7 +176,9 @@ exports[`JSONSchemaViewer - JSON Pointer test Array Properties - like /prefixIte
                   >
                     string
                   </span>
-                  <div>
+                  <div
+                    style="margin-top: var(--ifm-table-cell-padding);"
+                  >
                     <div>
                       <strong>
                         Possible values :
@@ -205,7 +213,9 @@ exports[`JSONSchemaViewer - JSON Pointer test Array Properties - like /prefixIte
             </details>
           </li>
         </ul>
-        <div />
+        <div
+          style="margin-top: var(--ifm-table-cell-padding);"
+        />
       </div>
     </div>
   </details>
@@ -266,7 +276,9 @@ exports[`JSONSchemaViewer - JSON Pointer test Escaped attribute - like country/s
                   >
                     any
                   </span>
-                  <div>
+                  <div
+                    style="margin-top: var(--ifm-table-cell-padding);"
+                  >
                     Always valid
                   </div>
                 </div>
@@ -306,7 +318,9 @@ exports[`JSONSchemaViewer - JSON Pointer test Escaped attribute - like country/s
                   >
                     string
                   </span>
-                  <div />
+                  <div
+                    style="margin-top: var(--ifm-table-cell-padding);"
+                  />
                 </div>
               </div>
             </details>
@@ -342,7 +356,9 @@ exports[`JSONSchemaViewer - JSON Pointer test Escaped attribute - like country/s
                   >
                     string
                   </span>
-                  <div />
+                  <div
+                    style="margin-top: var(--ifm-table-cell-padding);"
+                  />
                 </div>
               </div>
             </details>
@@ -374,13 +390,17 @@ exports[`JSONSchemaViewer - JSON Pointer test Escaped attribute - like country/s
                   >
                     string
                   </span>
-                  <div />
+                  <div
+                    style="margin-top: var(--ifm-table-cell-padding);"
+                  />
                 </div>
               </div>
             </details>
           </li>
         </ul>
-        <div />
+        <div
+          style="margin-top: var(--ifm-table-cell-padding);"
+        />
       </div>
     </div>
   </details>
@@ -441,7 +461,9 @@ exports[`JSONSchemaViewer - JSON Pointer test Object properties - like street_ad
                   >
                     string
                   </span>
-                  <div />
+                  <div
+                    style="margin-top: var(--ifm-table-cell-padding);"
+                  />
                 </div>
               </div>
             </details>
@@ -477,7 +499,9 @@ exports[`JSONSchemaViewer - JSON Pointer test Object properties - like street_ad
                   >
                     string
                   </span>
-                  <div />
+                  <div
+                    style="margin-top: var(--ifm-table-cell-padding);"
+                  />
                 </div>
               </div>
             </details>
@@ -513,13 +537,17 @@ exports[`JSONSchemaViewer - JSON Pointer test Object properties - like street_ad
                   >
                     string
                   </span>
-                  <div />
+                  <div
+                    style="margin-top: var(--ifm-table-cell-padding);"
+                  />
                 </div>
               </div>
             </details>
           </li>
         </ul>
-        <div />
+        <div
+          style="margin-top: var(--ifm-table-cell-padding);"
+        />
       </div>
     </div>
   </details>

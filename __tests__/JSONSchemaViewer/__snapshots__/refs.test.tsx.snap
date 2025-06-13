@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`JSONSchemaViewer - References cases test 0 1`] = `
 <DocumentFragment>
@@ -50,7 +50,9 @@ exports[`JSONSchemaViewer - References cases test 0 1`] = `
                   >
                     any
                   </span>
-                  <div>
+                  <div
+                    style="margin-top: var(--ifm-table-cell-padding);"
+                  >
                     Always valid
                   </div>
                 </div>
@@ -113,10 +115,14 @@ exports[`JSONSchemaViewer - References cases test 0 1`] = `
                             >
                               any
                             </span>
-                            <div>
+                            <div
+                              style="margin-top: var(--ifm-table-cell-padding);"
+                            >
                               Always valid
                             </div>
-                            <div>
+                            <div
+                              style="margin-top: var(--ifm-table-cell-padding);"
+                            >
                               <div>
                                 <strong>
                                   Unsolved ref(s) :
@@ -129,13 +135,17 @@ exports[`JSONSchemaViewer - References cases test 0 1`] = `
                       </details>
                     </li>
                   </ul>
-                  <div />
+                  <div
+                    style="margin-top: var(--ifm-table-cell-padding);"
+                  />
                 </div>
               </div>
             </details>
           </li>
         </ul>
-        <div />
+        <div
+          style="margin-top: var(--ifm-table-cell-padding);"
+        />
       </div>
     </div>
   </details>

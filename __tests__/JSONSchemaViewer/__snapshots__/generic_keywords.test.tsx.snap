@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`JSONSchemaViewer - Generic keywords test annotations 1`] = `
 <DocumentFragment>
@@ -22,10 +22,14 @@ exports[`JSONSchemaViewer - Generic keywords test annotations 1`] = `
         >
           any
         </span>
-        <div>
+        <div
+          style="margin-top: var(--ifm-table-cell-padding);"
+        >
           Always valid
         </div>
-        <div>
+        <div
+          style="margin-top: var(--ifm-table-cell-padding);"
+        >
           <div>
             🚨 Deprecated
           </div>
@@ -95,7 +99,9 @@ exports[`JSONSchemaViewer - Generic keywords test annotations 1`] = `
             </div>
           </div>
         </div>
-        <div>
+        <div
+          style="margin-top: var(--ifm-table-cell-padding);"
+        >
           This is a schema that matches anything.
         </div>
       </div>
@@ -156,7 +162,9 @@ exports[`JSONSchemaViewer - Generic keywords test const (as single enum value) 1
                   >
                     string
                   </span>
-                  <div>
+                  <div
+                    style="margin-top: var(--ifm-table-cell-padding);"
+                  >
                     <div>
                       <strong>
                         Possible values :
@@ -171,7 +179,9 @@ exports[`JSONSchemaViewer - Generic keywords test const (as single enum value) 1
                       </ul>
                     </div>
                   </div>
-                  <div>
+                  <div
+                    style="margin-top: var(--ifm-table-cell-padding);"
+                  >
                     const (as single enum value)
                   </div>
                 </div>
@@ -179,7 +189,9 @@ exports[`JSONSchemaViewer - Generic keywords test const (as single enum value) 1
             </details>
           </li>
         </ul>
-        <div />
+        <div
+          style="margin-top: var(--ifm-table-cell-padding);"
+        />
       </div>
     </div>
   </details>
@@ -238,7 +250,9 @@ exports[`JSONSchemaViewer - Generic keywords test const 1`] = `
                   >
                     string
                   </span>
-                  <div>
+                  <div
+                    style="margin-top: var(--ifm-table-cell-padding);"
+                  >
                     <div>
                       <strong>
                         Constant value :
@@ -254,7 +268,9 @@ exports[`JSONSchemaViewer - Generic keywords test const 1`] = `
             </details>
           </li>
         </ul>
-        <div />
+        <div
+          style="margin-top: var(--ifm-table-cell-padding);"
+        />
       </div>
     </div>
   </details>
@@ -283,7 +299,9 @@ exports[`JSONSchemaViewer - Generic keywords test enum 1`] = `
         >
           string
         </span>
-        <div>
+        <div
+          style="margin-top: var(--ifm-table-cell-padding);"
+        >
           <div>
             <strong>
               Possible values :
