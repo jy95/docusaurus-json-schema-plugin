@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`JSONSchemaViewer states Can render error when something bad happens 1`] = `
+<DocumentFragment>
+  <div>
+    Something bad happens : Resolver error
+  </div>
+</DocumentFragment>
+`;
