@@ -22,7 +22,7 @@ jobs:
         run: npm install
       - name: Create snapshots 🤖
         run: |
-          npm run test
+          npm run test -- --updateSnapshot
       - name: Create Pull Request 🤖
         uses: peter-evans/create-pull-request@v7
         with:
