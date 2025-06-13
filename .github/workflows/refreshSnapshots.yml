@@ -1,0 +1,31 @@
+name: Refresh Snapshot files
+
+on:
+  workflow_dispatch:
+jobs:
+  update_packages:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - name: 🛎️ Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node.js ✨
+        uses: actions/setup-node@v4.4.0
+        with:
+          node-version: "lts/*"
+      - name: 🤖 Remove snapshots files
+        run: |
+          find . -type f -name "*.snap" -delete
+      - name: 💻 Install npm packages
+        run: npm install
+      - name: Create snapshots 🤖
+        run: |
+          npm run test
+      - name: Create Pull Request 🤖
+        uses: peter-evans/create-pull-request@v7
+        with:
+          title: Update snapshots files
+          body: |
+            This PR updates snapshots by removing them and regenerate them.
