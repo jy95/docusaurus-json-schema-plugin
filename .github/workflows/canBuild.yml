@@ -1,4 +1,6 @@
 name: Can build
+permissions:
+  contents: read
 on:
   push:
   pull_request:
