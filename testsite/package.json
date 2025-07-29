@@ -24,7 +24,7 @@
     "json-schema-faker": "^0.5.9",
     "jsonpos": "^4.1.2",
     "react": "^19.1.1",
-    "react-dom": "^19.1.0",
+    "react-dom": "^19.1.1",
     "react-markdown": "^10.0.0",
     "react-toastify": "^11.0.3"
   },
@@ -32,7 +32,7 @@
     "@docusaurus/module-type-aliases": "3.8.1",
     "@docusaurus/tsconfig": "3.8.1",
     "@types/react": "^19.0.3",
-    "@types/react-dom": "^19.1.6",
+    "@types/react-dom": "^19.1.7",
     "typescript": "^5.6.2"
   },
   "browserslist": {
