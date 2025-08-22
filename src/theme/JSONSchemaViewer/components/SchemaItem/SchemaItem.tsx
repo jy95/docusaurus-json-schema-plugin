@@ -39,7 +39,7 @@ export default function SchemaItem({
 }: SchemaItemProps): JSX.Element {
   const { jsonPointer, level } = useSchemaHierarchyContext()
   const { defaultExpandDepth } = useJSVOptionsContext()
-  
+
   // Determine if Collapsible should be open or closed by default
   const isOpenByDefault = level < (defaultExpandDepth ?? 0)
 

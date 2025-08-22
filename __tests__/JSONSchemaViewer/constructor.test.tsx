@@ -151,4 +151,43 @@ describe("JSONSchemaViewer - constructor", () => {
 
     expect(result!.asFragment()).toMatchSnapshot()
   })
+
+  test("Overwrite default defaultExpandDepth value", async () => {
+    const fakeSchema: JSONSchema = {
+      type: "object",
+      properties: {
+        level1_prop1: {
+          type: "string",
+        },
+        level1_prop2: {
+          type: "object",
+          properties: {
+            level2_prop1: {
+              type: "integer",
+            },
+            level2_prop2: {
+              type: "object",
+              properties: {
+                level3_prop1: {
+                  type: "boolean",
+                },
+              },
+            },
+          },
+        },
+      },
+    }
+    let result: RenderResult | null = null
+
+    await act(async () => {
+      result = render(
+        <JSONSchemaViewer
+          schema={fakeSchema}
+          viewerOptions={{ defaultExpandDepth: 2 }}
+        />,
+      )
+    })
+
+    expect(result!.asFragment()).toMatchSnapshot()
+  })
 })

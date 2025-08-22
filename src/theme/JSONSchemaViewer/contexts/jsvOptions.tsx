@@ -39,9 +39,9 @@ export type JSVOptions = {
    */
   UnresolvedRefsComponent?: (params: { schema: JSONSchema }) => JSX.Element
   /**
-    * Defines how deep the schema should be expanded by default.
-    * @default 0 No expansion at all (only root level expanded)
-    */
+   * Defines how deep the schema should be expanded by default.
+   * @default 0 No expansion at all (only root level expanded)
+   */
   defaultExpandDepth?: number
 }
 
