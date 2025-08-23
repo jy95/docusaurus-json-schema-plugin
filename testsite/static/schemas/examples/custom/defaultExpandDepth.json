@@ -1,0 +1,24 @@
+{
+  "type": "object",
+  "properties": {
+    "level1_prop1": {
+      "type": "string"
+    },
+    "level1_prop2": {
+      "type": "object",
+      "properties": {
+        "level2_prop1": {
+          "type": "integer"
+        },
+        "level2_prop2": {
+          "type": "object",
+          "properties": {
+            "level3_prop1": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    }
+  }
+}

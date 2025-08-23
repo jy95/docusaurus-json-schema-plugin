@@ -1,0 +1,34 @@
+---
+description: Defines how deep the schema should be expanded by default
+title: "📏 Custom defaultExpandDepth"
+---
+
+import CodeBlock from '@theme/CodeBlock';
+import Schema from "@site/static/schemas/examples/custom/defaultExpandDepth.json";
+import JSONSchemaViewer from "@theme/JSONSchemaViewer";
+import ReactMarkdown from 'react-markdown'
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Custom defaultExpandDepth
+
+<Tabs>
+    <TabItem value="Viewer" label="Viewer" default>
+        <JSONSchemaViewer 
+            schema={ Schema } 
+            viewerOptions={{ 
+                defaultExpandDepth: Infinity 
+            }}
+        />
+    </TabItem>
+    <TabItem value="viewerOptions" label='viewerOptions'>
+        ```js
+        {
+            defaultExpandDepth: Infinity
+        }
+        ```
+    </TabItem>
+    <TabItem value="JSON Schema" label='JSON Schema'>
+        <CodeBlock language="json-schema">{JSON.stringify(Schema, null, 2)}</CodeBlock>
+    </TabItem>
+</Tabs>
