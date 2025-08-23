@@ -2,6 +2,7 @@ import React, { ReactNode } from "react"
 
 import { Collapsible, CreateNodes } from "@theme/JSONSchemaViewer/components"
 import { useSchemaHierarchyContext } from "@theme/JSONSchemaViewer/contexts"
+import { useJSVOptionsContext } from "@theme/JSONSchemaViewer/contexts"
 
 import {
   RequiredLabel,
@@ -37,7 +38,12 @@ export default function SchemaItem({
   required,
 }: SchemaItemProps): JSX.Element {
   const { jsonPointer, level } = useSchemaHierarchyContext()
+  const { defaultExpandDepth } = useJSVOptionsContext()
 
+  // Determine if Collapsible should be open or closed by default
+  // Depth is measured from root (root level = 0). Clamp negatives to 0.
+  const expandDepth = defaultExpandDepth ?? 0
+  const isOpenByDefault = level <= expandDepth
   // Notice : "deprecated" started at 2019-09
   let typedSchema = schema as JSONSchema_Draft_2019_09
   let isDeprecated =
@@ -75,7 +81,7 @@ export default function SchemaItem({
       <Collapsible
         summary={summary}
         detailsProps={{
-          open: false,
+          open: isOpenByDefault,
         }}
       >
         <>

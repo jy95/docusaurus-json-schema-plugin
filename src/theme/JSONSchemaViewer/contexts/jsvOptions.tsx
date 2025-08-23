@@ -38,6 +38,16 @@ export type JSVOptions = {
    * @default undefined
    */
   UnresolvedRefsComponent?: (params: { schema: JSONSchema }) => JSX.Element
+  /**
+   * Defines how deep the schema should be expanded by default
+   * Examples:
+   *  - 0: only the root level is expanded
+   *  - 1: root level and its direct children are expanded
+   *  - Infinity: expand all levels
+   * @default 0
+   * @min 0
+   */
+  defaultExpandDepth?: number
 }
 
 export const JSVOptionsContext = createContext<JSVOptions>({
@@ -46,6 +56,7 @@ export const JSVOptionsContext = createContext<JSVOptions>({
   qualifierMessagesOrder: undefined,
   DescriptionComponent: undefined,
   UnresolvedRefsComponent: undefined,
+  defaultExpandDepth: 0,
 })
 
 export const useJSVOptionsContext = () => useContext(JSVOptionsContext)
