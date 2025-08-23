@@ -439,6 +439,221 @@ exports[`JSONSchemaViewer - constructor Overwrite default className value 1`] = 
 </DocumentFragment>
 `;
 
+exports[`JSONSchemaViewer - constructor Overwrite default defaultExpandDepth value 1`] = `
+<DocumentFragment>
+  <details
+    class="json-schema-viewer"
+    open=""
+  >
+    <summary>
+      <strong>
+        Schema
+      </strong>
+    </summary>
+    <div>
+      <div>
+        <strong>
+          type
+        </strong>
+         : 
+        <span
+          style="opacity: 0.6;"
+        >
+          object
+        </span>
+        <ul>
+          <li
+            data-level="1"
+            id="/properties/level1_prop1"
+          >
+            <details
+              open=""
+            >
+              <summary>
+                <strong>
+                  level1_prop1
+                </strong>
+                 
+                <span
+                  style="opacity: 0.6;"
+                >
+                  string
+                </span>
+              </summary>
+              <div>
+                <div>
+                  <strong>
+                    type
+                  </strong>
+                   : 
+                  <span
+                    style="opacity: 0.6;"
+                  >
+                    string
+                  </span>
+                  <div
+                    style="margin-top: var(--ifm-table-cell-padding);"
+                  />
+                </div>
+              </div>
+            </details>
+          </li>
+          <li
+            data-level="1"
+            id="/properties/level1_prop2"
+          >
+            <details
+              open=""
+            >
+              <summary>
+                <strong>
+                  level1_prop2
+                </strong>
+                 
+                <span
+                  style="opacity: 0.6;"
+                >
+                  object
+                </span>
+              </summary>
+              <div>
+                <div>
+                  <strong>
+                    type
+                  </strong>
+                   : 
+                  <span
+                    style="opacity: 0.6;"
+                  >
+                    object
+                  </span>
+                  <ul>
+                    <li
+                      data-level="2"
+                      id="/properties/level1_prop2/properties/level2_prop1"
+                    >
+                      <details
+                        open=""
+                      >
+                        <summary>
+                          <strong>
+                            level2_prop1
+                          </strong>
+                           
+                          <span
+                            style="opacity: 0.6;"
+                          >
+                            integer
+                          </span>
+                        </summary>
+                        <div>
+                          <div>
+                            <strong>
+                              type
+                            </strong>
+                             : 
+                            <span
+                              style="opacity: 0.6;"
+                            >
+                              integer
+                            </span>
+                            <div
+                              style="margin-top: var(--ifm-table-cell-padding);"
+                            />
+                          </div>
+                        </div>
+                      </details>
+                    </li>
+                    <li
+                      data-level="2"
+                      id="/properties/level1_prop2/properties/level2_prop2"
+                    >
+                      <details
+                        open=""
+                      >
+                        <summary>
+                          <strong>
+                            level2_prop2
+                          </strong>
+                           
+                          <span
+                            style="opacity: 0.6;"
+                          >
+                            object
+                          </span>
+                        </summary>
+                        <div>
+                          <div>
+                            <strong>
+                              type
+                            </strong>
+                             : 
+                            <span
+                              style="opacity: 0.6;"
+                            >
+                              object
+                            </span>
+                            <ul>
+                              <li
+                                data-level="3"
+                                id="/properties/level1_prop2/properties/level2_prop2/properties/level3_prop1"
+                              >
+                                <details>
+                                  <summary>
+                                    <strong>
+                                      level3_prop1
+                                    </strong>
+                                     
+                                    <span
+                                      style="opacity: 0.6;"
+                                    >
+                                      boolean
+                                    </span>
+                                  </summary>
+                                  <div>
+                                    <div>
+                                      <strong>
+                                        type
+                                      </strong>
+                                       : 
+                                      <span
+                                        style="opacity: 0.6;"
+                                      >
+                                        boolean
+                                      </span>
+                                      <div
+                                        style="margin-top: var(--ifm-table-cell-padding);"
+                                      />
+                                    </div>
+                                  </div>
+                                </details>
+                              </li>
+                            </ul>
+                            <div
+                              style="margin-top: var(--ifm-table-cell-padding);"
+                            />
+                          </div>
+                        </div>
+                      </details>
+                    </li>
+                  </ul>
+                  <div
+                    style="margin-top: var(--ifm-table-cell-padding);"
+                  />
+                </div>
+              </div>
+            </details>
+          </li>
+        </ul>
+        <div
+          style="margin-top: var(--ifm-table-cell-padding);"
+        />
+      </div>
+    </div>
+  </details>
+</DocumentFragment>
+`;
+
 exports[`JSONSchemaViewer - constructor Overwrite default qualifierMessagesOrder value 1`] = `
 <DocumentFragment>
   <details
