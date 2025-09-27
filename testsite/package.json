@@ -12,8 +12,8 @@
     "clear": "docusaurus clear"
   },
   "dependencies": {
-    "@docusaurus/core": "3.9.0",
-    "@docusaurus/preset-classic": "3.9.0",
+    "@docusaurus/core": "3.9.1",
+    "@docusaurus/preset-classic": "3.9.1",
     "@docusaurus/remark-plugin-npm2yarn": "3.9.1",
     "@mdx-js/react": "^3.1.1",
     "@stoplight/json-ref-resolver": "^3.1.6",
@@ -29,7 +29,7 @@
     "react-toastify": "^11.0.3"
   },
   "devDependencies": {
-    "@docusaurus/module-type-aliases": "3.9.0",
+    "@docusaurus/module-type-aliases": "3.9.1",
     "@docusaurus/tsconfig": "3.9.1",
     "@types/react": "^19.0.3",
     "@types/react-dom": "^19.1.9",
