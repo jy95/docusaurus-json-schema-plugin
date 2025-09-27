@@ -30,7 +30,7 @@
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "3.9.0",
-    "@docusaurus/tsconfig": "3.9.0",
+    "@docusaurus/tsconfig": "3.9.1",
     "@types/react": "^19.0.3",
     "@types/react-dom": "^19.1.9",
     "typescript": "^5.6.2"
