@@ -11,11 +11,15 @@ module.exports = {
   url: "https://jy95.github.io",
   baseUrl: baseUrl,
   onBrokenLinks: "throw",
-  onBrokenMarkdownLinks: "warn",
   favicon: "img/favicon.ico",
   trailingSlash: false, // Needed for Gh pages - https://github.com/facebook/docusaurus/issues/5026
   organizationName: "jy95", // Usually your GitHub org/user name.
   projectName: "docusaurus-json-schema-plugin", // Usually your repo name.
+  markdown: {
+    hooks: {
+      onBrokenMarkdownLinks: 'warn'
+    }
+  },
   themeConfig: {
     algolia: {
       appId: "IQ028YCDJT",
