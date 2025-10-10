@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunktestsite=globalThis.webpackChunktestsite||[]).push([[2153,4534],{4534:e=>{e.exports=JSON.parse('{"enum":["red","amber","green"]}')}}]);

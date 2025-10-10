@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunktestsite=globalThis.webpackChunktestsite||[]).push([[4859,7240],{77240:e=>{e.exports=JSON.parse('{"type":"array","items":[{"type":"integer"},{"type":"string"}],"additionalItems":false}')}}]);

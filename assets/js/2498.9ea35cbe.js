@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunktestsite=self.webpackChunktestsite||[]).push([[117,2498],{52498:e=>{e.exports=JSON.parse('{"$schema":"https://json-schema.org/draft/2020-12/schema","$id":"https://example.com/tree","$dynamicAnchor":"node","type":"object","properties":{"data":true,"children":{"type":"array","items":{"$dynamicRef":"#node"}}}}')}}]);
