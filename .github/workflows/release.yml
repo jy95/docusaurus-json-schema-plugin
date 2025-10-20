@@ -22,6 +22,7 @@ jobs:
       pull-requests: write # to be able to comment on released pull requests
       id-token: write # to enable use of OIDC for npm provenance
     runs-on: ubuntu-latest
+    environment: publisher
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v5
