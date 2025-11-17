@@ -1,6 +1,6 @@
-import type { JSONSchema as Draft_07 } from "json-schema-typed/draft-07"
-import type { JSONSchema as Draft_2019_09 } from "json-schema-typed/draft-2019-09"
-import type { JSONSchema as Draft_2020_12 } from "json-schema-typed/draft-2020-12"
+import { type JSONSchema as Draft_07 } from "json-schema-typed/draft-07"
+import { type JSONSchema as Draft_2019_09 } from "json-schema-typed/draft-2019-09"
+import { type JSONSchema as Draft_2020_12 } from "json-schema-typed/draft-2020-12"
 
 export type JSONSchema = Draft_07 | Draft_2019_09 | Draft_2020_12
 
