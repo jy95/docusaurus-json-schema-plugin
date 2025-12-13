@@ -24,7 +24,7 @@
     "json-schema-faker": "^0.5.9",
     "jsonpos": "^4.1.2",
     "react": "^19.2.3",
-    "react-dom": "^19.2.0",
+    "react-dom": "^19.2.3",
     "react-markdown": "^10.0.0",
     "react-toastify": "^11.0.3"
   },
