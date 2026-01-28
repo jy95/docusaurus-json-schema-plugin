@@ -1,1 +1,0 @@
-"use strict";(globalThis.webpackChunktestsite=globalThis.webpackChunktestsite||[]).push([[6481],{46481:(s,t,e)=>{e.d(t,{default:()=>a});const a=e.p+"assets/images/project_icon-044438ba3230493516d84898d4700568.svg"}}]);

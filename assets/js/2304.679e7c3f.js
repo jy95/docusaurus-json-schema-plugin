@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunktestsite=globalThis.webpackChunktestsite||[]).push([[2304,9923],{12304(e){e.exports=JSON.parse('{"type":"object","properties":{"name":{"type":"string"},"credit_card":{"type":"number"},"billing_address":{"type":"string"}},"required":["name"],"dependencies":{"credit_card":["billing_address"]}}')}}]);

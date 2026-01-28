@@ -1,1 +1,0 @@
-"use strict";(globalThis.webpackChunktestsite=globalThis.webpackChunktestsite||[]).push([[5607,7988],{55607:e=>{e.exports=JSON.parse('{"type":"object","propertyNames":{"pattern":"^[A-Za-z_][A-Za-z0-9_]*$"}}')}}]);

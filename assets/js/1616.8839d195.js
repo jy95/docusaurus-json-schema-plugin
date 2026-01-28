@@ -1,1 +1,0 @@
-"use strict";(globalThis.webpackChunktestsite=globalThis.webpackChunktestsite||[]).push([[1616,9235],{1616:e=>{e.exports=JSON.parse('{"type":"string","contentSchema":{"type":"object","required":["name","age"]}}')}}]);
