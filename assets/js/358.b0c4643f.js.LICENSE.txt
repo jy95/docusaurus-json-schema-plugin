@@ -1,20 +1,4 @@
 /*!
- * Determine if an object is a Buffer
- *
- * @author   Feross Aboukhadijeh <https://feross.org>
- * @license  MIT
- */
-
-/*!
- * JSON Schema $Ref Parser v6.1.0 (February 21st 2019)
- * 
- * https://apidevtools.org/json-schema-ref-parser/
- * 
- * @author  James Messinger (https://jamesmessinger.com)
- * @license MIT
- */
-
-/*!
  * URI.js - Mutating URLs
  *
  * Version: 1.19.11
@@ -56,8 +40,6 @@
  */
 
 /*! https://mths.be/punycode v1.4.0 by @mathias */
-
-/*! https://mths.be/punycode v1.4.1 by @mathias */
 
 /**
  * @license
