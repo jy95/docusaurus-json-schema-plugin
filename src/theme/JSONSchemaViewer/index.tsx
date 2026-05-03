@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import { useState, useEffect } from "react"
 import { Resolver } from "@stoplight/json-ref-resolver"
 
 import { CreateNodes, Collapsible } from "@theme/JSONSchemaViewer/components"
