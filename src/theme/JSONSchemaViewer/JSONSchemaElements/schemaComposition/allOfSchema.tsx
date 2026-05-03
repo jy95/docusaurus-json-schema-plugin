@@ -1,5 +1,3 @@
-import React from "react"
-
 // https://docusaurus.io/docs/swizzling#wrapping
 import TabItem from "@theme-original/TabItem"
 import Tabs from "@theme-original/Tabs"
