@@ -1,5 +1,3 @@
-import React from "react"
-
 import {
   QUALIFIERS_MAP,
   QUALIFIERS_DEFAULT_ORDER,
