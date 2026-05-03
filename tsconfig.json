@@ -1,7 +1,7 @@
 {
   "include": ["src"],
   "compilerOptions": {
-    /* Visit https://aka.ms/tsconfig.json to read more about this file */
+    /* Visit https://aka.ms/tsconfig to read more about this file */
 
     /* Basic Options */
     "incremental": true /* Enable incremental compilation */,
@@ -18,7 +18,6 @@
     "declaration": true /* Generates corresponding '.d.ts' file. */,
     "declarationMap": true /* Generates a sourcemap for each corresponding '.d.ts' file. */,
     "sourceMap": true /* Generates corresponding '.map' file. */,
-    // "outFile": "./",                       /* Concatenate and emit output to single file. */
     "outDir": "./lib" /* Redirect output structure to the directory. */,
     // "rootDir": "./",                       /* Specify the root directory of input files. Use to control the output directory structure with --outDir. */
     // "composite": true,                     /* Enable project compilation */
@@ -47,11 +46,11 @@
     // "noUncheckedIndexedAccess": true,      /* Include 'undefined' in index signature results */
 
     /* Module Resolution Options */
-    // "moduleResolution": "node",            /* Specify module resolution strategy: 'node10' (Node.js), 'node16', 'nodenext', or 'bundler'. */
+    "moduleResolution": "node10" /* Specify module resolution strategy: 'node10' (Node.js), 'node16', 'nodenext', or 'bundler'. */,
     /* Base directory to resolve non-absolute module names. */
     "baseUrl": "./",
     /* A series of entries which re-map imports to lookup locations relative to the 'baseUrl'. */
-    "paths": {
+
       "docusaurus-json-schema-plugin/*": [
         "./*",
         "node_modules/docusaurus-json-schema-plugin/*"
