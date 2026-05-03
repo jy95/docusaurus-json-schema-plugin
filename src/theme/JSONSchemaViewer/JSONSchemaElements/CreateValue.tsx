@@ -1,5 +1,3 @@
-import React from "react"
-
 import type { JSONSchema } from "@theme/JSONSchemaViewer/types"
 import { useJSVOptionsContext } from "@theme/JSONSchemaViewer/contexts"
 import { printSchemaType } from "@theme/JSONSchemaViewer/utils/QualifierMessages"
