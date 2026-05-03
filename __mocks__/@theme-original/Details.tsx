@@ -1,7 +1,6 @@
-import React, { type ComponentProps, type ReactElement } from "react"
 import { Collapsible } from "./Collapsible"
 
-import type { JSX } from "react"
+import type { JSX, ComponentProps, ReactElement } from "react"
 
 type DetailsProps = {
   /**
