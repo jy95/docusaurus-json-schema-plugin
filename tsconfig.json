@@ -1,11 +1,12 @@
 {
   "include": ["src"],
   "compilerOptions": {
+    "ignoreDeprecations": "6.0",
     "rootDir": "src",
     "target": "ES2022",
     "lib": ["ES2023", "DOM", "DOM.Iterable"],
-    "module": "NodeNext",
-    "moduleResolution": "NodeNext",
+    "module": "CommonJS",
+    "moduleResolution": "node",
     
     "incremental": true,
     "declaration": true,
@@ -32,6 +33,6 @@
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
-    "verbatimModuleSyntax": true
+    "verbatimModuleSyntax": false
   }
 }
