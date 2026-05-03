@@ -44,7 +44,7 @@ const testcases: [string, JSONSchema][] = [
 ]
 
 describe("JSONSchemaViewer - type", () => {
-  test.each(testcases)("test %s", async (title, fakeSchema) => {
+  test.each(testcases)("test %s", async (_title, fakeSchema) => {
     // Render the component
     let rendered: RenderResult | null = null
 
