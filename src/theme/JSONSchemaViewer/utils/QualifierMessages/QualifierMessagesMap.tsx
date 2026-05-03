@@ -1,5 +1,3 @@
-import React from "react"
-
 import * as QMS from "@theme/JSONSchemaViewer/utils/QualifierMessages"
 import { hasUnresolvedRefs, isArrayNotEmpty } from "../detectTypes"
 
