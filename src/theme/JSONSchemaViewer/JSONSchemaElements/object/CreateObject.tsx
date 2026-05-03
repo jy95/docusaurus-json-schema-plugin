@@ -1,5 +1,3 @@
-import React from "react"
-
 import AdditionalProperties from "@theme/JSONSchemaViewer/JSONSchemaElements/object/AdditionalProperties"
 import Properties from "@theme/JSONSchemaViewer/JSONSchemaElements/object/Properties"
 import PatternProperties from "@theme/JSONSchemaViewer/JSONSchemaElements/object/PatternProperties"
