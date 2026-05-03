@@ -1,11 +1,6 @@
-import React from "react"
-
 import { QualifierMessages } from "@theme/JSONSchemaViewer/utils"
-
 import { useJSVOptionsContext } from "@theme/JSONSchemaViewer/contexts"
-
 import { TypeLabel, NumberLabel } from "@theme/JSONSchemaViewer/labels"
-
 import { CreateDescription } from "@theme/JSONSchemaViewer/JSONSchemaElements"
 
 import type { JSX } from "react"
