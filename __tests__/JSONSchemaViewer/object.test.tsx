@@ -79,7 +79,7 @@ const testcases: [string, JSONSchema][] = [
 describe("JSONSchemaViewer - object", () => {
   test.each(testcases)(
     "test %s",
-    async (title: string, fakeSchema: JSONSchema) => {
+    async (_title: string, fakeSchema: JSONSchema) => {
       let rendered: RenderResult | null = null
 
       // Use act to ensure all updates are processed
