@@ -19,8 +19,6 @@
     "noUnusedParameters": true,
     "noImplicitOverride": true,
     "noUncheckedIndexedAccess": true,
-
-    "baseUrl": ".", 
     "paths": {
       "docusaurus-json-schema-plugin/*": ["./*"],
       "@theme/*": ["./src/theme/*"]
