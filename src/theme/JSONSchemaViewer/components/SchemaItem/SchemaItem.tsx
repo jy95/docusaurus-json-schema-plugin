@@ -1,5 +1,3 @@
-import React, { ReactNode } from "react"
-
 import { Collapsible, CreateNodes } from "@theme/JSONSchemaViewer/components"
 import { useSchemaHierarchyContext } from "@theme/JSONSchemaViewer/contexts"
 import { useJSVOptionsContext } from "@theme/JSONSchemaViewer/contexts"
@@ -16,7 +14,7 @@ import { GenerateFriendlyName } from "@theme/JSONSchemaViewer/utils"
 
 import styles from "./styles.module.css"
 
-import type { JSX } from "react"
+import type { JSX, ReactNode } from "react"
 
 import type {
   JSONSchema,
