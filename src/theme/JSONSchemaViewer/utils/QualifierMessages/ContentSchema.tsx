@@ -1,5 +1,3 @@
-import React from "react"
-
 import Translate from "@docusaurus/Translate"
 
 import { Collapsible, CreateNodes } from "@theme/JSONSchemaViewer/components"
