@@ -1,5 +1,3 @@
-import React from "react"
-
 import { AllOfSchema } from "@theme/JSONSchemaViewer/JSONSchemaElements/schemaComposition"
 
 import type { JSX } from "react"
