@@ -1,4 +1,3 @@
-import React from "react"
 import { expect, test, describe } from "@jest/globals"
 import { render, act } from "@testing-library/react"
 
