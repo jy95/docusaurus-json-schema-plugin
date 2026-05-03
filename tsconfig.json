@@ -1,29 +1,26 @@
 {
   "include": ["src"],
   "compilerOptions": {
-    /* Standards 2026 */
-    "target": "ES2022",                /* Cible moderne pour profiter du Top-level await et des class fields */
-    "lib": ["ES2023", "DOM", "DOM.Iterable"], 
-    "module": "NodeNext",              /* Standard TS 6 pour une meilleure gestion ESM/CommonJS */
+    "rootDir": "src",
+    "target": "ES2022",
+    "lib": ["ES2023", "DOM", "DOM.Iterable"],
+    "module": "NodeNext",
     "moduleResolution": "NodeNext",
     
-    /* Émission & Performance */
     "incremental": true,
     "declaration": true,
     "declarationMap": true,
     "sourceMap": true,
     "outDir": "./lib",
-    "jsx": "react-jsx",               /* 'react' est déprécié au profit du nouveau transformateur */
+    "jsx": "react-jsx",
 
-    /* Rigueur & Sécurité (Strict par défaut en TS 6) */
     "strict": true,
     "noUnusedLocals": true,
-    "noUnusedParameters": true,       /* Activé par défaut pour un code plus propre */
-    "noImplicitOverride": true,       /* Recommandé en TS 6 pour les classes */
-    "noUncheckedIndexedAccess": true, /* Sécurise l'accès aux tableaux/objets */
+    "noUnusedParameters": true,
+    "noImplicitOverride": true,
+    "noUncheckedIndexedAccess": true,
 
-    /* Résolution de modules */
-    "baseUrl": ".",
+    "baseUrl": ".", 
     "paths": {
       "docusaurus-json-schema-plugin/*": ["./*"],
       "@theme/*": ["./src/theme/*"]
@@ -34,10 +31,9 @@
       "@docusaurus/theme-classic"
     ],
     
-    /* Interopérabilité & Nettoyage */
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
-    "verbatimModuleSyntax": true      /* Remplace 'importsNotUsedAsValues' en TS 6 */
+    "verbatimModuleSyntax": true
   }
 }
