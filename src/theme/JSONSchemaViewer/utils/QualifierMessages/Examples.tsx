@@ -1,5 +1,3 @@
-import React from "react"
-
 import Translate from "@docusaurus/Translate"
 // https://docusaurus.io/docs/swizzling#wrapping
 import TabItem from "@theme-original/TabItem"
