@@ -1,4 +1,3 @@
-import React from "react"
 import Translate from "@docusaurus/Translate"
 
 import { CreateEdge } from "@theme/JSONSchemaViewer/components"

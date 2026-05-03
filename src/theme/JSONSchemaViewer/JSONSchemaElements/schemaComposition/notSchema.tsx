@@ -1,5 +1,3 @@
-import React from "react"
-
 import { CreateNodes } from "@theme/JSONSchemaViewer/components"
 import { SchemaHierarchyComponent } from "@theme/JSONSchemaViewer/contexts"
 

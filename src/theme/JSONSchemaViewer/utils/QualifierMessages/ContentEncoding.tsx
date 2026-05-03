@@ -1,5 +1,3 @@
-import React from "react"
-
 import Translate from "@docusaurus/Translate"
 
 import { printSchemaType } from "@theme/JSONSchemaViewer/utils/QualifierMessages"

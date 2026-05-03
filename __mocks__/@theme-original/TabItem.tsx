@@ -1,6 +1,4 @@
-import React, { ReactNode } from "react"
-
-import type { JSX } from "react"
+import type { JSX, ReactNode } from "react"
 
 export type Props = {
   readonly children: ReactNode

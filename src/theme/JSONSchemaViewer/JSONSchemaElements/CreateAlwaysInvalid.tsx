@@ -1,4 +1,3 @@
-import React from "react"
 import Translate from "@docusaurus/Translate"
 
 import { TypeLabel, FalseLabel } from "@theme/JSONSchemaViewer/labels"

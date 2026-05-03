@@ -1,4 +1,3 @@
-import React from "react"
 import { expect, test, describe } from "@jest/globals"
 import { render, act } from "@testing-library/react"
 import JSONSchemaViewer from "../../src/theme/JSONSchemaViewer/index"
@@ -80,7 +79,7 @@ const testcases: [string, JSONSchema][] = [
 describe("JSONSchemaViewer - object", () => {
   test.each(testcases)(
     "test %s",
-    async (title: string, fakeSchema: JSONSchema) => {
+    async (_title: string, fakeSchema: JSONSchema) => {
       let rendered: RenderResult | null = null
 
       // Use act to ensure all updates are processed

@@ -65,6 +65,7 @@ export interface PluginOptions {
 export type MyPluginLoadableContent = never
 
 export default function myPlugin(
+  // @ts-ignore: context is a required Docusaurus argument but unused in this specific logic
   context: LoadContext,
   options: PluginOptions,
 ): Plugin<MyPluginLoadableContent | PluginOptions> {

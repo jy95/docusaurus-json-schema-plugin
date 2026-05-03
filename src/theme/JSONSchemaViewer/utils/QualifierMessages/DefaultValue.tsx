@@ -1,5 +1,3 @@
-import React from "react"
-
 import Translate from "@docusaurus/Translate"
 
 import { CreateValue } from "@theme/JSONSchemaViewer/JSONSchemaElements"

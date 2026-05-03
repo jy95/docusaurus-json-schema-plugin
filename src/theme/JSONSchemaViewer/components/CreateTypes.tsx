@@ -1,5 +1,3 @@
-import React from "react"
-
 import TabItem from "@theme-original/TabItem"
 import Tabs from "@theme-original/Tabs"
 
@@ -44,7 +42,7 @@ function RenderMultipleTypes(props: MultipleTypesProps): JSX.Element {
   const { schema, types, nullable } = props
 
   return (
-    <Tabs defaultValue={types[0].value} values={types} key={"multiple_types"}>
+    <Tabs defaultValue={types[0]?.value} values={types} key={"multiple_types"}>
       {types.map((val) => (
         <TabItem key={val.value} value={val.value}>
           {
@@ -83,7 +81,7 @@ export default function CreateTypes(props: Props): JSX.Element {
   if (foundTypes.length === 1 || (hasNull && foundTypes.length === 2)) {
     // Either we got the not null type (likely what the final user wants to express)
     // Either we consider first entry as fallback if it was a standalone "null"
-    const firstType = foundTypes.find((s) => s !== "null") || foundTypes[0]
+    const firstType = (foundTypes.find((s) => s !== "null") || foundTypes[0]) as TypeValues
 
     return (
       <RenderSingleType schema={schema} type={firstType} nullable={hasNull} />

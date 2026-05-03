@@ -1,4 +1,3 @@
-import React from "react"
 import { render, act } from "@testing-library/react"
 import { expect, test, describe } from "@jest/globals"
 import JSONSchemaViewer from "../../src/theme/JSONSchemaViewer/index"

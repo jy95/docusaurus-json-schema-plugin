@@ -1,8 +1,6 @@
-import React, { ReactNode } from "react"
-
 import { SchemaItem } from "@theme/JSONSchemaViewer/components"
 
-import type { JSX } from "react"
+import type { JSX, ReactNode } from "react"
 import type { JSONSchema } from "@theme/JSONSchemaViewer/types"
 
 // Creates the edge or "leave" of a schema tree. Edge can branch into sub-nodes.

@@ -1,5 +1,3 @@
-import React from "react"
-
 import CodeBlock from "@theme-original/CodeBlock"
 
 import type { JSX } from "react"

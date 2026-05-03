@@ -1,5 +1,3 @@
-import React from "react"
-
 import TabItem from "@theme-original/TabItem"
 import Tabs from "@theme-original/Tabs"
 

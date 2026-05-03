@@ -1,7 +1,7 @@
 // Dummy mock for the sake Jest doesn't wire internal Docusaurus packages
-import React, { ReactElement, ReactNode } from "react"
+import { useState } from "react"
 
-import type { JSX } from "react"
+import type { JSX, ReactElement, ReactNode } from "react"
 
 interface TabItemProps {
   readonly children: ReactNode
@@ -52,8 +52,8 @@ export default function Tabs({
             },
           ]
 
-  const [selectedTab, setSelectedTab] = React.useState(
-    defaultValue || items[0].value,
+  const [selectedTab, setSelectedTab] = useState(
+    defaultValue || items[0]?.value,
   )
   const childrenAsArray: ReactElement<TabItemProps>[] = Array.isArray(children)
     ? children
