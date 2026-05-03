@@ -1,5 +1,3 @@
-import React from "react"
-
 import { CreateTypes } from "@theme/JSONSchemaViewer/components"
 
 import {
