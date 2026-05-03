@@ -1,5 +1,3 @@
-import React from "react"
-
 import { JSONSchema } from "json-schema-typed"
 import { JSVOptions } from "../../contexts"
 import Translate from "@docusaurus/Translate"
