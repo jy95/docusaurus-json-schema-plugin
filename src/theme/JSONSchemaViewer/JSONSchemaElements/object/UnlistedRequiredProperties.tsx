@@ -1,5 +1,3 @@
-import React from "react"
-
 import { CreateEdge } from "@theme/JSONSchemaViewer/components"
 import { SchemaHierarchyComponent } from "@theme/JSONSchemaViewer/contexts"
 import { encodeStringForJSONPointer } from "@theme/JSONSchemaViewer/utils"
