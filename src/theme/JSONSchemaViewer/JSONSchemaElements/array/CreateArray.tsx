@@ -1,5 +1,3 @@
-import React from "react"
-
 import Items from "@theme/JSONSchemaViewer/JSONSchemaElements/array/Items"
 import Contains from "@theme/JSONSchemaViewer/JSONSchemaElements/array/Contains"
 import PrefixItems from "@theme/JSONSchemaViewer/JSONSchemaElements/array/PrefixItems"
