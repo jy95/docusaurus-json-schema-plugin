@@ -13,6 +13,13 @@ updates:
       include: "scope"
     schedule:
       interval: "daily"
+    groups:
+      # Specify a name for the group, which will be used in pull request titles
+      # and branch names
+      docusaurus:
+        applies-to: version-updates
+        patterns:
+          - "@docusaurus*"
 # Files stored in repository testsite
   - package-ecosystem: "npm"
     directory: "/testsite"
@@ -21,6 +28,13 @@ updates:
       include: "scope"
     schedule:
       interval: "daily"
+    groups:
+      # Specify a name for the group, which will be used in pull request titles
+      # and branch names
+      docusaurus:
+        applies-to: version-updates
+        patterns:
+          - "@docusaurus*"
 # Workflow files stored in the default location of `.github/workflows`
   - package-ecosystem: "github-actions"
     directory: "/"
