@@ -20,6 +20,10 @@ updates:
         applies-to: version-updates
         patterns:
           - "@docusaurus*"
+      react:
+        applies-to: version-updates
+        patterns:
+          - "react*"
 # Files stored in repository testsite
   - package-ecosystem: "npm"
     directory: "/testsite"
