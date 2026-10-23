@@ -133,14 +133,15 @@ function* foundUndeclaredTypes(
 export function detectedTypes(
   schema: Exclude<JSONSchema, true | false>,
 ): TypeValues[] {
-  // Find declarated type(s) provided by user
-  const declaredTypes: TypeValues[] = Array.isArray(schema.type)
-    ? schema.type
-    : schema.type !== undefined
-      ? [schema.type]
-      : []
+  // Find declared type(s) provided by user and cast them safely
+  const rawType = schema.type;
+  const declaredTypes: TypeValues[] = Array.isArray(rawType)
+    ? (rawType as TypeValues[])
+    : rawType !== undefined
+      ? ([rawType] as TypeValues[])
+      : [];
 
-  // If not empty, return it as it
+  // If not empty, return it as is
   if (declaredTypes.length !== 0) {
     return [...new Set(declaredTypes)]
   }
