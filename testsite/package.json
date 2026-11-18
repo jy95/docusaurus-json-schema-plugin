@@ -29,7 +29,7 @@
     "react-toastify": "^11.0.3"
   },
   "devDependencies": {
-    "@docusaurus/module-type-aliases": "3.9.2",
+    "@docusaurus/module-type-aliases": "3.10.2",
     "@docusaurus/tsconfig": "3.10.2",
     "@types/react": "^19.2.0",
     "@types/react-dom": "^19.3.0",
